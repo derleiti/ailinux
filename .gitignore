@@ -8,5 +8,15 @@ models/llama.bin
 =======
 models/llama.bin
 node_modules/
+fronend/node_modules
 *.log
+<<<<<<< HEAD
 >>>>>>> 215edf3 (Added large files to .gitignore)
+=======
+bigfiles.py
+bigfiles.sh
+current_requirements.txt
+bigfiles.py
+bigfiles.sh
+current_requirements.txt
+>>>>>>> 81d6a81 (Add bigfiles.py, bigfiles.sh, and current_requirements.txt to .gitignore)
