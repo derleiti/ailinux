@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/zombie/ailinux/backend/app.py", line 4, in <module>
-    from flask import Flask, jsonify, request
-ModuleNotFoundError: No module named 'flask'
