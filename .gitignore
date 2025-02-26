@@ -3,4 +3,10 @@ models/*.bin
 node_modules/
 =======
 models/llama.bin
+<<<<<<< HEAD
 >>>>>>> 6493216 (Remove llama.bin from Git history and add to .gitignore)
+=======
+models/llama.bin
+node_modules/
+*.log
+>>>>>>> 215edf3 (Added large files to .gitignore)
