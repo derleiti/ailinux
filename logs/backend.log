@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/zombie/ailinux/backend/app.py", line 5, in <module>
+    from ai_model import analyze_log  # The function to interact with your AI models
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/zombie/ailinux/backend/ai_model.py", line 4, in <module>
+    import google.generativeai as genai
+ModuleNotFoundError: No module named 'google'

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Interaction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #chat-container {
+      display: flex;
+      flex-direction: column;
+      height: 90vh;
+    }
+    #chat-log {
+      flex: 1;
+      border: 1px solid #ccc;
+      padding: 10px;
+      overflow-y: auto;
+    }
+    #chat-input {
+      display: flex;
+      margin-top: 10px;
+    }
+    #chat-input input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+    }
+    #chat-input button {
+      padding: 10px;
+      font-size: 16px;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Llama/ChatGPT Interaction</h1>
+  <div id="chat-container">
+    <div id="chat-log">
+      <p>Welcome! Start chatting below:</p>
+    </div>
+    <div id="chat-input">
+      <input type="text" id="userInput" placeholder="Type your message here..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const chatLog = document.getElementById('chat-log');
+      const userMessage = input.value;
+      if (userMessage) {
+        const userDiv = document.createElement('p');
+        userDiv.textContent = `You: ${userMessage}`;
+        chatLog.appendChild(userDiv);
+
+        // Here, you’d send the message to the backend
+        // For now, we just mock a response
+        const responseDiv = document.createElement('p');
+        responseDiv.textContent = `ChatGPT: This is a mocked response.`;
+        chatLog.appendChild(responseDiv);
+
+        input.value = '';
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }
+    }
+  </script>
+</body>
+</html>

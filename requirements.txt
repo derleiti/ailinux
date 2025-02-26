@@ -1,0 +1,7 @@
+flask
+llama-cpp-python
+openai
+websockets
+requests
+psutil
+python-dotenv

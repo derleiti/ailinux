@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logs</title>
+</head>
+<body>
+  <h1>Logs</h1>
+  <pre id="log-content"></pre>
+  <script>
+    // Assuming you’re loading logs dynamically, maybe fetch them via IPC or a file read
+    // For now, we'll simulate it
+    const logs = [
+      "2025-02-25T20:00:00Z - Main window opened.",
+      "2025-02-25T20:10:00Z - User started a chat session."
+    ];
+
+    const logContent = document.getElementById('log-content');
+    logContent.textContent = logs.join('\n');
+  </script>
+</body>
+</html>

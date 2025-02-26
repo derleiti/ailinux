@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin: 0.5rem 0;
+    }
+    input, select, button {
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+    .section {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Application Settings</h1>
+
+  <!-- API Keys Section -->
+  <div class="section">
+    <h2>API Keys</h2>
+    <label for="chatgptApiKey">ChatGPT API Key:</label>
+    <input type="text" id="chatgptApiKey" placeholder="Enter your ChatGPT API key..." />
+    <label for="geminiApiKey">Gemini API Key:</label>
+    <input type="text" id="geminiApiKey" placeholder="Enter your Gemini API key..." />
+    <label for="llamaApiKey">LLaMA API Key:</label>
+    <input type="text" id="llamaApiKey" placeholder="Enter your LLaMA API key..." />
+    <label for="googleApiKey">Google Cloud API Key:</label>
+    <input type="text" id="googleApiKey" placeholder="Enter your Google Cloud API key..." />
+    <label for="twitchApiKey">Twitch API Key:</label>
+    <input type="text" id="twitchApiKey" placeholder="Enter your Twitch API key..." />
+    <label for="youtubeApiKey">YouTube API Key:</label>
+    <input type="text" id="youtubeApiKey" placeholder="Enter your YouTube API key..." />
+  </div>
+
+  <!-- AI Features Section -->
+  <div class="section">
+    <h2>AI Features</h2>
+    <label>
+      <input type="checkbox" id="aiEnabled" /> Enable AI features
+    </label>
+    <label>
+      <input type="checkbox" id="loggingEnabled" /> Enable logging
+    </label>
+  </div>
+
+  <!-- Computation Mode Section -->
+  <div class="section">
+    <h2>Computation Mode</h2>
+    <label>
+      <input type="radio" name="computationMode" value="cpu" /> CPU mode only
+    </label>
+    <label>
+      <input type="radio" name="computationMode" value="gpu" /> GPU mode only
+    </label>
+    <label>
+      <input type="radio" name="computationMode" value="synchronous" /> Synchronous CPU and GPU
+    </label>
+  </div>
+
+  <!-- Save Button -->
+  <button onclick="saveSettings()">Save All Settings</button>
+
+  <script>
+    // Function to save all settings including API keys and configurations
+    async function saveSettings() {
+      const settings = {
+        chatgptApiKey: document.getElementById('chatgptApiKey').value,
+        geminiApiKey: document.getElementById('geminiApiKey').value,
+        llamaApiKey: document.getElementById('llamaApiKey').value,
+        googleApiKey: document.getElementById('googleApiKey').value,
+        twitchApiKey: document.getElementById('twitchApiKey').value,
+        youtubeApiKey: document.getElementById('youtubeApiKey').value,
+        aiEnabled: document.getElementById('aiEnabled').checked,
+        loggingEnabled: document.getElementById('loggingEnabled').checked,
+        computationMode: document.querySelector('input[name="computationMode"]:checked').value
+      };
+
+      // Send these settings to the backend for saving
+      await window.electronAPI.saveSettings(settings);
+      alert('Settings saved.');
+    }
+
+    // Optional: Load saved settings on page load
+    async function loadSettings() {
+      const settings = await window.electronAPI.getSettings();
+      document.getElementById('chatgptApiKey').value = settings.chatgptApiKey || '';
+      document.getElementById('geminiApiKey').value = settings.geminiApiKey || '';
+      document.getElementById('llamaApiKey').value = settings.llamaApiKey || '';
+      document.getElementById('googleApiKey').value = settings.googleApiKey || '';
+      document.getElementById('twitchApiKey').value = settings.twitchApiKey || '';
+      document.getElementById('youtubeApiKey').value = settings.youtubeApiKey || '';
+      document.getElementById('aiEnabled').checked = settings.aiEnabled;
+      document.getElementById('loggingEnabled').checked = settings.loggingEnabled;
+
+      const modeInput = document.querySelector(`input[name="computationMode"][value="${settings.computationMode}"]`);
+      if (modeInput) {
+        modeInput.checked = true;
+      }
+    }
+
+    // Initialize settings when the page loads
+    window.onload = loadSettings;
+  </script>
+</body>
+</html>

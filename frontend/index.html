@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Chat Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #2196f3;
+        }
+        #chat-container {
+            width: 60%;
+            margin: 20px auto;
+            text-align: left;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #f9f9f9;
+            overflow-y: auto;
+            height: 400px;
+        }
+        select, input, button {
+            margin: 10px;
+            padding: 10px;
+        }
+        #log-output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background: #f0f0f0;
+            height: 150px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Chat Interface</h1>
+
+    <label for="modelSelect">Choose AI Model:</label>
+    <select id="modelSelect">
+        <option value="chatgpt">ChatGPT</option>
+        <option value="llama">LLaMA</option>
+        <option value="gemini">Gemini</option>
+    </select>
+
+    <br>
+    <textarea id="userInput" placeholder="Type your log message here..." rows="5" cols="50"></textarea><br>
+
+    <button onclick="sendMessage()">Send to AI</button>
+    
+    <div id="chat-container"></div>
+
+    <h2>Log Output:</h2>
+    <div id="log-output"></div>
+
+    <script>
+        function sendMessage() {
+            let message = document.getElementById('userInput').value;
+            let model = document.getElementById('modelSelect').value;
+
+            if (!message.trim()) return;
+
+            document.getElementById('chat-container').innerHTML += `<b>You:</b> ${message}<br>`;
+
+            fetch(`http://your-server-ip:8081/debug`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ log: message, model: model }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('chat-container').innerHTML += `<b>AI:</b> ${data.analysis}<br>`;
+                document.getElementById('log-output').innerHTML = data.analysis;
+            })
+            .catch(error => console.error('Error:', error));
+
+            document.getElementById('userInput').value = "";
+        }
+    </script>
+</body>
+</html>
