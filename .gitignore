@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 models/*.bin
 node_modules/
+=======
+models/llama.bin
+>>>>>>> 6493216 (Remove llama.bin from Git history and add to .gitignore)
