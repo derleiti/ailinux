@@ -1,0 +1,7 @@
+Flask
+openai
+google-generativeai
+twitchio
+psutil
+pydantic
+requests
