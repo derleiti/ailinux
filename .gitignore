@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+frontend/node_mudules/
+<<<<<<< HEAD
 models/*.bin
 node_modules/
 =======
@@ -8,7 +10,6 @@ models/llama.bin
 =======
 models/llama.bin
 node_modules/
-fronend/node_modules
 *.log
 <<<<<<< HEAD
 >>>>>>> 215edf3 (Added large files to .gitignore)
