@@ -2,68 +2,62 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
-const config = require('./config.json');
 
 let mainWindow;
-const logFilePath = path.join(app.getPath('userData'), 'bot.log');
 
-// Helper function to write logs
-const writeLog = (message) => {
+// Function to log messages to frontend log file
+function writeLog(message) {
+    const logFilePath = path.join(app.getPath('userData'), 'frontend/frontend.log');
     const logEntry = `${new Date().toISOString()} - ${message}\n`;
     fs.appendFileSync(logFilePath, logEntry);
-};
+}
 
-// Setup the main application window
-const createMainWindow = () => {
+// Create the main application window
+function createMainWindow() {
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
             contextIsolation: true,
-            preload: path.join(__dirname, 'preload.js'),
-        },
-    });
-
-    mainWindow.loadFile('index.html');
-    mainWindow.on('closed', () => {
-        mainWindow = null;
-    });
-
-    writeLog('Main window created');
-};
-
-// Handle AI chat messages
-ipcMain.handle('chat-message', async (event, message, modelType) => {
-    try {
-        const response = await axios.post("http://127.0.0.1:8081/debug", {
-            log: message,
-            use_chatgpt: modelType === "chatgpt"
-        });
-        const botResponse = response.data.analysis;
-        writeLog(`Bot response: ${botResponse}`);
-        return botResponse;
-    } catch (error) {
-        writeLog(`Error: ${error.message}`);
-        return "⚠ AI server is not responding!";
-    }
-});
-
-// Electron App Ready
-app.whenReady().then(() => {
-    createMainWindow();
-
-    app.on('activate', () => {
-        if (BrowserWindow.getAllWindows().length === 0) {
-            createMainWindow();
+            preload: path.join(__dirname, 'preload.js')  // Preload script for additional API interaction
         }
     });
 
-    writeLog('App is ready');
+    // Load the main HTML file
+    mainWindow.loadFile('index.html');
+    writeLog("Main window loaded");
+
+    // Handle the closing of the main window
+    mainWindow.on('closed', () => {
+        mainWindow = null;
+        writeLog("Main window closed");
+    });
+}
+
+// When the app is ready, create the window
+app.whenReady().then(() => {
+    writeLog("App is ready to be launched");
+    createMainWindow();
 });
 
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit();
+// Handle the event where frontend sends a chat message to the backend
+ipcMain.handle('chat-message', async (event, message, modelType) => {
+    try {
+        // Make a POST request to the backend (Flask API)
+        const response = await axios.post("http://127.0.0.1:8081/debug", {
+            log: message,
+            model: modelType
+        });
+
+        // Log the AI response
+        const botResponse = response.data.analysis;
+        writeLog(`Received AI response: ${botResponse}`);
+
+        // Return the AI response to the frontend
+        return botResponse;
+    } catch (error) {
+        // Log the error if communication with backend fails
+        writeLog(`Error communicating with backend: ${error.message}`);
+        return "⚠ AI server is not responding!";
     }
-    writeLog('All windows closed');
 });
