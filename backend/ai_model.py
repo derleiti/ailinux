@@ -1,20 +1,44 @@
-import openai
 import os
+import subprocess
+import openai
 from llama_cpp import Llama
 import google.generativeai as genai
 
 # Load API Keys securely
 openai.api_key = os.getenv("OPENAI_API_KEY")
 gemini_api_key = os.getenv("GEMINI_API_KEY")
-llama_model_path = os.getenv("LLAMA_MODEL_PATH", "/home/zombie/ailinux/models/llama.bin")
+llama_model_path = os.path.expanduser("~/ailinux/backend/models/llama.bin")  # Model path
 
-# Load AI Models
+# Placeholder URL for downloading the model (replace with the actual URL)
+MODEL_URL = "http://example.com/llama-model.bin"  # Replace with your actual model download URL
+
+# Function to download the LLaMA model
+def download_model():
+    print("Model not found, downloading...")
+    command = f"wget --progress=bar:force -O {llama_model_path} {MODEL_URL}"
+    
+    try:
+        # Running the download command and showing the progress
+        subprocess.check_call(command, shell=True)
+        print("Model downloaded successfully!")
+    except subprocess.CalledProcessError as e:
+        print("Error downloading model:", e)
+        return False
+
+    return True
+
+# Function to initialize LLaMA model
 def initialize_llama():
-    return Llama(model_path=llama_model_path) if os.path.exists(llama_model_path) else None
+    if not os.path.exists(llama_model_path):
+        if not download_model():
+            return None
+    return Llama(model_path=llama_model_path)
 
+# Function to initialize ChatGPT model
 def initialize_chatgpt():
     return openai.api_key is not None  # Returns True if API key is set
 
+# Function to initialize Gemini model
 def initialize_gemini():
     if gemini_api_key:
         genai.configure(api_key=gemini_api_key)
@@ -79,3 +103,4 @@ def gemini_response(text):
 if __name__ == "__main__":
     log = "Example error log to analyze"
     print(analyze_log(log, model_name="llama"))
+

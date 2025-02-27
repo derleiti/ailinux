@@ -1,0 +1,3 @@
+/home/zombie/ailinux/backend/requirements.txt
+/home/zombie/ailinux/frontend/requirements.txt
+/home/zombie/ailinux/requirements.txt
