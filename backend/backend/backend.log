@@ -1,0 +1,6 @@
+2025-02-28 23:13:46,983 - INFO - Starte den Backend-Server...
+2025-02-28 23:13:46,984 - WARNING - Python-dotenv could not parse statement starting at line 1
+2025-02-28 23:13:46,984 - WARNING - Python-dotenv could not parse statement starting at line 3
+2025-02-28 23:13:46,985 - WARNING - Python-dotenv could not parse statement starting at line 10
+2025-02-28 23:13:46,987 - WARNING -  * Debugger is active!
+2025-02-28 23:13:47,055 - INFO -  * Debugger PIN: 541-902-393

@@ -18,18 +18,23 @@ show_menu() {
 search_files() {
   local extension=$1
   local directory=~/ailinux
-  
-  # Exclude node_modules, dist, and build directories, and search for files with the given extension
+
+  # Exclude node_modules, dist, build directories, and exclude downloadready.py for *.py files
   echo "📂 Searching for *.$extension files in $directory, excluding node_modules, dist, build..."
 
-  # Search for files and display their contents
-  files=$(find $directory -type f -name "*.$extension" ! -path "*/node_modules/*" ! -path "*/dist/*" ! -path "*/build/*")
+  # Search for files and display their contents, excluding downloadready.py for py files
+  if [ "$extension" == "py" ]; then
+    files=$(find $directory -type f -name "*.$extension" ! -path "*/node_modules/*" ! -path "*/dist/*" ! -path "*/build/*" ! -path "$directory/downloadready.py")
+  else
+    files=$(find $directory -type f -name "*.$extension" ! -path "*/node_modules/*" ! -path "*/dist/*" ! -path "*/build/*")
+  fi
+
   if [ -z "$files" ]; then
     echo "⚠ No $extension files found!"
   else
     # Use tee to log results
     echo "$files" | tee postconf.log
-    
+
     # Display contents of each file
     for file in $files; do
       echo "📄 Displaying content of $file:"
@@ -39,7 +44,7 @@ search_files() {
   fi
 
   echo "✅ Search completed. Results saved to postconf.log."
-  
+
   # Always post file hierarchy after search
   analyze_hierarchy
 }
@@ -67,7 +72,7 @@ search_requirements_txt() {
   fi
 
   echo "✅ Search completed. Results saved to requirements_log.txt."
-  
+
   # Always post file hierarchy after search
   analyze_hierarchy
 }
@@ -92,16 +97,16 @@ post_all() {
 
   # Search for .js files
   search_files "js"
-  
+
   # Search for .py files
   search_files "py"
-  
+
   # Search for .html files
   search_files "html"
-  
+
   # Search for requirements.txt
   search_requirements_txt
-  
+
   echo "✅ Post All process completed. All results saved in respective log files."
 }
 
@@ -109,7 +114,7 @@ post_all() {
 while true; do
   # Show the menu
   show_menu
-  
+
   # Get the user's choice
   read -p "Please select an option (1-6): " choice
 

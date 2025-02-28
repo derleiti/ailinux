@@ -5,59 +5,62 @@ const axios = require('axios');
 
 let mainWindow;
 
-// Function to log messages to frontend log file
+// Funktion zum Schreiben von Log-Nachrichten in die Log-Datei
 function writeLog(message) {
-    const logFilePath = path.join(app.getPath('userData'), 'frontend/frontend.log');
+    const logFilePath = path.join(__dirname, 'frontend.log');
     const logEntry = `${new Date().toISOString()} - ${message}\n`;
-    fs.appendFileSync(logFilePath, logEntry);
+    try {
+        fs.appendFileSync(logFilePath, logEntry);
+    } catch (error) {
+        console.error(`Fehler beim Schreiben in Log-Datei: ${logFilePath}`, error);
+    }
 }
 
-// Create the main application window
+// Erstelle das Hauptanwendungsfenster
 function createMainWindow() {
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
             contextIsolation: true,
-            preload: path.join(__dirname, 'preload.js')  // Preload script for additional API interaction
+            preload: path.join(__dirname, 'preload.js')  // Preload-Skript für zusätzliche API-Interaktionen
         }
     });
 
-    // Load the main HTML file
+    // Lade die Haupt-HTML-Datei
     mainWindow.loadFile('index.html');
-    writeLog("Main window loaded");
+    writeLog("Main Window geladen");
 
-    // Handle the closing of the main window
+    // Handle das Schließen des Hauptfensters
     mainWindow.on('closed', () => {
         mainWindow = null;
-        writeLog("Main window closed");
+        writeLog("Main Window geschlossen");
     });
 }
 
-// When the app is ready, create the window
+// Wenn die App bereit ist, erstelle das Fenster
 app.whenReady().then(() => {
-    writeLog("App is ready to be launched");
+    writeLog("App bereit zur Ausführung");
     createMainWindow();
 });
 
-// Handle the event where frontend sends a chat message to the backend
+// Handle das Event, wenn das Frontend eine Chat-Nachricht an das Backend sendet
 ipcMain.handle('chat-message', async (event, message, modelType) => {
     try {
-        // Make a POST request to the backend (Flask API)
+        // Sende eine POST-Anfrage an das Backend (Flask-API)
         const response = await axios.post("http://127.0.0.1:8081/debug", {
             log: message,
             model: modelType
         });
 
-        // Log the AI response
+        // Logge die Antwort der KI
         const botResponse = response.data.analysis;
-        writeLog(`Received AI response: ${botResponse}`);
+        writeLog(`Erhaltene Antwort von der KI: ${botResponse}`);
 
-        // Return the AI response to the frontend
+        // Gebe die Antwort der KI an das Frontend zurück
         return botResponse;
     } catch (error) {
-        // Log the error if communication with backend fails
-        writeLog(`Error communicating with backend: ${error.message}`);
-        return "⚠ AI server is not responding!";
+        writeLog(`Fehler bei der Kommunikation mit dem Backend: ${error.message}`);
+        return "⚠ Der KI-Server antwortet nicht!";
     }
 });

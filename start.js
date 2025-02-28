@@ -1,75 +1,84 @@
-require('dotenv').config();  // Load environment variables from .env file
+require('dotenv').config();  // Lade Umgebungsvariablen aus .env-Datei
 const { spawn } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
-// Define log file paths
+// Definiere Log-Dateipfade
 const backendLogPath = path.join(__dirname, 'backend', 'backend.log');
 const frontendLogPath = path.join(__dirname, 'frontend', 'frontend.log');
 const startLogPath = path.join(__dirname, 'start.log');
 
-// Function to initialize and overwrite log files
+// Funktion zum Initialisieren und Überschreiben von Log-Dateien
 function initializeLog(filePath) {
-  fs.writeFileSync(filePath, '');  // Clear the log file to overwrite
-  console.log(`Log file initialized: ${filePath}`);
+  try {
+    fs.writeFileSync(filePath, '');  // Lösche die Log-Datei zum Überschreiben
+    console.log(`Log-Datei initialisiert: ${filePath}`);
+  } catch (error) {
+    console.error(`Fehler beim Initialisieren der Log-Datei: ${filePath}`, error);
+  }
 }
 
-// Initialize logs
+// Initialisiere Log-Dateien
 initializeLog(startLogPath);
 initializeLog(backendLogPath);
 initializeLog(frontendLogPath);
 
-// Function to log messages to files
+// Funktion zum Loggen von Nachrichten in Log-Dateien
 function logMessage(message, logPath) {
-  const timestamp = new Date().toISOString();
-  const logEntry = `${timestamp} - ${message}\n`;
-  fs.appendFileSync(logPath, logEntry);
+  try {
+    const timestamp = new Date().toISOString();
+    const logEntry = `${timestamp} - ${message}\n`;
+    fs.appendFileSync(logPath, logEntry);
+  } catch (error) {
+    console.error('Fehler beim Schreiben in Log-Datei:', error);
+  }
 }
 
-// Log initialization message in start log
-logMessage('Initialization started', startLogPath);
+// Logge Initialisierungsnachricht
+logMessage('Initialisierung gestartet', startLogPath);
 
-// Fetch and log the API Key (useful for debugging)
+// Hole den API-Schlüssel aus den Umgebungsvariablen
 const apiKey = process.env.API_KEY;
-logMessage(`Your API key is: ${apiKey}`, startLogPath);
+logMessage(`Ihr API-Schlüssel: ${apiKey}`, startLogPath);
 
-// Start the backend process
-const backend = spawn('node', [path.join(__dirname, 'backend', 'app.js')]);
+// Starte den Backend-Prozess (Flask backend)
+const backendProcess = spawn('python3', [path.join(__dirname, 'backend', 'app.py')]);
 
-// Start the frontend process (Electron)
-const frontend = spawn('electron', [path.join(__dirname, 'frontend', 'main.js')]);
+// Logge Backend-Startnachricht
+logMessage('Backend-Prozess gestartet', startLogPath);
 
-// Log the start of backend process
-logMessage('Starting backend process', startLogPath);
+// Starte den Frontend-Prozess (Electron frontend)
+const frontendProcess = spawn('npm', ['start'], { cwd: path.join(__dirname, 'frontend') });
 
-// Handle backend process exit
-backend.on('exit', (code) => {
-  const message = `Backend process exited with code ${code}`;
-  console.error(message);
-  logMessage(message, backendLogPath); // Log backend exit in backend log
-  frontend.kill();  // Kill frontend if backend exits
-  process.exit(code);  // Exit the whole script if backend fails
+// Logge Frontend-Startnachricht
+logMessage('Frontend-Prozess gestartet', startLogPath);
+
+// Wenn der Backend-Prozess Fehler ausgibt
+backendProcess.stderr.on('data', (data) => {
+  logMessage(`Backend-Fehler: ${data}`, backendLogPath);
 });
 
-// Log when the frontend process starts
-logMessage('Starting frontend process', startLogPath);
-
-// Handle frontend process exit
-frontend.on('exit', (code) => {
-  const message = `Frontend process exited with code ${code}`;
-  console.error(message);
-  logMessage(message, frontendLogPath); // Log frontend exit in frontend log
-  backend.kill();  // Kill backend if frontend fails
-  process.exit(code);  // Exit the whole script if frontend fails
+// Wenn der Frontend-Prozess Fehler ausgibt
+frontendProcess.stderr.on('data', (data) => {
+  logMessage(`Frontend-Fehler: ${data}`, frontendLogPath);
 });
 
-// Additional logging for LLaMA bot (debug logs)
-const llamaLogPath = path.join(__dirname, 'backend', 'llama_debug.log');
-function logLlamaDebug(message) {
-  const timestamp = new Date().toISOString();
-  const logEntry = `${timestamp} - LLaMA Bot Debug: ${message}\n`;
-  fs.appendFileSync(llamaLogPath, logEntry);
-}
+// Wenn der Backend-Prozess standardmäßig eine Ausgabe macht
+backendProcess.stdout.on('data', (data) => {
+  logMessage(`Backend-Ausgabe: ${data}`, backendLogPath);
+});
 
-// Example logging for LLaMA bot
-logLlamaDebug('LLaMA Bot initialized and ready to process');
+// Wenn der Frontend-Prozess standardmäßig eine Ausgabe macht
+frontendProcess.stdout.on('data', (data) => {
+  logMessage(`Frontend-Ausgabe: ${data}`, frontendLogPath);
+});
+
+// Wenn der Backend-Prozess beendet wird
+backendProcess.on('close', (code) => {
+  logMessage(`Backend-Prozess beendet mit Code: ${code}`, backendLogPath);
+});
+
+// Wenn der Frontend-Prozess beendet wird
+frontendProcess.on('close', (code) => {
+  logMessage(`Frontend-Prozess beendet mit Code: ${code}`, frontendLogPath);
+});

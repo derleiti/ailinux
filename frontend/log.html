@@ -8,15 +8,17 @@
   <h1>Logs</h1>
   <pre id="log-content"></pre>
   <script>
-    // Assuming you’re loading logs dynamically, maybe fetch them via IPC or a file read
-    // For now, we'll simulate it
-    const logs = [
-      "2025-02-25T20:00:00Z - Main window opened.",
-      "2025-02-25T20:10:00Z - User started a chat session."
-    ];
-
-    const logContent = document.getElementById('log-content');
-    logContent.textContent = logs.join('\n');
+    // Fetch logs from the backend
+    fetch('http://localhost:8081/logs')
+      .then(response => response.json())
+      .then(data => {
+        const logContent = document.getElementById('log-content');
+        logContent.textContent = data.logs.join('\n');
+      })
+      .catch(error => {
+        console.error('Error loading logs:', error);
+        document.getElementById('log-content').textContent = 'Error loading logs.';
+      });
   </script>
 </body>
 </html>

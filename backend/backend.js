@@ -2,12 +2,12 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-// Basic route
+// Basis-Route
 app.get('/', (req, res) => {
-  res.send('Hello from the backend!');
+  res.send('Hallo vom Backend!');
 });
 
-// Start the server
+// Starte den Server
 app.listen(port, () => {
-  console.log(`Backend server is running on http://localhost:${port}`);
+  console.log(`Backend-Server läuft unter http://localhost:${port}`);
 });

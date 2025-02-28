@@ -1,3 +1,4 @@
+"""Module docstring missing."""
 import os
 
 # Hauptverzeichnis definieren (anpassen, falls nötig)

@@ -96,9 +96,6 @@ curl http://localhost:8081/logs
 ```
 
 ---
-You can also download ailinux alpha with this link on derleiti.de.
-The URL is https://derleiti.de/downloads2disk/?d=L0FpTGludXg%3D&m1dll_index_get=0
-
 
 ### **Conclusion**
 The project is a versatile tool for developers and IT professionals who want to analyze logs or support debugging with AI. By combining Electron, Flask, and powerful AI models, an innovative debugging tool is provided that can be operated both locally and cloud-based.

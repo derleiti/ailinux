@@ -56,11 +56,20 @@
         userDiv.textContent = `You: ${userMessage}`;
         chatLog.appendChild(userDiv);
 
-        // Here, you’d send the message to the backend
-        // For now, we just mock a response
-        const responseDiv = document.createElement('p');
-        responseDiv.textContent = `ChatGPT: This is a mocked response.`;
-        chatLog.appendChild(responseDiv);
+        fetch(`http://localhost:8081/debug`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ log: userMessage, model: 'llama' })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const responseDiv = document.createElement('p');
+            responseDiv.textContent = `AI: ${data.analysis}`;
+            chatLog.appendChild(responseDiv);
+        })
+        .catch(error => console.error('Error:', error));
 
         input.value = '';
         chatLog.scrollTop = chatLog.scrollHeight;

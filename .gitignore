@@ -1,2 +1,6 @@
 <<<<<< HEAD
 .env
+
+node_modules/electron/dist/electron
+electron
+electron

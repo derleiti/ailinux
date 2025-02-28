@@ -1,0 +1,9 @@
+2025-02-28T22:38:05.454Z - Frontend-Ausgabe: 
+> frontend@1.0.0 start
+> electron main.js --no-sandbox
+
+
+2025-02-28T22:38:05.702Z - App bereit zur Ausführung
+2025-02-28T22:38:05.736Z - Main Window geladen
+2025-02-28T22:38:07.487Z - Main Window geschlossen
+2025-02-28T22:38:07.526Z - Frontend-Prozess beendet mit Code: 0

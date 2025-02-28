@@ -49,7 +49,7 @@
     <textarea id="userInput" placeholder="Type your log message here..." rows="5" cols="50"></textarea><br>
 
     <button onclick="sendMessage()">Send to AI</button>
-    
+
     <div id="chat-container"></div>
 
     <h2>Log Output:</h2>
@@ -64,12 +64,12 @@
 
             document.getElementById('chat-container').innerHTML += `<b>You:</b> ${message}<br>`;
 
-            fetch(`http://your-server-ip:8081/debug`, {
+            fetch(`http://localhost:8081/debug`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ log: message, model: model }),
+                body: JSON.stringify({ log: message, model: model })
             })
             .then(response => response.json())
             .then(data => {

@@ -1,0 +1,143 @@
+************* Module start
+start.js:1:30: E0001: Parsing failed: 'invalid syntax (start, line 1)' (syntax-error)
+************* Module adjust_hierarchy_with_debugger
+adjust_hierarchy_with_debugger.py:15:8: E0001: Parsing failed: 'unexpected indent (adjust_hierarchy_with_debugger, line 15)' (syntax-error)
+************* Module frontend.settings
+frontend/settings.html:8:53: E0001: Parsing failed: 'invalid decimal literal (frontend.settings, line 8)' (syntax-error)
+************* Module frontend.logmanager
+frontend/logmanager.js:1:1: E0001: Parsing failed: 'invalid syntax (frontend.logmanager, line 1)' (syntax-error)
+************* Module frontend.preload
+frontend/preload.js:1:7: E0001: Parsing failed: 'invalid syntax (frontend.preload, line 1)' (syntax-error)
+************* Module frontend.importexport
+frontend/importexport.js:4:49: E0001: Parsing failed: 'unterminated string literal (detected at line 4) (frontend.importexport, line 4)' (syntax-error)
+************* Module frontend.index
+frontend/index.html:16:22: E0001: Parsing failed: 'invalid decimal literal (frontend.index, line 16)' (syntax-error)
+************* Module frontend.gemini-api-setup
+frontend/gemini-api-setup.js:1:7: E0001: Parsing failed: 'invalid syntax (frontend.gemini-api-setup, line 1)' (syntax-error)
+************* Module frontend.main
+frontend/main.js:1:7: E0001: Parsing failed: 'invalid syntax (frontend.main, line 1)' (syntax-error)
+************* Module frontend.log
+frontend/log.html:1:1: E0001: Parsing failed: 'invalid syntax (frontend.log, line 1)' (syntax-error)
+************* Module frontend.aiineraction
+frontend/aiineraction.html:9:16: E0001: Parsing failed: 'invalid decimal literal (frontend.aiineraction, line 9)' (syntax-error)
+************* Module frontend.llama
+frontend/llama.html:9:16: E0001: Parsing failed: 'invalid decimal literal (frontend.llama, line 9)' (syntax-error)
+************* Module alphaos
+alphaos.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+alphaos.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+alphaos.py:11:4: W0236: Method 'onConnect' was expected to be 'non-async', found it instead as 'async' (invalid-overridden-method)
+alphaos.py:14:4: W0236: Method 'onOpen' was expected to be 'non-async', found it instead as 'async' (invalid-overridden-method)
+alphaos.py:19:4: W0236: Method 'onMessage' was expected to be 'non-async', found it instead as 'async' (invalid-overridden-method)
+alphaos.py:24:4: W0236: Method 'onClose' was expected to be 'non-async', found it instead as 'async' (invalid-overridden-method)
+alphaos.py:25:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+alphaos.py:38:4: W0612: Unused variable 'transport' (unused-variable)
+alphaos.py:41:0: C0116: Missing function or method docstring (missing-function-docstring)
+alphaos.py:45:11: W0718: Catching too general exception Exception (broad-exception-caught)
+alphaos.py:43:8: W0612: Unused variable 'ws_client' (unused-variable)
+alphaos.py:6:0: C0411: standard import "urllib.parse.urlparse" should be placed before third party import "autobahn.asyncio.websocket.WebSocketClientProtocol" (wrong-import-order)
+************* Module uploadready
+uploadready.py:93:0: C0301: Line too long (116/100) (line-too-long)
+uploadready.py:115:0: C0301: Line too long (115/100) (line-too-long)
+uploadready.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+uploadready.py:13:17: W0612: Unused variable 'dirnames' (unused-variable)
+uploadready.py:27:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+uploadready.py:55:16: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
+uploadready.py:55:16: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+uploadready.py:36:22: W0612: Unused variable 'file_info' (unused-variable)
+uploadready.py:40:17: W0612: Unused variable 'dirnames' (unused-variable)
+uploadready.py:62:8: W0612: Unused variable 'dirpath' (unused-variable)
+uploadready.py:71:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+uploadready.py:87:13: W1510: 'subprocess.run' used without explicitly defining the value for 'check'. (subprocess-run-check)
+uploadready.py:89:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+uploadready.py:121:0: C0116: Missing function or method docstring (missing-function-docstring)
+uploadready.py:134:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+uploadready.py:4:0: W0611: Unused import shutil (unused-import)
+************* Module bigfiles
+bigfiles.py:5:0: C0103: Constant name "directory" doesn't conform to UPPER_CASE naming style (invalid-name)
+bigfiles.py:22:4: W0104: Statement seems to have no effect (pointless-statement)
+bigfiles.py:24:4: W0105: String statement has no effect (pointless-string-statement)
+************* Module websocket_client
+websocket_client.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+websocket_client.py:12:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+websocket_client.py:10:15: W0613: Unused argument 'ws' (unused-argument)
+websocket_client.py:16:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+websocket_client.py:14:13: W0613: Unused argument 'ws' (unused-argument)
+websocket_client.py:20:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+websocket_client.py:18:13: W0613: Unused argument 'ws' (unused-argument)
+websocket_client.py:41:11: W0718: Catching too general exception Exception (broad-exception-caught)
+websocket_client.py:42:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+websocket_client.py:4:0: C0411: standard import "logging" should be placed before third party import "websocket" (wrong-import-order)
+websocket_client.py:5:0: C0411: standard import "json" should be placed before third party import "websocket" (wrong-import-order)
+************* Module analyze
+analyze.py:5:0: C0103: Constant name "root_dir" doesn't conform to UPPER_CASE naming style (invalid-name)
+analyze.py:14:0: C0103: Constant name "log_file_path" doesn't conform to UPPER_CASE naming style (invalid-name)
+analyze.py:19:5: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+analyze.py:34:21: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+************* Module cleanup
+cleanup.py:7:0: C0116: Missing function or method docstring (missing-function-docstring)
+cleanup.py:25:0: C0116: Missing function or method docstring (missing-function-docstring)
+cleanup.py:27:17: W0612: Unused variable 'dirnames' (unused-variable)
+cleanup.py:37:0: C0116: Missing function or method docstring (missing-function-docstring)
+cleanup.py:50:0: C0116: Missing function or method docstring (missing-function-docstring)
+cleanup.py:61:11: W0718: Catching too general exception Exception (broad-exception-caught)
+cleanup.py:53:17: W1510: 'subprocess.run' used without explicitly defining the value for 'check'. (subprocess-run-check)
+cleanup.py:58:17: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+cleanup.py:65:0: C0116: Missing function or method docstring (missing-function-docstring)
+cleanup.py:4:0: W0611: Unused import sys (unused-import)
+************* Module backend.app
+backend/app.py:8:0: C0301: Line too long (138/100) (line-too-long)
+backend/app.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+backend/app.py:13:0: C0116: Missing function or method docstring (missing-function-docstring)
+backend/app.py:33:11: W0718: Catching too general exception Exception (broad-exception-caught)
+backend/app.py:22:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+backend/app.py:29:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+backend/app.py:37:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module backend.ai_model
+backend/ai_model.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+backend/ai_model.py:5:0: C0116: Missing function or method docstring (missing-function-docstring)
+backend/ai_model.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
+backend/ai_model.py:15:0: C0116: Missing function or method docstring (missing-function-docstring)
+backend/ai_model.py:16:4: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+backend/ai_model.py:24:0: C0116: Missing function or method docstring (missing-function-docstring)
+backend/ai_model.py:26:4: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+backend/ai_model.py:25:4: W0612: Unused variable 'model' (unused-variable)
+backend/ai_model.py:34:0: C0116: Missing function or method docstring (missing-function-docstring)
+backend/ai_model.py:39:11: W0718: Catching too general exception Exception (broad-exception-caught)
+backend/ai_model.py:37:19: E1101: Instance of 'GPT4All' has no 'chat' member (no-member)
+backend/ai_model.py:43:0: C0116: Missing function or method docstring (missing-function-docstring)
+backend/ai_model.py:54:11: W0718: Catching too general exception Exception (broad-exception-caught)
+backend/ai_model.py:48:19: E1101: Module 'openai' has no 'ChatCompletion' member (no-member)
+************* Module backend.gpt4allinit
+backend/gpt4allinit.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module backend.hugging
+backend/hugging.py:50:0: C0303: Trailing whitespace (trailing-whitespace)
+backend/hugging.py:60:0: C0303: Trailing whitespace (trailing-whitespace)
+backend/hugging.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+backend/hugging.py:3:0: E0611: No name 'AutoModelForTextGeneration' in module 'transformers' (no-name-in-module)
+backend/hugging.py:11:11: W0718: Catching too general exception Exception (broad-exception-caught)
+backend/hugging.py:21:11: W0718: Catching too general exception Exception (broad-exception-caught)
+backend/hugging.py:31:11: W0718: Catching too general exception Exception (broad-exception-caught)
+backend/hugging.py:34:0: C0116: Missing function or method docstring (missing-function-docstring)
+backend/hugging.py:1:0: W0611: Unused import os (unused-import)
+backend/hugging.py:3:0: W0611: Unused AutoModelForTextGeneration imported from transformers (unused-import)
+backend/hugging.py:3:0: W0611: Unused AutoTokenizer imported from transformers (unused-import)
+************* Module backend.gpt4all.app
+backend/gpt4all/app.py:64:0: C0301: Line too long (121/100) (line-too-long)
+backend/gpt4all/app.py:111:68: C0303: Trailing whitespace (trailing-whitespace)
+backend/gpt4all/app.py:148:72: C0303: Trailing whitespace (trailing-whitespace)
+backend/gpt4all/app.py:87:8: W0621: Redefining name 'version' from outer scope (line 178) (redefined-outer-name)
+backend/gpt4all/app.py:91:4: W0702: No exception type(s) specified (bare-except)
+************* Module frontend.twitchbot
+frontend/twitchbot.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+frontend/twitchbot.py:4:0: C0115: Missing class docstring (missing-class-docstring)
+frontend/twitchbot.py:23:4: C0116: Missing function or method docstring (missing-function-docstring)
+frontend/twitchbot.py:2:0: C0411: standard import "os" should be placed before third party import "twitchio.ext.commands" (wrong-import-order)
+************* Module frontend.config
+frontend/config.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+frontend/config.py:14:0: W0622: Redefining built-in 'set' (redefined-builtin)
+frontend/config.py:11:0: C0116: Missing function or method docstring (missing-function-docstring)
+frontend/config.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
+
+-----------------------------------
+Your code has been rated at 6.18/10
+
