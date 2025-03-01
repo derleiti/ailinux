@@ -38,9 +38,11 @@
 ├── bigfiles.py
 ├── bigfiles.sh
 ├── cleanup.py
+├── directory_structure.json
 ├── github
 ├── github.pub
 ├── hierarchy_analysis.log
+├── large_files.json
 ├── LICENSE
 ├── manual
 ├── optimization.log
