@@ -4,106 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AILinux - Log Analysis</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <style>
         :root {
             --primary-color: #2196f3;
-            --secondary-color: #0d47a1;
-            --light-bg: #f5f5f5;
-            --dark-bg: #121212;
-            --success-color: #4caf50;
-            --warning-color: #ff9800;
-            --error-color: #f44336;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --dark-bg: #212529;
+            --light-bg: #f8f9fa;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
             transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
         }
         
-        body.dark-theme {
+        body.dark-mode {
             background-color: var(--dark-bg);
-            color: #ffffff;
-        }
-        
-        .header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        
-        .container-fluid {
-            padding: 20px;
-        }
-        
-        .chat-container {
-            height: 400px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow-y: auto;
-            padding: 15px;
-            background-color: white;
-            margin-bottom: 20px;
-        }
-        
-        body.dark-theme .chat-container {
-            background-color: #1e1e1e;
-            border-color: #333;
-            color: #e0e0e0;
-        }
-        
-        .user-message {
-            background-color: #e3f2fd;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            max-width: 80%;
-            align-self: flex-end;
-        }
-        
-        .ai-message {
-            background-color: #f1f1f1;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            max-width: 80%;
-        }
-        
-        body.dark-theme .user-message {
-            background-color: #0d47a1;
             color: white;
         }
         
-        body.dark-theme .ai-message {
-            background-color: #2d2d2d;
-            color: #e0e0e0;
+        .navbar-brand {
+            font-weight: bold;
+            color: var(--primary-color) !important;
         }
         
-        .message-container {
+        #chat-container {
+            height: calc(100vh - 180px);
             display: flex;
             flex-direction: column;
         }
         
-        .log-panel {
-            height: 200px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        #chat-log {
+            flex: 1;
             overflow-y: auto;
-            padding: 10px;
-            background-color: #f8f9fa;
-            font-family: monospace;
-            font-size: 0.9rem;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.02);
+            border-radius: 8px;
+            margin-bottom: 15px;
         }
         
-        body.dark-theme .log-panel {
-            background-color: #2d2d2d;
-            border-color: #333;
-            color: #e0e0e0;
+        .dark-mode #chat-log {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        
+        .user-message {
+            background-color: #e9f5ff;
+            color: #333;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        
+        .ai-message {
+            background-color: #f1f1f1;
+            color: #333;
+            align-self: flex-start;
+        }
+        
+        .dark-mode .user-message {
+            background-color: #1e88e5;
+            color: white;
+        }
+        
+        .dark-mode .ai-message {
+            background-color: #424242;
+            color: white;
+        }
+        
+        .system-message {
+            text-align: center;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin: 10px 0;
+        }
+        
+        .model-badge {
+            font-size: 0.7em;
+            padding: 3px 8px;
+            border-radius: 10px;
+            margin-right: 5px;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        #user-input {
+            resize: none;
+            border-radius: 8px;
+            padding: 12px;
+            transition: all 0.3s;
+        }
+        
+        #user-input:focus {
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #1976d2;
+            border-color: #1976d2;
+        }
+        
+        .model-selector {
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .model-selector.active {
+            border-color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .loading-spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
         
         .status-indicator {
@@ -119,350 +160,70 @@
         }
         
         .status-offline {
-            background-color: var(--error-color);
+            background-color: var(--danger-color);
         }
         
-        .typing-indicator {
-            display: none;
-            align-items: center;
-            margin: 10px 0;
-        }
-        
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #888;
-            border-radius: 50%;
-            margin: 0 2px;
-            animation: typing-animation 1.5s infinite ease-in-out;
-        }
-        
-        .typing-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .typing-dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        
-        @keyframes typing-animation {
-            0%, 100% { opacity: 0.3; transform: translateY(0); }
-            50% { opacity: 1; transform: translateY(-5px); }
-        }
-        
-        .card {
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        body.dark-theme .card {
-            background-color: #2d2d2d;
-            color: #e0e0e0;
-            border-color: #333;
-        }
-        
-        .theme-toggle {
+        .sidebar-toggle {
             cursor: pointer;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin-left: 10px;
+            padding: 5px;
+        }
+        
+        .settings-icon {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .settings-icon:hover {
+            transform: rotate(30deg);
+        }
+        
+        #sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            transition: left 0.3s;
+            background-color: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding-top: 60px;
+        }
+        
+        .dark-mode #sidebar {
+            background-color: #2c3237;
+        }
+        
+        #sidebar.open {
+            left: 0;
+        }
+        
+        .sidebar-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .sidebar-item:hover {
+            background-color: rgba(33, 150, 243, 0.1);
+        }
+        
+        .dark-mode .sidebar-item:hover {
+            background-color: rgba(33, 150, 243, 0.2);
+        }
+        
+        .sidebar-item i {
+            margin-right: 10px;
+            color: var(--primary-color);
         }
     </style>
 </head>
 <body>
-    <div class="header">
+    <!-- Top navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-3">
         <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h1><i class="bi bi-terminal"></i> AILinux</h1>
-                    <p class="mb-0">AI-Powered Log Analysis and Debug Assistant</p>
-                </div>
-                <div class="col-md-6 text-end">
-                    <span class="status">
-                        Backend: <span class="status-indicator status-offline" id="backend-status"></span>
-                        <span id="backend-status-text">Checking connection...</span>
-                    </span>
-                    <button class="btn btn-light btn-sm theme-toggle" id="theme-toggle">
-                        <i class="bi bi-moon-fill"></i> Toggle Theme
-                    </button>
-                    <button class="btn btn-light btn-sm ms-2" id="settings-btn">
-                        <i class="bi bi-gear-fill"></i> Settings
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid mt-4">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Chat Interface</h5>
-                            <div>
-                                <select id="modelSelect" class="form-select form-select-sm">
-                                    <option value="gpt4all">LLaMA (Local)</option>
-                                    <option value="chatgpt">ChatGPT</option>
-                                    <option value="gemini">Google Gemini</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chat-container" id="chat-container">
-                            <div class="message-container">
-                                <div class="ai-message">
-                                    Welcome to AILinux! I'm here to help you analyze logs and debug issues. 
-                                    Please paste your log file or error message, and I'll assist you in understanding what's happening.
-                                </div>
-                            </div>
-                            <div class="typing-indicator" id="typing-indicator">
-                                <div class="typing-dot"></div>
-                                <div class="typing-dot"></div>
-                                <div class="typing-dot"></div>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <textarea id="userInput" class="form-control" placeholder="Paste your logs or error messages here..." rows="5"></textarea>
-                        </div>
-                        <div class="mt-2 d-flex justify-content-between">
-                            <button id="clearBtn" class="btn btn-outline-secondary">
-                                <i class="bi bi-trash"></i> Clear
-                            </button>
-                            <button id="sendBtn" class="btn btn-primary">
-                                <i class="bi bi-send"></i> Analyze
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h5 class="mb-0">Debug Tools</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-grid gap-2">
-                            <button id="loadLogsBtn" class="btn btn-outline-primary">
-                                <i class="bi bi-file-text"></i> Load Log File
-                            </button>
-                            <button id="exportAnalysisBtn" class="btn btn-outline-primary">
-                                <i class="bi bi-download"></i> Export Analysis
-                            </button>
-                            <button id="checkBackendBtn" class="btn btn-outline-primary">
-                                <i class="bi bi-arrow-repeat"></i> Check Backend Connection
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">System Log</h5>
-                    </div>
-                    <div class="card-body p-0">
-                        <div class="log-panel" id="log-output">
-                            <!-- Log messages will appear here -->
-                            [INFO] System initialized
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap & Other Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"></script>
-    
-    <script>
-        // Wait for DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            // Elements
-            const chatContainer = document.getElementById('chat-container');
-            const userInput = document.getElementById('userInput');
-            const sendBtn = document.getElementById('sendBtn');
-            const clearBtn = document.getElementById('clearBtn');
-            const modelSelect = document.getElementById('modelSelect');
-            const backendStatus = document.getElementById('backend-status');
-            const backendStatusText = document.getElementById('backend-status-text');
-            const logOutput = document.getElementById('log-output');
-            const typingIndicator = document.getElementById('typing-indicator');
-            const themeToggle = document.getElementById('theme-toggle');
-            const settingsBtn = document.getElementById('settings-btn');
-            const loadLogsBtn = document.getElementById('loadLogsBtn');
-            const exportAnalysisBtn = document.getElementById('exportAnalysisBtn');
-            const checkBackendBtn = document.getElementById('checkBackendBtn');
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-cpu"></i> AILinux
+            </a>
             
-            // Initialize theme
-            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-            if (prefersDarkScheme.matches) {
-                document.body.classList.add('dark-theme');
-            }
-            
-            // Log a message to the system log
-            function logMessage(message, level = 'info') {
-                const timestamp = new Date().toISOString();
-                const logEntry = document.createElement('div');
-                logEntry.className = `log-entry log-${level}`;
-                logEntry.textContent = `[${level.toUpperCase()}] ${timestamp} - ${message}`;
-                logOutput.appendChild(logEntry);
-                
-                // Auto-scroll to bottom
-                logOutput.scrollTop = logOutput.scrollHeight;
-            }
-            
-            // Add a message to the chat
-            function addMessage(content, isUser = false) {
-                const messageEl = document.createElement('div');
-                messageEl.className = isUser ? 'user-message' : 'ai-message';
-                messageEl.textContent = content;
-                
-                const messageContainer = document.createElement('div');
-                messageContainer.className = 'message-container';
-                messageContainer.appendChild(messageEl);
-                
-                chatContainer.appendChild(messageContainer);
-                
-                // Auto-scroll to bottom
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-            }
-            
-            // Show typing indicator
-            function showTypingIndicator() {
-                typingIndicator.style.display = 'flex';
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-            }
-            
-            // Hide typing indicator
-            function hideTypingIndicator() {
-                typingIndicator.style.display = 'none';
-            }
-            
-            // Check backend connection status
-            async function checkBackendConnection() {
-                try {
-                    logMessage('Checking backend connection...', 'info');
-                    showTypingIndicator();
-                    
-                    // Here we would typically use window.electronAPI.sendChatMessage
-                    // with a simple test message, but for demonstration we'll simulate it
-                    
-                    // Simulate API call delay
-                    await new Promise(resolve => setTimeout(resolve, 1000));
-                    
-                    // If we get here, assume connection is successful
-                    backendStatus.className = 'status-indicator status-online';
-                    backendStatusText.textContent = 'Connected';
-                    logMessage('Backend connection established', 'info');
-                    hideTypingIndicator();
-                    return true;
-                } catch (error) {
-                    backendStatus.className = 'status-indicator status-offline';
-                    backendStatusText.textContent = 'Disconnected';
-                    logMessage(`Backend connection failed: ${error.message}`, 'error');
-                    hideTypingIndicator();
-                    return false;
-                }
-            }
-            
-            // Send a message to the AI
-            async function sendMessage() {
-                const message = userInput.value.trim();
-                if (!message) return;
-                
-                // Add user message to chat
-                addMessage(message, true);
-                logMessage(`Sent message to AI (${modelSelect.value})`, 'info');
-                
-                // Clear input
-                userInput.value = '';
-                
-                // Show typing indicator
-                showTypingIndicator();
-                
-                try {
-                    // If electronAPI is available, use it to send message to backend
-                    if (window.electronAPI) {
-                        const response = await window.electronAPI.sendChatMessage(message, modelSelect.value);
-                        // Add AI response to chat
-                        addMessage(response);
-                    } else {
-                        // Fallback for browser testing
-                        setTimeout(() => {
-                            addMessage("I'm a simulated AI response since we're not running in Electron right now. In the actual application, I would analyze your logs and provide helpful debugging information.");
-                            hideTypingIndicator();
-                        }, 1500);
-                    }
-                } catch (error) {
-                    logMessage(`Error getting AI response: ${error.message}`, 'error');
-                    addMessage(`Error: ${error.message}`);
-                } finally {
-                    hideTypingIndicator();
-                }
-            }
-            
-            // Event listeners
-            sendBtn.addEventListener('click', sendMessage);
-            
-            userInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    sendMessage();
-                }
-            });
-            
-            clearBtn.addEventListener('click', () => {
-                // Clear chat except for the welcome message
-                while (chatContainer.childNodes.length > 1) {
-                    chatContainer.removeChild(chatContainer.lastChild);
-                }
-                logMessage('Chat cleared', 'info');
-            });
-            
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-theme');
-                logMessage('Theme toggled', 'info');
-            });
-            
-            settingsBtn.addEventListener('click', () => {
-                logMessage('Opening settings...', 'info');
-                if (window.electronAPI) {
-                    window.electronAPI.openSettings();
-                } else {
-                    alert('Settings would open in the Electron app');
-                }
-            });
-            
-            loadLogsBtn.addEventListener('click', () => {
-                logMessage('Load logs button clicked', 'info');
-                // This would use Electron's dialog to select and load a log file
-                alert('This button would open a file dialog to select log files in the Electron app');
-            });
-            
-            exportAnalysisBtn.addEventListener('click', () => {
-                logMessage('Export analysis button clicked', 'info');
-                // This would export the analysis to a file
-                alert('This button would export the current analysis in the Electron app');
-            });
-            
-            checkBackendBtn.addEventListener('click', () => {
-                checkBackendConnection();
-            });
-            
-            // Initial connection check
-            checkBackendConnection();
-            
-            // Log startup
-            logMessage('Application initialized', 'info');
-            logMessage('Ready to analyze logs', 'info');
-        });
-    </script>
-</body>
-</html>
+            <div class="ms-auto d-flex align-items-center

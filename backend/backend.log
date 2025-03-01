@@ -1,6 +1,4 @@
-2025-02-28 23:38:05,937 - INFO - Starte den Backend-Server...
-2025-02-28 23:38:05,939 - WARNING - Python-dotenv could not parse statement starting at line 1
-2025-02-28 23:38:05,939 - WARNING - Python-dotenv could not parse statement starting at line 3
-2025-02-28 23:38:05,939 - WARNING - Python-dotenv could not parse statement starting at line 10
-2025-02-28 23:38:05,942 - WARNING -  * Debugger is active!
-2025-02-28 23:38:05,942 - INFO -  * Debugger PIN: 541-902-393
+2025-03-01T09:43:05.048Z - Backend error: Traceback (most recent call last):
+  File "/home/zombie/ailinux/backend/app.py", line 10, in <module>
+2025-03-01T09:43:05.049Z - Backend error: from flask_cors import CORS
+ModuleNotFoundError: No module named 'flask_cors'

@@ -5,13 +5,24 @@ various AI models and returns analysis results.
 """
 import logging
 import os
+import sys
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
+from dotenv import load_dotenv
 from ai_model import analyze_log
+
+# Load environment variables
+load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
+
+# Server configuration with fallback values
+HOST = os.getenv("FLASK_HOST", "0.0.0.0")  # Default to all interfaces
+PORT = int(os.getenv("FLASK_PORT", 8081))   # Default to 8081
+DEBUG = os.getenv("FLASK_DEBUG", "False").lower() == "true"
+ENV = os.getenv("ENVIRONMENT", "development")
 
 # Configure logging
 log_directory = os.path.join(os.path.dirname(__file__), "logs")
@@ -19,7 +30,7 @@ os.makedirs(log_directory, exist_ok=True)
 log_file_path = os.path.join(log_directory, "backend.log")
 
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.DEBUG if DEBUG else logging.INFO,
     filename=log_file_path,
     filemode="a",
     format="%(asctime)s - %(levelname)s - %(message)s"
@@ -113,6 +124,20 @@ def update_settings():
         return jsonify({"error": str(e)}), 500
 
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    """Check the health of the backend server.
+    
+    Returns:
+        JSON response with server status
+    """
+    return jsonify({
+        "status": "online",
+        "environment": ENV,
+        "version": "1.0.0"
+    })
+
+
 def translate_log(log_text):
     """Preprocess log text before AI analysis.
     
@@ -130,5 +155,15 @@ def translate_log(log_text):
 
 
 if __name__ == "__main__":
-    logger.info("Starting backend server...")
-    app.run(host='0.0.0.0', port=8081, debug=True)
+    # Allow command line arguments to override environment variables
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "local":
+            HOST = "localhost"
+            logger.info("Using localhost configuration")
+        elif sys.argv[1] == "remote":
+            HOST = "derleiti.de"
+            logger.info("Using remote (derleiti.de) configuration")
+    
+    logger.info(f"Starting backend server on {HOST}:{PORT} (Debug: {DEBUG})...")
+    logger.info(f"Environment: {ENV}")
+    app.run(host=HOST, port=PORT, debug=DEBUG)
