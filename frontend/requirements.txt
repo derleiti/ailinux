@@ -188,7 +188,7 @@ typer==0.15.2
 typing_extensions==4.12.2
 tzdata==2025.1
 uritemplate==4.1.1
-urllib3==2.0.7
+urllib3==2.2.2
 wadllib==1.3.6
 wcwidth==0.2.13
 webencodings==0.5.1
