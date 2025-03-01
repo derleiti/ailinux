@@ -1,0 +1,11 @@
+flask
+flask-cors
+websockets
+python-dotenv
+openai
+google-generativeai
+transformers
+torch
+#sqlite3
+uuid
+asyncio

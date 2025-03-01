@@ -34,7 +34,8 @@ def restore_directory_structure(base_dir):
 # Pylint-Überprüfung starten
 def run_pylint():
     try:
-        result = subprocess.run(check=True)(['pylint', '--disable=all', '--enable=error'], capture_output=True, text=True)
+result = subprocess.run(check=True)(['pylint', '--disable=all', '--enable=error'],
+capture_output=True, text=True)
         print(result.stdout)
         if result.stderr:
             print("Fehler:", result.stderr)

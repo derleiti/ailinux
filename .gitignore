@@ -1,5 +1,5 @@
 electron
-~/ailinux/client/node_modules/electron/dist/electron
+client/node_modules/electron/dist/electron
 <<<<<< HEAD
 client/.env
 

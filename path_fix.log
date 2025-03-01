@@ -1,8 +1,0 @@
-2025-03-01 14:08:16,467 - INFO - Starting path fixing process...
-2025-03-01 14:08:16,468 - INFO - Fixed paths in /home/zombie/ailinux/fixed-path-script.py
-2025-03-01 14:08:16,480 - INFO - Fixed paths in /home/zombie/ailinux/client/bigfiles.py
-2025-03-01 14:08:16,480 - INFO - Fixed paths in /home/zombie/ailinux/client/postlog.sh
-2025-03-01 14:08:18,175 - INFO - Fixed paths in 3 files
-2025-03-01 14:08:18,175 - INFO - Created structure file at /home/zombie/ailinux/structure.txt
-2025-03-01 14:08:18,175 - INFO - Created structure.txt file successfully
-2025-03-01 14:08:18,175 - INFO - Path fixing process completed

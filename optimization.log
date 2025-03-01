@@ -41,33 +41,6 @@ uploadready.py:89:9: W1514: Using open without explicitly specifying an encoding
 uploadready.py:121:0: C0116: Missing function or method docstring (missing-function-docstring)
 uploadready.py:134:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
 uploadready.py:4:0: W0611: Unused import shutil (unused-import)
-************* Module fixed-path-script
-fixed-path-script.py:56:0: C0303: Trailing whitespace (trailing-whitespace)
-fixed-path-script.py:59:0: C0303: Trailing whitespace (trailing-whitespace)
-fixed-path-script.py:85:0: C0303: Trailing whitespace (trailing-whitespace)
-fixed-path-script.py:91:0: C0303: Trailing whitespace (trailing-whitespace)
-fixed-path-script.py:98:0: C0303: Trailing whitespace (trailing-whitespace)
-fixed-path-script.py:177:0: C0303: Trailing whitespace (trailing-whitespace)
-fixed-path-script.py:187:0: C0303: Trailing whitespace (trailing-whitespace)
-fixed-path-script.py:195:0: C0303: Trailing whitespace (trailing-whitespace)
-fixed-path-script.py:199:0: C0303: Trailing whitespace (trailing-whitespace)
-fixed-path-script.py:203:0: C0303: Trailing whitespace (trailing-whitespace)
-fixed-path-script.py:1:0: C0103: Module name "fixed-path-script" doesn't conform to snake_case naming style (invalid-name)
-fixed-path-script.py:74:11: W0718: Catching too general exception Exception (broad-exception-caught)
-fixed-path-script.py:71:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-fixed-path-script.py:75:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-fixed-path-script.py:57:8: W0612: Unused variable 'original_content' (unused-variable)
-fixed-path-script.py:81:14: W0612: Unused variable 'dirs' (unused-variable)
-fixed-path-script.py:180:11: W0718: Catching too general exception Exception (broad-exception-caught)
-fixed-path-script.py:175:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-fixed-path-script.py:178:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-fixed-path-script.py:181:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-fixed-path-script.py:191:11: W0718: Catching too general exception Exception (broad-exception-caught)
-fixed-path-script.py:192:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-fixed-path-script.py:193:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-fixed-path-script.py:198:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-fixed-path-script.py:9:0: W0611: Unused import sys (unused-import)
-fixed-path-script.py:11:0: W0611: Unused Path imported from pathlib (unused-import)
 ************* Module client.websocket-client
 client/websocket-client.py:31:0: C0303: Trailing whitespace (trailing-whitespace)
 client/websocket-client.py:49:0: C0303: Trailing whitespace (trailing-whitespace)
@@ -165,23 +138,6 @@ client/alphaos.py:41:0: C0116: Missing function or method docstring (missing-fun
 client/alphaos.py:45:11: W0718: Catching too general exception Exception (broad-exception-caught)
 client/alphaos.py:43:8: W0612: Unused variable 'ws_client' (unused-variable)
 client/alphaos.py:6:0: C0411: standard import "urllib.parse.urlparse" should be placed before third party import "autobahn.asyncio.websocket.WebSocketClientProtocol" (wrong-import-order)
-************* Module client.uploadready
-client/uploadready.py:93:0: C0301: Line too long (116/100) (line-too-long)
-client/uploadready.py:115:0: C0301: Line too long (115/100) (line-too-long)
-client/uploadready.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-client/uploadready.py:13:17: W0612: Unused variable 'dirnames' (unused-variable)
-client/uploadready.py:27:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-client/uploadready.py:55:16: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
-client/uploadready.py:55:16: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-client/uploadready.py:36:22: W0612: Unused variable 'file_info' (unused-variable)
-client/uploadready.py:40:17: W0612: Unused variable 'dirnames' (unused-variable)
-client/uploadready.py:62:8: W0612: Unused variable 'dirpath' (unused-variable)
-client/uploadready.py:71:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-client/uploadready.py:87:13: W1510: 'subprocess.run' used without explicitly defining the value for 'check'. (subprocess-run-check)
-client/uploadready.py:89:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-client/uploadready.py:121:0: C0116: Missing function or method docstring (missing-function-docstring)
-client/uploadready.py:134:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-client/uploadready.py:4:0: W0611: Unused import shutil (unused-import)
 ************* Module client.bigfiles
 client/bigfiles.py:5:0: C0103: Constant name "directory" doesn't conform to UPPER_CASE naming style (invalid-name)
 client/bigfiles.py:22:4: W0104: Statement seems to have no effect (pointless-statement)
@@ -387,7 +343,6 @@ client/backend/app.py:169:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/app.py:173:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/app.py:177:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/app.py:271:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/app.py:12:0: E0401: Unable to import 'flask_cors' (import-error)
 client/backend/app.py:26:11: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
 client/backend/app.py:91:11: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/app.py:75:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -678,23 +633,6 @@ client/frontend/config.py:1:0: C0114: Missing module docstring (missing-module-d
 client/frontend/config.py:14:0: W0622: Redefining built-in 'set' (redefined-builtin)
 client/frontend/config.py:11:0: C0116: Missing function or method docstring (missing-function-docstring)
 client/frontend/config.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
-************* Module server.uploadready
-server/uploadready.py:93:0: C0301: Line too long (116/100) (line-too-long)
-server/uploadready.py:115:0: C0301: Line too long (115/100) (line-too-long)
-server/uploadready.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-server/uploadready.py:13:17: W0612: Unused variable 'dirnames' (unused-variable)
-server/uploadready.py:27:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-server/uploadready.py:55:16: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
-server/uploadready.py:55:16: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-server/uploadready.py:36:22: W0612: Unused variable 'file_info' (unused-variable)
-server/uploadready.py:40:17: W0612: Unused variable 'dirnames' (unused-variable)
-server/uploadready.py:62:8: W0612: Unused variable 'dirpath' (unused-variable)
-server/uploadready.py:71:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-server/uploadready.py:87:13: W1510: 'subprocess.run' used without explicitly defining the value for 'check'. (subprocess-run-check)
-server/uploadready.py:89:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-server/uploadready.py:121:0: C0116: Missing function or method docstring (missing-function-docstring)
-server/uploadready.py:134:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-server/uploadready.py:4:0: W0611: Unused import shutil (unused-import)
 ************* Module server.backend.app
 server/backend/app.py:53:0: C0303: Trailing whitespace (trailing-whitespace)
 server/backend/app.py:59:0: C0303: Trailing whitespace (trailing-whitespace)
@@ -723,7 +661,6 @@ server/backend/app.py:277:0: C0303: Trailing whitespace (trailing-whitespace)
 server/backend/app.py:286:0: C0303: Trailing whitespace (trailing-whitespace)
 server/backend/app.py:289:0: C0303: Trailing whitespace (trailing-whitespace)
 server/backend/app.py:294:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/app.py:12:0: E0401: Unable to import 'flask_cors' (import-error)
 server/backend/app.py:25:11: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
 server/backend/app.py:89:11: W0718: Catching too general exception Exception (broad-exception-caught)
 server/backend/app.py:69:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -1455,150 +1392,6 @@ if __name__ == "__main__":
             print(result)
             break (duplicate-code)
 server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
-==client.uploadready:[11:152]
-==uploadready:[11:152]
-    directory_structure = {}
-    for dirpath, dirnames, filenames in os.walk(rootdir):
-        dir_info = {}
-        total_size = 0
-        for filename in filenames:
-            filepath = os.path.join(dirpath, filename)
-            file_size = os.path.getsize(filepath)
-            total_size += file_size
-            dir_info[filename] = {"size": file_size, "path": filepath}
-
-        directory_structure[dirpath] = {"files": dir_info, "size": total_size}
-    return directory_structure
-
-def save_to_json(data, filename):
-    """Speichert die gegebene Datenstruktur in einer JSON-Datei."""
-    with open(filename, 'w') as json_file:
-        json.dump(data, json_file, indent=4)
-
-def restore_directory_structure(data, rootdir):
-    """Stellt die Dateistruktur wieder her und löscht nicht mehr vorhandene Dateien."""
-    existing_files = set()
-
-    # Alle Dateien, die laut JSON existieren sollen
-    for dirpath, dir_info in data.items():
-        for filename, file_info in dir_info["files"].items():
-            existing_files.add(os.path.join(dirpath, filename))
-
-    # Durchsucht das Verzeichnis und löscht Dateien, die nicht in der JSON-Struktur vorhanden sind
-    for dirpath, dirnames, filenames in os.walk(rootdir):
-        for filename in filenames:
-            file_path = os.path.join(dirpath, filename)
-            if file_path not in existing_files:
-                os.remove(file_path)  # Lösche die Datei
-
-        # Lösche leere Verzeichnisse, die nicht mehr benötigt werden
-        if not os.listdir(dirpath):
-            os.rmdir(dirpath)
-
-    # Stelle Dateien und Verzeichnisse wieder her, die in der JSON-Datei existieren
-    for dirpath, dir_info in data.items():
-        for filename, file_info in dir_info["files"].items():
-            file_path = os.path.join(dirpath, filename)
-            if not os.path.exists(file_path):
-                open(file_path, 'w').close()  # Erstelle leere Dateien
-
-            os.utime(file_path, None)  # Setze Zeitstempel, ohne die Datei zu ändern
-
-def find_large_files(directory_structure, size_threshold=99 * 1024 * 1024):
-    """Findet alle Dateien größer als eine gegebene Größe (in Bytes)."""
-    large_files = {}
-    for dirpath, dir_info in directory_structure.items():
-        for filename, file_info in dir_info["files"].items():
-            if file_info["size"] > size_threshold:
-                large_files[filename] = file_info
-    return large_files
-
-def add_to_gitignore(large_files):
-    """Fügt die großen Dateien zur .gitignore hinzu."""
-    gitignore_path = Path(".gitignore")
-    with open(gitignore_path, "a") as gitignore:
-        for filename in large_files:
-            gitignore.write(f"{filename}\n")
-
-def run_pylint():
-    """Führt pylint für bestimmte Dateitypen aus und speichert das Ergebnis in eine Logdatei."""
-    files_to_check = []
-    for root, dirs, files in os.walk('.'):
-        # Ausschließen des node_modules-Ordners
-        if 'node_modules' in dirs:
-            dirs.remove('node_modules')
-        for file in files:
-            if file.endswith(('.py', '.js', '.html')):
-                files_to_check.append(os.path.join(root, file))
-
-    # Führe pylint auf den Dateien aus
-    result = subprocess.run(['pylint'] + files_to_check, capture_output=True, text=True)
-
-    with open("optimization.log", "w") as log_file:
-        log_file.write(result.stdout)
-
-def sync_with_github(username, repo_name, ssh_key, use_pat=False):
-    """Synchronisiert das lokale Repository mit GitHub über SSH oder PAT und führt einen Merge durch, wenn nötig."""
-    try:
-        # GitHub-URL vorbereiten
-        if use_pat:
-            github_url = f"https://{username}:{ssh_key}@github.com/{username}/{repo_name}.git"
-        else:
-            github_url = f"git@github.com:{username}/{repo_name}.git"
-
-        # Konfiguriere Git, um nur Fast-Forward-Merges zu erlauben
-        subprocess.run(["git", "config", "--global", "pull.ff", "only"], check=True)
-
-        # Pull mit --no-ff um Merge durchzuführen, wenn Branches divergieren
-        subprocess.run(["git", "pull", "--no-ff", github_url], check=True)  # Merging erzwingen
-
-        subprocess.run(["git", "add", "."], check=True)  # Alle Änderungen hinzufügen
-        subprocess.run(["git", "commit", "-m", "'Automated commit'"], check=True)  # Commit
-        subprocess.run(["git", "push", github_url], check=True)  # Push zum Remote-Repository
-
-    except subprocess.CalledProcessError as e:
-        print(f"Error während GitHub-Synchronisierung: {e}")
-        # Falls der Fehler bei der Authentifizierung liegt, frage nach dem PAT
-        if "fatal: Authentifizierung" in str(e):
-            print("Fehler bei der Authentifizierung. Bitte prüfe deinen SSH-Schlüssel oder Personal Access Token.")
-        else:
-            print(f"Git Fehler: {str(e)}")
-
-# Hauptfunktionalität
-
-def main():
-    if "--file-update" in sys.argv:
-        directory_structure = get_directory_structure(os.getcwd())
-        save_to_json(directory_structure, "directory_structure.json")
-
-        # Finden und speichern der großen Dateien
-        large_files = find_large_files(directory_structure)
-        save_to_json(large_files, "large_files.json")
-
-        # Gitignore aktualisieren
-        add_to_gitignore(large_files)
-
-    if "--restore-file" in sys.argv:
-        with open("directory_structure.json", "r") as f:
-            directory_structure = json.load(f)
-        restore_directory_structure(directory_structure, os.getcwd())
-
-    if "--pylint" in sys.argv:
-        run_pylint()
-
-    if "--github" in sys.argv:
-        # Abfrage der GitHub-Verbindungsdaten
-        username = input("GitHub Username: ")
-        repo_name = input("GitHub Repository Name: ")
-        ssh_key = input("SSH Authentication Key or Personal Access Token: ")
-        use_pat = input("Do you want to use a PAT? (y/n): ").lower() == 'y'
-
-        sync_with_github(username, repo_name, ssh_key, use_pat)
-
-# Skript ausführen
-if __name__ == "__main__":
-    main() (duplicate-code)
-server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[17:36]
 ==server.backend.app:[16:35]
 load_dotenv()
@@ -1634,10 +1427,10 @@ server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
 
 @app.route('/models', methods=['GET'])
 def get_models():
-    """Get information about available AI models.
+    """Get list of available AI models.
 
     Returns:
-        JSON response with model information
+        JSON response containing available models
     """
     try:
         models = get_available_models()
@@ -1669,8 +1462,7 @@ server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
 
         data = request.json
         log_text = data.get('log')
-        model_name = data.get('model', 'gpt4all')  # Default to gpt4all
- (duplicate-code)
+        model_name = data.get('model', 'gpt4all')  # Default to gpt4all (duplicate-code)
 server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[208:222]
 ==server.backend.app:[183:197]
@@ -1689,6 +1481,6 @@ def health_check():
         "environment": ENV,
         "version": "1.0.0", (duplicate-code)
 
------------------------------------
-Your code has been rated at 5.48/10
+------------------------------------------------------------------
+Your code has been rated at 5.23/10 (previous run: 5.48/10, -0.25)
 
