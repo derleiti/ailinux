@@ -1,5 +1,5 @@
 /**
- * AILinux Start Script
+ * AILinux Start Script (Optimized)
  * 
  * This script starts both the backend Flask server and frontend Electron app.
  * It manages environment configuration for local or remote server connections,
@@ -13,9 +13,10 @@ const fs = require('fs');
 const electron = require('electron');
 const electronLog = require('electron-log');
 
-// Set up logging
+// Set up logging with explicit app name configuration
 electronLog.transports.file.level = 'info';
 electronLog.transports.console.level = 'info';
+electronLog.transports.file.setAppName('ailinux'); // Explicitly set app name to fix electron-log errors
 
 // Process command line arguments
 const args = process.argv.slice(2);
@@ -30,8 +31,11 @@ const backendLogPath = path.join(logDir, 'backend.log');
 const frontendLogPath = path.join(logDir, 'frontend.log');
 const startLogPath = path.join(logDir, 'start.log');
 
+// Define python path - use custom environment where Flask is installed
+const pythonPath = '/home/zombie/client/bin/python3'; // Path to python with Flask installed
+
 // Store process handles for proper cleanup
-let processes = {
+const processes = {
   backend: null,
   frontend: null
 };
@@ -112,11 +116,62 @@ function configureEnvironment() {
   process.env.FLASK_PORT = flaskPort;
   process.env.WS_SERVER_URL = wsServerUrl;
   
+  // Add PYTHONPATH to environment to help find Flask and other modules
+  process.env.PYTHONPATH = `/home/zombie/client/lib/python3.12/site-packages:${process.env.PYTHONPATH || ''}`;
+  
   // Log configuration
   logMessage(`Configuration: Flask=${flaskHost}:${flaskPort}, WebSocket=${wsServerUrl}`, startLogPath);
-  logMessage(`API Keys: OpenAI=${process.env.OPENAI_API_KEY ? 'SET' : 'NOT SET'}, Gemini=${process.env.GEMINI_API_KEY ? 'SET' : 'NOT SET'}`, startLogPath);
+  logMessage(`API Keys: OpenAI=${process.env.OPENAI_API_KEY ? 'SET' : 'NOT SET'}, Gemini=${process.env.GEMINI_API_KEY ? 'SET' : 'NOT SET'}, HuggingFace=${process.env.HUGGINGFACE_API_KEY ? 'SET' : 'NOT SET'}`, startLogPath);
+  logMessage(`Using Python interpreter: ${pythonPath}`, startLogPath);
 
   return { flaskHost, flaskPort, wsServerUrl };
+}
+
+/**
+ * Check Python environment and dependencies
+ * @returns {Promise<boolean>} Resolves to true if environment is valid
+ */
+async function checkPythonEnvironment() {
+  return new Promise((resolve, reject) => {
+    electronLog.info('Checking Python environment...');
+    logMessage('Checking Python environment...', startLogPath);
+
+    // Check that python path exists and is executable
+    if (!fs.existsSync(pythonPath)) {
+      const errorMsg = `Python interpreter not found at: ${pythonPath}`;
+      electronLog.error(errorMsg);
+      logMessage(`ERROR: ${errorMsg}`, startLogPath);
+      return reject(new Error(errorMsg));
+    }
+
+    // Check for Flask module
+    const checkFlask = spawn(pythonPath, ['-c', 'import flask; print(f"Flask version: {flask.__version__}")']);
+    
+    checkFlask.stdout.on('data', (data) => {
+      const output = data.toString().trim();
+      electronLog.info(`Flask check: ${output}`);
+      logMessage(`Flask check: ${output}`, startLogPath);
+    });
+
+    checkFlask.stderr.on('data', (data) => {
+      const output = data.toString().trim();
+      electronLog.error(`Flask check error: ${output}`);
+      logMessage(`Flask check error: ${output}`, startLogPath);
+    });
+
+    checkFlask.on('close', (code) => {
+      if (code === 0) {
+        electronLog.info('Flask module is available');
+        logMessage('Flask module is available', startLogPath);
+        resolve(true);
+      } else {
+        const errorMsg = 'Flask module not found. Please install the required dependencies.';
+        electronLog.error(errorMsg);
+        logMessage(`ERROR: ${errorMsg}`, startLogPath);
+        reject(new Error(errorMsg));
+      }
+    });
+  });
 }
 
 /**
@@ -128,21 +183,8 @@ function startBackend() {
     electronLog.info('Starting backend server...');
     logMessage('Starting backend server...', startLogPath);
 
-    // Check if Python is available
-    try {
-      const pythonVersionCheck = spawn('python3', ['--version']);
-      pythonVersionCheck.on('error', (err) => {
-        electronLog.error('Python3 not found. Please ensure Python 3 is installed and in your PATH.');
-        reject(new Error('Python3 not found'));
-      });
-    } catch (error) {
-      electronLog.error('Failed to check Python version', error);
-      reject(error);
-      return;
-    }
-
-    // Start the backend process
-    const backendProcess = spawn('python3', [
+    // Start the backend process using the specified Python interpreter
+    const backendProcess = spawn(pythonPath, [
       path.join(backendDir, 'app.py'),
       mode // Pass mode to backend script
     ], {
@@ -232,7 +274,8 @@ function startFrontend() {
     ...process.env,
     FLASK_HOST: process.env.FLASK_HOST,
     FLASK_PORT: process.env.FLASK_PORT,
-    WS_SERVER_URL: process.env.WS_SERVER_URL
+    WS_SERVER_URL: process.env.WS_SERVER_URL,
+    ELECTRON_APP_NAME: 'ailinux' // Explicitly set app name for Electron
   };
 
   // Start the frontend process with npm start (which should run electron)
@@ -334,6 +377,9 @@ async function main() {
     // Configure environment
     configureEnvironment();
     
+    // Check Python environment and dependencies
+    await checkPythonEnvironment();
+    
     // Start backend and wait for it to be ready
     await startBackend();
     
@@ -346,7 +392,7 @@ async function main() {
   } catch (error) {
     electronLog.error('Error starting AILinux:', error);
     logMessage(`Startup error: ${error.message}`, startLogPath);
-    console.error('Error starting AILinux:', error.message);
+    console.error(`Error starting AILinux: ${error.message}`);
     process.exit(1);
   }
 }

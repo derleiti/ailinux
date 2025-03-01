@@ -1,7 +1,5 @@
 ************* Module client.backend.huggingface
 client/backend/huggingface.py:124:76: E0001: Parsing failed: 'unterminated string literal (detected at line 124) (client.backend.huggingface, line 124)' (syntax-error)
-************* Module client.backend.hugging
-client/backend/hugging.py:58:4: E0001: Parsing failed: 'unexpected indent (client.backend.hugging, line 58)' (syntax-error)
 ************* Module client.frontend.twitchbot
 client/frontend/twitchbot.py:27:4: E0001: Parsing failed: 'unexpected indent (client.frontend.twitchbot, line 27)' (syntax-error)
 ************* Module client.frontend.config
@@ -416,6 +414,17 @@ client/backend/gpt4all/app.py:18:0: C0413: Import "import typer" should be place
 client/backend/gpt4all/app.py:19:0: C0413: Import "from gpt4all import GPT4All" should be placed at the top of the module (wrong-import-position)
 client/backend/gpt4all/app.py:94:8: W0621: Redefining name 'version' from outer scope (line 185) (redefined-outer-name)
 client/backend/gpt4all/app.py:98:4: W0702: No exception type(s) specified (bare-except)
+************* Module client.backend.hugging
+client/backend/hugging.py:57:43: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/hugging.py:58:41: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/hugging.py:60:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/hugging.py:63:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/hugging.py:69:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/hugging.py:28:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/hugging.py:45:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/hugging.py:70:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/hugging.py:7:0: W0611: Unused AutoModelForCausalLM imported from transformers (unused-import)
+client/backend/hugging.py:7:0: W0611: Unused AutoTokenizer imported from transformers (unused-import)
 ************* Module patch.ailinux-alpha-code-patcher-v0.3
 patch/ailinux-alpha-code-patcher-v0.3.py:1:0: C0103: Module name "3" doesn't conform to snake_case naming style (invalid-name)
 patch/ailinux-alpha-code-patcher-v0.3.py:59:11: W0718: Catching too general exception Exception (broad-exception-caught)
@@ -426,6 +435,50 @@ patch/ailinux-alpha-code-patcher-v0.3.py:614:11: W0718: Catching too general exc
 patch/ailinux-alpha-code-patcher-v0.3.py:598:8: C0415: Import outside toplevel (subprocess) (import-outside-toplevel)
 patch/ailinux-alpha-code-patcher-v0.3.py:601:17: W1510: 'subprocess.run' used without explicitly defining the value for 'check'. (subprocess-run-check)
 patch/ailinux-alpha-code-patcher-v0.3.py:603:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+************* Module python-optimizer
+python-optimizer.py:67:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:71:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:73:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:79:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:85:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:91:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:97:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:111:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:115:86: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:116:0: C0301: Line too long (215/100) (line-too-long)
+python-optimizer.py:117:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:120:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:122:48: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:123:0: C0301: Line too long (201/100) (line-too-long)
+python-optimizer.py:125:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:143:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:157:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:164:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:170:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:184:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:191:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:194:33: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:195:93: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:200:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:214:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:219:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:221:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:226:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:230:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:234:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:238:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:246:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:261:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:267:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:276:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:279:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:286:0: C0303: Trailing whitespace (trailing-whitespace)
+python-optimizer.py:1:0: C0103: Module name "python-optimizer" doesn't conform to snake_case naming style (invalid-name)
+python-optimizer.py:48:17: W1510: 'subprocess.run' used without explicitly defining the value for 'check'. (subprocess-run-check)
+python-optimizer.py:243:11: W0718: Catching too general exception Exception (broad-exception-caught)
+python-optimizer.py:22:0: W0611: Unused Set imported from typing (unused-import)
+python-optimizer.py:22:0: W0611: Unused Optional imported from typing (unused-import)
+python-optimizer.py:22:0: W0611: Unused Any imported from typing (unused-import)
 ************* Module bigfiles
 bigfiles.py:8:18: E0602: Undefined variable 'directory' (undefined-variable)
 bigfiles.py:11:37: E0602: Undefined variable 'directory' (undefined-variable)
@@ -2095,7 +2148,7 @@ def handle_settings():
             if not isinstance(new_settings, dict):
                 return jsonify({"error": "Invalid settings format"}), 400
 
-            import json (duplicate-code)
+            # Ensure settings directory exists (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==analyze:[4:36]
 ==devtools.analyze:[4:36]
@@ -2151,7 +2204,9 @@ analyze.py:1:0: R0801: Similar lines in 2 files
     create_structure(base_dir, expected_structure)
     print(f"Directory structure verified and restored in {base_dir}")
 
- (duplicate-code)
+
+def run_pylint():
+    """Run pylint with specific options to check the code.""" (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==bigfiles:[4:24]
 ==devtools.bigfiles:[4:24]
@@ -2207,9 +2262,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         'readme': ['README.md']
     }
 
-    # Helper function to create the directory structure
-    def create_structure(target_path, structure):
-        """Create directories and files based on expected structure.""" (duplicate-code)
+    # Helper function to create the directory structure (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==devtools.adjust_hierarchy_with_debugger:[52:61]
 ==patch.ailinux-alpha-code-patcher-v0.3:[33:42]
@@ -2292,7 +2345,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 
 Report
 ======
-2693 statements analysed.
+2881 statements analysed.
 
 Statistics by type
 ------------------
@@ -2300,13 +2353,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |19     |19         |=          |89.47       |21.05    |
+|module   |21     |19         |+2.00      |90.48       |23.81    |
 +---------+-------+-----------+-----------+------------+---------+
 |class    |10     |10         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |method   |55     |55         |=          |100.00      |1.82     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |82     |82         |=          |98.78       |0.00     |
+|function |95     |82         |+13.00     |98.95       |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -2325,10 +2378,11 @@ External dependencies
     google 
       \-generativeai (client.backend.ai_model,server.backend.ai_model)
     gpt4all (client.backend.ai_model,client.backend.gpt4all.app,client.backend.gpt4allinit,server.backend.ai_model)
+    huggingface_hub (client.backend.hugging)
     openai (client.backend.ai_model,server.backend.ai_model)
     psutil (client.backend.app,server.backend.app)
     torch (client.backend.ai_model,server.backend.ai_model)
-    transformers (client.backend.ai_model,server.backend.ai_model)
+    transformers (client.backend.ai_model,client.backend.hugging,server.backend.ai_model)
     typer (client.backend.gpt4all.app)
     typing_extensions (client.backend.gpt4all.app)
     websocket (client.websocket-client)
@@ -2336,7 +2390,7 @@ External dependencies
 
 
 
-6007 lines have been analyzed
+6412 lines have been analyzed
 
 Raw metrics
 -----------
@@ -2344,13 +2398,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |3655   |60.85 |3655     |=          |
+|code      |3863   |60.25 |3655     |+208.00    |
 +----------+-------+------+---------+-----------+
-|docstring |1006   |16.75 |1006     |=          |
+|docstring |1111   |17.33 |1006     |+105.00    |
 +----------+-------+------+---------+-----------+
-|comment   |524    |8.72  |524      |=          |
+|comment   |551    |8.59  |524      |+27.00     |
 +----------+-------+------+---------+-----------+
-|empty     |822    |13.68 |822      |=          |
+|empty     |887    |13.83 |822      |+65.00     |
 +----------+-------+------+---------+-----------+
 
 
@@ -2374,13 +2428,13 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |461    |461      |461        |
+|convention |504    |461      |461        |
 +-----------+-------+---------+-----------+
 |refactor   |64     |64       |64         |
 +-----------+-------+---------+-----------+
-|warning    |334    |334      |334        |
+|warning    |344    |334      |334        |
 +-----------+-------+---------+-----------+
-|error      |27     |27       |27         |
+|error      |26     |27       |27         |
 +-----------+-------+---------+-----------+
 
 
@@ -2391,73 +2445,75 @@ Messages by category
 +----------------------------------------+------+--------+---------+-----------+
 |module                                  |error |warning |refactor |convention |
 +========================================+======+========+=========+===========+
-|analyze                                 |7.41  |0.00    |25.00    |0.00       |
+|analyze                                 |7.69  |0.00    |25.00    |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|devtools.bigfiles                       |7.41  |0.00    |0.00     |0.00       |
+|devtools.bigfiles                       |7.69  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|devtools.analyze                        |7.41  |0.00    |0.00     |0.00       |
+|devtools.analyze                        |7.69  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|bigfiles                                |7.41  |0.00    |0.00     |0.00       |
+|bigfiles                                |7.69  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|server.backend.websocket-server         |3.70  |13.17   |7.81     |4.77       |
+|server.backend.websocket-server         |3.85  |12.79   |7.81     |4.37       |
 +----------------------------------------+------+--------+---------+-----------+
-|server.backend.data_server              |3.70  |0.00    |0.00     |0.00       |
+|server.backend.data_server              |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.8   |3.70  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.8   |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.7   |3.70  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.7   |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.6   |3.70  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.6   |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.5   |3.70  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.5   |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.4   |3.70  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.4   |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.2   |3.70  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.2   |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.1   |3.70  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.1   |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|devtools.fix_duplicate_code             |3.70  |0.00    |0.00     |0.00       |
+|devtools.fix_duplicate_code             |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|devtools.cleanup                        |3.70  |0.00    |0.00     |0.00       |
+|devtools.cleanup                        |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|devtools.adjust_hierarchy_with_debugger |3.70  |0.00    |0.00     |0.00       |
+|devtools.adjust_hierarchy_with_debugger |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|client.frontend.twitchbot               |3.70  |0.00    |0.00     |0.00       |
+|client.frontend.twitchbot               |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|client.frontend.config                  |3.70  |0.00    |0.00     |0.00       |
+|client.frontend.config                  |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|client.file-sync-client                 |3.70  |0.00    |0.00     |0.00       |
+|client.file-sync-client                 |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|client.backend.huggingface              |3.70  |0.00    |0.00     |0.00       |
+|client.backend.huggingface              |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|client.backend.hugging                  |3.70  |0.00    |0.00     |0.00       |
+|cleanup                                 |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|cleanup                                 |3.70  |0.00    |0.00     |0.00       |
+|adjust_hierarchy_with_debugger          |3.85  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|adjust_hierarchy_with_debugger          |3.70  |0.00    |0.00     |0.00       |
+|server.backend.ai_model                 |0.00  |13.08   |6.25     |12.90      |
 +----------------------------------------+------+--------+---------+-----------+
-|server.backend.ai_model                 |0.00  |13.47   |6.25     |14.10      |
+|client.backend.ai_model                 |0.00  |13.08   |6.25     |12.90      |
 +----------------------------------------+------+--------+---------+-----------+
-|client.backend.ai_model                 |0.00  |13.47   |6.25     |14.10      |
+|client.websocket-client                 |0.00  |11.63   |1.56     |3.17       |
 +----------------------------------------+------+--------+---------+-----------+
-|client.websocket-client                 |0.00  |11.98   |1.56     |3.47       |
+|client.backend.app                      |0.00  |10.76   |3.12     |4.37       |
 +----------------------------------------+------+--------+---------+-----------+
-|client.backend.app                      |0.00  |11.08   |3.12     |4.77       |
+|server.backend.app                      |0.00  |7.85    |1.56     |0.60       |
 +----------------------------------------+------+--------+---------+-----------+
-|server.backend.app                      |0.00  |8.08    |1.56     |0.65       |
+|uploadready                             |0.00  |6.98    |9.38     |15.28      |
 +----------------------------------------+------+--------+---------+-----------+
-|uploadready                             |0.00  |7.19    |9.38     |16.70      |
+|devtools.uploadready                    |0.00  |6.98    |9.38     |15.28      |
 +----------------------------------------+------+--------+---------+-----------+
-|devtools.uploadready                    |0.00  |7.19    |9.38     |16.70      |
+|client.alphaos                          |0.00  |5.81    |0.00     |2.18       |
 +----------------------------------------+------+--------+---------+-----------+
-|client.alphaos                          |0.00  |5.99    |0.00     |2.39       |
+|devtools.enhanced-pylint-fixer          |0.00  |5.52    |28.12    |18.65      |
 +----------------------------------------+------+--------+---------+-----------+
-|devtools.enhanced-pylint-fixer          |0.00  |5.69    |28.12    |20.39      |
+|patch.ailinux-alpha-code-patcher-v0.3   |0.00  |1.74    |1.56     |0.40       |
 +----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.3   |0.00  |1.80    |1.56     |0.43       |
+|python-optimizer                        |0.00  |1.45    |0.00     |7.54       |
 +----------------------------------------+------+--------+---------+-----------+
-|client.backend.gpt4all.app              |0.00  |0.90    |0.00     |1.52       |
+|client.backend.hugging                  |0.00  |1.45    |0.00     |0.99       |
++----------------------------------------+------+--------+---------+-----------+
+|client.backend.gpt4all.app              |0.00  |0.87    |0.00     |1.39       |
 +----------------------------------------+------+--------+---------+-----------+
 
 
@@ -2468,15 +2524,15 @@ Messages
 +-------------------------------+------------+
 |message id                     |occurrences |
 +===============================+============+
-|trailing-whitespace            |339         |
+|trailing-whitespace            |379         |
 +-------------------------------+------------+
 |logging-fstring-interpolation  |142         |
 +-------------------------------+------------+
-|broad-exception-caught         |69          |
+|broad-exception-caught         |73          |
 +-------------------------------+------------+
-|line-too-long                  |55          |
+|line-too-long                  |57          |
 +-------------------------------+------------+
-|unused-import                  |40          |
+|unused-import                  |45          |
 +-------------------------------+------------+
 |import-outside-toplevel        |34          |
 +-------------------------------+------------+
@@ -2486,11 +2542,11 @@ Messages
 +-------------------------------+------------+
 |no-else-return                 |18          |
 +-------------------------------+------------+
-|syntax-error                   |16          |
-+-------------------------------+------------+
 |duplicate-code                 |16          |
 +-------------------------------+------------+
-|invalid-name                   |13          |
+|syntax-error                   |15          |
++-------------------------------+------------+
+|invalid-name                   |14          |
 +-------------------------------+------------+
 |unused-variable                |11          |
 +-------------------------------+------------+
@@ -2500,9 +2556,9 @@ Messages
 +-------------------------------+------------+
 |too-many-return-statements     |10          |
 +-------------------------------+------------+
-|unused-argument                |9           |
+|subprocess-run-check           |10          |
 +-------------------------------+------------+
-|subprocess-run-check           |9           |
+|unused-argument                |9           |
 +-------------------------------+------------+
 |wrong-import-position          |7           |
 +-------------------------------+------------+
@@ -2551,5 +2607,5 @@ Messages
 
 
 ------------------------------------------------------------------
-Your code has been rated at 6.31/10 (previous run: 6.31/10, +0.00)
+Your code has been rated at 6.38/10 (previous run: 6.31/10, +0.07)
 

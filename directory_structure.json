@@ -1,10 +1,10 @@
 {
   "stats": {
     "total_directories": 718,
-    "total_files": 4190,
-    "total_size_bytes": 674662813,
-    "total_size_human": "643.41 MB",
-    "scan_time": "2025-03-01 23:56:49"
+    "total_files": 4188,
+    "total_size_bytes": 674675984,
+    "total_size_human": "643.42 MB",
+    "scan_time": "2025-03-02 00:23:58"
   },
   "structure": {
     "ailinux-documentation.md": {
@@ -32,8 +32,8 @@
       "contents": {
         "start.js": {
           "type": "file",
-          "size": 11677,
-          "size_human": "11.40 KB"
+          "size": 13757,
+          "size_human": "13.43 KB"
         },
         "websocket-client.py": {
           "type": "file",
@@ -48,11 +48,6 @@
         "backend": {
           "type": "directory",
           "contents": {
-            "ai_model.log": {
-              "type": "file",
-              "size": 531,
-              "size_human": "531.00 B"
-            },
             "app.py": {
               "type": "file",
               "size": 15635,
@@ -63,8 +58,8 @@
               "contents": {
                 "ai_model.cpython-312.pyc": {
                   "type": "file",
-                  "size": 18009,
-                  "size_human": "17.59 KB"
+                  "size": 23354,
+                  "size_human": "22.81 KB"
                 }
               }
             },
@@ -87,11 +82,6 @@
               "size": 0,
               "size_human": "0.00 B"
             },
-            "backend.log": {
-              "type": "file",
-              "size": 990,
-              "size_human": "990.00 B"
-            },
             "gpt4allinit.py": {
               "type": "file",
               "size": 463,
@@ -99,7 +89,13 @@
             },
             "logs": {
               "type": "directory",
-              "contents": {}
+              "contents": {
+                "backend.log": {
+                  "type": "file",
+                  "size": 0,
+                  "size_human": "0.00 B"
+                }
+              }
             },
             "gpt4all": {
               "type": "directory",
@@ -123,8 +119,8 @@
             },
             "hugging.py": {
               "type": "file",
-              "size": 2601,
-              "size_human": "2.54 KB"
+              "size": 3344,
+              "size_human": "3.27 KB"
             }
           }
         },
@@ -24295,13 +24291,17 @@
         },
         "start.sh": {
           "type": "file",
-          "size": 9272,
-          "size_human": "9.05 KB"
+          "size": 2935,
+          "size_human": "2.87 KB"
         },
         "package.json": {
           "type": "file",
           "size": 195,
           "size_human": "195.00 B"
+        },
+        "models": {
+          "type": "directory",
+          "contents": {}
         },
         "logs": {
           "type": "directory",
@@ -24368,6 +24368,11 @@
           "size_human": "17.61 KB"
         }
       }
+    },
+    "python-optimizer.py": {
+      "type": "file",
+      "size": 8889,
+      "size_human": "8.68 KB"
     },
     "bigfiles.py": {
       "type": "file",
@@ -24447,16 +24452,6 @@
     "server": {
       "type": "directory",
       "contents": {
-        "__pycache__": {
-          "type": "directory",
-          "contents": {
-            "ai_model.cpython-312.pyc": {
-              "type": "file",
-              "size": 137,
-              "size_human": "137.00 B"
-            }
-          }
-        },
         "backend": {
           "type": "directory",
           "contents": {
@@ -24528,15 +24523,10 @@
       "size": 3284,
       "size_human": "3.21 KB"
     },
-    "large_files.json": {
-      "type": "file",
-      "size": 357,
-      "size_human": "357.00 B"
-    },
     "optimization.log": {
       "type": "file",
-      "size": 152246,
-      "size_human": "148.68 KB"
+      "size": 156712,
+      "size_human": "153.04 KB"
     }
   }
 }
