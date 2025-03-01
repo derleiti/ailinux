@@ -1,4 +1,4 @@
-# ailinux
+[# ailinux
 An Innovative Project for AI-Supported Log Analysis and Chatbot Interaction
 **An Innovative Project for AI-Supported Log Analysis and Chatbot Interaction**
 
@@ -100,3 +100,4 @@ curl http://localhost:8081/logs
 ### **Conclusion**
 The project is a versatile tool for developers and IT professionals who want to analyze logs or support debugging with AI. By combining Electron, Flask, and powerful AI models, an innovative debugging tool is provided that can be operated both locally and cloud-based.
 
+](https://derleiti.de/ailinux-documentation/)
