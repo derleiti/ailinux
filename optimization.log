@@ -1427,10 +1427,10 @@ server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
 
 @app.route('/models', methods=['GET'])
 def get_models():
-    """Get list of available AI models.
+    """Get information about available AI models.
 
     Returns:
-        JSON response containing available models
+        JSON response with model information
     """
     try:
         models = get_available_models()
@@ -1462,7 +1462,8 @@ server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
 
         data = request.json
         log_text = data.get('log')
-        model_name = data.get('model', 'gpt4all')  # Default to gpt4all (duplicate-code)
+        model_name = data.get('model', 'gpt4all')  # Default to gpt4all
+ (duplicate-code)
 server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[208:222]
 ==server.backend.app:[183:197]
@@ -1482,5 +1483,5 @@ def health_check():
         "version": "1.0.0", (duplicate-code)
 
 ------------------------------------------------------------------
-Your code has been rated at 5.23/10 (previous run: 5.48/10, -0.25)
+Your code has been rated at 5.23/10 (previous run: 5.23/10, +0.00)
 

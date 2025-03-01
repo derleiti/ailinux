@@ -3,14 +3,6 @@
         "size": 255294689,
         "path": "/home/zombie/ailinux/client/node_modules/electron/dist/electron"
     },
-    "Miniconda3-latest-Linux-x86_64.sh.1": {
-        "size": 154615621,
-        "path": "/home/zombie/ailinux/server/backend/Miniconda3-latest-Linux-x86_64.sh.1"
-    },
-    "Miniconda3-latest-Linux-x86_64.sh": {
-        "size": 154615621,
-        "path": "/home/zombie/ailinux/server/backend/Miniconda3-latest-Linux-x86_64.sh"
-    },
     "pack-9d2a0930623a4481fee60a0ddb597d5bd3ca2480.pack": {
         "size": 174064049,
         "path": "/home/zombie/ailinux/.git/objects/pack/pack-9d2a0930623a4481fee60a0ddb597d5bd3ca2480.pack"
