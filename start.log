@@ -1,7 +1,0 @@
-2025-03-01T09:56:26.220Z - Running in LOCAL mode - connecting to localhost
-2025-03-01T09:56:26.221Z - Configuration: Flask=localhost:8081, WebSocket=ws://localhost:8082
-2025-03-01T09:56:26.221Z - API Keys: OpenAI=SET, Gemini=SET
-2025-03-01T09:56:26.223Z - Backend process started
-2025-03-01T09:56:26.225Z - Frontend process started
-2025-03-01T09:56:26.286Z - Backend process exited with code: 1
-2025-03-01T09:56:26.289Z - Frontend process exited with code: null

@@ -1,13 +1,8 @@
+electron
+~/ailinux/client/node_modules/electron/dist/electron
 <<<<<< HEAD
-.env
+client/.env
 
-node_modules/electron/dist/electron
 electron
-electron
-electron
-electron
-electron
-electron
-electron
-electron
-electron
+Miniconda3-latest-Linux-x86_64.sh.1
+Miniconda3-latest-Linux-x86_64.sh

@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=42", "wheel", "setuptools_scm[toml]>=6.2", "cython>=0.29.21,<3", "numpy>=1.20.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+write_to = "version.py"
+
+[project]
+name = "ailinux-backend"
+dynamic = ["version"]
+description = "AILinux Backend Server"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+
+[tool.setuptools]
+packages = ["ailinux"]
