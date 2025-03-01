@@ -1,12 +1,17 @@
 {
   "stats": {
     "total_directories": 718,
-    "total_files": 4192,
-    "total_size_bytes": 675592476,
-    "total_size_human": "644.30 MB",
-    "scan_time": "2025-03-02 00:38:27"
+    "total_files": 4188,
+    "total_size_bytes": 674675984,
+    "total_size_human": "643.42 MB",
+    "scan_time": "2025-03-02 00:23:58"
   },
   "structure": {
+    "ailinux-documentation.md": {
+      "type": "file",
+      "size": 76840,
+      "size_human": "75.04 KB"
+    },
     "postcode.sh": {
       "type": "file",
       "size": 9421,
@@ -24314,16 +24319,6 @@
         }
       }
     },
-    "github_sync.log": {
-      "type": "file",
-      "size": 311,
-      "size_human": "311.00 B"
-    },
-    "ailinuxdocumentation_2.md": {
-      "type": "file",
-      "size": 3192,
-      "size_human": "3.12 KB"
-    },
     "patch": {
       "type": "directory",
       "contents": {
@@ -24384,15 +24379,10 @@
       "size": 726,
       "size_human": "726.00 B"
     },
-    "ailinux-documentation_1.md": {
-      "type": "file",
-      "size": 76840,
-      "size_human": "75.04 KB"
-    },
     "README.md": {
       "type": "file",
-      "size": 2941,
-      "size_human": "2.87 KB"
+      "size": 7060,
+      "size_human": "6.89 KB"
     },
     "devtools": {
       "type": "directory",
@@ -24510,8 +24500,8 @@
     },
     "filestructure.md": {
       "type": "file",
-      "size": 4607,
-      "size_human": "4.50 KB"
+      "size": 7766,
+      "size_human": "7.58 KB"
     },
     "postlog.sh": {
       "type": "file",
@@ -24533,20 +24523,10 @@
       "size": 3284,
       "size_human": "3.21 KB"
     },
-    "directory_structure.json": {
-      "type": "file",
-      "size": 919996,
-      "size_human": "898.43 KB"
-    },
-    "large_files.json": {
-      "type": "file",
-      "size": 357,
-      "size_human": "357.00 B"
-    },
     "optimization.log": {
       "type": "file",
-      "size": 156626,
-      "size_human": "152.96 KB"
+      "size": 156712,
+      "size_human": "153.04 KB"
     }
   }
 }

@@ -2148,7 +2148,7 @@ def handle_settings():
             if not isinstance(new_settings, dict):
                 return jsonify({"error": "Invalid settings format"}), 400
 
-            # Ensure settings directory exists (duplicate-code)
+            import json (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==analyze:[4:36]
 ==devtools.analyze:[4:36]
@@ -2204,9 +2204,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
     create_structure(base_dir, expected_structure)
     print(f"Directory structure verified and restored in {base_dir}")
 
-
-def run_pylint():
-    """Run pylint with specific options to check the code.""" (duplicate-code)
+ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==bigfiles:[4:24]
 ==devtools.bigfiles:[4:24]
@@ -2291,7 +2289,8 @@ ENV = os.getenv("ENVIRONMENT", "development")
 log_directory = os.path.join(os.path.dirname(__file__), "logs")
 os.makedirs(log_directory, exist_ok=True)
 log_file_path = os.path.join(log_directory, "backend.log")
- (duplicate-code)
+
+# Debug log file for storing AI model responses (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==server.backend.ai_model:[14:25]
 ==server.backend.websocket-server:[25:36]
@@ -2301,7 +2300,7 @@ try:
 except ImportError:
     logging.warning("dotenv package not installed, environment variables must be set manually")
 
-# Configure logging with more structured approach
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
@@ -2331,8 +2330,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 
         data = request.json
         log_text = data.get('log')
-        model_name = data.get('model', 'gpt4all')  # Default to gpt4all
- (duplicate-code)
+        model_name = data.get('model', 'gpt4all')  # Default to gpt4all (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[134:139]
 ==server.backend.app:[87:92]
@@ -2353,13 +2351,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |21     |19         |+2.00      |90.48       |23.81    |
+|module   |21     |21         |=          |90.48       |23.81    |
 +---------+-------+-----------+-----------+------------+---------+
 |class    |10     |10         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |method   |55     |55         |=          |100.00      |1.82     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |95     |82         |+13.00     |98.95       |0.00     |
+|function |95     |95         |=          |98.95       |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -2398,13 +2396,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |3863   |60.25 |3655     |+208.00    |
+|code      |3863   |60.25 |3863     |=          |
 +----------+-------+------+---------+-----------+
-|docstring |1111   |17.33 |1006     |+105.00    |
+|docstring |1111   |17.33 |1111     |=          |
 +----------+-------+------+---------+-----------+
-|comment   |551    |8.59  |524      |+27.00     |
+|comment   |551    |8.59  |551      |=          |
 +----------+-------+------+---------+-----------+
-|empty     |887    |13.83 |822      |+65.00     |
+|empty     |887    |13.83 |887      |=          |
 +----------+-------+------+---------+-----------+
 
 
@@ -2428,13 +2426,13 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |504    |461      |461        |
+|convention |504    |504      |504        |
 +-----------+-------+---------+-----------+
 |refactor   |64     |64       |64         |
 +-----------+-------+---------+-----------+
-|warning    |344    |334      |334        |
+|warning    |344    |344      |344        |
 +-----------+-------+---------+-----------+
-|error      |26     |27       |27         |
+|error      |26     |26       |26         |
 +-----------+-------+---------+-----------+
 
 
@@ -2607,5 +2605,5 @@ Messages
 
 
 ------------------------------------------------------------------
-Your code has been rated at 6.38/10 (previous run: 6.31/10, +0.07)
+Your code has been rated at 6.38/10 (previous run: 6.38/10, +0.00)
 

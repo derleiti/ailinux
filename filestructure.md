@@ -1,161 +1,152 @@
-# AILinux Project File Structure
+# AILinux Project File Structure (2025 Edition)
 
 ## Overview
 
-This document provides a detailed overview of the AILinux project file structure based on the actual files present in the codebase. It serves as a reference for developers working on the project.
+This document provides a comprehensive overview of the AILinux project structure, highlighting the organization and relationships between different components.
 
-## Root Directory Structure
-
-```
-/home/zombie/ailinux/
-├── .github/workflows/      # GitHub CI/CD configuration
-├── backend/                # Server-side logic and AI processing
-├── client/                 # Client-side utilities and helper scripts
-├── frontend/               # User interface components
-├── logs/                   # Application logs
-├── hierarchy_analysis.log  # Analysis of directory structure
-├── large_files.json        # Tracking of large files in the project
-├── LICENSE                 # Project license
-├── optimization.log        # Code optimization logs
-├── README.md               # Project documentation
-├── requirements.txt        # Project-wide Python dependencies
-├── SECURITY.md             # Security guidelines
-└── structure.txt           # Project structure overview
-```
-
-## Backend Directory
-
-The backend directory contains the server-side logic, AI model integration, and API endpoints.
+## Root Directory
 
 ```
-/home/zombie/ailinux/backend/
-├── ai_model.py             # AI model integration core (GPT4All, OpenAI, Gemini, HuggingFace)
-├── app.py                  # Flask REST API server for log analysis
-├── backend.js              # Express-based Node.js backend server
-├── backend.log             # Backend server logs
-├── gpt4all/                # GPT4All model-specific implementations
-│   └── app.py              # GPT4All command line interface
-├── gpt4allinit.py          # GPT4All initialization and setup script
-├── hugging.py              # Hugging Face model search and exploration utility
-├── huggingface.py          # Hugging Face model integration and management
-├── package-lock.json       # Node.js dependency lock file
-├── requirements.txt        # Python dependencies for backend
-└── websocketserv.py        # WebSocket server for real-time communication
+/ailinux/
+├── .github/                  # GitHub workflow configurations
+├── client/                   # Electron client application
+│   ├── frontend/             # User interface components
+│   ├── backend/              # Client-side backend logic
+│   ├── config/               # Configuration management
+│   └── assets/               # Static assets and resources
+│
+├── server/                   # Backend server components
+│   ├── backend/              # Core server-side logic
+│   │   ├── ai_model.py       # AI model management
+│   │   ├── app.py            # Flask API server
+│   │   ├── websocket_server.py # Real-time WebSocket server
+│   │   └── data_server.py    # Data collection and storage
+│   │
+│   ├── models/               # AI model files and configurations
+│   └── logs/                 # Server-side log storage
+│
+├── devtools/                 # Development and maintenance scripts
+│   ├── code_optimizer.py     # Code quality and optimization tools
+│   ├── file_analyzer.py      # Project structure analysis
+│   └── sync_tools.py         # Repository synchronization utilities
+│
+├── docs/                     # Project documentation
+│   ├── architecture.md       # System architecture details
+│   ├── deployment.md         # Deployment guidelines
+│   └── contribution.md       # Contribution guidelines
+│
+├── tests/                    # Testing frameworks and test suites
+│   ├── unit/                 # Unit testing
+│   ├── integration/          # Integration testing
+│   └── performance/          # Performance benchmark tests
+│
+├── scripts/                  # Utility and setup scripts
+│   ├── setup.sh              # Project setup script
+│   ├── start.sh              # Application startup script
+│   └── install_dependencies.py # Dependency management
+│
+├── config/                   # Global configuration files
+│   ├── .env.example          # Environment configuration template
+│   └── settings.json         # Default application settings
+│
+└── requirements.txt          # Python dependencies
 ```
 
-## Frontend Directory
+## Detailed Component Breakdown
 
-The frontend directory contains the user interface components, primarily using Electron for desktop application functionality.
+### Client Application (`/client`)
 
-```
-/home/zombie/ailinux/frontend/
-├── aiineraction.html       # AI interaction web interface
-├── config.js               # Configuration management and settings
-├── config.py               # Python configuration loader
-├── default.json            # Default configuration settings
-├── frontend.log            # Frontend application logs
-├── gemini-api-setup.js     # Google Gemini API configuration
-├── importexport.js         # Settings import/export utility
-├── index.html              # Main application HTML interface
-├── llama.html              # LLaMA model interface
-├── log.html                # Log viewer interface
-├── logmanager.js           # Log management utility
-├── main.js                 # Electron main process
-├── package.json            # Frontend Node.js dependencies
-├── package-lock.json       # Frontend dependency lock file
-├── preload.js              # Electron preload script for secure IPC
-├── requirements.txt        # Python dependencies for frontend
-├── settings.html           # Settings management interface
-└── twitchbot.py            # Twitch integration bot
-```
+#### Frontend (`/client/frontend`)
+- User interface components
+- Electron-based desktop application
+- Configuration management
+- Static assets
 
-## Client Directory
+#### Backend (`/client/backend`)
+- Local processing logic
+- AI model interaction
+- Electron preload and main process scripts
 
-The client directory contains utilities and scripts for managing the application, file synchronization, and development tools.
+### Server Components (`/server`)
 
-```
-/home/zombie/ailinux/client/
-├── adjust_hierarchy_with_debugger.py  # Directory structure fix utility
-├── alphaos.py                         # WebSocket client implementation
-├── analyze.py                         # Code analysis utility
-├── bigfiles.py                        # Large file finder (Python implementation)
-├── bigfiles.sh                        # Large file finder (Shell implementation)
-├── cleanup.py                         # Code cleanup and maintenance utility
-├── file-sync-client.py                # File synchronization with remote server
-├── package.json                       # Client-side Node.js dependencies
-├── package-lock.json                  # Client-side dependency lock file
-├── postcode.sh                        # Code analysis and reporting script
-├── postlog.sh                         # Log collection and aggregation script
-├── requirements.txt                   # Python dependencies for client utilities
-├── start.js                           # Application starter script (Node.js)
-├── start.sh                           # Application startup shell script
-├── uploadready.py                     # GitHub upload preparation utility
-└── websocket_client.py                # WebSocket client for backend communication
-```
+#### Backend (`/server/backend`)
+- Flask REST API server
+- WebSocket communication server
+- AI model management module
+- Data collection and storage
 
-## GitHub Workflows
+#### Models (`/server/models`)
+- Local AI model storage
+- Model configuration files
+- Cached model weights
 
-```
-/home/zombie/ailinux/.github/workflows/
-└── pylint.yml              # Automated Python code quality checks with Pylint
-```
+### Development Tools (`/devtools`)
+- Code optimization scripts
+- File analysis utilities
+- Repository synchronization tools
 
-## Key File Descriptions
+### Documentation (`/docs`)
+- Comprehensive project documentation
+- Architecture descriptions
+- Deployment guidelines
+- Contribution instructions
 
-### Backend
+### Testing (`/tests`)
+- Unit tests
+- Integration tests
+- Performance benchmarks
 
-- **ai_model.py**: Core module that provides interfaces to multiple AI models including GPT4All, OpenAI, Google Gemini, and Hugging Face. Handles model initialization, prompt creation, and inference.
+### Configuration (`/config`)
+- Environment configuration templates
+- Default application settings
 
-- **app.py**: Flask-based REST API server that exposes endpoints for log analysis, model management, and system status monitoring.
+## AI Model Support
 
-- **websocketserv.py**: WebSocket server implementation for real-time communication between frontend and backend, supporting features like streaming log analysis.
+### Local Models
+- GPT4All
+- Hugging Face Transformers
+- Custom local model support
 
-### Frontend
+### Cloud Models
+- OpenAI GPT
+- Google Gemini
+- Anthropic Claude
 
-- **index.html**: Main application interface with tabs for log analysis, model selection, log viewing, and system status.
+## Key Configuration Files
 
-- **main.js**: Electron main process that manages application windows, handles IPC (Inter-Process Communication), and integrates with native OS features.
+- `.env`: Environment-specific configurations
+- `requirements.txt`: Python dependencies
+- `package.json`: Node.js dependencies and scripts
+- `pyproject.toml`: Python project metadata
 
-- **preload.js**: Secure bridge between renderer and main processes in Electron, exposing a limited API to the frontend.
+## Electron Configuration
 
-### Client
-
-- **start.js**: Main application starter that launches both backend and frontend processes with proper environment configuration.
-
-- **file-sync-client.py**: Manages synchronization of files between local and remote servers with support for different sync modes.
-
-- **uploadready.py**: Prepares the codebase for GitHub uploads, managing large files and directory structure.
-
-## Dependencies
-
-The project has separate dependency files for different components:
-
-- **Root requirements.txt**: Project-wide Python dependencies
-- **Backend requirements.txt**: Backend-specific Python dependencies
-- **Frontend requirements.txt**: Frontend-specific Python dependencies
-- **Client requirements.txt**: Client utilities Python dependencies
-- **package.json files**: Node.js dependencies for respective components
+- `main.js`: Electron main process
+- `preload.js`: Secure context bridge
+- `renderer.js`: Rendering process logic
 
 ## Development Workflow
 
-### Local Development
+1. Local Setup
+   - Clone repository
+   - Install dependencies
+   - Configure environment
+   - Run development server
 
-1. Run `node start.js local` to start the application in local mode
-2. Backend API will be available at http://localhost:8081
-3. WebSocket server will be available at ws://localhost:8082
-4. Electron frontend will launch automatically
+2. Testing
+   - Unit tests
+   - Integration tests
+   - Performance benchmarks
 
-### Remote Deployment
+3. Deployment
+   - Build Electron application
+   - Package server components
+   - Configure production environment
 
-1. Run `node start.js remote` to connect to remote server (derleiti.de)
-2. Backend API will be available at https://derleiti.de:8081
-3. WebSocket server will be available at wss://derleiti.de:8082
+---
 
-## AI Models
-
-The system supports multiple AI models for log analysis:
-
-- **GPT4All**: Local inference with GGUF models
-- **OpenAI**: Cloud-based API using GPT models
-- **Google Gemini**: Google's Gemini Pro model
-- **Hugging Face**: Various open-source models like Mistral
+<p align="center">
+  Last Updated: March 2025
+  <br>
+  Maintained by AILinux Development Team
+</p>
