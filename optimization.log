@@ -238,29 +238,52 @@ devtools/uploadready.py:184:0: C0303: Trailing whitespace (trailing-whitespace)
 devtools/uploadready.py:187:0: C0303: Trailing whitespace (trailing-whitespace)
 devtools/uploadready.py:191:0: C0303: Trailing whitespace (trailing-whitespace)
 devtools/uploadready.py:204:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:226:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:231:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:238:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:242:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:245:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:233:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:246:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:251:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:255:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:259:0: C0303: Trailing whitespace (trailing-whitespace)
 devtools/uploadready.py:263:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:268:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:273:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:276:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:289:0: C0301: Line too long (113/100) (line-too-long)
-devtools/uploadready.py:290:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:293:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:296:0: C0301: Line too long (108/100) (line-too-long)
+devtools/uploadready.py:274:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:281:0: C0303: Trailing whitespace (trailing-whitespace)
 devtools/uploadready.py:298:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:301:0: C0301: Line too long (105/100) (line-too-long)
-devtools/uploadready.py:302:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:322:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:328:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:334:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:340:0: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:341:78: C0303: Trailing whitespace (trailing-whitespace)
-devtools/uploadready.py:347:0: C0301: Line too long (108/100) (line-too-long)
-devtools/uploadready.py:359:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:306:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:310:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:316:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:319:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:326:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:341:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:344:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:351:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:361:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:365:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:374:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:377:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:381:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:384:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:392:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:399:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:404:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:406:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:426:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:431:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:436:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:439:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:452:0: C0301: Line too long (113/100) (line-too-long)
+devtools/uploadready.py:453:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:456:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:458:61: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:462:0: C0301: Line too long (108/100) (line-too-long)
+devtools/uploadready.py:464:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:467:0: C0301: Line too long (105/100) (line-too-long)
+devtools/uploadready.py:468:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:488:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:494:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:500:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:506:0: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:507:78: C0303: Trailing whitespace (trailing-whitespace)
+devtools/uploadready.py:513:0: C0301: Line too long (108/100) (line-too-long)
+devtools/uploadready.py:525:0: C0303: Trailing whitespace (trailing-whitespace)
 devtools/uploadready.py:1:0: C0114: Missing module docstring (missing-module-docstring)
 devtools/uploadready.py:134:11: W0718: Catching too general exception Exception (broad-exception-caught)
 devtools/uploadready.py:79:24: W1510: 'subprocess.run' used without explicitly defining the value for 'check'. (subprocess-run-check)
@@ -275,13 +298,26 @@ devtools/uploadready.py:190:21: W1510: 'subprocess.run' used without explicitly 
 devtools/uploadready.py:193:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
 devtools/uploadready.py:197:18: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
 devtools/uploadready.py:199:17: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-devtools/uploadready.py:246:11: W0718: Catching too general exception Exception (broad-exception-caught)
-devtools/uploadready.py:236:17: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-devtools/uploadready.py:236:46: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-devtools/uploadready.py:277:11: W0718: Catching too general exception Exception (broad-exception-caught)
-devtools/uploadready.py:271:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-devtools/uploadready.py:271:44: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-devtools/uploadready.py:370:11: W0718: Catching too general exception Exception (broad-exception-caught)
+devtools/uploadready.py:213:0: R0914: Too many local variables (21/15) (too-many-locals)
+devtools/uploadready.py:407:11: W0718: Catching too general exception Exception (broad-exception-caught)
+devtools/uploadready.py:295:19: W0718: Catching too general exception Exception (broad-exception-caught)
+devtools/uploadready.py:289:31: W0718: Catching too general exception Exception (broad-exception-caught)
+devtools/uploadready.py:300:8: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+devtools/uploadready.py:312:14: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+devtools/uploadready.py:324:12: C0415: Import outside toplevel (shutil) (import-outside-toplevel)
+devtools/uploadready.py:328:8: C0415: Import outside toplevel (json) (import-outside-toplevel)
+devtools/uploadready.py:329:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+devtools/uploadready.py:349:12: C0415: Import outside toplevel (shutil) (import-outside-toplevel)
+devtools/uploadready.py:353:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+devtools/uploadready.py:372:16: C0415: Import outside toplevel (shutil) (import-outside-toplevel)
+devtools/uploadready.py:375:17: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+devtools/uploadready.py:394:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+devtools/uploadready.py:409:8: C0415: Import outside toplevel (traceback) (import-outside-toplevel)
+devtools/uploadready.py:213:0: R0915: Too many statements (95/50) (too-many-statements)
+devtools/uploadready.py:440:11: W0718: Catching too general exception Exception (broad-exception-caught)
+devtools/uploadready.py:434:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+devtools/uploadready.py:434:44: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+devtools/uploadready.py:536:11: W0718: Catching too general exception Exception (broad-exception-caught)
 devtools/uploadready.py:7:0: W0611: Unused Dict imported from typing (unused-import)
 devtools/uploadready.py:7:0: W0611: Unused Any imported from typing (unused-import)
 ************* Module devtools.bigfiles
@@ -454,6 +490,513 @@ server/backend/ai_model.py:9:0: W0611: Unused field imported from dataclasses (u
 ************* Module analyze
 analyze.py:19:10: E0602: Undefined variable 'log_file_path' (undefined-variable)
 analyze.py:20:37: E0602: Undefined variable 'root_dir' (undefined-variable)
+analyze.py:1:0: R0801: Similar lines in 2 files
+==devtools.uploadready:[37:541]
+==uploadready:[37:541]
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        filename='github_sync.log'
+    )
+    logger = logging.getLogger(__name__)
+
+    try:
+        # Validate inputs
+        if not username or not repo_name:
+            logger.error("GitHub username or repository name is missing")
+            return False
+
+        # Prepare GitHub URL
+        if use_pat:
+            if not auth_key:
+                logger.error("Personal Access Token is required when use_pat is True")
+                return False
+            github_url = f"https://{username}:{auth_key}@github.com/{username}/{repo_name}.git"
+        else:
+            # For SSH, ensure the key is set up correctly
+            if not os.path.exists(os.path.expanduser("~/.ssh/id_rsa")):
+                logger.error("SSH key not found. Please set up SSH authentication.")
+                return False
+            github_url = f"git@github.com:{username}/{repo_name}.git"
+
+        # Ensure git configuration
+        subprocess.run(["git", "config", "--global", "pull.rebase", "true"], check=True)
+        subprocess.run(["git", "config", "--global", "push.autoSetupRemote", "true"], check=True)
+
+        # Check if git repository exists
+        try:
+            subprocess.run(["git", "rev-parse", "--is-inside-work-tree"],
+                           check=True,
+                           capture_output=True,
+                           text=True)
+        except subprocess.CalledProcessError:
+            logger.error("Not a git repository. Please initialize git first.")
+            return False
+
+        # Check for uncommitted changes
+        status_result = subprocess.run(
+            ["git", "status", "--porcelain"],
+            capture_output=True,
+            text=True
+        )
+
+        # Stage and commit changes if there are any
+        if status_result.stdout.strip():
+            logger.info("Uncommitted changes detected. Staging and committing.")
+            subprocess.run(["git", "add", "."], check=True)
+
+            # Create a timestamp-based commit message
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            commit_message = f"Automated commit: {timestamp}"
+
+            subprocess.run(["git", "commit", "-m", commit_message], check=True)
+
+        # Ensure the correct branch is checked out
+        subprocess.run(["git", "checkout", branch], check=True)
+
+        # Fetch and pull with rebase
+        subprocess.run(["git", "fetch", "origin", branch], check=True)
+        pull_result = subprocess.run(
+            ["git", "pull", "--rebase", "origin", branch],
+            capture_output=True,
+            text=True
+        )
+
+        # Push changes
+        push_result = subprocess.run(
+            ["git", "push", "origin", branch],
+            capture_output=True,
+            text=True
+        )
+
+        # Log detailed results
+        logger.info("Pull result: %s", pull_result.stdout)
+        logger.info("Push result: %s", push_result.stdout)
+
+        if pull_result.returncode == 0 and push_result.returncode == 0:
+            logger.info("GitHub synchronization completed successfully.")
+            return True
+        else:
+            logger.error("Sync failed. Pull stderr: %s", pull_result.stderr)
+            logger.error("Sync failed. Push stderr: %s", push_result.stderr)
+            return False
+
+    except subprocess.CalledProcessError as e:
+        logger.error("Git command failed: %s", e)
+        logger.error("Command output: %s", e.output)
+        return False
+    except (ValueError, ConnectionError) as e:
+        # Specific handling for network errors and value errors
+        logger.error("Network or connection error during GitHub synchronization: %s", e)
+        return False
+    except Exception as e:
+        # More specific exception handling for unexpected errors
+        logger.error("Unexpected error during GitHub synchronization: %s", e)
+        return False
+
+
+def validate_inputs(username: str, repo_name: str, auth_key: Optional[str], use_pat: bool) -> Tuple[bool, str]:
+    """
+    Validate user inputs for GitHub synchronization.
+
+    Args:
+        username (str): GitHub username
+        repo_name (str): GitHub repository name
+        auth_key (Optional[str]): Authentication key
+        use_pat (bool): Flag indicating PAT usage
+
+    Returns:
+        Tuple[bool, str]: Success status and error message if any
+    """
+    if not username or not username.strip():
+        return False, "Username cannot be empty"
+
+    if not repo_name or not repo_name.strip():
+        return False, "Repository name cannot be empty"
+
+    if use_pat and not auth_key:
+        return False, "Personal Access Token is required when using PAT authentication"
+
+    return True, ""
+
+
+def run_pylint(files: Optional[List[str]] = None) -> bool:
+    """
+    Run pylint on specified files or the entire project.
+
+    Args:
+        files: Optional list of files to check, defaults to all Python files
+
+    Returns:
+        bool: True if pylint succeeded with no errors, False otherwise
+    """
+    try:
+        print("Running pylint code quality check...")
+
+        # Determine which files to check
+        if not files:
+            # Get all Python files in the current directory
+            cmd = ["find", ".", "-name", "*.py", "-not", "-path", "*/\\.*"]
+            result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+            files = result.stdout.strip().split('\n')
+
+        # Run pylint on the files
+        cmd = ["pylint"] + files + ["--output-format=text", "--reports=y"]
+
+        # Save results to a log file
+        with open("optimization.log", "w") as log_file:
+            result = subprocess.run(cmd, stdout=log_file, stderr=subprocess.PIPE, text=True)
+
+        # Check results
+        if result.returncode == 0:
+            print("✓ No pylint issues found.")
+            return True
+        else:
+            print(f"✗ Pylint found issues. Check optimization.log for details.")
+            # Print a summary of the issues
+            with open("optimization.log", "r") as log_file:
+                summary = log_file.readlines()[-10:]  # Last 10 lines typically contain the summary
+                for line in summary:
+                    print(line.strip())
+            return False
+
+    except subprocess.CalledProcessError as e:
+        print(f"Error running pylint: {e}")
+        return False
+    except Exception as e:
+        print(f"Unexpected error during pylint check: {e}")
+        return False
+
+
+def file_update(start_dir: str = ".", backup: bool = True) -> bool:
+    """
+    Analyze directory structure and handle large files.
+
+    This function:
+    1. Recursively scans the directory structure including all subfolders
+    2. Creates directory_structure.json with the complete file structure
+    3. Identifies files larger than 99MB and saves them to large_files.json
+    4. Updates .gitignore to include these large files
+
+    Args:
+        start_dir: Directory to start the analysis from (default: current directory)
+        backup: Whether to create backups of modified files
+
+    Returns:
+        bool: True if all operations succeeded, False otherwise
+    """
+    try:
+        print(f"Starting recursive file structure analysis from {start_dir}")
+        print("This will scan all subfolders and files in the directory tree.")
+
+        # Structure to hold directory information
+        dir_structure = {}
+        # List to hold large files (>99MB)
+        large_files = []
+        # Size threshold for large files (99MB in bytes)
+        size_threshold = 99 * 1024 * 1024
+        # Counter for statistics
+        stats = {
+            "total_dirs": 0,
+            "total_files": 0,
+            "total_size": 0
+        }
+
+        # Function to scan directory recursively
+        def scan_directory(path, structure):
+            """Recursively scan directory and build structure dict"""
+            nonlocal stats
+
+            try:
+                items = os.listdir(path)
+                stats["total_dirs"] += 1
+
+                for item in items:
+                    full_path = os.path.join(path, item)
+                    rel_path = os.path.relpath(full_path, start_dir)
+
+                    # Skip hidden files/folders
+                    if item.startswith('.'):
+                        continue
+
+                    if os.path.isdir(full_path):
+                        # It's a directory
+                        structure[item] = {"type": "directory", "contents": {}}
+                        scan_directory(full_path, structure[item]["contents"])
+                    else:
+                        # It's a file
+                        try:
+                            file_size = os.path.getsize(full_path)
+                            stats["total_files"] += 1
+                            stats["total_size"] += file_size
+
+                            # Add to structure
+                            structure[item] = {
+                                "type": "file",
+                                "size": file_size,
+                                "size_human": format_size(file_size)
+                            }
+
+                            # Check if it's a large file
+                            if file_size > size_threshold:
+                                large_files.append({
+                                    "path": rel_path,
+                                    "size": file_size,
+                                    "size_human": format_size(file_size)
+                                })
+                        except Exception as e:
+                            print(f"Error processing file {full_path}: {e}")
+                            structure[item] = {"type": "file", "error": str(e)}
+            except PermissionError:
+                print(f"Permission denied: Cannot access {path}")
+                structure["__error__"] = "Permission denied"
+            except Exception as e:
+                print(f"Error scanning directory {path}: {e}")
+                structure["__error__"] = str(e)
+
+        # Helper function to format file sizes for human readability
+        def format_size(size_bytes):
+            """Format bytes to human-readable size"""
+            for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
+                if size_bytes < 1024.0 or unit == 'TB':
+                    return f"{size_bytes:.2f} {unit}"
+                size_bytes /= 1024.0
+
+        # Start the scan
+        print("Scanning directories and files...")
+        scan_directory(start_dir, dir_structure)
+
+        # Print statistics
+        print(f"\nScan complete!")
+        print(f"Found {stats['total_dirs']} directories and {stats['total_files']} files")
+        print(f"Total data size: {format_size(stats['total_size'])}")
+        print(f"Found {len(large_files)} files larger than 99MB")
+
+        # Save directory structure to JSON
+        structure_file = "directory_structure.json"
+
+        # Backup if needed
+        if backup and os.path.exists(structure_file):
+            backup_path = f"{structure_file}.bak"
+            print(f"Creating backup of {structure_file} at {backup_path}")
+            import shutil
+            shutil.copy2(structure_file, backup_path)
+
+        # Save the new structure
+        import json
+        with open(structure_file, 'w') as f:
+            json.dump({
+                "stats": {
+                    "total_directories": stats["total_dirs"],
+                    "total_files": stats["total_files"],
+                    "total_size_bytes": stats["total_size"],
+                    "total_size_human": format_size(stats["total_size"]),
+                    "scan_time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                },
+                "structure": dir_structure
+            }, f, indent=2)
+        print(f"✓ Complete directory structure saved to {structure_file}")
+
+        # Save large files list to JSON
+        large_files_file = "large_files.json"
+
+        # Backup if needed
+        if backup and os.path.exists(large_files_file):
+            backup_path = f"{large_files_file}.bak"
+            print(f"Creating backup of {large_files_file} at {backup_path}")
+            import shutil
+            shutil.copy2(large_files_file, backup_path)
+
+        # Save the large files list
+        with open(large_files_file, 'w') as f:
+            json.dump({
+                "count": len(large_files),
+                "threshold": "99MB",
+                "threshold_bytes": size_threshold,
+                "files": large_files
+            }, f, indent=2)
+        print(f"✓ Found {len(large_files)} large files (>99MB), saved to {large_files_file}")
+
+        # Update .gitignore with large files
+        gitignore_path = ".gitignore"
+        gitignore_lines = []
+
+        # Read existing .gitignore if it exists
+        if os.path.exists(gitignore_path):
+            # Backup if needed
+            if backup:
+                backup_path = f"{gitignore_path}.bak"
+                print(f"Creating backup of {gitignore_path} at {backup_path}")
+                import shutil
+                shutil.copy2(gitignore_path, backup_path)
+
+            with open(gitignore_path, 'r') as f:
+                gitignore_lines = [line.strip() for line in f.readlines()]
+
+        # Add large files header if needed
+        if gitignore_lines and gitignore_lines[-1] != "":
+            gitignore_lines.append("")
+
+        if len(large_files) > 0 and "# Large files (>99MB)" not in gitignore_lines:
+            gitignore_lines.append("# Large files (>99MB)")
+
+        # Check and add large files that aren't already in .gitignore
+        added_count = 0
+        for file_info in large_files:
+            file_path = file_info["path"]
+            if file_path not in gitignore_lines:
+                gitignore_lines.append(file_path)
+                added_count += 1
+
+        # Write updated .gitignore
+        with open(gitignore_path, 'w') as f:
+            f.write("\n".join(gitignore_lines))
+            # Ensure file ends with newline
+            if gitignore_lines and not gitignore_lines[-1].endswith('\n'):
+                f.write("\n")
+
+        if added_count > 0:
+            print(f"✓ Added {added_count} large files to .gitignore")
+        else:
+            print("✓ No new large files to add to .gitignore")
+
+        return True
+
+    except Exception as e:
+        print(f"Error during file update: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
+def restore_file(file_path: str) -> bool:
+    """
+    Restore a file from its backup.
+
+    Args:
+        file_path: Path to the file to restore
+
+    Returns:
+        bool: True if restoration succeeded, False otherwise
+    """
+    try:
+        backup_path = f"{file_path}.bak"
+
+        # Check if backup exists
+        if not os.path.exists(backup_path):
+            print(f"Error: Backup file {backup_path} does not exist.")
+            return False
+
+        # Restore from backup
+        print(f"Restoring {file_path} from backup...")
+        with open(backup_path, 'r') as src, open(file_path, 'w') as dst:
+            dst.write(src.read())
+
+        print(f"✓ File {file_path} restored successfully.")
+        return True
+
+    except Exception as e:
+        print(f"Error restoring file {file_path}: {e}")
+        return False
+
+
+def parse_arguments():
+    """
+    Parse command line arguments.
+
+    Returns:
+        argparse.Namespace: Parsed arguments
+    """
+    parser = argparse.ArgumentParser(description="GitHub sync tool with file management and code quality checks")
+
+    # GitHub sync options
+    parser.add_argument("--github", action="store_true", help="Sync with GitHub")
+
+    # File management options
+    parser.add_argument("--file-update", action="store_true",
+                       help="Analyze directory structure and handle large files")
+    parser.add_argument("--start-dir", type=str, default=".",
+                       help="Starting directory for file analysis (default: current directory)")
+    parser.add_argument("--no-backup", action="store_true", help="Don't create backups when updating files")
+    parser.add_argument("--restore-file", type=str, help="Restore a file from backup")
+
+    # Code quality options
+    parser.add_argument("--pylint", action="store_true", help="Run pylint on the codebase")
+    parser.add_argument("--check-files", type=str, nargs="+", help="Specific files to check with pylint")
+
+    return parser.parse_args()
+
+
+def main():
+    """
+    Main function that handles command line arguments and executes the appropriate actions.
+
+    This function provides a command-line interface for:
+    1. Running pylint code quality checks
+    2. Updating files with backup creation
+    3. Restoring files from backups
+    4. Synchronizing with GitHub repositories
+
+    The program will exit after completing file operations or pylint checks without
+    proceeding to GitHub sync if those operations were requested.
+    """
+    try:
+        # Parse command line arguments
+        args = parse_arguments()
+
+        # Handle pylint check
+        if args.pylint:
+            run_pylint(args.check_files)
+            # Exit after pylint check, don't proceed to GitHub sync
+            return
+
+        # Handle file update
+        if args.file_update:
+            file_update(args.start_dir, not args.no_backup)
+            # Exit after file update, don't proceed to GitHub sync
+            return
+
+        # Handle file restore
+        if args.restore_file:
+            restore_file(args.restore_file)
+            # Exit after file restore, don't proceed to GitHub sync
+            return
+
+        # If --github flag is provided or no specific operation was requested,
+        # proceed with GitHub sync
+        if args.github or (not args.pylint and not args.file_update and not args.restore_file):
+            # Prompt for GitHub connection details
+            username = input("GitHub Username: ").strip()
+            repo_name = input("GitHub Repository Name: ").strip()
+            auth_key = input("SSH Authentication Key or Personal Access Token (optional): ").strip() or None
+            use_pat = input("Use Personal Access Token? (y/n): ").lower() == 'y'
+            branch = input("Branch to sync (default: main): ").strip() or "main"
+
+            # Validate inputs
+            is_valid, error_msg = validate_inputs(username, repo_name, auth_key, use_pat)
+            if not is_valid:
+                print(f"Error: {error_msg}")
+                return
+
+            # Attempt synchronization
+            success = sync_with_github(username, repo_name, auth_key, use_pat, branch)
+
+            # Provide user feedback
+            if success:
+                print("✓ GitHub synchronization completed successfully.")
+            else:
+                print("✗ GitHub synchronization failed. Check github_sync.log for details.")
+        else:
+            print("No operation specified. Use --help to see available options.")
+
+    except KeyboardInterrupt:
+        print("\nOperation cancelled by user.")
+    except Exception as e:
+        print(f"Error: {e}")
+
+
+if __name__ == "__main__":
+    sys.exit(0 if main() is None else 1) (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[12:198]
 ==server.backend.ai_model:[12:198]
@@ -644,196 +1187,6 @@ class AIModelManager:
             "device": config.device
         } (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
-==devtools.uploadready:[37:224]
-==uploadready:[37:230]
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s',
-        filename='github_sync.log'
-    )
-    logger = logging.getLogger(__name__)
-
-    try:
-        # Validate inputs
-        if not username or not repo_name:
-            logger.error("GitHub username or repository name is missing")
-            return False
-
-        # Prepare GitHub URL
-        if use_pat:
-            if not auth_key:
-                logger.error("Personal Access Token is required when use_pat is True")
-                return False
-            github_url = f"https://{username}:{auth_key}@github.com/{username}/{repo_name}.git"
-        else:
-            # For SSH, ensure the key is set up correctly
-            if not os.path.exists(os.path.expanduser("~/.ssh/id_rsa")):
-                logger.error("SSH key not found. Please set up SSH authentication.")
-                return False
-            github_url = f"git@github.com:{username}/{repo_name}.git"
-
-        # Ensure git configuration
-        subprocess.run(["git", "config", "--global", "pull.rebase", "true"], check=True)
-        subprocess.run(["git", "config", "--global", "push.autoSetupRemote", "true"], check=True)
-
-        # Check if git repository exists
-        try:
-            subprocess.run(["git", "rev-parse", "--is-inside-work-tree"],
-                           check=True,
-                           capture_output=True,
-                           text=True)
-        except subprocess.CalledProcessError:
-            logger.error("Not a git repository. Please initialize git first.")
-            return False
-
-        # Check for uncommitted changes
-        status_result = subprocess.run(
-            ["git", "status", "--porcelain"],
-            capture_output=True,
-            text=True
-        )
-
-        # Stage and commit changes if there are any
-        if status_result.stdout.strip():
-            logger.info("Uncommitted changes detected. Staging and committing.")
-            subprocess.run(["git", "add", "."], check=True)
-
-            # Create a timestamp-based commit message
-            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            commit_message = f"Automated commit: {timestamp}"
-
-            subprocess.run(["git", "commit", "-m", commit_message], check=True)
-
-        # Ensure the correct branch is checked out
-        subprocess.run(["git", "checkout", branch], check=True)
-
-        # Fetch and pull with rebase
-        subprocess.run(["git", "fetch", "origin", branch], check=True)
-        pull_result = subprocess.run(
-            ["git", "pull", "--rebase", "origin", branch],
-            capture_output=True,
-            text=True
-        )
-
-        # Push changes
-        push_result = subprocess.run(
-            ["git", "push", "origin", branch],
-            capture_output=True,
-            text=True
-        )
-
-        # Log detailed results
-        logger.info("Pull result: %s", pull_result.stdout)
-        logger.info("Push result: %s", push_result.stdout)
-
-        if pull_result.returncode == 0 and push_result.returncode == 0:
-            logger.info("GitHub synchronization completed successfully.")
-            return True
-        else:
-            logger.error("Sync failed. Pull stderr: %s", pull_result.stderr)
-            logger.error("Sync failed. Push stderr: %s", push_result.stderr)
-            return False
-
-    except subprocess.CalledProcessError as e:
-        logger.error("Git command failed: %s", e)
-        logger.error("Command output: %s", e.output)
-        return False
-    except (ValueError, ConnectionError) as e:
-        # Specific handling for network errors and value errors
-        logger.error("Network or connection error during GitHub synchronization: %s", e)
-        return False
-    except Exception as e:
-        # More specific exception handling for unexpected errors
-        logger.error("Unexpected error during GitHub synchronization: %s", e)
-        return False
-
-
-def validate_inputs(username: str, repo_name: str, auth_key: Optional[str], use_pat: bool) -> Tuple[bool, str]:
-    """
-    Validate user inputs for GitHub synchronization.
-
-    Args:
-        username (str): GitHub username
-        repo_name (str): GitHub repository name
-        auth_key (Optional[str]): Authentication key
-        use_pat (bool): Flag indicating PAT usage
-
-    Returns:
-        Tuple[bool, str]: Success status and error message if any
-    """
-    if not username or not username.strip():
-        return False, "Username cannot be empty"
-
-    if not repo_name or not repo_name.strip():
-        return False, "Repository name cannot be empty"
-
-    if use_pat and not auth_key:
-        return False, "Personal Access Token is required when using PAT authentication"
-
-    return True, ""
-
-
-def run_pylint(files: Optional[List[str]] = None) -> bool:
-    """
-    Run pylint on specified files or the entire project.
-
-    Args:
-        files: Optional list of files to check, defaults to all Python files
-
-    Returns:
-        bool: True if pylint succeeded with no errors, False otherwise
-    """
-    try:
-        print("Running pylint code quality check...")
-
-        # Determine which files to check
-        if not files:
-            # Get all Python files in the current directory
-            cmd = ["find", ".", "-name", "*.py", "-not", "-path", "*/\\.*"]
-            result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-            files = result.stdout.strip().split('\n')
-
-        # Run pylint on the files
-        cmd = ["pylint"] + files + ["--output-format=text", "--reports=y"]
-
-        # Save results to a log file
-        with open("optimization.log", "w") as log_file:
-            result = subprocess.run(cmd, stdout=log_file, stderr=subprocess.PIPE, text=True)
-
-        # Check results
-        if result.returncode == 0:
-            print("✓ No pylint issues found.")
-            return True
-        else:
-            print(f"✗ Pylint found issues. Check optimization.log for details.")
-            # Print a summary of the issues
-            with open("optimization.log", "r") as log_file:
-                summary = log_file.readlines()[-10:]  # Last 10 lines typically contain the summary
-                for line in summary:
-                    print(line.strip())
-            return False
-
-    except subprocess.CalledProcessError as e:
-        print(f"Error running pylint: {e}")
-        return False
-    except Exception as e:
-        print(f"Unexpected error during pylint check: {e}")
-        return False
-
-
-def file_update(file_path: str, backup: bool = True) -> bool:
-    """
-    Update a file with latest changes and optionally create a backup.
-
-    Args:
-        file_path: Path to the file to update
-        backup: Whether to create a backup before updating
-
-    Returns:
-        bool: True if update succeeded, False otherwise
-    """
-    try: (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
 ==adjust_hierarchy_with_debugger:[18:70]
 ==devtools.adjust_hierarchy_with_debugger:[18:70]
     expected_structure = {
@@ -889,52 +1242,6 @@ if __name__ == "__main__":
     restore_directory_structure(base_dir)
     run_pylint() (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
-==devtools.uploadready:[332:375]
-==uploadready:[498:541]
-            return
-
-        # Handle file restore
-        if args.restore_file:
-            restore_file(args.restore_file)
-            # Exit after file restore, don't proceed to GitHub sync
-            return
-
-        # If --github flag is provided or no specific operation was requested,
-        # proceed with GitHub sync
-        if args.github or (not args.pylint and not args.file_update and not args.restore_file):
-            # Prompt for GitHub connection details
-            username = input("GitHub Username: ").strip()
-            repo_name = input("GitHub Repository Name: ").strip()
-            auth_key = input("SSH Authentication Key or Personal Access Token (optional): ").strip() or None
-            use_pat = input("Use Personal Access Token? (y/n): ").lower() == 'y'
-            branch = input("Branch to sync (default: main): ").strip() or "main"
-
-            # Validate inputs
-            is_valid, error_msg = validate_inputs(username, repo_name, auth_key, use_pat)
-            if not is_valid:
-                print(f"Error: {error_msg}")
-                return
-
-            # Attempt synchronization
-            success = sync_with_github(username, repo_name, auth_key, use_pat, branch)
-
-            # Provide user feedback
-            if success:
-                print("✓ GitHub synchronization completed successfully.")
-            else:
-                print("✗ GitHub synchronization failed. Check github_sync.log for details.")
-        else:
-            print("No operation specified. Use --help to see available options.")
-
-    except KeyboardInterrupt:
-        print("\nOperation cancelled by user.")
-    except Exception as e:
-        print(f"Error: {e}")
-
-
-if __name__ == "__main__":
-    sys.exit(0 if main() is None else 1) (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
 ==analyze:[4:36]
 ==devtools.analyze:[4:36]
 ROOT_DIR = "./"
@@ -970,56 +1277,6 @@ with open(log_file_path, "w", encoding='utf-8') as log_file:
                     log_file.write(f"\n--- {file_path} ---\n")
                     log_file.write(f.read()) (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
-==devtools.uploadready:[247:294]
-==uploadready:[410:457]
-        return False
-
-
-def restore_file(file_path: str) -> bool:
-    """
-    Restore a file from its backup.
-
-    Args:
-        file_path: Path to the file to restore
-
-    Returns:
-        bool: True if restoration succeeded, False otherwise
-    """
-    try:
-        backup_path = f"{file_path}.bak"
-
-        # Check if backup exists
-        if not os.path.exists(backup_path):
-            print(f"Error: Backup file {backup_path} does not exist.")
-            return False
-
-        # Restore from backup
-        print(f"Restoring {file_path} from backup...")
-        with open(backup_path, 'r') as src, open(file_path, 'w') as dst:
-            dst.write(src.read())
-
-        print(f"✓ File {file_path} restored successfully.")
-        return True
-
-    except Exception as e:
-        print(f"Error restoring file {file_path}: {e}")
-        return False
-
-
-def parse_arguments():
-    """
-    Parse command line arguments.
-
-    Returns:
-        argparse.Namespace: Parsed arguments
-    """
-    parser = argparse.ArgumentParser(description="GitHub sync tool with file management and code quality checks")
-
-    # GitHub sync options
-    parser.add_argument("--github", action="store_true", help="Sync with GitHub")
-
-    # File management options (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
 ==devtools.adjust_hierarchy_with_debugger:[32:52]
 ==patch.ailinux-alpha-code-patcher-v0.3:[152:170]
         for key, value in structure.items():
@@ -1039,7 +1296,9 @@ analyze.py:1:0: R0801: Similar lines in 2 files
     create_structure(base_dir, expected_structure)
     print(f"Directory structure verified and restored in {base_dir}")
 
- (duplicate-code)
+
+def run_pylint():
+    """Run pylint with specific options to check the code.""" (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==bigfiles:[4:24]
 ==devtools.bigfiles:[4:24]
@@ -1082,44 +1341,6 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 
 if __name__ == "__main__": (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
-==devtools.uploadready:[295:330]
-==uploadready:[461:496]
-    parser.add_argument("--no-backup", action="store_true", help="Don't create backups when updating files")
-    parser.add_argument("--restore-file", type=str, help="Restore a file from backup")
-
-    # Code quality options
-    parser.add_argument("--pylint", action="store_true", help="Run pylint on the codebase")
-    parser.add_argument("--check-files", type=str, nargs="+", help="Specific files to check with pylint")
-
-    return parser.parse_args()
-
-
-def main():
-    """
-    Main function that handles command line arguments and executes the appropriate actions.
-
-    This function provides a command-line interface for:
-    1. Running pylint code quality checks
-    2. Updating files with backup creation
-    3. Restoring files from backups
-    4. Synchronizing with GitHub repositories
-
-    The program will exit after completing file operations or pylint checks without
-    proceeding to GitHub sync if those operations were requested.
-    """
-    try:
-        # Parse command line arguments
-        args = parse_arguments()
-
-        # Handle pylint check
-        if args.pylint:
-            run_pylint(args.check_files)
-            # Exit after pylint check, don't proceed to GitHub sync
-            return
-
-        # Handle file update
-        if args.file_update: (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
 ==devtools.adjust_hierarchy_with_debugger:[18:32]
 ==patch.ailinux-alpha-code-patcher-v0.3:[138:150]
     expected_structure = {
@@ -1150,7 +1371,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 
 Report
 ======
-1577 statements analysed.
+1661 statements analysed.
 
 Statistics by type
 ------------------
@@ -1164,7 +1385,7 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |method   |39     |39         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |44     |44         |=          |100.00      |0.00     |
+|function |46     |44         |+2.00      |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -1192,7 +1413,7 @@ External dependencies
 
 
 
-3741 lines have been analyzed
+3907 lines have been analyzed
 
 Raw metrics
 -----------
@@ -1200,13 +1421,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |2336   |62.44 |2336     |=          |
+|code      |2430   |62.20 |2336     |+94.00     |
 +----------+-------+------+---------+-----------+
-|docstring |608    |16.25 |608      |=          |
+|docstring |636    |16.28 |608      |+28.00     |
 +----------+-------+------+---------+-----------+
-|comment   |296    |7.91  |296      |=          |
+|comment   |318    |8.14  |296      |+22.00     |
 +----------+-------+------+---------+-----------+
-|empty     |501    |13.39 |501      |=          |
+|empty     |523    |13.39 |501      |+22.00     |
 +----------+-------+------+---------+-----------+
 
 
@@ -1230,11 +1451,11 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |260    |260      |260        |
+|convention |288    |260      |260        |
 +-----------+-------+---------+-----------+
 |refactor   |47     |47       |47         |
 +-----------+-------+---------+-----------+
-|warning    |96     |96       |96         |
+|warning    |101    |96       |96         |
 +-----------+-------+---------+-----------+
 |error      |31     |31       |31         |
 +-----------+-------+---------+-----------+
@@ -1247,9 +1468,9 @@ Messages by category
 +----------------------------------------+------+--------+---------+-----------+
 |module                                  |error |warning |refactor |convention |
 +========================================+======+========+=========+===========+
-|client.backend.app                      |6.45  |12.50   |2.13     |0.38       |
+|client.backend.app                      |6.45  |11.88   |2.13     |0.35       |
 +----------------------------------------+------+--------+---------+-----------+
-|analyze                                 |6.45  |0.00    |25.53    |0.00       |
+|analyze                                 |6.45  |0.00    |19.15    |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
 |devtools.bigfiles                       |6.45  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
@@ -1299,21 +1520,21 @@ Messages by category
 +----------------------------------------+------+--------+---------+-----------+
 |adjust_hierarchy_with_debugger          |3.23  |0.00    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
-|uploadready                             |0.00  |25.00   |12.77    |29.62      |
+|uploadready                             |0.00  |23.76   |12.77    |26.74      |
 +----------------------------------------+------+--------+---------+-----------+
-|devtools.enhanced-pylint-fixer          |0.00  |19.79   |38.30    |36.15      |
+|devtools.uploadready                    |0.00  |23.76   |12.77    |26.74      |
 +----------------------------------------+------+--------+---------+-----------+
-|devtools.uploadready                    |0.00  |19.79   |6.38     |18.85      |
+|devtools.enhanced-pylint-fixer          |0.00  |18.81   |38.30    |32.64      |
 +----------------------------------------+------+--------+---------+-----------+
-|server.backend.ai_model                 |0.00  |6.25    |6.38     |5.77       |
+|server.backend.ai_model                 |0.00  |5.94    |6.38     |5.21       |
 +----------------------------------------+------+--------+---------+-----------+
-|client.backend.ai_model                 |0.00  |6.25    |6.38     |5.77       |
+|client.backend.ai_model                 |0.00  |5.94    |6.38     |5.21       |
 +----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.3   |0.00  |6.25    |2.13     |0.77       |
+|patch.ailinux-alpha-code-patcher-v0.3   |0.00  |5.94    |2.13     |0.69       |
 +----------------------------------------+------+--------+---------+-----------+
-|client.backend.gpt4all.app              |0.00  |3.12    |0.00     |2.69       |
+|client.backend.gpt4all.app              |0.00  |2.97    |0.00     |2.43       |
 +----------------------------------------+------+--------+---------+-----------+
-|client.alphaos                          |0.00  |1.04    |0.00     |0.00       |
+|client.alphaos                          |0.00  |0.99    |0.00     |0.00       |
 +----------------------------------------+------+--------+---------+-----------+
 
 
@@ -1324,47 +1545,49 @@ Messages
 +-------------------------------+------------+
 |message id                     |occurrences |
 +===============================+============+
-|trailing-whitespace            |215         |
+|trailing-whitespace            |238         |
 +-------------------------------+------------+
-|broad-exception-caught         |28          |
+|broad-exception-caught         |30          |
++-------------------------------+------------+
+|import-outside-toplevel        |23          |
 +-------------------------------+------------+
 |syntax-error                   |19          |
 +-------------------------------+------------+
-|import-outside-toplevel        |18          |
-+-------------------------------+------------+
 |logging-fstring-interpolation  |17          |
 +-------------------------------+------------+
-|line-too-long                  |16          |
+|unspecified-encoding           |16          |
 +-------------------------------+------------+
-|unspecified-encoding           |14          |
+|line-too-long                  |16          |
 +-------------------------------+------------+
 |no-else-return                 |14          |
 +-------------------------------+------------+
 |unused-import                  |12          |
 +-------------------------------+------------+
-|duplicate-code                 |12          |
-+-------------------------------+------------+
 |undefined-variable             |10          |
 +-------------------------------+------------+
 |subprocess-run-check           |9           |
++-------------------------------+------------+
+|duplicate-code                 |9           |
 +-------------------------------+------------+
 |too-many-return-statements     |8           |
 +-------------------------------+------------+
 |wrong-import-position          |7           |
 +-------------------------------+------------+
-|f-string-without-interpolation |5           |
+|f-string-without-interpolation |6           |
++-------------------------------+------------+
+|inconsistent-return-statements |4           |
 +-------------------------------+------------+
 |unused-variable                |3           |
++-------------------------------+------------+
+|too-many-locals                |3           |
 +-------------------------------+------------+
 |too-many-instance-attributes   |3           |
 +-------------------------------+------------+
 |too-many-branches              |3           |
 +-------------------------------+------------+
-|inconsistent-return-statements |3           |
-+-------------------------------+------------+
 |unnecessary-pass               |2           |
 +-------------------------------+------------+
-|too-many-locals                |2           |
+|too-many-statements            |2           |
 +-------------------------------+------------+
 |no-name-in-module              |2           |
 +-------------------------------+------------+
@@ -1373,8 +1596,6 @@ Messages
 |invalid-name                   |2           |
 +-------------------------------+------------+
 |unused-argument                |1           |
-+-------------------------------+------------+
-|too-many-statements            |1           |
 +-------------------------------+------------+
 |too-few-public-methods         |1           |
 +-------------------------------+------------+
@@ -1393,5 +1614,5 @@ Messages
 
 
 ------------------------------------------------------------------
-Your code has been rated at 6.46/10 (previous run: 6.46/10, +0.00)
+Your code has been rated at 6.44/10 (previous run: 6.46/10, -0.02)
 

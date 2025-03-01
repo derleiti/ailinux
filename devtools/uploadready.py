@@ -210,41 +210,204 @@ def run_pylint(files: Optional[List[str]] = None) -> bool:
         return False
 
 
-def file_update(file_path: str, backup: bool = True) -> bool:
+def file_update(start_dir: str = ".", backup: bool = True) -> bool:
     """
-    Update a file with latest changes and optionally create a backup.
+    Analyze directory structure and handle large files.
+    
+    This function:
+    1. Recursively scans the directory structure including all subfolders
+    2. Creates directory_structure.json with the complete file structure
+    3. Identifies files larger than 99MB and saves them to large_files.json
+    4. Updates .gitignore to include these large files
     
     Args:
-        file_path: Path to the file to update
-        backup: Whether to create a backup before updating
+        start_dir: Directory to start the analysis from (default: current directory)
+        backup: Whether to create backups of modified files
         
     Returns:
-        bool: True if update succeeded, False otherwise
+        bool: True if all operations succeeded, False otherwise
     """
     try:
-        print(f"Updating file: {file_path}")
+        print(f"Starting recursive file structure analysis from {start_dir}")
+        print("This will scan all subfolders and files in the directory tree.")
         
-        # Check if file exists
-        if not os.path.exists(file_path):
-            print(f"Error: File {file_path} does not exist.")
-            return False
+        # Structure to hold directory information
+        dir_structure = {}
+        # List to hold large files (>99MB)
+        large_files = []
+        # Size threshold for large files (99MB in bytes)
+        size_threshold = 99 * 1024 * 1024
+        # Counter for statistics
+        stats = {
+            "total_dirs": 0,
+            "total_files": 0,
+            "total_size": 0
+        }
         
-        # Create backup if requested
-        if backup:
-            backup_path = f"{file_path}.bak"
-            print(f"Creating backup at {backup_path}")
-            with open(file_path, 'r') as src, open(backup_path, 'w') as dst:
-                dst.write(src.read())
+        # Function to scan directory recursively
+        def scan_directory(path, structure):
+            """Recursively scan directory and build structure dict"""
+            nonlocal stats
+            
+            try:
+                items = os.listdir(path)
+                stats["total_dirs"] += 1
+                
+                for item in items:
+                    full_path = os.path.join(path, item)
+                    rel_path = os.path.relpath(full_path, start_dir)
+                    
+                    # Skip hidden files/folders
+                    if item.startswith('.'):
+                        continue
+                        
+                    if os.path.isdir(full_path):
+                        # It's a directory
+                        structure[item] = {"type": "directory", "contents": {}}
+                        scan_directory(full_path, structure[item]["contents"])
+                    else:
+                        # It's a file
+                        try:
+                            file_size = os.path.getsize(full_path)
+                            stats["total_files"] += 1
+                            stats["total_size"] += file_size
+                            
+                            # Add to structure
+                            structure[item] = {
+                                "type": "file", 
+                                "size": file_size,
+                                "size_human": format_size(file_size)
+                            }
+                            
+                            # Check if it's a large file
+                            if file_size > size_threshold:
+                                large_files.append({
+                                    "path": rel_path,
+                                    "size": file_size,
+                                    "size_human": format_size(file_size)
+                                })
+                        except Exception as e:
+                            print(f"Error processing file {full_path}: {e}")
+                            structure[item] = {"type": "file", "error": str(e)}
+            except PermissionError:
+                print(f"Permission denied: Cannot access {path}")
+                structure["__error__"] = "Permission denied"
+            except Exception as e:
+                print(f"Error scanning directory {path}: {e}")
+                structure["__error__"] = str(e)
         
-        # Here you would implement the actual file update logic
-        # For demonstration, we'll just touch the file to update its timestamp
-        subprocess.run(["touch", file_path], check=True)
+        # Helper function to format file sizes for human readability
+        def format_size(size_bytes):
+            """Format bytes to human-readable size"""
+            for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
+                if size_bytes < 1024.0 or unit == 'TB':
+                    return f"{size_bytes:.2f} {unit}"
+                size_bytes /= 1024.0
         
-        print(f"✓ File {file_path} updated successfully.")
+        # Start the scan
+        print("Scanning directories and files...")
+        scan_directory(start_dir, dir_structure)
+        
+        # Print statistics
+        print(f"\nScan complete!")
+        print(f"Found {stats['total_dirs']} directories and {stats['total_files']} files")
+        print(f"Total data size: {format_size(stats['total_size'])}")
+        print(f"Found {len(large_files)} files larger than 99MB")
+        
+        # Save directory structure to JSON
+        structure_file = "directory_structure.json"
+        
+        # Backup if needed
+        if backup and os.path.exists(structure_file):
+            backup_path = f"{structure_file}.bak"
+            print(f"Creating backup of {structure_file} at {backup_path}")
+            import shutil
+            shutil.copy2(structure_file, backup_path)
+        
+        # Save the new structure
+        import json
+        with open(structure_file, 'w') as f:
+            json.dump({
+                "stats": {
+                    "total_directories": stats["total_dirs"],
+                    "total_files": stats["total_files"],
+                    "total_size_bytes": stats["total_size"],
+                    "total_size_human": format_size(stats["total_size"]),
+                    "scan_time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                },
+                "structure": dir_structure
+            }, f, indent=2)
+        print(f"✓ Complete directory structure saved to {structure_file}")
+        
+        # Save large files list to JSON
+        large_files_file = "large_files.json"
+        
+        # Backup if needed
+        if backup and os.path.exists(large_files_file):
+            backup_path = f"{large_files_file}.bak"
+            print(f"Creating backup of {large_files_file} at {backup_path}")
+            import shutil
+            shutil.copy2(large_files_file, backup_path)
+        
+        # Save the large files list
+        with open(large_files_file, 'w') as f:
+            json.dump({
+                "count": len(large_files),
+                "threshold": "99MB",
+                "threshold_bytes": size_threshold,
+                "files": large_files
+            }, f, indent=2)
+        print(f"✓ Found {len(large_files)} large files (>99MB), saved to {large_files_file}")
+        
+        # Update .gitignore with large files
+        gitignore_path = ".gitignore"
+        gitignore_lines = []
+        
+        # Read existing .gitignore if it exists
+        if os.path.exists(gitignore_path):
+            # Backup if needed
+            if backup:
+                backup_path = f"{gitignore_path}.bak"
+                print(f"Creating backup of {gitignore_path} at {backup_path}")
+                import shutil
+                shutil.copy2(gitignore_path, backup_path)
+            
+            with open(gitignore_path, 'r') as f:
+                gitignore_lines = [line.strip() for line in f.readlines()]
+        
+        # Add large files header if needed
+        if gitignore_lines and gitignore_lines[-1] != "":
+            gitignore_lines.append("")
+        
+        if len(large_files) > 0 and "# Large files (>99MB)" not in gitignore_lines:
+            gitignore_lines.append("# Large files (>99MB)")
+        
+        # Check and add large files that aren't already in .gitignore
+        added_count = 0
+        for file_info in large_files:
+            file_path = file_info["path"]
+            if file_path not in gitignore_lines:
+                gitignore_lines.append(file_path)
+                added_count += 1
+        
+        # Write updated .gitignore
+        with open(gitignore_path, 'w') as f:
+            f.write("\n".join(gitignore_lines))
+            # Ensure file ends with newline
+            if gitignore_lines and not gitignore_lines[-1].endswith('\n'):
+                f.write("\n")
+        
+        if added_count > 0:
+            print(f"✓ Added {added_count} large files to .gitignore")
+        else:
+            print("✓ No new large files to add to .gitignore")
+        
         return True
         
     except Exception as e:
-        print(f"Error updating file {file_path}: {e}")
+        print(f"Error during file update: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 
@@ -292,7 +455,10 @@ def parse_arguments():
     parser.add_argument("--github", action="store_true", help="Sync with GitHub")
     
     # File management options
-    parser.add_argument("--file-update", type=str, help="Update a specific file")
+    parser.add_argument("--file-update", action="store_true", 
+                       help="Analyze directory structure and handle large files")
+    parser.add_argument("--start-dir", type=str, default=".",
+                       help="Starting directory for file analysis (default: current directory)")
     parser.add_argument("--no-backup", action="store_true", help="Don't create backups when updating files")
     parser.add_argument("--restore-file", type=str, help="Restore a file from backup")
     
@@ -328,7 +494,7 @@ def main():
             
         # Handle file update
         if args.file_update:
-            file_update(args.file_update, not args.no_backup)
+            file_update(args.start_dir, not args.no_backup)
             # Exit after file update, don't proceed to GitHub sync
             return
             

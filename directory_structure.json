@@ -1,10 +1,10 @@
 {
   "stats": {
     "total_directories": 718,
-    "total_files": 4190,
-    "total_size_bytes": 674528397,
-    "total_size_human": "643.28 MB",
-    "scan_time": "2025-03-01 23:24:37"
+    "total_files": 4191,
+    "total_size_bytes": 674546945,
+    "total_size_human": "643.30 MB",
+    "scan_time": "2025-03-01 23:27:07"
   },
   "structure": {
     "LICENSE": {
@@ -24324,6 +24324,11 @@
         }
       }
     },
+    "github_sync.log": {
+      "type": "file",
+      "size": 311,
+      "size_human": "311.00 B"
+    },
     "patch": {
       "type": "directory",
       "contents": {
@@ -24399,8 +24404,8 @@
         },
         "uploadready.py": {
           "type": "file",
-          "size": 13712,
-          "size_human": "13.39 KB"
+          "size": 20954,
+          "size_human": "20.46 KB"
         },
         "fix_duplicate_code.py": {
           "type": "file",
@@ -24535,8 +24540,8 @@
     },
     "optimization.log": {
       "type": "file",
-      "size": 79768,
-      "size_human": "77.90 KB"
+      "size": 90763,
+      "size_human": "88.64 KB"
     }
   }
 }
