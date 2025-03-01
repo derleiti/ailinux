@@ -1,3 +1,5 @@
+/client/frontend/node_modules/
+/client/node_modules/
 electron
 client/node_modules/electron/dist/electron
 <<<<<< HEAD
