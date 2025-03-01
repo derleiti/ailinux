@@ -34,7 +34,7 @@ def fix_adjust_hierarchy_with_debugger():
         for i, line in enumerate(content):
             if 'result = subprocess.run' in line and 'check=True' in line:
                 # Found the problematic line, fix the syntax
-                content[i] = "" +
+                content[i] = ""
                     "    result = subprocess.run(['pylint', '--disable=all', '--enable=error'], check=True, capture_output=True, text=True)\n"
                 # Remove the next line if it's a continuation of this problematic syntax
                 if i+1 < len(content) and 'capture_output=True' in content[i+1]:

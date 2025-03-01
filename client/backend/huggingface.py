@@ -121,7 +121,7 @@ def check_dependencies():
         missing_deps.append("bitsandbytes")
 
     if missing_deps:
-        logger.warning("Missing dependencies: %s", '.join(missing_deps)}")
+        logger.warning("Missing dependencies: %s", '.join(missing_deps)}")'"
         logger.warning("Install them with: pip install " + " ".join(missing_deps))
     else:
         # Check for GPU if all dependencies are installed

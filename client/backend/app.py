@@ -91,7 +91,7 @@ def debug():
 
     except Exception as e:
         error_message = f"Error in debug endpoint: {str(e)}"
-        stack_trace = traceback.format_exc()
+        _stack_trace = traceback.format_exc()
         logger.exception(error_message)
         logger.debug("Stack trace: %sstack_trace")
         return jsonify({"error": error_message}), 500

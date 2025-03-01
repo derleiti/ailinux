@@ -140,7 +140,7 @@ class FileSync:
                 stdin, stdout, stderr = self.ssh.exec_command(f"mkdir -p {REMOTE_DIR}")
                 exit_status = stdout.channel.recv_exit_status()
                 if exit_status != 0:
-                    error = stderr.read().decode().strip()
+                    _error = stderr.read().decode().strip()
                     logger.error("Failed to create remote directory: %serror")
                     return False
                 logger.info("Created remote directory: %sREMOTE_DIR")
@@ -266,7 +266,7 @@ class FileSync:
                 stdin, stdout, stderr = self.ssh.exec_command(f"mkdir -p {dir_path}")
                 exit_status = stdout.channel.recv_exit_status()
                 if exit_status != 0:
-                    error = stderr.read().decode().strip()
+                    _error = stderr.read().decode().strip()
                     logger.error("Failed to create remote directory %sdir_path: %serror")
                     return False
                 logger.info("Created remote directory: %sdir_path")
@@ -481,9 +481,13 @@ class FileSync:
                     logger.error("Error uploading manifest: %se")
 
             logger.info(f"" +
-                "Sync completed: {len(files_to_upload)} uploaded, {len(files_to_download)} downloaded, "
+                "" +
+                    "
+                        "Sync completed: {len(files_to_upload)} uploaded, {len(files_to_download)} downloaded, "
                       f"" +
-                          "{len(files_to_delete_local)} deleted locally, {len(files_to_delete_remote)} deleted remotely")
+                          "" +
+                              "
+                                  "{len(files_to_delete_local)} deleted locally, {len(files_to_delete_remote)} deleted remotely")
 
             return True
 

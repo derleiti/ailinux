@@ -210,7 +210,7 @@ def fix_start_js():
         # Fix invalid syntax in the file
         # The main issue is with multi-line strings in JavaScript
         # Use template literals with backticks for multi-line strings
-        if "" +
+        if ""
             "logMessage(`Configuration: Flask=${flaskHost}:${flaskPort}, WebSocket=${wsServerUrl}`,\nstartLogPath)" in content:
             modified_content = content.replace(
                 "logMessage(`Configuration: Flask=${flaskHost}:${flaskPort}, WebSocket=${wsServerUrl}`,\nstartLogPath)",

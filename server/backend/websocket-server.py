@@ -144,14 +144,14 @@ async def handle_message(websocket, client_id, message_data):
         # Process the log asynchronously
         asyncio.create_task(
             process_log_analysis(websocket,
-            
+
             client_id,
             request_id,
             log_text,
             model_name,
             instruction)
         )
-    
+
     elif message_type == "get_models":
         # Return information about available models
         models = get_available_models()
@@ -159,7 +159,7 @@ async def handle_message(websocket, client_id, message_data):
             "type": "models_info",
             "models": models
         }))
-    
+
     elif message_type == "server_status":
         # Return server status information
         status_info = {
@@ -171,9 +171,9 @@ async def handle_message(websocket, client_id, message_data):
             "type": "server_status",
             "status": status_info
         }))
-    
+
     else:
-        logger.warning(f"Unknown message type: {message_type} from client {client_id}")
+        logger.warning("Unknown message type: %smessage_type from client %sclient_id")
         await websocket.send(json.dumps({
             "type": "error",
             "message": f"Unknown message type: {message_type}",
@@ -200,7 +200,7 @@ async def process_log_analysis(websocket, client_id, request_id, log_text, model
             "model": model_name,
             "status": "processing"
         }
-        
+
         # Send processing status update
         await websocket.send(json.dumps({
             "type": "analysis_status",
@@ -210,14 +210,14 @@ async def process_log_analysis(websocket, client_id, request_id, log_text, model
 
         # Analyze the log (this can be slow depending on the model)
         analysis_result = analyze_log(log_text, model_name, instruction)
-        
+
         # Calculate processing time
         processing_time = time.time() - active_sessions[request_id]["start_time"]
-        
+
         # Update session info
         active_sessions[request_id]["status"] = "completed"
         active_sessions[request_id]["processing_time"] = processing_time
-        
+
         # Send result back to client
         await websocket.send(json.dumps({
             "type": "analysis_result",
@@ -227,11 +227,12 @@ async def process_log_analysis(websocket, client_id, request_id, log_text, model
             "model": model_name
         }))
 
-        logger.info(f"Log analysis completed for request {request_id} in {processing_time:.2f} seconds")
-        
+        logger.info(f"" +
+            "Log analysis completed for request {request_id} in {processing_time:.2f} seconds")
+
     except Exception as e:
-        logger.exception(f"Error processing log analysis request {request_id}: {str(e)}")
-        
+        logger.exception("Error processing log analysis request %srequest_id: %sstr(e)")
+
         # Send error message to client
         await websocket.send(json.dumps({
             "type": "error",
@@ -244,7 +245,7 @@ async def process_log_analysis(websocket, client_id, request_id, log_text, model
         if request_id in active_sessions:
             active_sessions[request_id]["status"] = "error"
             active_sessions[request_id]["error"] = str(e)
-    
+
     finally:
         # Clean up the session after a delay (keep it for a while for reference)
         await asyncio.sleep(300)  # 5 minutes
@@ -262,9 +263,9 @@ async def connection_handler(websocket, path):
     client_id = None
     authenticated = False
     remote_address = websocket.remote_address[0] if hasattr(websocket, 'remote_address') else 'unknown'
-    
+
     try:
-        logger.info(f"New connection from {remote_address}")
+        logger.info("New connection from %sremote_address")
 
         # Wait for the authentication message
         try:
@@ -275,70 +276,72 @@ async def connection_handler(websocket, path):
             authenticated, client_id = await authenticate_client(websocket, message_data)
             if not authenticated:
                 return
-                
+
         except asyncio.TimeoutError:
-            logger.warning(f"Authentication timeout for {remote_address}")
+            logger.warning("Authentication timeout for %sremote_address")
             await websocket.send(json.dumps({"error": "Authentication timeout", "code": 408}))
             return
         except json.JSONDecodeError:
-            logger.warning(f"Invalid JSON in authentication message from {remote_address}")
+            logger.warning("Invalid JSON in authentication message from %sremote_address")
             await websocket.send(json.dumps({"error": "Invalid JSON", "code": 400}))
             return
-        
+
         # Main message handling loop
         async for message in websocket:
             now = time.time()
-            
+
             # Check rate limit
             if client_id in client_rate_limits:
                 last_message_time = client_rate_limits[client_id]
                 if now - last_message_time < RATE_LIMIT_INTERVAL:
-                    logger.warning(f"⏳ Rate limit reached for client {client_id}, message ignored")
+                    logger.warning("⏳ Rate limit reached for client %sclient_id, message ignored")
                     await websocket.send(json.dumps({
                         "type": "error",
                         "message": "Rate limit reached, please slow down",
                         "code": 429
                     }))
                     continue
-            
+
             # Update rate limit timestamp
             client_rate_limits[client_id] = now
-            
+
             try:
                 # Check message size
                 if len(message) > MAX_MESSAGE_SIZE:
-                    logger.warning(f"Message too large from client {client_id}: {len(message)} bytes")
+                    logger.warning(f"" +
+                        "Message too large from client {client_id}: {len(message)} bytes")
                     await websocket.send(json.dumps({
                         "type": "error",
                         "message": "Message too large",
                         "code": 413
                     }))
                     continue
-                
+
                 # Parse and handle the message
                 message_data = json.loads(message)
                 await handle_message(websocket, client_id, message_data)
-                
+
             except json.JSONDecodeError:
-                logger.warning(f"Invalid JSON from client {client_id}")
+                logger.warning("Invalid JSON from client %sclient_id")
                 await websocket.send(json.dumps({
                     "type": "error",
                     "message": "Invalid JSON",
                     "code": 400
                 }))
             except Exception as e:
-                logger.exception(f"Error handling message from client {client_id}: {str(e)}")
+                logger.exception("Error handling message from client %sclient_id: %sstr(e)")
                 await websocket.send(json.dumps({
                     "type": "error",
                     "message": "" +
                         "Server error processing message",
                     "code": 500
                 }))
-                
+
     except websockets.exceptions.ConnectionClosed as e:
-        logger.info(f"Connection closed with client {client_id or remote_address}: {e.code} {e.reason}")
+        logger.info(f"" +
+            "Connection closed with client {client_id or remote_address}: {e.code} {e.reason}")
     except Exception as e:
-        logger.exception(f"Error in connection handler for {client_id or remote_address}: {str(e)}")
+        logger.exception("Error in connection handler for %sclient_id or remote_address: %sstr(e)")
     finally:
         # Clean up client data
         if client_id:
@@ -346,7 +349,7 @@ async def connection_handler(websocket, path):
                 del connected_clients[client_id]
             if client_id in client_rate_limits:
                 del client_rate_limits[client_id]
-            logger.info(f"Client disconnected: {client_id}")
+            logger.info("Client disconnected: %sclient_id")
 
 
 async def periodic_cleanup():
@@ -354,7 +357,7 @@ async def periodic_cleanup():
     while True:
         try:
             now = time.time()
-            
+
             # Clean up inactive clients (no activity for 1 hour)
             inactive_clients = []
             for client_id, client_info in connected_clients.items():
@@ -362,29 +365,31 @@ async def periodic_cleanup():
                     inactive_clients.append(client_id)
 
             for client_id in inactive_clients:
-                logger.info(f"Removing inactive client: {client_id}")
+                logger.info("Removing inactive client: %sclient_id")
                 if client_id in connected_clients:
                     del connected_clients[client_id]
                 if client_id in client_rate_limits:
                     del client_rate_limits[client_id]
-            
+
             # Clean up old sessions (completed or error for more than 1 hour)
             old_sessions = []
             for request_id, session_info in active_sessions.items():
                 if session_info["status"] in ["completed", "error"] and now - session_info["start_time"] > 3600:
                     old_sessions.append(request_id)
-            
+
             for request_id in old_sessions:
                 if request_id in active_sessions:
                     del active_sessions[request_id]
 
             # Log server status periodically
             if logger.isEnabledFor(logging.INFO):
-                logger.info(f"Server status: {len(connected_clients)} connected clients, {len(active_sessions)} active sessions")
-                
+                logger.info(f"" +
+                    "
+                        "Server status: {len(connected_clients)} connected clients, {len(active_sessions)} active sessions")
+
         except Exception as e:
-            logger.exception(f"Error in periodic cleanup: {str(e)}")
-        
+            logger.exception("Error in periodic cleanup: %sstr(e)")
+
         # Run every 15 minutes
         await asyncio.sleep(900)
 
@@ -399,25 +404,33 @@ async def main():
     if USE_SSL and SSL_CERT and SSL_KEY:
         ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
         ssl_context.load_cert_chain(SSL_CERT, SSL_KEY)
-        logger.info(f"SSL enabled with cert: {SSL_CERT}")
+        logger.info("SSL enabled with cert: %sSSL_CERT")
 
     # Start the server
     async with websockets.serve(
-        connection_handler, 
+        connection_handler,
         HOST,
 
-        PORT, 
+        PORT,
         ssl=ssl_context,
 
         max_size=MAX_MESSAGE_SIZE,
+
+
+
+
+
+
         ping_interval=30,
         ping_timeout=10
     ):
-        logger.info(f"🚀 WebSocket server running on {HOST}:{PORT} (SSL: {'enabled' if ssl_context else 'disabled'})")
-        
+        logger.info(f"" +
+            "
+                "🚀 WebSocket server running on {HOST}:{PORT} (SSL: {'enabled' if ssl_context else 'disabled'})")
+
         # Start the periodic cleanup task
         cleanup_task = asyncio.create_task(periodic_cleanup())
-        
+
         # Keep the server running indefinitely
         await asyncio.Future()
 
@@ -428,17 +441,17 @@ if __name__ == "__main__":
         print("""
         █████╗ ██╗██╗     ██╗███╗   ██╗██╗   ██╗██╗  ██╗
        ██╔══██╗██║██║     ██║████╗  ██║██║   ██║╚██╗██╔╝
-       ███████║██║██║     ██║██╔██╗ ██║██║   ██║ ╚███╔╝ 
+       ███████║██║██║     ██║██╔██╗ ██║██║   ██║ ╚███╔╝
        ██╔══██║██║██║     ██║██║╚██╗██║██║   ██║ ██╔██╗
        ██║  ██║██║███████╗██║██║ ╚████║╚██████╔╝██╔╝ ██╗
        ╚═╝  ╚═╝╚═╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝
                                                          
        WebSocket Server
        """)
-       
+
         # Start the server
         asyncio.run(main())
     except KeyboardInterrupt:
         logger.info("Server stopped by user")
     except Exception as e:
-        logger.exception(f"Error starting server: {str(e)}")
+        logger.exception("Error starting server: %sstr(e)")

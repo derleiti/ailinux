@@ -13,6 +13,21 @@ CONFIG = {
 }
 
 def get(key):
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
 """
 Beschreibung für Funktion get.
 """

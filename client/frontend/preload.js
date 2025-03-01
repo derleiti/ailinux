@@ -16,7 +16,7 @@ contextBridge.exposeInMainWorld('ailinuxAPI', {
      * Send a chat message to the AI model
      * @param {string} message - The message to send
      * @param {string} modelType - The AI model to use (gpt4all, openai, gemini, huggingface)
-     * @returns {Promise<string>} - The AI's response
+     * @returns {Promise<string>} - The AI's response'
      */
     sendChatMessage: (message, modelType) => 
         ipcRenderer.invoke('chat-message', message, modelType),

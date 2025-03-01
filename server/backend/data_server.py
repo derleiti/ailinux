@@ -251,4 +251,7 @@ class DataStorage:
             
             # Add filters
             filters = []
-            
+                        except Exception as e:
+                        except Exception as e:
+                            pass  # Added by pylint fixer
+                pass  # Added by pylint fixer

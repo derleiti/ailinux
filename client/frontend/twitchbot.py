@@ -6,6 +6,21 @@ from twitchio.ext import commands
 import os
 
 class Bot(commands.Bot):
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
+    pass
 """
 Beschreibung für Klasse Bot.
 """

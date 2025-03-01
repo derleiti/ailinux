@@ -295,7 +295,7 @@ if __name__ == "__main__":
     # Check if models are available
     models = get_available_models()
     available_models = [model["name"] for model in models if model["available"]]
-    logger.info("Available models: %s", '.join(available_models)}")
+    logger.info("Available models: %s", '.join(available_models)}")'"
 
     # Start the Flask server
     app.run(host=HOST, port=PORT, debug=DEBUG)

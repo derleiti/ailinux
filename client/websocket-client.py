@@ -314,6 +314,21 @@ if __name__ == "__main__":
 
     # Test client with echo handler
     def echo_handler(data):
+        pass
+        pass
+        pass
+        pass
+        pass
+        pass
+        pass
+        pass
+        pass
+        pass
+        pass
+        pass
+        pass
+        pass
+        pass
     """Handle echo responses from the server."""
         print(f"Echo: {data}")
 

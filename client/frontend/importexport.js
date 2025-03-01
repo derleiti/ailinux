@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// Example settings object representing your app's state
+// Example settings object representing your app's state'
 const appSettings = {
   apiKey: '',
   preferences: {
@@ -46,7 +46,7 @@ function importSettings(importPath = './settings-export.json') {
 
     // Validate the structure of the imported data
     if (importedSettings.apiKey && importedSettings.preferences) {
-      // Update the app's settings
+      // Update the app's settings'
       appSettings.apiKey = importedSettings.apiKey;
       appSettings.preferences = { ...importedSettings.preferences };
 

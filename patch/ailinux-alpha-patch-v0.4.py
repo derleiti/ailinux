@@ -119,7 +119,7 @@ class CodeFixer:
             func_name = re.search(r'def\s+(\w+)', line)
             if func_name:
                 name = func_name.group(1)
-                docstring = f'{indent_str}"""" +
+                docstring = f'{indent_str}"""
                     "\n{indent_str}Beschreibung für Funktion {name}.\n{indent_str}"""\n'
                 lines.insert(issue.line_num, docstring)
                 return True

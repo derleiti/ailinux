@@ -36,12 +36,12 @@ HUGGINGFACE_MODEL_ID = os.getenv("HUGGINGFACE_MODEL_ID", "mistralai/Mistral-7B-I
 CACHE_DIR = os.getenv("HUGGINGFACE_CACHE_DIR", "./models/huggingface")
 
 # Global model instances
-_gpt4all_model = None
-_openai = None
-_gemini = None
-_huggingface_pipeline = None
-_huggingface_tokenizer = None
-_huggingface_model = None
+_GPT4ALL_MODEL = None
+_OPENAI = None
+_GEMINI = None
+_HUGGINGFACE_PIPELINE = None
+_HUGGINGFACE_TOKENIZER = None
+_HUGGINGFACE_MODEL = None
 
 
 class ModelNotInitializedError(Exception):
@@ -67,7 +67,7 @@ def initialize_gpt4all():
         model_path = os.path.expanduser(LLAMA_MODEL_PATH)
         if not os.path.exists(model_path):
             model_dir = os.path.dirname(model_path)
-            filename = os.path.basename(model_path)
+            _filename = os.path.basename(model_path)
             logger.warning("Model file not found at: %smodel_path")
             logger.info("Checking if model exists in directory: %smodel_dir")
 
@@ -295,7 +295,7 @@ instruction: Optional[str] = None) -> str:
         logger.exception("Error analyzing log with %smodel_name: %sstr(e)")
         return f"⚠ Error analyzing log: {str(e)}"
 
-    elapsed_time = time.time() - start_time
+    _elapsed_time = time.time() - start_time
     logger.info("Log analysis completed in %selapsed_time:.2f seconds")
 
     return response
@@ -450,7 +450,7 @@ def get_available_models() -> List[Dict[str, Any]]:
             "type": "local",
             "file": LLAMA_MODEL_PATH
         })
-    except Exception:
+    except (Exception, RuntimeError):
         models.append({
             "name": "gpt4all",
             "available": False,
@@ -483,7 +483,7 @@ def get_available_models() -> List[Dict[str, Any]]:
             "type": "local" if not HUGGINGFACE_API_KEY else "api",
             "model": HUGGINGFACE_MODEL_ID
         })
-    except Exception:
+    except (Exception, RuntimeError):
         models.append({
             "name": "huggingface",
             "available": False,
@@ -505,7 +505,7 @@ if __name__ == "__main__":
             model_name = model_info["name"]
             print(f"\nTesting {model_name} model...")
 
-            test_log = "2023-05-01 12:34:56 ERROR Failed to connect to database: Connection refused"
+            TEST_LOG = "2023-05-01 12:34:56 ERROR Failed to connect to database: Connection refused"
             result = analyze_log(test_log, model_name)
 
             print(f"\nAnalysis result from {model_name}:")

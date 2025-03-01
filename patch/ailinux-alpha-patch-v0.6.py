@@ -65,9 +65,9 @@ class CodeFixer:
         """Loads a file into the cache if it's not already loaded."""
         if file_path not in self.file_cache:
             if not os.path.exists(file_path):
-                self.logger.warning(f"File not found: {file_path}")
+                self.logger.warning("File not found: %sfile_path")
                 return []
-                
+
             with open(file_path, 'r', encoding='utf-8') as file:
                 self.file_cache[file_path] = file.readlines()
         return self.file_cache[file_path]
@@ -75,18 +75,18 @@ class CodeFixer:
     def save_file(self, file_path: str) -> None:
         """Saves the modified file contents."""
         if self.dry_run:
-            self.logger.info(f"[DRY RUN] Would save {file_path}")
+            self.logger.info("[DRY RUN] Would save %sfile_path")
         else:
             with open(file_path, 'w', encoding='utf-8') as file:
                 file.writelines(self.file_cache[file_path])
-            self.logger.info(f"Saved: {file_path}")
+            self.logger.info("Saved: %sfile_path")
 
     def fix_unused_import(self, issue: PylintIssue) -> bool:
         """Removes unused imports (W0611)."""
         lines = self.load_file(issue.file_path)
         if not lines:
             return False
-            
+
         line = lines[issue.line_num - 1]
 
         # Extract the unused import name from the message
@@ -123,7 +123,7 @@ class CodeFixer:
         lines = self.load_file(issue.file_path)
         if not lines:
             return False
-            
+
         line = lines[issue.line_num - 1]
         fixed_line = line.rstrip() + '\n'
 
@@ -141,7 +141,7 @@ class CodeFixer:
         lines = self.load_file(issue.file_path)
         if not lines:
             return False
-            
+
         line = lines[issue.line_num - 1]
 
         # Detect if it's a function, class, or module
@@ -184,15 +184,15 @@ class CodeFixer:
         lines = self.load_file(issue.file_path)
         if not lines:
             return False
-            
+
         line = lines[issue.line_num - 1]
-        
+
         # Try to break the line if it's longer than the limit
         match = re.search(r"Line too long \((\d+)/(\d+)\)", issue.message)
         if match:
             current_len = int(match.group(1))
             limit = int(match.group(2))
-            
+
             if current_len <= limit:
                 return False
 
@@ -235,16 +235,16 @@ class CodeFixer:
         lines = self.load_file(issue.file_path)
         if not lines:
             return False
-            
+
         line = lines[issue.line_num - 1]
-        
+
         # Look for open() calls without encoding
         match = re.search(r'open\(\s*([^,)]+)(?:\s*,\s*([^,)]+))?\s*\)', line)
         if match:
             if match.group(2) and "encoding" in match.group(2):
                 # Encoding already specified
                 return False
-                
+
             # Replace the open call with one that includes encoding
             if match.group(2):
                 # There's a second parameter (probably mode)
@@ -252,11 +252,11 @@ class CodeFixer:
             else:
                 # Only filepath parameter
                 replacement = f'open({match.group(1)}, encoding=\'utf-8\')'
-                
+
             new_line = line.replace(match.group(0), replacement)
             lines[issue.line_num - 1] = new_line
             return True
-            
+
         return False
 
     def fix_f_string_logging(self, issue: PylintIssue) -> bool:
@@ -267,22 +267,22 @@ class CodeFixer:
         lines = self.load_file(issue.file_path)
         if not lines:
             return False
-            
+
         line = lines[issue.line_num - 1]
-        
+
         # Regular expression to find logging calls with f-strings
         match = re.search(r'(logger\.\w+)\(f[\'"](.+?)[\'"](,.+?)?\)', line)
         if match:
             log_call = match.group(1)
             f_string_content = match.group(2)
             args = match.group(3) if match.group(3) else ''
-            
+
             # Replace f-string with % formatting
             f_string_content = f_string_content.replace('{', '%s').replace('}', '')
             new_line = f'{log_call}("{f_string_content}"{args})'
             lines[issue.line_num - 1] = line.replace(match.group(0), new_line)
             return True
-            
+
         return False
 
     def fix_issues(self) -> int:
@@ -315,11 +315,11 @@ class CodeFixer:
             if fixed:
                 self.fixes_applied += 1
                 self.fixed_issues.append(issue)
-                self.logger.info(f"Fixed: {issue}")
+                self.logger.info("Fixed: %sissue")
             else:
                 self.skipped_issues += 1
                 self.unfixed_issues.append(issue)
-                self.logger.info(f"Skipped: {issue}")
+                self.logger.info("Skipped: %sissue")
 
         # Save all modified files
         for file_path in self.file_cache:
@@ -327,10 +327,10 @@ class CodeFixer:
 
         # Create a summary
         self.logger.info("\n" + "="*50)
-        self.logger.info(f"SUMMARY:")
-        self.logger.info(f"Total issues processed: {len(self.issues)}")
-        self.logger.info(f"Fixed: {self.fixes_applied} issues")
-        self.logger.info(f"Skipped: {self.skipped_issues} issues")
+        self.logger.info("SUMMARY:")
+        self.logger.info("Total issues processed: %slen(self.issues)")
+        self.logger.info("Fixed: %sself.fixes_applied issues")
+        self.logger.info("Skipped: %sself.skipped_issues issues")
 
         # Group unfixed issues by code for better overview
         unfixed_by_code: Dict[str, int] = {}
@@ -342,7 +342,7 @@ class CodeFixer:
         if unfixed_by_code:
             self.logger.info("\nUnfixed issues by type:")
             for code, count in sorted(unfixed_by_code.items(), key=lambda x: x[1], reverse=True):
-                self.logger.info(f"  {code}: {count} issues")
+                self.logger.info("  %scode: %scount issues")
 
         return self.fixes_applied
 
@@ -354,7 +354,8 @@ def parse_pylint_log(log_path: str) -> List[PylintIssue]:
     with open(log_path, 'r', encoding='utf-8') as file:
         for line in file:
             # Typical pylint format: file.py:42:0: C0111: Missing docstring (missing-docstring)
-            match = re.match(r'^([\w\./\-]+):(\d+)(?::\d+)?: ([CRWE]\d{4}): (.+?)(?:\s\([\w-]+\))?$', line.strip())
+            match = re.match(r'" +'"
+                "^([\w\./\-]+):(\d+)(?::\d+)?: ([CRWE]\d{4}): (.+?)(?:\s\([\w-]+\))?$', line.strip())
             if match:
                 file_path, line_num, code, message = match.groups()
                 issues.append(PylintIssue(
@@ -370,11 +371,11 @@ def parse_pylint_log(log_path: str) -> List[PylintIssue]:
 def main():
     """Main function of the program."""
     parser = argparse.ArgumentParser(description='Fix common pylint issues automatically.')
-    parser.add_argument('log_file', nargs='?', default='optimization.log', 
+    parser.add_argument('log_file', nargs='?', default='optimization.log',
                         help='Path to the pylint log file (default: optimization.log)')
-    parser.add_argument('--dry-run', action='store_true', 
+    parser.add_argument('--dry-run', action='store_true',
                         help='Show changes without applying them')
-    parser.add_argument('--output-log', 
+    parser.add_argument('--output-log',
                         help='Path to the output log file (default: pylint_fixes.log)',
                         default='pylint_fixes.log')
     parser.add_argument('--create-patch', action='store_true',
