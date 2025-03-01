@@ -6,33 +6,35 @@
     <title>AILinux - AI-Powered Log Analysis</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
     <style>
         :root {
             --primary-color: #2196f3;
             --secondary-color: #6c757d;
             --success-color: #28a745;
             --danger-color: #dc3545;
-            --warning-color: #ffc107;
             --dark-bg: #212529;
-            --dark-bg-lighter: #2c3237;
             --light-bg: #f8f9fa;
-            --border-radius: 8px;
-            --transition-speed: 0.3s;
+            --card-bg-light: #ffffff;
+            --card-bg-dark: #2c3237;
+            --text-light: #212529;
+            --text-dark: #f8f9fa;
+            --border-light: #dee2e6;
+            --border-dark: #495057;
+            --hover-light: #e9ecef;
+            --hover-dark: #343a40;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: background-color var(--transition-speed), color var(--transition-speed);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
             overflow-x: hidden;
             background-color: var(--light-bg);
-            color: #333;
+            color: var(--text-light);
         }
         
         body.dark-mode {
             background-color: var(--dark-bg);
-            color: #f0f0f0;
+            color: var(--text-dark);
         }
         
         .navbar-brand {
@@ -40,69 +42,134 @@
             color: var(--primary-color) !important;
         }
         
-        .navbar-brand i {
-            margin-right: 0.5rem;
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
         .card {
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all var(--transition-speed);
-            margin-bottom: 1.5rem;
-            overflow: hidden;
+            background-color: var(--card-bg-light);
+            border-color: var(--border-light);
+            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
         
         .dark-mode .card {
-            background-color: var(--dark-bg-lighter);
-            color: #f0f0f0;
-            border-color: #444;
+            background-color: var(--card-bg-dark);
+            border-color: var(--border-dark);
         }
         
-        .tab-content {
-            padding: 1.5rem;
-            background-color: white;
-            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .dark-mode .tab-content {
-            background-color: var(--dark-bg-lighter);
+        #chat-container {
+            height: calc(100vh - 180px);
+            display: flex;
+            flex-direction: column;
         }
         
-        .nav-tabs .nav-link {
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
-            padding: 0.75rem 1rem;
-            font-weight: 500;
+        #chat-log {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.02);
+            border-radius: 8px;
+            margin-bottom: 15px;
         }
         
-        .dark-mode .nav-tabs .nav-link {
-            color: #ddd;
+        .dark-mode #chat-log {
+            background-color: rgba(255, 255, 255, 0.05);
         }
         
-        .dark-mode .nav-tabs .nav-link.active {
-            background-color: var(--dark-bg-lighter);
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+            position: relative;
+        }
+        
+        .user-message {
+            background-color: #e9f5ff;
+            color: #333;
+            margin-left: auto;
+            border-bottom-right-radius: 2px;
+        }
+        
+        .ai-message {
+            background-color: #f1f1f1;
+            color: #333;
+            margin-right: auto;
+            border-bottom-left-radius: 2px;
+        }
+        
+        .dark-mode .user-message {
+            background-color: #1e88e5;
             color: white;
-            border-color: #444 #444 var(--dark-bg-lighter);
         }
         
-        .log-input-container {
-            height: calc(100vh - 380px);
-            min-height: 300px;
+        .dark-mode .ai-message {
+            background-color: #424242;
+            color: white;
         }
         
-        .CodeMirror {
-            height: 100%;
-            font-family: 'JetBrains Mono', monospace, 'Courier New', Courier;
-            font-size: 14px;
-            border-radius: var(--border-radius);
+        .system-message {
+            text-align: center;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin: 10px 0;
         }
         
-        .dark-mode .CodeMirror {
-            border-color: #444;
+        .message-time {
+            font-size: 0.7rem;
+            color: #888;
+            margin-top: 5px;
+            text-align: right;
+        }
+        
+        .dark-mode .message-time {
+            color: #aaa;
+        }
+        
+        .model-badge {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-right: 5px;
+            background-color: var(--primary-color);
+            color: white;
+            display: inline-block;
+        }
+        
+        #user-input {
+            resize: none;
+            border-radius: 8px;
+            padding: 12px;
+            transition: all 0.3s;
+            min-height: 80px;
+        }
+        
+        #user-input:focus {
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+            border-color: var(--primary-color);
+        }
+        
+        .dark-mode #user-input {
+            background-color: var(--card-bg-dark);
+            color: var(--text-dark);
+            border-color: var(--border-dark);
         }
         
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
+            transition: all 0.3s;
         }
         
         .btn-primary:hover {
@@ -110,440 +177,581 @@
             border-color: #1976d2;
         }
         
-        .btn-outline-primary {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-        
-        .btn-outline-primary:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .dark-mode .btn-outline-primary {
-            color: #90caf9;
-            border-color: #90caf9;
-        }
-        
-        .dark-mode .btn-outline-primary:hover {
-            background-color: #90caf9;
-            color: var(--dark-bg);
-        }
-        
         .model-selector {
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
+            padding: 8px 12px;
+            margin: 5px;
             cursor: pointer;
-            border: 2px solid #ddd;
-            transition: all var(--transition-speed);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            transition: all 0.2s;
             display: inline-block;
-            font-weight: 500;
+            background-color: #f8f9fa;
+        }
+        
+        .dark-mode .model-selector {
+            background-color: #343a40;
+        }
+        
+        .model-selector:hover {
+            background-color: var(--hover-light);
+        }
+        
+        .dark-mode .model-selector:hover {
+            background-color: var(--hover-dark);
         }
         
         .model-selector.active {
             border-color: var(--primary-color);
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .dark-mode .model-selector {
-            border-color: #444;
+            font-weight: bold;
+            background-color: rgba(33, 150, 243, 0.1);
         }
         
         .dark-mode .model-selector.active {
-            border-color: #90caf9;
-            background-color: #90caf9;
-            color: var(--dark-bg);
+            background-color: rgba(33, 150, 243, 0.2);
         }
         
-        .status-badge {
+        .loading-spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s linear infinite;
             display: inline-block;
-            padding: 0.25rem 0.5rem;
-            border-radius: 1rem;
-            font-size: 0.8rem;
-            font-weight: 500;
+            vertical-align: middle;
+            margin-right: 10px;
         }
         
-        .status-badge.status-online {
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        .status-online {
             background-color: var(--success-color);
-            color: white;
         }
         
-        .status-badge.status-offline {
+        .status-offline {
             background-color: var(--danger-color);
-            color: white;
         }
         
-        .status-badge.status-loading {
-            background-color: var(--warning-color);
-            color: black;
-        }
-        
-        .analysis-container {
-            max-height: calc(100vh - 400px);
-            overflow-y: auto;
-            padding: 1rem;
-            background-color: #f9f9f9;
-            border-radius: var(--border-radius);
-            border: 1px solid #ddd;
-        }
-        
-        .dark-mode .analysis-container {
-            background-color: #2a2e32;
-            border-color: #444;
-        }
-        
-        .log-file-upload {
-            margin-bottom: 1rem;
-        }
-        
-        .spinner-border {
-            width: 1.5rem;
-            height: 1.5rem;
-            border-width: 0.2rem;
-        }
-        
-        .toast-container {
-            position: fixed;
-            bottom: 1rem;
-            right: 1rem;
-            z-index: 1050;
-        }
-        
-        .dark-mode .toast {
-            background-color: var(--dark-bg-lighter);
-            color: #f0f0f0;
-        }
-        
-        .dark-mode .toast-header {
-            background-color: rgba(50, 55, 60, 0.85);
-            color: #f0f0f0;
+        .sidebar-toggle {
+            cursor: pointer;
+            padding: 5px;
         }
         
         .settings-icon {
             cursor: pointer;
-            transition: transform var(--transition-speed);
+            transition: transform 0.3s;
         }
         
         .settings-icon:hover {
             transform: rotate(30deg);
         }
         
-        .history-item {
+        #sidebar {
+            width: 280px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -280px;
+            transition: left 0.3s;
+            background-color: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding-top: 60px;
+            overflow-y: auto;
+        }
+        
+        .dark-mode #sidebar {
+            background-color: #2c3237;
+        }
+        
+        #sidebar.open {
+            left: 0;
+        }
+        
+        .sidebar-item {
+            padding: 10px 20px;
             cursor: pointer;
-            padding: 0.75rem;
-            border-radius: var(--border-radius);
-            margin-bottom: 0.5rem;
-            background-color: #f0f0f0;
-            transition: all var(--transition-speed);
+            transition: background-color 0.3s;
         }
         
-        .dark-mode .history-item {
-            background-color: #32373d;
+        .sidebar-item:hover {
+            background-color: rgba(33, 150, 243, 0.1);
         }
         
-        .history-item:hover {
-            background-color: #e0e0e0;
+        .dark-mode .sidebar-item:hover {
+            background-color: rgba(33, 150, 243, 0.2);
         }
         
-        .dark-mode .history-item:hover {
-            background-color: #3a4148;
+        .sidebar-item i {
+            margin-right: 10px;
+            color: var(--primary-color);
         }
         
-        .model-badge {
-            font-size: 0.7rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 0.5rem;
-            background-color: var(--secondary-color);
+        .tab-content {
+            padding: 20px 0;
+        }
+        
+        .nav-tabs .nav-link {
+            border: none;
+            color: var(--secondary-color);
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .dark-mode .nav-tabs .nav-link {
+            color: #adb5bd;
+        }
+        
+        .nav-tabs .nav-link.active {
+            border: none;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            background-color: transparent;
+        }
+        
+        .dark-mode .nav-tabs .nav-link.active {
+            background-color: transparent;
+        }
+        
+        .system-status {
+            font-size: 0.9rem;
+        }
+        
+        .system-status .progress {
+            height: 6px;
+            margin-top: 5px;
+            background-color: #e9ecef;
+        }
+        
+        .dark-mode .system-status .progress {
+            background-color: #343a40;
+        }
+        
+        .file-drop-area {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        
+        .file-drop-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(33, 150, 243, 0.05);
+        }
+        
+        .dark-mode .file-drop-area {
+            border-color: #495057;
+        }
+        
+        .dark-mode .file-drop-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(33, 150, 243, 0.1);
+        }
+        
+        .huggingface-model {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .huggingface-model:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(33, 150, 243, 0.05);
+        }
+        
+        .dark-mode .huggingface-model {
+            border-color: #495057;
+        }
+        
+        .dark-mode .huggingface-model:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(33, 150, 243, 0.1);
+        }
+        
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1010;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .popup-overlay.show {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .popup-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            transition: all 0.3s;
+            transform: scale(0.8);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dark-mode .popup-content {
+            background-color: #2c3237;
             color: white;
-            margin-left: 0.5rem;
         }
         
-        .dropdown-menu {
-            border-radius: var(--border-radius);
-            padding: 0.5rem;
-            border: 1px solid #ddd;
+        .popup-overlay.show .popup-content {
+            transform: scale(1);
         }
         
-        .dark-mode .dropdown-menu {
-            background-color: var(--dark-bg-lighter);
-            border-color: #444;
+        .api-key-input {
+            position: relative;
         }
         
-        .dark-mode .dropdown-item {
-            color: #f0f0f0;
-        }
-        
-        .dark-mode .dropdown-item:hover {
-            background-color: #3a4148;
-        }
-        
-        .huggingface-models-dropdown {
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        
-        .badge-downloads {
-            background-color: #6c757d;
-            font-size: 0.7rem;
-        }
-        
-        .badge-likes {
-            background-color: #dc3545;
-            font-size: 0.7rem;
-        }
-        
-        /* System log styles */
-        .system-log-container {
-            font-family: 'JetBrains Mono', monospace, 'Courier New', Courier;
-            font-size: 0.8rem;
-            background-color: #f0f0f0;
-            color: #333;
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        
-        .dark-mode .system-log-container {
-            background-color: #1a1d21;
-            color: #f0f0f0;
-        }
-        
-        .log-entry {
-            margin-bottom: 0.25rem;
-            padding: 0.25rem;
-            border-radius: 4px;
-        }
-        
-        .log-level-info {
-            color: #0d6efd;
-        }
-        
-        .log-level-warning {
-            color: #ffc107;
-        }
-        
-        .log-level-error {
-            color: #dc3545;
-        }
-        
-        /* WebSocket indicator */
-        .ws-indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            margin-right: 5px;
-        }
-        
-        .ws-connected {
-            background-color: var(--success-color);
-        }
-        
-        .ws-disconnected {
-            background-color: var(--danger-color);
+        .api-key-input .toggle-visibility {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+            color: #6c757d;
         }
     </style>
 </head>
 <body>
-    <!-- Toast Notifications -->
-    <div class="toast-container">
-        <div id="notification-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
-            <div class="toast-header">
-                <i class="bi bi-info-circle me-2"></i>
-                <strong class="me-auto" id="toast-title">Notification</strong>
-                <small id="toast-time">Just now</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="p-3">
+            <h5 class="mb-3">AILinux</h5>
+            <div class="sidebar-item" id="sidebarHome">
+                <i class="bi bi-house-door"></i> Home
             </div>
-            <div class="toast-body" id="toast-message">
-                This is a notification message.
+            <div class="sidebar-item" id="sidebarSettings">
+                <i class="bi bi-gear"></i> Settings
+            </div>
+            <div class="sidebar-item" id="sidebarModels">
+                <i class="bi bi-cpu"></i> AI Models
+            </div>
+            <div class="sidebar-item" id="sidebarLogs">
+                <i class="bi bi-file-text"></i> Log Files
+            </div>
+            <div class="sidebar-item" id="sidebarSystemStatus">
+                <i class="bi bi-activity"></i> System Status
+            </div>
+            <hr>
+            <div class="sidebar-item" id="sidebarHelp">
+                <i class="bi bi-question-circle"></i> Help
+            </div>
+            <div class="sidebar-item" id="sidebarAbout">
+                <i class="bi bi-info-circle"></i> About
             </div>
         </div>
     </div>
 
-    <!-- Top Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-3">
+    <!-- Top navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
         <div class="container-fluid">
+            <button class="btn btn-sm border-0 sidebar-toggle me-2" id="sidebarToggle">
+                <i class="bi bi-list fs-5"></i>
+            </button>
             <a class="navbar-brand" href="#">
                 <i class="bi bi-cpu"></i> AILinux
             </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" id="nav-analyze">Log Analysis</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="nav-history">History</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="nav-system">System</a>
-                    </li>
-                </ul>
-                
-                <div class="d-flex align-items-center">
-                    <!-- WebSocket Status Indicator -->
-                    <div class="me-3">
-                        <span class="ws-indicator ws-disconnected" id="ws-indicator"></span>
-                        <small id="ws-status-text">Disconnected</small>
-                    </div>
-                    
-                    <!-- Settings Button -->
-                    <button class="btn btn-outline-primary me-2" id="settings-btn">
-                        <i class="bi bi-gear"></i> Settings
-                    </button>
-                    
-                    <!-- Dark Mode Toggle -->
-                    <div class="form-check form-switch ms-2">
-                        <input class="form-check-input" type="checkbox" id="dark-mode-toggle">
-                        <label class="form-check-label" for="dark-mode-toggle">
-                            <i class="bi bi-moon"></i>
-                        </label>
-                    </div>
+            <div class="ms-auto d-flex align-items-center">
+                <!-- Connection Status -->
+                <div class="me-3">
+                    <span class="status-indicator status-offline" id="connectionStatus"></span>
+                    <span id="connectionText" class="d-none d-sm-inline">Disconnected</span>
                 </div>
+                
+                <!-- Theme Toggle -->
+                <button class="btn btn-sm btn-outline-secondary me-2" id="themeToggle">
+                    <i class="bi bi-moon"></i>
+                </button>
+                
+                <!-- Settings -->
+                <button class="btn btn-sm btn-outline-secondary settings-icon" id="settingsBtn">
+                    <i class="bi bi-gear"></i>
+                </button>
             </div>
         </div>
     </nav>
-    
-    <!-- Main Content Container -->
-    <div class="container-fluid" id="main-container">
-        <!-- Log Analysis View -->
-        <div id="analysis-view" class="view-container active-view">
-            <div class="row">
-                <!-- Left Panel: Log Input -->
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Log Input</h5>
-                            <div>
-                                <button class="btn btn-sm btn-outline-secondary me-1" id="clear-log-btn">
-                                    <i class="bi bi-trash"></i> Clear
-                                </button>
-                                <button class="btn btn-sm btn-outline-primary" id="load-log-btn">
-                                    <i class="bi bi-file-earmark-text"></i> Load File
-                                </button>
-                                <input type="file" id="log-file-input" class="d-none">
-                            </div>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="log-input-container" id="log-editor-container"></div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col">
-                                    <select class="form-select" id="model-select">
-                                        <option value="gpt4all">GPT4All (Local)</option>
-                                        <option value="huggingface">Hugging Face (Local)</option>
-                                        <option value="openai">OpenAI GPT-4</option>
-                                        <option value="gemini">Google Gemini</option>
-                                    </select>
-                                </div>
-                                <div class="col-auto">
-                                    <button class="btn btn-primary px-4" id="analyze-btn">
-                                        <span class="spinner-border spinner-border-sm d-none me-2" id="analyze-spinner"></span>
-                                        <i class="bi bi-search"></i> Analyze
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <!-- Hugging Face Model Selector (hidden by default) -->
-                            <div class="mt-3 d-none" id="huggingface-model-selector">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <h6 class="mb-0">Hugging Face Model:</h6>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="hf-models-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-list"></i> Browse Models
-                                        </button>
-                                        <ul class="dropdown-menu huggingface-models-dropdown" aria-labelledby="hf-models-dropdown" id="hf-models-list">
-                                            <li class="dropdown-item">Loading models...</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div id="hf-models-container">
-                                    <div class="model-selector active" data-model-id="mistralai/Mistral-7B-Instruct-v0.2">
-                                        Mistral-7B-Instruct <span class="badge rounded-pill bg-secondary">Default</span>
-                                    </div>
-                                    <div class="model-selector" data-model-id="TinyLlama/TinyLlama-1.1B-Chat-v1.0">
-                                        TinyLlama-1.1B-Chat <span class="badge rounded-pill bg-success">Fast</span>
-                                    </div>
-                                    <div class="model-selector" data-model-id="microsoft/phi-2">
-                                        Microsoft Phi-2 <span class="badge rounded-pill bg-info">Compact</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+    <!-- Main Content Area -->
+    <div class="main-container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Tabs Navigation -->
+                <ul class="nav nav-tabs" id="mainTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="chat-tab" data-bs-toggle="tab" data-bs-target="#chat-pane" type="button" role="tab" aria-controls="chat-pane" aria-selected="true">
+                            <i class="bi bi-chat-dots"></i> Log Analysis
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="models-tab" data-bs-toggle="tab" data-bs-target="#models-pane" type="button" role="tab" aria-controls="models-pane" aria-selected="false">
+                            <i class="bi bi-cpu"></i> AI Models
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="logs-tab" data-bs-toggle="tab" data-bs-target="#logs-pane" type="button" role="tab" aria-controls="logs-pane" aria-selected="false">
+                            <i class="bi bi-file-text"></i> Log Files
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="system-tab" data-bs-toggle="tab" data-bs-target="#system-pane" type="button" role="tab" aria-controls="system-pane" aria-selected="false">
+                            <i class="bi bi-activity"></i> System
+                        </button>
+                    </li>
+                </ul>
                 
-                <!-- Right Panel: Analysis Results -->
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Analysis Results</h5>
-                            <div>
-                                <button class="btn btn-sm btn-outline-secondary" id="copy-result-btn">
-                                    <i class="bi bi-clipboard"></i> Copy
-                                </button>
-                                <button class="btn btn-sm btn-outline-secondary ms-1" id="save-result-btn">
-                                    <i class="bi bi-save"></i> Save
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div id="result-placeholder" class="text-center py-5 text-muted">
-                                <i class="bi bi-search" style="font-size: 3rem;"></i>
-                                <h5 class="mt-3">Enter a log and click Analyze</h5>
-                                <p>AI will analyze your log and provide insights</p>
-                            </div>
-                            
-                            <div id="analysis-result" class="analysis-container d-none">
-                                <!-- Analysis results will be displayed here -->
-                            </div>
-                            
-                            <div id="analysis-metadata" class="mt-3 d-none">
-                                <div class="d-flex justify-content-between align-items-center text-muted small">
-                                    <div>
-                                        <i class="bi bi-clock"></i> <span id="analysis-time">0.0s</span> |
-                                        <i class="bi bi-robot"></i> <span id="analysis-model">Model</span>
+                <!-- Tab Content -->
+                <div class="tab-content" id="mainTabsContent">
+                    <!-- Chat/Log Analysis Tab -->
+                    <div class="tab-pane fade show active" id="chat-pane" role="tabpanel" aria-labelledby="chat-tab">
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Select AI Model</h5>
+                                        <div class="model-selectors d-flex flex-wrap" id="modelSelectors">
+                                            <div class="model-selector active" data-model="gpt4all">
+                                                <i class="bi bi-laptop"></i> GPT4All (Local)
+                                            </div>
+                                            <div class="model-selector" data-model="openai">
+                                                <i class="bi bi-cloud"></i> OpenAI
+                                            </div>
+                                            <div class="model-selector" data-model="gemini">
+                                                <i class="bi bi-cloud"></i> Google Gemini
+                                            </div>
+                                            <div class="model-selector" data-model="huggingface">
+                                                <i class="bi bi-code-square"></i> HuggingFace
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <span id="analysis-timestamp">Just now</span>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Log Analysis</h5>
+                                        <div id="chat-container">
+                                            <div id="chat-log">
+                                                <div class="system-message">Welcome to AILinux! Paste your log to analyze it, or try uploading a log file.</div>
+                                            </div>
+                                            <div class="row g-3">
+                                                <div class="col-12">
+                                                    <textarea id="user-input" class="form-control" placeholder="Paste your log text here or upload a file..."></textarea>
+                                                </div>
+                                                <div class="col-12 d-flex justify-content-between">
+                                                    <button class="btn btn-outline-secondary" id="uploadBtn">
+                                                        <i class="bi bi-upload"></i> Upload File
+                                                    </button>
+                                                    <button class="btn btn-primary" id="analyzeBtn">
+                                                        <i class="bi bi-lightning"></i> Analyze
+                                                    </button>
+                                                </div>
+                                                <input type="file" id="fileInput" style="display: none;">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Advanced Options Card -->
-                    <div class="card mt-3">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">Advanced Options</h5>
-                            <button class="btn btn-sm btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#advancedOptionsCollapse">
-                                <i class="bi bi-chevron-down"></i>
-                            </button>
-                        </div>
-                        <div class="collapse" id="advancedOptionsCollapse">
-                            <div class="card-body">
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <label for="temperature-range" class="form-label">Temperature: <span id="temperature-value">0.7</span></label>
-                                        <input type="range" class="form-range" id="temperature-range" min="0" max="1" step="0.1" value="0.7">
-                                    </div>
-                                    <div class="col">
-                                        <label for="max-tokens-input" class="form-label">Max Tokens:</label>
-                                        <input type="number" class="form-control" id="max-tokens-input" value="1024" min="64" max="4096">
+                    <!-- AI Models Tab -->
+                    <div class="tab-pane fade" id="models-pane" role="tabpanel" aria-labelledby="models-tab">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Available AI Models</h5>
+                                        <p class="card-text">Select a model to use for log analysis.</p>
+                                        
+                                        <div class="row" id="availableModels">
+                                            <div class="col-12 text-center">
+                                                <div class="loading-spinner"></div>
+                                                <p>Loading models...</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="auto-save-toggle">
-                                    <label class="form-check-label" for="auto-save-toggle">Automatically save analysis to history</label>
+                            </div>
+                            
+                            <div class="col-md-12 mt-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">HuggingFace Models</h5>
+                                        <p class="card-text">Explore available HuggingFace models for text generation.</p>
+                                        
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" placeholder="Search models..." id="modelSearchInput">
+                                            <button class="btn btn-outline-secondary" type="button" id="modelSearchBtn">
+                                                <i class="bi bi-search"></i>
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="row" id="huggingfaceModels">
+                                            <div class="col-12 text-center">
+                                                <p>Search for models or click "Load Models" to view popular options.</p>
+                                                <button class="btn btn-primary" id="loadHuggingfaceBtn">
+                                                    <i class="bi bi-cloud-download"></i> Load Models
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Log Files Tab -->
+                    <div class="tab-pane fade" id="logs-pane" role="tabpanel" aria-labelledby="logs-tab">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Upload Log File</h5>
+                                        <div class="file-drop-area" id="dropArea">
+                                            <i class="bi bi-cloud-upload fs-3"></i>
+                                            <p class="mt-2">Drag & drop your log file here or click to browse</p>
+                                            <small class="text-muted">Supported formats: .log, .txt, .json</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12 mt-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Recent Logs</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover" id="recentLogsTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Timestamp</th>
+                                                        <th>Type</th>
+                                                        <th>Message</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="4" class="text-center">
+                                                            <div class="loading-spinner"></div>
+                                                            <p>Loading logs...</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- System Tab -->
+                    <div class="tab-pane fade" id="system-pane" role="tabpanel" aria-labelledby="system-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">System Resources</h5>
+                                        <div class="system-status">
+                                            <div class="mb-3">
+                                                <div class="d-flex justify-content-between">
+                                                    <span>CPU Usage</span>
+                                                    <span id="cpuUsage">0%</span>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-primary" id="cpuBar" role="progressbar" style="width: 0%"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <div class="d-flex justify-content-between">
+                                                    <span>Memory Usage</span>
+                                                    <span id="ramUsage">0%</span>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success" id="ramBar" role="progressbar" style="width: 0%"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <div class="d-flex justify-content-between">
+                                                    <span>Disk Usage</span>
+                                                    <span id="diskUsage">0%</span>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-warning" id="diskBar" role="progressbar" style="width: 0%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card mt-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Network Status</h5>
+                                        <div id="networkStatus">
+                                            <p><strong>Status:</strong> <span id="apiStatus">Checking...</span></p>
+                                            <p><strong>WebSocket:</strong> <span id="wsStatus">Checking...</span></p>
+                                            <p><strong>Last Updated:</strong> <span id="lastUpdated">-</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">AI Models Status</h5>
+                                        <div id="aiModelsStatus">
+                                            <p><strong>GPT4All:</strong> <span id="gpt4allStatus">Checking...</span></p>
+                                            <p><strong>OpenAI:</strong> <span id="openaiStatus">Checking...</span></p>
+                                            <p><strong>Google Gemini:</strong> <span id="geminiStatus">Checking...</span></p>
+                                            <p><strong>HuggingFace:</strong> <span id="huggingfaceStatus">Checking...</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card mt-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Application Info</h5>
+                                        <div>
+                                            <p><strong>Version:</strong> <span id="appVersion">1.0.0</span></p>
+                                            <p><strong>Environment:</strong> <span id="appEnvironment">development</span></p>
+                                            <p><strong>Backend URL:</strong> <span id="backendUrl">http://localhost:8081</span></p>
+                                            <p><strong>WebSocket URL:</strong> <span id="wsUrl">ws://localhost:8082</span></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -551,1584 +759,274 @@
                 </div>
             </div>
         </div>
-        
-        <!-- History View -->
-        <div id="history-view" class="view-container d-none">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Analysis History</h5>
-                    <div>
-                        <button class="btn btn-sm btn-outline-danger" id="clear-history-btn">
-                            <i class="bi bi-trash"></i> Clear History
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div id="history-list" class="mb-3">
-                        <!-- History items will be added here -->
-                        <div class="text-center py-4 text-muted" id="history-empty">
-                            <i class="bi bi-clock-history" style="font-size: 3rem;"></i>
-                            <h5 class="mt-3">No history yet</h5>
-                            <p>Your analysis history will appear here</p>
-                        </div>
-                    </div>
-                </div>
+    </div>
+    
+    <!-- Settings Popup -->
+    <div class="popup-overlay" id="settingsPopup">
+        <div class="popup-content">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="mb-0">Settings</h5>
+                <button type="button" class="btn-close" id="closeSettingsBtn"></button>
             </div>
-        </div>
-        
-        <!-- System View -->
-        <div id="system-view" class="view-container d-none">
-            <div class="row">
-                <!-- System Status Card -->
-                <div class="col-md-6">
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <h5 class="mb-0">System Status</h5>
+            
+            <ul class="nav nav-tabs" id="settingsTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="api-keys-tab" data-bs-toggle="tab" data-bs-target="#api-keys" type="button" role="tab" aria-controls="api-keys" aria-selected="true">
+                        API Keys
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="appearance-tab" data-bs-toggle="tab" data-bs-target="#appearance" type="button" role="tab" aria-controls="appearance" aria-selected="false">
+                        Appearance
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="advanced-tab" data-bs-toggle="tab" data-bs-target="#advanced" type="button" role="tab" aria-controls="advanced" aria-selected="false">
+                        Advanced
+                    </button>
+                </li>
+            </ul>
+            
+            <div class="tab-content pt-4" id="settingsTabContent">
+                <!-- API Keys Tab -->
+                <div class="tab-pane fade show active" id="api-keys" role="tabpanel" aria-labelledby="api-keys-tab">
+                    <form id="apiKeysForm">
+                        <div class="mb-3 api-key-input">
+                            <label for="openaiApiKey" class="form-label">OpenAI API Key</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="openaiApiKey">
+                                <span class="input-group-text toggle-visibility" data-target="openaiApiKey">
+                                    <i class="bi bi-eye"></i>
+                                </span>
+                            </div>
+                            <div class="form-text">Required for OpenAI GPT models</div>
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h6>Backend Server</h6>
-                                    <p class="d-flex align-items-center">
-                                        Status: 
-                                        <span class="status-badge ms-2 status-loading" id="backend-status-badge">
-                                            Checking...
-                                        </span>
-                                    </p>
-                                    <p>Version: <span id="backend-version">-</span></p>
-                                    <p>Environment: <span id="backend-environment">-</span></p>
-                                </div>
-                                <div class="col-md-6">
-                                    <h6>WebSocket Connection</h6>
-                                    <p class="d-flex align-items-center">
-                                        Status: 
-                                        <span class="status-badge ms-2 status-loading" id="ws-status-badge">
-                                            Checking...
-                                        </span>
-                                    </p>
-                                    <button class="btn btn-sm btn-outline-primary" id="ws-reconnect-btn">
-                                        <i class="bi bi-arrow-repeat"></i> Reconnect
-                                    </button>
-                                </div>
+                        
+                        <div class="mb-3 api-key-input">
+                            <label for="geminiApiKey" class="form-label">Google Gemini API Key</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="geminiApiKey">
+                                <span class="input-group-text toggle-visibility" data-target="geminiApiKey">
+                                    <i class="bi bi-eye"></i>
+                                </span>
                             </div>
-                            
-                            <hr>
-                            
-                            <h6>Available AI Models</h6>
-                            <div id="ai-models-status" class="row">
-                                <div class="col-md-3 mb-2">
-                                    <span class="status-badge status-loading" id="gpt4all-status">Checking...</span>
-                                    GPT4All
-                                </div>
-                                <div class="col-md-3 mb-2">
-                                    <span class="status-badge status-loading" id="huggingface-status">Checking...</span>
-                                    Hugging Face
-                                </div>
-                                <div class="col-md-3 mb-2">
-                                    <span class="status-badge status-loading" id="openai-status">Checking...</span>
-                                    OpenAI
-                                </div>
-                                <div class="col-md-3 mb-2">
-                                    <span class="status-badge status-loading" id="gemini-status">Checking...</span>
-                                    Gemini
-                                </div>
-                            </div>
-                            
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
-                                <button class="btn btn-primary" id="refresh-status-btn">
-                                    <i class="bi bi-arrow-clockwise"></i> Refresh Status
-                                </button>
-                            </div>
+                            <div class="form-text">Required for Google Gemini models</div>
                         </div>
-                    </div>
+                        
+                        <div class="mb-3 api-key-input">
+                            <label for="huggingfaceApiKey" class="form-label">HuggingFace API Key</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="huggingfaceApiKey">
+                                <span class="input-group-text toggle-visibility" data-target="huggingfaceApiKey">
+                                    <i class="bi bi-eye"></i>
+                                </span>
+                            </div>
+                            <div class="form-text">Required for HuggingFace Inference API</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="llamaModelPath" class="form-label">LLaMA Model Path</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="llamaModelPath">
+                                <button class="btn btn-outline-secondary" type="button" id="browseLlamaBtn">Browse</button>
+                            </div>
+                            <div class="form-text">Path to local LLaMA model file</div>
+                        </div>
+                    </form>
                 </div>
                 
-                <!-- System Logs Card -->
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">System Logs</h5>
-                            <div>
-                                <button class="btn btn-sm btn-outline-secondary" id="refresh-logs-btn">
-                                    <i class="bi bi-arrow-clockwise"></i> Refresh
-                                </button>
-                            </div>
+                <!-- Appearance Tab -->
+                <div class="tab-pane fade" id="appearance" role="tabpanel" aria-labelledby="appearance-tab">
+                    <form id="appearanceForm">
+                        <div class="mb-3">
+                            <label for="themeSelect" class="form-label">Theme</label>
+                            <select class="form-select" id="themeSelect">
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                                <option value="system">System Default</option>
+                            </select>
                         </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between mb-3">
-                                <div>
-                                    <select class="form-select form-select-sm" id="log-level-filter">
-                                        <option value="all">All Levels</option>
-                                        <option value="info">Info</option>
-                                        <option value="warning">Warning</option>
-                                        <option value="error">Error</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <input type="number" class="form-control form-control-sm" id="log-limit-input" value="100" min="10" max="1000" placeholder="Limit">
-                                </div>
-                            </div>
-                            
-                            <div class="system-log-container" id="system-logs">
-                                <div class="text-center py-3">
-                                    <div class="spinner-border text-primary" role="status">
-                                        <span class="visually-hidden">Loading...</span>
-                                    </div>
-                                    <p class="mt-2">Loading logs...</p>
-                                </div>
-                            </div>
+                        
+                        <div class="mb-3">
+                            <label for="fontSizeSelect" class="form-label">Font Size</label>
+                            <select class="form-select" id="fontSizeSelect">
+                                <option value="small">Small</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="large">Large</option>
+                            </select>
                         </div>
-                    </div>
+                        
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="compactModeCheck">
+                            <label class="form-check-label" for="compactModeCheck">Compact Mode</label>
+                            <div class="form-text">Reduces padding and spacing for more content</div>
+                        </div>
+                    </form>
                 </div>
+                
+                <!-- Advanced Tab -->
+                <div class="tab-pane fade" id="advanced" role="tabpanel" aria-labelledby="advanced-tab">
+                    <form id="advancedForm">
+                        <div class="mb-3">
+                            <label for="backendUrlInput" class="form-label">Backend URL</label>
+                            <input type="text" class="form-control" id="backendUrlInput" placeholder="http://localhost:8081">
+                            <div class="form-text">Flask server endpoint</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="wsUrlInput" class="form-label">WebSocket URL</label>
+                            <input type="text" class="form-control" id="wsUrlInput" placeholder="ws://localhost:8082">
+                            <div class="form-text">WebSocket server endpoint</div>
+                        </div>
+                        
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="debugModeCheck">
+                            <label class="form-check-label" for="debugModeCheck">Debug Mode</label>
+                            <div class="form-text">Enables additional logging and developer features</div>
+                        </div>
+                        
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="cacheCheck">
+                            <label class="form-check-label" for="cacheCheck">Enable Response Caching</label>
+                            <div class="form-text">Cache AI responses for faster results on repeated queries</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-outline-secondary" id="resetSettingsBtn">Reset to Default</button>
+                <button type="button" class="btn btn-primary" id="saveSettingsBtn">Save Settings</button>
             </div>
         </div>
     </div>
-    
-    <!-- Settings Modal -->
-    <div class="modal fade" id="settings-modal" tabindex="-1" aria-labelledby="settings-modal-label" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="settings-modal-label">Settings</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul class="nav nav-tabs" id="settings-tabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="api-tab" data-bs-toggle="tab" data-bs-target="#api-settings" type="button" role="tab">API Keys</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="server-tab" data-bs-toggle="tab" data-bs-target="#server-settings" type="button" role="tab">Server</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="interface-tab" data-bs-toggle="tab" data-bs-target="#interface-settings" type="button" role="tab">Interface</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="models-tab" data-bs-toggle="tab" data-bs-target="#models-settings" type="button" role="tab">AI Models</button>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="settings-tabs-content">
-                        <!-- API Keys Settings -->
-                        <div class="tab-pane fade show active" id="api-settings" role="tabpanel" aria-labelledby="api-tab">
-                            <form id="api-settings-form">
-                                <div class="mb-3">
-                                    <label for="openai-api-key" class="form-label">OpenAI API Key</label>
-                                    <input type="password" class="form-control" id="openai-api-key" placeholder="Enter your OpenAI API key">
-                                    <div class="form-text">Used for accessing GPT-4 and other OpenAI models</div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="gemini-api-key" class="form-label">Google Gemini API Key</label>
-                                    <input type="password" class="form-control" id="gemini-api-key" placeholder="Enter your Google Gemini API key">
-                                    <div class="form-text">Used for accessing Google Gemini models</div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="hf-api-key" class="form-label">Hugging Face API Key</label>
-                                    <input type="password" class="form-control" id="hf-api-key" placeholder="Enter your Hugging Face API key">
-                                    <div class="form-text">Used for searching and accessing Hugging Face models</div>
-                                </div>
-                            </form>
-                        </div>
-                        
-                        <!-- Server Settings -->
-                        <div class="tab-pane fade" id="server-settings" role="tabpanel" aria-labelledby="server-tab">
-                            <form id="server-settings-form">
-                                <div class="mb-3">
-                                    <label for="backend-url" class="form-label">Backend Server URL</label>
-                                    <input type="text" class="form-control" id="backend-url" placeholder="http://localhost:8081">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="ws-url" class="form-label">WebSocket Server URL</label>
-                                    <input type="text" class="form-control" id="ws-url" placeholder="ws://localhost:8082">
-                                </div>
-                                <div class="form-check form-switch mb-3">
-                                    <input class="form-check-input" type="checkbox" id="websocket-enabled-toggle">
-                                    <label class="form-check-label" for="websocket-enabled-toggle">Enable WebSocket connection</label>
-                                </div>
-                            </form>
-                        </div>
-                        
-                        <!-- Interface Settings -->
-                        <div class="tab-pane fade" id="interface-settings" role="tabpanel" aria-labelledby="interface-tab">
-                            <form id="interface-settings-form">
-                                <div class="mb-3">
-                                    <label class="form-label">Theme</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="theme" id="theme-light" value="light">
-                                        <label class="form-check-label" for="theme-light">Light Mode</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="theme" id="theme-dark" value="dark">
-                                        <label class="form-check-label" for="theme-dark">Dark Mode</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="theme" id="theme-system" value="system">
-                                        <label class="form-check-label" for="theme-system">Use System Preference</label>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editor-font-size" class="form-label">Editor Font Size</label>
-                                    <input type="number" class="form-control" id="editor-font-size" min="8" max="24" value="14">
-                                </div>
-                                <div class="form-check form-switch mb-3">
-                                    <input class="form-check-input" type="checkbox" id="auto-save-history-toggle">
-                                    <label class="form-check-label" for="auto-save-history-toggle">Automatically save analyses to history</label>
-                                </div>
-                            </form>
-                        </div>
-                        
-                        <!-- AI Models Settings -->
-                        <div class="tab-pane fade" id="models-settings" role="tabpanel" aria-labelledby="models-tab">
-                            <form id="models-settings-form">
-                                <div class="mb-3">
-                                    <label for="default-model" class="form-label">Default AI Model</label>
-                                    <select class="form-select" id="default-model">
-                                        <option value="gpt4all">GPT4All (Local)</option>
-                                        <option value="huggingface">Hugging Face (Local)</option>
-                                        <option value="openai">OpenAI GPT-4</option>
-                                        <option value="gemini">Google Gemini</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="default-hf-model" class="form-label">Default Hugging Face Model</label>
-                                    <input type="text" class="form-control" id="default-hf-model" value="mistralai/Mistral-7B-Instruct-v0.2">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="llama-model-path" class="form-label">GPT4All Model Path</label>
-                                    <input type="text" class="form-control" id="llama-model-path" placeholder="/path/to/model.gguf">
-                                    <div class="form-text">Path to the GPT4All model file</div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="save-settings-btn">Save Settings</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Required JavaScript Libraries -->
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/shell/shell.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
-    
-    <!-- AILinux Frontend Script -->
     <script>
-    // Wait for DOM to be fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize the UI
-        const ailinux = new AILinux();
-        ailinux.init();
-    });
-    
-    /**
-     * AILinux - Main application class
-     */
-    class AILinux {
-        constructor() {
-            // Base API URL - defaults to localhost, can be changed in settings
-            this.apiBaseUrl = localStorage.getItem('backend-url') || 'http://localhost:8081';
+        // Main JavaScript will be added in the preload.js and renderer.js files
+        // This is a placeholder for basic UI interactions
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                themeToggle.innerHTML = isDarkMode ? '<i class="bi bi-sun"></i>' : '<i class="bi bi-moon"></i>';
+                
+                // Save preference
+                localStorage.setItem('darkMode', isDarkMode);
+            });
             
-            // WebSocket configuration
-            this.wsEnabled = localStorage.getItem('websocket-enabled') !== 'false';
-            this.wsUrl = localStorage.getItem('ws-url') || 'ws://localhost:8082';
-            this.wsSocket = null;
-            this.wsConnected = false;
-            
-            // UI state
-            this.darkMode = localStorage.getItem('dark-mode') === 'true';
-            this.editorFontSize = parseInt(localStorage.getItem('editor-font-size') || '14');
-            this.autoSaveHistory = localStorage.getItem('auto-save-history') === 'true';
-            
-            // AI model configuration
-            this.defaultModel = localStorage.getItem('default-model') || 'gpt4all';
-            this.defaultHfModel = localStorage.getItem('default-hf-model') || 'mistralai/Mistral-7B-Instruct-v0.2';
-            this.selectedModel = this.defaultModel;
-            this.selectedHfModel = this.defaultHfModel;
-            
-            // Editor instance
-            this.editor = null;
-            
-            // Analysis state
-            this.isAnalyzing = false;
-            this.lastAnalysis = null;
-            
-            // History data
-            this.history = JSON.parse(localStorage.getItem('analysis-history') || '[]');
-            
-            // Current view
-            this.currentView = 'analysis-view';
-            
-            // Toast notification instance
-            this.toastInstance = null;
-        }
-        
-        /**
-         * Initialize the application
-         */
-        init() {
-            // Initialize CodeMirror editor
-            this.initEditor();
-            
-            // Initialize UI
-            this.initUI();
-            
-            // Initialize event listeners
-            this.initEventListeners();
-            
-            // Initialize WebSocket if enabled
-            if (this.wsEnabled) {
-                this.initWebSocket();
+            // Load saved theme preference
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="bi bi-sun"></i>';
             }
             
-            // Check backend status
-            this.checkBackendStatus();
+            // Sidebar toggle
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
             
-            // Apply dark mode if needed
-            this.applyDarkMode();
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('open');
+            });
             
-            // Set default model in UI
-            document.getElementById('model-select').value = this.defaultModel;
-            this.onModelChange();
-            
-            // Initialize toast notification
-            this.toastInstance = new bootstrap.Toast(document.getElementById('notification-toast'));
-            
-            // Show notification
-            this.showNotification('AILinux Started', 'System initialized successfully');
-        }
-        
-        /**
-         * Initialize the CodeMirror editor
-         */
-        initEditor() {
-            const editorContainer = document.getElementById('log-editor-container');
-            
-            this.editor = CodeMirror(editorContainer, {
-                mode: 'shell',
-                theme: this.darkMode ? 'monokai' : 'default',
-                lineNumbers: true,
-                lineWrapping: true,
-                indentUnit: 4,
-                tabSize: 4,
-                autofocus: true,
-                extraKeys: {
-                    'Ctrl-Enter': () => this.analyzeLog(),
-                    'Cmd-Enter': () => this.analyzeLog()
+            // Close sidebar when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target) && sidebar.classList.contains('open')) {
+                    sidebar.classList.remove('open');
                 }
             });
             
-            // Set font size
-            document.querySelector('.CodeMirror').style.fontSize = `${this.editorFontSize}px`;
+            // Settings popup
+            const settingsBtn = document.getElementById('settingsBtn');
+            const settingsPopup = document.getElementById('settingsPopup');
+            const closeSettingsBtn = document.getElementById('closeSettingsBtn');
             
-            // Set placeholder text
-            if (this.editor.getValue() === '') {
-                const placeholder = 'Enter your log here...\n\nExample:\n2025-02-28 23:13:46,983 - WARNING - Python-dotenv could not parse statement starting at line 1\n2025-02-28 23:13:46,984 - ERROR - ModuleNotFoundError: No module named \'flask_cors\'';
-                this.editor.setValue(placeholder);
-            }
-        }
-        
-        /**
-         * Initialize UI components
-         */
-        initUI() {
-            // Initialize history list
-            this.updateHistoryView();
+            settingsBtn.addEventListener('click', function() {
+                settingsPopup.classList.add('show');
+            });
             
-            // Set temperature value display
-            document.getElementById('temperature-value').textContent = document.getElementById('temperature-range').value;
-        }
-        
-        /**
-         * Initialize event listeners for UI interactions
-         */
-        initEventListeners() {
-            // Analyze button
-            document.getElementById('analyze-btn').addEventListener('click', () => this.analyzeLog());
+            closeSettingsBtn.addEventListener('click', function() {
+                settingsPopup.classList.remove('show');
+            });
             
-            // Clear log button
-            document.getElementById('clear-log-btn').addEventListener('click', () => this.clearLog());
+            // Close popup when clicking outside
+            settingsPopup.addEventListener('click', function(event) {
+                if (event.target === settingsPopup) {
+                    settingsPopup.classList.remove('show');
+                }
+            });
             
-            // Load log file button
-            document.getElementById('load-log-btn').addEventListener('click', () => document.getElementById('log-file-input').click());
-            document.getElementById('log-file-input').addEventListener('change', (e) => this.loadLogFile(e));
+            // Toggle password visibility
+            document.querySelectorAll('.toggle-visibility').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const input = document.getElementById(targetId);
+                    const icon = this.querySelector('i');
+                    
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.classList.replace('bi-eye', 'bi-eye-slash');
+                    } else {
+                        input.type = 'password';
+                        icon.classList.replace('bi-eye-slash', 'bi-eye');
+                    }
+                });
+            });
             
             // Model selector
-            document.getElementById('model-select').addEventListener('change', () => this.onModelChange());
-            
-            // Navigation
-            document.getElementById('nav-analyze').addEventListener('click', (e) => this.switchView('analysis-view', e));
-            document.getElementById('nav-history').addEventListener('click', (e) => this.switchView('history-view', e));
-            document.getElementById('nav-system').addEventListener('click', (e) => this.switchView('system-view', e));
-            
-            // Settings button
-            document.getElementById('settings-btn').addEventListener('click', () => this.openSettingsModal());
-            
-            // Copy result button
-            document.getElementById('copy-result-btn').addEventListener('click', () => this.copyAnalysisResult());
-            
-            // Save result button
-            document.getElementById('save-result-btn').addEventListener('click', () => this.saveAnalysisToHistory());
-            
-            // Clear history button
-            document.getElementById('clear-history-btn').addEventListener('click', () => this.clearHistory());
-            
-            // Temperature range
-            document.getElementById('temperature-range').addEventListener('input', (e) => {
-                document.getElementById('temperature-value').textContent = e.target.value;
-            });
-            
-            // Dark mode toggle
-            document.getElementById('dark-mode-toggle').addEventListener('change', (e) => {
-                this.toggleDarkMode(e.target.checked);
-            });
-            document.getElementById('dark-mode-toggle').checked = this.darkMode;
-            
-            // Auto save toggle
-            document.getElementById('auto-save-toggle').addEventListener('change', (e) => {
-                this.autoSaveHistory = e.target.checked;
-                localStorage.setItem('auto-save-history', this.autoSaveHistory);
-            });
-            document.getElementById('auto-save-toggle').checked = this.autoSaveHistory;
-            
-            // Hugging Face model selectors
-            document.querySelectorAll('#hf-models-container .model-selector').forEach(el => {
-                el.addEventListener('click', (e) => this.selectHuggingFaceModel(e.currentTarget));
-            });
-            
-            // System view actions
-            document.getElementById('refresh-status-btn').addEventListener('click', () => this.checkBackendStatus());
-            document.getElementById('refresh-logs-btn').addEventListener('click', () => this.fetchSystemLogs());
-            document.getElementById('ws-reconnect-btn').addEventListener('click', () => this.reconnectWebSocket());
-            
-            // Settings form
-            document.getElementById('save-settings-btn').addEventListener('click', () => this.saveSettings());
-            
-            // Log filters
-            document.getElementById('log-level-filter').addEventListener('change', () => this.fetchSystemLogs());
-            document.getElementById('log-limit-input').addEventListener('change', () => this.fetchSystemLogs());
-        }
-        
-        /**
-         * Initialize WebSocket connection
-         */
-        initWebSocket() {
-            try {
-                // Close existing socket if any
-                if (this.wsSocket) {
-                    this.wsSocket.close();
-                }
-                
-                // Create new WebSocket
-                this.wsSocket = new WebSocket(this.wsUrl);
-                
-                // Set up event handlers
-                this.wsSocket.onopen = () => {
-                    console.log('WebSocket connected');
-                    this.wsConnected = true;
-                    this.updateWebSocketStatus(true);
-                    
-                    // Send handshake
-                    this.sendWebSocketMessage('handshake', {
-                        client_id: `ailinux-frontend-${Math.random().toString(36).substring(2, 10)}`,
-                        version: '1.0.0',
-                        platform: 'AILinux Frontend'
-                    });
-                };
-                
-                this.wsSocket.onclose = () => {
-                    console.log('WebSocket disconnected');
-                    this.wsConnected = false;
-                    this.updateWebSocketStatus(false);
-                };
-                
-                this.wsSocket.onerror = (error) => {
-                    console.error('WebSocket error:', error);
-                    this.wsConnected = false;
-                    this.updateWebSocketStatus(false);
-                };
-                
-                this.wsSocket.onmessage = (event) => {
-                    try {
-                        const message = JSON.parse(event.data);
-                        this.handleWebSocketMessage(message);
-                    } catch (error) {
-                        console.error('Error parsing WebSocket message:', error);
-                    }
-                };
-            } catch (error) {
-                console.error('Error initializing WebSocket:', error);
-                this.wsConnected = false;
-                this.updateWebSocketStatus(false);
-            }
-        }
-        
-        /**
-         * Update WebSocket status indicators
-         */
-        updateWebSocketStatus(connected) {
-            const indicator = document.getElementById('ws-indicator');
-            const statusText = document.getElementById('ws-status-text');
-            const statusBadge = document.getElementById('ws-status-badge');
-            
-            if (connected) {
-                indicator.classList.remove('ws-disconnected');
-                indicator.classList.add('ws-connected');
-                statusText.textContent = 'Connected';
-                statusBadge.textContent = 'Connected';
-                statusBadge.classList.remove('status-offline', 'status-loading');
-                statusBadge.classList.add('status-online');
-            } else {
-                indicator.classList.remove('ws-connected');
-                indicator.classList.add('ws-disconnected');
-                statusText.textContent = 'Disconnected';
-                statusBadge.textContent = 'Disconnected';
-                statusBadge.classList.remove('status-online', 'status-loading');
-                statusBadge.classList.add('status-offline');
-            }
-        }
-        
-        /**
-         * Send a message through WebSocket
-         */
-        sendWebSocketMessage(type, data) {
-            if (!this.wsConnected || !this.wsSocket) {
-                console.warn('WebSocket not connected, cannot send message');
-                return false;
-            }
-            
-            try {
-                const message = {
-                    type: type,
-                    timestamp: Date.now(),
-                    data: data
-                };
-                
-                this.wsSocket.send(JSON.stringify(message));
-                return true;
-            } catch (error) {
-                console.error('Error sending WebSocket message:', error);
-                return false;
-            }
-        }
-        
-        /**
-         * Handle incoming WebSocket messages
-         */
-        handleWebSocketMessage(message) {
-            console.log('Received WebSocket message:', message);
-            
-            // Handle different message types
-            switch (message.type) {
-                case 'heartbeat':
-                    // Respond to heartbeat
-                    this.sendWebSocketMessage('heartbeat_response', {});
-                    break;
-                    
-                case 'analysis_complete':
-                    // Show notification for completed analysis
-                    this.showNotification(
-                        'Analysis Complete',
-                        `Analysis with ${message.data.model} completed in ${message.data.processing_time.toFixed(2)}s`
-                    );
-                    break;
-                    
-                case 'backend_status':
-                    // Update backend status indicators
-                    this.updateBackendStatusFromWs(message.data);
-                    break;
-                    
-                default:
-                    // Unknown message type
-                    console.log('Unknown WebSocket message type:', message.type);
-            }
-        }
-        
-        /**
-         * Reconnect to WebSocket server
-         */
-        reconnectWebSocket() {
-            if (this.wsEnabled) {
-                this.initWebSocket();
-            }
-        }
-        
-        /**
-         * Check backend server status
-         */
-        checkBackendStatus() {
-            // Update status indicators to loading state
-            this.updateStatusIndicator('backend-status-badge', 'loading', 'Checking...');
-            
-            // Reset AI model status indicators
-            ['gpt4all', 'huggingface', 'openai', 'gemini'].forEach(model => {
-                this.updateStatusIndicator(`${model}-status`, 'loading', 'Checking...');
-            });
-            
-            // Fetch health status from API
-            this.fetchFromApi('/api/health')
-                .then(data => {
-                    // Update backend status
-                    this.updateStatusIndicator('backend-status-badge', 'online', 'Online');
-                    
-                    // Update version and environment
-                    document.getElementById('backend-version').textContent = data.version || 'Unknown';
-                    document.getElementById('backend-environment').textContent = data.environment || 'Unknown';
-                    
-                    // Update AI model status
-                    if (data.ai_models) {
-                        Object.keys(data.ai_models).forEach(model => {
-                            const available = data.ai_models[model];
-                            this.updateStatusIndicator(
-                                `${model}-status`,
-                                available ? 'online' : 'offline',
-                                available ? 'Available' : 'Unavailable'
-                            );
-                        });
-                    }
-                    
-                    // Fetch system logs after status check
-                    this.fetchSystemLogs();
-                })
-                .catch(error => {
-                    console.error('Error checking backend status:', error);
-                    this.updateStatusIndicator('backend-status-badge', 'offline', 'Offline');
-                    
-                    // Set all AI models to unavailable
-                    ['gpt4all', 'huggingface', 'openai', 'gemini'].forEach(model => {
-                        this.updateStatusIndicator(`${model}-status`, 'offline', 'Unavailable');
-                    });
-                    
-                    // Show error notification
-                    this.showNotification(
-                        'Connection Error',
-                        'Could not connect to backend server. Check server status and settings.',
-                        'error'
-                    );
-                });
-        }
-        
-        /**
-         * Update status indicator element
-         */
-        updateStatusIndicator(elementId, status, text) {
-            const element = document.getElementById(elementId);
-            if (!element) return;
-            
-            // Remove all status classes
-            element.classList.remove('status-online', 'status-offline', 'status-loading');
-            
-            // Add appropriate class
-            switch (status) {
-                case 'online':
-                    element.classList.add('status-online');
-                    break;
-                case 'offline':
-                    element.classList.add('status-offline');
-                    break;
-                case 'loading':
-                    element.classList.add('status-loading');
-                    break;
-            }
-            
-            // Set text content
-            element.textContent = text;
-        }
-        
-        /**
-         * Fetch system logs from backend
-         */
-        fetchSystemLogs() {
-            const level = document.getElementById('log-level-filter').value;
-            const limit = document.getElementById('log-limit-input').value;
-            
-            const logsContainer = document.getElementById('system-logs');
-            logsContainer.innerHTML = `
-                <div class="text-center py-3">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <p class="mt-2">Loading logs...</p>
-                </div>
-            `;
-            
-            // Build query string
-            const queryParams = new URLSearchParams();
-            if (level !== 'all') {
-                queryParams.append('level', level);
-            }
-            queryParams.append('limit', limit);
-            
-            // Fetch logs from API
-            this.fetchFromApi(`/api/logs?${queryParams.toString()}`)
-                .then(data => {
-                    if (data.success && data.logs && data.logs.length > 0) {
-                        // Clear container
-                        logsContainer.innerHTML = '';
-                        
-                        // Add log entries
-                        data.logs.forEach(log => {
-                            const logEntry = document.createElement('div');
-                            logEntry.className = 'log-entry';
-                            
-                            if (log.raw) {
-                                // Raw log entry
-                                logEntry.textContent = log.raw;
-                            } else {
-                                // Structured log entry
-                                const timestamp = log.timestamp || '';
-                                const level = log.level || 'INFO';
-                                const source = log.source || '';
-                                const message = log.message || '';
-                                
-                                // Add level-specific class
-                                if (level.toUpperCase() === 'ERROR') {
-                                    logEntry.classList.add('log-level-error');
-                                } else if (level.toUpperCase() === 'WARNING') {
-                                    logEntry.classList.add('log-level-warning');
-                                } else if (level.toUpperCase() === 'INFO') {
-                                    logEntry.classList.add('log-level-info');
-                                }
-                                
-                                logEntry.textContent = `${timestamp} - ${level} - ${source} - ${message}`;
-                            }
-                            
-                            logsContainer.appendChild(logEntry);
-                        });
-                    } else {
-                        // No logs found
-                        logsContainer.innerHTML = `
-                            <div class="text-center py-3">
-                                <i class="bi bi-file-earmark-x" style="font-size: 2rem;"></i>
-                                <p class="mt-2">No logs found</p>
-                            </div>
-                        `;
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching logs:', error);
-                    logsContainer.innerHTML = `
-                        <div class="text-center py-3">
-                            <i class="bi bi-exclamation-triangle text-danger" style="font-size: 2rem;"></i>
-                            <p class="mt-2">Error loading logs</p>
-                            <small class="text-muted">${error.message}</small>
-                        </div>
-                    `;
-                });
-        }
-        
-        /**
-         * Analyze the log entered in the editor
-         */
-        analyzeLog() {
-            // Get log text from editor
-            const logText = this.editor.getValue().trim();
-            
-            // Check if there's anything to analyze
-            if (!logText) {
-                this.showNotification('Error', 'Please enter a log to analyze', 'error');
-                return;
-            }
-            
-            // Check if already analyzing
-            if (this.isAnalyzing) {
-                this.showNotification('In Progress', 'Analysis is already in progress', 'warning');
-                return;
-            }
-            
-            // Set analyzing state
-            this.isAnalyzing = true;
-            document.getElementById('analyze-btn').classList.add('disabled');
-            document.getElementById('analyze-spinner').classList.remove('d-none');
-            
-            // Get selected model
-            const modelType = document.getElementById('model-select').value;
-            
-            // Get advanced parameters
-            const temperature = parseFloat(document.getElementById('temperature-range').value);
-            const maxTokens = parseInt(document.getElementById('max-tokens-input').value);
-            
-            // Prepare request data
-            const requestData = {
-                log: logText,
-                model: modelType,
-                temperature: temperature,
-                max_tokens: maxTokens
-            };
-            
-            // Add model-specific parameters
-            if (modelType === 'huggingface') {
-                requestData.hf_model = this.selectedHfModel;
-            }
-            
-            // Show placeholder while loading
-            document.getElementById('result-placeholder').classList.add('d-none');
-            document.getElementById('analysis-result').innerHTML = `
-                <div class="text-center py-3">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Analyzing...</span>
-                    </div>
-                    <p class="mt-2">Analyzing with ${modelType}...</p>
-                    <small class="text-muted">This may take a moment</small>
-                </div>
-            `;
-            document.getElementById('analysis-result').classList.remove('d-none');
-            document.getElementById('analysis-metadata').classList.add('d-none');
-            
-            // Send API request
-            this.fetchFromApi('/api/debug', 'POST', requestData)
-                .then(data => {
-                    // Store analysis result
-                    this.lastAnalysis = {
-                        log: logText,
-                        model: data.model || modelType,
-                        analysis: data.analysis,
-                        processingTime: data.processing_time || 0,
-                        timestamp: data.timestamp || Date.now(),
-                        hfModel: modelType === 'huggingface' ? this.selectedHfModel : null
-                    };
-                    
-                    // Display result
-                    this.displayAnalysisResult(this.lastAnalysis);
-                    
-                    // Auto-save to history if enabled
-                    if (this.autoSaveHistory) {
-                        this.saveAnalysisToHistory();
-                    }
-                })
-                .catch(error => {
-                    console.error('Error analyzing log:', error);
-                    
-                    // Display error message
-                    document.getElementById('analysis-result').innerHTML = `
-                        <div class="alert alert-danger">
-                            <h5><i class="bi bi-exclamation-triangle"></i> Analysis Error</h5>
-                            <p>${error.message || 'An error occurred during analysis'}</p>
-                        </div>
-                    `;
-                    
-                    // Show notification
-                    this.showNotification('Analysis Error', error.message || 'Failed to analyze log', 'error');
-                })
-                .finally(() => {
-                    // Reset analyzing state
-                    this.isAnalyzing = false;
-                    document.getElementById('analyze-btn').classList.remove('disabled');
-                    document.getElementById('analyze-spinner').classList.add('d-none');
-                });
-        }
-        
-        /**
-         * Display analysis result in the UI
-         */
-        displayAnalysisResult(analysis) {
-            if (!analysis || !analysis.analysis) {
-                return;
-            }
-            
-            // Show result container
-            document.getElementById('result-placeholder').classList.add('d-none');
-            document.getElementById('analysis-result').classList.remove('d-none');
-            document.getElementById('analysis-metadata').classList.remove('d-none');
-            
-            // Format the markdown content
-            const formattedContent = marked.parse(analysis.analysis);
-            
-            // Add the content to the result container
-            document.getElementById('analysis-result').innerHTML = formattedContent;
-            
-            // Update metadata
-            document.getElementById('analysis-time').textContent = `${analysis.processingTime.toFixed(2)}s`;
-            document.getElementById('analysis-model').textContent = analysis.model + (analysis.hfModel ? ` (${analysis.hfModel.split('/').pop()})` : '');
-            document.getElementById('analysis-timestamp').textContent = new Date(analysis.timestamp).toLocaleString();
-        }
-        
-        /**
-         * Save current analysis to history
-         */
-        saveAnalysisToHistory() {
-            if (!this.lastAnalysis) {
-                this.showNotification('Error', 'No analysis to save', 'error');
-                return;
-            }
-            
-            // Create history entry
-            const historyEntry = {
-                id: Date.now().toString(36) + Math.random().toString(36).substring(2, 9),
-                ...this.lastAnalysis,
-                savedAt: Date.now()
-            };
-            
-            // Add to history
-            this.history.unshift(historyEntry);
-            
-            // Limit history size
-            if (this.history.length > 50) {
-                this.history = this.history.slice(0, 50);
-            }
-            
-            // Save to localStorage
-            localStorage.setItem('analysis-history', JSON.stringify(this.history));
-            
-            // Update history view if visible
-            if (this.currentView === 'history-view') {
-                this.updateHistoryView();
-            }
-            
-            // Show notification
-            this.showNotification('Saved', 'Analysis saved to history');
-        }
-        
-        /**
-         * Update the history view with current history data
-         */
-        updateHistoryView() {
-            const historyList = document.getElementById('history-list');
-            const historyEmpty = document.getElementById('history-empty');
-            
-            // Clear current items
-            historyList.innerHTML = '';
-            
-            // Check if history is empty
-            if (this.history.length === 0) {
-                historyEmpty.classList.remove('d-none');
-                return;
-            }
-            
-            // Hide empty message
-            historyEmpty.classList.add('d-none');
-            
-            // Add history items
-            this.history.forEach(item => {
-                const historyItem = document.createElement('div');
-                historyItem.className = 'history-item';
-                historyItem.dataset.id = item.id;
-                
-                // Create timestamp
-                const date = new Date(item.timestamp);
-                const formattedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-                
-                // Create preview from log text
-                const logPreview = item.log.length > 100 ? item.log.substring(0, 100) + '...' : item.log;
-                
-                // Create model badge
-                const modelBadge = document.createElement('span');
-                modelBadge.className = 'model-badge';
-                modelBadge.textContent = item.model + (item.hfModel ? ` (${item.hfModel.split('/').pop()})` : '');
-                
-                // Set item content
-                historyItem.innerHTML = `
-                    <div class="d-flex justify-content-between">
-                        <strong>${formattedDate}</strong>
-                        <div>
-                            <button class="btn btn-sm btn-outline-danger history-delete-btn" data-id="${item.id}">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <small class="text-muted">${logPreview}</small>
-                    </div>
-                `;
-                
-                // Add model badge
-                historyItem.querySelector('.d-flex').appendChild(modelBadge);
-                
-                // Add to history list
-                historyList.appendChild(historyItem);
-                
-                // Add click event
-                historyItem.addEventListener('click', (e) => {
-                    // Ignore clicks on delete button
-                    if (e.target.closest('.history-delete-btn')) {
-                        e.stopPropagation();
-                        return;
-                    }
-                    
-                    this.loadHistoryItem(item.id);
-                });
-                
-                // Add delete button event
-                historyItem.querySelector('.history-delete-btn').addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    this.deleteHistoryItem(item.id);
+            document.querySelectorAll('.model-selector').forEach(selector => {
+                selector.addEventListener('click', function() {
+                    document.querySelectorAll('.model-selector').forEach(s => s.classList.remove('active'));
+                    this.classList.add('active');
                 });
             });
-        }
-        
-        /**
-         * Load a history item into the current view
-         */
-        loadHistoryItem(id) {
-            // Find item
-            const item = this.history.find(i => i.id === id);
-            if (!item) {
-                this.showNotification('Error', 'History item not found', 'error');
-                return;
-            }
             
-            // Switch to analysis view
-            this.switchView('analysis-view');
+            // File upload button
+            const uploadBtn = document.getElementById('uploadBtn');
+            const fileInput = document.getElementById('fileInput');
             
-            // Set editor content
-            this.editor.setValue(item.log);
-            
-            // Set selected model
-            document.getElementById('model-select').value = item.model;
-            this.onModelChange();
-            
-            // If the model is huggingface, set the right HF model
-            if (item.model === 'huggingface' && item.hfModel) {
-                this.selectedHfModel = item.hfModel;
-                
-                // Try to select the right model in UI
-                const modelSelector = document.querySelector(`#hf-models-container .model-selector[data-model-id="${item.hfModel}"]`);
-                if (modelSelector) {
-                    this.selectHuggingFaceModel(modelSelector);
-                }
-            }
-            
-            // Display analysis result
-            this.lastAnalysis = item;
-            this.displayAnalysisResult(item);
-            
-            // Show notification
-            this.showNotification('Loaded', 'History item loaded');
-        }
-        
-        /**
-         * Delete a history item
-         */
-        deleteHistoryItem(id) {
-            // Filter out the item
-            this.history = this.history.filter(item => item.id !== id);
-            
-            // Save to localStorage
-            localStorage.setItem('analysis-history', JSON.stringify(this.history));
-            
-            // Update history view
-            this.updateHistoryView();
-            
-            // Show notification
-            this.showNotification('Deleted', 'History item deleted');
-        }
-        
-        /**
-         * Clear all history
-         */
-        clearHistory() {
-            // Confirm before clearing
-            if (!confirm('Are you sure you want to clear all history?')) {
-                return;
-            }
-            
-            // Clear history
-            this.history = [];
-            
-            // Save to localStorage
-            localStorage.setItem('analysis-history', JSON.stringify(this.history));
-            
-            // Update history view
-            this.updateHistoryView();
-            
-            // Show notification
-            this.showNotification('Cleared', 'History cleared');
-        }
-        
-        /**
-         * Handle model selection change
-         */
-        onModelChange() {
-            const modelSelect = document.getElementById('model-select');
-            this.selectedModel = modelSelect.value;
-            
-            // Show/hide Hugging Face model selector
-            const hfSelector = document.getElementById('huggingface-model-selector');
-            if (this.selectedModel === 'huggingface') {
-                hfSelector.classList.remove('d-none');
-                
-                // Fetch available models if needed
-                this.fetchHuggingFaceModels();
-            } else {
-                hfSelector.classList.add('d-none');
-            }
-        }
-        
-        /**
-         * Fetch available Hugging Face models
-         */
-        fetchHuggingFaceModels() {
-            const modelsList = document.getElementById('hf-models-list');
-            
-            // Check if already fetched
-            if (modelsList.innerHTML.includes('Loading models...')) {
-                // Fetch models from API
-                this.fetchFromApi('/api/huggingface/models')
-                    .then(data => {
-                        if (data.success && data.models && data.models.length > 0) {
-                            // Clear list
-                            modelsList.innerHTML = '';
-                            
-                            // Add models to list
-                            data.models.forEach(model => {
-                                const modelItem = document.createElement('li');
-                                modelItem.className = 'dropdown-item';
-                                modelItem.dataset.modelId = model.id;
-                                
-                                // Create model name
-                                const modelName = model.id.split('/').pop();
-                                
-                                // Create model badges
-                                let badges = '';
-                                if (model.downloads) {
-                                    badges += `<span class="badge badge-downloads">${this.formatNumber(model.downloads)} downloads</span> `;
-                                }
-                                if (model.likes) {
-                                    badges += `<span class="badge badge-likes">${this.formatNumber(model.likes)} likes</span>`;
-                                }
-                                
-                                // Set item content
-                                modelItem.innerHTML = `
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span>${modelName}</span>
-                                        <small>${badges}</small>
-                                    </div>
-                                `;
-                                
-                                // Add click event
-                                modelItem.addEventListener('click', () => {
-                                    // Add model to selector if not exists
-                                    this.addHuggingFaceModel(model.id);
-                                });
-                                
-                                // Add to list
-                                modelsList.appendChild(modelItem);
-                            });
-                        } else {
-                            // No models found
-                            modelsList.innerHTML = '<li class="dropdown-item">No models found</li>';
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching Hugging Face models:', error);
-                        modelsList.innerHTML = '<li class="dropdown-item text-danger">Error loading models</li>';
-                    });
-            }
-        }
-        
-        /**
-         * Add a Hugging Face model to the selector
-         */
-        addHuggingFaceModel(modelId) {
-            // Check if model already exists
-            const existingModel = document.querySelector(`#hf-models-container .model-selector[data-model-id="${modelId}"]`);
-            if (existingModel) {
-                // Select existing model
-                this.selectHuggingFaceModel(existingModel);
-                return;
-            }
-            
-            // Create new model selector
-            const modelContainer = document.getElementById('hf-models-container');
-            const modelSelector = document.createElement('div');
-            modelSelector.className = 'model-selector';
-            modelSelector.dataset.modelId = modelId;
-            
-            // Extract model name from ID
-            const modelName = modelId.split('/').pop();
-            
-            // Set content
-            modelSelector.textContent = modelName;
-            
-            // Add click event
-            modelSelector.addEventListener('click', (e) => this.selectHuggingFaceModel(e.currentTarget));
-            
-            // Add to container
-            modelContainer.appendChild(modelSelector);
-            
-            // Select the new model
-            this.selectHuggingFaceModel(modelSelector);
-        }
-        
-        /**
-         * Select a Hugging Face model
-         */
-        selectHuggingFaceModel(element) {
-            // Get all model selectors
-            const modelSelectors = document.querySelectorAll('#hf-models-container .model-selector');
-            
-            // Remove active class from all
-            modelSelectors.forEach(el => el.classList.remove('active'));
-            
-            // Add active class to selected
-            element.classList.add('active');
-            
-            // Set selected model
-            this.selectedHfModel = element.dataset.modelId;
-        }
-        
-        /**
-         * Format a number for display (e.g., 1000 -> 1K)
-         */
-        formatNumber(num) {
-            if (num >= 1000000) {
-                return (num / 1000000).toFixed(1) + 'M';
-            }
-            if (num >= 1000) {
-                return (num / 1000).toFixed(1) + 'K';
-            }
-            return num.toString();
-        }
-        
-        /**
-         * Clear the log editor
-         */
-        clearLog() {
-            this.editor.setValue('');
-            this.editor.focus();
-        }
-        
-        /**
-         * Load a log file into the editor
-         */
-        loadLogFile(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                this.editor.setValue(e.target.result);
-                
-                // Detect language for syntax highlighting
-                const fileName = file.name.toLowerCase();
-                if (fileName.endsWith('.js') || fileName.endsWith('.json')) {
-                    this.editor.setOption('mode', 'javascript');
-                } else if (fileName.endsWith('.py')) {
-                    this.editor.setOption('mode', 'python');
-                } else {
-                    this.editor.setOption('mode', 'shell');
-                }
-                
-                // Show notification
-                this.showNotification('File Loaded', `Loaded ${file.name}`);
-            };
-            
-            reader.readAsText(file);
-            
-            // Reset file input
-            event.target.value = '';
-        }
-        
-        /**
-         * Copy analysis result to clipboard
-         */
-        copyAnalysisResult() {
-            if (!this.lastAnalysis) {
-                this.showNotification('Error', 'No analysis to copy', 'error');
-                return;
-            }
-            
-            navigator.clipboard.writeText(this.lastAnalysis.analysis)
-                .then(() => {
-                    this.showNotification('Copied', 'Analysis copied to clipboard');
-                })
-                .catch(err => {
-                    console.error('Error copying to clipboard:', err);
-                    this.showNotification('Error', 'Failed to copy to clipboard', 'error');
-                });
-        }
-        
-        /**
-         * Switch between different views
-         */
-        switchView(viewId, event) {
-            if (event) {
-                event.preventDefault();
-            }
-            
-            // Get all view containers
-            const views = document.querySelectorAll('.view-container');
-            
-            // Hide all views
-            views.forEach(view => {
-                view.classList.add('d-none');
+            uploadBtn.addEventListener('click', function() {
+                fileInput.click();
             });
             
-            // Show selected view
-            document.getElementById(viewId).classList.remove('d-none');
+            // File drop area
+            const dropArea = document.getElementById('dropArea');
             
-            // Update navigation
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, preventDefaults, false);
             });
             
-            // Set active nav link
-            const activeLink = document.getElementById(`nav-${viewId.split('-')[0]}`);
-            if (activeLink) {
-                activeLink.classList.add('active');
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
             }
             
-            // Store current view
-            this.currentView = viewId;
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropArea.addEventListener(eventName, highlight, false);
+            });
             
-            // Special actions for specific views
-            if (viewId === 'system-view') {
-                // Refresh system status
-                this.checkBackendStatus();
-            }
-        }
-        
-        /**
-         * Toggle dark mode
-         */
-        toggleDarkMode(enabled) {
-            this.darkMode = enabled;
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, unhighlight, false);
+            });
             
-            // Save preference
-            localStorage.setItem('dark-mode', this.darkMode);
-            
-            // Apply dark mode
-            this.applyDarkMode();
-        }
-        
-        /**
-         * Apply dark mode to UI
-         */
-        applyDarkMode() {
-            if (this.darkMode) {
-                document.body.classList.add('dark-mode');
-                
-                // Update CodeMirror theme
-                if (this.editor) {
-                    this.editor.setOption('theme', 'monokai');
-                }
-            } else {
-                document.body.classList.remove('dark-mode');
-                
-                // Update CodeMirror theme
-                if (this.editor) {
-                    this.editor.setOption('theme', 'default');
-                }
-            }
-        }
-        
-        /**
-         * Open settings modal
-         */
-        openSettingsModal() {
-            // Load current settings into form
-            this.loadSettingsForm();
-            
-            // Show modal
-            const settingsModal = new bootstrap.Modal(document.getElementById('settings-modal'));
-            settingsModal.show();
-        }
-        
-        /**
-         * Load current settings into settings form
-         */
-        loadSettingsForm() {
-            // API Keys
-            document.getElementById('openai-api-key').value = localStorage.getItem('openai-api-key') || '';
-            document.getElementById('gemini-api-key').value = localStorage.getItem('gemini-api-key') || '';
-            document.getElementById('hf-api-key').value = localStorage.getItem('hf-api-key') || '';
-            
-            // Server settings
-            document.getElementById('backend-url').value = this.apiBaseUrl;
-            document.getElementById('ws-url').value = this.wsUrl;
-            document.getElementById('websocket-enabled-toggle').checked = this.wsEnabled;
-            
-            // Interface settings
-            document.getElementById('theme-light').checked = !this.darkMode;
-            document.getElementById('theme-dark').checked = this.darkMode;
-            document.getElementById('editor-font-size').value = this.editorFontSize;
-            document.getElementById('auto-save-history-toggle').checked = this.autoSaveHistory;
-            
-            // AI Models settings
-            document.getElementById('default-model').value = this.defaultModel;
-            document.getElementById('default-hf-model').value = this.defaultHfModel;
-            document.getElementById('llama-model-path').value = localStorage.getItem('llama-model-path') || '';
-        }
-        
-        /**
-         * Save settings from form
-         */
-        saveSettings() {
-            // Get form values
-            
-            // API Keys
-            const openaiApiKey = document.getElementById('openai-api-key').value;
-            const geminiApiKey = document.getElementById('gemini-api-key').value;
-            const hfApiKey = document.getElementById('hf-api-key').value;
-            
-            // Only save non-empty API keys
-            if (openaiApiKey) localStorage.setItem('openai-api-key', openaiApiKey);
-            if (geminiApiKey) localStorage.setItem('gemini-api-key', geminiApiKey);
-            if (hfApiKey) localStorage.setItem('hf-api-key', hfApiKey);
-            
-            // Server settings
-            this.apiBaseUrl = document.getElementById('backend-url').value || 'http://localhost:8081';
-            localStorage.setItem('backend-url', this.apiBaseUrl);
-            
-            this.wsUrl = document.getElementById('ws-url').value || 'ws://localhost:8082';
-            localStorage.setItem('ws-url', this.wsUrl);
-            
-            this.wsEnabled = document.getElementById('websocket-enabled-toggle').checked;
-            localStorage.setItem('websocket-enabled', this.wsEnabled);
-            
-            // Interface settings
-            this.darkMode = document.getElementById('theme-dark').checked;
-            localStorage.setItem('dark-mode', this.darkMode);
-            
-            this.editorFontSize = parseInt(document.getElementById('editor-font-size').value);
-            localStorage.setItem('editor-font-size', this.editorFontSize);
-            
-            this.autoSaveHistory = document.getElementById('auto-save-history-toggle').checked;
-            localStorage.setItem('auto-save-history', this.autoSaveHistory);
-            
-            // AI Models settings
-            this.defaultModel = document.getElementById('default-model').value;
-            localStorage.setItem('default-model', this.defaultModel);
-            
-            this.defaultHfModel = document.getElementById('default-hf-model').value;
-            localStorage.setItem('default-hf-model', this.defaultHfModel);
-            
-            const llamaModelPath = document.getElementById('llama-model-path').value;
-            if (llamaModelPath) localStorage.setItem('llama-model-path', llamaModelPath);
-            
-            // Apply settings
-            this.applyDarkMode();
-            document.querySelector('.CodeMirror').style.fontSize = `${this.editorFontSize}px`;
-            document.getElementById('auto-save-toggle').checked = this.autoSaveHistory;
-            document.getElementById('model-select').value = this.defaultModel;
-            this.onModelChange();
-            
-            // Update WebSocket connection if needed
-            if (this.wsEnabled) {
-                this.initWebSocket();
-            } else if (this.wsSocket) {
-                this.wsSocket.close();
-                this.wsConnected = false;
-                this.updateWebSocketStatus(false);
+            function highlight() {
+                dropArea.classList.add('border-primary');
             }
             
-            // Update backend status
-            this.checkBackendStatus();
-            
-            // Close modal
-            bootstrap.Modal.getInstance(document.getElementById('settings-modal')).hide();
-            
-            // Show notification
-            this.showNotification('Settings Saved', 'Your settings have been updated');
-            
-            // Save settings to backend API
-            this.saveSettingsToBackend();
-        }
-        
-        /**
-         * Save settings to backend API
-         */
-        saveSettingsToBackend() {
-            // Prepare settings data
-            const settingsData = {
-                api_keys: {
-                    openai: localStorage.getItem('openai-api-key'),
-                    gemini: localStorage.getItem('gemini-api-key'),
-                    huggingface: localStorage.getItem('hf-api-key')
-                },
-                ai: {
-                    default_model: this.defaultModel,
-                    default_hf_model: this.defaultHfModel,
-                    llama_model_path: localStorage.getItem('llama-model-path')
-                },
-                server: {
-                    websocket_enabled: this.wsEnabled
-                }
-            };
-            
-            // Send to API
-            this.fetchFromApi('/api/settings', 'POST', settingsData)
-                .then(data => {
-                    console.log('Settings saved to backend:', data);
-                })
-                .catch(error => {
-                    console.error('Error saving settings to backend:', error);
-                });
-        }
-        
-        /**
-         * Show notification toast
-         */
-        showNotification(title, message, type = 'info') {
-            const toast = document.getElementById('notification-toast');
-            const toastTitle = document.getElementById('toast-title');
-            const toastMessage = document.getElementById('toast-message');
-            const toastTime = document.getElementById('toast-time');
-            
-            // Set content
-            toastTitle.textContent = title;
-            toastMessage.textContent = message;
-            toastTime.textContent = new Date().toLocaleTimeString();
-            
-            // Set type-specific icon
-            const icon = toast.querySelector('.toast-header i');
-            icon.className = 'bi me-2';
-            
-            switch (type) {
-                case 'error':
-                    icon.classList.add('bi-exclamation-triangle', 'text-danger');
-                    break;
-                case 'warning':
-                    icon.classList.add('bi-exclamation-circle', 'text-warning');
-                    break;
-                case 'success':
-                    icon.classList.add('bi-check-circle', 'text-success');
-                    break;
-                default:
-                    icon.classList.add('bi-info-circle', 'text-primary');
+            function unhighlight() {
+                dropArea.classList.remove('border-primary');
             }
             
-            // Show toast
-            this.toastInstance.show();
-        }
-        
-        /**
-         * Helper to make API requests
-         */
-        async fetchFromApi(endpoint, method = 'GET', data = null) {
-            const url = this.apiBaseUrl + endpoint;
-            
-            const options = {
-                method: method,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            };
-            
-            if (data && (method === 'POST' || method === 'PUT')) {
-                options.body = JSON.stringify(data);
-            }
-            
-            try {
-                const response = await fetch(url, options);
-                
-                if (!response.ok) {
-                    throw new Error(`API error: ${response.status} ${response.statusText}`);
-                }
-                
-                return await response.json();
-            } catch (error) {
-                console.error(`API request error (${url}):`, error);
-                throw error;
-            }
-        }
-    }
+            // // Mock data for demonstration
+            // setTimeout(() => {
+            //     document.getElementById('connectionStatus').classList.replace('status-offline', 'status-online');
+            //     document.getElementById('connectionText').textContent = 'Connected';
+            // }, 2000);
+        });
     </script>
 </body>
 </html>

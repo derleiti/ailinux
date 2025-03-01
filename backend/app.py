@@ -1,34 +1,23 @@
-"""AILinux Backend Server for AI-powered log analysis.
+"""AILinux Backend Server for log analysis using AI models.
 
 This module provides a Flask-based API that processes log files using 
-various AI models and returns analysis results. It supports multiple AI platforms
-including GPT4All, OpenAI, Google Gemini, and Hugging Face.
+various AI models and returns analysis results.
 """
+import logging
 import os
 import sys
-import json
-import logging
-import time
+import traceback
 from datetime import datetime
-from pathlib import Path
-from typing import Dict, Any, List, Optional, Union
-
-from flask import Flask, jsonify, request, send_from_directory, Response
+from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 from dotenv import load_dotenv
-
-# Import AI model functionality
-from ai_model import (
-    analyze_log,
-    get_model_status,
-    list_available_huggingface_models,
-    search_huggingface_models
-)
+import psutil
+from ai_model import analyze_log, get_available_models
 
 # Load environment variables
 load_dotenv()
 
-# Initialize Flask app with CORS support
+# Initialize Flask app
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
@@ -38,64 +27,188 @@ PORT = int(os.getenv("FLASK_PORT", 8081))   # Default to 8081
 DEBUG = os.getenv("FLASK_DEBUG", "False").lower() == "true"
 ENV = os.getenv("ENVIRONMENT", "development")
 
-# Directory paths for logs and storage
-ROOT_DIR = Path(os.path.dirname(os.path.abspath(__file__)))
-LOGS_DIR = ROOT_DIR / "logs"
-DATA_DIR = ROOT_DIR / "data"
-
-# Make sure directories exist
-LOGS_DIR.mkdir(exist_ok=True, parents=True)
-DATA_DIR.mkdir(exist_ok=True, parents=True)
-
-# Log file paths
-LOG_FILE = LOGS_DIR / "backend.log"
-DEBUG_LOG_FILE = LOGS_DIR / "debug_history.log"
-
 # Configure logging
+log_directory = os.path.join(os.path.dirname(__file__), "logs")
+os.makedirs(log_directory, exist_ok=True)
+log_file_path = os.path.join(log_directory, "backend.log")
+
 logging.basicConfig(
     level=logging.DEBUG if DEBUG else logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
-    handlers=[
-        logging.FileHandler(LOG_FILE),
-        logging.StreamHandler()
-    ]
+    filename=log_file_path,
+    filemode="a",
+    format="%(asctime)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger('Backend')
 
-# Request logging middleware
-@app.before_request
-def log_request_info():
-    """Log information about each incoming request."""
-    logger.info(f"Request: {request.method} {request.path} from {request.remote_addr}")
+# Create console handler for logging to console as well
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(formatter)
+logger.addHandler(console_handler)
+
+# Debug log file for storing AI model responses
+DEBUG_LOG_FILE = os.path.join(log_directory, "debug_history.log")
+
+
+@app.route('/debug', methods=['POST'])
+def debug():
+    """Process and analyze log data with AI models.
     
-    # Log request data for debugging if needed
-    if DEBUG and request.is_json and request.content_length < 10000:  # Only log small JSON payloads
-        logger.debug(f"Request data: {request.json}")
+    Returns:
+        JSON response containing AI analysis or error information
+    """
+    try:
+        # Validate input data
+        if not request.is_json:
+            logger.error("Request does not contain valid JSON")
+            return jsonify({"error": "Request must be in JSON format"}), 400
+            
+        data = request.json
+        log_text = data.get('log')
+        model_name = data.get('model', 'gpt4all')  # Default to gpt4all
 
-@app.after_request
-def log_response_info(response):
-    """Log information about each outgoing response."""
-    logger.info(f"Response: {response.status} to {request.remote_addr}")
-    return response
+        if not log_text:
+            logger.error("No log text provided")
+            return jsonify({"error": "No log text provided"}), 400
 
-# Error handlers
-@app.errorhandler(404)
-def not_found(error):
-    """Handle 404 Not Found errors."""
-    return jsonify({"error": "Resource not found", "path": request.path}), 404
+        logger.info(f"Received log for analysis using model: {model_name}")
+        logger.debug(f"Log content preview: {log_text[:100]}...")  # Log first 100 chars for debugging
 
-@app.errorhandler(405)
-def method_not_allowed(error):
-    """Handle 405 Method Not Allowed errors."""
-    return jsonify({"error": "Method not allowed", "method": request.method, "path": request.path}), 405
+        # Process and analyze the log
+        translated_log = translate_log(log_text)
+        response = analyze_log(translated_log, model_name)
 
-@app.errorhandler(500)
-def server_error(error):
-    """Handle 500 Internal Server Error errors."""
-    logger.error(f"Server error: {str(error)}")
-    return jsonify({"error": "Internal server error"}), 500
+        # Log the AI model response
+        logger.debug(f"AI model response preview: {response[:100]}...")  # Log first 100 chars
 
-# Health check endpoint
+        # Record the debug request and response to debug history
+        log_debug_history(log_text, response, model_name)
+
+        # Return analysis response
+        return jsonify({"analysis": response})
+    
+    except Exception as e:
+        error_message = f"Error in debug endpoint: {str(e)}"
+        stack_trace = traceback.format_exc()
+        logger.exception(error_message)
+        logger.debug(f"Stack trace: {stack_trace}")
+        return jsonify({"error": error_message}), 500
+
+
+@app.route('/logs', methods=['GET'])
+def get_logs():
+    """Retrieve log files.
+    
+    Returns:
+        JSON response containing available logs
+    """
+    try:
+        # Read the log file if it exists
+        if os.path.exists(log_file_path):
+            with open(log_file_path, 'r', encoding='utf-8') as f:
+                logs = f.readlines()
+            return jsonify({"logs": logs})
+        
+        return jsonify({"logs": []})
+    
+    except Exception as e:
+        logger.exception(f"Error retrieving logs: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/models', methods=['GET'])
+def get_models():
+    """Get list of available AI models.
+    
+    Returns:
+        JSON response containing available models
+    """
+    try:
+        models = get_available_models()
+        return jsonify({"models": models})
+    except Exception as e:
+        logger.exception(f"Error retrieving models: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/system', methods=['GET'])
+def system_status():
+    """Get system status information.
+    
+    Returns:
+        JSON response with system metrics
+    """
+    try:
+        system_info = {
+            "cpu": psutil.cpu_percent(interval=1),
+            "ram": psutil.virtual_memory().percent,
+            "disk": psutil.disk_usage("/").percent,
+            "network": psutil.net_io_counters().bytes_sent + psutil.net_io_counters().bytes_recv,
+            "running_processes": len(psutil.pids()),
+            "timestamp": datetime.now().isoformat()
+        }
+        return jsonify(system_info)
+    except Exception as e:
+        logger.exception(f"Error retrieving system status: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/settings', methods=['GET', 'POST'])
+def handle_settings():
+    """Update or retrieve application settings.
+    
+    Returns:
+        JSON response with settings data or confirmation
+    """
+    settings_file = os.path.join(os.path.dirname(__file__), "settings.json")
+    
+    if request.method == 'POST':
+        try:
+            new_settings = request.json
+            
+            # Validate settings
+            if not isinstance(new_settings, dict):
+                return jsonify({"error": "Invalid settings format"}), 400
+                
+            import json
+            with open(settings_file, 'w') as f:
+                json.dump(new_settings, f, indent=2)
+                
+            logger.info(f"Updated settings: {new_settings}")
+            return jsonify({"status": "success", "message": "Settings updated"})
+        except Exception as e:
+            logger.exception(f"Error updating settings: {str(e)}")
+            return jsonify({"error": str(e)}), 500
+    else:
+        try:
+            import json
+            if os.path.exists(settings_file):
+                with open(settings_file, 'r') as f:
+                    settings = json.load(f)
+                return jsonify({"settings": settings})
+            else:
+                # Return default settings if file doesn't exist
+                default_settings = {
+                    "ai": {
+                        "defaultModel": "gpt4all",
+                        "gpt4all_enabled": True,
+                        "openai_enabled": bool(os.getenv("OPENAI_API_KEY")),
+                        "gemini_enabled": bool(os.getenv("GEMINI_API_KEY")),
+                        "huggingface_enabled": bool(os.getenv("HUGGINGFACE_API_KEY"))
+                    },
+                    "logging": {
+                        "level": "info",
+                        "log_to_file": True,
+                        "max_log_files": 5
+                    }
+                }
+                return jsonify({"settings": default_settings})
+        except Exception as e:
+            logger.exception(f"Error retrieving settings: {str(e)}")
+            return jsonify({"error": str(e)}), 500
+
+
 @app.route('/health', methods=['GET'])
 def health_check():
     """Check the health of the backend server.
@@ -106,259 +219,16 @@ def health_check():
     return jsonify({
         "status": "online",
         "environment": ENV,
-        "version": "1.2.0",
+        "version": "1.0.0",
         "timestamp": datetime.now().isoformat()
     })
 
-# Model status endpoint
-@app.route('/models/status', methods=['GET'])
-def model_status():
-    """Get the status of all AI models.
-    
-    Returns:
-        JSON response with model status information
-    """
-    status = get_model_status()
-    return jsonify({"status": status})
-
-# Hugging Face models list endpoint
-@app.route('/models/huggingface', methods=['GET'])
-def huggingface_models():
-    """List available Hugging Face models.
-    
-    Query parameters:
-        category: Model category (default: text-generation)
-        limit: Maximum number of models to return (default: 10)
-    
-    Returns:
-        JSON response with list of models
-    """
-    category = request.args.get('category', 'text-generation')
-    limit = int(request.args.get('limit', 10))
-    
-    models = list_available_huggingface_models(category, limit)
-    return jsonify({"models": models})
-
-# Hugging Face model search endpoint
-@app.route('/models/huggingface/search', methods=['GET'])
-def search_models():
-    """Search for Hugging Face models.
-    
-    Query parameters:
-        q: Search query
-        limit: Maximum number of models to return (default: 10)
-    
-    Returns:
-        JSON response with search results
-    """
-    query = request.args.get('q', '')
-    limit = int(request.args.get('limit', 10))
-    
-    if not query:
-        return jsonify({"error": "Search query is required"}), 400
-    
-    models = search_huggingface_models(query, limit)
-    return jsonify({"results": models})
-
-# Log analysis endpoint
-@app.route('/analyze', methods=['POST'])
-def analyze():
-    """Analyze log data with AI models.
-    
-    Request JSON:
-        log: The log text to analyze
-        model: The AI model to use (default: gpt4all)
-        options: Additional options for the model
-    
-    Returns:
-        JSON response containing AI analysis
-    """
-    try:
-        # Validate input data
-        if not request.is_json:
-            return jsonify({"error": "Request must be in JSON format"}), 400
-            
-        data = request.json
-        log_text = data.get('log')
-        model_name = data.get('model', 'gpt4all')
-        model_options = data.get('options', {})
-
-        if not log_text:
-            return jsonify({"error": "No log text provided"}), 400
-
-        logger.info(f"Analyzing log with model: {model_name}")
-        
-        # Process and analyze the log
-        results = analyze_log(log_text, model_name, model_options)
-        
-        # Save analysis to debug history log
-        with open(DEBUG_LOG_FILE, "a") as log_file:
-            timestamp = datetime.now().isoformat()
-            log_file.write(f"[{timestamp}] Model: {model_name}\n")
-            log_file.write(f"Log: {log_text[:500]}{'...' if len(log_text) > 500 else ''}\n")
-            log_file.write(f"Analysis: {results['analysis']}\n\n")
-
-        # Return analysis response
-        return jsonify(results)
-    
-    except ValueError as e:
-        logger.error(f"Value error in analyze endpoint: {str(e)}")
-        return jsonify({"error": str(e)}), 400
-        
-    except Exception as e:
-        logger.exception(f"Error in analyze endpoint: {str(e)}")
-        return jsonify({"error": f"Server error: {str(e)}"}), 500
-
-# Legacy endpoint for backward compatibility
-@app.route('/debug', methods=['POST'])
-def debug():
-    """Legacy endpoint for log analysis (redirects to /analyze).
-    
-    Returns:
-        JSON response containing AI analysis
-    """
-    try:
-        # Validate input data
-        if not request.is_json:
-            return jsonify({"error": "Request must be in JSON format"}), 400
-            
-        data = request.json
-        log_text = data.get('log')
-        model_name = data.get('model', 'gpt4all')
-
-        if not log_text:
-            return jsonify({"error": "No log text provided"}), 400
-
-        logger.info(f"Legacy debug endpoint called with model: {model_name}")
-        
-        # Process and analyze the log
-        results = analyze_log(log_text, model_name)
-        
-        # Format response for legacy clients
-        return jsonify({"analysis": results["analysis"]})
-    
-    except Exception as e:
-        logger.exception(f"Error in debug endpoint: {str(e)}")
-        return jsonify({"error": str(e)}), 500
-
-# Logs retrieval endpoint
-@app.route('/logs', methods=['GET'])
-def get_logs():
-    """Retrieve log files.
-    
-    Query parameters:
-        type: Log type (default: backend, options: backend, debug)
-        lines: Number of lines to return (default: 100)
-    
-    Returns:
-        JSON response containing logs
-    """
-    try:
-        log_type = request.args.get('type', 'backend')
-        lines = int(request.args.get('lines', 100))
-        
-        # Determine which log file to read
-        if log_type == 'debug':
-            log_path = DEBUG_LOG_FILE
-        else:  # Default to backend logs
-            log_path = LOG_FILE
-        
-        # Read the log file if it exists
-        if os.path.exists(log_path):
-            with open(log_path, 'r', encoding='utf-8') as f:
-                logs = f.readlines()
-            
-            # Return the last N lines
-            return jsonify({"logs": logs[-lines:] if lines > 0 else logs})
-        
-        return jsonify({"logs": [], "warning": f"Log file {log_path} does not exist"})
-    
-    except Exception as e:
-        logger.exception(f"Error retrieving logs: {str(e)}")
-        return jsonify({"error": str(e)}), 500
-
-# Settings endpoint
-@app.route('/settings', methods=['GET', 'POST'])
-def settings():
-    """Get or update application settings.
-    
-    GET: Retrieve current settings
-    POST: Update settings
-    
-    Returns:
-        JSON response with settings or confirmation
-    """
-    settings_file = DATA_DIR / "settings.json"
-    
-    if request.method == 'GET':
-        try:
-            if os.path.exists(settings_file):
-                with open(settings_file, 'r') as f:
-                    settings_data = json.load(f)
-                return jsonify(settings_data)
-            else:
-                # Return default settings if no file exists
-                default_settings = {
-                    "ai": {
-                        "defaultModel": "gpt4all",
-                        "modelsEnabled": {
-                            "gpt4all": True,
-                            "openai": bool(os.getenv("OPENAI_API_KEY")),
-                            "gemini": bool(os.getenv("GEMINI_API_KEY")),
-                            "huggingface": True
-                        }
-                    },
-                    "ui": {
-                        "theme": "light",
-                        "logHistoryLimit": 100
-                    },
-                    "system": {
-                        "logLevel": "info"
-                    }
-                }
-                return jsonify(default_settings)
-        except Exception as e:
-            logger.exception(f"Error retrieving settings: {str(e)}")
-            return jsonify({"error": str(e)}), 500
-    
-    elif request.method == 'POST':
-        try:
-            new_settings = request.json
-            
-            # Validate settings format
-            if not isinstance(new_settings, dict):
-                return jsonify({"error": "Invalid settings format"}), 400
-            
-            # Save settings to file
-            with open(settings_file, 'w') as f:
-                json.dump(new_settings, f, indent=2)
-            
-            logger.info(f"Settings updated: {list(new_settings.keys())}")
-            return jsonify({"status": "success", "message": "Settings updated"})
-        except Exception as e:
-            logger.exception(f"Error updating settings: {str(e)}")
-            return jsonify({"error": str(e)}), 500
-
-# Static file serving (for frontend)
-@app.route('/', defaults={'path': 'index.html'})
-@app.route('/<path:path>')
-def serve_static(path):
-    """Serve static files from the frontend directory.
-    
-    Args:
-        path: Relative path to the file
-    
-    Returns:
-        Static file response
-    """
-    static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'frontend')
-    return send_from_directory(static_dir, path)
 
 def translate_log(log_text):
     """Preprocess log text before AI analysis.
     
-    This function normalizes log text by removing certain sensitive information
-    and standardizing format.
+    This function can be expanded to implement more sophisticated 
+    log translation or normalization.
     
     Args:
         log_text: The original log text
@@ -366,37 +236,39 @@ def translate_log(log_text):
     Returns:
         Processed log text
     """
-    # Remove potential sensitive information like API keys
-    import re
-    
-    # Pattern to match potential API keys
-    api_key_pattern = r'(api[_-]?key|token)["\']?\s*[:=]\s*["\']?([a-zA-Z0-9]{20,})["\']?'
-    
-    # Replace API keys with placeholder
-    processed_text = re.sub(api_key_pattern, r'\1: [API_KEY_REDACTED]', log_text, flags=re.IGNORECASE)
-    
-    return processed_text
+    # In the future, add log normalization or preprocessing here
+    return log_text
 
-def main():
-    """Main function to run the Flask server."""
+
+def log_debug_history(log_text, response, model_name):
+    """Record debug requests and responses to a history file.
+    
+    Args:
+        log_text: The original log text
+        response: The AI response
+        model_name: The AI model used
+    """
+    try:
+        timestamp = datetime.now().isoformat()
+        with open(DEBUG_LOG_FILE, "a", encoding="utf-8") as log_file:
+            log_file.write(f"--- {timestamp} ---\n")
+            log_file.write(f"Model: {model_name}\n")
+            log_file.write(f"Log: {log_text}\n")
+            log_file.write(f"Response: {response}\n\n")
+    except Exception as e:
+        logger.error(f"Error writing to debug history: {str(e)}")
+
+
+if __name__ == "__main__":
     # Allow command line arguments to override environment variables
     if len(sys.argv) > 1:
-        global HOST
-        
         if sys.argv[1] == "local":
             HOST = "localhost"
             logger.info("Using localhost configuration")
         elif sys.argv[1] == "remote":
-            HOST = "0.0.0.0"  # Listen on all interfaces
-            logger.info("Using remote configuration")
+            HOST = "derleiti.de"
+            logger.info("Using remote (derleiti.de) configuration")
     
-    # Additional configuration logging
-    logger.info(f"Starting backend server on {HOST}:{PORT} (Debug: {DEBUG})")
+    logger.info(f"Starting backend server on {HOST}:{PORT} (Debug: {DEBUG})...")
     logger.info(f"Environment: {ENV}")
-    logger.info(f"Log file: {LOG_FILE}")
-    
-    # Start the Flask server
     app.run(host=HOST, port=PORT, debug=DEBUG)
-
-if __name__ == "__main__":
-    main()
