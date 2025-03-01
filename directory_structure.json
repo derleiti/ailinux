@@ -2,16 +2,11 @@
   "stats": {
     "total_directories": 718,
     "total_files": 4190,
-    "total_size_bytes": 674649557,
-    "total_size_human": "643.40 MB",
-    "scan_time": "2025-03-01 23:45:58"
+    "total_size_bytes": 674662813,
+    "total_size_human": "643.41 MB",
+    "scan_time": "2025-03-01 23:56:49"
   },
   "structure": {
-    "LICENSE": {
-      "type": "file",
-      "size": 1065,
-      "size_human": "1.04 KB"
-    },
     "ailinux-documentation.md": {
       "type": "file",
       "size": 76840,
@@ -37,8 +32,8 @@
       "contents": {
         "start.js": {
           "type": "file",
-          "size": 5358,
-          "size_human": "5.23 KB"
+          "size": 11677,
+          "size_human": "11.40 KB"
         },
         "websocket-client.py": {
           "type": "file",
@@ -24300,8 +24295,8 @@
         },
         "start.sh": {
           "type": "file",
-          "size": 1610,
-          "size_human": "1.57 KB"
+          "size": 9272,
+          "size_human": "9.05 KB"
         },
         "package.json": {
           "type": "file",
@@ -24533,10 +24528,15 @@
       "size": 3284,
       "size_human": "3.21 KB"
     },
+    "large_files.json": {
+      "type": "file",
+      "size": 357,
+      "size_human": "357.00 B"
+    },
     "optimization.log": {
       "type": "file",
-      "size": 152263,
-      "size_human": "148.69 KB"
+      "size": 152246,
+      "size_human": "148.68 KB"
     }
   }
 }
