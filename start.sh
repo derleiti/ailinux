@@ -33,10 +33,7 @@ backend.on('exit', (code) => {
 
 // Log when the frontend process starts
 fs.appendFileSync(startLog, 'Starting frontend process\n');
-<<<<<<< HEAD
-=======
 console.log("__dirname: ", __dirname);
->>>>>>> 7232dfd (Initial commit with backend and frontend updates)
 
 // Handle frontend process exit
 frontend.on('exit', (code) => {

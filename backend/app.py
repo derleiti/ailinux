@@ -1,43 +1,134 @@
+"""AILinux Backend Server for log analysis using AI models.
+
+This module provides a Flask-based API that processes log files using 
+various AI models and returns analysis results.
+"""
 import logging
-from flask import Flask, jsonify, request
-from ai_model import analyze_log  # Importiere die Funktion zur Log-Analyse
+import os
+from flask import Flask, jsonify, request, send_from_directory
+from flask_cors import CORS
+from ai_model import analyze_log
 
+# Initialize Flask app
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
-# Logging konfigurieren
-logging.basicConfig(level=logging.DEBUG, filename="backend/backend.log", filemode="w", format="%(asctime)s - %(levelname)s - %(message)s")
+# Configure logging
+log_directory = os.path.join(os.path.dirname(__file__), "logs")
+os.makedirs(log_directory, exist_ok=True)
+log_file_path = os.path.join(log_directory, "backend.log")
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    filename=log_file_path,
+    filemode="a",
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 logger = logging.getLogger('Backend')
 
-# Debugging-Route
+# Create console handler for logging to console as well
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(formatter)
+logger.addHandler(console_handler)
+
+
 @app.route('/debug', methods=['POST'])
 def debug():
+    """Process and analyze log data with AI models.
+    
+    Returns:
+        JSON response containing AI analysis or error information
+    """
     try:
-        log_text = request.json.get('log')
-        model_name = request.json.get('model', 'gpt4all')  # Standardmäßig gpt4all verwenden
+        # Validate input data
+        if not request.is_json:
+            logger.error("Request does not contain valid JSON")
+            return jsonify({"error": "Request must be in JSON format"}), 400
+            
+        data = request.json
+        log_text = data.get('log')
+        model_name = data.get('model', 'gpt4all')  # Default to gpt4all
 
         if not log_text:
-            logger.error("Kein Logtext bereitgestellt")
-            return jsonify({"error": "Kein Log erhalten"}), 400
+            logger.error("No log text provided")
+            return jsonify({"error": "No log text provided"}), 400
 
-        logger.info(f"Erhaltenes Log zur Analyse: {log_text}")
+        logger.info(f"Received log for analysis using model: {model_name}")
+        logger.debug(f"Log content: {log_text[:100]}...")  # Log first 100 chars for debugging
 
-        # Log-Übersetzung, falls erforderlich
+        # Process and analyze the log
         translated_log = translate_log(log_text)
         response = analyze_log(translated_log, model_name)
 
-        # Logge die Antwort des KI-Modells
-        logger.debug(f"Antwort vom KI-Modell: {response}")
+        # Log the AI model response
+        logger.debug(f"AI model response: {response[:100]}...")  # Log first 100 chars
 
-        # Antwort zurückgeben
+        # Return analysis response
         return jsonify({"analysis": response})
+    
     except Exception as e:
-        logger.exception("Fehler im Debug-Endpunkt")
+        logger.exception(f"Error in debug endpoint: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
+
+@app.route('/logs', methods=['GET'])
+def get_logs():
+    """Retrieve log files.
+    
+    Returns:
+        JSON response containing available logs
+    """
+    try:
+        # Read the log file if it exists
+        if os.path.exists(log_file_path):
+            with open(log_file_path, 'r', encoding='utf-8') as f:
+                logs = f.readlines()
+            return jsonify({"logs": logs})
+        
+        return jsonify({"logs": []})
+    
+    except Exception as e:
+        logger.exception(f"Error retrieving logs: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/settings', methods=['POST'])
+def update_settings():
+    """Update application settings.
+    
+    Returns:
+        JSON response confirming settings update
+    """
+    try:
+        new_settings = request.json
+        # Here you would save the settings to a configuration file
+        # For now, just log the received settings
+        logger.info(f"Received new settings: {new_settings}")
+        return jsonify({"status": "success", "message": "Settings updated"})
+    
+    except Exception as e:
+        logger.exception(f"Error updating settings: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+
 def translate_log(log_text):
-    # Hier könnte Log-Übersetzungs- oder Vereinfachungslogik eingefügt werden
-    return log_text  # Einfaches Zurückgeben des Logtexts für Debugging
+    """Preprocess log text before AI analysis.
+    
+    This function can be expanded to implement more sophisticated 
+    log translation or normalization.
+    
+    Args:
+        log_text: The original log text
+        
+    Returns:
+        Processed log text
+    """
+    # In the future, add log normalization or preprocessing here
+    return log_text
+
 
 if __name__ == "__main__":
-    logger.info("Starte den Backend-Server...")
+    logger.info("Starting backend server...")
     app.run(host='0.0.0.0', port=8081, debug=True)
