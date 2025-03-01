@@ -1,0 +1,47 @@
+"""Module docstring missing."""
+import os
+import subprocess
+
+# Funktion zur Überprüfung und Wiederherstellung der Verzeichnisstruktur
+def restore_directory_structure(base_dir):
+    expected_structure = {
+        'backend': {
+            'backend': ['ai_model.py', 'app.py', 'backend.js', 'package-lock.json'],
+            'frontend': ['config.py', 'index.html', 'main.js', 'package.json'],
+            'models': [],
+                'lib': ['libggml-base.so', 'libggml-cpu-alderlake.so'],
+            }
+        },
+        'logs': ['backend.log', 'frontend.log'],
+        'readme': ['README.md']
+    }
+    
+    # Hilfsfunktion zur Erstellung der Verzeichnisstruktur
+    def create_structure(target_path, structure):
+        for key, value in structure.items():
+            target_dir = os.path.join(target_path, key)
+            if isinstance(value, list):
+                os.makedirs(target_dir, exist_ok=True)
+                for file in value:
+                    open(os.path.join(target_dir, file), 'w').close()
+            elif isinstance(value, dict):
+                os.makedirs(target_dir, exist_ok=True)
+                create_structure(target_dir, value)
+    
+    # Verzeichnisstruktur erstellen
+    create_structure(base_dir, expected_structure)
+
+# Pylint-Überprüfung starten
+def run_pylint():
+    try:
+    result = subprocess.run(['pylint', '--disable=all', '--enable=error'], check=True, capture_output=True, text=True)
+        print(result.stdout)
+        if result.stderr:
+            print("Fehler:", result.stderr)
+    except FileNotFoundError:
+        print("Pylint ist nicht installiert. Installiere es mit 'pip install pylint'.")
+
+if __name__ == "__main__":
+    base_dir = '/home/zombie/ailinux'
+    restore_directory_structure(base_dir)
+    run_pylint()

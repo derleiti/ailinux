@@ -88,8 +88,7 @@ if (mode === 'remote') {
 }
 
 // Log configuration
-logMessage(`Configuration: Flask=${flaskHost}:${flaskPort}, WebSocket=${wsServerUrl}`,
-startLogPath);
+logMessage(`Configuration: Flask=${flaskHost}:${flaskPort}, WebSocket=${wsServerUrl}`, startLogPath);
 logMessage(`API Keys: OpenAI=${process.env.OPENAI_API_KEY ? 'SET' : 'NOT SET'},
 Gemini=${process.env.GEMINI_API_KEY ? 'SET' : 'NOT SET'}`, startLogPath);
 

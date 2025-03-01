@@ -1,3 +1,7 @@
+"""Gpt4Allinit module for AILinux.
+
+This module provides functionality for the AILinux system.
+"""
 from gpt4all import GPT4All
 
 # Lade das GPT4All Modell

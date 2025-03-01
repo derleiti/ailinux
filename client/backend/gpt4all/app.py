@@ -1,3 +1,7 @@
+"""App module for AILinux.
+
+This module provides functionality for the AILinux system.
+"""
 #!/usr/bin/env python3
 """GPT4All CLI
 

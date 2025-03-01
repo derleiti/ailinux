@@ -1,7 +1,7 @@
 ************* Module client.start
 client/start.js:1:1: E0001: Parsing failed: 'invalid syntax (client.start, line 1)' (syntax-error)
-************* Module client.adjust_hierarchy_with_debugger
-client/adjust_hierarchy_with_debugger.py:15:8: E0001: Parsing failed: 'unexpected indent (client.adjust_hierarchy_with_debugger, line 15)' (syntax-error)
+************* Module client.websocket-client
+client/websocket-client.py:317:5: E0001: Parsing failed: 'expected an indented block after function definition on line 316 (client.websocket-client, line 317)' (syntax-error)
 ************* Module client.frontend.settings
 client/frontend/settings.html:8:53: E0001: Parsing failed: 'invalid decimal literal (client.frontend.settings, line 8)' (syntax-error)
 ************* Module client.frontend.logmanager
@@ -41,119 +41,31 @@ uploadready.py:89:9: W1514: Using open without explicitly specifying an encoding
 uploadready.py:121:0: C0116: Missing function or method docstring (missing-function-docstring)
 uploadready.py:134:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
 uploadready.py:4:0: W0611: Unused import shutil (unused-import)
-************* Module client.websocket-client
-client/websocket-client.py:31:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:49:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:53:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:59:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:64:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:70:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:74:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:77:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:85:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:99:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:107:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:115:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:125:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:132:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:142:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:148:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:153:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:159:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:162:0: C0301: Line too long (108/100) (line-too-long)
-client/websocket-client.py:164:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:167:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:170:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:172:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:176:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:187:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:197:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:207:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:216:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:221:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:223:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:228:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:234:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:243:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:248:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:260:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:262:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:272:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:277:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:314:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:318:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:322:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:325:0: C0303: Trailing whitespace (trailing-whitespace)
-client/websocket-client.py:1:0: C0103: Module name "websocket-client" doesn't conform to snake_case naming style (invalid-name)
-client/websocket-client.py:29:0: R0902: Too many instance attributes (10/7) (too-many-instance-attributes)
-client/websocket-client.py:63:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:97:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:112:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/websocket-client.py:110:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:113:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:124:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:165:19: W0718: Catching too general exception Exception (broad-exception-caught)
-client/websocket-client.py:131:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:157:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:162:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:166:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:186:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:246:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/websocket-client.py:222:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:232:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:239:23: W0718: Catching too general exception Exception (broad-exception-caught)
-client/websocket-client.py:240:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:242:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:245:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:247:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:208:26: W0613: Unused argument 'ws' (unused-argument)
-client/websocket-client.py:257:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:259:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:249:24: W0613: Unused argument 'ws' (unused-argument)
-client/websocket-client.py:274:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:263:24: W0613: Unused argument 'ws' (unused-argument)
-client/websocket-client.py:289:19: W0718: Catching too general exception Exception (broad-exception-caught)
-client/websocket-client.py:290:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket-client.py:294:0: C0103: Constant name "_instance" doesn't conform to UPPER_CASE naming style (invalid-name)
-client/websocket-client.py:302:4: W0603: Using the global statement (global-statement)
-client/websocket-client.py:316:4: C0116: Missing function or method docstring (missing-function-docstring)
-client/websocket-client.py:7:0: C0411: standard import "threading" should be placed before third party import "websocket" (wrong-import-order)
-client/websocket-client.py:8:0: C0411: standard import "logging" should be placed before third party import "websocket" (wrong-import-order)
-client/websocket-client.py:9:0: C0411: standard import "json" should be placed before third party import "websocket" (wrong-import-order)
-client/websocket-client.py:10:0: C0411: standard import "time" should be placed before third party import "websocket" (wrong-import-order)
-client/websocket-client.py:11:0: C0411: standard import "os" should be placed before third party import "websocket" (wrong-import-order)
-client/websocket-client.py:12:0: C0411: standard import "uuid" should be placed before third party import "websocket" (wrong-import-order)
-client/websocket-client.py:13:0: C0411: standard import "typing.Dict" should be placed before third party import "websocket" (wrong-import-order)
-client/websocket-client.py:13:0: W0611: Unused List imported from typing (unused-import)
 ************* Module client.alphaos
-client/alphaos.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-client/alphaos.py:10:0: C0115: Missing class docstring (missing-class-docstring)
-client/alphaos.py:11:4: W0236: Method 'onConnect' was expected to be 'non-async', found it instead as 'async' (invalid-overridden-method)
-client/alphaos.py:14:4: W0236: Method 'onOpen' was expected to be 'non-async', found it instead as 'async' (invalid-overridden-method)
-client/alphaos.py:19:4: W0236: Method 'onMessage' was expected to be 'non-async', found it instead as 'async' (invalid-overridden-method)
-client/alphaos.py:24:4: W0236: Method 'onClose' was expected to be 'non-async', found it instead as 'async' (invalid-overridden-method)
-client/alphaos.py:25:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/alphaos.py:38:4: W0612: Unused variable 'transport' (unused-variable)
-client/alphaos.py:41:0: C0116: Missing function or method docstring (missing-function-docstring)
-client/alphaos.py:45:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/alphaos.py:43:8: W0612: Unused variable 'ws_client' (unused-variable)
-client/alphaos.py:6:0: C0411: standard import "urllib.parse.urlparse" should be placed before third party import "autobahn.asyncio.websocket.WebSocketClientProtocol" (wrong-import-order)
+client/alphaos.py:11:0: E0401: Unable to import 'autobahn.asyncio.websocket' (import-error)
+client/alphaos.py:20:4: C0116: Missing function or method docstring (missing-function-docstring)
+client/alphaos.py:20:4: C0103: Method name "onConnect" doesn't conform to snake_case naming style (invalid-name)
+client/alphaos.py:23:4: C0116: Missing function or method docstring (missing-function-docstring)
+client/alphaos.py:23:4: C0103: Method name "onOpen" doesn't conform to snake_case naming style (invalid-name)
+client/alphaos.py:28:4: C0116: Missing function or method docstring (missing-function-docstring)
+client/alphaos.py:28:4: C0103: Method name "onMessage" doesn't conform to snake_case naming style (invalid-name)
+client/alphaos.py:28:33: C0103: Argument name "isBinary" doesn't conform to snake_case naming style (invalid-name)
+client/alphaos.py:33:4: C0116: Missing function or method docstring (missing-function-docstring)
+client/alphaos.py:33:4: C0103: Method name "onClose" doesn't conform to snake_case naming style (invalid-name)
+client/alphaos.py:33:22: C0103: Argument name "wasClean" doesn't conform to snake_case naming style (invalid-name)
+client/alphaos.py:33:22: W0613: Unused argument 'wasClean' (unused-argument)
+client/alphaos.py:33:32: W0613: Unused argument 'code' (unused-argument)
+client/alphaos.py:33:38: W0613: Unused argument 'reason' (unused-argument)
+client/alphaos.py:55:11: W0718: Catching too general exception Exception (broad-exception-caught)
 ************* Module client.bigfiles
-client/bigfiles.py:5:0: C0103: Constant name "directory" doesn't conform to UPPER_CASE naming style (invalid-name)
-client/bigfiles.py:22:4: W0104: Statement seems to have no effect (pointless-statement)
-client/bigfiles.py:24:4: W0105: String statement has no effect (pointless-string-statement)
-************* Module client.websocket_client
-client/websocket_client.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-client/websocket_client.py:12:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket_client.py:10:15: W0613: Unused argument 'ws' (unused-argument)
-client/websocket_client.py:16:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket_client.py:14:13: W0613: Unused argument 'ws' (unused-argument)
-client/websocket_client.py:20:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket_client.py:18:13: W0613: Unused argument 'ws' (unused-argument)
-client/websocket_client.py:41:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/websocket_client.py:42:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/websocket_client.py:4:0: C0411: standard import "logging" should be placed before third party import "websocket" (wrong-import-order)
-client/websocket_client.py:5:0: C0411: standard import "json" should be placed before third party import "websocket" (wrong-import-order)
+client/bigfiles.py:8:18: E0602: Undefined variable 'directory' (undefined-variable)
+client/bigfiles.py:11:37: E0602: Undefined variable 'directory' (undefined-variable)
+************* Module client.adjust_hierarchy_with_debugger
+client/adjust_hierarchy_with_debugger.py:29:0: C0303: Trailing whitespace (trailing-whitespace)
+client/adjust_hierarchy_with_debugger.py:45:0: C0303: Trailing whitespace (trailing-whitespace)
+client/adjust_hierarchy_with_debugger.py:56:32: C0303: Trailing whitespace (trailing-whitespace)
+client/adjust_hierarchy_with_debugger.py:12:32: W0621: Redefining name 'base_dir' from outer scope (line 68) (redefined-outer-name)
+client/adjust_hierarchy_with_debugger.py:68:4: C0103: Constant name "base_dir" doesn't conform to UPPER_CASE naming style (invalid-name)
 ************* Module client.analyze
 client/analyze.py:5:0: C0103: Constant name "root_dir" doesn't conform to UPPER_CASE naming style (invalid-name)
 client/analyze.py:14:0: C0103: Constant name "log_file_path" doesn't conform to UPPER_CASE naming style (invalid-name)
@@ -262,6 +174,7 @@ client/file-sync-client.py:547:0: C0303: Trailing whitespace (trailing-whitespac
 client/file-sync-client.py:550:0: C0303: Trailing whitespace (trailing-whitespace)
 client/file-sync-client.py:1:0: C0103: Module name "file-sync-client" doesn't conform to snake_case naming style (invalid-name)
 client/file-sync-client.py:13:0: E0401: Unable to import 'paramiko' (import-error)
+client/file-sync-client.py:15:0: E0401: Unable to import 'dotenv' (import-error)
 client/file-sync-client.py:33:18: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
 client/file-sync-client.py:43:20: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
 client/file-sync-client.py:46:20: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
@@ -343,6 +256,9 @@ client/backend/app.py:169:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/app.py:173:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/app.py:177:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/app.py:271:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/app.py:11:0: E0401: Unable to import 'flask' (import-error)
+client/backend/app.py:12:0: E0401: Unable to import 'flask_cors' (import-error)
+client/backend/app.py:13:0: E0401: Unable to import 'dotenv' (import-error)
 client/backend/app.py:26:11: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
 client/backend/app.py:91:11: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/app.py:75:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -430,6 +346,7 @@ client/backend/huggingface.py:438:0: C0303: Trailing whitespace (trailing-whites
 client/backend/huggingface.py:444:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/huggingface.py:450:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/huggingface.py:454:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/huggingface.py:14:0: E0401: Unable to import 'dotenv' (import-error)
 client/backend/huggingface.py:34:0: C0103: Constant name "_model_info_cache" doesn't conform to UPPER_CASE naming style (invalid-name)
 client/backend/huggingface.py:37:0: C0103: Constant name "_cache_last_updated" doesn't conform to UPPER_CASE naming style (invalid-name)
 client/backend/huggingface.py:52:4: W0603: Using the global statement (global-statement)
@@ -446,6 +363,7 @@ client/backend/huggingface.py:116:8: W1203: Use lazy % formatting in logging fun
 client/backend/huggingface.py:117:8: W1201: Use lazy % formatting in logging functions (logging-not-lazy)
 client/backend/huggingface.py:127:15: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/huggingface.py:121:12: C0415: Import outside toplevel (torch) (import-outside-toplevel)
+client/backend/huggingface.py:121:12: E0401: Unable to import 'torch' (import-error)
 client/backend/huggingface.py:124:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/huggingface.py:128:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/huggingface.py:96:8: W0611: Unused import transformers (unused-import)
@@ -458,15 +376,19 @@ client/backend/huggingface.py:138:8: W0611: Unused import torch (unused-import)
 client/backend/huggingface.py:139:8: W0611: Unused import transformers (unused-import)
 client/backend/huggingface.py:155:4: W0603: Using the global statement (global-statement)
 client/backend/huggingface.py:194:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/huggingface.py:166:8: E0401: Unable to import 'huggingface_hub' (import-error)
 client/backend/huggingface.py:166:8: C0415: Import outside toplevel (huggingface_hub.HfApi) (import-outside-toplevel)
 client/backend/huggingface.py:195:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/huggingface.py:242:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/huggingface.py:215:8: E0401: Unable to import 'huggingface_hub' (import-error)
 client/backend/huggingface.py:215:8: C0415: Import outside toplevel (huggingface_hub.HfApi) (import-outside-toplevel)
 client/backend/huggingface.py:243:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/huggingface.py:272:19: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/huggingface.py:273:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/huggingface.py:330:11: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/huggingface.py:302:8: C0415: Import outside toplevel (torch) (import-outside-toplevel)
+client/backend/huggingface.py:302:8: E0401: Unable to import 'torch' (import-error)
+client/backend/huggingface.py:303:8: E0401: Unable to import 'transformers' (import-error)
 client/backend/huggingface.py:303:8: C0415: Import outside toplevel (transformers.pipeline, transformers.AutoTokenizer, transformers.AutoModelForCausalLM) (import-outside-toplevel)
 client/backend/huggingface.py:311:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/huggingface.py:327:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -474,6 +396,7 @@ client/backend/huggingface.py:331:8: W1203: Use lazy % formatting in logging fun
 client/backend/huggingface.py:303:8: W0611: Unused AutoTokenizer imported from transformers (unused-import)
 client/backend/huggingface.py:303:8: W0611: Unused AutoModelForCausalLM imported from transformers (unused-import)
 client/backend/huggingface.py:366:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/huggingface.py:352:8: E0401: Unable to import 'transformers' (import-error)
 client/backend/huggingface.py:352:8: C0415: Import outside toplevel (transformers.AutoTokenizer) (import-outside-toplevel)
 client/backend/huggingface.py:355:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/huggingface.py:367:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -539,6 +462,7 @@ client/backend/ai_model.py:486:0: C0303: Trailing whitespace (trailing-whitespac
 client/backend/ai_model.py:494:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/ai_model.py:500:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/ai_model.py:503:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/ai_model.py:11:0: E0401: Unable to import 'dotenv' (import-error)
 client/backend/ai_model.py:39:0: C0103: Constant name "_gpt4all_model" doesn't conform to UPPER_CASE naming style (invalid-name)
 client/backend/ai_model.py:40:0: C0103: Constant name "_openai" doesn't conform to UPPER_CASE naming style (invalid-name)
 client/backend/ai_model.py:41:0: C0103: Constant name "_gemini" doesn't conform to UPPER_CASE naming style (invalid-name)
@@ -549,6 +473,7 @@ client/backend/ai_model.py:49:4: W0107: Unnecessary pass statement (unnecessary-
 client/backend/ai_model.py:58:4: W0603: Using the global statement (global-statement)
 client/backend/ai_model.py:95:11: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/ai_model.py:63:8: C0415: Import outside toplevel (gpt4all.GPT4All) (import-outside-toplevel)
+client/backend/ai_model.py:63:8: E0611: No name 'GPT4All' in module 'gpt4all' (no-name-in-module)
 client/backend/ai_model.py:70:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/ai_model.py:71:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/ai_model.py:76:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -559,15 +484,19 @@ client/backend/ai_model.py:69:12: W0612: Unused variable 'filename' (unused-vari
 client/backend/ai_model.py:106:4: W0603: Using the global statement (global-statement)
 client/backend/ai_model.py:120:11: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/ai_model.py:115:8: C0415: Import outside toplevel (openai) (import-outside-toplevel)
+client/backend/ai_model.py:115:8: E0401: Unable to import 'openai' (import-error)
 client/backend/ai_model.py:121:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/ai_model.py:131:4: W0603: Using the global statement (global-statement)
 client/backend/ai_model.py:145:11: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/ai_model.py:140:8: C0415: Import outside toplevel (google.generativeai) (import-outside-toplevel)
+client/backend/ai_model.py:140:8: E0401: Unable to import 'google.generativeai' (import-error)
 client/backend/ai_model.py:146:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/ai_model.py:156:4: W0603: Using the global statement (global-statement)
 client/backend/ai_model.py:203:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/ai_model.py:162:8: E0401: Unable to import 'transformers' (import-error)
 client/backend/ai_model.py:162:8: C0415: Import outside toplevel (transformers.AutoModelForCausalLM, transformers.AutoTokenizer, transformers.pipeline) (import-outside-toplevel)
 client/backend/ai_model.py:163:8: C0415: Import outside toplevel (torch) (import-outside-toplevel)
+client/backend/ai_model.py:163:8: E0401: Unable to import 'torch' (import-error)
 client/backend/ai_model.py:170:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/ai_model.py:173:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/ai_model.py:181:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -583,7 +512,6 @@ client/backend/ai_model.py:313:8: W1203: Use lazy % formatting in logging functi
 client/backend/ai_model.py:322:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/ai_model.py:325:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/ai_model.py:343:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:346:19: E1101: Module 'openai' has no 'ChatCompletion' member (no-member)
 client/backend/ai_model.py:357:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/ai_model.py:360:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/ai_model.py:378:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -600,39 +528,408 @@ client/backend/ai_model.py:479:11: W0718: Catching too general exception Excepti
 client/backend/ai_model.py:501:12: C0103: Constant name "test_log" doesn't conform to UPPER_CASE naming style (invalid-name)
 client/backend/ai_model.py:10:0: W0611: Unused Union imported from typing (unused-import)
 ************* Module client.backend.gpt4allinit
-client/backend/gpt4allinit.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+client/backend/gpt4allinit.py:5:0: E0611: No name 'GPT4All' in module 'gpt4all' (no-name-in-module)
 ************* Module client.backend.hugging
-client/backend/hugging.py:50:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/hugging.py:60:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/hugging.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-client/backend/hugging.py:3:0: E0611: No name 'AutoModelForTextGeneration' in module 'transformers' (no-name-in-module)
-client/backend/hugging.py:11:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/hugging.py:21:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/hugging.py:31:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/hugging.py:34:0: C0116: Missing function or method docstring (missing-function-docstring)
-client/backend/hugging.py:1:0: W0611: Unused import os (unused-import)
-client/backend/hugging.py:3:0: W0611: Unused AutoModelForTextGeneration imported from transformers (unused-import)
-client/backend/hugging.py:3:0: W0611: Unused AutoTokenizer imported from transformers (unused-import)
+client/backend/hugging.py:54:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/hugging.py:64:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/hugging.py:6:0: E0401: Unable to import 'huggingface_hub' (import-error)
+client/backend/hugging.py:7:0: E0401: Unable to import 'transformers' (import-error)
+client/backend/hugging.py:15:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/hugging.py:25:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/hugging.py:35:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/hugging.py:38:0: C0116: Missing function or method docstring (missing-function-docstring)
+client/backend/hugging.py:5:0: W0611: Unused import os (unused-import)
+client/backend/hugging.py:7:0: W0611: Unused AutoModelForTextGeneration imported from transformers (unused-import)
+client/backend/hugging.py:7:0: W0611: Unused AutoTokenizer imported from transformers (unused-import)
 ************* Module client.backend.gpt4all.app
-client/backend/gpt4all/app.py:64:0: C0301: Line too long (121/100) (line-too-long)
-client/backend/gpt4all/app.py:111:68: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/gpt4all/app.py:148:72: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/gpt4all/app.py:87:8: W0621: Redefining name 'version' from outer scope (line 178) (redefined-outer-name)
-client/backend/gpt4all/app.py:91:4: W0702: No exception type(s) specified (bare-except)
+client/backend/gpt4all/app.py:68:0: C0301: Line too long (121/100) (line-too-long)
+client/backend/gpt4all/app.py:115:68: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all/app.py:152:72: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all/app.py:6:0: W0105: String statement has no effect (pointless-string-statement)
+client/backend/gpt4all/app.py:12:0: C0413: Import "import importlib.metadata" should be placed at the top of the module (wrong-import-position)
+client/backend/gpt4all/app.py:13:0: C0413: Import "import io" should be placed at the top of the module (wrong-import-position)
+client/backend/gpt4all/app.py:14:0: C0413: Import "import sys" should be placed at the top of the module (wrong-import-position)
+client/backend/gpt4all/app.py:15:0: C0413: Import "from collections import namedtuple" should be placed at the top of the module (wrong-import-position)
+client/backend/gpt4all/app.py:16:0: C0413: Import "from typing_extensions import Annotated" should be placed at the top of the module (wrong-import-position)
+client/backend/gpt4all/app.py:18:0: E0401: Unable to import 'typer' (import-error)
+client/backend/gpt4all/app.py:18:0: C0413: Import "import typer" should be placed at the top of the module (wrong-import-position)
+client/backend/gpt4all/app.py:19:0: C0413: Import "from gpt4all import GPT4All" should be placed at the top of the module (wrong-import-position)
+client/backend/gpt4all/app.py:19:0: E0611: No name 'GPT4All' in module 'gpt4all' (no-name-in-module)
+client/backend/gpt4all/app.py:91:8: W0621: Redefining name 'version' from outer scope (line 182) (redefined-outer-name)
+client/backend/gpt4all/app.py:95:4: W0702: No exception type(s) specified (bare-except)
 ************* Module client.frontend.twitchbot
-client/frontend/twitchbot.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-client/frontend/twitchbot.py:4:0: C0115: Missing class docstring (missing-class-docstring)
-client/frontend/twitchbot.py:23:4: C0116: Missing function or method docstring (missing-function-docstring)
-client/frontend/twitchbot.py:2:0: C0411: standard import "os" should be placed before third party import "twitchio.ext.commands" (wrong-import-order)
+client/frontend/twitchbot.py:5:0: E0401: Unable to import 'twitchio.ext' (import-error)
+client/frontend/twitchbot.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+client/frontend/twitchbot.py:19:4: C0116: Missing function or method docstring (missing-function-docstring)
+client/frontend/twitchbot.py:22:4: C0116: Missing function or method docstring (missing-function-docstring)
+client/frontend/twitchbot.py:27:4: C0116: Missing function or method docstring (missing-function-docstring)
+client/frontend/twitchbot.py:6:0: C0411: standard import "os" should be placed before third party import "twitchio.ext.commands" (wrong-import-order)
 ************* Module client.frontend.config
-client/frontend/config.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-client/frontend/config.py:14:0: W0622: Redefining built-in 'set' (redefined-builtin)
-client/frontend/config.py:11:0: C0116: Missing function or method docstring (missing-function-docstring)
-client/frontend/config.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
-client/frontend/config.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-client/frontend/config.py:14:0: W0622: Redefining built-in 'set' (redefined-builtin)
-client/frontend/config.py:11:0: C0116: Missing function or method docstring (missing-function-docstring)
-client/frontend/config.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
+client/frontend/config.py:15:0: C0116: Missing function or method docstring (missing-function-docstring)
+client/frontend/config.py:18:0: C0116: Missing function or method docstring (missing-function-docstring)
+client/frontend/config.py:15:0: C0116: Missing function or method docstring (missing-function-docstring)
+client/frontend/config.py:18:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module patch.ailinux-alpha-patch-v0.2
+patch/ailinux-alpha-patch-v0.2.py:26:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:30:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:35:0: C0301: Line too long (151/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.2.py:39:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:42:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:46:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:49:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:65:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:70:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:72:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:76:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:80:0: C0301: Line too long (185/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.2.py:82:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:85:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:91:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:93:0: C0301: Line too long (108/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.2.py:94:0: C0301: Line too long (102/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.2.py:104:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:108:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:113:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:129:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:132:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:138:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:143:0: C0301: Line too long (110/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.2.py:144:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:150:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:153:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:157:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:159:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:172:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:174:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:178:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:181:0: C0301: Line too long (186/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.2.py:183:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:186:0: C0301: Line too long (238/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.2.py:188:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:195:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:201:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:205:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:208:0: C0301: Line too long (187/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.2.py:212:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:216:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:221:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:224:0: C0301: Line too long (106/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.2.py:225:0: C0301: Line too long (112/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.2.py:226:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:230:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:233:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:247:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:249:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:253:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:257:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:262:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:265:0: C0301: Line too long (116/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.2.py:267:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:271:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:274:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:286:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:288:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:636:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:640:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:643:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:653:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:656:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:666:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:676:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:685:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:690:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:699:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:703:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.2.py:1:0: C0103: Module name "2" doesn't conform to snake_case naming style (invalid-name)
+patch/ailinux-alpha-patch-v0.2.py:50:11: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.2.py:55:0: R0914: Too many local variables (18/15) (too-many-locals)
+patch/ailinux-alpha-patch-v0.2.py:160:15: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.2.py:80:28: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.2.py:55:0: R0912: Too many branches (17/12) (too-many-branches)
+patch/ailinux-alpha-patch-v0.2.py:55:0: R0915: Too many statements (57/50) (too-many-statements)
+patch/ailinux-alpha-patch-v0.2.py:79:16: W0612: Unused variable 'module_name' (unused-variable)
+patch/ailinux-alpha-patch-v0.2.py:234:11: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.2.py:275:11: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.2.py:644:11: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.2.py:667:11: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.2.py:652:8: C0415: Import outside toplevel (subprocess) (import-outside-toplevel)
+patch/ailinux-alpha-patch-v0.2.py:655:17: W1510: 'subprocess.run' used without explicitly defining the value for 'check'. (subprocess-run-check)
+patch/ailinux-alpha-patch-v0.2.py:657:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+patch/ailinux-alpha-patch-v0.2.py:10:0: W0611: Unused import sys (unused-import)
+patch/ailinux-alpha-patch-v0.2.py:11:0: W0611: Unused import shutil (unused-import)
+patch/ailinux-alpha-patch-v0.2.py:12:0: W0611: Unused Path imported from pathlib (unused-import)
+************* Module patch.ailinux-alpha-patch-v0.1
+patch/ailinux-alpha-patch-v0.1.py:6:0: C0301: Line too long (108/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.1.py:22:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:26:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:28:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:32:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:35:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:41:0: C0301: Line too long (111/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.1.py:45:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:49:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:53:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:56:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:65:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:71:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:77:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:82:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:86:0: C0301: Line too long (136/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.1.py:87:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:90:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:94:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:96:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:99:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:107:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:111:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:113:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:117:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:127:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:130:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:133:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:137:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:140:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:149:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:153:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:155:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:159:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:175:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:178:0: C0301: Line too long (165/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.1.py:179:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:183:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:186:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:195:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:199:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:201:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:205:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:209:0: C0301: Line too long (126/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.1.py:211:0: C0301: Line too long (120/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.1.py:212:0: C0301: Line too long (118/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.1.py:214:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:218:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:221:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:230:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:234:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:236:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:240:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:243:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:246:0: C0301: Line too long (194/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.1.py:247:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:251:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:254:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:264:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:268:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:270:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:274:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:277:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:280:0: C0301: Line too long (164/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.1.py:281:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:285:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:288:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:291:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:300:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:304:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:306:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:310:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:313:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:316:0: C0301: Line too long (157/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.1.py:317:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:321:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:324:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:333:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:337:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:344:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:348:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:351:0: C0301: Line too long (104/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.1.py:352:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:354:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:358:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:364:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:366:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:376:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:388:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:393:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:395:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:398:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:401:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.1.py:1:0: C0103: Module name "1" doesn't conform to snake_case naming style (invalid-name)
+patch/ailinux-alpha-patch-v0.1.py:27:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.1.py:57:11: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.1.py:54:14: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.1.py:97:15: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.1.py:112:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.1.py:141:11: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.1.py:138:18: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.1.py:104:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+patch/ailinux-alpha-patch-v0.1.py:154:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.1.py:187:11: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.1.py:184:14: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.1.py:200:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.1.py:222:11: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.1.py:219:18: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.1.py:192:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+patch/ailinux-alpha-patch-v0.1.py:235:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.1.py:255:11: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.1.py:252:14: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.1.py:269:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.1.py:292:11: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.1.py:289:14: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.1.py:305:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.1.py:325:11: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.1.py:322:14: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.1.py:367:11: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.1.py:353:17: W1510: 'subprocess.run' used without explicitly defining the value for 'check'. (subprocess-run-check)
+patch/ailinux-alpha-patch-v0.1.py:356:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+patch/ailinux-alpha-patch-v0.1.py:10:0: W0611: Unused import sys (unused-import)
+patch/ailinux-alpha-patch-v0.1.py:12:0: W0611: Unused Path imported from pathlib (unused-import)
+************* Module server.ailinux-alpha-patch-v0.3
+server/ailinux-alpha-patch-v0.3.py:25:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:29:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:48:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:51:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:55:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:58:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:75:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:79:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:83:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:86:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:90:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:93:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:106:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:108:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:114:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:117:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:119:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:192:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:196:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:199:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:212:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:214:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:220:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:223:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:225:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:582:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:586:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:589:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:599:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:602:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:613:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:623:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:637:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:642:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:649:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:655:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:663:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:668:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:673:0: C0303: Trailing whitespace (trailing-whitespace)
+server/ailinux-alpha-patch-v0.3.py:1:0: C0103: Module name "3" doesn't conform to snake_case naming style (invalid-name)
+server/ailinux-alpha-patch-v0.3.py:59:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/ailinux-alpha-patch-v0.3.py:94:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/ailinux-alpha-patch-v0.3.py:200:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/ailinux-alpha-patch-v0.3.py:590:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/ailinux-alpha-patch-v0.3.py:614:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/ailinux-alpha-patch-v0.3.py:598:8: C0415: Import outside toplevel (subprocess) (import-outside-toplevel)
+server/ailinux-alpha-patch-v0.3.py:601:17: W1510: 'subprocess.run' used without explicitly defining the value for 'check'. (subprocess-run-check)
+server/ailinux-alpha-patch-v0.3.py:603:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+************* Module server.backend.websocket-server
+server/backend/websocket-server.py:63:0: C0301: Line too long (103/100) (line-too-long)
+server/backend/websocket-server.py:64:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:72:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:82:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:86:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:94:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:107:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:111:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:119:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:125:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:133:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:136:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:143:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:146:0: C0301: Line too long (101/100) (line-too-long)
+server/backend/websocket-server.py:148:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:156:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:168:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:197:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:204:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:207:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:210:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:214:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:223:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:224:0: C0301: Line too long (104/100) (line-too-long)
+server/backend/websocket-server.py:225:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:228:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:236:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:241:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:258:0: C0301: Line too long (103/100) (line-too-long)
+server/backend/websocket-server.py:259:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:262:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:267:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:272:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:281:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:285:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:297:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:300:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:304:0: C0301: Line too long (102/100) (line-too-long)
+server/backend/websocket-server.py:311:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:315:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:330:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:332:0: C0301: Line too long (104/100) (line-too-long)
+server/backend/websocket-server.py:350:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:356:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:363:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:367:0: C0301: Line too long (112/100) (line-too-long)
+server/backend/websocket-server.py:369:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:373:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:376:0: C0301: Line too long (129/100) (line-too-long)
+server/backend/websocket-server.py:377:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:380:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:389:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:396:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:399:27: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:400:13: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:401:13: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:407:0: C0301: Line too long (117/100) (line-too-long)
+server/backend/websocket-server.py:408:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:411:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:429:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:1:0: C0103: Module name "websocket-server" doesn't conform to snake_case naming style (invalid-name)
+server/backend/websocket-server.py:15:0: E0401: Unable to import 'dotenv' (import-error)
+server/backend/websocket-server.py:34:11: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
+server/backend/websocket-server.py:69:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:85:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:170:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:178:0: R0913: Too many arguments (6/5) (too-many-arguments)
+server/backend/websocket-server.py:226:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:224:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:227:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:333:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:261:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:274:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:278:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:290:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:323:19: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:304:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:317:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:324:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:332:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:334:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:342:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:249:0: R0912: Too many branches (14/12) (too-many-branches)
+server/backend/websocket-server.py:249:0: R0915: Too many statements (53/50) (too-many-statements)
+server/backend/websocket-server.py:249:40: W0613: Unused argument 'path' (unused-argument)
+server/backend/websocket-server.py:378:15: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:358:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:376:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:379:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:387:4: W0601: Global variable 'server_start_time' undefined at the module level (global-variable-undefined)
+server/backend/websocket-server.py:395:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:398:15: E1101: Module 'websockets' has no 'serve' member (no-member)
+server/backend/websocket-server.py:407:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:410:8: W0612: Unused variable 'cleanup_task' (unused-variable)
+server/backend/websocket-server.py:434:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:435:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:13:0: W0611: Unused Set imported from typing (unused-import)
+server/backend/websocket-server.py:13:0: W0611: Unused Optional imported from typing (unused-import)
 ************* Module server.backend.app
 server/backend/app.py:53:0: C0303: Trailing whitespace (trailing-whitespace)
 server/backend/app.py:59:0: C0303: Trailing whitespace (trailing-whitespace)
@@ -661,6 +958,9 @@ server/backend/app.py:277:0: C0303: Trailing whitespace (trailing-whitespace)
 server/backend/app.py:286:0: C0303: Trailing whitespace (trailing-whitespace)
 server/backend/app.py:289:0: C0303: Trailing whitespace (trailing-whitespace)
 server/backend/app.py:294:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/app.py:11:0: E0401: Unable to import 'flask' (import-error)
+server/backend/app.py:12:0: E0401: Unable to import 'flask_cors' (import-error)
+server/backend/app.py:13:0: E0401: Unable to import 'dotenv' (import-error)
 server/backend/app.py:25:11: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
 server/backend/app.py:89:11: W0718: Catching too general exception Exception (broad-exception-caught)
 server/backend/app.py:69:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -737,6 +1037,7 @@ server/backend/ai_model.py:486:0: C0303: Trailing whitespace (trailing-whitespac
 server/backend/ai_model.py:494:0: C0303: Trailing whitespace (trailing-whitespace)
 server/backend/ai_model.py:500:0: C0303: Trailing whitespace (trailing-whitespace)
 server/backend/ai_model.py:503:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:11:0: E0401: Unable to import 'dotenv' (import-error)
 server/backend/ai_model.py:39:0: C0103: Constant name "_gpt4all_model" doesn't conform to UPPER_CASE naming style (invalid-name)
 server/backend/ai_model.py:40:0: C0103: Constant name "_openai" doesn't conform to UPPER_CASE naming style (invalid-name)
 server/backend/ai_model.py:41:0: C0103: Constant name "_gemini" doesn't conform to UPPER_CASE naming style (invalid-name)
@@ -747,6 +1048,7 @@ server/backend/ai_model.py:49:4: W0107: Unnecessary pass statement (unnecessary-
 server/backend/ai_model.py:58:4: W0603: Using the global statement (global-statement)
 server/backend/ai_model.py:95:11: W0718: Catching too general exception Exception (broad-exception-caught)
 server/backend/ai_model.py:63:8: C0415: Import outside toplevel (gpt4all.GPT4All) (import-outside-toplevel)
+server/backend/ai_model.py:63:8: E0611: No name 'GPT4All' in module 'gpt4all' (no-name-in-module)
 server/backend/ai_model.py:70:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/ai_model.py:71:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/ai_model.py:76:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -757,15 +1059,19 @@ server/backend/ai_model.py:69:12: W0612: Unused variable 'filename' (unused-vari
 server/backend/ai_model.py:106:4: W0603: Using the global statement (global-statement)
 server/backend/ai_model.py:120:11: W0718: Catching too general exception Exception (broad-exception-caught)
 server/backend/ai_model.py:115:8: C0415: Import outside toplevel (openai) (import-outside-toplevel)
+server/backend/ai_model.py:115:8: E0401: Unable to import 'openai' (import-error)
 server/backend/ai_model.py:121:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/ai_model.py:131:4: W0603: Using the global statement (global-statement)
 server/backend/ai_model.py:145:11: W0718: Catching too general exception Exception (broad-exception-caught)
 server/backend/ai_model.py:140:8: C0415: Import outside toplevel (google.generativeai) (import-outside-toplevel)
+server/backend/ai_model.py:140:8: E0401: Unable to import 'google.generativeai' (import-error)
 server/backend/ai_model.py:146:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/ai_model.py:156:4: W0603: Using the global statement (global-statement)
 server/backend/ai_model.py:203:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/ai_model.py:162:8: E0401: Unable to import 'transformers' (import-error)
 server/backend/ai_model.py:162:8: C0415: Import outside toplevel (transformers.AutoModelForCausalLM, transformers.AutoTokenizer, transformers.pipeline) (import-outside-toplevel)
 server/backend/ai_model.py:163:8: C0415: Import outside toplevel (torch) (import-outside-toplevel)
+server/backend/ai_model.py:163:8: E0401: Unable to import 'torch' (import-error)
 server/backend/ai_model.py:170:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/ai_model.py:173:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/ai_model.py:181:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -781,7 +1087,6 @@ server/backend/ai_model.py:313:8: W1203: Use lazy % formatting in logging functi
 server/backend/ai_model.py:322:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/ai_model.py:325:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/ai_model.py:343:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:346:19: E1101: Module 'openai' has no 'ChatCompletion' member (no-member)
 server/backend/ai_model.py:357:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/ai_model.py:360:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/ai_model.py:378:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -797,105 +1102,7 @@ server/backend/ai_model.py:446:11: W0718: Catching too general exception Excepti
 server/backend/ai_model.py:479:11: W0718: Catching too general exception Exception (broad-exception-caught)
 server/backend/ai_model.py:501:12: C0103: Constant name "test_log" doesn't conform to UPPER_CASE naming style (invalid-name)
 server/backend/ai_model.py:10:0: W0611: Unused Union imported from typing (unused-import)
-************* Module server.backend.websocketserv
-server/backend/websocketserv.py:63:0: C0301: Line too long (103/100) (line-too-long)
-server/backend/websocketserv.py:64:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:72:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:82:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:86:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:94:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:107:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:111:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:119:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:125:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:133:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:136:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:143:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:146:0: C0301: Line too long (101/100) (line-too-long)
-server/backend/websocketserv.py:148:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:156:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:168:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:197:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:204:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:207:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:210:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:214:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:223:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:224:0: C0301: Line too long (104/100) (line-too-long)
-server/backend/websocketserv.py:225:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:228:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:236:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:241:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:258:0: C0301: Line too long (103/100) (line-too-long)
-server/backend/websocketserv.py:259:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:262:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:267:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:272:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:281:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:285:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:297:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:300:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:304:0: C0301: Line too long (102/100) (line-too-long)
-server/backend/websocketserv.py:311:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:315:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:330:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:332:0: C0301: Line too long (104/100) (line-too-long)
-server/backend/websocketserv.py:350:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:356:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:363:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:367:0: C0301: Line too long (112/100) (line-too-long)
-server/backend/websocketserv.py:369:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:373:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:376:0: C0301: Line too long (129/100) (line-too-long)
-server/backend/websocketserv.py:377:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:380:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:389:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:396:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:399:27: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:400:13: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:401:13: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:407:0: C0301: Line too long (117/100) (line-too-long)
-server/backend/websocketserv.py:408:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:411:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:429:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocketserv.py:34:11: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
-server/backend/websocketserv.py:69:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:85:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:170:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:178:0: R0913: Too many arguments (6/5) (too-many-arguments)
-server/backend/websocketserv.py:178:0: R0917: Too many positional arguments (6/5) (too-many-positional-arguments)
-server/backend/websocketserv.py:226:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocketserv.py:224:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:227:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:333:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocketserv.py:261:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:274:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:278:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:290:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:323:19: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocketserv.py:304:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:317:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:324:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:332:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:334:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:342:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:249:0: R0912: Too many branches (14/12) (too-many-branches)
-server/backend/websocketserv.py:249:0: R0915: Too many statements (53/50) (too-many-statements)
-server/backend/websocketserv.py:249:40: W0613: Unused argument 'path' (unused-argument)
-server/backend/websocketserv.py:378:15: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocketserv.py:358:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:376:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:379:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:387:4: W0601: Global variable 'server_start_time' undefined at the module level (global-variable-undefined)
-server/backend/websocketserv.py:395:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:398:15: E1101: Module 'websockets' has no 'serve' member (no-member)
-server/backend/websocketserv.py:407:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:410:8: W0612: Unused variable 'cleanup_task' (unused-variable)
-server/backend/websocketserv.py:434:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocketserv.py:435:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocketserv.py:13:0: W0611: Unused Set imported from typing (unused-import)
-server/backend/websocketserv.py:13:0: W0611: Unused Optional imported from typing (unused-import)
-server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
+server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[13:506]
 ==server.backend.ai_model:[13:506]
 logging.basicConfig(
@@ -1391,7 +1598,442 @@ if __name__ == "__main__":
             print(f"\nAnalysis result from {model_name}:")
             print(result)
             break (duplicate-code)
-server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
+server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
+==client.adjust_hierarchy_with_debugger:[52:70]
+==server.ailinux-alpha-patch-v0.3:[172:583]
+    try:
+        result = subprocess.run(
+            ['pylint', '--disable=all', '--enable=error'],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        print(result.stdout)
+        if result.stderr:
+            print("Error:", result.stderr)
+    except FileNotFoundError:
+        print("Pylint is not installed. Install it with 'pip install pylint'.")
+
+
+if __name__ == "__main__":
+    base_dir = '/home/zombie/ailinux'
+    restore_directory_structure(base_dir)
+    run_pylint()
+"""
+
+        # Write the new clean implementation
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(clean_content)
+
+        print(f"✅ Created clean version of {filepath}")
+        return True
+
+    except Exception as e:
+        print(f"❌ Error creating clean file: {str(e)}")
+        return False
+
+
+def create_clean_websocket_client():
+    """
+    Create a completely new, clean version of websocket_client.py
+    with zero trailing whitespace issues.
+    """
+    filepath = 'client/websocket_client.py'
+    backup_filepath = 'client/websocket_client.py.bak'
+
+    print(f"Creating clean version of {filepath}...")
+
+    try:
+        # First backup the original file
+        if os.path.exists(filepath):
+            with open(filepath, 'r', encoding='utf-8') as f:
+                original_content = f.read()
+
+            with open(backup_filepath, 'w', encoding='utf-8') as f:
+                f.write(original_content)
+
+            print(f"✅ Backed up original file to {backup_filepath}")
+
+        # Now create a completely clean implementation
+        clean_content = """#!/usr/bin/env python3
+\"\"\"
+WebSocket client for AILinux system.
+
+This module provides a standardized WebSocket client for connecting to
+AILinux WebSocket servers and handling real-time communication.
+\"\"\"
+import os
+import json
+import logging
+import threading
+import time
+import uuid
+from typing import Dict, Any, Optional, Callable
+
+# Third-party imports
+import websocket
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+)
+logger = logging.getLogger("WebSocketClient")
+
+# Server configuration
+WS_SERVER_URL = os.getenv("WS_SERVER_URL", "ws://localhost:8082")
+WS_API_KEY = os.getenv("WS_API_KEY", "")
+WS_RECONNECT_DELAY = int(os.getenv("WS_RECONNECT_DELAY", "5"))
+WS_MAX_RECONNECT = int(os.getenv("WS_MAX_RECONNECT", "10"))
+WS_HEARTBEAT_INTERVAL = int(os.getenv("WS_HEARTBEAT_INTERVAL", "30"))
+
+
+class WebSocketClient:
+    \"\"\"WebSocket client for real-time communication.\"\"\"
+
+    def __init__(self, url: Optional[str] = None, auto_connect: bool = False):
+        \"\"\"
+        Initialize the WebSocket client.
+
+        Args:
+            url: WebSocket server URL (defaults to environment variable)
+            auto_connect: Whether to connect automatically on initialization
+        \"\"\"
+        self.url = url or WS_SERVER_URL
+        self.ws = None
+        self.connected = False
+        self.reconnect_count = 0
+        self.client_id = f"ailinux-{str(uuid.uuid4())[:8]}"
+        self.shutdown_requested = False
+        self.ws_thread = None
+        self.message_handlers = {}
+        self.last_activity = time.time()
+        self.last_heartbeat = time.time()
+
+        # Start connection if requested
+        if auto_connect:
+            self.connect()
+
+    def connect(self):
+        \"\"\"Connect to the WebSocket server.\"\"\"
+        if self.connected or (self.ws_thread and self.ws_thread.is_alive()):
+            logger.info("WebSocket already connected or connecting")
+            return
+
+        self.shutdown_requested = False
+        self.ws_thread = threading.Thread(target=self._connect_and_run, daemon=True)
+        self.ws_thread.start()
+        logger.info("Started WebSocket connection thread to %s", self.url)
+
+    def disconnect(self):
+        \"\"\"Disconnect from the WebSocket server.\"\"\"
+        self.shutdown_requested = True
+        if self.ws:
+            self.ws.close()
+
+        # Wait for thread to terminate
+        if self.ws_thread and self.ws_thread.is_alive():
+            self.ws_thread.join(timeout=2.0)
+
+        self.connected = False
+        logger.info("WebSocket disconnected")
+
+    def is_connected(self) -> bool:
+        \"\"\"
+        Check if the WebSocket is connected.
+
+        Returns:
+            bool: True if connected, False otherwise
+        \"\"\"
+        return self.connected
+
+    def send_message(self, message_type: str, data: Dict[str, Any]):
+        \"\"\"
+        Send a message to the WebSocket server.
+
+        Args:
+            message_type: Type of the message
+            data: Message data
+
+        Returns:
+            bool: True if message was sent, False otherwise
+        \"\"\"
+        if not self.connected or not self.ws:
+            logger.warning("Cannot send message, WebSocket not connected: %s", message_type)
+            return False
+
+        try:
+            message = {
+                "type": message_type,
+                "client_id": self.client_id,
+                "timestamp": time.time(),
+                "data": data
+            }
+
+            self.ws.send(json.dumps(message))
+            self.last_activity = time.time()
+            logger.debug("Sent message: %s", message_type)
+            return True
+        except Exception as e:
+            logger.error("Error sending message: %s", str(e))
+            return False
+
+    def register_handler(self, message_type: str, handler: Callable[[Dict[str, Any]], None]):
+        \"\"\"
+        Register a handler for a specific message type.
+
+        Args:
+            message_type: Type of message to handle
+            handler: Callback function for the message type
+        \"\"\"
+        self.message_handlers[message_type] = handler
+        logger.debug("Registered handler for message type: %s", message_type)
+
+    def _connect_and_run(self):
+        \"\"\"Connect to the WebSocket server and run the message loop.\"\"\"
+        while not self.shutdown_requested:
+            try:
+                # Connect to the server
+                logger.info("Connecting to WebSocket server: %s", self.url)
+
+                # Create WebSocket connection
+                websocket.enableTrace(os.getenv("WS_DEBUG", "False").lower() == "true")
+                self.ws = websocket.WebSocketApp(
+                    self.url,
+                    on_open=self._on_open,
+                    on_message=self._on_message,
+                    on_error=self._on_error,
+                    on_close=self._on_close
+                )
+
+                # Start the WebSocket loop
+                self.ws.run_forever(
+                    ping_interval=WS_HEARTBEAT_INTERVAL,
+                    ping_timeout=5
+                )
+
+                # Check if shutdown was requested
+                if self.shutdown_requested:
+                    logger.info("Shutdown requested, stopping reconnection attempts")
+                    break
+
+                # Reconnect after delay if not shutdown
+                self.reconnect_count += 1
+                if self.reconnect_count > WS_MAX_RECONNECT:
+                    logger.error("Maximum reconnection attempts (%d) reached", WS_MAX_RECONNECT)
+                    break
+
+                # Exponential backoff for reconnection
+                delay = min(WS_RECONNECT_DELAY * (2 ** (self.reconnect_count - 1)), 60)
+                logger.info("Reconnecting in %ds (attempt %d/%d)", delay, self.reconnect_count, WS_MAX_RECONNECT)
+                time.sleep(delay)
+
+            except Exception as e:
+                logger.error("Error in WebSocket thread: %s", str(e))
+
+                if self.shutdown_requested:
+                    break
+
+                time.sleep(WS_RECONNECT_DELAY)
+
+        # Clean up
+        self.connected = False
+        logger.info("WebSocket thread terminated")
+
+    def _on_open(self, _):
+        \"\"\"
+        Handle WebSocket connection opened event.
+
+        Args:
+            _: WebSocket instance (unused)
+        \"\"\"
+        self.connected = True
+        self.reconnect_count = 0
+        self.last_activity = time.time()
+        logger.info("WebSocket connected to %s", self.url)
+
+        # Send authentication message if API key is set
+        if WS_API_KEY:
+            auth_message = {
+                "type": "auth",
+                "client_id": self.client_id,
+                "auth_key": WS_API_KEY
+            }
+            self.ws.send(json.dumps(auth_message))
+            logger.debug("Sent authentication message")
+
+        # Send initial handshake
+        handshake = {
+            "type": "handshake",
+            "client_id": self.client_id,
+            "timestamp": time.time(),
+            "version": "1.0.0",
+            "platform": "AILinux Backend"
+        }
+        self.ws.send(json.dumps(handshake))
+
+    def _on_message(self, _, message):
+        \"\"\"
+        Handle incoming WebSocket messages.
+
+        Args:
+            _: WebSocket instance (unused)
+            message: Message received from the server
+        \"\"\"
+        self.last_activity = time.time()
+
+        try:
+            # Parse message JSON
+            data = json.loads(message)
+            message_type = data.get("type", "unknown")
+
+            logger.debug("Received message type: %s", message_type)
+
+            # Handle heartbeat messages
+            if message_type == "heartbeat":
+                self._send_heartbeat_response()
+                return
+
+            # Handle authentication response
+            if message_type == "auth_response":
+                status = data.get("status", "unknown")
+                logger.info("Authentication %s", status)
+                return
+
+            # Dispatch to registered handlers
+            if message_type in self.message_handlers:
+                try:
+                    self.message_handlers[message_type](data)
+                except Exception as e:
+                    logger.error("Error in message handler for %s: %s", message_type, str(e))
+            else:
+                logger.debug("No handler for message type: %s", message_type)
+
+        except json.JSONDecodeError:
+            logger.warning("Received non-JSON message: %s", message)
+        except Exception as e:
+            logger.error("Error processing message: %s", str(e))
+
+    def _on_error(self, _, error):
+        \"\"\"
+        Handle WebSocket errors.
+
+        Args:
+            _: WebSocket instance (unused)
+            error: Error that occurred
+        \"\"\"
+        if isinstance(error, (ConnectionRefusedError, ConnectionResetError)):
+            logger.warning("Connection error: %s", str(error))
+        else:
+            logger.error("WebSocket error: %s", str(error))
+
+        self.connected = False
+
+    def _on_close(self, _, close_status_code, close_msg):
+        \"\"\"
+        Handle WebSocket connection closing.
+
+        Args:
+            _: WebSocket instance (unused)
+            close_status_code: Status code for the close event
+            close_msg: Close message
+        \"\"\"
+        self.connected = False
+
+        if close_status_code:
+            logger.info("WebSocket closed with code: %s, message: %s", close_status_code, close_msg)
+        else:
+            logger.info("WebSocket closed")
+
+    def _send_heartbeat_response(self):
+        \"\"\"Send heartbeat response to server.\"\"\"
+        if self.connected and self.ws:
+            try:
+                heartbeat_response = {
+                    "type": "heartbeat_response",
+                    "client_id": self.client_id,
+                    "timestamp": time.time()
+                }
+                self.ws.send(json.dumps(heartbeat_response))
+                self.last_heartbeat = time.time()
+            except Exception as e:
+                logger.error("Error sending heartbeat response: %s", str(e))
+
+
+# Singleton instance for global use
+INSTANCE = None
+
+def get_client() -> WebSocketClient:
+    \"\"\"
+    Get the global WebSocketClient instance.
+
+    Returns:
+        WebSocketClient: Global client instance
+    \"\"\"
+    global INSTANCE
+    if INSTANCE is None:
+        INSTANCE = WebSocketClient()
+    return INSTANCE
+
+
+if __name__ == "__main__":
+    # Set up logging when run directly
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+    )
+
+    # Test client with echo handler
+    def echo_handler(data):
+        \"\"\"Handle echo responses from the server.\"\"\"
+        print(f"Echo: {data}")
+
+    # Create client and register handler
+    client = WebSocketClient()
+    client.register_handler("echo", echo_handler)
+
+    # Connect to server
+    client.connect()
+
+    try:
+        # Keep running until interrupted
+        while True:
+            if client.is_connected():
+                client.send_message("echo", {"text": "Hello from AILinux!"})
+            time.sleep(5)
+    except KeyboardInterrupt:
+        print("Interrupted by user")
+    finally:
+        client.disconnect()
+"""
+
+        # Write the new clean implementation (duplicate-code)
+server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
+==client.adjust_hierarchy_with_debugger:[32:52]
+==server.ailinux-alpha-patch-v0.3:[152:170]
+        for key, value in structure.items():
+            target_dir = os.path.join(target_path, key)
+            if isinstance(value, list):
+                os.makedirs(target_dir, exist_ok=True)
+                for file in value:
+                    file_path = os.path.join(target_dir, file)
+                    if not os.path.exists(file_path):
+                        with open(file_path, 'w', encoding='utf-8') as f:
+                            f.write('')
+            elif isinstance(value, dict):
+                os.makedirs(target_dir, exist_ok=True)
+                create_structure(target_dir, value)
+
+    # Create the directory structure
+    create_structure(base_dir, expected_structure)
+    print(f"Directory structure verified and restored in {base_dir}")
+
+ (duplicate-code)
+server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[17:36]
 ==server.backend.app:[16:35]
 load_dotenv()
@@ -1413,7 +2055,24 @@ log_file_path = os.path.join(log_directory, "backend.log")
 
 logging.basicConfig(
     level=logging.DEBUG if DEBUG else logging.INFO, (duplicate-code)
-server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
+server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
+==client.adjust_hierarchy_with_debugger:[18:32]
+==server.ailinux-alpha-patch-v0.3:[138:150]
+    expected_structure = {
+        'backend': {
+            'backend': ['ai_model.py', 'app.py', 'backend.js', 'package-lock.json'],
+            'frontend': ['config.py', 'index.html', 'main.js', 'package.json'],
+            'models': [],
+            'lib': ['libggml-base.so', 'libggml-cpu-alderlake.so'],
+        },
+        'logs': ['backend.log', 'frontend.log'],
+        'readme': ['README.md']
+    }
+
+    # Helper function to create the directory structure
+    def create_structure(target_path, structure):
+        """Create directories and files based on expected structure.""" (duplicate-code)
+server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[110:130]
 ==server.backend.app:[114:134]
             return jsonify({"logs": logs})
@@ -1427,18 +2086,30 @@ server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
 
 @app.route('/models', methods=['GET'])
 def get_models():
-    """Get list of available AI models.
+    """Get information about available AI models.
 
     Returns:
-        JSON response containing available models
+        JSON response with model information
     """
     try:
         models = get_available_models()
         return jsonify({"models": models})
     except Exception as e: (duplicate-code)
-server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
-==client.frontend.config:[3:15]
-==client.frontend.config:[3:15]
+server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
+==client.adjust_hierarchy_with_debugger:[52:61]
+==server.ailinux-alpha-patch-v0.3:[33:42]
+    try:
+        result = subprocess.run(
+            ['pylint', '--disable=all', '--enable=error'],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        print(result.stdout)
+        if result.stderr: (duplicate-code)
+server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
+==client.frontend.config:[7:19]
+==client.frontend.config:[7:19]
 CONFIG = {
     "logging_enabled": True,
     "use_gpu_only": False,
@@ -1449,9 +2120,35 @@ CONFIG = {
 def get(key):
     return CONFIG.get(key)
 
-def set(key, value):
+def set_config(key, value):
     CONFIG[key] = value (duplicate-code)
-server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
+server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
+==patch.ailinux-alpha-patch-v0.2:[168:179]
+==server.ailinux-alpha-patch-v0.3:[19:30]
+    if not os.path.exists(filepath):
+        print(f"Error: File not found: {filepath}")
+        return False
+
+    print(f"Fixing {filepath}...")
+
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        # Find the run_pylint function and completely replace it (duplicate-code)
+server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
+==patch.ailinux-alpha-patch-v0.2:[19:28]
+==server.ailinux-alpha-patch-v0.3:[18:27]
+    filepath = 'client/adjust_hierarchy_with_debugger.py'
+    if not os.path.exists(filepath):
+        print(f"Error: File not found: {filepath}")
+        return False
+
+    print(f"Fixing {filepath}...")
+
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f: (duplicate-code)
+server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[60:70]
 ==server.backend.app:[53:62]
     try:
@@ -1464,7 +2161,18 @@ server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
         log_text = data.get('log')
         model_name = data.get('model', 'gpt4all')  # Default to gpt4all
  (duplicate-code)
-server/backend/websocketserv.py:1:0: R0801: Similar lines in 2 files
+server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
+==patch.ailinux-alpha-patch-v0.2:[243:251]
+==server.ailinux-alpha-patch-v0.3:[19:27]
+    if not os.path.exists(filepath):
+        print(f"Error: File not found: {filepath}")
+        return False
+
+    print(f"Fixing {filepath}...")
+
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f: (duplicate-code)
+server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[208:222]
 ==server.backend.app:[183:197]
             return jsonify({"error": str(e)}), 500
@@ -1482,6 +2190,6 @@ def health_check():
         "environment": ENV,
         "version": "1.0.0", (duplicate-code)
 
-------------------------------------------------------------------
-Your code has been rated at 5.23/10 (previous run: 5.23/10, +0.00)
+-----------------------------------
+Your code has been rated at 4.55/10
 

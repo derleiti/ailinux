@@ -2,7 +2,7 @@
 import os
 
 # Define the correct directory for analysis
-directory = '/home/zombie/ailinux'
+DIRECTORY = '/home/zombie/ailinux'
 
 # Verify the directory exists
 if os.path.exists(directory):
@@ -19,6 +19,6 @@ if os.path.exists(directory):
 
     # Show top 20 largest files
     top_20_files = file_sizes[:20]
-    top_20_files
+    print(top_20_files)
 else:
-    "Directory does not exist or cannot be accessed"
+    print("Directory does not exist or cannot be accessed")

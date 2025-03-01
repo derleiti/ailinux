@@ -1,3 +1,7 @@
+"""Configuration module for AILinux frontend.
+
+Provides settings management for the application.
+"""
 # config.py
 import os
 
@@ -11,5 +15,5 @@ CONFIG = {
 def get(key):
     return CONFIG.get(key)
 
-def set(key, value):
+def set_config(key, value):
     CONFIG[key] = value

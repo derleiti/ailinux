@@ -1,3 +1,7 @@
+"""Twitchbot module for AILinux.
+
+This module provides functionality for the AILinux system.
+"""
 from twitchio.ext import commands
 import os
 

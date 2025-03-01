@@ -1,3 +1,7 @@
+"""Hugging module for AILinux.
+
+This module provides functionality for the AILinux system.
+"""
 import os
 from huggingface_hub import HfApi
 from transformers import pipeline, AutoModelForTextGeneration, AutoTokenizer
