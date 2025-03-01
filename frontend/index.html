@@ -3,28 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AILinux - Log Analysis</title>
+    <title>AILinux - AI-Powered Log Analysis</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
     <style>
         :root {
             --primary-color: #2196f3;
             --secondary-color: #6c757d;
             --success-color: #28a745;
             --danger-color: #dc3545;
+            --warning-color: #ffc107;
             --dark-bg: #212529;
+            --dark-bg-lighter: #2c3237;
             --light-bg: #f8f9fa;
+            --border-radius: 8px;
+            --transition-speed: 0.3s;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
             overflow-x: hidden;
+            background-color: var(--light-bg);
+            color: #333;
         }
         
         body.dark-mode {
             background-color: var(--dark-bg);
-            color: white;
+            color: #f0f0f0;
         }
         
         .navbar-brand {
@@ -32,88 +40,69 @@
             color: var(--primary-color) !important;
         }
         
-        #chat-container {
-            height: calc(100vh - 180px);
-            display: flex;
-            flex-direction: column;
+        .navbar-brand i {
+            margin-right: 0.5rem;
         }
         
-        #chat-log {
-            flex: 1;
-            overflow-y: auto;
-            padding: 15px;
-            background-color: rgba(0, 0, 0, 0.02);
-            border-radius: 8px;
-            margin-bottom: 15px;
+        .card {
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all var(--transition-speed);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
         }
         
-        .dark-mode #chat-log {
-            background-color: rgba(255, 255, 255, 0.05);
+        .dark-mode .card {
+            background-color: var(--dark-bg-lighter);
+            color: #f0f0f0;
+            border-color: #444;
         }
         
-        .message {
-            margin-bottom: 15px;
-            padding: 10px 15px;
-            border-radius: 10px;
-            max-width: 80%;
-            word-wrap: break-word;
+        .tab-content {
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
         }
         
-        .user-message {
-            background-color: #e9f5ff;
-            color: #333;
-            align-self: flex-end;
-            margin-left: auto;
+        .dark-mode .tab-content {
+            background-color: var(--dark-bg-lighter);
         }
         
-        .ai-message {
-            background-color: #f1f1f1;
-            color: #333;
-            align-self: flex-start;
+        .nav-tabs .nav-link {
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            padding: 0.75rem 1rem;
+            font-weight: 500;
         }
         
-        .dark-mode .user-message {
-            background-color: #1e88e5;
+        .dark-mode .nav-tabs .nav-link {
+            color: #ddd;
+        }
+        
+        .dark-mode .nav-tabs .nav-link.active {
+            background-color: var(--dark-bg-lighter);
             color: white;
+            border-color: #444 #444 var(--dark-bg-lighter);
         }
         
-        .dark-mode .ai-message {
-            background-color: #424242;
-            color: white;
+        .log-input-container {
+            height: calc(100vh - 380px);
+            min-height: 300px;
         }
         
-        .system-message {
-            text-align: center;
-            color: var(--secondary-color);
-            font-style: italic;
-            margin: 10px 0;
+        .CodeMirror {
+            height: 100%;
+            font-family: 'JetBrains Mono', monospace, 'Courier New', Courier;
+            font-size: 14px;
+            border-radius: var(--border-radius);
         }
         
-        .model-badge {
-            font-size: 0.7em;
-            padding: 3px 8px;
-            border-radius: 10px;
-            margin-right: 5px;
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        #user-input {
-            resize: none;
-            border-radius: 8px;
-            padding: 12px;
-            transition: all 0.3s;
-        }
-        
-        #user-input:focus {
-            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
-            border-color: var(--primary-color);
+        .dark-mode .CodeMirror {
+            border-color: #444;
         }
         
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
-            transition: all 0.3s;
         }
         
         .btn-primary:hover {
@@ -121,109 +110,2025 @@
             border-color: #1976d2;
         }
         
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .dark-mode .btn-outline-primary {
+            color: #90caf9;
+            border-color: #90caf9;
+        }
+        
+        .dark-mode .btn-outline-primary:hover {
+            background-color: #90caf9;
+            color: var(--dark-bg);
+        }
+        
         .model-selector {
-            padding: 5px 10px;
+            padding: 0.5rem 1rem;
             border-radius: 20px;
-            margin-right: 10px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
             cursor: pointer;
-            border: 2px solid transparent;
+            border: 2px solid #ddd;
+            transition: all var(--transition-speed);
+            display: inline-block;
+            font-weight: 500;
         }
         
         .model-selector.active {
             border-color: var(--primary-color);
-            font-weight: bold;
+            background-color: var(--primary-color);
+            color: white;
         }
         
-        .loading-spinner {
-            width: 24px;
-            height: 24px;
-            border: 3px solid rgba(0, 0, 0, 0.1);
-            border-radius: 50%;
-            border-top-color: var(--primary-color);
-            animation: spin 1s linear infinite;
+        .dark-mode .model-selector {
+            border-color: #444;
         }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .dark-mode .model-selector.active {
+            border-color: #90caf9;
+            background-color: #90caf9;
+            color: var(--dark-bg);
         }
         
-        .status-indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
+        .status-badge {
             display: inline-block;
-            margin-right: 5px;
+            padding: 0.25rem 0.5rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
         
-        .status-online {
+        .status-badge.status-online {
             background-color: var(--success-color);
+            color: white;
         }
         
-        .status-offline {
+        .status-badge.status-offline {
             background-color: var(--danger-color);
+            color: white;
         }
         
-        .sidebar-toggle {
-            cursor: pointer;
-            padding: 5px;
+        .status-badge.status-loading {
+            background-color: var(--warning-color);
+            color: black;
+        }
+        
+        .analysis-container {
+            max-height: calc(100vh - 400px);
+            overflow-y: auto;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-radius: var(--border-radius);
+            border: 1px solid #ddd;
+        }
+        
+        .dark-mode .analysis-container {
+            background-color: #2a2e32;
+            border-color: #444;
+        }
+        
+        .log-file-upload {
+            margin-bottom: 1rem;
+        }
+        
+        .spinner-border {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-width: 0.2rem;
+        }
+        
+        .toast-container {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 1050;
+        }
+        
+        .dark-mode .toast {
+            background-color: var(--dark-bg-lighter);
+            color: #f0f0f0;
+        }
+        
+        .dark-mode .toast-header {
+            background-color: rgba(50, 55, 60, 0.85);
+            color: #f0f0f0;
         }
         
         .settings-icon {
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform var(--transition-speed);
         }
         
         .settings-icon:hover {
             transform: rotate(30deg);
         }
         
-        #sidebar {
-            width: 250px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: -250px;
-            transition: left 0.3s;
-            background-color: white;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            padding-top: 60px;
-        }
-        
-        .dark-mode #sidebar {
-            background-color: #2c3237;
-        }
-        
-        #sidebar.open {
-            left: 0;
-        }
-        
-        .sidebar-item {
-            padding: 10px 20px;
+        .history-item {
             cursor: pointer;
-            transition: background-color 0.3s;
+            padding: 0.75rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 0.5rem;
+            background-color: #f0f0f0;
+            transition: all var(--transition-speed);
         }
         
-        .sidebar-item:hover {
-            background-color: rgba(33, 150, 243, 0.1);
+        .dark-mode .history-item {
+            background-color: #32373d;
         }
         
-        .dark-mode .sidebar-item:hover {
-            background-color: rgba(33, 150, 243, 0.2);
+        .history-item:hover {
+            background-color: #e0e0e0;
         }
         
-        .sidebar-item i {
-            margin-right: 10px;
-            color: var(--primary-color);
+        .dark-mode .history-item:hover {
+            background-color: #3a4148;
+        }
+        
+        .model-badge {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.5rem;
+            background-color: var(--secondary-color);
+            color: white;
+            margin-left: 0.5rem;
+        }
+        
+        .dropdown-menu {
+            border-radius: var(--border-radius);
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+        }
+        
+        .dark-mode .dropdown-menu {
+            background-color: var(--dark-bg-lighter);
+            border-color: #444;
+        }
+        
+        .dark-mode .dropdown-item {
+            color: #f0f0f0;
+        }
+        
+        .dark-mode .dropdown-item:hover {
+            background-color: #3a4148;
+        }
+        
+        .huggingface-models-dropdown {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .badge-downloads {
+            background-color: #6c757d;
+            font-size: 0.7rem;
+        }
+        
+        .badge-likes {
+            background-color: #dc3545;
+            font-size: 0.7rem;
+        }
+        
+        /* System log styles */
+        .system-log-container {
+            font-family: 'JetBrains Mono', monospace, 'Courier New', Courier;
+            font-size: 0.8rem;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .dark-mode .system-log-container {
+            background-color: #1a1d21;
+            color: #f0f0f0;
+        }
+        
+        .log-entry {
+            margin-bottom: 0.25rem;
+            padding: 0.25rem;
+            border-radius: 4px;
+        }
+        
+        .log-level-info {
+            color: #0d6efd;
+        }
+        
+        .log-level-warning {
+            color: #ffc107;
+        }
+        
+        .log-level-error {
+            color: #dc3545;
+        }
+        
+        /* WebSocket indicator */
+        .ws-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .ws-connected {
+            background-color: var(--success-color);
+        }
+        
+        .ws-disconnected {
+            background-color: var(--danger-color);
         }
     </style>
 </head>
 <body>
-    <!-- Top navigation bar -->
+    <!-- Toast Notifications -->
+    <div class="toast-container">
+        <div id="notification-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+            <div class="toast-header">
+                <i class="bi bi-info-circle me-2"></i>
+                <strong class="me-auto" id="toast-title">Notification</strong>
+                <small id="toast-time">Just now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toast-message">
+                This is a notification message.
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <i class="bi bi-cpu"></i> AILinux
             </a>
             
-            <div class="ms-auto d-flex align-items-center
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" id="nav-analyze">Log Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="nav-history">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="nav-system">System</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <!-- WebSocket Status Indicator -->
+                    <div class="me-3">
+                        <span class="ws-indicator ws-disconnected" id="ws-indicator"></span>
+                        <small id="ws-status-text">Disconnected</small>
+                    </div>
+                    
+                    <!-- Settings Button -->
+                    <button class="btn btn-outline-primary me-2" id="settings-btn">
+                        <i class="bi bi-gear"></i> Settings
+                    </button>
+                    
+                    <!-- Dark Mode Toggle -->
+                    <div class="form-check form-switch ms-2">
+                        <input class="form-check-input" type="checkbox" id="dark-mode-toggle">
+                        <label class="form-check-label" for="dark-mode-toggle">
+                            <i class="bi bi-moon"></i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content Container -->
+    <div class="container-fluid" id="main-container">
+        <!-- Log Analysis View -->
+        <div id="analysis-view" class="view-container active-view">
+            <div class="row">
+                <!-- Left Panel: Log Input -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Log Input</h5>
+                            <div>
+                                <button class="btn btn-sm btn-outline-secondary me-1" id="clear-log-btn">
+                                    <i class="bi bi-trash"></i> Clear
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary" id="load-log-btn">
+                                    <i class="bi bi-file-earmark-text"></i> Load File
+                                </button>
+                                <input type="file" id="log-file-input" class="d-none">
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="log-input-container" id="log-editor-container"></div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col">
+                                    <select class="form-select" id="model-select">
+                                        <option value="gpt4all">GPT4All (Local)</option>
+                                        <option value="huggingface">Hugging Face (Local)</option>
+                                        <option value="openai">OpenAI GPT-4</option>
+                                        <option value="gemini">Google Gemini</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-primary px-4" id="analyze-btn">
+                                        <span class="spinner-border spinner-border-sm d-none me-2" id="analyze-spinner"></span>
+                                        <i class="bi bi-search"></i> Analyze
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Hugging Face Model Selector (hidden by default) -->
+                            <div class="mt-3 d-none" id="huggingface-model-selector">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="mb-0">Hugging Face Model:</h6>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="hf-models-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-list"></i> Browse Models
+                                        </button>
+                                        <ul class="dropdown-menu huggingface-models-dropdown" aria-labelledby="hf-models-dropdown" id="hf-models-list">
+                                            <li class="dropdown-item">Loading models...</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="hf-models-container">
+                                    <div class="model-selector active" data-model-id="mistralai/Mistral-7B-Instruct-v0.2">
+                                        Mistral-7B-Instruct <span class="badge rounded-pill bg-secondary">Default</span>
+                                    </div>
+                                    <div class="model-selector" data-model-id="TinyLlama/TinyLlama-1.1B-Chat-v1.0">
+                                        TinyLlama-1.1B-Chat <span class="badge rounded-pill bg-success">Fast</span>
+                                    </div>
+                                    <div class="model-selector" data-model-id="microsoft/phi-2">
+                                        Microsoft Phi-2 <span class="badge rounded-pill bg-info">Compact</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Panel: Analysis Results -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Analysis Results</h5>
+                            <div>
+                                <button class="btn btn-sm btn-outline-secondary" id="copy-result-btn">
+                                    <i class="bi bi-clipboard"></i> Copy
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary ms-1" id="save-result-btn">
+                                    <i class="bi bi-save"></i> Save
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="result-placeholder" class="text-center py-5 text-muted">
+                                <i class="bi bi-search" style="font-size: 3rem;"></i>
+                                <h5 class="mt-3">Enter a log and click Analyze</h5>
+                                <p>AI will analyze your log and provide insights</p>
+                            </div>
+                            
+                            <div id="analysis-result" class="analysis-container d-none">
+                                <!-- Analysis results will be displayed here -->
+                            </div>
+                            
+                            <div id="analysis-metadata" class="mt-3 d-none">
+                                <div class="d-flex justify-content-between align-items-center text-muted small">
+                                    <div>
+                                        <i class="bi bi-clock"></i> <span id="analysis-time">0.0s</span> |
+                                        <i class="bi bi-robot"></i> <span id="analysis-model">Model</span>
+                                    </div>
+                                    <div>
+                                        <span id="analysis-timestamp">Just now</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Advanced Options Card -->
+                    <div class="card mt-3">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Advanced Options</h5>
+                            <button class="btn btn-sm btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#advancedOptionsCollapse">
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="collapse" id="advancedOptionsCollapse">
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label for="temperature-range" class="form-label">Temperature: <span id="temperature-value">0.7</span></label>
+                                        <input type="range" class="form-range" id="temperature-range" min="0" max="1" step="0.1" value="0.7">
+                                    </div>
+                                    <div class="col">
+                                        <label for="max-tokens-input" class="form-label">Max Tokens:</label>
+                                        <input type="number" class="form-control" id="max-tokens-input" value="1024" min="64" max="4096">
+                                    </div>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="auto-save-toggle">
+                                    <label class="form-check-label" for="auto-save-toggle">Automatically save analysis to history</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- History View -->
+        <div id="history-view" class="view-container d-none">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Analysis History</h5>
+                    <div>
+                        <button class="btn btn-sm btn-outline-danger" id="clear-history-btn">
+                            <i class="bi bi-trash"></i> Clear History
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="history-list" class="mb-3">
+                        <!-- History items will be added here -->
+                        <div class="text-center py-4 text-muted" id="history-empty">
+                            <i class="bi bi-clock-history" style="font-size: 3rem;"></i>
+                            <h5 class="mt-3">No history yet</h5>
+                            <p>Your analysis history will appear here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- System View -->
+        <div id="system-view" class="view-container d-none">
+            <div class="row">
+                <!-- System Status Card -->
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h5 class="mb-0">System Status</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Backend Server</h6>
+                                    <p class="d-flex align-items-center">
+                                        Status: 
+                                        <span class="status-badge ms-2 status-loading" id="backend-status-badge">
+                                            Checking...
+                                        </span>
+                                    </p>
+                                    <p>Version: <span id="backend-version">-</span></p>
+                                    <p>Environment: <span id="backend-environment">-</span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>WebSocket Connection</h6>
+                                    <p class="d-flex align-items-center">
+                                        Status: 
+                                        <span class="status-badge ms-2 status-loading" id="ws-status-badge">
+                                            Checking...
+                                        </span>
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-primary" id="ws-reconnect-btn">
+                                        <i class="bi bi-arrow-repeat"></i> Reconnect
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <hr>
+                            
+                            <h6>Available AI Models</h6>
+                            <div id="ai-models-status" class="row">
+                                <div class="col-md-3 mb-2">
+                                    <span class="status-badge status-loading" id="gpt4all-status">Checking...</span>
+                                    GPT4All
+                                </div>
+                                <div class="col-md-3 mb-2">
+                                    <span class="status-badge status-loading" id="huggingface-status">Checking...</span>
+                                    Hugging Face
+                                </div>
+                                <div class="col-md-3 mb-2">
+                                    <span class="status-badge status-loading" id="openai-status">Checking...</span>
+                                    OpenAI
+                                </div>
+                                <div class="col-md-3 mb-2">
+                                    <span class="status-badge status-loading" id="gemini-status">Checking...</span>
+                                    Gemini
+                                </div>
+                            </div>
+                            
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                                <button class="btn btn-primary" id="refresh-status-btn">
+                                    <i class="bi bi-arrow-clockwise"></i> Refresh Status
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- System Logs Card -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">System Logs</h5>
+                            <div>
+                                <button class="btn btn-sm btn-outline-secondary" id="refresh-logs-btn">
+                                    <i class="bi bi-arrow-clockwise"></i> Refresh
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-3">
+                                <div>
+                                    <select class="form-select form-select-sm" id="log-level-filter">
+                                        <option value="all">All Levels</option>
+                                        <option value="info">Info</option>
+                                        <option value="warning">Warning</option>
+                                        <option value="error">Error</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <input type="number" class="form-control form-control-sm" id="log-limit-input" value="100" min="10" max="1000" placeholder="Limit">
+                                </div>
+                            </div>
+                            
+                            <div class="system-log-container" id="system-logs">
+                                <div class="text-center py-3">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-2">Loading logs...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Settings Modal -->
+    <div class="modal fade" id="settings-modal" tabindex="-1" aria-labelledby="settings-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="settings-modal-label">Settings</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="settings-tabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="api-tab" data-bs-toggle="tab" data-bs-target="#api-settings" type="button" role="tab">API Keys</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="server-tab" data-bs-toggle="tab" data-bs-target="#server-settings" type="button" role="tab">Server</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="interface-tab" data-bs-toggle="tab" data-bs-target="#interface-settings" type="button" role="tab">Interface</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="models-tab" data-bs-toggle="tab" data-bs-target="#models-settings" type="button" role="tab">AI Models</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="settings-tabs-content">
+                        <!-- API Keys Settings -->
+                        <div class="tab-pane fade show active" id="api-settings" role="tabpanel" aria-labelledby="api-tab">
+                            <form id="api-settings-form">
+                                <div class="mb-3">
+                                    <label for="openai-api-key" class="form-label">OpenAI API Key</label>
+                                    <input type="password" class="form-control" id="openai-api-key" placeholder="Enter your OpenAI API key">
+                                    <div class="form-text">Used for accessing GPT-4 and other OpenAI models</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="gemini-api-key" class="form-label">Google Gemini API Key</label>
+                                    <input type="password" class="form-control" id="gemini-api-key" placeholder="Enter your Google Gemini API key">
+                                    <div class="form-text">Used for accessing Google Gemini models</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="hf-api-key" class="form-label">Hugging Face API Key</label>
+                                    <input type="password" class="form-control" id="hf-api-key" placeholder="Enter your Hugging Face API key">
+                                    <div class="form-text">Used for searching and accessing Hugging Face models</div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Server Settings -->
+                        <div class="tab-pane fade" id="server-settings" role="tabpanel" aria-labelledby="server-tab">
+                            <form id="server-settings-form">
+                                <div class="mb-3">
+                                    <label for="backend-url" class="form-label">Backend Server URL</label>
+                                    <input type="text" class="form-control" id="backend-url" placeholder="http://localhost:8081">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="ws-url" class="form-label">WebSocket Server URL</label>
+                                    <input type="text" class="form-control" id="ws-url" placeholder="ws://localhost:8082">
+                                </div>
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="websocket-enabled-toggle">
+                                    <label class="form-check-label" for="websocket-enabled-toggle">Enable WebSocket connection</label>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Interface Settings -->
+                        <div class="tab-pane fade" id="interface-settings" role="tabpanel" aria-labelledby="interface-tab">
+                            <form id="interface-settings-form">
+                                <div class="mb-3">
+                                    <label class="form-label">Theme</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="theme" id="theme-light" value="light">
+                                        <label class="form-check-label" for="theme-light">Light Mode</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="theme" id="theme-dark" value="dark">
+                                        <label class="form-check-label" for="theme-dark">Dark Mode</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="theme" id="theme-system" value="system">
+                                        <label class="form-check-label" for="theme-system">Use System Preference</label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editor-font-size" class="form-label">Editor Font Size</label>
+                                    <input type="number" class="form-control" id="editor-font-size" min="8" max="24" value="14">
+                                </div>
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="auto-save-history-toggle">
+                                    <label class="form-check-label" for="auto-save-history-toggle">Automatically save analyses to history</label>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- AI Models Settings -->
+                        <div class="tab-pane fade" id="models-settings" role="tabpanel" aria-labelledby="models-tab">
+                            <form id="models-settings-form">
+                                <div class="mb-3">
+                                    <label for="default-model" class="form-label">Default AI Model</label>
+                                    <select class="form-select" id="default-model">
+                                        <option value="gpt4all">GPT4All (Local)</option>
+                                        <option value="huggingface">Hugging Face (Local)</option>
+                                        <option value="openai">OpenAI GPT-4</option>
+                                        <option value="gemini">Google Gemini</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="default-hf-model" class="form-label">Default Hugging Face Model</label>
+                                    <input type="text" class="form-control" id="default-hf-model" value="mistralai/Mistral-7B-Instruct-v0.2">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="llama-model-path" class="form-label">GPT4All Model Path</label>
+                                    <input type="text" class="form-control" id="llama-model-path" placeholder="/path/to/model.gguf">
+                                    <div class="form-text">Path to the GPT4All model file</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="save-settings-btn">Save Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Required JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/shell/shell.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    
+    <!-- AILinux Frontend Script -->
+    <script>
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize the UI
+        const ailinux = new AILinux();
+        ailinux.init();
+    });
+    
+    /**
+     * AILinux - Main application class
+     */
+    class AILinux {
+        constructor() {
+            // Base API URL - defaults to localhost, can be changed in settings
+            this.apiBaseUrl = localStorage.getItem('backend-url') || 'http://localhost:8081';
+            
+            // WebSocket configuration
+            this.wsEnabled = localStorage.getItem('websocket-enabled') !== 'false';
+            this.wsUrl = localStorage.getItem('ws-url') || 'ws://localhost:8082';
+            this.wsSocket = null;
+            this.wsConnected = false;
+            
+            // UI state
+            this.darkMode = localStorage.getItem('dark-mode') === 'true';
+            this.editorFontSize = parseInt(localStorage.getItem('editor-font-size') || '14');
+            this.autoSaveHistory = localStorage.getItem('auto-save-history') === 'true';
+            
+            // AI model configuration
+            this.defaultModel = localStorage.getItem('default-model') || 'gpt4all';
+            this.defaultHfModel = localStorage.getItem('default-hf-model') || 'mistralai/Mistral-7B-Instruct-v0.2';
+            this.selectedModel = this.defaultModel;
+            this.selectedHfModel = this.defaultHfModel;
+            
+            // Editor instance
+            this.editor = null;
+            
+            // Analysis state
+            this.isAnalyzing = false;
+            this.lastAnalysis = null;
+            
+            // History data
+            this.history = JSON.parse(localStorage.getItem('analysis-history') || '[]');
+            
+            // Current view
+            this.currentView = 'analysis-view';
+            
+            // Toast notification instance
+            this.toastInstance = null;
+        }
+        
+        /**
+         * Initialize the application
+         */
+        init() {
+            // Initialize CodeMirror editor
+            this.initEditor();
+            
+            // Initialize UI
+            this.initUI();
+            
+            // Initialize event listeners
+            this.initEventListeners();
+            
+            // Initialize WebSocket if enabled
+            if (this.wsEnabled) {
+                this.initWebSocket();
+            }
+            
+            // Check backend status
+            this.checkBackendStatus();
+            
+            // Apply dark mode if needed
+            this.applyDarkMode();
+            
+            // Set default model in UI
+            document.getElementById('model-select').value = this.defaultModel;
+            this.onModelChange();
+            
+            // Initialize toast notification
+            this.toastInstance = new bootstrap.Toast(document.getElementById('notification-toast'));
+            
+            // Show notification
+            this.showNotification('AILinux Started', 'System initialized successfully');
+        }
+        
+        /**
+         * Initialize the CodeMirror editor
+         */
+        initEditor() {
+            const editorContainer = document.getElementById('log-editor-container');
+            
+            this.editor = CodeMirror(editorContainer, {
+                mode: 'shell',
+                theme: this.darkMode ? 'monokai' : 'default',
+                lineNumbers: true,
+                lineWrapping: true,
+                indentUnit: 4,
+                tabSize: 4,
+                autofocus: true,
+                extraKeys: {
+                    'Ctrl-Enter': () => this.analyzeLog(),
+                    'Cmd-Enter': () => this.analyzeLog()
+                }
+            });
+            
+            // Set font size
+            document.querySelector('.CodeMirror').style.fontSize = `${this.editorFontSize}px`;
+            
+            // Set placeholder text
+            if (this.editor.getValue() === '') {
+                const placeholder = 'Enter your log here...\n\nExample:\n2025-02-28 23:13:46,983 - WARNING - Python-dotenv could not parse statement starting at line 1\n2025-02-28 23:13:46,984 - ERROR - ModuleNotFoundError: No module named \'flask_cors\'';
+                this.editor.setValue(placeholder);
+            }
+        }
+        
+        /**
+         * Initialize UI components
+         */
+        initUI() {
+            // Initialize history list
+            this.updateHistoryView();
+            
+            // Set temperature value display
+            document.getElementById('temperature-value').textContent = document.getElementById('temperature-range').value;
+        }
+        
+        /**
+         * Initialize event listeners for UI interactions
+         */
+        initEventListeners() {
+            // Analyze button
+            document.getElementById('analyze-btn').addEventListener('click', () => this.analyzeLog());
+            
+            // Clear log button
+            document.getElementById('clear-log-btn').addEventListener('click', () => this.clearLog());
+            
+            // Load log file button
+            document.getElementById('load-log-btn').addEventListener('click', () => document.getElementById('log-file-input').click());
+            document.getElementById('log-file-input').addEventListener('change', (e) => this.loadLogFile(e));
+            
+            // Model selector
+            document.getElementById('model-select').addEventListener('change', () => this.onModelChange());
+            
+            // Navigation
+            document.getElementById('nav-analyze').addEventListener('click', (e) => this.switchView('analysis-view', e));
+            document.getElementById('nav-history').addEventListener('click', (e) => this.switchView('history-view', e));
+            document.getElementById('nav-system').addEventListener('click', (e) => this.switchView('system-view', e));
+            
+            // Settings button
+            document.getElementById('settings-btn').addEventListener('click', () => this.openSettingsModal());
+            
+            // Copy result button
+            document.getElementById('copy-result-btn').addEventListener('click', () => this.copyAnalysisResult());
+            
+            // Save result button
+            document.getElementById('save-result-btn').addEventListener('click', () => this.saveAnalysisToHistory());
+            
+            // Clear history button
+            document.getElementById('clear-history-btn').addEventListener('click', () => this.clearHistory());
+            
+            // Temperature range
+            document.getElementById('temperature-range').addEventListener('input', (e) => {
+                document.getElementById('temperature-value').textContent = e.target.value;
+            });
+            
+            // Dark mode toggle
+            document.getElementById('dark-mode-toggle').addEventListener('change', (e) => {
+                this.toggleDarkMode(e.target.checked);
+            });
+            document.getElementById('dark-mode-toggle').checked = this.darkMode;
+            
+            // Auto save toggle
+            document.getElementById('auto-save-toggle').addEventListener('change', (e) => {
+                this.autoSaveHistory = e.target.checked;
+                localStorage.setItem('auto-save-history', this.autoSaveHistory);
+            });
+            document.getElementById('auto-save-toggle').checked = this.autoSaveHistory;
+            
+            // Hugging Face model selectors
+            document.querySelectorAll('#hf-models-container .model-selector').forEach(el => {
+                el.addEventListener('click', (e) => this.selectHuggingFaceModel(e.currentTarget));
+            });
+            
+            // System view actions
+            document.getElementById('refresh-status-btn').addEventListener('click', () => this.checkBackendStatus());
+            document.getElementById('refresh-logs-btn').addEventListener('click', () => this.fetchSystemLogs());
+            document.getElementById('ws-reconnect-btn').addEventListener('click', () => this.reconnectWebSocket());
+            
+            // Settings form
+            document.getElementById('save-settings-btn').addEventListener('click', () => this.saveSettings());
+            
+            // Log filters
+            document.getElementById('log-level-filter').addEventListener('change', () => this.fetchSystemLogs());
+            document.getElementById('log-limit-input').addEventListener('change', () => this.fetchSystemLogs());
+        }
+        
+        /**
+         * Initialize WebSocket connection
+         */
+        initWebSocket() {
+            try {
+                // Close existing socket if any
+                if (this.wsSocket) {
+                    this.wsSocket.close();
+                }
+                
+                // Create new WebSocket
+                this.wsSocket = new WebSocket(this.wsUrl);
+                
+                // Set up event handlers
+                this.wsSocket.onopen = () => {
+                    console.log('WebSocket connected');
+                    this.wsConnected = true;
+                    this.updateWebSocketStatus(true);
+                    
+                    // Send handshake
+                    this.sendWebSocketMessage('handshake', {
+                        client_id: `ailinux-frontend-${Math.random().toString(36).substring(2, 10)}`,
+                        version: '1.0.0',
+                        platform: 'AILinux Frontend'
+                    });
+                };
+                
+                this.wsSocket.onclose = () => {
+                    console.log('WebSocket disconnected');
+                    this.wsConnected = false;
+                    this.updateWebSocketStatus(false);
+                };
+                
+                this.wsSocket.onerror = (error) => {
+                    console.error('WebSocket error:', error);
+                    this.wsConnected = false;
+                    this.updateWebSocketStatus(false);
+                };
+                
+                this.wsSocket.onmessage = (event) => {
+                    try {
+                        const message = JSON.parse(event.data);
+                        this.handleWebSocketMessage(message);
+                    } catch (error) {
+                        console.error('Error parsing WebSocket message:', error);
+                    }
+                };
+            } catch (error) {
+                console.error('Error initializing WebSocket:', error);
+                this.wsConnected = false;
+                this.updateWebSocketStatus(false);
+            }
+        }
+        
+        /**
+         * Update WebSocket status indicators
+         */
+        updateWebSocketStatus(connected) {
+            const indicator = document.getElementById('ws-indicator');
+            const statusText = document.getElementById('ws-status-text');
+            const statusBadge = document.getElementById('ws-status-badge');
+            
+            if (connected) {
+                indicator.classList.remove('ws-disconnected');
+                indicator.classList.add('ws-connected');
+                statusText.textContent = 'Connected';
+                statusBadge.textContent = 'Connected';
+                statusBadge.classList.remove('status-offline', 'status-loading');
+                statusBadge.classList.add('status-online');
+            } else {
+                indicator.classList.remove('ws-connected');
+                indicator.classList.add('ws-disconnected');
+                statusText.textContent = 'Disconnected';
+                statusBadge.textContent = 'Disconnected';
+                statusBadge.classList.remove('status-online', 'status-loading');
+                statusBadge.classList.add('status-offline');
+            }
+        }
+        
+        /**
+         * Send a message through WebSocket
+         */
+        sendWebSocketMessage(type, data) {
+            if (!this.wsConnected || !this.wsSocket) {
+                console.warn('WebSocket not connected, cannot send message');
+                return false;
+            }
+            
+            try {
+                const message = {
+                    type: type,
+                    timestamp: Date.now(),
+                    data: data
+                };
+                
+                this.wsSocket.send(JSON.stringify(message));
+                return true;
+            } catch (error) {
+                console.error('Error sending WebSocket message:', error);
+                return false;
+            }
+        }
+        
+        /**
+         * Handle incoming WebSocket messages
+         */
+        handleWebSocketMessage(message) {
+            console.log('Received WebSocket message:', message);
+            
+            // Handle different message types
+            switch (message.type) {
+                case 'heartbeat':
+                    // Respond to heartbeat
+                    this.sendWebSocketMessage('heartbeat_response', {});
+                    break;
+                    
+                case 'analysis_complete':
+                    // Show notification for completed analysis
+                    this.showNotification(
+                        'Analysis Complete',
+                        `Analysis with ${message.data.model} completed in ${message.data.processing_time.toFixed(2)}s`
+                    );
+                    break;
+                    
+                case 'backend_status':
+                    // Update backend status indicators
+                    this.updateBackendStatusFromWs(message.data);
+                    break;
+                    
+                default:
+                    // Unknown message type
+                    console.log('Unknown WebSocket message type:', message.type);
+            }
+        }
+        
+        /**
+         * Reconnect to WebSocket server
+         */
+        reconnectWebSocket() {
+            if (this.wsEnabled) {
+                this.initWebSocket();
+            }
+        }
+        
+        /**
+         * Check backend server status
+         */
+        checkBackendStatus() {
+            // Update status indicators to loading state
+            this.updateStatusIndicator('backend-status-badge', 'loading', 'Checking...');
+            
+            // Reset AI model status indicators
+            ['gpt4all', 'huggingface', 'openai', 'gemini'].forEach(model => {
+                this.updateStatusIndicator(`${model}-status`, 'loading', 'Checking...');
+            });
+            
+            // Fetch health status from API
+            this.fetchFromApi('/api/health')
+                .then(data => {
+                    // Update backend status
+                    this.updateStatusIndicator('backend-status-badge', 'online', 'Online');
+                    
+                    // Update version and environment
+                    document.getElementById('backend-version').textContent = data.version || 'Unknown';
+                    document.getElementById('backend-environment').textContent = data.environment || 'Unknown';
+                    
+                    // Update AI model status
+                    if (data.ai_models) {
+                        Object.keys(data.ai_models).forEach(model => {
+                            const available = data.ai_models[model];
+                            this.updateStatusIndicator(
+                                `${model}-status`,
+                                available ? 'online' : 'offline',
+                                available ? 'Available' : 'Unavailable'
+                            );
+                        });
+                    }
+                    
+                    // Fetch system logs after status check
+                    this.fetchSystemLogs();
+                })
+                .catch(error => {
+                    console.error('Error checking backend status:', error);
+                    this.updateStatusIndicator('backend-status-badge', 'offline', 'Offline');
+                    
+                    // Set all AI models to unavailable
+                    ['gpt4all', 'huggingface', 'openai', 'gemini'].forEach(model => {
+                        this.updateStatusIndicator(`${model}-status`, 'offline', 'Unavailable');
+                    });
+                    
+                    // Show error notification
+                    this.showNotification(
+                        'Connection Error',
+                        'Could not connect to backend server. Check server status and settings.',
+                        'error'
+                    );
+                });
+        }
+        
+        /**
+         * Update status indicator element
+         */
+        updateStatusIndicator(elementId, status, text) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            // Remove all status classes
+            element.classList.remove('status-online', 'status-offline', 'status-loading');
+            
+            // Add appropriate class
+            switch (status) {
+                case 'online':
+                    element.classList.add('status-online');
+                    break;
+                case 'offline':
+                    element.classList.add('status-offline');
+                    break;
+                case 'loading':
+                    element.classList.add('status-loading');
+                    break;
+            }
+            
+            // Set text content
+            element.textContent = text;
+        }
+        
+        /**
+         * Fetch system logs from backend
+         */
+        fetchSystemLogs() {
+            const level = document.getElementById('log-level-filter').value;
+            const limit = document.getElementById('log-limit-input').value;
+            
+            const logsContainer = document.getElementById('system-logs');
+            logsContainer.innerHTML = `
+                <div class="text-center py-3">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Loading logs...</p>
+                </div>
+            `;
+            
+            // Build query string
+            const queryParams = new URLSearchParams();
+            if (level !== 'all') {
+                queryParams.append('level', level);
+            }
+            queryParams.append('limit', limit);
+            
+            // Fetch logs from API
+            this.fetchFromApi(`/api/logs?${queryParams.toString()}`)
+                .then(data => {
+                    if (data.success && data.logs && data.logs.length > 0) {
+                        // Clear container
+                        logsContainer.innerHTML = '';
+                        
+                        // Add log entries
+                        data.logs.forEach(log => {
+                            const logEntry = document.createElement('div');
+                            logEntry.className = 'log-entry';
+                            
+                            if (log.raw) {
+                                // Raw log entry
+                                logEntry.textContent = log.raw;
+                            } else {
+                                // Structured log entry
+                                const timestamp = log.timestamp || '';
+                                const level = log.level || 'INFO';
+                                const source = log.source || '';
+                                const message = log.message || '';
+                                
+                                // Add level-specific class
+                                if (level.toUpperCase() === 'ERROR') {
+                                    logEntry.classList.add('log-level-error');
+                                } else if (level.toUpperCase() === 'WARNING') {
+                                    logEntry.classList.add('log-level-warning');
+                                } else if (level.toUpperCase() === 'INFO') {
+                                    logEntry.classList.add('log-level-info');
+                                }
+                                
+                                logEntry.textContent = `${timestamp} - ${level} - ${source} - ${message}`;
+                            }
+                            
+                            logsContainer.appendChild(logEntry);
+                        });
+                    } else {
+                        // No logs found
+                        logsContainer.innerHTML = `
+                            <div class="text-center py-3">
+                                <i class="bi bi-file-earmark-x" style="font-size: 2rem;"></i>
+                                <p class="mt-2">No logs found</p>
+                            </div>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching logs:', error);
+                    logsContainer.innerHTML = `
+                        <div class="text-center py-3">
+                            <i class="bi bi-exclamation-triangle text-danger" style="font-size: 2rem;"></i>
+                            <p class="mt-2">Error loading logs</p>
+                            <small class="text-muted">${error.message}</small>
+                        </div>
+                    `;
+                });
+        }
+        
+        /**
+         * Analyze the log entered in the editor
+         */
+        analyzeLog() {
+            // Get log text from editor
+            const logText = this.editor.getValue().trim();
+            
+            // Check if there's anything to analyze
+            if (!logText) {
+                this.showNotification('Error', 'Please enter a log to analyze', 'error');
+                return;
+            }
+            
+            // Check if already analyzing
+            if (this.isAnalyzing) {
+                this.showNotification('In Progress', 'Analysis is already in progress', 'warning');
+                return;
+            }
+            
+            // Set analyzing state
+            this.isAnalyzing = true;
+            document.getElementById('analyze-btn').classList.add('disabled');
+            document.getElementById('analyze-spinner').classList.remove('d-none');
+            
+            // Get selected model
+            const modelType = document.getElementById('model-select').value;
+            
+            // Get advanced parameters
+            const temperature = parseFloat(document.getElementById('temperature-range').value);
+            const maxTokens = parseInt(document.getElementById('max-tokens-input').value);
+            
+            // Prepare request data
+            const requestData = {
+                log: logText,
+                model: modelType,
+                temperature: temperature,
+                max_tokens: maxTokens
+            };
+            
+            // Add model-specific parameters
+            if (modelType === 'huggingface') {
+                requestData.hf_model = this.selectedHfModel;
+            }
+            
+            // Show placeholder while loading
+            document.getElementById('result-placeholder').classList.add('d-none');
+            document.getElementById('analysis-result').innerHTML = `
+                <div class="text-center py-3">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Analyzing...</span>
+                    </div>
+                    <p class="mt-2">Analyzing with ${modelType}...</p>
+                    <small class="text-muted">This may take a moment</small>
+                </div>
+            `;
+            document.getElementById('analysis-result').classList.remove('d-none');
+            document.getElementById('analysis-metadata').classList.add('d-none');
+            
+            // Send API request
+            this.fetchFromApi('/api/debug', 'POST', requestData)
+                .then(data => {
+                    // Store analysis result
+                    this.lastAnalysis = {
+                        log: logText,
+                        model: data.model || modelType,
+                        analysis: data.analysis,
+                        processingTime: data.processing_time || 0,
+                        timestamp: data.timestamp || Date.now(),
+                        hfModel: modelType === 'huggingface' ? this.selectedHfModel : null
+                    };
+                    
+                    // Display result
+                    this.displayAnalysisResult(this.lastAnalysis);
+                    
+                    // Auto-save to history if enabled
+                    if (this.autoSaveHistory) {
+                        this.saveAnalysisToHistory();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error analyzing log:', error);
+                    
+                    // Display error message
+                    document.getElementById('analysis-result').innerHTML = `
+                        <div class="alert alert-danger">
+                            <h5><i class="bi bi-exclamation-triangle"></i> Analysis Error</h5>
+                            <p>${error.message || 'An error occurred during analysis'}</p>
+                        </div>
+                    `;
+                    
+                    // Show notification
+                    this.showNotification('Analysis Error', error.message || 'Failed to analyze log', 'error');
+                })
+                .finally(() => {
+                    // Reset analyzing state
+                    this.isAnalyzing = false;
+                    document.getElementById('analyze-btn').classList.remove('disabled');
+                    document.getElementById('analyze-spinner').classList.add('d-none');
+                });
+        }
+        
+        /**
+         * Display analysis result in the UI
+         */
+        displayAnalysisResult(analysis) {
+            if (!analysis || !analysis.analysis) {
+                return;
+            }
+            
+            // Show result container
+            document.getElementById('result-placeholder').classList.add('d-none');
+            document.getElementById('analysis-result').classList.remove('d-none');
+            document.getElementById('analysis-metadata').classList.remove('d-none');
+            
+            // Format the markdown content
+            const formattedContent = marked.parse(analysis.analysis);
+            
+            // Add the content to the result container
+            document.getElementById('analysis-result').innerHTML = formattedContent;
+            
+            // Update metadata
+            document.getElementById('analysis-time').textContent = `${analysis.processingTime.toFixed(2)}s`;
+            document.getElementById('analysis-model').textContent = analysis.model + (analysis.hfModel ? ` (${analysis.hfModel.split('/').pop()})` : '');
+            document.getElementById('analysis-timestamp').textContent = new Date(analysis.timestamp).toLocaleString();
+        }
+        
+        /**
+         * Save current analysis to history
+         */
+        saveAnalysisToHistory() {
+            if (!this.lastAnalysis) {
+                this.showNotification('Error', 'No analysis to save', 'error');
+                return;
+            }
+            
+            // Create history entry
+            const historyEntry = {
+                id: Date.now().toString(36) + Math.random().toString(36).substring(2, 9),
+                ...this.lastAnalysis,
+                savedAt: Date.now()
+            };
+            
+            // Add to history
+            this.history.unshift(historyEntry);
+            
+            // Limit history size
+            if (this.history.length > 50) {
+                this.history = this.history.slice(0, 50);
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('analysis-history', JSON.stringify(this.history));
+            
+            // Update history view if visible
+            if (this.currentView === 'history-view') {
+                this.updateHistoryView();
+            }
+            
+            // Show notification
+            this.showNotification('Saved', 'Analysis saved to history');
+        }
+        
+        /**
+         * Update the history view with current history data
+         */
+        updateHistoryView() {
+            const historyList = document.getElementById('history-list');
+            const historyEmpty = document.getElementById('history-empty');
+            
+            // Clear current items
+            historyList.innerHTML = '';
+            
+            // Check if history is empty
+            if (this.history.length === 0) {
+                historyEmpty.classList.remove('d-none');
+                return;
+            }
+            
+            // Hide empty message
+            historyEmpty.classList.add('d-none');
+            
+            // Add history items
+            this.history.forEach(item => {
+                const historyItem = document.createElement('div');
+                historyItem.className = 'history-item';
+                historyItem.dataset.id = item.id;
+                
+                // Create timestamp
+                const date = new Date(item.timestamp);
+                const formattedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+                
+                // Create preview from log text
+                const logPreview = item.log.length > 100 ? item.log.substring(0, 100) + '...' : item.log;
+                
+                // Create model badge
+                const modelBadge = document.createElement('span');
+                modelBadge.className = 'model-badge';
+                modelBadge.textContent = item.model + (item.hfModel ? ` (${item.hfModel.split('/').pop()})` : '');
+                
+                // Set item content
+                historyItem.innerHTML = `
+                    <div class="d-flex justify-content-between">
+                        <strong>${formattedDate}</strong>
+                        <div>
+                            <button class="btn btn-sm btn-outline-danger history-delete-btn" data-id="${item.id}">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <small class="text-muted">${logPreview}</small>
+                    </div>
+                `;
+                
+                // Add model badge
+                historyItem.querySelector('.d-flex').appendChild(modelBadge);
+                
+                // Add to history list
+                historyList.appendChild(historyItem);
+                
+                // Add click event
+                historyItem.addEventListener('click', (e) => {
+                    // Ignore clicks on delete button
+                    if (e.target.closest('.history-delete-btn')) {
+                        e.stopPropagation();
+                        return;
+                    }
+                    
+                    this.loadHistoryItem(item.id);
+                });
+                
+                // Add delete button event
+                historyItem.querySelector('.history-delete-btn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.deleteHistoryItem(item.id);
+                });
+            });
+        }
+        
+        /**
+         * Load a history item into the current view
+         */
+        loadHistoryItem(id) {
+            // Find item
+            const item = this.history.find(i => i.id === id);
+            if (!item) {
+                this.showNotification('Error', 'History item not found', 'error');
+                return;
+            }
+            
+            // Switch to analysis view
+            this.switchView('analysis-view');
+            
+            // Set editor content
+            this.editor.setValue(item.log);
+            
+            // Set selected model
+            document.getElementById('model-select').value = item.model;
+            this.onModelChange();
+            
+            // If the model is huggingface, set the right HF model
+            if (item.model === 'huggingface' && item.hfModel) {
+                this.selectedHfModel = item.hfModel;
+                
+                // Try to select the right model in UI
+                const modelSelector = document.querySelector(`#hf-models-container .model-selector[data-model-id="${item.hfModel}"]`);
+                if (modelSelector) {
+                    this.selectHuggingFaceModel(modelSelector);
+                }
+            }
+            
+            // Display analysis result
+            this.lastAnalysis = item;
+            this.displayAnalysisResult(item);
+            
+            // Show notification
+            this.showNotification('Loaded', 'History item loaded');
+        }
+        
+        /**
+         * Delete a history item
+         */
+        deleteHistoryItem(id) {
+            // Filter out the item
+            this.history = this.history.filter(item => item.id !== id);
+            
+            // Save to localStorage
+            localStorage.setItem('analysis-history', JSON.stringify(this.history));
+            
+            // Update history view
+            this.updateHistoryView();
+            
+            // Show notification
+            this.showNotification('Deleted', 'History item deleted');
+        }
+        
+        /**
+         * Clear all history
+         */
+        clearHistory() {
+            // Confirm before clearing
+            if (!confirm('Are you sure you want to clear all history?')) {
+                return;
+            }
+            
+            // Clear history
+            this.history = [];
+            
+            // Save to localStorage
+            localStorage.setItem('analysis-history', JSON.stringify(this.history));
+            
+            // Update history view
+            this.updateHistoryView();
+            
+            // Show notification
+            this.showNotification('Cleared', 'History cleared');
+        }
+        
+        /**
+         * Handle model selection change
+         */
+        onModelChange() {
+            const modelSelect = document.getElementById('model-select');
+            this.selectedModel = modelSelect.value;
+            
+            // Show/hide Hugging Face model selector
+            const hfSelector = document.getElementById('huggingface-model-selector');
+            if (this.selectedModel === 'huggingface') {
+                hfSelector.classList.remove('d-none');
+                
+                // Fetch available models if needed
+                this.fetchHuggingFaceModels();
+            } else {
+                hfSelector.classList.add('d-none');
+            }
+        }
+        
+        /**
+         * Fetch available Hugging Face models
+         */
+        fetchHuggingFaceModels() {
+            const modelsList = document.getElementById('hf-models-list');
+            
+            // Check if already fetched
+            if (modelsList.innerHTML.includes('Loading models...')) {
+                // Fetch models from API
+                this.fetchFromApi('/api/huggingface/models')
+                    .then(data => {
+                        if (data.success && data.models && data.models.length > 0) {
+                            // Clear list
+                            modelsList.innerHTML = '';
+                            
+                            // Add models to list
+                            data.models.forEach(model => {
+                                const modelItem = document.createElement('li');
+                                modelItem.className = 'dropdown-item';
+                                modelItem.dataset.modelId = model.id;
+                                
+                                // Create model name
+                                const modelName = model.id.split('/').pop();
+                                
+                                // Create model badges
+                                let badges = '';
+                                if (model.downloads) {
+                                    badges += `<span class="badge badge-downloads">${this.formatNumber(model.downloads)} downloads</span> `;
+                                }
+                                if (model.likes) {
+                                    badges += `<span class="badge badge-likes">${this.formatNumber(model.likes)} likes</span>`;
+                                }
+                                
+                                // Set item content
+                                modelItem.innerHTML = `
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span>${modelName}</span>
+                                        <small>${badges}</small>
+                                    </div>
+                                `;
+                                
+                                // Add click event
+                                modelItem.addEventListener('click', () => {
+                                    // Add model to selector if not exists
+                                    this.addHuggingFaceModel(model.id);
+                                });
+                                
+                                // Add to list
+                                modelsList.appendChild(modelItem);
+                            });
+                        } else {
+                            // No models found
+                            modelsList.innerHTML = '<li class="dropdown-item">No models found</li>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching Hugging Face models:', error);
+                        modelsList.innerHTML = '<li class="dropdown-item text-danger">Error loading models</li>';
+                    });
+            }
+        }
+        
+        /**
+         * Add a Hugging Face model to the selector
+         */
+        addHuggingFaceModel(modelId) {
+            // Check if model already exists
+            const existingModel = document.querySelector(`#hf-models-container .model-selector[data-model-id="${modelId}"]`);
+            if (existingModel) {
+                // Select existing model
+                this.selectHuggingFaceModel(existingModel);
+                return;
+            }
+            
+            // Create new model selector
+            const modelContainer = document.getElementById('hf-models-container');
+            const modelSelector = document.createElement('div');
+            modelSelector.className = 'model-selector';
+            modelSelector.dataset.modelId = modelId;
+            
+            // Extract model name from ID
+            const modelName = modelId.split('/').pop();
+            
+            // Set content
+            modelSelector.textContent = modelName;
+            
+            // Add click event
+            modelSelector.addEventListener('click', (e) => this.selectHuggingFaceModel(e.currentTarget));
+            
+            // Add to container
+            modelContainer.appendChild(modelSelector);
+            
+            // Select the new model
+            this.selectHuggingFaceModel(modelSelector);
+        }
+        
+        /**
+         * Select a Hugging Face model
+         */
+        selectHuggingFaceModel(element) {
+            // Get all model selectors
+            const modelSelectors = document.querySelectorAll('#hf-models-container .model-selector');
+            
+            // Remove active class from all
+            modelSelectors.forEach(el => el.classList.remove('active'));
+            
+            // Add active class to selected
+            element.classList.add('active');
+            
+            // Set selected model
+            this.selectedHfModel = element.dataset.modelId;
+        }
+        
+        /**
+         * Format a number for display (e.g., 1000 -> 1K)
+         */
+        formatNumber(num) {
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + 'M';
+            }
+            if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
+            }
+            return num.toString();
+        }
+        
+        /**
+         * Clear the log editor
+         */
+        clearLog() {
+            this.editor.setValue('');
+            this.editor.focus();
+        }
+        
+        /**
+         * Load a log file into the editor
+         */
+        loadLogFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                this.editor.setValue(e.target.result);
+                
+                // Detect language for syntax highlighting
+                const fileName = file.name.toLowerCase();
+                if (fileName.endsWith('.js') || fileName.endsWith('.json')) {
+                    this.editor.setOption('mode', 'javascript');
+                } else if (fileName.endsWith('.py')) {
+                    this.editor.setOption('mode', 'python');
+                } else {
+                    this.editor.setOption('mode', 'shell');
+                }
+                
+                // Show notification
+                this.showNotification('File Loaded', `Loaded ${file.name}`);
+            };
+            
+            reader.readAsText(file);
+            
+            // Reset file input
+            event.target.value = '';
+        }
+        
+        /**
+         * Copy analysis result to clipboard
+         */
+        copyAnalysisResult() {
+            if (!this.lastAnalysis) {
+                this.showNotification('Error', 'No analysis to copy', 'error');
+                return;
+            }
+            
+            navigator.clipboard.writeText(this.lastAnalysis.analysis)
+                .then(() => {
+                    this.showNotification('Copied', 'Analysis copied to clipboard');
+                })
+                .catch(err => {
+                    console.error('Error copying to clipboard:', err);
+                    this.showNotification('Error', 'Failed to copy to clipboard', 'error');
+                });
+        }
+        
+        /**
+         * Switch between different views
+         */
+        switchView(viewId, event) {
+            if (event) {
+                event.preventDefault();
+            }
+            
+            // Get all view containers
+            const views = document.querySelectorAll('.view-container');
+            
+            // Hide all views
+            views.forEach(view => {
+                view.classList.add('d-none');
+            });
+            
+            // Show selected view
+            document.getElementById(viewId).classList.remove('d-none');
+            
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Set active nav link
+            const activeLink = document.getElementById(`nav-${viewId.split('-')[0]}`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // Store current view
+            this.currentView = viewId;
+            
+            // Special actions for specific views
+            if (viewId === 'system-view') {
+                // Refresh system status
+                this.checkBackendStatus();
+            }
+        }
+        
+        /**
+         * Toggle dark mode
+         */
+        toggleDarkMode(enabled) {
+            this.darkMode = enabled;
+            
+            // Save preference
+            localStorage.setItem('dark-mode', this.darkMode);
+            
+            // Apply dark mode
+            this.applyDarkMode();
+        }
+        
+        /**
+         * Apply dark mode to UI
+         */
+        applyDarkMode() {
+            if (this.darkMode) {
+                document.body.classList.add('dark-mode');
+                
+                // Update CodeMirror theme
+                if (this.editor) {
+                    this.editor.setOption('theme', 'monokai');
+                }
+            } else {
+                document.body.classList.remove('dark-mode');
+                
+                // Update CodeMirror theme
+                if (this.editor) {
+                    this.editor.setOption('theme', 'default');
+                }
+            }
+        }
+        
+        /**
+         * Open settings modal
+         */
+        openSettingsModal() {
+            // Load current settings into form
+            this.loadSettingsForm();
+            
+            // Show modal
+            const settingsModal = new bootstrap.Modal(document.getElementById('settings-modal'));
+            settingsModal.show();
+        }
+        
+        /**
+         * Load current settings into settings form
+         */
+        loadSettingsForm() {
+            // API Keys
+            document.getElementById('openai-api-key').value = localStorage.getItem('openai-api-key') || '';
+            document.getElementById('gemini-api-key').value = localStorage.getItem('gemini-api-key') || '';
+            document.getElementById('hf-api-key').value = localStorage.getItem('hf-api-key') || '';
+            
+            // Server settings
+            document.getElementById('backend-url').value = this.apiBaseUrl;
+            document.getElementById('ws-url').value = this.wsUrl;
+            document.getElementById('websocket-enabled-toggle').checked = this.wsEnabled;
+            
+            // Interface settings
+            document.getElementById('theme-light').checked = !this.darkMode;
+            document.getElementById('theme-dark').checked = this.darkMode;
+            document.getElementById('editor-font-size').value = this.editorFontSize;
+            document.getElementById('auto-save-history-toggle').checked = this.autoSaveHistory;
+            
+            // AI Models settings
+            document.getElementById('default-model').value = this.defaultModel;
+            document.getElementById('default-hf-model').value = this.defaultHfModel;
+            document.getElementById('llama-model-path').value = localStorage.getItem('llama-model-path') || '';
+        }
+        
+        /**
+         * Save settings from form
+         */
+        saveSettings() {
+            // Get form values
+            
+            // API Keys
+            const openaiApiKey = document.getElementById('openai-api-key').value;
+            const geminiApiKey = document.getElementById('gemini-api-key').value;
+            const hfApiKey = document.getElementById('hf-api-key').value;
+            
+            // Only save non-empty API keys
+            if (openaiApiKey) localStorage.setItem('openai-api-key', openaiApiKey);
+            if (geminiApiKey) localStorage.setItem('gemini-api-key', geminiApiKey);
+            if (hfApiKey) localStorage.setItem('hf-api-key', hfApiKey);
+            
+            // Server settings
+            this.apiBaseUrl = document.getElementById('backend-url').value || 'http://localhost:8081';
+            localStorage.setItem('backend-url', this.apiBaseUrl);
+            
+            this.wsUrl = document.getElementById('ws-url').value || 'ws://localhost:8082';
+            localStorage.setItem('ws-url', this.wsUrl);
+            
+            this.wsEnabled = document.getElementById('websocket-enabled-toggle').checked;
+            localStorage.setItem('websocket-enabled', this.wsEnabled);
+            
+            // Interface settings
+            this.darkMode = document.getElementById('theme-dark').checked;
+            localStorage.setItem('dark-mode', this.darkMode);
+            
+            this.editorFontSize = parseInt(document.getElementById('editor-font-size').value);
+            localStorage.setItem('editor-font-size', this.editorFontSize);
+            
+            this.autoSaveHistory = document.getElementById('auto-save-history-toggle').checked;
+            localStorage.setItem('auto-save-history', this.autoSaveHistory);
+            
+            // AI Models settings
+            this.defaultModel = document.getElementById('default-model').value;
+            localStorage.setItem('default-model', this.defaultModel);
+            
+            this.defaultHfModel = document.getElementById('default-hf-model').value;
+            localStorage.setItem('default-hf-model', this.defaultHfModel);
+            
+            const llamaModelPath = document.getElementById('llama-model-path').value;
+            if (llamaModelPath) localStorage.setItem('llama-model-path', llamaModelPath);
+            
+            // Apply settings
+            this.applyDarkMode();
+            document.querySelector('.CodeMirror').style.fontSize = `${this.editorFontSize}px`;
+            document.getElementById('auto-save-toggle').checked = this.autoSaveHistory;
+            document.getElementById('model-select').value = this.defaultModel;
+            this.onModelChange();
+            
+            // Update WebSocket connection if needed
+            if (this.wsEnabled) {
+                this.initWebSocket();
+            } else if (this.wsSocket) {
+                this.wsSocket.close();
+                this.wsConnected = false;
+                this.updateWebSocketStatus(false);
+            }
+            
+            // Update backend status
+            this.checkBackendStatus();
+            
+            // Close modal
+            bootstrap.Modal.getInstance(document.getElementById('settings-modal')).hide();
+            
+            // Show notification
+            this.showNotification('Settings Saved', 'Your settings have been updated');
+            
+            // Save settings to backend API
+            this.saveSettingsToBackend();
+        }
+        
+        /**
+         * Save settings to backend API
+         */
+        saveSettingsToBackend() {
+            // Prepare settings data
+            const settingsData = {
+                api_keys: {
+                    openai: localStorage.getItem('openai-api-key'),
+                    gemini: localStorage.getItem('gemini-api-key'),
+                    huggingface: localStorage.getItem('hf-api-key')
+                },
+                ai: {
+                    default_model: this.defaultModel,
+                    default_hf_model: this.defaultHfModel,
+                    llama_model_path: localStorage.getItem('llama-model-path')
+                },
+                server: {
+                    websocket_enabled: this.wsEnabled
+                }
+            };
+            
+            // Send to API
+            this.fetchFromApi('/api/settings', 'POST', settingsData)
+                .then(data => {
+                    console.log('Settings saved to backend:', data);
+                })
+                .catch(error => {
+                    console.error('Error saving settings to backend:', error);
+                });
+        }
+        
+        /**
+         * Show notification toast
+         */
+        showNotification(title, message, type = 'info') {
+            const toast = document.getElementById('notification-toast');
+            const toastTitle = document.getElementById('toast-title');
+            const toastMessage = document.getElementById('toast-message');
+            const toastTime = document.getElementById('toast-time');
+            
+            // Set content
+            toastTitle.textContent = title;
+            toastMessage.textContent = message;
+            toastTime.textContent = new Date().toLocaleTimeString();
+            
+            // Set type-specific icon
+            const icon = toast.querySelector('.toast-header i');
+            icon.className = 'bi me-2';
+            
+            switch (type) {
+                case 'error':
+                    icon.classList.add('bi-exclamation-triangle', 'text-danger');
+                    break;
+                case 'warning':
+                    icon.classList.add('bi-exclamation-circle', 'text-warning');
+                    break;
+                case 'success':
+                    icon.classList.add('bi-check-circle', 'text-success');
+                    break;
+                default:
+                    icon.classList.add('bi-info-circle', 'text-primary');
+            }
+            
+            // Show toast
+            this.toastInstance.show();
+        }
+        
+        /**
+         * Helper to make API requests
+         */
+        async fetchFromApi(endpoint, method = 'GET', data = null) {
+            const url = this.apiBaseUrl + endpoint;
+            
+            const options = {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            
+            if (data && (method === 'POST' || method === 'PUT')) {
+                options.body = JSON.stringify(data);
+            }
+            
+            try {
+                const response = await fetch(url, options);
+                
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status} ${response.statusText}`);
+                }
+                
+                return await response.json();
+            } catch (error) {
+                console.error(`API request error (${url}):`, error);
+                throw error;
+            }
+        }
+    }
+    </script>
+</body>
+</html>

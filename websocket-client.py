@@ -1,180 +1,335 @@
 """WebSocket client for AILinux system.
 
 This module provides a WebSocket client that can connect to either a local
-or remote WebSocket server for real-time communication.
+or remote WebSocket server for real-time communication between backend and frontend.
 """
 import websocket
+import threading
 import logging
 import json
-import os
-import sys
 import time
+import os
+import uuid
+from typing import Dict, Any, Optional, Callable, List
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
 # Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("websocket_client.log"),
-        logging.StreamHandler()
-    ]
-)
 logger = logging.getLogger("WebSocketClient")
 
-# Server configuration with environment variables and fallbacks
-SERVER_MODE = os.getenv("SERVER_MODE", "local")  # 'local' or 'remote'
-LOCAL_WS_URL = "ws://localhost:8082"
-REMOTE_WS_URL = "wss://derleiti.de:8082"
-WS_SERVER_URL = REMOTE_WS_URL if SERVER_MODE == "remote" else LOCAL_WS_URL
+# Server configuration
+WS_SERVER_URL = os.getenv("WS_SERVER_URL", "ws://localhost:8082")
+WS_API_KEY = os.getenv("WS_API_KEY", "")
+WS_RECONNECT_DELAY = int(os.getenv("WS_RECONNECT_DELAY", "5"))
+WS_MAX_RECONNECT = int(os.getenv("WS_MAX_RECONNECT", "10"))
+WS_HEARTBEAT_INTERVAL = int(os.getenv("WS_HEARTBEAT_INTERVAL", "30"))
 
-# Maximum reconnection attempts
-MAX_RECONNECT_ATTEMPTS = 5
-reconnect_count = 0
-reconnect_delay = 2  # Initial delay in seconds
-
-def on_message(ws, message):
-    """Handle incoming WebSocket messages.
+class WebSocketClient:
+    """WebSocket client for real-time communication."""
     
-    Args:
-        ws: WebSocket instance
-        message: Message received from the server
-    """
-    try:
-        data = json.loads(message)
-        logger.info(f"Received message: {json.dumps(data, indent=2)}")
+    def __init__(self, url: Optional[str] = None, auto_connect: bool = False):
+        """Initialize the WebSocket client.
         
-        # Process different message types (customize based on your protocol)
-        if "type" in data:
-            if data["type"] == "status":
-                logger.info(f"Server status: {data.get('status', 'unknown')}")
-            elif data["type"] == "ai_response":
-                logger.info(f"AI response received for query: {data.get('query_id', 'unknown')}")
-            elif data["type"] == "error":
-                logger.error(f"Server error: {data.get('message', 'Unknown error')}")
-    except json.JSONDecodeError:
-        logger.warning(f"Received non-JSON message: {message}")
-    except Exception as e:
-        logger.error(f"Error processing message: {e}")
-
-def on_error(ws, error):
-    """Handle WebSocket errors.
+        Args:
+            url: WebSocket server URL (defaults to environment variable)
+            auto_connect: Whether to connect automatically on initialization
+        """
+        self.url = url or WS_SERVER_URL
+        self.ws = None
+        self.connected = False
+        self.reconnect_count = 0
+        self.client_id = f"ailinux-{str(uuid.uuid4())[:8]}"
+        self.shutdown_requested = False
+        self.ws_thread = None
+        self.message_handlers = {}
+        self.last_activity = time.time()
+        self.last_heartbeat = time.time()
+        
+        # Start connection if requested
+        if auto_connect:
+            self.connect()
     
-    Args:
-        ws: WebSocket instance
-        error: Error that occurred
-    """
-    logger.error(f"WebSocket error: {error}")
-
-def on_close(ws, close_status_code, close_msg):
-    """Handle WebSocket connection closing.
+    def connect(self):
+        """Connect to the WebSocket server."""
+        if self.connected or self.ws_thread and self.ws_thread.is_alive():
+            logger.info("WebSocket already connected or connecting")
+            return
+        
+        self.shutdown_requested = False
+        self.ws_thread = threading.Thread(target=self._connect_and_run, daemon=True)
+        self.ws_thread.start()
+        logger.info(f"Started WebSocket connection thread to {self.url}")
     
-    Args:
-        ws: WebSocket instance
-        close_status_code: Status code for the close event
-        close_msg: Close message
-    """
-    global reconnect_count
+    def disconnect(self):
+        """Disconnect from the WebSocket server."""
+        self.shutdown_requested = True
+        if self.ws:
+            self.ws.close()
+        
+        # Wait for thread to terminate
+        if self.ws_thread and self.ws_thread.is_alive():
+            self.ws_thread.join(timeout=2.0)
+        
+        self.connected = False
+        logger.info("WebSocket disconnected")
     
-    if close_status_code:
-        logger.info(f"WebSocket closed with code: {close_status_code}, message: {close_msg}")
-    else:
-        logger.info("WebSocket closed")
+    def is_connected(self) -> bool:
+        """Check if the WebSocket is connected.
+        
+        Returns:
+            bool: True if connected, False otherwise
+        """
+        return self.connected
     
-    # Attempt to reconnect if not closed cleanly and within max attempts
-    if close_status_code not in [1000, 1001]:  # Normal closure codes
-        if reconnect_count < MAX_RECONNECT_ATTEMPTS:
-            reconnect_count += 1
-            reconnect_delay_with_backoff = reconnect_delay * reconnect_count
-            logger.info(f"Attempting to reconnect in {reconnect_delay_with_backoff} seconds (attempt {reconnect_count}/{MAX_RECONNECT_ATTEMPTS})...")
-            time.sleep(reconnect_delay_with_backoff)
-            connect_to_server(WS_SERVER_URL)
+    def send_message(self, message_type: str, data: Dict[str, Any]):
+        """Send a message to the WebSocket server.
+        
+        Args:
+            message_type: Type of the message
+            data: Message data
+        
+        Returns:
+            bool: True if message was sent, False otherwise
+        """
+        if not self.connected or not self.ws:
+            logger.warning(f"Cannot send message, WebSocket not connected: {message_type}")
+            return False
+        
+        try:
+            message = {
+                "type": message_type,
+                "client_id": self.client_id,
+                "timestamp": time.time(),
+                "data": data
+            }
+            
+            self.ws.send(json.dumps(message))
+            self.last_activity = time.time()
+            logger.debug(f"Sent message: {message_type}")
+            return True
+        except Exception as e:
+            logger.error(f"Error sending message: {str(e)}")
+            return False
+    
+    def register_handler(self, message_type: str, handler: Callable[[Dict[str, Any]], None]):
+        """Register a handler for a specific message type.
+        
+        Args:
+            message_type: Type of message to handle
+            handler: Callback function for the message type
+        """
+        self.message_handlers[message_type] = handler
+        logger.debug(f"Registered handler for message type: {message_type}")
+    
+    def _connect_and_run(self):
+        """Connect to the WebSocket server and run the message loop."""
+        while not self.shutdown_requested:
+            try:
+                # Connect to the server
+                logger.info(f"Connecting to WebSocket server: {self.url}")
+                
+                # Create WebSocket connection
+                websocket.enableTrace(os.getenv("WS_DEBUG", "False").lower() == "true")
+                self.ws = websocket.WebSocketApp(
+                    self.url,
+                    on_open=self._on_open,
+                    on_message=self._on_message,
+                    on_error=self._on_error,
+                    on_close=self._on_close
+                )
+                
+                # Start the WebSocket loop
+                self.ws.run_forever(
+                    ping_interval=WS_HEARTBEAT_INTERVAL,
+                    ping_timeout=5
+                )
+                
+                # Check if shutdown was requested
+                if self.shutdown_requested:
+                    logger.info("Shutdown requested, stopping reconnection attempts")
+                    break
+                
+                # Reconnect after delay if not shutdown
+                self.reconnect_count += 1
+                if self.reconnect_count > WS_MAX_RECONNECT:
+                    logger.error(f"Maximum reconnection attempts ({WS_MAX_RECONNECT}) reached")
+                    break
+                
+                # Exponential backoff for reconnection
+                delay = min(WS_RECONNECT_DELAY * (2 ** (self.reconnect_count - 1)), 60)
+                logger.info(f"Reconnecting in {delay}s (attempt {self.reconnect_count}/{WS_MAX_RECONNECT})")
+                time.sleep(delay)
+            
+            except Exception as e:
+                logger.error(f"Error in WebSocket thread: {str(e)}")
+                
+                if self.shutdown_requested:
+                    break
+                
+                time.sleep(WS_RECONNECT_DELAY)
+        
+        # Clean up
+        self.connected = False
+        logger.info("WebSocket thread terminated")
+    
+    def _on_open(self, ws):
+        """Handle WebSocket connection opened event.
+        
+        Args:
+            ws: WebSocket instance
+        """
+        self.connected = True
+        self.reconnect_count = 0
+        self.last_activity = time.time()
+        logger.info(f"WebSocket connected to {self.url}")
+        
+        # Send authentication message if API key is set
+        if WS_API_KEY:
+            auth_message = {
+                "type": "auth",
+                "client_id": self.client_id,
+                "auth_key": WS_API_KEY
+            }
+            ws.send(json.dumps(auth_message))
+            logger.debug("Sent authentication message")
+        
+        # Send initial handshake
+        handshake = {
+            "type": "handshake",
+            "client_id": self.client_id,
+            "timestamp": time.time(),
+            "version": "1.0.0",
+            "platform": "AILinux Backend"
+        }
+        ws.send(json.dumps(handshake))
+    
+    def _on_message(self, ws, message):
+        """Handle incoming WebSocket messages.
+        
+        Args:
+            ws: WebSocket instance
+            message: Message received from the server
+        """
+        self.last_activity = time.time()
+        
+        try:
+            # Parse message JSON
+            data = json.loads(message)
+            message_type = data.get("type", "unknown")
+            
+            logger.debug(f"Received message type: {message_type}")
+            
+            # Handle heartbeat messages
+            if message_type == "heartbeat":
+                self._send_heartbeat_response()
+                return
+            
+            # Handle authentication response
+            if message_type == "auth_response":
+                status = data.get("status", "unknown")
+                logger.info(f"Authentication {status}")
+                return
+            
+            # Dispatch to registered handlers
+            if message_type in self.message_handlers:
+                try:
+                    self.message_handlers[message_type](data)
+                except Exception as e:
+                    logger.error(f"Error in message handler for {message_type}: {str(e)}")
+            else:
+                logger.debug(f"No handler for message type: {message_type}")
+        
+        except json.JSONDecodeError:
+            logger.warning(f"Received non-JSON message: {message}")
+        except Exception as e:
+            logger.error(f"Error processing message: {str(e)}")
+    
+    def _on_error(self, ws, error):
+        """Handle WebSocket errors.
+        
+        Args:
+            ws: WebSocket instance
+            error: Error that occurred
+        """
+        if isinstance(error, (ConnectionRefusedError, ConnectionResetError)):
+            logger.warning(f"Connection error: {str(error)}")
         else:
-            logger.error(f"Failed to reconnect after {MAX_RECONNECT_ATTEMPTS} attempts")
-    else:
-        reconnect_count = 0  # Reset count on clean close
+            logger.error(f"WebSocket error: {str(error)}")
+        
+        self.connected = False
+    
+    def _on_close(self, ws, close_status_code, close_msg):
+        """Handle WebSocket connection closing.
+        
+        Args:
+            ws: WebSocket instance
+            close_status_code: Status code for the close event
+            close_msg: Close message
+        """
+        self.connected = False
+        
+        if close_status_code:
+            logger.info(f"WebSocket closed with code: {close_status_code}, message: {close_msg}")
+        else:
+            logger.info("WebSocket closed")
+    
+    def _send_heartbeat_response(self):
+        """Send heartbeat response to server."""
+        if self.connected and self.ws:
+            try:
+                heartbeat_response = {
+                    "type": "heartbeat_response",
+                    "client_id": self.client_id,
+                    "timestamp": time.time()
+                }
+                self.ws.send(json.dumps(heartbeat_response))
+                self.last_heartbeat = time.time()
+            except Exception as e:
+                logger.error(f"Error sending heartbeat response: {str(e)}")
 
-def on_open(ws):
-    """Handle successful WebSocket connection.
-    
-    Args:
-        ws: WebSocket instance
-    """
-    global reconnect_count
-    reconnect_count = 0  # Reset reconnect counter on successful connection
-    
-    logger.info(f"WebSocket connection opened to {WS_SERVER_URL}")
-    
-    # Send initial authentication/handshake message
-    message = {
-        "type": "handshake",
-        "client_id": "ailinux_client",
-        "version": "1.2.0"
-    }
-    ws.send(json.dumps(message))
-    logger.info("Sent handshake message")
 
-def connect_to_server(url):
-    """Connect to WebSocket server with the given URL.
-    
-    Args:
-        url: WebSocket server URL to connect to
-    """
-    logger.info(f"Connecting to WebSocket server at {url}")
-    
-    # Enable trace for detailed connection debugging if needed
-    websocket.enableTrace(os.getenv("WS_DEBUG", "False").lower() == "true")
-    
-    # Create WebSocket connection with appropriate handlers
-    ws = websocket.WebSocketApp(
-        url,
-        on_open=on_open,
-        on_message=on_message,
-        on_error=on_error,
-        on_close=on_close
-    )
-    
-    # Run the WebSocket connection in a blocking manner
-    # For non-blocking, consider using threading or asyncio
-    ws.run_forever(
-        ping_interval=30,  # Send a ping every 30 seconds
-        ping_timeout=10,   # Wait 10 seconds for a pong response
-        reconnect=5        # Auto-reconnect after 5 seconds on network errors
-    )
+# Singleton instance for global use
+_instance = None
 
-def send_message(ws, message_type, data):
-    """Send a structured message to the WebSocket server.
+def get_client() -> WebSocketClient:
+    """Get the global WebSocketClient instance.
     
-    Args:
-        ws: WebSocket instance
-        message_type: Type of message being sent (e.g., 'query', 'log', 'status')
-        data: Dictionary containing the message data
+    Returns:
+        WebSocketClient: Global client instance
     """
-    message = {
-        "type": message_type,
-        "timestamp": time.time(),
-        "data": data
-    }
-    ws.send(json.dumps(message))
-    logger.debug(f"Sent {message_type} message")
+    global _instance
+    if _instance is None:
+        _instance = WebSocketClient()
+    return _instance
+
 
 if __name__ == "__main__":
-    # Override environment variables with command line args if provided
-    if len(sys.argv) > 1 and sys.argv[1] in ["local", "remote"]:
-        SERVER_MODE = sys.argv[1]
-        WS_SERVER_URL = REMOTE_WS_URL if SERVER_MODE == "remote" else LOCAL_WS_URL
+    # Set up logging when run directly
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+    )
     
-    logger.info(f"Starting WebSocket client in {SERVER_MODE} mode")
-    logger.info(f"Target server: {WS_SERVER_URL}")
+    # Test client with echo handler
+    def echo_handler(data):
+        print(f"Echo: {data}")
+    
+    # Create client and register handler
+    client = WebSocketClient()
+    client.register_handler("echo", echo_handler)
+    
+    # Connect to server
+    client.connect()
     
     try:
-        connect_to_server(WS_SERVER_URL)
+        # Keep running until interrupted
+        while True:
+            if client.is_connected():
+                client.send_message("echo", {"text": "Hello from AILinux!"})
+            time.sleep(5)
     except KeyboardInterrupt:
-        logger.info("WebSocket client stopped by user")
-    except Exception as e:
-        logger.error(f"Unexpected error: {e}")
+        print("Interrupted by user")
     finally:
-        logger.info("WebSocket client shutdown complete")
+        client.disconnect()
