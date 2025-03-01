@@ -61,15 +61,15 @@ async def authenticate_client(websocket, message_data):
     """
     client_id = str(uuid.uuid4())
     remote_address = websocket.remote_address[0] if hasattr(websocket, 'remote_address') else 'unknown'
-    
+
     # If API key is set, require authentication
     if API_KEY:
         auth_key = message_data.get("auth_key", "")
         if auth_key != API_KEY:
-            logger.warning(f"❌ Invalid API key from {remote_address} - Closing connection")
+            logger.warning("❌ Invalid API key from %sremote_address - Closing connection")
             await websocket.send(json.dumps({"error": "Unauthorized", "code": 401}))
             return False, None
-    
+
     # Extract client info
     client_info = {
         "id": client_id,
@@ -79,11 +79,11 @@ async def authenticate_client(websocket, message_data):
         "client_type": message_data.get("client_type", "generic"),
         "version": message_data.get("version", "unknown")
     }
-    
+
     # Store client info
     connected_clients[client_id] = client_info
-    logger.info(f"✅ Client authenticated: {client_id} from {remote_address}")
-    
+    logger.info("✅ Client authenticated: %sclient_id from %sremote_address")
+
     # Send success response
     await websocket.send(json.dumps({
         "type": "authentication",
@@ -91,7 +91,7 @@ async def authenticate_client(websocket, message_data):
         "client_id": client_id,
         "message": "Authentication successful"
     }))
-    
+
     return True, client_id
 
 
@@ -104,11 +104,11 @@ async def handle_message(websocket, client_id, message_data):
         message_data: The parsed message data
     """
     message_type = message_data.get("type", "unknown")
-    
+
     # Update last activity timestamp
     if client_id in connected_clients:
         connected_clients[client_id]["last_activity"] = time.time()
-    
+
     # Handle different message types
     if message_type == "ping":
         # Simple ping-pong for connection testing
@@ -116,13 +116,13 @@ async def handle_message(websocket, client_id, message_data):
             "type": "pong",
             "timestamp": time.time()
         }))
-        
+
     elif message_type == "analyze_log":
         # Process log analysis request
         log_text = message_data.get("log", "")
         model_name = message_data.get("model", "gpt4all")
         instruction = message_data.get("instruction")
-        
+
         if not log_text:
             await websocket.send(json.dumps({
                 "type": "error",
@@ -130,20 +130,26 @@ async def handle_message(websocket, client_id, message_data):
                 "code": 400
             }))
             return
-        
+
         # Create a unique ID for this analysis request
         request_id = str(uuid.uuid4())
-        
+
         # Send acknowledgment first
         await websocket.send(json.dumps({
             "type": "request_received",
             "request_id": request_id,
             "message": "Log analysis request received and being processed"
         }))
-        
+
         # Process the log asynchronously
         asyncio.create_task(
-            process_log_analysis(websocket, client_id, request_id, log_text, model_name, instruction)
+            process_log_analysis(websocket,
+            
+            client_id,
+            request_id,
+            log_text,
+            model_name,
+            instruction)
         )
     
     elif message_type == "get_models":
@@ -201,7 +207,7 @@ async def process_log_analysis(websocket, client_id, request_id, log_text, model
             "request_id": request_id,
             "status": "processing"
         }))
-        
+
         # Analyze the log (this can be slow depending on the model)
         analysis_result = analyze_log(log_text, model_name, instruction)
         
@@ -220,7 +226,7 @@ async def process_log_analysis(websocket, client_id, request_id, log_text, model
             "processing_time": processing_time,
             "model": model_name
         }))
-        
+
         logger.info(f"Log analysis completed for request {request_id} in {processing_time:.2f} seconds")
         
     except Exception as e:
@@ -233,7 +239,7 @@ async def process_log_analysis(websocket, client_id, request_id, log_text, model
             "message": f"Error analyzing log: {str(e)}",
             "code": 500
         }))
-        
+
         # Update session info
         if request_id in active_sessions:
             active_sessions[request_id]["status"] = "error"
@@ -259,12 +265,12 @@ async def connection_handler(websocket, path):
     
     try:
         logger.info(f"New connection from {remote_address}")
-        
+
         # Wait for the authentication message
         try:
             message = await asyncio.wait_for(websocket.recv(), timeout=10.0)
             message_data = json.loads(message)
-            
+
             # Authenticate the client
             authenticated, client_id = await authenticate_client(websocket, message_data)
             if not authenticated:
@@ -324,7 +330,8 @@ async def connection_handler(websocket, path):
                 logger.exception(f"Error handling message from client {client_id}: {str(e)}")
                 await websocket.send(json.dumps({
                     "type": "error",
-                    "message": "Server error processing message",
+                    "message": "" +
+                        "Server error processing message",
                     "code": 500
                 }))
                 
@@ -353,7 +360,7 @@ async def periodic_cleanup():
             for client_id, client_info in connected_clients.items():
                 if "last_activity" in client_info and now - client_info["last_activity"] > 3600:
                     inactive_clients.append(client_id)
-            
+
             for client_id in inactive_clients:
                 logger.info(f"Removing inactive client: {client_id}")
                 if client_id in connected_clients:
@@ -370,7 +377,7 @@ async def periodic_cleanup():
             for request_id in old_sessions:
                 if request_id in active_sessions:
                     del active_sessions[request_id]
-            
+
             # Log server status periodically
             if logger.isEnabledFor(logging.INFO):
                 logger.info(f"Server status: {len(connected_clients)} connected clients, {len(active_sessions)} active sessions")
@@ -386,20 +393,22 @@ async def main():
     """Main function to start the WebSocket server."""
     global server_start_time
     server_start_time = time.time()
-    
+
     # Set up SSL if enabled
     ssl_context = None
     if USE_SSL and SSL_CERT and SSL_KEY:
         ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
         ssl_context.load_cert_chain(SSL_CERT, SSL_KEY)
         logger.info(f"SSL enabled with cert: {SSL_CERT}")
-    
+
     # Start the server
     async with websockets.serve(
         connection_handler, 
-        HOST, 
+        HOST,
+
         PORT, 
         ssl=ssl_context,
+
         max_size=MAX_MESSAGE_SIZE,
         ping_interval=30,
         ping_timeout=10
@@ -420,7 +429,7 @@ if __name__ == "__main__":
         █████╗ ██╗██╗     ██╗███╗   ██╗██╗   ██╗██╗  ██╗
        ██╔══██╗██║██║     ██║████╗  ██║██║   ██║╚██╗██╔╝
        ███████║██║██║     ██║██╔██╗ ██║██║   ██║ ╚███╔╝ 
-       ██╔══██║██║██║     ██║██║╚██╗██║██║   ██║ ██╔██╗ 
+       ██╔══██║██║██║     ██║██║╚██╗██║██║   ██║ ██╔██╗
        ██║  ██║██║███████╗██║██║ ╚████║╚██████╔╝██╔╝ ██╗
        ╚═╝  ╚═╝╚═╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝
                                                          

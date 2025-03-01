@@ -22,11 +22,11 @@ def fix_adjust_hierarchy_with_debugger():
         return False
 
     print(f"Fixing {filepath}...")
-    
+
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
-        
+
         # Find the run_pylint function and completely replace it
         pattern = r"def run_pylint\(\):(.*?)# Pylint-Überprüfung starten"
         replacement = """def run_pylint():
@@ -45,17 +45,17 @@ def fix_adjust_hierarchy_with_debugger():
         print("Pylint ist nicht installiert. Installiere es mit 'pip install pylint'.")
 
 # Pylint-Überprüfung starten"""
-        
+
         # Use re.DOTALL to make . match newlines
         new_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
-        
+
         # Write the fixed content back
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(new_content)
-        
+
         print(f"✅ Successfully fixed {filepath} syntax error")
         return True
-    
+
     except Exception as e:
         print(f"❌ Error fixing {filepath}: {str(e)}")
         return False
@@ -72,25 +72,25 @@ def fix_websocket_client_whitespace():
         return False
 
     print(f"Fixing whitespace in {filepath}...")
-    
+
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
-        
+
         # First, remove all trailing whitespace from every line
         lines = content.split('\n')
         clean_lines = [line.rstrip() for line in lines]
-        
+
         # Join the lines back together with clean newlines
         clean_content = '\n'.join(clean_lines)
-        
+
         # Write the fixed content back
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(clean_content)
-        
+
         print(f"✅ Successfully fixed trailing whitespace in {filepath}")
         return True
-    
+
     except Exception as e:
         print(f"❌ Error fixing {filepath}: {str(e)}")
         return False
@@ -103,20 +103,20 @@ def create_clean_adjust_hierarchy():
     """
     filepath = 'client/adjust_hierarchy_with_debugger.py'
     backup_filepath = 'client/adjust_hierarchy_with_debugger.py.bak'
-    
+
     print(f"Creating clean version of {filepath}...")
-    
+
     try:
         # First backup the original file
         if os.path.exists(filepath):
             with open(filepath, 'r', encoding='utf-8') as f:
                 original_content = f.read()
-            
+
             with open(backup_filepath, 'w', encoding='utf-8') as f:
                 f.write(original_content)
-            
+
             print(f"✅ Backed up original file to {backup_filepath}")
-        
+
         # Now create a completely clean implementation
         clean_content = """#!/usr/bin/env python3
 \"\"\"
@@ -189,14 +189,14 @@ if __name__ == "__main__":
     restore_directory_structure(base_dir)
     run_pylint()
 """
-        
+
         # Write the new clean implementation
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(clean_content)
-        
+
         print(f"✅ Created clean version of {filepath}")
         return True
-    
+
     except Exception as e:
         print(f"❌ Error creating clean file: {str(e)}")
         return False
@@ -209,20 +209,20 @@ def create_clean_websocket_client():
     """
     filepath = 'client/websocket_client.py'
     backup_filepath = 'client/websocket_client.py.bak'
-    
+
     print(f"Creating clean version of {filepath}...")
-    
+
     try:
         # First backup the original file
         if os.path.exists(filepath):
             with open(filepath, 'r', encoding='utf-8') as f:
                 original_content = f.read()
-            
+
             with open(backup_filepath, 'w', encoding='utf-8') as f:
                 f.write(original_content)
-            
+
             print(f"✅ Backed up original file to {backup_filepath}")
-        
+
         # Now create a completely clean implementation
         clean_content = """#!/usr/bin/env python3
 \"\"\"
@@ -579,14 +579,14 @@ if __name__ == "__main__":
     finally:
         client.disconnect()
 """
-        
+
         # Write the new clean implementation
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(clean_content)
-        
+
         print(f"✅ Created clean version of {filepath}")
         return True
-    
+
     except Exception as e:
         print(f"❌ Error creating clean file: {str(e)}")
         return False
@@ -596,10 +596,10 @@ def run_pylint_check(filepath):
     """Run pylint on a specific file to verify fixes."""
     try:
         import subprocess
-        
+
         print(f"Running pylint check on {filepath}...")
         result = subprocess.run(['pylint', filepath], capture_output=True, text=True)
-        
+
         if result.returncode == 0:
             print(f"✅ {filepath} passes pylint check - No errors found!")
             return True
@@ -610,7 +610,7 @@ def run_pylint_check(filepath):
                 if any(code in line for code in ['E0001', 'C0303']):
                     print(f"  {line}")
             return False
-    
+
     except Exception as e:
         print(f"❌ Error running pylint check: {str(e)}")
         return False
@@ -620,7 +620,7 @@ def main():
     """Main function to run all fixes."""
     print("\n🔧 AILinux Final Bugfix Script 🔧")
     print("=================================")
-    
+
     # Choose strategy - try incremental fixes first
     if "--clean" in sys.argv:
         # Use the clean rewrite strategy
@@ -634,25 +634,25 @@ def main():
             fix_adjust_hierarchy_with_debugger,
             fix_websocket_client_whitespace
         ]
-    
+
     success_count = 0
     for fix in fixes:
         if fix():
             success_count += 1
-    
+
     # Run pylint checks on the fixed files
     print("\n📋 Running pylint verification on fixed files...")
     files_to_check = [
         'client/adjust_hierarchy_with_debugger.py',
         'client/websocket_client.py'
     ]
-    
+
     check_success = True
     for file in files_to_check:
         if os.path.exists(file):
             if not run_pylint_check(file):
                 check_success = False
-    
+
     # If incremental fixes failed, try clean rewrites
     if not check_success and "--clean" not in sys.argv:
         print("\n⚠️ Incremental fixes didn't resolve all issues. Trying clean rewrites...")
@@ -660,17 +660,17 @@ def main():
             create_clean_adjust_hierarchy,
             create_clean_websocket_client
         ]
-        
+
         clean_success_count = 0
         for fix in clean_fixes:
             if fix():
                 clean_success_count += 1
-        
+
         print("\n📋 Running pylint verification on clean files...")
         for file in files_to_check:
             if os.path.exists(file):
                 run_pylint_check(file)
-    
+
     print(f"\n✅ Applied {success_count}/{len(fixes)} fixes successfully!")
     print("\n📝 Summary of Final Fixes:")
     print("1. Completely rewrote adjust_hierarchy_with_debugger.py to fix the syntax error")

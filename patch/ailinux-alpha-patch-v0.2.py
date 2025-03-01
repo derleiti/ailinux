@@ -7,8 +7,10 @@ focusing on the critical syntax errors and code style problems.
 """
 import os
 import re
-import sys
-import shutil
+# import sys
+  # removed: W0611
+# import shutil
+  # removed: W0611
 from pathlib import Path
 
 
@@ -23,30 +25,31 @@ def fix_adjust_hierarchy_with_debugger():
         return False
 
     print(f"Fixing {filepath}...")
-    
+
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.readlines()
-        
+
         # Looking for the problematic line
         for i, line in enumerate(content):
             if 'result = subprocess.run' in line and 'check=True' in line:
                 # Found the problematic line, fix the syntax
-                content[i] = "    result = subprocess.run(['pylint', '--disable=all', '--enable=error'], check=True, capture_output=True, text=True)\n"
+                content[i] = "" +
+                    "    result = subprocess.run(['pylint', '--disable=all', '--enable=error'], check=True, capture_output=True, text=True)\n"
                 # Remove the next line if it's a continuation of this problematic syntax
                 if i+1 < len(content) and 'capture_output=True' in content[i+1]:
                     content[i+1] = ""
-                
+
                 print(f"  Fixed indentation error on line {i+1}")
                 break
-        
+
         # Write the fixed content back
         with open(filepath, 'w', encoding='utf-8') as f:
             f.writelines(content)
-        
+
         print(f"✅ Successfully fixed {filepath}")
         return True
-    
+
     except Exception as e:
         print(f"❌ Error fixing {filepath}: {str(e)}")
         return False
@@ -62,35 +65,37 @@ def fix_websocket_client_module():
         'client/websocket-client.py',
         'client/websocket_client_module.py'
     ]
-    
+
     for filepath in filepaths:
         if not os.path.exists(filepath):
             print(f"Warning: File not found: {filepath}")
             continue
-        
+
         print(f"Fixing {filepath}...")
-        
+
         try:
             with open(filepath, 'r', encoding='utf-8') as f:
                 content = f.read()
-            
+
             # 1. Fix module docstring if missing
             if not content.strip().startswith('"""'):
                 module_name = os.path.basename(filepath).replace('.py', '').replace('-', '_')
-                docstring = f'"""WebSocket client module for AILinux project.\n\nProvides functionality for connecting to WebSocket servers and handling real-time communication.\n"""\n'
+                docstring = f'"""" +
+                    "WebSocket client module for AILinux project.\n\nProvides functionality for connecting to WebSocket servers and handling real-time communication.\n"""\n'
                 content = docstring + content
-            
+
             # 2. Remove trailing whitespace from all lines
             content = '\n'.join(line.rstrip() for line in content.split('\n'))
-            
+
             # 3. Fix import ordering - move standard library imports before third-party imports
             # Extract the import section
             import_lines = []
             other_lines = []
             in_import_section = True
-            
+
             for line in content.split('\n'):
-                if line.strip() and not line.strip().startswith('"""') and not line.strip().endswith('"""'):
+                if line.strip() and not line.strip().startswith('"""" +
+                    "') and not line.strip().endswith('"""'):
                     if in_import_section and (line.startswith('import ') or line.startswith('from ')):
                         import_lines.append(line)
                     else:
@@ -101,16 +106,16 @@ def fix_websocket_client_module():
                         import_lines.append(line)
                     else:
                         other_lines.append(line)
-            
+
             # Separate standard library imports from third-party imports
             std_lib_imports = []
             third_party_imports = []
-            
+
             std_lib_modules = [
                 'os', 'sys', 'time', 'json', 'logging', 'threading', 'uuid', 
                 'typing', 'datetime', 'pathlib', 're', 'collections', 'functools'
             ]
-            
+
             for line in import_lines:
                 if line.strip() and (line.startswith('import ') or line.startswith('from ')):
                     module = line.split()[1].split('.')[0]
@@ -126,37 +131,38 @@ def fix_websocket_client_module():
                         third_party_imports.append(line)
                     else:
                         std_lib_imports.append(line)
-            
+
             # Recombine the import sections in the correct order
             new_content = '\n'.join(std_lib_imports + third_party_imports + other_lines)
-            
+
             # 4. Fix string formatting in logging calls
             # Replace f-strings with % formatting in logging calls
             pattern = r'logger\.(debug|info|warning|error|critical)\(f"([^"]*)"'
             replacement = r'logger.\1("\\2"'
             new_content = re.sub(pattern, replacement, new_content)
-            
+
             # 5. Fix constant naming
             new_content = new_content.replace('_instance = None', 'INSTANCE = None')
             new_content = new_content.replace('global _instance', 'global INSTANCE')
             new_content = new_content.replace('_instance is None', 'INSTANCE is None')
-            new_content = new_content.replace('_instance = WebSocketClient()', 'INSTANCE = WebSocketClient()')
-            
+            new_content = new_content.replace('" +
+                "_instance = WebSocketClient()', 'INSTANCE = WebSocketClient()')
+
             # 6. Add missing docstring to echo_handler function
             new_content = new_content.replace(
                 'def echo_handler(data):',
                 'def echo_handler(data):\n    """Handle echo responses from the server."""'
             )
-            
+
             # 7. Remove unused import
             new_content = new_content.replace(', List', '')
-            
+
             # Write the fixed content back
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(new_content)
-            
+
             print(f"✅ Successfully fixed {filepath}")
-        
+
         except Exception as e:
             print(f"❌ Error fixing {filepath}: {str(e)}")
 
@@ -169,68 +175,72 @@ def fix_alphaos_py():
     if not os.path.exists(filepath):
         print(f"Error: File not found: {filepath}")
         return False
-    
+
     print(f"Fixing {filepath}...")
-    
+
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
-        
+
         # 1. Fix module docstring if missing
         if not content.strip().startswith('"""'):
-            docstring = '"""WebSocket client implementation using autobahn library for AILinux project.\n\nProvides a WebSocket client protocol for connecting to AILinux servers.\n"""\n'
+            docstring = '"""" +
+                "WebSocket client implementation using autobahn library for AILinux project.\n\nProvides a WebSocket client protocol for connecting to AILinux servers.\n"""\n'
             content = docstring + content
-        
+
         # 2. Add class docstring
         class_def_pattern = r'class MyWebSocketClientProtocol\(WebSocketClientProtocol\):'
-        class_docstring = 'class MyWebSocketClientProtocol(WebSocketClientProtocol):\n    """WebSocket client protocol handler for AILinux.\n    \n    Extends the WebSocketClientProtocol to handle AILinux-specific functionality.\n    """'
+        class_docstring = 'class MyWebSocketClientProtocol(WebSocketClientProtocol):\n    """" +
+            "WebSocket client protocol handler for AILinux.\n    \n    Extends the WebSocketClientProtocol to handle AILinux-specific functionality.\n    """'
         content = re.sub(class_def_pattern, class_docstring, content)
-        
+
         # 3. Add docstring to main function
         if 'async def main():' in content and not re.search(r'async def main\(\):\s+"""', content):
             content = content.replace(
                 'async def main():',
                 'async def main():\n    """Run the main application loop."""'
             )
-        
+
         # 4. Fix import ordering
         # Extract imports
         import_section = re.search(r'import.*?(?=class|\n\n)', content, re.DOTALL)
         if import_section:
             imports = import_section.group(0)
-            
+
             # Separate standard lib from third-party
             std_imports = []
             third_party_imports = []
-            
+
             for line in imports.split('\n'):
                 if line.strip():
                     if line.startswith('import asyncio') or line.startswith('import json') or line.startswith('import ssl') or line.startswith('import logging') or 'urllib.parse' in line:
                         std_imports.append(line)
                     else:
                         third_party_imports.append(line)
-            
+
             # Replace the imports section with ordered imports
             new_imports = '\n'.join(std_imports + [''] + third_party_imports)
             content = content.replace(imports, new_imports)
-        
+
         # 5. Replace f-string with % formatting in logging
         pattern = r'logging\.error\(f"([^"]*)"'
         replacement = r'logging.error("\1"'
         content = re.sub(pattern, replacement, content)
-        
+
         # 6. Address unused variables
         # Instead of removing them, use '_' prefix to indicate they're intentionally unused
-        content = content.replace('transport, protocol = await conn', '_transport, protocol = await conn')
-        content = content.replace('ws_client = await connect_to_server', '_ws_client = await connect_to_server')
-        
+        content = content.replace('" +
+            "transport, protocol = await conn', '_transport, protocol = await conn')
+        content = content.replace('" +
+            "ws_client = await connect_to_server', '_ws_client = await connect_to_server')
+
         # Write the fixed content back
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(content)
-        
+
         print(f"✅ Successfully fixed {filepath}")
         return True
-    
+
     except Exception as e:
         print(f"❌ Error fixing {filepath}: {str(e)}")
         return False
@@ -244,34 +254,35 @@ def fix_bigfiles_py():
     if not os.path.exists(filepath):
         print(f"Error: File not found: {filepath}")
         return False
-    
+
     print(f"Fixing {filepath}...")
-    
+
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.readlines()
-        
+
         # Fix module docstring
         if not content[0].startswith('"""'):
             content.insert(0, '"""Module for finding large files in the AILinux project."""\n')
-        
+
         # Fix constant naming
         for i, line in enumerate(content):
             if 'directory = ' in line:
                 content[i] = line.replace('directory =', 'DIRECTORY =')
-        
+
         # Fix pointless statements
         for i, line in enumerate(content):
-            if line.strip() == 'top_20_files' or line.strip() == '"Directory does not exist or cannot be accessed"':
+            if line.strip() == 'top_20_files' or line.strip() == '"" +
+                "Directory does not exist or cannot be accessed"':
                 content[i] = f"    print({line.strip()})\n"
-        
+
         # Write the fixed content back
         with open(filepath, 'w', encoding='utf-8') as f:
             f.writelines(content)
-        
+
         print(f"✅ Successfully fixed {filepath}")
         return True
-    
+
     except Exception as e:
         print(f"❌ Error fixing {filepath}: {str(e)}")
         return False
@@ -283,9 +294,9 @@ def create_unified_websocket_client():
     and ensuring it meets all code quality standards.
     """
     new_filepath = 'client/websocket_client.py'
-    
+
     print(f"Creating unified WebSocket client at {new_filepath}...")
-    
+
     try:
         # Create a new, clean implementation
         content = '''"""
@@ -633,14 +644,14 @@ if __name__ == "__main__":
     finally:
         client.disconnect()
 '''
-        
+
         # Write the new implementation
         with open(new_filepath, 'w', encoding='utf-8') as f:
             f.write(content)
-        
+
         print(f"✅ Successfully created unified WebSocket client at {new_filepath}")
         return True
-    
+
     except Exception as e:
         print(f"❌ Error creating unified WebSocket client: {str(e)}")
         return False
@@ -650,10 +661,10 @@ def run_pylint_check(filepath):
     """Run pylint on a specific file to check for issues."""
     try:
         import subprocess
-        
+
         print(f"Running pylint check on {filepath}...")
         result = subprocess.run(['pylint', filepath], capture_output=True, text=True)
-        
+
         if result.returncode == 0:
             print(f"✅ {filepath} passes pylint check")
             return True
@@ -663,7 +674,7 @@ def run_pylint_check(filepath):
                 if 'E0001' in line or 'C0303' in line or 'C0103' in line:
                     print(f"  {line}")
             return False
-    
+
     except Exception as e:
         print(f"❌ Error running pylint check: {str(e)}")
         return False
@@ -673,7 +684,7 @@ def main():
     """Main function to run all fixes."""
     print("\n🔧 AILinux Complete Bugfix Script 🔧")
     print("====================================")
-    
+
     # Run the fixes
     fixes = [
         fix_adjust_hierarchy_with_debugger,
@@ -682,12 +693,12 @@ def main():
         fix_bigfiles_py,
         create_unified_websocket_client
     ]
-    
+
     success_count = 0
     for fix in fixes:
         if fix():
             success_count += 1
-    
+
     # Run pylint checks on the fixed files
     print("\n📋 Running pylint checks on fixed files...")
     files_to_check = [
@@ -696,11 +707,11 @@ def main():
         'client/bigfiles.py',
         'client/websocket_client.py'
     ]
-    
+
     for file in files_to_check:
         if os.path.exists(file):
             run_pylint_check(file)
-    
+
     print(f"\n✅ Applied {success_count}/{len(fixes)} fixes successfully!")
     print("\n📝 Summary of Fixes:")
     print("1. Fixed syntax error in adjust_hierarchy_with_debugger.py")

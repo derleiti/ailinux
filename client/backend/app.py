@@ -72,7 +72,7 @@ def debug():
             logger.error("No log text provided")
             return jsonify({"error": "No log text provided"}), 400
 
-        logger.info(f"Received log for analysis using model: {model_name}")
+        logger.info("Received log for analysis using model: %smodel_name")
         logger.debug(f"" +
             "Log content preview: {log_text[:100]}...")  # Log first 100 chars for debugging
 
@@ -81,7 +81,7 @@ def debug():
         response = analyze_log(translated_log, model_name)
 
         # Log the AI model response
-        logger.debug(f"AI model response preview: {response[:100]}...")  # Log first 100 chars
+        logger.debug("AI model response preview: %sresponse[:100]...")  # Log first 100 chars
 
         # Record the debug request and response to debug history
         log_debug_history(log_text, response, model_name)
@@ -93,7 +93,7 @@ def debug():
         error_message = f"Error in debug endpoint: {str(e)}"
         stack_trace = traceback.format_exc()
         logger.exception(error_message)
-        logger.debug(f"Stack trace: {stack_trace}")
+        logger.debug("Stack trace: %sstack_trace")
         return jsonify({"error": error_message}), 500
 
 
@@ -114,7 +114,7 @@ def get_logs():
         return jsonify({"logs": []})
 
     except Exception as e:
-        logger.exception(f"Error retrieving logs: {str(e)}")
+        logger.exception("Error retrieving logs: %sstr(e)")
         return jsonify({"error": str(e)}), 500
 
 
@@ -129,7 +129,7 @@ def get_models():
         models = get_available_models()
         return jsonify({"models": models})
     except Exception as e:
-        logger.exception(f"Error retrieving models: {str(e)}")
+        logger.exception("Error retrieving models: %sstr(e)")
         return jsonify({"error": str(e)}), 500
 
 
@@ -151,7 +151,7 @@ def system_status():
         }
         return jsonify(system_info)
     except Exception as e:
-        logger.exception(f"Error retrieving system status: {str(e)}")
+        logger.exception("Error retrieving system status: %sstr(e)")
         return jsonify({"error": str(e)}), 500
 
 
@@ -174,19 +174,19 @@ def handle_settings():
 
             # pylint: disable=C0415  # Import außerhalb des Toplevel
             import json
-            with open(settings_file, 'w') as f:
+            with open(settings_file, 'w', encoding='utf-8') as f:
                 json.dump(new_settings, f, indent=2)
 
-            logger.info(f"Updated settings: {new_settings}")
+            logger.info("Updated settings: %snew_settings")
             return jsonify({"status": "success", "message": "Settings updated"})
         except Exception as e:
-            logger.exception(f"Error updating settings: {str(e)}")
+            logger.exception("Error updating settings: %sstr(e)")
             return jsonify({"error": str(e)}), 500
     else:
         try:
             import json
             if os.path.exists(settings_file):
-                with open(settings_file, 'r') as f:
+                with open(settings_file, 'r', encoding='utf-8') as f:
                     settings = json.load(f)
                 return jsonify({"settings": settings})
             else:
@@ -207,7 +207,7 @@ def handle_settings():
                 }
                 return jsonify({"settings": default_settings})
         except Exception as e:
-            logger.exception(f"Error retrieving settings: {str(e)}")
+            logger.exception("Error retrieving settings: %sstr(e)")
             return jsonify({"error": str(e)}), 500
 
 
@@ -258,7 +258,7 @@ def log_debug_history(log_text, response, model_name):
             log_file.write(f"Log: {log_text}\n")
             log_file.write(f"Response: {response}\n\n")
     except Exception as e:
-        logger.error(f"Error writing to debug history: {str(e)}")
+        logger.error("Error writing to debug history: %sstr(e)")
 
 
 if __name__ == "__main__":
@@ -271,6 +271,6 @@ if __name__ == "__main__":
             HOST = "derleiti.de"
             logger.info("Using remote (derleiti.de) configuration")
 
-    logger.info(f"Starting backend server on {HOST}:{PORT} (Debug: {DEBUG})...")
-    logger.info(f"Environment: {ENV}")
+    logger.info("Starting backend server on %sHOST:%sPORT (Debug: %sDEBUG)...")
+    logger.info("Environment: %sENV")
     app.run(host=HOST, port=PORT, debug=DEBUG)

@@ -68,13 +68,13 @@ def initialize_gpt4all():
         if not os.path.exists(model_path):
             model_dir = os.path.dirname(model_path)
             filename = os.path.basename(model_path)
-            logger.warning(f"Model file not found at: {model_path}")
-            logger.info(f"Checking if model exists in directory: {model_dir}")
+            logger.warning("Model file not found at: %smodel_path")
+            logger.info("Checking if model exists in directory: %smodel_dir")
 
             # Check if the directory exists, create if not
             if not os.path.exists(model_dir):
                 os.makedirs(model_dir, exist_ok=True)
-                logger.info(f"Created model directory: {model_dir}")
+                logger.info("Created model directory: %smodel_dir")
 
             # List available models if directory exists
             if os.path.exists(model_dir):
@@ -83,18 +83,18 @@ def initialize_gpt4all():
                 if gguf_files:
                     # Use the first available .gguf file
                     model_path = os.path.join(model_dir, gguf_files[0])
-                    logger.info(f"Using available model: {model_path}")
+                    logger.info("Using available model: %smodel_path")
                 else:
                     logger.warning("No .gguf models found. Will download the default model.")
 
             # Model will be downloaded automatically by GPT4All if not found
 
-        logger.info(f"Loading GPT4All model from: {model_path}")
+        logger.info("Loading GPT4All model from: %smodel_path")
         _gpt4all_model = GPT4All(model_path)
         logger.info("GPT4All model loaded successfully")
         return _gpt4all_model
     except Exception as e:
-        logger.error(f"Error initializing GPT4All: {str(e)}")
+        logger.error("Error initializing GPT4All: %sstr(e)")
         return None
 
 
@@ -119,7 +119,7 @@ def initialize_openai():
         logger.info("OpenAI API initialized successfully")
         return _openai
     except Exception as e:
-        logger.error(f"Error initializing OpenAI API: {str(e)}")
+        logger.error("Error initializing OpenAI API: %sstr(e)")
         return None
 
 
@@ -144,7 +144,7 @@ def initialize_gemini():
         logger.info("Google Gemini API initialized successfully")
         return _gemini
     except Exception as e:
-        logger.error(f"Error initializing Gemini API: {str(e)}")
+        logger.error("Error initializing Gemini API: %sstr(e)")
         return None
 
 
@@ -169,10 +169,10 @@ def initialize_huggingface():
 
         # Check for CUDA availability
         device = "cuda" if torch.cuda.is_available() else "cpu"
-        logger.info(f"Using device: {device} for Hugging Face model")
+        logger.info("Using device: %sdevice for Hugging Face model")
 
         # Load tokenizer first
-        logger.info(f"Loading Hugging Face tokenizer: {HUGGINGFACE_MODEL_ID}")
+        logger.info("Loading Hugging Face tokenizer: %sHUGGINGFACE_MODEL_ID")
         _huggingface_tokenizer = AutoTokenizer.from_pretrained(
             HUGGINGFACE_MODEL_ID,
             cache_dir=CACHE_DIR,
@@ -180,7 +180,7 @@ def initialize_huggingface():
         )
 
         # Load model with appropriate configuration
-        logger.info(f"Loading Hugging Face model: {HUGGINGFACE_MODEL_ID}")
+        logger.info("Loading Hugging Face model: %sHUGGINGFACE_MODEL_ID")
         _huggingface_model = AutoModelForCausalLM.from_pretrained(
             HUGGINGFACE_MODEL_ID,
             cache_dir=CACHE_DIR,
@@ -203,7 +203,7 @@ def initialize_huggingface():
         return _huggingface_model, _huggingface_tokenizer, _huggingface_pipeline
 
     except Exception as e:
-        logger.error(f"Error initializing Hugging Face model: {str(e)}")
+        logger.error("Error initializing Hugging Face model: %sstr(e)")
         return None, None, None
 
 
@@ -275,7 +275,7 @@ instruction: Optional[str] = None) -> str:
         Analysis result as a string
     """
     start_time = time.time()
-    logger.info(f"Analyzing log with model: {model_name}")
+    logger.info("Analyzing log with model: %smodel_name")
 
     # Create the prompt
     prompt = create_prompt(log_text, instruction)
@@ -292,11 +292,11 @@ instruction: Optional[str] = None) -> str:
         else:
             return f"⚠ Error: Unknown model '{model_name}' specified"
     except Exception as e:
-        logger.exception(f"Error analyzing log with {model_name}: {str(e)}")
+        logger.exception("Error analyzing log with %smodel_name: %sstr(e)")
         return f"⚠ Error analyzing log: {str(e)}"
 
     elapsed_time = time.time() - start_time
-    logger.info(f"Log analysis completed in {elapsed_time:.2f} seconds")
+    logger.info("Log analysis completed in %selapsed_time:.2f seconds")
 
     return response
 
@@ -315,7 +315,7 @@ def gpt4all_response(prompt: str) -> str:
         raise ModelNotInitializedError("GPT4All model could not be initialized")
 
     try:
-        logger.debug(f"Sending prompt to GPT4All (length: {len(prompt)})")
+        logger.debug("Sending prompt to GPT4All (length: %slen(prompt))")
         response = ""
 
         # Use with context for proper resource handling
@@ -324,10 +324,10 @@ def gpt4all_response(prompt: str) -> str:
             for token in model.generate(prompt, max_tokens=2048, temp=0.7):
                 response += token
 
-        logger.debug(f"Received GPT4All response (length: {len(response)})")
+        logger.debug("Received GPT4All response (length: %slen(response))")
         return response.strip()
     except Exception as e:
-        logger.exception(f"Error with GPT4All: {str(e)}")
+        logger.exception("Error with GPT4All: %sstr(e)")
         raise
 
 
@@ -345,7 +345,7 @@ def openai_response(prompt: str) -> str:
         raise ModelNotInitializedError("OpenAI API could not be initialized. Check your API key.")
 
     try:
-        logger.debug(f"Sending prompt to OpenAI (length: {len(prompt)})")
+        logger.debug("Sending prompt to OpenAI (length: %slen(prompt))")
 
         # Use the ChatCompletion API
         response = openai.ChatCompletion.create(
@@ -361,10 +361,10 @@ def openai_response(prompt: str) -> str:
         )
 
         response_text = response["choices"][0]["message"]["content"].strip()
-        logger.debug(f"Received OpenAI response (length: {len(response_text)})")
+        logger.debug("Received OpenAI response (length: %slen(response_text))")
         return response_text
     except Exception as e:
-        logger.exception(f"Error with OpenAI: {str(e)}")
+        logger.exception("Error with OpenAI: %sstr(e)")
         raise
 
 
@@ -382,15 +382,15 @@ def gemini_response(prompt: str) -> str:
         raise ModelNotInitializedError("Gemini API could not be initialized. Check your API key.")
 
     try:
-        logger.debug(f"Sending prompt to Gemini (length: {len(prompt)})")
+        logger.debug("Sending prompt to Gemini (length: %slen(prompt))")
         model = gemini.GenerativeModel('gemini-pro')
         response = model.generate_content(prompt)
 
         response_text = response.text
-        logger.debug(f"Received Gemini response (length: {len(response_text)})")
+        logger.debug("Received Gemini response (length: %slen(response_text))")
         return response_text.strip()
     except Exception as e:
-        logger.exception(f"Error with Gemini: {str(e)}")
+        logger.exception("Error with Gemini: %sstr(e)")
         raise
 
 
@@ -408,7 +408,7 @@ def huggingface_response(prompt: str) -> str:
         raise ModelNotInitializedError("Hugging Face model could not be initialized.")
 
     try:
-        logger.debug(f"Sending prompt to Hugging Face (length: {len(prompt)})")
+        logger.debug("Sending prompt to Hugging Face (length: %slen(prompt))")
 
         # Generate text with appropriate parameters
         outputs = pipe(
@@ -426,10 +426,10 @@ def huggingface_response(prompt: str) -> str:
         # Remove the prompt from the response
         response_text = generated_text[len(prompt):].strip()
 
-        logger.debug(f"Received Hugging Face response (length: {len(response_text)})")
+        logger.debug("Received Hugging Face response (length: %slen(response_text))")
         return response_text
     except Exception as e:
-        logger.exception(f"Error with Hugging Face: {str(e)}")
+        logger.exception("Error with Hugging Face: %sstr(e)")
         raise
 
 

@@ -66,10 +66,11 @@ def debug():
             logger.error("No log text provided")
             return jsonify({"error": "No log text provided"}), 400
 
-        logger.info(f"Received log for analysis using model: {model_name}")
+        logger.info("Received log for analysis using model: %smodel_name")
         logger.debug(f"" +
             "" +
-                "Log content (truncated): {log_text[:100]}..." if len(log_text) > 100 else f"Log content: {log_text}")
+                "" +
+                    "Log content (truncated): {log_text[:100]}..." if len(log_text) > 100 else f"Log content: {log_text}")
 
         # Process and analyze the log
         response = analyze_log(log_text, model_name, instruction)
@@ -79,7 +80,7 @@ def debug():
 
         # Calculate and log processing time
         elapsed_time = time.time() - start_time
-        logger.info(f"Log analysis completed in {elapsed_time:.2f} seconds")
+        logger.info("Log analysis completed in %selapsed_time:.2f seconds")
 
         # Return analysis response
         return jsonify({
@@ -89,7 +90,7 @@ def debug():
         })
 
     except Exception as e:
-        logger.exception(f"Error in debug endpoint: {str(e)}")
+        logger.exception("Error in debug endpoint: %sstr(e)")
         return jsonify({
             "error": str(e),
             "message": "An error occurred during log analysis"
@@ -119,7 +120,7 @@ def get_logs():
         return jsonify({"logs": []})
 
     except Exception as e:
-        logger.exception(f"Error retrieving logs: {str(e)}")
+        logger.exception("Error retrieving logs: %sstr(e)")
         return jsonify({"error": str(e)}), 500
 
 
@@ -134,7 +135,7 @@ def get_models():
         models = get_available_models()
         return jsonify({"models": models})
     except Exception as e:
-        logger.exception(f"Error getting model information: {str(e)}")
+        logger.exception("Error getting model information: %sstr(e)")
         return jsonify({"error": str(e)}), 500
 
 
@@ -166,7 +167,7 @@ def handle_settings():
                 }
                 return jsonify(default_settings)
         except Exception as e:
-            logger.exception(f"Error getting settings: {str(e)}")
+            logger.exception("Error getting settings: %sstr(e)")
             return jsonify({"error": str(e)}), 500
     else:  # POST
         try:
@@ -181,10 +182,10 @@ def handle_settings():
             if "huggingface_model_id" in new_settings:
                 os.environ["HUGGINGFACE_MODEL_ID"] = new_settings["huggingface_model_id"]
 
-            logger.info(f"Settings updated: {new_settings}")
+            logger.info("Settings updated: %snew_settings")
             return jsonify({"status": "success", "message": "Settings updated"})
         except Exception as e:
-            logger.exception(f"Error updating settings: {str(e)}")
+            logger.exception("Error updating settings: %sstr(e)")
             return jsonify({"error": str(e)}), 500
 
 
@@ -220,7 +221,7 @@ def get_analysis_history():
         else:
             return jsonify({"history": []})
     except Exception as e:
-        logger.exception(f"Error retrieving analysis history: {str(e)}")
+        logger.exception("Error retrieving analysis history: %sstr(e)")
         return jsonify({"error": str(e)}), 500
 
 
@@ -263,7 +264,7 @@ def save_analysis_history(log_text, analysis, model_name):
             json.dump(history, f, indent=2)
 
     except Exception as e:
-        logger.error(f"Error saving analysis history: {str(e)}")
+        logger.error("Error saving analysis history: %sstr(e)")
 
 
 if __name__ == "__main__":
@@ -288,13 +289,13 @@ if __name__ == "__main__":
             HOST = "0.0.0.0"  # Listen on all interfaces for remote access
             logger.info("Using remote configuration")
 
-    logger.info(f"Starting backend server on {HOST}:{PORT} (Debug: {DEBUG})")
-    logger.info(f"Environment: {ENV}")
+    logger.info("Starting backend server on %sHOST:%sPORT (Debug: %sDEBUG)")
+    logger.info("Environment: %sENV")
 
     # Check if models are available
     models = get_available_models()
     available_models = [model["name"] for model in models if model["available"]]
-    logger.info(f"Available models: {', '.join(available_models)}")
+    logger.info("Available models: %s", '.join(available_models)}")
 
     # Start the Flask server
     app.run(host=HOST, port=PORT, debug=DEBUG)

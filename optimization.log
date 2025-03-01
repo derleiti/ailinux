@@ -4,6 +4,8 @@ client/start.js:1:1: E0001: Parsing failed: 'invalid syntax (client.start, line 
 client/websocket-client.py:317:5: E0001: Parsing failed: 'expected an indented block after function definition on line 316 (client.websocket-client, line 317)' (syntax-error)
 ************* Module client.cleanup
 client/cleanup.py:9:1: E0001: Parsing failed: 'expected an indented block after function definition on line 8 (client.cleanup, line 9)' (syntax-error)
+************* Module client.backend.huggingface
+client/backend/huggingface.py:124:52: E0001: Parsing failed: 'unterminated string literal (detected at line 124) (client.backend.huggingface, line 124)' (syntax-error)
 ************* Module client.backend.hugging
 client/backend/hugging.py:40:1: E0001: Parsing failed: 'expected an indented block after function definition on line 39 (client.backend.hugging, line 40)' (syntax-error)
 ************* Module client.frontend.twitchbot
@@ -31,145 +33,96 @@ client/frontend/log.html:1:1: E0001: Parsing failed: 'invalid syntax (client.fro
 client/frontend/aiineraction.html:9:16: E0001: Parsing failed: 'invalid decimal literal (client.frontend.aiineraction, line 9)' (syntax-error)
 ************* Module client.frontend.llama
 client/frontend/llama.html:9:16: E0001: Parsing failed: 'invalid decimal literal (client.frontend.llama, line 9)' (syntax-error)
+************* Module patch.ailinux-alpha-patch-v0.4
+patch/ailinux-alpha-patch-v0.4.py:122:29: E0001: Parsing failed: 'unterminated f-string literal (detected at line 122) (patch.ailinux-alpha-patch-v0.4, line 122)' (syntax-error)
+************* Module patch.ailinux-alpha-patch-v0.2
+patch/ailinux-alpha-patch-v0.2.py:37:34: E0001: Parsing failed: 'invalid syntax (patch.ailinux-alpha-patch-v0.2, line 37)' (syntax-error)
+************* Module patch.ailinux-alpha-patch-v0.5
+patch/ailinux-alpha-patch-v0.5.py:142:29: E0001: Parsing failed: 'unterminated f-string literal (detected at line 142) (patch.ailinux-alpha-patch-v0.5, line 142)' (syntax-error)
+************* Module patch.ailinux-alpha-patch-v0.1
+patch/ailinux-alpha-patch-v0.1.py:213:16: E0001: Parsing failed: 'invalid syntax (patch.ailinux-alpha-patch-v0.1, line 213)' (syntax-error)
+************* Module server.backend.app
+server/backend/app.py:298:41: E0001: Parsing failed: 'unterminated string literal (detected at line 298) (server.backend.app, line 298)' (syntax-error)
 ************* Module server.backend.data_server
 server/backend/data_server.py:254:13: E0001: Parsing failed: 'expected 'except' or 'finally' block (server.backend.data_server, line 254)' (syntax-error)
 ************* Module uploadready
-uploadready.py:104:0: C0301: Line too long (122/100) (line-too-long)
-uploadready.py:104:0: C0301: Line too long (122/100) (line-too-long)
-uploadready.py:128:0: C0301: Line too long (117/100) (line-too-long)
+uploadready.py:101:0: C0301: Line too long (116/100) (line-too-long)
+uploadready.py:123:0: C0301: Line too long (115/100) (line-too-long)
 uploadready.py:18:17: W0612: Unused variable 'dirnames' (unused-variable)
-uploadready.py:32:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-uploadready.py:60:16: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
-uploadready.py:60:16: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+uploadready.py:61:16: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
 uploadready.py:41:22: W0612: Unused variable 'file_info' (unused-variable)
 uploadready.py:45:17: W0612: Unused variable 'dirnames' (unused-variable)
-uploadready.py:67:8: W0612: Unused variable 'dirpath' (unused-variable)
-uploadready.py:76:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-uploadready.py:92:13: W1510: 'subprocess.run' used without explicitly defining the value for 'check'. (subprocess-run-check)
-uploadready.py:94:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-uploadready.py:134:0: C0116: Missing function or method docstring (missing-function-docstring)
-uploadready.py:147:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-************* Module pylint_patcher
-pylint_patcher.py:20:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:26:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:33:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:42:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:46:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:51:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:57:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:64:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:73:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:78:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:83:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:85:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:101:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:103:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:108:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:112:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:116:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:118:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:123:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:126:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:140:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:149:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:151:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:156:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:159:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:165:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:167:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:172:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:175:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:182:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:184:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:187:0: C0301: Line too long (117/100) (line-too-long)
-pylint_patcher.py:189:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:192:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:203:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:205:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:208:0: C0301: Line too long (142/100) (line-too-long)
-pylint_patcher.py:210:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:213:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:218:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:221:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:233:0: C0301: Line too long (112/100) (line-too-long)
-pylint_patcher.py:241:0: C0301: Line too long (110/100) (line-too-long)
-pylint_patcher.py:244:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:246:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:251:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:254:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:269:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:284:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:286:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:291:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:295:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:297:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:300:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:306:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:311:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:320:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:322:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:327:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:332:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:335:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:337:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:344:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:346:0: C0301: Line too long (123/100) (line-too-long)
-pylint_patcher.py:349:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:351:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:354:0: C0301: Line too long (108/100) (line-too-long)
-pylint_patcher.py:360:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:364:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:368:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:390:0: C0301: Line too long (105/100) (line-too-long)
-pylint_patcher.py:394:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:403:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:407:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:414:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:421:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:426:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:433:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:437:0: C0301: Line too long (113/100) (line-too-long)
-pylint_patcher.py:446:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:454:0: C0301: Line too long (102/100) (line-too-long)
-pylint_patcher.py:455:99: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:457:82: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:459:62: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:462:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:466:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:469:0: C0301: Line too long (103/100) (line-too-long)
-pylint_patcher.py:471:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:475:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:478:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:482:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:487:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:490:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:493:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:501:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:504:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:510:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:513:35: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:519:0: C0303: Trailing whitespace (trailing-whitespace)
-pylint_patcher.py:18:0: R0903: Too few public methods (1/2) (too-few-public-methods)
-pylint_patcher.py:31:0: R0902: Too many instance attributes (8/7) (too-many-instance-attributes)
-pylint_patcher.py:222:8: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
-pylint_patcher.py:247:4: R0914: Too many local variables (16/15) (too-many-locals)
-pylint_patcher.py:398:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-pylint_patcher.py:402:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-pylint_patcher.py:409:8: W1201: Use lazy % formatting in logging functions (logging-not-lazy)
-pylint_patcher.py:410:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-pylint_patcher.py:410:25: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-pylint_patcher.py:411:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-pylint_patcher.py:412:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-pylint_patcher.py:413:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-pylint_patcher.py:425:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-pylint_patcher.py:352:4: R0912: Too many branches (23/12) (too-many-branches)
-pylint_patcher.py:352:4: R0915: Too many statements (52/50) (too-many-statements)
-pylint_patcher.py:499:4: C0415: Import outside toplevel (difflib) (import-outside-toplevel)
-pylint_patcher.py:500:4: C0415: Import outside toplevel (time) (import-outside-toplevel)
-pylint_patcher.py:525:19: W0718: Catching too general exception Exception (broad-exception-caught)
-pylint_patcher.py:14:0: W0611: Unused datetime imported from datetime (unused-import)
-pylint_patcher.py:15:0: W0611: Unused Tuple imported from typing (unused-import)
-pylint_patcher.py:15:0: W0611: Unused Optional imported from typing (unused-import)
+uploadready.py:68:8: W0612: Unused variable 'dirpath' (unused-variable)
+uploadready.py:94:17: W1510: 'subprocess.run' used without explicitly defining the value for 'check'. (subprocess-run-check)
+************* Module fix_duplicate_code
+fix_duplicate_code.py:23:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:29:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:37:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:42:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:46:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:51:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:57:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:64:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:67:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:71:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:79:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:84:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:88:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:100:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:108:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:117:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:122:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:125:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:131:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:133:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:136:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:143:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:147:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:152:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:155:0: C0301: Line too long (106/100) (line-too-long)
+fix_duplicate_code.py:156:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:159:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:162:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:166:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:172:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:181:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:186:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:189:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:194:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:196:0: C0301: Line too long (102/100) (line-too-long)
+fix_duplicate_code.py:197:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:201:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:205:0: C0301: Line too long (103/100) (line-too-long)
+fix_duplicate_code.py:209:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:214:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:217:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:225:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:229:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:232:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:235:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:240:0: C0303: Trailing whitespace (trailing-whitespace)
+fix_duplicate_code.py:242:0: C0304: Final newline missing (missing-final-newline)
+fix_duplicate_code.py:21:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+fix_duplicate_code.py:58:4: R0914: Too many local variables (21/15) (too-many-locals)
+fix_duplicate_code.py:132:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+fix_duplicate_code.py:148:12: W1201: Use lazy % formatting in logging functions (logging-not-lazy)
+fix_duplicate_code.py:149:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+fix_duplicate_code.py:151:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+fix_duplicate_code.py:163:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+fix_duplicate_code.py:163:29: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+fix_duplicate_code.py:164:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+fix_duplicate_code.py:165:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+fix_duplicate_code.py:165:29: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+fix_duplicate_code.py:169:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+fix_duplicate_code.py:171:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+fix_duplicate_code.py:180:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+fix_duplicate_code.py:242:16: W0104: Statement seems to have no effect (pointless-statement)
+fix_duplicate_code.py:226:4: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+fix_duplicate_code.py:239:12: W0612: Unused variable 'words' (unused-variable)
+fix_duplicate_code.py:14:0: W0611: Unused import sys (unused-import)
+fix_duplicate_code.py:15:0: W0611: Unused import argparse (unused-import)
+fix_duplicate_code.py:16:0: W0611: Unused Set imported from typing (unused-import)
+fix_duplicate_code.py:18:0: W0611: Unused import difflib (unused-import)
 ************* Module client.alphaos
 client/alphaos.py:55:11: W0718: Catching too general exception Exception (broad-exception-caught)
 ************* Module client.bigfiles
@@ -182,271 +135,88 @@ client/adjust_hierarchy_with_debugger.py:68:4: C0103: Constant name "base_dir" d
 client/analyze.py:5:0: C0103: Constant name "root_dir" doesn't conform to UPPER_CASE naming style (invalid-name)
 client/analyze.py:14:0: C0103: Constant name "log_file_path" doesn't conform to UPPER_CASE naming style (invalid-name)
 ************* Module client.file-sync-client
-client/file-sync-client.py:60:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:74:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:80:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:89:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:94:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:99:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:106:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:112:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:117:32: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:118:37: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:123:0: C0301: Line too long (103/100) (line-too-long)
-client/file-sync-client.py:125:32: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:126:37: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:130:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:133:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:146:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:150:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:155:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:164:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:171:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:176:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:179:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:183:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:189:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:191:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:197:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:208:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:212:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:216:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:221:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:224:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:228:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:232:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:236:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:249:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:254:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:259:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:276:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:281:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:284:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:289:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:294:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:298:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:306:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:311:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:316:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:319:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:323:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:327:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:335:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:340:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:348:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:352:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:358:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:363:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:368:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:372:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:377:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:383:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:388:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:397:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:406:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:410:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:424:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:434:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:447:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:452:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:457:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:462:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:467:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:470:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:473:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:481:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:482:0: C0301: Line too long (113/100) (line-too-long)
-client/file-sync-client.py:483:0: C0301: Line too long (118/100) (line-too-long)
-client/file-sync-client.py:484:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:486:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:492:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:499:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:506:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:509:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:522:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:525:76: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:529:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:531:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:537:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:542:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:547:0: C0303: Trailing whitespace (trailing-whitespace)
-client/file-sync-client.py:550:0: C0303: Trailing whitespace (trailing-whitespace)
+client/file-sync-client.py:484:0: C0301: Line too long (104/100) (line-too-long)
+client/file-sync-client.py:486:0: C0301: Line too long (121/100) (line-too-long)
 client/file-sync-client.py:1:0: C0103: Module name "file-sync-client" doesn't conform to snake_case naming style (invalid-name)
 client/file-sync-client.py:13:0: E0401: Unable to import 'paramiko' (import-error)
 client/file-sync-client.py:33:18: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
 client/file-sync-client.py:43:20: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
 client/file-sync-client.py:46:20: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
-client/file-sync-client.py:64:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/file-sync-client.py:72:19: W0718: Catching too general exception Exception (broad-exception-caught)
-client/file-sync-client.py:70:21: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-client/file-sync-client.py:73:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/file-sync-client.py:72:12: W0612: Unused variable 'e' (unused-variable)
 client/file-sync-client.py:87:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/file-sync-client.py:84:17: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-client/file-sync-client.py:88:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:97:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/file-sync-client.py:87:8: W0612: Unused variable 'e' (unused-variable)
 client/file-sync-client.py:103:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/file-sync-client.py:104:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:151:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/file-sync-client.py:115:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:123:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:143:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:145:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:152:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:139:16: W0612: Unused variable 'stdin' (unused-variable)
-client/file-sync-client.py:213:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/file-sync-client.py:202:21: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-client/file-sync-client.py:214:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:247:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/file-sync-client.py:237:19: E0606: Possibly using variable 'stat' before assignment (possibly-used-before-assignment)
-client/file-sync-client.py:248:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:273:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/file-sync-client.py:269:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:271:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:274:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:265:16: W0612: Unused variable 'stdin' (unused-variable)
-client/file-sync-client.py:287:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:308:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/file-sync-client.py:297:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:309:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:337:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/file-sync-client.py:326:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:338:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:355:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/file-sync-client.py:347:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:356:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:374:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/file-sync-client.py:367:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:375:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:487:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/file-sync-client.py:384:8: R1702: Too many nested blocks (6/5) (too-many-nested-blocks)
-client/file-sync-client.py:429:23: R1714: Consider merging these comparisons with 'in' by using 'SYNC_MODE in ('two-way', 'download')'. Use a set instead if elements are hashable. (consider-using-in)
-client/file-sync-client.py:449:15: R1714: Consider merging these comparisons with 'in' by using 'SYNC_MODE in ('upload', 'two-way')'. Use a set instead if elements are hashable. (consider-using-in)
-client/file-sync-client.py:454:15: R1714: Consider merging these comparisons with 'in' by using 'SYNC_MODE in ('download', 'two-way')'. Use a set instead if elements are hashable. (consider-using-in)
-client/file-sync-client.py:464:15: R1714: Consider merging these comparisons with 'in' by using 'SYNC_MODE in ('upload', 'two-way')'. Use a set instead if elements are hashable. (consider-using-in)
-client/file-sync-client.py:475:15: R1714: Consider merging these comparisons with 'in' by using 'SYNC_MODE in ('upload', 'two-way')'. Use a set instead if elements are hashable. (consider-using-in)
-client/file-sync-client.py:479:23: W0718: Catching too general exception Exception (broad-exception-caught)
-client/file-sync-client.py:480:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:482:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:488:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:378:4: R0912: Too many branches (32/12) (too-many-branches)
-client/file-sync-client.py:378:4: R0915: Too many statements (58/50) (too-many-statements)
-client/file-sync-client.py:495:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:496:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:497:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:498:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:510:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:521:4: C0415: Import outside toplevel (argparse) (import-outside-toplevel)
-client/file-sync-client.py:534:8: W0603: Using the global statement (global-statement)
-client/file-sync-client.py:536:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:539:8: W0603: Using the global statement (global-statement)
-client/file-sync-client.py:541:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:544:8: W0603: Using the global statement (global-statement)
-client/file-sync-client.py:546:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/file-sync-client.py:14:0: C0411: standard import "datetime.datetime" should be placed before third party import "paramiko" (wrong-import-order)
+client/file-sync-client.py:103:8: W0612: Unused variable 'e' (unused-variable)
+client/file-sync-client.py:152:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/file-sync-client.py:123:16: W1201: Use lazy % formatting in logging functions (logging-not-lazy)
+client/file-sync-client.py:123:28: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+client/file-sync-client.py:140:16: W0612: Unused variable 'stdin' (unused-variable)
+client/file-sync-client.py:143:20: W0612: Unused variable 'error' (unused-variable)
+client/file-sync-client.py:152:8: W0612: Unused variable 'e' (unused-variable)
+client/file-sync-client.py:214:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/file-sync-client.py:214:8: W0612: Unused variable 'e' (unused-variable)
+client/file-sync-client.py:248:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/file-sync-client.py:238:19: E0606: Possibly using variable 'stat' before assignment (possibly-used-before-assignment)
+client/file-sync-client.py:248:8: W0612: Unused variable 'e' (unused-variable)
+client/file-sync-client.py:274:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/file-sync-client.py:266:16: W0612: Unused variable 'stdin' (unused-variable)
+client/file-sync-client.py:269:20: W0612: Unused variable 'error' (unused-variable)
+client/file-sync-client.py:274:8: W0612: Unused variable 'e' (unused-variable)
+client/file-sync-client.py:309:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/file-sync-client.py:309:8: W0612: Unused variable 'e' (unused-variable)
+client/file-sync-client.py:338:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/file-sync-client.py:338:8: W0612: Unused variable 'e' (unused-variable)
+client/file-sync-client.py:356:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/file-sync-client.py:356:8: W0612: Unused variable 'e' (unused-variable)
+client/file-sync-client.py:375:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/file-sync-client.py:375:8: W0612: Unused variable 'e' (unused-variable)
+client/file-sync-client.py:490:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/file-sync-client.py:385:8: R1702: Too many nested blocks (6/5) (too-many-nested-blocks)
+client/file-sync-client.py:430:23: R1714: Consider merging these comparisons with 'in' by using 'SYNC_MODE in ('two-way', 'download')'. Use a set instead if elements are hashable. (consider-using-in)
+client/file-sync-client.py:450:15: R1714: Consider merging these comparisons with 'in' by using 'SYNC_MODE in ('upload', 'two-way')'. Use a set instead if elements are hashable. (consider-using-in)
+client/file-sync-client.py:455:15: R1714: Consider merging these comparisons with 'in' by using 'SYNC_MODE in ('download', 'two-way')'. Use a set instead if elements are hashable. (consider-using-in)
+client/file-sync-client.py:465:15: R1714: Consider merging these comparisons with 'in' by using 'SYNC_MODE in ('upload', 'two-way')'. Use a set instead if elements are hashable. (consider-using-in)
+client/file-sync-client.py:476:15: R1714: Consider merging these comparisons with 'in' by using 'SYNC_MODE in ('upload', 'two-way')'. Use a set instead if elements are hashable. (consider-using-in)
+client/file-sync-client.py:480:23: W0718: Catching too general exception Exception (broad-exception-caught)
+client/file-sync-client.py:1:0: F0002: client/file-sync-client.py: Fatal error while checking 'client/file-sync-client.py'. Please open an issue in our bug tracker so we address this. There is a pre-filled template that you can use in '/home/zombie/.cache/pylint/pylint-crash-2025-03-01-18-36-02.txt'. (astroid-error)
 ************* Module client.backend.app
+client/backend/app.py:6:0: C0413: Import "import logging" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py:7:0: C0413: Import "import os" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py:8:0: C0413: Import "import sys" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py:9:0: C0413: Import "import traceback" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py:10:0: C0413: Import "from datetime import datetime" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py:11:0: C0413: Import "from flask import Flask, jsonify, request, send_from_directory" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py:12:0: C0413: Import "from flask_cors import CORS" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py:13:0: C0413: Import "from dotenv import load_dotenv" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py:14:0: C0413: Import "import psutil" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py:15:0: C0413: Import "from ai_model import analyze_log, get_available_models" should be placed at the top of the module (wrong-import-position)
 client/backend/app.py:26:11: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
 client/backend/app.py:92:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/app.py:75:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/app.py:76:8: W1201: Use lazy % formatting in logging functions (logging-not-lazy)
 client/backend/app.py:76:21: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-client/backend/app.py:84:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/app.py:96:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/app.py:94:8: W0612: Unused variable 'stack_trace' (unused-variable)
 client/backend/app.py:116:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/app.py:117:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/app.py:131:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/app.py:132:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/app.py:153:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/app.py:154:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/app.py:182:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/app.py:177:17: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-client/backend/app.py:180:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/app.py:183:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/app.py:209:15: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/app.py:187:12: C0415: Import outside toplevel (json) (import-outside-toplevel)
 client/backend/app.py:188:12: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
-client/backend/app.py:189:21: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-client/backend/app.py:210:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/app.py:260:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/app.py:261:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/app.py:274:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/app.py:275:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/app.py:260:4: W0612: Unused variable 'e' (unused-variable)
+client/file-sync-client.py:14:0: C0411: standard import "datetime.datetime" should be placed before third party import "paramiko" (wrong-import-order)
+client/backend/app.py:6:0: C0411: standard import "logging" should be placed before third party imports "paramiko", "dotenv.load_dotenv" (wrong-import-order)
+client/backend/app.py:7:0: C0411: standard import "os" should be placed before third party imports "paramiko", "dotenv.load_dotenv" (wrong-import-order)
+client/backend/app.py:8:0: C0411: standard import "sys" should be placed before third party imports "paramiko", "dotenv.load_dotenv" (wrong-import-order)
+client/backend/app.py:9:0: C0411: standard import "traceback" should be placed before third party imports "paramiko", "dotenv.load_dotenv" (wrong-import-order)
+client/backend/app.py:10:0: C0411: standard import "datetime.datetime" should be placed before third party imports "paramiko", "dotenv.load_dotenv" (wrong-import-order)
+client/backend/app.py:6:0: C0412: Imports from package logging are not grouped (ungrouped-imports)
+client/backend/app.py:7:0: C0412: Imports from package os are not grouped (ungrouped-imports)
+client/backend/app.py:8:0: C0412: Imports from package sys are not grouped (ungrouped-imports)
+client/backend/app.py:10:0: C0412: Imports from package datetime are not grouped (ungrouped-imports)
+client/backend/app.py:13:0: C0412: Imports from package dotenv are not grouped (ungrouped-imports)
 client/backend/app.py:11:0: W0611: Unused send_from_directory imported from flask (unused-import)
-************* Module client.backend.huggingface
-client/backend/huggingface.py:280:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:286:34: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:301:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:306:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:310:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:315:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:319:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:334:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:352:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:359:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:370:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:399:104: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:399:0: C0301: Line too long (104/100) (line-too-long)
-client/backend/huggingface.py:409:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:414:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:418:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:434:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:444:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:450:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:456:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:460:0: C0303: Trailing whitespace (trailing-whitespace)
-client/backend/huggingface.py:37:0: C0103: Constant name "_model_info_cache" doesn't conform to UPPER_CASE naming style (invalid-name)
-client/backend/huggingface.py:40:0: C0103: Constant name "_cache_last_updated" doesn't conform to UPPER_CASE naming style (invalid-name)
-client/backend/huggingface.py:55:4: W0603: Using the global statement (global-statement)
-client/backend/huggingface.py:81:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/huggingface.py:68:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:82:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:100:8: C0415: Import outside toplevel (transformers) (import-outside-toplevel)
-client/backend/huggingface.py:105:8: C0415: Import outside toplevel (huggingface_hub) (import-outside-toplevel)
-client/backend/huggingface.py:110:8: C0415: Import outside toplevel (accelerate) (import-outside-toplevel)
-client/backend/huggingface.py:115:8: C0415: Import outside toplevel (bitsandbytes) (import-outside-toplevel)
-client/backend/huggingface.py:120:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:121:8: W1201: Use lazy % formatting in logging functions (logging-not-lazy)
-client/backend/huggingface.py:131:15: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/huggingface.py:125:12: C0415: Import outside toplevel (torch) (import-outside-toplevel)
-client/backend/huggingface.py:128:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:132:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:100:8: W0611: Unused import transformers (unused-import)
-client/backend/huggingface.py:105:8: W0611: Unused import huggingface_hub (unused-import)
-client/backend/huggingface.py:110:8: W0611: Unused import accelerate (unused-import)
-client/backend/huggingface.py:115:8: W0611: Unused import bitsandbytes (unused-import)
-client/backend/huggingface.py:143:8: W0611: Unused import torch (unused-import)
-client/backend/huggingface.py:144:8: W0611: Unused import transformers (unused-import)
-client/backend/huggingface.py:160:4: W0603: Using the global statement (global-statement)
-client/backend/huggingface.py:199:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/huggingface.py:171:8: C0415: Import outside toplevel (huggingface_hub.HfApi) (import-outside-toplevel)
-client/backend/huggingface.py:200:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:247:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/huggingface.py:220:8: C0415: Import outside toplevel (huggingface_hub.HfApi) (import-outside-toplevel)
-client/backend/huggingface.py:248:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:278:19: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/huggingface.py:279:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:336:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/huggingface.py:308:8: C0415: Import outside toplevel (torch) (import-outside-toplevel)
-client/backend/huggingface.py:309:8: C0415: Import outside toplevel (transformers.pipeline, transformers.AutoTokenizer, transformers.AutoModelForCausalLM) (import-outside-toplevel)
-client/backend/huggingface.py:317:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:333:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:337:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:309:8: W0611: Unused AutoTokenizer imported from transformers (unused-import)
-client/backend/huggingface.py:309:8: W0611: Unused AutoModelForCausalLM imported from transformers (unused-import)
-client/backend/huggingface.py:372:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/huggingface.py:358:8: C0415: Import outside toplevel (transformers.AutoTokenizer) (import-outside-toplevel)
-client/backend/huggingface.py:361:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:373:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:436:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/huggingface.py:416:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:430:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:437:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:443:4: W0602: Using global for '_model_info_cache' but no assignment is done (global-variable-not-assigned)
-client/backend/huggingface.py:463:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/huggingface.py:458:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-client/backend/huggingface.py:462:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:464:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/huggingface.py:10:0: W0611: Unused Union imported from typing (unused-import)
-client/backend/huggingface.py:10:0: W0611: Unused Tuple imported from typing (unused-import)
 ************* Module client.backend.ai_model
 client/backend/ai_model.py:39:0: C0103: Constant name "_gpt4all_model" doesn't conform to UPPER_CASE naming style (invalid-name)
 client/backend/ai_model.py:40:0: C0103: Constant name "_openai" doesn't conform to UPPER_CASE naming style (invalid-name)
@@ -457,49 +227,31 @@ client/backend/ai_model.py:44:0: C0103: Constant name "_huggingface_model" doesn
 client/backend/ai_model.py:49:4: W0107: Unnecessary pass statement (unnecessary-pass)
 client/backend/ai_model.py:58:4: W0603: Using the global statement (global-statement)
 client/backend/ai_model.py:96:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/ai_model.py:71:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:72:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:77:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:86:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:92:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:97:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/ai_model.py:70:12: W0612: Unused variable 'filename' (unused-variable)
+client/backend/ai_model.py:96:4: W0612: Unused variable 'e' (unused-variable)
 client/backend/ai_model.py:107:4: W0603: Using the global statement (global-statement)
 client/backend/ai_model.py:121:11: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/ai_model.py:116:8: C0415: Import outside toplevel (openai) (import-outside-toplevel)
-client/backend/ai_model.py:122:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/ai_model.py:121:4: W0612: Unused variable 'e' (unused-variable)
 client/backend/ai_model.py:132:4: W0603: Using the global statement (global-statement)
 client/backend/ai_model.py:146:11: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/ai_model.py:141:8: C0415: Import outside toplevel (google.generativeai) (import-outside-toplevel)
-client/backend/ai_model.py:147:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/ai_model.py:146:4: W0612: Unused variable 'e' (unused-variable)
 client/backend/ai_model.py:157:4: W0603: Using the global statement (global-statement)
 client/backend/ai_model.py:205:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/ai_model.py:172:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:175:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:183:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:206:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/ai_model.py:205:4: W0612: Unused variable 'e' (unused-variable)
 client/backend/ai_model.py:210:14: W0621: Redefining name 'model_name' from outer scope (line 505) (redefined-outer-name)
 client/backend/ai_model.py:224:4: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
 client/backend/ai_model.py:265:0: W0621: Redefining name 'model_name' from outer scope (line 505) (redefined-outer-name)
-client/backend/ai_model.py:278:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/ai_model.py:294:11: W0718: Catching too general exception Exception (broad-exception-caught)
-client/backend/ai_model.py:295:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:299:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:318:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:327:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:330:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:348:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/ai_model.py:298:4: W0612: Unused variable 'elapsed_time' (unused-variable)
+client/backend/ai_model.py:329:4: W0612: Unused variable 'e' (unused-variable)
 client/backend/ai_model.py:351:19: E1101: Module 'openai' has no 'ChatCompletion' member (no-member)
-client/backend/ai_model.py:364:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:367:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:385:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:390:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:393:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:411:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:429:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/backend/ai_model.py:432:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/ai_model.py:366:4: W0612: Unused variable 'e' (unused-variable)
+client/backend/ai_model.py:392:4: W0612: Unused variable 'e' (unused-variable)
 client/backend/ai_model.py:406:4: W0612: Unused variable 'model' (unused-variable)
 client/backend/ai_model.py:406:11: W0612: Unused variable 'tokenizer' (unused-variable)
+client/backend/ai_model.py:431:4: W0612: Unused variable 'e' (unused-variable)
 client/backend/ai_model.py:442:4: W0621: Redefining name 'models' from outer scope (line 499) (redefined-outer-name)
 client/backend/ai_model.py:453:11: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/ai_model.py:486:11: W0718: Catching too general exception Exception (broad-exception-caught)
@@ -516,413 +268,57 @@ client/backend/gpt4all/app.py:18:0: C0413: Import "import typer" should be place
 client/backend/gpt4all/app.py:19:0: C0413: Import "from gpt4all import GPT4All" should be placed at the top of the module (wrong-import-position)
 client/backend/gpt4all/app.py:94:8: W0621: Redefining name 'version' from outer scope (line 185) (redefined-outer-name)
 client/backend/gpt4all/app.py:98:4: W0702: No exception type(s) specified (bare-except)
-************* Module patch.ailinux-alpha-patch-v0.4
-patch/ailinux-alpha-patch-v0.4.py:18:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:24:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:31:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:37:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:44:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:53:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:58:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:63:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:65:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:81:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:83:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:89:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:93:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:95:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:100:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:103:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:108:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:111:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:122:0: C0301: Line too long (112/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.4.py:130:0: C0301: Line too long (110/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.4.py:133:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:135:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:140:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:143:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:158:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:173:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:175:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:180:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:184:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:186:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:189:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:195:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:200:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:209:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:211:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:216:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:229:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:235:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:239:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:246:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:250:0: C0301: Line too long (113/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.4.py:259:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:267:0: C0301: Line too long (102/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.4.py:269:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:273:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:277:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:280:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:283:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.4.py:1:0: C0103: Module name "4" doesn't conform to snake_case naming style (invalid-name)
-patch/ailinux-alpha-patch-v0.4.py:16:0: R0903: Too few public methods (1/2) (too-few-public-methods)
-patch/ailinux-alpha-patch-v0.4.py:112:8: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
-patch/ailinux-alpha-patch-v0.4.py:136:4: R0914: Too many local variables (16/15) (too-many-locals)
-patch/ailinux-alpha-patch-v0.4.py:13:0: W0611: Unused Tuple imported from typing (unused-import)
-patch/ailinux-alpha-patch-v0.4.py:13:0: W0611: Unused Optional imported from typing (unused-import)
-************* Module patch.ailinux-alpha-patch-v0.2
-patch/ailinux-alpha-patch-v0.2.py:26:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:30:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:35:0: C0301: Line too long (151/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.2.py:39:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:42:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:46:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:49:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:65:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:70:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:72:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:76:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:80:0: C0301: Line too long (185/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.2.py:82:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:85:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:91:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:93:0: C0301: Line too long (108/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.2.py:94:0: C0301: Line too long (102/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.2.py:104:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:108:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:113:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:129:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:132:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:138:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:143:0: C0301: Line too long (110/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.2.py:144:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:150:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:153:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:157:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:159:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:172:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:174:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:178:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:181:0: C0301: Line too long (186/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.2.py:183:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:186:0: C0301: Line too long (238/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.2.py:188:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:195:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:201:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:205:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:208:0: C0301: Line too long (187/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.2.py:212:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:216:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:221:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:224:0: C0301: Line too long (106/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.2.py:225:0: C0301: Line too long (112/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.2.py:226:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:230:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:233:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:247:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:249:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:253:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:257:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:262:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:265:0: C0301: Line too long (116/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.2.py:267:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:271:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:274:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:286:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:288:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:636:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:640:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:643:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:653:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:656:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:666:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:676:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:685:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:690:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:699:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:703:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.2.py:1:0: C0103: Module name "2" doesn't conform to snake_case naming style (invalid-name)
-patch/ailinux-alpha-patch-v0.2.py:50:11: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.2.py:55:0: R0914: Too many local variables (18/15) (too-many-locals)
-patch/ailinux-alpha-patch-v0.2.py:160:15: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.2.py:80:28: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.2.py:55:0: R0912: Too many branches (17/12) (too-many-branches)
-patch/ailinux-alpha-patch-v0.2.py:55:0: R0915: Too many statements (57/50) (too-many-statements)
-patch/ailinux-alpha-patch-v0.2.py:79:16: W0612: Unused variable 'module_name' (unused-variable)
-patch/ailinux-alpha-patch-v0.2.py:234:11: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.2.py:275:11: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.2.py:644:11: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.2.py:667:11: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.2.py:652:8: C0415: Import outside toplevel (subprocess) (import-outside-toplevel)
-patch/ailinux-alpha-patch-v0.2.py:655:17: W1510: 'subprocess.run' used without explicitly defining the value for 'check'. (subprocess-run-check)
-patch/ailinux-alpha-patch-v0.2.py:657:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
-patch/ailinux-alpha-patch-v0.2.py:10:0: W0611: Unused import sys (unused-import)
-patch/ailinux-alpha-patch-v0.2.py:11:0: W0611: Unused import shutil (unused-import)
-patch/ailinux-alpha-patch-v0.2.py:12:0: W0611: Unused Path imported from pathlib (unused-import)
-************* Module patch.ailinux-alpha-patch-v0.5
-patch/ailinux-alpha-patch-v0.5.py:20:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:26:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:33:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:42:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:46:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:51:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:57:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:64:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:73:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:78:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:83:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:85:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:101:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:103:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:109:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:113:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:115:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:120:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:123:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:128:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:131:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:142:0: C0301: Line too long (112/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.5.py:150:0: C0301: Line too long (110/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.5.py:153:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:155:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:160:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:163:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:178:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:193:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:195:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:200:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:204:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:206:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:209:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:215:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:220:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:229:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:231:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:236:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:241:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:244:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:246:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:253:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:255:0: C0301: Line too long (123/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.5.py:258:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:260:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:263:0: C0301: Line too long (108/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.5.py:269:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:273:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:277:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:290:0: C0301: Line too long (105/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.5.py:294:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:303:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:307:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:314:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:321:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:326:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:333:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:337:0: C0301: Line too long (113/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.5.py:346:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:354:0: C0301: Line too long (102/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.5.py:355:99: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:357:62: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:360:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:364:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:368:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:371:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:375:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:380:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:383:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:386:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:394:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:397:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:403:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:406:35: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:412:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.5.py:1:0: C0103: Module name "5" doesn't conform to snake_case naming style (invalid-name)
-patch/ailinux-alpha-patch-v0.5.py:18:0: R0903: Too few public methods (1/2) (too-few-public-methods)
-patch/ailinux-alpha-patch-v0.5.py:31:0: R0902: Too many instance attributes (8/7) (too-many-instance-attributes)
-patch/ailinux-alpha-patch-v0.5.py:132:8: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
-patch/ailinux-alpha-patch-v0.5.py:156:4: R0914: Too many local variables (16/15) (too-many-locals)
-patch/ailinux-alpha-patch-v0.5.py:298:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-patch/ailinux-alpha-patch-v0.5.py:302:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-patch/ailinux-alpha-patch-v0.5.py:309:8: W1201: Use lazy % formatting in logging functions (logging-not-lazy)
-patch/ailinux-alpha-patch-v0.5.py:310:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-patch/ailinux-alpha-patch-v0.5.py:310:25: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.5.py:311:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-patch/ailinux-alpha-patch-v0.5.py:312:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-patch/ailinux-alpha-patch-v0.5.py:313:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-patch/ailinux-alpha-patch-v0.5.py:325:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-patch/ailinux-alpha-patch-v0.5.py:261:4: R0912: Too many branches (18/12) (too-many-branches)
-patch/ailinux-alpha-patch-v0.5.py:379:14: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.5.py:392:4: C0415: Import outside toplevel (difflib) (import-outside-toplevel)
-patch/ailinux-alpha-patch-v0.5.py:393:4: C0415: Import outside toplevel (time) (import-outside-toplevel)
-patch/ailinux-alpha-patch-v0.5.py:418:19: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.5.py:14:0: W0611: Unused datetime imported from datetime (unused-import)
-patch/ailinux-alpha-patch-v0.5.py:15:0: W0611: Unused Tuple imported from typing (unused-import)
-patch/ailinux-alpha-patch-v0.5.py:15:0: W0611: Unused Optional imported from typing (unused-import)
-************* Module patch.ailinux-alpha-patch-v0.1
-patch/ailinux-alpha-patch-v0.1.py:6:0: C0301: Line too long (108/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.1.py:22:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:26:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:28:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:32:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:35:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:41:0: C0301: Line too long (111/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.1.py:45:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:49:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:53:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:56:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:65:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:71:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:77:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:82:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:86:0: C0301: Line too long (136/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.1.py:87:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:90:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:94:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:96:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:99:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:107:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:111:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:113:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:117:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:127:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:130:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:133:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:137:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:140:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:149:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:153:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:155:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:159:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:175:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:178:0: C0301: Line too long (165/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.1.py:179:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:183:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:186:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:195:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:199:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:201:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:205:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:209:0: C0301: Line too long (126/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.1.py:211:0: C0301: Line too long (120/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.1.py:212:0: C0301: Line too long (118/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.1.py:214:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:218:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:221:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:230:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:234:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:236:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:240:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:243:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:246:0: C0301: Line too long (194/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.1.py:247:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:251:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:254:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:264:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:268:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:270:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:274:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:277:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:280:0: C0301: Line too long (164/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.1.py:281:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:285:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:288:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:291:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:300:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:304:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:306:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:310:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:313:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:316:0: C0301: Line too long (157/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.1.py:317:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:321:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:324:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:333:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:337:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:344:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:348:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:351:0: C0301: Line too long (104/100) (line-too-long)
-patch/ailinux-alpha-patch-v0.1.py:352:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:354:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:358:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:364:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:366:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:376:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:388:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:393:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:395:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:398:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:401:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.1.py:1:0: C0103: Module name "1" doesn't conform to snake_case naming style (invalid-name)
-patch/ailinux-alpha-patch-v0.1.py:27:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.1.py:57:11: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.1.py:54:14: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.1.py:97:15: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.1.py:112:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.1.py:141:11: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.1.py:138:18: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.1.py:104:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
-patch/ailinux-alpha-patch-v0.1.py:154:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.1.py:187:11: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.1.py:184:14: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.1.py:200:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.1.py:222:11: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.1.py:219:18: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.1.py:192:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
-patch/ailinux-alpha-patch-v0.1.py:235:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.1.py:255:11: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.1.py:252:14: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.1.py:269:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.1.py:292:11: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.1.py:289:14: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.1.py:305:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.1.py:325:11: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.1.py:322:14: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-patch/ailinux-alpha-patch-v0.1.py:367:11: W0718: Catching too general exception Exception (broad-exception-caught)
-patch/ailinux-alpha-patch-v0.1.py:353:17: W1510: 'subprocess.run' used without explicitly defining the value for 'check'. (subprocess-run-check)
-patch/ailinux-alpha-patch-v0.1.py:356:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-patch/ailinux-alpha-patch-v0.1.py:10:0: W0611: Unused import sys (unused-import)
-patch/ailinux-alpha-patch-v0.1.py:12:0: W0611: Unused Path imported from pathlib (unused-import)
+************* Module patch.ailinux-alpha-patch-v0.6
+patch/ailinux-alpha-patch-v0.6.py:70:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:89:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:126:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:144:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:187:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:189:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:195:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:208:0: C0301: Line too long (102/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.6.py:238:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:240:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:247:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:255:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:259:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:270:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:272:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:279:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:285:0: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:357:0: C0301: Line too long (115/100) (line-too-long)
+patch/ailinux-alpha-patch-v0.6.py:373:74: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:375:57: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:377:39: C0303: Trailing whitespace (trailing-whitespace)
+patch/ailinux-alpha-patch-v0.6.py:1:0: C0103: Module name "6" doesn't conform to snake_case naming style (invalid-name)
+patch/ailinux-alpha-patch-v0.6.py:23:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+patch/ailinux-alpha-patch-v0.6.py:36:0: R0902: Too many instance attributes (8/7) (too-many-instance-attributes)
+patch/ailinux-alpha-patch-v0.6.py:49:8: C0415: Import outside toplevel (logging) (import-outside-toplevel)
+patch/ailinux-alpha-patch-v0.6.py:68:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+patch/ailinux-alpha-patch-v0.6.py:78:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+patch/ailinux-alpha-patch-v0.6.py:82:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+patch/ailinux-alpha-patch-v0.6.py:100:8: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+patch/ailinux-alpha-patch-v0.6.py:110:12: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+patch/ailinux-alpha-patch-v0.6.py:84:4: R0911: Too many return statements (7/6) (too-many-return-statements)
+patch/ailinux-alpha-patch-v0.6.py:155:8: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+patch/ailinux-alpha-patch-v0.6.py:179:4: R0914: Too many local variables (19/15) (too-many-locals)
+patch/ailinux-alpha-patch-v0.6.py:318:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+patch/ailinux-alpha-patch-v0.6.py:322:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+patch/ailinux-alpha-patch-v0.6.py:329:8: W1201: Use lazy % formatting in logging functions (logging-not-lazy)
+patch/ailinux-alpha-patch-v0.6.py:330:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+patch/ailinux-alpha-patch-v0.6.py:330:25: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+patch/ailinux-alpha-patch-v0.6.py:331:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+patch/ailinux-alpha-patch-v0.6.py:332:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+patch/ailinux-alpha-patch-v0.6.py:333:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+patch/ailinux-alpha-patch-v0.6.py:345:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+patch/ailinux-alpha-patch-v0.6.py:288:4: R0912: Too many branches (16/12) (too-many-branches)
+patch/ailinux-alpha-patch-v0.6.py:415:4: C0415: Import outside toplevel (difflib) (import-outside-toplevel)
+patch/ailinux-alpha-patch-v0.6.py:416:4: C0415: Import outside toplevel (time) (import-outside-toplevel)
+patch/ailinux-alpha-patch-v0.6.py:441:19: W0718: Catching too general exception Exception (broad-exception-caught)
+patch/ailinux-alpha-patch-v0.6.py:20:0: W0611: Unused Tuple imported from typing (unused-import)
+patch/ailinux-alpha-patch-v0.6.py:20:0: W0611: Unused Optional imported from typing (unused-import)
+patch/ailinux-alpha-patch-v0.6.py:20:0: W0611: Unused Any imported from typing (unused-import)
 ************* Module patch.ailinux-alpha-patch-v0.3
-patch/ailinux-alpha-patch-v0.3.py:25:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:29:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:48:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:51:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:55:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:58:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:75:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:79:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:83:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:86:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:90:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:93:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:106:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:108:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:114:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:117:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:119:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:192:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:196:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:199:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:212:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:214:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:220:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:223:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:225:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:582:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:586:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:589:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:599:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:602:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:613:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:623:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:637:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:642:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:649:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:655:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:663:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:668:0: C0303: Trailing whitespace (trailing-whitespace)
-patch/ailinux-alpha-patch-v0.3.py:673:0: C0303: Trailing whitespace (trailing-whitespace)
 patch/ailinux-alpha-patch-v0.3.py:1:0: C0103: Module name "3" doesn't conform to snake_case naming style (invalid-name)
 patch/ailinux-alpha-patch-v0.3.py:59:11: W0718: Catching too general exception Exception (broad-exception-caught)
 patch/ailinux-alpha-patch-v0.3.py:94:11: W0718: Catching too general exception Exception (broad-exception-caught)
@@ -934,131 +330,79 @@ patch/ailinux-alpha-patch-v0.3.py:601:17: W1510: 'subprocess.run' used without e
 patch/ailinux-alpha-patch-v0.3.py:603:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
 ************* Module server.backend.websocket-server
 server/backend/websocket-server.py:63:0: C0301: Line too long (103/100) (line-too-long)
-server/backend/websocket-server.py:64:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:72:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:82:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:86:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:94:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:107:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:111:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:119:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:125:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:133:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:136:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:143:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:146:0: C0301: Line too long (101/100) (line-too-long)
-server/backend/websocket-server.py:148:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:156:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:168:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:197:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:204:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:207:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:210:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:214:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:223:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:224:0: C0301: Line too long (104/100) (line-too-long)
-server/backend/websocket-server.py:225:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:228:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:236:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:241:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:258:0: C0301: Line too long (103/100) (line-too-long)
-server/backend/websocket-server.py:259:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:262:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:267:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:272:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:281:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:285:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:297:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:300:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:304:0: C0301: Line too long (102/100) (line-too-long)
-server/backend/websocket-server.py:311:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:315:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:330:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:332:0: C0301: Line too long (104/100) (line-too-long)
-server/backend/websocket-server.py:350:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:356:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:363:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:367:0: C0301: Line too long (112/100) (line-too-long)
-server/backend/websocket-server.py:369:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:373:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:376:0: C0301: Line too long (129/100) (line-too-long)
-server/backend/websocket-server.py:377:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:380:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:389:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:396:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:399:27: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:400:13: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:401:13: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:407:0: C0301: Line too long (117/100) (line-too-long)
-server/backend/websocket-server.py:408:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:411:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:429:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:147:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:154:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:162:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:174:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:203:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:213:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:216:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:220:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:230:0: C0301: Line too long (104/100) (line-too-long)
+server/backend/websocket-server.py:231:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:234:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:247:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:264:0: C0301: Line too long (103/100) (line-too-long)
+server/backend/websocket-server.py:265:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:278:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:287:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:291:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:303:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:306:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:310:0: C0301: Line too long (102/100) (line-too-long)
+server/backend/websocket-server.py:317:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:321:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:337:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:339:0: C0301: Line too long (104/100) (line-too-long)
+server/backend/websocket-server.py:357:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:370:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:374:0: C0301: Line too long (112/100) (line-too-long)
+server/backend/websocket-server.py:376:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:383:0: C0301: Line too long (129/100) (line-too-long)
+server/backend/websocket-server.py:384:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:387:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:406:27: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:409:13: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:416:0: C0301: Line too long (117/100) (line-too-long)
+server/backend/websocket-server.py:417:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:420:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:438:0: C0303: Trailing whitespace (trailing-whitespace)
 server/backend/websocket-server.py:1:0: C0103: Module name "websocket-server" doesn't conform to snake_case naming style (invalid-name)
 server/backend/websocket-server.py:34:11: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
-server/backend/websocket-server.py:69:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:85:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:170:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:178:0: R0913: Too many arguments (6/5) (too-many-arguments)
-server/backend/websocket-server.py:178:0: R0917: Too many positional arguments (6/5) (too-many-positional-arguments)
-server/backend/websocket-server.py:226:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:224:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:227:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:333:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:261:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:274:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:278:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:290:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:323:19: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:304:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:317:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:324:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:332:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:334:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:342:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:249:0: R0912: Too many branches (14/12) (too-many-branches)
-server/backend/websocket-server.py:249:0: R0915: Too many statements (53/50) (too-many-statements)
-server/backend/websocket-server.py:249:40: W0613: Unused argument 'path' (unused-argument)
-server/backend/websocket-server.py:378:15: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:358:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:376:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:379:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:387:4: W0601: Global variable 'server_start_time' undefined at the module level (global-variable-undefined)
-server/backend/websocket-server.py:395:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:398:15: E1101: Module 'websockets' has no 'serve' member (no-member)
-server/backend/websocket-server.py:407:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:410:8: W0612: Unused variable 'cleanup_task' (unused-variable)
-server/backend/websocket-server.py:434:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:435:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:176:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:184:0: R0913: Too many arguments (6/5) (too-many-arguments)
+server/backend/websocket-server.py:184:0: R0917: Too many positional arguments (6/5) (too-many-positional-arguments)
+server/backend/websocket-server.py:232:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:230:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:233:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:340:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:267:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:280:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:284:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:296:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:329:19: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:310:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:323:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:330:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:339:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:341:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:349:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:255:0: R0912: Too many branches (14/12) (too-many-branches)
+server/backend/websocket-server.py:255:0: R0915: Too many statements (53/50) (too-many-statements)
+server/backend/websocket-server.py:255:40: W0613: Unused argument 'path' (unused-argument)
+server/backend/websocket-server.py:385:15: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:365:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:383:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:386:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:394:4: W0601: Global variable 'server_start_time' undefined at the module level (global-variable-undefined)
+server/backend/websocket-server.py:402:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:405:15: E1101: Module 'websockets' has no 'serve' member (no-member)
+server/backend/websocket-server.py:416:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:419:8: W0612: Unused variable 'cleanup_task' (unused-variable)
+server/backend/websocket-server.py:443:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:444:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/websocket-server.py:13:0: W0611: Unused Set imported from typing (unused-import)
 server/backend/websocket-server.py:13:0: W0611: Unused Optional imported from typing (unused-import)
-************* Module server.backend.app
-server/backend/app.py:72:0: C0301: Line too long (118/100) (line-too-long)
-server/backend/app.py:25:11: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
-server/backend/app.py:91:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/app.py:69:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:70:21: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-server/backend/app.py:82:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:92:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:121:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/app.py:122:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:134:8: W0621: Redefining name 'models' from outer scope (line 295) (redefined-outer-name)
-server/backend/app.py:136:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/app.py:137:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:168:15: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/app.py:153:12: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
-server/backend/app.py:169:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:186:15: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/app.py:184:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:187:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:222:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/app.py:216:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
-server/backend/app.py:223:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:265:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/app.py:266:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:291:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:292:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:297:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:11:0: W0611: Unused send_from_directory imported from flask (unused-import)
 ************* Module server.backend.ai_model
 server/backend/ai_model.py:1:1: W0511: TODO: Dieses Modul enthält Code, der in anderen Dateien dupliziert ist. (fixme)
 server/backend/ai_model.py:42:0: C0103: Constant name "_gpt4all_model" doesn't conform to UPPER_CASE naming style (invalid-name)
@@ -1070,49 +414,31 @@ server/backend/ai_model.py:47:0: C0103: Constant name "_huggingface_model" doesn
 server/backend/ai_model.py:52:4: W0107: Unnecessary pass statement (unnecessary-pass)
 server/backend/ai_model.py:61:4: W0603: Using the global statement (global-statement)
 server/backend/ai_model.py:99:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/ai_model.py:74:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:75:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:80:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:89:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:95:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:100:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/ai_model.py:73:12: W0612: Unused variable 'filename' (unused-variable)
+server/backend/ai_model.py:99:4: W0612: Unused variable 'e' (unused-variable)
 server/backend/ai_model.py:110:4: W0603: Using the global statement (global-statement)
 server/backend/ai_model.py:124:11: W0718: Catching too general exception Exception (broad-exception-caught)
 server/backend/ai_model.py:119:8: C0415: Import outside toplevel (openai) (import-outside-toplevel)
-server/backend/ai_model.py:125:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:124:4: W0612: Unused variable 'e' (unused-variable)
 server/backend/ai_model.py:135:4: W0603: Using the global statement (global-statement)
 server/backend/ai_model.py:149:11: W0718: Catching too general exception Exception (broad-exception-caught)
 server/backend/ai_model.py:144:8: C0415: Import outside toplevel (google.generativeai) (import-outside-toplevel)
-server/backend/ai_model.py:150:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:149:4: W0612: Unused variable 'e' (unused-variable)
 server/backend/ai_model.py:160:4: W0603: Using the global statement (global-statement)
 server/backend/ai_model.py:208:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/ai_model.py:175:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:178:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:186:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:209:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:208:4: W0612: Unused variable 'e' (unused-variable)
 server/backend/ai_model.py:213:14: W0621: Redefining name 'model_name' from outer scope (line 508) (redefined-outer-name)
 server/backend/ai_model.py:227:4: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
 server/backend/ai_model.py:268:0: W0621: Redefining name 'model_name' from outer scope (line 508) (redefined-outer-name)
-server/backend/ai_model.py:281:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/ai_model.py:297:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/ai_model.py:298:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:302:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:321:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:330:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:333:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:351:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:301:4: W0612: Unused variable 'elapsed_time' (unused-variable)
+server/backend/ai_model.py:332:4: W0612: Unused variable 'e' (unused-variable)
 server/backend/ai_model.py:354:19: E1101: Module 'openai' has no 'ChatCompletion' member (no-member)
-server/backend/ai_model.py:367:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:370:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:388:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:393:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:396:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:414:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:432:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:435:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:369:4: W0612: Unused variable 'e' (unused-variable)
+server/backend/ai_model.py:395:4: W0612: Unused variable 'e' (unused-variable)
 server/backend/ai_model.py:409:4: W0612: Unused variable 'model' (unused-variable)
 server/backend/ai_model.py:409:11: W0612: Unused variable 'tokenizer' (unused-variable)
+server/backend/ai_model.py:434:4: W0612: Unused variable 'e' (unused-variable)
 server/backend/ai_model.py:445:4: W0621: Redefining name 'models' from outer scope (line 502) (redefined-outer-name)
 server/backend/ai_model.py:456:11: W0718: Catching too general exception Exception (broad-exception-caught)
 server/backend/ai_model.py:489:11: W0718: Catching too general exception Exception (broad-exception-caught)
@@ -1178,13 +504,13 @@ def initialize_gpt4all():
         if not os.path.exists(model_path):
             model_dir = os.path.dirname(model_path)
             filename = os.path.basename(model_path)
-            logger.warning(f"Model file not found at: {model_path}")
-            logger.info(f"Checking if model exists in directory: {model_dir}")
+            logger.warning("Model file not found at: %smodel_path")
+            logger.info("Checking if model exists in directory: %smodel_dir")
 
             # Check if the directory exists, create if not
             if not os.path.exists(model_dir):
                 os.makedirs(model_dir, exist_ok=True)
-                logger.info(f"Created model directory: {model_dir}")
+                logger.info("Created model directory: %smodel_dir")
 
             # List available models if directory exists
             if os.path.exists(model_dir):
@@ -1193,18 +519,18 @@ def initialize_gpt4all():
                 if gguf_files:
                     # Use the first available .gguf file
                     model_path = os.path.join(model_dir, gguf_files[0])
-                    logger.info(f"Using available model: {model_path}")
+                    logger.info("Using available model: %smodel_path")
                 else:
                     logger.warning("No .gguf models found. Will download the default model.")
 
             # Model will be downloaded automatically by GPT4All if not found
 
-        logger.info(f"Loading GPT4All model from: {model_path}")
+        logger.info("Loading GPT4All model from: %smodel_path")
         _gpt4all_model = GPT4All(model_path)
         logger.info("GPT4All model loaded successfully")
         return _gpt4all_model
     except Exception as e:
-        logger.error(f"Error initializing GPT4All: {str(e)}")
+        logger.error("Error initializing GPT4All: %sstr(e)")
         return None
 
 
@@ -1229,7 +555,7 @@ def initialize_openai():
         logger.info("OpenAI API initialized successfully")
         return _openai
     except Exception as e:
-        logger.error(f"Error initializing OpenAI API: {str(e)}")
+        logger.error("Error initializing OpenAI API: %sstr(e)")
         return None
 
 
@@ -1254,7 +580,7 @@ def initialize_gemini():
         logger.info("Google Gemini API initialized successfully")
         return _gemini
     except Exception as e:
-        logger.error(f"Error initializing Gemini API: {str(e)}")
+        logger.error("Error initializing Gemini API: %sstr(e)")
         return None
 
 
@@ -1279,10 +605,10 @@ def initialize_huggingface():
 
         # Check for CUDA availability
         device = "cuda" if torch.cuda.is_available() else "cpu"
-        logger.info(f"Using device: {device} for Hugging Face model")
+        logger.info("Using device: %sdevice for Hugging Face model")
 
         # Load tokenizer first
-        logger.info(f"Loading Hugging Face tokenizer: {HUGGINGFACE_MODEL_ID}")
+        logger.info("Loading Hugging Face tokenizer: %sHUGGINGFACE_MODEL_ID")
         _huggingface_tokenizer = AutoTokenizer.from_pretrained(
             HUGGINGFACE_MODEL_ID,
             cache_dir=CACHE_DIR,
@@ -1290,7 +616,7 @@ def initialize_huggingface():
         )
 
         # Load model with appropriate configuration
-        logger.info(f"Loading Hugging Face model: {HUGGINGFACE_MODEL_ID}")
+        logger.info("Loading Hugging Face model: %sHUGGINGFACE_MODEL_ID")
         _huggingface_model = AutoModelForCausalLM.from_pretrained(
             HUGGINGFACE_MODEL_ID,
             cache_dir=CACHE_DIR,
@@ -1313,7 +639,7 @@ def initialize_huggingface():
         return _huggingface_model, _huggingface_tokenizer, _huggingface_pipeline
 
     except Exception as e:
-        logger.error(f"Error initializing Hugging Face model: {str(e)}")
+        logger.error("Error initializing Hugging Face model: %sstr(e)")
         return None, None, None
 
 
@@ -1385,7 +711,7 @@ instruction: Optional[str] = None) -> str:
         Analysis result as a string
     """
     start_time = time.time()
-    logger.info(f"Analyzing log with model: {model_name}")
+    logger.info("Analyzing log with model: %smodel_name")
 
     # Create the prompt
     prompt = create_prompt(log_text, instruction)
@@ -1402,11 +728,11 @@ instruction: Optional[str] = None) -> str:
         else:
             return f"⚠ Error: Unknown model '{model_name}' specified"
     except Exception as e:
-        logger.exception(f"Error analyzing log with {model_name}: {str(e)}")
+        logger.exception("Error analyzing log with %smodel_name: %sstr(e)")
         return f"⚠ Error analyzing log: {str(e)}"
 
     elapsed_time = time.time() - start_time
-    logger.info(f"Log analysis completed in {elapsed_time:.2f} seconds")
+    logger.info("Log analysis completed in %selapsed_time:.2f seconds")
 
     return response
 
@@ -1425,7 +751,7 @@ def gpt4all_response(prompt: str) -> str:
         raise ModelNotInitializedError("GPT4All model could not be initialized")
 
     try:
-        logger.debug(f"Sending prompt to GPT4All (length: {len(prompt)})")
+        logger.debug("Sending prompt to GPT4All (length: %slen(prompt))")
         response = ""
 
         # Use with context for proper resource handling
@@ -1434,10 +760,10 @@ def gpt4all_response(prompt: str) -> str:
             for token in model.generate(prompt, max_tokens=2048, temp=0.7):
                 response += token
 
-        logger.debug(f"Received GPT4All response (length: {len(response)})")
+        logger.debug("Received GPT4All response (length: %slen(response))")
         return response.strip()
     except Exception as e:
-        logger.exception(f"Error with GPT4All: {str(e)}")
+        logger.exception("Error with GPT4All: %sstr(e)")
         raise
 
 
@@ -1455,7 +781,7 @@ def openai_response(prompt: str) -> str:
         raise ModelNotInitializedError("OpenAI API could not be initialized. Check your API key.")
 
     try:
-        logger.debug(f"Sending prompt to OpenAI (length: {len(prompt)})")
+        logger.debug("Sending prompt to OpenAI (length: %slen(prompt))")
 
         # Use the ChatCompletion API
         response = openai.ChatCompletion.create(
@@ -1471,10 +797,10 @@ def openai_response(prompt: str) -> str:
         )
 
         response_text = response["choices"][0]["message"]["content"].strip()
-        logger.debug(f"Received OpenAI response (length: {len(response_text)})")
+        logger.debug("Received OpenAI response (length: %slen(response_text))")
         return response_text
     except Exception as e:
-        logger.exception(f"Error with OpenAI: {str(e)}")
+        logger.exception("Error with OpenAI: %sstr(e)")
         raise
 
 
@@ -1492,15 +818,15 @@ def gemini_response(prompt: str) -> str:
         raise ModelNotInitializedError("Gemini API could not be initialized. Check your API key.")
 
     try:
-        logger.debug(f"Sending prompt to Gemini (length: {len(prompt)})")
+        logger.debug("Sending prompt to Gemini (length: %slen(prompt))")
         model = gemini.GenerativeModel('gemini-pro')
         response = model.generate_content(prompt)
 
         response_text = response.text
-        logger.debug(f"Received Gemini response (length: {len(response_text)})")
+        logger.debug("Received Gemini response (length: %slen(response_text))")
         return response_text.strip()
     except Exception as e:
-        logger.exception(f"Error with Gemini: {str(e)}")
+        logger.exception("Error with Gemini: %sstr(e)")
         raise
 
 
@@ -1518,7 +844,7 @@ def huggingface_response(prompt: str) -> str:
         raise ModelNotInitializedError("Hugging Face model could not be initialized.")
 
     try:
-        logger.debug(f"Sending prompt to Hugging Face (length: {len(prompt)})")
+        logger.debug("Sending prompt to Hugging Face (length: %slen(prompt))")
 
         # Generate text with appropriate parameters
         outputs = pipe(
@@ -1536,10 +862,10 @@ def huggingface_response(prompt: str) -> str:
         # Remove the prompt from the response
         response_text = generated_text[len(prompt):].strip()
 
-        logger.debug(f"Received Hugging Face response (length: {len(response_text)})")
+        logger.debug("Received Hugging Face response (length: %slen(response_text))")
         return response_text
     except Exception as e:
-        logger.exception(f"Error with Hugging Face: {str(e)}")
+        logger.exception("Error with Hugging Face: %sstr(e)")
         raise
 
 
@@ -1622,723 +948,6 @@ if __name__ == "__main__":
             print(result)
             break (duplicate-code)
 server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.4:[39:213]
-==patch.ailinux-alpha-patch-v0.5:[59:233]
-        if file_path not in self.file_cache:
-            with open(file_path, 'r', encoding='utf-8') as file:
-                self.file_cache[file_path] = file.readlines()
-        return self.file_cache[file_path]
-
-    def save_file(self, file_path: str) -> None:
-        """Speichert die geänderten Dateiinhalte."""
-        if self.dry_run:
-            print(f"[DRY RUN] Würde {file_path} speichern")
-        else:
-            with open(file_path, 'w', encoding='utf-8') as file:
-                file.writelines(self.file_cache[file_path])
-            print(f"Gespeichert: {file_path}")
-
-    def fix_unused_import(self, issue: PylintIssue) -> bool:
-        """Entfernt unbenutzte Importe (W0611)."""
-        lines = self.load_file(issue.file_path)
-        line = lines[issue.line_num - 1]
-
-        # Extract the unused import name from the message
-        match = re.search(r"Unused import (\w+)", issue.message)
-        if not match:
-            return False
-
-        unused_import = match.group(1)
-
-        # Handle different import styles
-        if re.match(rf"^\s*import\s+{unused_import}\s*$", line):
-            # Direct import (import unused)
-            lines[issue.line_num - 1] = f"# {line}  # entfernt: {issue.code}\n"
-        elif re.match(rf"^\s*from\s+[\w.]+\s+import\s+{unused_import}\s*$", line):
-            # Single import from module (from module import unused)
-            lines[issue.line_num - 1] = f"# {line}  # entfernt: {issue.code}\n"
-        elif re.search(rf"from\s+[\w.]+\s+import\s+[^,]+,\s*{unused_import}(\s*,|$)", line):
-            # Part of a multi-import (from module import used, unused, other)
-            if re.search(rf"{unused_import},", line):
-                # Unused import followed by comma
-                lines[issue.line_num - 1] = line.replace(f"{unused_import}, ", "")
-            elif re.search(rf",\s*{unused_import}", line):
-                # Unused import preceded by comma
-                lines[issue.line_num - 1] = line.replace(f", {unused_import}", "")
-
-        return True
-
-    def fix_trailing_whitespace(self, issue: PylintIssue) -> bool:
-        """Entfernt Leerzeichen am Zeilenende (C0303)."""
-        lines = self.load_file(issue.file_path)
-        line = lines[issue.line_num - 1]
-        fixed_line = line.rstrip() + '\n'
-
-        if fixed_line != line:
-            lines[issue.line_num - 1] = fixed_line
-            return True
-
-        return False
-
-    def fix_missing_docstring(self, issue: PylintIssue) -> bool:
-        """Fügt fehlende Docstrings hinzu (C0111, C0112, C0103)."""
-        if not ("Missing docstring" in issue.message or "docstring" in issue.message.lower()):
-            return False
-
-        lines = self.load_file(issue.file_path)
-        line = lines[issue.line_num - 1]
-
-        # Erkennen, ob es eine Funktion, Klasse oder Modul ist
-        is_func = "function" in issue.message.lower() or "def " in line
-        is_class = "class" in issue.message.lower() or "class " in line
-        is_module = "module" in issue.message.lower() or issue.line_num == 1
-
-        indent = len(line) - len(line.lstrip())
-        indent_str = ' ' * indent
-
-        if is_module and issue.line_num == 1:
-            # Module docstring
-            docstring = '"""\nModulbeschreibung.\n"""\n\n'
-            lines.insert(0, docstring)
-            return True
-        elif is_func and "def " in line:
-            # Function docstring
-            func_name = re.search(r'def\s+(\w+)', line)
-            if func_name:
-                name = func_name.group(1)
-                docstring = f'{indent_str}"""\n{indent_str}Beschreibung für Funktion {name}.\n{indent_str}"""\n'
-                lines.insert(issue.line_num, docstring)
-                return True
-        elif is_class and "class " in line:
-            # Class docstring
-            class_name = re.search(r'class\s+(\w+)', line)
-            if class_name:
-                name = class_name.group(1)
-                docstring = f'{indent_str}"""\n{indent_str}Beschreibung für Klasse {name}.\n{indent_str}"""\n'
-                lines.insert(issue.line_num, docstring)
-                return True
-
-        return False
-
-    def fix_line_too_long(self, issue: PylintIssue) -> bool:
-        """Verkürzt zu lange Zeilen (C0301)."""
-        if "Line too long" not in issue.message:
-            return False
-
-        lines = self.load_file(issue.file_path)
-        line = lines[issue.line_num - 1]
-
-        # Spezialfall: String aufteilen
-        if '"' in line or "'" in line:
-            # Einfache Aufteilung von Strings
-            for quote in ['"', "'"]:
-                pattern = f'({quote}[^{quote}]*{quote})'
-                strings = re.findall(pattern, line)
-                for string in strings:
-                    if len(string) > 30:  # Nur lange Strings aufteilen
-                        indent = len(line) - len(line.lstrip())
-                        indent_str = ' ' * (indent + 4)  # Extra-Einrückung
-                        replacement = f"{string[0]}\" +\n{indent_str}\"{string[1:-1]}{string[-1]}"
-                        line = line.replace(string, replacement)
-                        lines[issue.line_num - 1] = line
-                        return True
-
-        # Versuche, bei Kommas aufzuteilen (Listen, Funktionsparameter)
-        if ',' in line:
-            parts = line.split(',')
-            if len(parts) > 1:
-                indent = len(line) - len(line.lstrip())
-                indent_str = ' ' * indent
-                new_lines = [parts[0] + ',']
-                for part in parts[1:-1]:
-                    new_lines.append(indent_str + part.strip() + ',')
-                new_lines.append(indent_str + parts[-1].strip())
-                lines[issue.line_num - 1] = new_lines[0] + '\n'
-                for i, new_line in enumerate(new_lines[1:], start=1):
-                    lines.insert(issue.line_num - 1 + i, new_line + '\n')
-                return True
-
-        return False
-
-    def fix_bad_variable_name(self, issue: PylintIssue) -> bool:
-        """Korrigiert schlechte Variablennamen (C0103)."""
-        if "Variable name" not in issue.message or "doesn't match" not in issue.message:
-            return False
-
-        match = re.search(r"Variable name \"(\w+)\"", issue.message)
-        if not match:
-            return False
-
-        bad_name = match.group(1)
-
-        lines = self.load_file(issue.file_path)
-        line = lines[issue.line_num - 1]
-
-        # Variablennamen in snake_case umwandeln
-        if bad_name[0].isupper() or any(c.isupper() for c in bad_name[1:]):
-            # camelCase oder PascalCase zu snake_case
-            snake_name = ''.join(['_' + c.lower() if c.isupper() else c for c in bad_name])
-            snake_name = snake_name.lstrip('_')
-
-            # Ersetze nur die Variablendeklaration, nicht alle Vorkommen
-            if re.search(rf"\b{bad_name}\s*=", line):
-                lines[issue.line_num - 1] = line.replace(bad_name, snake_name)
-                return True
-
-        # Zu kurze Variablennamen verbessern (i, x, etc.)
-        if len(bad_name) == 1 and bad_name not in ['i', 'j', 'k', 'x', 'y', 'z']:
-            # Versuche, einen besseren Namen aus dem Kontext abzuleiten
-            # Für dieses Beispiel verwenden wir einfach "var_"+bad_name
-            better_name = f"var_{bad_name}"
-            if re.search(rf"\b{bad_name}\s*=", line):
-                lines[issue.line_num - 1] = line.replace(bad_name, better_name)
-                return True
-
-        return False
-
-    def fix_similar_lines(self, issue: PylintIssue) -> bool:
-        """Behandelt ähnliche Codezeilen in verschiedenen Dateien (R0801).""" (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.5:[134:282]
-==pylint_patcher:[225:373]
-            lines.insert(0, docstring)
-            return True
-        elif is_func and "def " in line:
-            # Function docstring
-            func_name = re.search(r'def\s+(\w+)', line)
-            if func_name:
-                name = func_name.group(1)
-                docstring = f'{indent_str}"""\n{indent_str}Beschreibung für Funktion {name}.\n{indent_str}"""\n'
-                lines.insert(issue.line_num, docstring)
-                return True
-        elif is_class and "class " in line:
-            # Class docstring
-            class_name = re.search(r'class\s+(\w+)', line)
-            if class_name:
-                name = class_name.group(1)
-                docstring = f'{indent_str}"""\n{indent_str}Beschreibung für Klasse {name}.\n{indent_str}"""\n'
-                lines.insert(issue.line_num, docstring)
-                return True
-
-        return False
-
-    def fix_line_too_long(self, issue: PylintIssue) -> bool:
-        """Verkürzt zu lange Zeilen (C0301)."""
-        if "Line too long" not in issue.message:
-            return False
-
-        lines = self.load_file(issue.file_path)
-        line = lines[issue.line_num - 1]
-
-        # Spezialfall: String aufteilen
-        if '"' in line or "'" in line:
-            # Einfache Aufteilung von Strings
-            for quote in ['"', "'"]:
-                pattern = f'({quote}[^{quote}]*{quote})'
-                strings = re.findall(pattern, line)
-                for string in strings:
-                    if len(string) > 30:  # Nur lange Strings aufteilen
-                        indent = len(line) - len(line.lstrip())
-                        indent_str = ' ' * (indent + 4)  # Extra-Einrückung
-                        replacement = f"{string[0]}\" +\n{indent_str}\"{string[1:-1]}{string[-1]}"
-                        line = line.replace(string, replacement)
-                        lines[issue.line_num - 1] = line
-                        return True
-
-        # Versuche, bei Kommas aufzuteilen (Listen, Funktionsparameter)
-        if ',' in line:
-            parts = line.split(',')
-            if len(parts) > 1:
-                indent = len(line) - len(line.lstrip())
-                indent_str = ' ' * indent
-                new_lines = [parts[0] + ',']
-                for part in parts[1:-1]:
-                    new_lines.append(indent_str + part.strip() + ',')
-                new_lines.append(indent_str + parts[-1].strip())
-                lines[issue.line_num - 1] = new_lines[0] + '\n'
-                for i, new_line in enumerate(new_lines[1:], start=1):
-                    lines.insert(issue.line_num - 1 + i, new_line + '\n')
-                return True
-
-        return False
-
-    def fix_bad_variable_name(self, issue: PylintIssue) -> bool:
-        """Korrigiert schlechte Variablennamen (C0103)."""
-        if "Variable name" not in issue.message or "doesn't match" not in issue.message:
-            return False
-
-        match = re.search(r"Variable name \"(\w+)\"", issue.message)
-        if not match:
-            return False
-
-        bad_name = match.group(1)
-
-        lines = self.load_file(issue.file_path)
-        line = lines[issue.line_num - 1]
-
-        # Variablennamen in snake_case umwandeln
-        if bad_name[0].isupper() or any(c.isupper() for c in bad_name[1:]):
-            # camelCase oder PascalCase zu snake_case
-            snake_name = ''.join(['_' + c.lower() if c.isupper() else c for c in bad_name])
-            snake_name = snake_name.lstrip('_')
-
-            # Ersetze nur die Variablendeklaration, nicht alle Vorkommen
-            if re.search(rf"\b{bad_name}\s*=", line):
-                lines[issue.line_num - 1] = line.replace(bad_name, snake_name)
-                return True
-
-        # Zu kurze Variablennamen verbessern (i, x, etc.)
-        if len(bad_name) == 1 and bad_name not in ['i', 'j', 'k', 'x', 'y', 'z']:
-            # Versuche, einen besseren Namen aus dem Kontext abzuleiten
-            # Für dieses Beispiel verwenden wir einfach "var_"+bad_name
-            better_name = f"var_{bad_name}"
-            if re.search(rf"\b{bad_name}\s*=", line):
-                lines[issue.line_num - 1] = line.replace(bad_name, better_name)
-                return True
-
-        return False
-
-    def fix_similar_lines(self, issue: PylintIssue) -> bool:
-        """Behandelt ähnliche Codezeilen in verschiedenen Dateien (R0801)."""
-        if "Similar lines" not in issue.message:
-            return False
-
-        # Analysiere die Warnung, um die betroffenen Dateien zu identifizieren
-        match = re.search(r"Similar lines in (\d+) files", issue.message)
-        if not match:
-            return False
-
-        # Diese Warnung erfordert manuelle Überprüfung und Refactoring
-        # Erstellen wir eine TODO-Notiz im Code
-
-        lines = self.load_file(issue.file_path)
-
-        # Füge einen Kommentar am Anfang der Datei ein
-        todo_comment = (
-            "# TODO: Dieses Modul enthält Code, der in anderen Dateien dupliziert ist.\n"
-            "# Pylint-Warnung: R0801 - Similar lines in multiple files\n"
-            "# Empfehlung: Gemeinsamen Code in eine separate Hilfsklasse oder Modul extrahieren.\n"
-        )
-
-        # Prüfen, ob der Kommentar bereits vorhanden ist
-        if not any("TODO: Dieses Modul enthält Code, der in anderen Dateien dupliziert ist" in line for line in lines[:5]):
-            lines.insert(0, todo_comment)
-            return True
-
-        return False
-
-    def fix_issues(self) -> int:
-        """Behebe alle gefundenen Issues und gib die Anzahl der behobenen Probleme zurück."""
-        # Gruppiere die Issues nach Datei, um mehrere Änderungen an derselben Datei effizient zu verarbeiten
-        issues_by_file: Dict[str, List[PylintIssue]] = {}
-        for issue in self.issues:
-            if issue.file_path not in issues_by_file:
-                issues_by_file[issue.file_path] = []
-            issues_by_file[issue.file_path].append(issue)
-
-        # Behandle R0801 (ähnliche Zeilen) zuerst separat,
-        # da wir nur eine Markierung pro Datei hinzufügen wollen
-        r0801_processed_files: Set[str] = set()
-
-        # Verarbeite alle Issues
-        for issue in self.issues:
-            fixed = False
-
-            # Wähle den passenden Fixer basierend auf dem pylint-Code
-            if issue.code == "W0611":  # Unused import
-                fixed = self.fix_unused_import(issue)
-            elif issue.code == "C0303":  # Trailing whitespace
-                fixed = self.fix_trailing_whitespace(issue) (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.4:[114:213]
-==pylint_patcher:[225:324]
-            lines.insert(0, docstring)
-            return True
-        elif is_func and "def " in line:
-            # Function docstring
-            func_name = re.search(r'def\s+(\w+)', line)
-            if func_name:
-                name = func_name.group(1)
-                docstring = f'{indent_str}"""\n{indent_str}Beschreibung für Funktion {name}.\n{indent_str}"""\n'
-                lines.insert(issue.line_num, docstring)
-                return True
-        elif is_class and "class " in line:
-            # Class docstring
-            class_name = re.search(r'class\s+(\w+)', line)
-            if class_name:
-                name = class_name.group(1)
-                docstring = f'{indent_str}"""\n{indent_str}Beschreibung für Klasse {name}.\n{indent_str}"""\n'
-                lines.insert(issue.line_num, docstring)
-                return True
-
-        return False
-
-    def fix_line_too_long(self, issue: PylintIssue) -> bool:
-        """Verkürzt zu lange Zeilen (C0301)."""
-        if "Line too long" not in issue.message:
-            return False
-
-        lines = self.load_file(issue.file_path)
-        line = lines[issue.line_num - 1]
-
-        # Spezialfall: String aufteilen
-        if '"' in line or "'" in line:
-            # Einfache Aufteilung von Strings
-            for quote in ['"', "'"]:
-                pattern = f'({quote}[^{quote}]*{quote})'
-                strings = re.findall(pattern, line)
-                for string in strings:
-                    if len(string) > 30:  # Nur lange Strings aufteilen
-                        indent = len(line) - len(line.lstrip())
-                        indent_str = ' ' * (indent + 4)  # Extra-Einrückung
-                        replacement = f"{string[0]}\" +\n{indent_str}\"{string[1:-1]}{string[-1]}"
-                        line = line.replace(string, replacement)
-                        lines[issue.line_num - 1] = line
-                        return True
-
-        # Versuche, bei Kommas aufzuteilen (Listen, Funktionsparameter)
-        if ',' in line:
-            parts = line.split(',')
-            if len(parts) > 1:
-                indent = len(line) - len(line.lstrip())
-                indent_str = ' ' * indent
-                new_lines = [parts[0] + ',']
-                for part in parts[1:-1]:
-                    new_lines.append(indent_str + part.strip() + ',')
-                new_lines.append(indent_str + parts[-1].strip())
-                lines[issue.line_num - 1] = new_lines[0] + '\n'
-                for i, new_line in enumerate(new_lines[1:], start=1):
-                    lines.insert(issue.line_num - 1 + i, new_line + '\n')
-                return True
-
-        return False
-
-    def fix_bad_variable_name(self, issue: PylintIssue) -> bool:
-        """Korrigiert schlechte Variablennamen (C0103)."""
-        if "Variable name" not in issue.message or "doesn't match" not in issue.message:
-            return False
-
-        match = re.search(r"Variable name \"(\w+)\"", issue.message)
-        if not match:
-            return False
-
-        bad_name = match.group(1)
-
-        lines = self.load_file(issue.file_path)
-        line = lines[issue.line_num - 1]
-
-        # Variablennamen in snake_case umwandeln
-        if bad_name[0].isupper() or any(c.isupper() for c in bad_name[1:]):
-            # camelCase oder PascalCase zu snake_case
-            snake_name = ''.join(['_' + c.lower() if c.isupper() else c for c in bad_name])
-            snake_name = snake_name.lstrip('_')
-
-            # Ersetze nur die Variablendeklaration, nicht alle Vorkommen
-            if re.search(rf"\b{bad_name}\s*=", line):
-                lines[issue.line_num - 1] = line.replace(bad_name, snake_name)
-                return True
-
-        # Zu kurze Variablennamen verbessern (i, x, etc.)
-        if len(bad_name) == 1 and bad_name not in ['i', 'j', 'k', 'x', 'y', 'z']:
-            # Versuche, einen besseren Namen aus dem Kontext abzuleiten
-            # Für dieses Beispiel verwenden wir einfach "var_"+bad_name
-            better_name = f"var_{bad_name}"
-            if re.search(rf"\b{bad_name}\s*=", line):
-                lines[issue.line_num - 1] = line.replace(bad_name, better_name)
-                return True
-
-        return False
-
-    def fix_similar_lines(self, issue: PylintIssue) -> bool:
-        """Behandelt ähnliche Codezeilen in verschiedenen Dateien (R0801).""" (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.5:[17:105]
-==pylint_patcher:[17:105]
-class PylintIssue:
-    """Repräsentiert ein pylint-Problem."""
-
-    def __init__(self, file_path: str, line_num: int, code: str, message: str):
-        self.file_path = file_path
-        self.line_num = line_num
-        self.code = code  # z.B. C0103, E0611
-        self.message = message
-
-    def __repr__(self) -> str:
-        return f"{self.file_path}:{self.line_num} [{self.code}] {self.message}"
-
-
-class CodeFixer:
-    """Klasse zum Beheben von pylint-Problemen im Code."""
-
-    def __init__(self, issues: List[PylintIssue], dry_run: bool = False, log_file: str = None):
-        self.issues = issues
-        self.dry_run = dry_run
-        self.file_cache: Dict[str, List[str]] = {}
-        self.fixes_applied = 0
-        self.skipped_issues = 0
-        self.fixed_issues: List[PylintIssue] = []
-        self.unfixed_issues: List[PylintIssue] = []
-
-        # Setup logging
-        self.logger = logging.getLogger('pylint_patcher')
-        self.logger.setLevel(logging.INFO)
-
-        # Console handler
-        console = logging.StreamHandler()
-        console.setLevel(logging.INFO)
-        self.logger.addHandler(console)
-
-        # File handler (if log_file is provided)
-        if log_file:
-            file_handler = logging.FileHandler(log_file, mode='w')
-            file_handler.setLevel(logging.INFO)
-            self.logger.addHandler(file_handler)
-
-    def load_file(self, file_path: str) -> List[str]:
-        """Lädt eine Datei in den Cache, wenn sie nicht bereits geladen ist."""
-        if file_path not in self.file_cache:
-            with open(file_path, 'r', encoding='utf-8') as file:
-                self.file_cache[file_path] = file.readlines()
-        return self.file_cache[file_path]
-
-    def save_file(self, file_path: str) -> None:
-        """Speichert die geänderten Dateiinhalte."""
-        if self.dry_run:
-            print(f"[DRY RUN] Würde {file_path} speichern")
-        else:
-            with open(file_path, 'w', encoding='utf-8') as file:
-                file.writelines(self.file_cache[file_path])
-            print(f"Gespeichert: {file_path}")
-
-    def fix_unused_import(self, issue: PylintIssue) -> bool:
-        """Entfernt unbenutzte Importe (W0611)."""
-        lines = self.load_file(issue.file_path)
-        line = lines[issue.line_num - 1]
-
-        # Extract the unused import name from the message
-        match = re.search(r"Unused import (\w+)", issue.message)
-        if not match:
-            return False
-
-        unused_import = match.group(1)
-
-        # Handle different import styles
-        if re.match(rf"^\s*import\s+{unused_import}\s*$", line):
-            # Direct import (import unused)
-            lines[issue.line_num - 1] = f"# {line}  # entfernt: {issue.code}\n"
-        elif re.match(rf"^\s*from\s+[\w.]+\s+import\s+{unused_import}\s*$", line):
-            # Single import from module (from module import unused)
-            lines[issue.line_num - 1] = f"# {line}  # entfernt: {issue.code}\n"
-        elif re.search(rf"from\s+[\w.]+\s+import\s+[^,]+,\s*{unused_import}(\s*,|$)", line):
-            # Part of a multi-import (from module import used, unused, other)
-            if re.search(rf"{unused_import},", line):
-                # Unused import followed by comma
-                lines[issue.line_num - 1] = line.replace(f"{unused_import}, ", "")
-            elif re.search(rf",\s*{unused_import}", line):
-                # Unused import preceded by comma
-                lines[issue.line_num - 1] = line.replace(f", {unused_import}", "")
-
-        return True
-
-    def fix_trailing_whitespace(self, issue: PylintIssue) -> bool:
-        """Entfernt Leerzeichen am Zeilenende (C0303).""" (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.5:[289:356]
-==pylint_patcher:[389:456]
-            elif issue.code == "R0801" and issue.file_path not in r0801_processed_files:  # Similar lines
-                fixed = self.fix_similar_lines(issue)
-                if fixed:
-                    r0801_processed_files.add(issue.file_path)
-
-            if fixed:
-                self.fixes_applied += 1
-                self.fixed_issues.append(issue)
-                self.logger.info(f"Behoben: {issue}")
-            else:
-                self.skipped_issues += 1
-                self.unfixed_issues.append(issue)
-                self.logger.info(f"Nicht behoben: {issue}")
-
-        # Speichere alle geänderten Dateien
-        for file_path in self.file_cache:
-            self.save_file(file_path)
-
-        # Erstelle eine Zusammenfassung
-        self.logger.info("\n" + "="*50)
-        self.logger.info(f"ZUSAMMENFASSUNG:")
-        self.logger.info(f"Insgesamt verarbeitet: {len(self.issues)} Probleme")
-        self.logger.info(f"Behoben: {self.fixes_applied} Probleme")
-        self.logger.info(f"Übersprungen: {self.skipped_issues} Probleme")
-
-        # Gruppiere unfixed Issues nach Code für bessere Übersicht
-        unfixed_by_code: Dict[str, int] = {}
-        for issue in self.unfixed_issues:
-            if issue.code not in unfixed_by_code:
-                unfixed_by_code[issue.code] = 0
-            unfixed_by_code[issue.code] += 1
-
-        if unfixed_by_code:
-            self.logger.info("\nNicht behobene Probleme nach Typ:")
-            for code, count in sorted(unfixed_by_code.items(), key=lambda x: x[1], reverse=True):
-                self.logger.info(f"  {code}: {count} Probleme")
-
-        return self.fixes_applied
-
-
-def parse_pylint_log(log_path: str) -> List[PylintIssue]:
-    """Analysiert die pylint-Log-Datei und extrahiert die Probleme."""
-    issues = []
-
-    with open(log_path, 'r', encoding='utf-8') as file:
-        for line in file:
-            # Typisches pylint-Format: file.py:42:0: C0111: Missing docstring (missing-docstring)
-            match = re.match(r'^([\w\./]+):(\d+)(?::\d+)?: ([CRWE]\d{4}): (.+?)(?:\s\([\w-]+\))?$', line.strip())
-            if match:
-                file_path, line_num, code, message = match.groups()
-                issues.append(PylintIssue(
-                    file_path=file_path,
-                    line_num=int(line_num),
-                    code=code,
-                    message=message
-                ))
-
-    return issues
-
-
-def main():
-    """Hauptfunktion des Programms."""
-    parser = argparse.ArgumentParser(description='Behebt pylint-Probleme automatisch.')
-    parser.add_argument('log_file', help='Pfad zur pylint-Log-Datei (optimization.log)')
-    parser.add_argument('--dry-run', action='store_true', help='Zeigt Änderungen ohne sie anzuwenden')
-    parser.add_argument('--output-log', help='Pfad zur Ausgabe-Log-Datei (optimization_fixed.log)',
-                      default='optimization_fixed.log') (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.5:[380:423]
-==pylint_patcher:[487:530]
-    mode = "Testmodus" if args.dry_run else "Angewendet"
-    print(f"\n{mode}: {fixes} von {len(issues)} Problemen behoben.")
-
-    if not args.dry_run:
-        print(f"Detailliertes Log geschrieben nach: {args.output_log}")
-
-    return 0
-
-
-def create_patch_file(file_cache: Dict[str, List[str]], patch_file: str):
-    """Erstellt eine Patch-Datei mit allen Änderungen."""
-    import difflib
-    import time
-
-    with open(patch_file, 'w', encoding='utf-8') as f:
-        f.write(f"# Erstellt von pylint_patcher.py am {time.strftime('%Y-%m-%d %H:%M:%S')}\n\n")
-
-        for file_path, lines in file_cache.items():
-            try:
-                # Lade die Originaldatei
-                with open(file_path, 'r', encoding='utf-8') as original_file:
-                    original_lines = original_file.readlines()
-
-                # Erstelle die Diff
-                diff = difflib.unified_diff(
-                    original_lines,
-                    lines,
-                    fromfile=f"a/{file_path}",
-                    tofile=f"b/{file_path}",
-                    n=3
-                )
-
-                # Schreibe die Diff in die Patch-Datei
-                diff_content = ''.join(diff)
-                if diff_content:
-                    f.write(diff_content)
-                    f.write('\n')
-            except Exception as e:
-                f.write(f"# Fehler beim Erstellen des Patches für {file_path}: {str(e)}\n\n")
-
-
-if __name__ == "__main__":
-    sys.exit(main()) (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.4:[39:85]
-==pylint_patcher:[59:105]
-        if file_path not in self.file_cache:
-            with open(file_path, 'r', encoding='utf-8') as file:
-                self.file_cache[file_path] = file.readlines()
-        return self.file_cache[file_path]
-
-    def save_file(self, file_path: str) -> None:
-        """Speichert die geänderten Dateiinhalte."""
-        if self.dry_run:
-            print(f"[DRY RUN] Würde {file_path} speichern")
-        else:
-            with open(file_path, 'w', encoding='utf-8') as file:
-                file.writelines(self.file_cache[file_path])
-            print(f"Gespeichert: {file_path}")
-
-    def fix_unused_import(self, issue: PylintIssue) -> bool:
-        """Entfernt unbenutzte Importe (W0611)."""
-        lines = self.load_file(issue.file_path)
-        line = lines[issue.line_num - 1]
-
-        # Extract the unused import name from the message
-        match = re.search(r"Unused import (\w+)", issue.message)
-        if not match:
-            return False
-
-        unused_import = match.group(1)
-
-        # Handle different import styles
-        if re.match(rf"^\s*import\s+{unused_import}\s*$", line):
-            # Direct import (import unused)
-            lines[issue.line_num - 1] = f"# {line}  # entfernt: {issue.code}\n"
-        elif re.match(rf"^\s*from\s+[\w.]+\s+import\s+{unused_import}\s*$", line):
-            # Single import from module (from module import unused)
-            lines[issue.line_num - 1] = f"# {line}  # entfernt: {issue.code}\n"
-        elif re.search(rf"from\s+[\w.]+\s+import\s+[^,]+,\s*{unused_import}(\s*,|$)", line):
-            # Part of a multi-import (from module import used, unused, other)
-            if re.search(rf"{unused_import},", line):
-                # Unused import followed by comma
-                lines[issue.line_num - 1] = line.replace(f"{unused_import}, ", "")
-            elif re.search(rf",\s*{unused_import}", line):
-                # Unused import preceded by comma
-                lines[issue.line_num - 1] = line.replace(f", {unused_import}", "")
-
-        return True
-
-    def fix_trailing_whitespace(self, issue: PylintIssue) -> bool:
-        """Entfernt Leerzeichen am Zeilenende (C0303).""" (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.4:[239:267]
-==pylint_patcher:[426:454]
-        return self.fixes_applied
-
-
-def parse_pylint_log(log_path: str) -> List[PylintIssue]:
-    """Analysiert die pylint-Log-Datei und extrahiert die Probleme."""
-    issues = []
-
-    with open(log_path, 'r', encoding='utf-8') as file:
-        for line in file:
-            # Typisches pylint-Format: file.py:42:0: C0111: Missing docstring (missing-docstring)
-            match = re.match(r'^([\w\./]+):(\d+)(?::\d+)?: ([CRWE]\d{4}): (.+?)(?:\s\([\w-]+\))?$', line.strip())
-            if match:
-                file_path, line_num, code, message = match.groups()
-                issues.append(PylintIssue(
-                    file_path=file_path,
-                    line_num=int(line_num),
-                    code=code,
-                    message=message
-                ))
-
-    return issues
-
-
-def main():
-    """Hauptfunktion des Programms."""
-    parser = argparse.ArgumentParser(description='Behebt pylint-Probleme automatisch.')
-    parser.add_argument('log_file', help='Pfad zur pylint-Log-Datei (optimization.log)')
-    parser.add_argument('--dry-run', action='store_true', help='Zeigt Änderungen ohne sie anzuwenden') (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
 ==client.adjust_hierarchy_with_debugger:[52:70]
 ==patch.ailinux-alpha-patch-v0.3:[172:583]
     try:
@@ -2381,71 +990,6 @@ server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
 
  (duplicate-code)
 server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.4:[213:229]
-==patch.ailinux-alpha-patch-v0.5:[274:289]
-        for issue in self.issues:
-            fixed = False
-
-            # Wähle den passenden Fixer basierend auf dem pylint-Code
-            if issue.code == "W0611":  # Unused import
-                fixed = self.fix_unused_import(issue)
-            elif issue.code == "C0303":  # Trailing whitespace
-                fixed = self.fix_trailing_whitespace(issue)
-            elif issue.code in ["C0111", "C0112", "C0103"]:  # Missing docstring or bad name
-                if "docstring" in issue.message.lower():
-                    fixed = self.fix_missing_docstring(issue)
-                elif "name" in issue.message.lower():
-                    fixed = self.fix_bad_variable_name(issue)
-            elif issue.code == "C0301":  # Line too long
-                fixed = self.fix_line_too_long(issue)
- (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==client.backend.app:[17:36]
-==server.backend.app:[16:35]
-load_dotenv()
-
-# Initialize Flask app
-app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
-
-# Server configuration with fallback values
-HOST = os.getenv("FLASK_HOST", "0.0.0.0")  # Default to all interfaces
-PORT = int(os.getenv("FLASK_PORT", 8081))   # Default to 8081
-DEBUG = os.getenv("FLASK_DEBUG", "False").lower() == "true"
-ENV = os.getenv("ENVIRONMENT", "development")
-
-# Configure logging
-log_directory = os.path.join(os.path.dirname(__file__), "logs")
-os.makedirs(log_directory, exist_ok=True)
-log_file_path = os.path.join(log_directory, "backend.log")
-
-logging.basicConfig(
-    level=logging.DEBUG if DEBUG else logging.INFO, (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.4:[15:39]
-==pylint_patcher:[17:38]
-class PylintIssue:
-    """Repräsentiert ein pylint-Problem."""
-
-    def __init__(self, file_path: str, line_num: int, code: str, message: str):
-        self.file_path = file_path
-        self.line_num = line_num
-        self.code = code  # z.B. C0103, E0611
-        self.message = message
-
-    def __repr__(self) -> str:
-        return f"{self.file_path}:{self.line_num} [{self.code}] {self.message}"
-
-
-class CodeFixer:
-    """Klasse zum Beheben von pylint-Problemen im Code."""
-
-    def __init__(self, issues: List[PylintIssue], dry_run: bool = False, log_file: str = None):
-        self.issues = issues
-        self.dry_run = dry_run
-        self.file_cache: Dict[str, List[str]] = {}
-        self.fixes_applied = 0 (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
 ==client.adjust_hierarchy_with_debugger:[18:32]
 ==patch.ailinux-alpha-patch-v0.3:[138:150]
     expected_structure = {
@@ -2463,29 +1007,6 @@ server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
     def create_structure(target_path, structure):
         """Create directories and files based on expected structure.""" (duplicate-code)
 server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==client.backend.app:[111:131]
-==server.backend.app:[116:136]
-            return jsonify({"logs": logs})
-
-        return jsonify({"logs": []})
-
-    except Exception as e:
-        logger.exception(f"Error retrieving logs: {str(e)}")
-        return jsonify({"error": str(e)}), 500
-
-
-@app.route('/models', methods=['GET'])
-def get_models():
-    """Get information about available AI models.
-
-    Returns:
-        JSON response with model information
-    """
-    try:
-        models = get_available_models()
-        return jsonify({"models": models})
-    except Exception as e: (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
 ==client.adjust_hierarchy_with_debugger:[52:61]
 ==patch.ailinux-alpha-patch-v0.3:[33:42]
     try:
@@ -2497,170 +1018,7 @@ server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
         )
         print(result.stdout)
         if result.stderr: (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.4:[98:113]
-==pylint_patcher:[208:223]
-            return False
-
-        lines = self.load_file(issue.file_path)
-        line = lines[issue.line_num - 1]
-
-        # Erkennen, ob es eine Funktion, Klasse oder Modul ist
-        is_func = "function" in issue.message.lower() or "def " in line
-        is_class = "class" in issue.message.lower() or "class " in line
-        is_module = "module" in issue.message.lower() or issue.line_num == 1
-
-        indent = len(line) - len(line.lstrip())
-        indent_str = ' ' * indent
-
-        if is_module and issue.line_num == 1:
-            # Module docstring (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.5:[362:377]
-==pylint_patcher:[469:484]
-        sys.exit(1)
-
-    print(f"Analysiere {args.log_file}...")
-    issues = parse_pylint_log(args.log_file)
-    print(f"{len(issues)} Probleme gefunden.")
-
-    # Konfiguriere Logging
-    log_file = args.output_log if not args.dry_run else None
-
-    # Erstelle und führe den CodeFixer aus
-    fixer = CodeFixer(issues, dry_run=args.dry_run, log_file=log_file)
-    fixes = fixer.fix_issues()
-
-    # Erstelle eine Patch-Datei, wenn gewünscht
-    if args.create_patch and not args.dry_run and fixes > 0: (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.2:[168:179]
-==patch.ailinux-alpha-patch-v0.3:[19:30]
-    if not os.path.exists(filepath):
-        print(f"Error: File not found: {filepath}")
-        return False
-
-    print(f"Fixing {filepath}...")
-
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            content = f.read()
-
-        # Find the run_pylint function and completely replace it (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.2:[19:28]
-==patch.ailinux-alpha-patch-v0.3:[18:27]
-    filepath = 'client/adjust_hierarchy_with_debugger.py'
-    if not os.path.exists(filepath):
-        print(f"Error: File not found: {filepath}")
-        return False
-
-    print(f"Fixing {filepath}...")
-
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f: (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.4:[267:277]
-==patch.ailinux-alpha-patch-v0.5:[358:369]
-    args = parser.parse_args()
-
-    if not os.path.exists(args.log_file):
-        print(f"Fehler: Die Datei {args.log_file} existiert nicht.")
-        sys.exit(1)
-
-    print(f"Analysiere {args.log_file}...")
-    issues = parse_pylint_log(args.log_file)
-    print(f"{len(issues)} Probleme gefunden.")
-
-    # Konfiguriere Logging (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==client.backend.app:[60:70]
-==server.backend.app:[53:62]
-    try:
-        # Validate input data
-        if not request.is_json:
-            logger.error("Request does not contain valid JSON")
-            return jsonify({"error": "Request must be in JSON format"}), 400
-
-        data = request.json
-        log_text = data.get('log')
-        model_name = data.get('model', 'gpt4all')  # Default to gpt4all
- (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.4:[85:97]
-==pylint_patcher:[108:120]
-        lines = self.load_file(issue.file_path)
-        line = lines[issue.line_num - 1]
-        fixed_line = line.rstrip() + '\n'
-
-        if fixed_line != line:
-            lines[issue.line_num - 1] = fixed_line
-            return True
-
-        return False
-
-    def fix_f_string_without_interpolation(self, issue: PylintIssue) -> bool:
-        """Behebt f-Strings ohne Interpolation (W1302, W1203).""" (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.2:[243:251]
-==patch.ailinux-alpha-patch-v0.3:[19:27]
-    if not os.path.exists(filepath):
-        print(f"Error: File not found: {filepath}")
-        return False
-
-    print(f"Fixing {filepath}...")
-
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f: (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.5:[356:364]
-==pylint_patcher:[458:467]
-    parser.add_argument('--create-patch', action='store_true',
-                      help='Erstellt eine Patch-Datei mit allen Änderungen')
-    args = parser.parse_args()
-
-    if not os.path.exists(args.log_file):
-        print(f"Fehler: Die Datei {args.log_file} existiert nicht.")
-        sys.exit(1)
- (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==patch.ailinux-alpha-patch-v0.4:[213:221]
-==pylint_patcher:[365:373]
-        for issue in self.issues:
-            fixed = False
-
-            # Wähle den passenden Fixer basierend auf dem pylint-Code
-            if issue.code == "W0611":  # Unused import
-                fixed = self.fix_unused_import(issue)
-            elif issue.code == "C0303":  # Trailing whitespace
-                fixed = self.fix_trailing_whitespace(issue) (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==client.backend.app:[210:224]
-==server.backend.app:[187:201]
-            return jsonify({"error": str(e)}), 500
-
-
-@app.route('/health', methods=['GET'])
-def health_check():
-    """Check the health of the backend server.
-
-    Returns:
-        JSON response with server status
-    """
-    return jsonify({
-        "status": "online",
-        "environment": ENV,
-        "version": "1.0.0", (duplicate-code)
-server/backend/ai_model.py:1:0: R0801: Similar lines in 2 files
-==client.backend.app:[70:76]
-==server.backend.app:[64:70]
-        if not log_text:
-            logger.error("No log text provided")
-            return jsonify({"error": "No log text provided"}), 400
-
-        logger.info(f"Received log for analysis using model: {model_name}")
-        logger.debug(f"" + (duplicate-code)
 
 ------------------------------------------------------------------
-Your code has been rated at 5.96/10 (previous run: 5.86/10, +0.10)
+Your code has been rated at 0.00/10 (previous run: 5.96/10, -5.96)
 

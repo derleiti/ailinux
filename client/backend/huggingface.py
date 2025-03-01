@@ -65,7 +65,7 @@ def initialize():
                     cache_data = json.load(f)
                     _model_info_cache = cache_data.get('models', {})
                     _cache_last_updated = cache_data.get('timestamp', 0)
-                    logger.info(f"Loaded {len(_model_info_cache)} models from cache")
+                    logger.info("Loaded %slen(_model_info_cache) models from cache")
             except json.JSONDecodeError:
                 logger.warning("Invalid cache file format, will rebuild cache")
                 _model_info_cache = {}
@@ -79,7 +79,7 @@ def initialize():
 
         return True
     except Exception as e:
-        logger.error(f"Error initializing Hugging Face module: {str(e)}")
+        logger.error("Error initializing Hugging Face module: %sstr(e)")
         return False
 
 
@@ -97,27 +97,31 @@ def check_dependencies():
         missing_deps.append("torch")
 
     try:
-        import transformers
+#         import transformers
+  # removed: W0611
     except ImportError:
         missing_deps.append("transformers")
 
     try:
-        import huggingface_hub
+#         import huggingface_hub
+  # removed: W0611
     except ImportError:
         missing_deps.append("huggingface_hub")
 
     try:
-        import accelerate
+#         import accelerate
+  # removed: W0611
     except ImportError:
         missing_deps.append("accelerate")
 
     try:
-        import bitsandbytes
+#         import bitsandbytes
+  # removed: W0611
     except ImportError:
         missing_deps.append("bitsandbytes")
 
     if missing_deps:
-        logger.warning(f"Missing dependencies: {', '.join(missing_deps)}")
+        logger.warning("Missing dependencies: %s", '.join(missing_deps)}")
         logger.warning("Install them with: pip install " + " ".join(missing_deps))
     else:
         # Check for GPU if all dependencies are installed
@@ -125,11 +129,11 @@ def check_dependencies():
             import torch
             if torch.cuda.is_available():
                 device_name = torch.cuda.get_device_name(0)
-                logger.info(f"GPU available: {device_name}")
+                logger.info("GPU available: %sdevice_name")
             else:
                 logger.info("No GPU found, using CPU for inference (will be slower)")
         except Exception as e:
-            logger.warning(f"Error checking GPU availability: {str(e)}")
+            logger.warning("Error checking GPU availability: %sstr(e)")
 
 
 def is_available() -> bool:
@@ -140,8 +144,10 @@ def is_available() -> bool:
     """
     try:
         # pylint: disable=C0415  # Import außerhalb des Toplevel
-        import torch
-        import transformers
+#         import torch
+  # removed: W0611
+#         import transformers
+  # removed: W0611
         return True
     except ImportError:
         return False
@@ -197,7 +203,7 @@ def get_model_info(model_id: str, force_refresh: bool = False) -> Dict[str, Any]
 
         return info
     except Exception as e:
-        logger.error(f"Error fetching model info for {model_id}: {str(e)}")
+        logger.error("Error fetching model info for %smodel_id: %sstr(e)")
         return {"id": model_id, "error": str(e)}
 
 
@@ -245,7 +251,7 @@ def search_models(
 
         return results
     except Exception as e:
-        logger.error(f"Error searching Hugging Face models: {str(e)}")
+        logger.error("Error searching Hugging Face models: %sstr(e)")
         return []
 
 
@@ -276,14 +282,14 @@ def get_recommended_models() -> List[Dict[str, Any]]:
             try:
                 results.append(future.result())
             except Exception as e:
-                logger.error(f"Error fetching info for {model_id}: {str(e)}")
-    
+                logger.error("Error fetching info for %smodel_id: %sstr(e)")
+
     return results
 
 
 def get_pipeline(
     model_id: Optional[str] = None,
-    task: str = "text-generation", 
+    task: str = "text-generation",
     use_gpu: bool = True
 ):
     """Get a Hugging Face pipeline for the specified model and task.
@@ -292,31 +298,31 @@ def get_pipeline(
         model_id: Hugging Face model ID (defaults to DEFAULT_MODEL)
         task: Task type (e.g., "text-generation", "summarization")
         use_gpu: Whether to use GPU if available
-        
+
     Returns:
         Hugging Face pipeline object or None if initialization fails
     """
     # Use default model if not specified
     model_id = model_id or DEFAULT_MODEL
-    
+
     # Check if pipeline already exists in cache
     cache_key = f"{model_id}_{task}_{use_gpu}"
     if cache_key in _pipeline_cache:
         return _pipeline_cache[cache_key]
-    
+
     try:
         import torch
         from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
-        
+
         # Check GPU availability if requested
         device = -1  # CPU
         if use_gpu and torch.cuda.is_available():
             device = 0  # First GPU
-        
+
         # Load tokenizer and model
-        logger.info(f"Loading model: {model_id} for task: {task}")
+        logger.info("Loading model: %smodel_id for task: %stask")
         start_time = time.time()
-        
+
         # Create pipeline
         hf_pipeline = pipeline(
             task,
@@ -330,11 +336,11 @@ def get_pipeline(
         _pipeline_cache[cache_key] = hf_pipeline
 
         load_time = time.time() - start_time
-        logger.info(f"Model loaded in {load_time:.2f}s")
-        
+        logger.info("Model loaded in %sload_time:.2fs")
+
         return hf_pipeline
     except Exception as e:
-        logger.error(f"Error creating pipeline for {model_id}: {str(e)}")
+        logger.error("Error creating pipeline for %smodel_id: %sstr(e)")
         return None
 
 
@@ -343,22 +349,22 @@ def get_tokenizer(model_id: Optional[str] = None):
     
     Args:
         model_id: Hugging Face model ID (defaults to DEFAULT_MODEL)
-        
+
     Returns:
         Hugging Face tokenizer or None if initialization fails
     """
     # Use default model if not specified
     model_id = model_id or DEFAULT_MODEL
-    
+
     # Check if tokenizer already exists in cache
     if model_id in _token_cache:
         return _token_cache[model_id]
 
     try:
         from transformers import AutoTokenizer
-        
+
         # Load tokenizer
-        logger.info(f"Loading tokenizer for: {model_id}")
+        logger.info("Loading tokenizer for: %smodel_id")
         tokenizer = AutoTokenizer.from_pretrained(
             model_id,
             token=HF_API_KEY if HF_API_KEY else None,
@@ -367,10 +373,10 @@ def get_tokenizer(model_id: Optional[str] = None):
 
         # Add to cache
         _token_cache[model_id] = tokenizer
-        
+
         return tokenizer
     except Exception as e:
-        logger.error(f"Error loading tokenizer for {model_id}: {str(e)}")
+        logger.error("Error loading tokenizer for %smodel_id: %sstr(e)")
         return None
 
 
@@ -396,7 +402,7 @@ def analyze_log(
 
     try:
         # Create analysis prompt
-        system_prompt = """You are an AI assistant specialized in analyzing logs and providing insights. 
+        system_prompt = """You are an AI assistant specialized in analyzing logs and providing insights.
 Given a log snippet, your task is to:
 1. Summarize the key information in the log
 2. Identify any errors, warnings, or issues
@@ -406,16 +412,16 @@ Given a log snippet, your task is to:
 Be concise and precise in your analysis."""
 
         prompt = f"{system_prompt}\n\nLOG:\n{log_text}\n\nANALYSIS:"
-        
+
         # Get pipeline for text generation
         text_pipeline = get_pipeline(model_id, "text-generation")
         if not text_pipeline:
             return "⚠ Error: Could not initialize text generation pipeline"
-        
+
         # Generate response
-        logger.info(f"Analyzing log with model: {model_id}")
+        logger.info("Analyzing log with model: %smodel_id")
         start_time = time.time()
-        
+
         result = text_pipeline(
             prompt,
             max_new_tokens=max_tokens,
@@ -427,41 +433,41 @@ Be concise and precise in your analysis."""
         )
 
         processing_time = time.time() - start_time
-        logger.info(f"Log analyzed in {processing_time:.2f}s with {model_id}")
+        logger.info("Log analyzed in %sprocessing_time:.2fs with %smodel_id")
 
         # Extract and clean response
         response = result[0]['generated_text']
-        
+
         return response.strip()
     except Exception as e:
-        logger.exception(f"Error analyzing log with {model_id}: {str(e)}")
+        logger.exception("Error analyzing log with %smodel_id: %sstr(e)")
         return f"⚠ Error analyzing log: {str(e)}"
 
 
 def _save_cache():
     """Save model information cache to disk."""
     global _model_info_cache, _cache_last_updated
-    
+
     try:
         # Skip if cache is empty or was recently saved
         current_time = time.time()
         if not _model_info_cache or current_time - _cache_last_updated < 300:  # 5 minutes
             return
-        
+
         # Prepare cache data
         cache_data = {
             "timestamp": current_time,
             "models": _model_info_cache
         }
-        
+
         # Save to file
-        with open(HF_CACHE_FILE, 'w') as f:
+        with open(HF_CACHE_FILE, 'w', encoding='utf-8') as f:
             json.dump(cache_data, f, indent=2)
-            
+
         _cache_last_updated = current_time
-        logger.debug(f"Saved model cache with {len(_model_info_cache)} entries")
+        logger.debug("Saved model cache with %slen(_model_info_cache) entries")
     except Exception as e:
-        logger.error(f"Error saving model cache: {str(e)}")
+        logger.error("Error saving model cache: %sstr(e)")
 
 
 # Initialize module when imported

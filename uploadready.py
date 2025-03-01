@@ -29,7 +29,7 @@ def get_directory_structure(rootdir):
 
 def save_to_json(data, filename):
     """Speichert die gegebene Datenstruktur in einer JSON-Datei."""
-    with open(filename, 'w') as json_file:
+    with open(filename, 'w', encoding='utf-8') as json_file:
         json.dump(data, json_file, indent=4)
 
 def restore_directory_structure(data, rootdir):
@@ -54,10 +54,11 @@ def restore_directory_structure(data, rootdir):
 
     # Stelle Dateien und Verzeichnisse wieder her, die in der JSON-Datei existieren
     for dirpath, dir_info in data.items():
+        os.makedirs(dirpath, exist_ok=True)  # Stelle sicher, dass das Verzeichnis existiert
         for filename, file_info in dir_info["files"].items():
             file_path = os.path.join(dirpath, filename)
             if not os.path.exists(file_path):
-                open(file_path, 'w').close()  # Erstelle leere Dateien
+                open(file_path, 'w', encoding='utf-8').close()  # Erstelle leere Dateien
 
             os.utime(file_path, None)  # Setze Zeitstempel, ohne die Datei zu ändern
 
@@ -73,7 +74,7 @@ def find_large_files(directory_structure, size_threshold=99 * 1024 * 1024):
 def add_to_gitignore(large_files):
     """Fügt die großen Dateien zur .gitignore hinzu."""
     gitignore_path = Path(".gitignore")
-    with open(gitignore_path, "a") as gitignore:
+    with open(gitignore_path, "a", encoding='utf-8') as gitignore:
         for filename in large_files:
             gitignore.write(f"{filename}\n")
 
@@ -88,20 +89,16 @@ def run_pylint():
             if file.endswith(('.py', '.js', '.html')):
                 files_to_check.append(os.path.join(root, file))
 
-    # Führe pylint auf den Dateien aus
-    result = subprocess.run(['pylint'] + files_to_check, capture_output=True, text=True)
+    # Führe pylint auf den Dateien aus, aber nur wenn es Dateien gibt
+    if files_to_check:
+        result = subprocess.run(['pylint'] + files_to_check, capture_output=True, text=True)
+        with open("optimization.log", "w", encoding='utf-8') as log_file:
+            log_file.write(result.stdout)
+    else:
+        print("Keine Dateien zum Prüfen gefunden.")
 
-    with open("optimization.log", "w") as log_file:
-        log_file.write(result.stdout)
-
-def sync_with_github(username,
-repo_name,
-ssh_key,
-use_pat=False):
-    """" +
-        "" +
-            "" +
-            "Synchronisiert das lokale Repository mit GitHub über SSH oder PAT und führt einen Merge durch, wenn nötig."""
+def sync_with_github(username, repo_name, ssh_key, use_pat=False):
+    """Synchronisiert das lokale Repository mit GitHub über SSH oder PAT und führt einen Merge durch, wenn nötig."""
     try:
         # GitHub-URL vorbereiten
         if use_pat:
@@ -116,22 +113,21 @@ use_pat=False):
         subprocess.run(["git", "pull", "--no-ff", github_url], check=True)  # Merging erzwingen
 
         subprocess.run(["git", "add", "."], check=True)  # Alle Änderungen hinzufügen
-        subprocess.run(["git", "commit", "-m", "'Automated commit'"], check=True)  # Commit
+        subprocess.run(["git", "commit", "-m", "Automated commit"], check=True)  # Commit
         subprocess.run(["git", "push", github_url], check=True)  # Push zum Remote-Repository
 
     except subprocess.CalledProcessError as e:
         print(f"Error während GitHub-Synchronisierung: {e}")
         # Falls der Fehler bei der Authentifizierung liegt, frage nach dem PAT
         if "fatal: Authentifizierung" in str(e):
-            print("" +
-                "" +
-                    "Fehler bei der Authentifizierung. Bitte prüfe deinen SSH-Schlüssel oder Personal Access Token.")
+            print("Fehler bei der Authentifizierung. Bitte prüfe deinen SSH-Schlüssel oder Personal Access Token.")
         else:
             print(f"Git Fehler: {str(e)}")
 
 # Hauptfunktionalität
 
 def main():
+    """Hauptfunktion zur Steuerung des Programms."""
     if "--file-update" in sys.argv:
         directory_structure = get_directory_structure(os.getcwd())
         save_to_json(directory_structure, "directory_structure.json")
@@ -144,9 +140,14 @@ def main():
         add_to_gitignore(large_files)
 
     if "--restore-file" in sys.argv:
-        with open("directory_structure.json", "r") as f:
-            directory_structure = json.load(f)
-        restore_directory_structure(directory_structure, os.getcwd())
+        try:
+            with open("directory_structure.json", "r", encoding='utf-8') as f:
+                directory_structure = json.load(f)
+            restore_directory_structure(directory_structure, os.getcwd())
+        except FileNotFoundError:
+            print("Fehler: directory_structure.json konnte nicht gefunden werden.")
+        except json.JSONDecodeError:
+            print("Fehler: directory_structure.json enthält ungültiges JSON.")
 
     if "--pylint" in sys.argv:
         run_pylint()

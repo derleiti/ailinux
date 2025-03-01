@@ -3,7 +3,11 @@
 AILinux Code Optimization Bugfix Script
 
 This script fixes common code issues identified by the pylint analysis in the optimization.log file.
-It focuses on the most critical errors, including syntax errors, indentation issues, and docstring problems.
+It focuses on the most critical errors,
+
+including syntax errors,
+indentation issues,
+and docstring problems.
 """
 import os
 import re
@@ -19,17 +23,17 @@ CLIENT_DIR = os.path.join(BASE_DIR, "client")
 def fix_adjust_hierarchy_with_debugger():
     """Fix syntax errors in the adjust_hierarchy_with_debugger.py file."""
     filepath = os.path.join(CLIENT_DIR, "adjust_hierarchy_with_debugger.py")
-    
+
     if not os.path.exists(filepath):
         print(f"File not found: {filepath}")
         return False
     
     print(f"Fixing adjust_hierarchy_with_debugger.py...")
-    
+
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
-        
+
         # Fix the unexpected indent issue on line 15
         lines = content.split('\n')
         
@@ -42,15 +46,15 @@ def fix_adjust_hierarchy_with_debugger():
             if "capture_output=True, text=True)" in line:
                 # Next line has the remaining arguments
                 lines[i] = "                         capture_output=True, text=True)"
-        
+
         # Add missing docstring for the module
         if not lines[0].startswith('"""'):
             lines.insert(0, '"""Tool to adjust directory hierarchy and run pylint checks."""')
-        
+
         # Write the fixed content back
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write('\n'.join(lines))
-        
+
         print(f"✅ Fixed adjust_hierarchy_with_debugger.py")
         return True
     
@@ -84,16 +88,16 @@ def fix_missing_docstrings():
                 module_name = os.path.splitext(filename)[0]
                 module_name = module_name.replace('_', ' ').title()
                 docstring = f'"""{module_name} module for AILinux.\n\nThis module provides functionality for the AILinux system.\n"""\n'
-                
+
                 # Add the docstring to the beginning of the file
                 content = docstring + content
-                
+
                 # Write the fixed content back
                 with open(filepath, 'w', encoding='utf-8') as f:
                     f.write(content)
                 
                 fixed_count += 1
-        
+
         except Exception as e:
             print(f"Error adding docstring to {filepath}: {str(e)}")
     
@@ -104,13 +108,13 @@ def fix_missing_docstrings():
 def fix_file_sync_client():
     """Fix the file-sync-client.py errors."""
     filepath = os.path.join(CLIENT_DIR, "file-sync-client.py")
-    
+
     if not os.path.exists(filepath):
         print(f"File not found: {filepath}")
         return False
     
     print(f"Fixing file-sync-client.py...")
-    
+
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -124,17 +128,17 @@ def fix_file_sync_client():
                 content,
                 flags=re.DOTALL
             )
-            
+
             # Fix the possibly-used-before-assignment error with stat
             # by ensuring stat is imported before it's used
-            
+
             # Remove trailing whitespace
             modified_content = '\n'.join(line.rstrip() for line in modified_content.split('\n'))
-            
+
             # Write the fixed content back
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(modified_content)
-            
+
             print(f"✅ Fixed file-sync-client.py")
             return True
     
@@ -146,13 +150,13 @@ def fix_file_sync_client():
 def fix_alphaos_py():
     """Fix the issues in alphaos.py."""
     filepath = os.path.join(CLIENT_DIR, "alphaos.py")
-    
+
     if not os.path.exists(filepath):
         print(f"File not found: {filepath}")
         return False
     
     print(f"Fixing alphaos.py...")
-    
+
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -169,18 +173,18 @@ def fix_alphaos_py():
             "async def onMessage", 
             "def onMessage"
         ).replace(
-            "async def onClose", 
+            "async def onClose",
             "def onClose"
         )
-        
+
         # Add docstring if missing
         if not modified_content.strip().startswith('"""'):
             modified_content = '"""WebSocket client for AILinux using Autobahn.\n\nProvides connection to WebSocket server on derleiti.de.\n"""\n' + modified_content
-        
+
         # Write the fixed content back
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(modified_content)
-        
+
         print(f"✅ Fixed alphaos.py")
         return True
     
@@ -192,13 +196,13 @@ def fix_alphaos_py():
 def fix_start_js():
     """Fix syntax issues in start.js."""
     filepath = os.path.join(CLIENT_DIR, "start.js")
-    
+
     if not os.path.exists(filepath):
         print(f"File not found: {filepath}")
         return False
     
     print(f"Fixing start.js...")
-    
+
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -206,7 +210,8 @@ def fix_start_js():
         # Fix invalid syntax in the file
         # The main issue is with multi-line strings in JavaScript
         # Use template literals with backticks for multi-line strings
-        if "logMessage(`Configuration: Flask=${flaskHost}:${flaskPort}, WebSocket=${wsServerUrl}`,\nstartLogPath)" in content:
+        if "" +
+            "logMessage(`Configuration: Flask=${flaskHost}:${flaskPort}, WebSocket=${wsServerUrl}`,\nstartLogPath)" in content:
             modified_content = content.replace(
                 "logMessage(`Configuration: Flask=${flaskHost}:${flaskPort}, WebSocket=${wsServerUrl}`,\nstartLogPath)",
                 "logMessage(`Configuration: Flask=${flaskHost}:${flaskPort}, WebSocket=${wsServerUrl}`, startLogPath)"
@@ -215,7 +220,7 @@ def fix_start_js():
             # Write the fixed content back
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(modified_content)
-            
+
             print(f"✅ Fixed start.js")
             return True
     
@@ -237,7 +242,7 @@ def fix_websocket_client_py():
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
-        
+
         # Fix trailing whitespace
         modified_content = '\n'.join(line.rstrip() for line in content.split('\n'))
         
@@ -248,7 +253,7 @@ def fix_websocket_client_py():
         # Write the fixed content back
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(modified_content)
-        
+
         print(f"✅ Fixed websocket_client.py")
         return True
     
@@ -271,7 +276,7 @@ def fix_websocket_client_with_dash():
     try:
         with open(old_filepath, 'r', encoding='utf-8') as f:
             content = f.read()
-        
+
         # Fix trailing whitespace
         modified_content = '\n'.join(line.rstrip() for line in content.split('\n'))
         
@@ -282,10 +287,10 @@ def fix_websocket_client_with_dash():
         # Write to the new file with a proper snake_case name
         with open(new_filepath, 'w', encoding='utf-8') as f:
             f.write(modified_content)
-        
+
         # Optionally, remove the old file
         # os.remove(old_filepath)
-        
+
         print(f"✅ Fixed websocket-client.py naming issue by creating websocket_client_module.py")
         return True
     
@@ -307,7 +312,7 @@ def fix_config_py():
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
-        
+
         # Rename the 'set' function to avoid redefining the built-in
         modified_content = content.replace("def set(key, value):", "def set_config(key, value):")
         
@@ -318,7 +323,7 @@ def fix_config_py():
         # Write the fixed content back
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(modified_content)
-        
+
         print(f"✅ Fixed config.py")
         return True
     
@@ -343,7 +348,8 @@ def run_pylint():
                     python_files.append(os.path.join(root, file))
         
         if not python_files:
-            print("No Python files found to check with pylint")
+            print("" +
+                "No Python files found to check with pylint")
             return False
         
         # Run pylint on a small subset for testing
@@ -385,17 +391,17 @@ def main():
         fix_config_py,
         fix_missing_docstrings,
     ]
-    
+
     success_count = 0
     for fix_function in fixes:
         if fix_function():
             success_count += 1
-    
+
     print(f"\n✅ Applied {success_count}/{len(fixes)} fixes successfully!")
-    
+
     # Run pylint to check if issues are resolved
     run_pylint()
-    
+
     print("\n🎉 Fixes completed! The code should now have fewer issues.")
     print("   Re-run pylint on the entire codebase to verify all issues are resolved.")
     
