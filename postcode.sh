@@ -1,152 +1,317 @@
 #!/bin/bash
+# Advanced File Browser and Search Script
 
-# Function to display the menu
-show_menu() {
-  echo "-------------------------"
-  echo "📂 File Search and Analysis"
-  echo "-------------------------"
-  echo "1) Search for *.js files"
-  echo "2) Search for *.py files"
-  echo "3) Search for *.html files"
-  echo "4) Search for *.txt (requirements.txt)"
-  echo "5) Post All (Run all searches and analyses)"
-  echo "6) Exit"
-  echo "-------------------------"
+# Ensure proper error handling
+set -euo pipefail
+
+# Global variables
+CURRENT_DIR="$HOME/ailinux"
+
+# Help function
+show_help() {
+    echo "-------------------------"
+    echo "📂 File Browser Help"
+    echo "-------------------------"
+    echo "📌 Navigation:"
+    echo "  - 'cd <directory>'     → Change directory"
+    echo "  - 'cd ..'              → Go to parent directory"
+    echo "  - 'ls'                 → List files and directories"
+    echo ""
+    echo "📌 Search:"
+    echo "  - 'showpost py'        → Search for .py files"
+    echo "  - 'showpost *.py --dir'  → Search .py files in current directory"
+    echo "  - 'showpost py js'     → Search multiple file types"
+    echo ""
+    echo "📌 Extras:"
+    echo "  - 'tree'               → Show directory structure"
+    echo "  - 'help'               → Show this help"
+    echo "  - 'exit'               → Exit the browser"
+    echo "-------------------------"
 }
 
-# Function to search for files based on extension
+# Safely list directory contents
+safe_list() {
+    local dir="${1:-$CURRENT_DIR}"
+    local dirs=()
+    local files=()
+
+    # Prevent error if no files exist
+    shopt -s nullglob
+
+    # Separate directories and files
+    for item in "$dir"/*; do
+        if [[ -d "$item" ]]; then
+            dirs+=("$(basename "$item")/")
+        elif [[ -f "$item" ]]; then
+            files+=("$(basename "$item")")
+        fi
+    done
+
+    # Restore default shell behavior
+    shopt -u nullglob
+
+    # Stellen Sie sicher, dass kein Rautezeichen am Anfang steht
+    echo "📂 Verzeichnisse und Dateien:"
+
+    # Display directories in blue
+    if [[ ${#dirs[@]} -gt 0 ]]; then
+        echo "Verzeichnisse:"
+        printf "\033[0;34m%s\033[0m\n" "${dirs[@]}"
+    fi
+
+    # Display files
+    if [[ ${#files[@]} -gt 0 ]]; then
+        echo "Dateien:"
+        printf "%s\n" "${files[@]}"
+    fi
+
+    if [[ ${#dirs[@]} -eq 0 && ${#files[@]} -eq 0 ]]; then
+        echo "📂 (Verzeichnis ist leer)"
+    fi
+
+    echo "-------------------------"
+}
+
+# Advanced file search function
 search_files() {
-  local extension=$1
-  local directory=~/ailinux
+    local search_terms=()
+    local search_mode="subdir"
+    local find_depth=()
 
-  # Exclude node_modules, dist, build directories, and exclude downloadready.py for *.py files
-  echo "📂 Searching for *.$extension files in $directory, excluding node_modules, dist, build..."
-
-  # Search for files and display their contents, excluding downloadready.py for py files
-  if [ "$extension" == "py" ]; then
-    files=$(find $directory -type f -name "*.$extension" ! -path "*/node_modules/*" ! -path "*/dist/*" ! -path "*/build/*" ! -path "$directory/downloadready.py")
-  else
-    files=$(find $directory -type f -name "*.$extension" ! -path "*/node_modules/*" ! -path "*/dist/*" ! -path "*/build/*")
-  fi
-
-  if [ -z "$files" ]; then
-    echo "⚠ No $extension files found!"
-  else
-    # Use tee to log results
-    echo "$files" | tee postconf.log
-
-    # Display contents of each file
-    for file in $files; do
-      echo "📄 Displaying content of $file:"
-      cat $file
-      echo "------------------------"
+    # Parse arguments
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --dir)
+                search_mode="dir"
+                find_depth=(-maxdepth 1)
+                shift
+                ;;
+            --subdir)
+                search_mode="subdir"
+                find_depth=()
+                shift
+                ;;
+            *)
+                # Vereinfachte und robustere Mustererkennung
+                local pattern="$1"
+                
+                # Wenn Muster bereits ein Wildcard-Muster ist (*.py), behalte es bei
+                if [[ "$pattern" == \** ]]; then
+                    search_terms+=("$pattern")
+                # Wenn Muster nur eine Erweiterung ist (py), füge *. hinzu
+                elif [[ "$pattern" != *\.* && "$pattern" != \** ]]; then
+                    search_terms+=("*.$pattern")
+                # Ansonsten verwende das Muster wie angegeben
+                else
+                    search_terms+=("$pattern")
+                fi
+                
+                shift
+                ;;
+        esac
     done
-  fi
 
-  echo "✅ Search completed. Results saved to postconf.log."
+    # Validate search terms
+    if [[ ${#search_terms[@]} -eq 0 ]]; then
+        echo "⚠️ Bitte geben Sie mindestens ein Suchmuster an!"
+        return 1
+    fi
 
-  # Always post file hierarchy after search
-  analyze_hierarchy
-}
+    # Print debug info
+    echo "🔍 Suche nach: ${search_terms[*]} in ${search_mode} Modus"
 
-# Function to search specifically for requirements.txt files
-search_requirements_txt() {
-  local directory=~/ailinux
+    # Construct find command - Vereinfachte Version
+    local find_cmd=("find" "$CURRENT_DIR" "${find_depth[@]}" "-type" "f")
+    
+    # Füge -name Argumente hinzu
+    if [[ ${#search_terms[@]} -gt 0 ]]; then
+        find_cmd+=("(")
+        local first=true
+        for term in "${search_terms[@]}"; do
+            if $first; then
+                find_cmd+=("-name" "$term")
+                first=false
+            else
+                find_cmd+=("-o" "-name" "$term")
+            fi
+        done
+        find_cmd+=(")")
+    fi
+    
+    # Füge Ausschlüsse hinzu
+    find_cmd+=("-not" "-path" "*/node_modules/*" 
+               "-not" "-path" "*/dist/*" 
+               "-not" "-path" "*/build/*" 
+               "-not" "-path" "*/__pycache__/*")
+    
+    # Debug: Zeige den Befehl
+    echo "🔍 Befehl: ${find_cmd[*]}"
+    
+    # Execute find - sicheres Handling
+    echo "🔎 Durchsuche $CURRENT_DIR..."
+    local results=()
+    
+    # Führe den Befehl aus und erfasse Fehler
+    if find_output=$("${find_cmd[@]}" 2>/dev/null); then
+        
+        # Lese Ergebnisse in Array ein
+        while IFS= read -r line; do
+            [[ -n "$line" ]] && results+=("$line")
+        done <<< "$find_output"
+    else
+        echo "⚠️ Suchfehler aufgetreten."
+        return 1
+    fi
 
-  echo "📂 Searching for requirements.txt files in $directory, excluding node_modules, dist, build..."
+    # Check results
+    if [[ ${#results[@]} -eq 0 ]]; then
+        echo "❌ Keine Dateien gefunden, die dem Muster entsprechen."
+        return 0
+    fi
 
-  # Search for requirements.txt and display its contents
-  files=$(find $directory -type f -name "requirements.txt" ! -path "*/node_modules/*" ! -path "*/dist/*" ! -path "*/build/*")
-  if [ -z "$files" ]; then
-    echo "⚠ No requirements.txt files found!"
-  else
-    # Use tee to log results
-    echo "$files" | tee requirements_log.txt
+    echo "✅ ${#results[@]} Dateien gefunden."
 
-    # Display contents of each file
-    for file in $files; do
-      echo "📄 Displaying content of $file:"
-      cat $file
-      echo "------------------------"
+    # Display results with path and contents
+    for file in "${results[@]}"; do
+        # Display full path in green
+        echo -e "\n\033[0;32m📂 Pfad: $file\033[0m"
+        
+        # Display file contents
+        echo "----------------"
+        cat "$file"
+        echo "----------------"
     done
-  fi
-
-  echo "✅ Search completed. Results saved to requirements_log.txt."
-
-  # Always post file hierarchy after search
-  analyze_hierarchy
+    
+    return 0
 }
 
-# Function to analyze the data hierarchy excluding specific frameworks
-analyze_hierarchy() {
-  local directory=~/ailinux
+# Change directory function
+change_directory() {
+    local target_dir="$1"
+    local new_path
 
-  # Exclude node_modules, dist, and build directories
-  echo "📂 Analyzing the directory hierarchy of $directory, excluding node_modules, dist, build..."
+    # Entferne mögliche Rautezeichen am Anfang
+    target_dir="${target_dir#\#}"
 
-  # Fixing tee command to properly pipe the output
-  tree -I "node_modules|dist|build" $directory --dirsfirst --noreport | tee hierarchy_analysis.log
+    # Handle special directory cases
+    case "$target_dir" in
+        "..") new_path=$(dirname "$CURRENT_DIR") ;;
+        "~") new_path="$HOME" ;;
+        /*) new_path="$target_dir" ;;
+        *) new_path="$CURRENT_DIR/$target_dir" ;;
+    esac
 
-  echo "✅ Hierarchy analysis completed. Results saved to hierarchy_analysis.log."
+    # Validate and change directory
+    if [[ -d "$new_path" ]]; then
+        CURRENT_DIR=$(realpath "$new_path")
+        echo "-------------------------"
+        echo "📂 Gewechselt zu: $CURRENT_DIR"
+        safe_list
+    else
+        echo "❌ Ordner nicht gefunden: $target_dir"
+    fi
 }
 
-# Function to post all actions (search for all file types and analyze hierarchy)
-post_all() {
-  # Perform all file searches and analysis
-  echo "📂 Starting Post All process..."
-
-  # Search for .js files
-  search_files "js"
-
-  # Search for .py files
-  search_files "py"
-
-  # Search for .html files
-  search_files "html"
-
-  # Search for requirements.txt
-  search_requirements_txt
-
-  echo "✅ Post All process completed. All results saved in respective log files."
+# Show directory structure
+show_directory_tree() {
+    echo "📂 Verzeichnisstruktur von $CURRENT_DIR:"
+    if command -v tree &> /dev/null; then
+        tree "$CURRENT_DIR" --dirsfirst --noreport \
+            -I "node_modules|dist|build|__pycache__"
+    else
+        echo "❌ 'tree'-Befehl nicht gefunden. Bitte installieren Sie das 'tree'-Paket."
+        find "$CURRENT_DIR" -type d -not -path "*/node_modules/*" -not -path "*/dist/*" -not -path "*/build/*" -not -path "*/__pycache__/*" | sort
+    fi
+    echo "-------------------------"
 }
 
-# Main script execution loop
-while true; do
-  # Show the menu
-  show_menu
+# Interactive file browser
+interactive_browser() {
+    # Initial directory listing
+    echo "-------------------------"
+    echo "📂 Aktuelles Verzeichnis: $CURRENT_DIR"
+    echo "-------------------------"
+    safe_list
 
-  # Get the user's choice
-  read -p "Please select an option (1-6): " choice
+    while true; do
+        echo "💡 Verfügbare Befehle: 'cd <Ordner>', 'cd ..', 'ls', 'showpost <Suchmuster> --dir/--subdir', 'tree', 'help', 'exit'"
+        echo "🔎 Beispiel für Suche: 'showpost py --dir'"
+        echo "-------------------------"
 
-  case $choice in
-    1)
-      # Search for .js files and display contents
-      search_files "js"
-      ;;
-    2)
-      # Search for .py files and display contents
-      search_files "py"
-      ;;
-    3)
-      # Search for .html files and display contents
-      search_files "html"
-      ;;
-    4)
-      # Search for *.txt files (specifically requirements.txt)
-      search_requirements_txt
-      ;;
-    5)
-      # Perform all searches and analysis (Post All)
-      post_all
-      ;;
-    6)
-      # Exit the script
-      echo "Exiting the script. Goodbye!"
-      exit 0
-      ;;
-    *)
-      # Invalid choice
-      echo "⚠ Invalid option. Please choose a valid option (1-6)."
-      ;;
-  esac
-done
+        read -p "$(whoami)@$(basename "$CURRENT_DIR")$ " -r input
+        echo "-------------------------"
+        
+        # Prüfe, ob Eingabe leer ist
+        if [[ -z "$input" ]]; then
+            continue
+        fi
+        
+        # Entferne mögliche Rautezeichen am Anfang der Eingabe
+        input="${input#\#}"
+        
+        # Split input into command and arguments
+        read -ra cmd_args <<< "$input"
+
+        case "${cmd_args[0]}" in
+            exit) 
+                echo "Beende das Skript. Auf Wiedersehen!"
+                return 0 
+                ;;
+            help) 
+                show_help 
+                ;;
+            ls) 
+                safe_list 
+                ;;
+            tree) 
+                show_directory_tree 
+                ;;
+            cd)
+                if [[ ${#cmd_args[@]} -lt 2 ]]; then
+                    echo "⚠️ Bitte geben Sie ein Verzeichnis an."
+                else
+                    change_directory "${cmd_args[1]}"
+                fi
+                ;;
+            showpost) 
+                if [[ ${#cmd_args[@]} -lt 2 ]]; then
+                    echo "⚠️ Bitte geben Sie mindestens ein Suchmuster an."
+                else
+                    # Ausführung mit Fehlerbehandlung
+                    if ! search_files "${cmd_args[@]:1}"; then
+                        echo "⚠️ Die Suche wurde mit Fehlern abgeschlossen."
+                    fi
+                fi
+                ;;
+            *) 
+                echo "❌ Unbekannter Befehl '${cmd_args[0]}'. Geben Sie 'help' für eine Liste der Befehle ein." 
+                ;;
+        esac
+    done
+}
+
+# Main menu function
+main_menu() {
+    while true; do
+        echo "📂 Datei-Browser und Analyse"
+        echo "1) Interaktiver Datei-Browser"
+        echo "2) Verzeichnisstruktur anzeigen"
+        echo "3) Beenden"
+        read -p "Bitte wählen Sie eine Option (1-3): " choice
+        case "$choice" in
+            1) interactive_browser ;;
+            2) 
+                CURRENT_DIR="$HOME/ailinux"
+                show_directory_tree 
+                ;;
+            3) exit 0 ;;
+            *) echo "Ungültige Option. Bitte wählen Sie 1, 2 oder 3." ;;
+        esac
+    done
+}
+
+# Trap für ordnungsgemäße Beendigung
+trap 'echo "Skript wird beendet..."; exit 0' SIGINT SIGTERM
+
+# Start the script
+main_menu
