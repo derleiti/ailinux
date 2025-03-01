@@ -6,6 +6,9 @@ import subprocess
 
 # Funktion zum Hinzufügen von Docstrings zu Modulen und Funktionen
 def add_docstrings(file_path):
+"""
+Beschreibung für Funktion add_docstrings.
+"""
     try:
         with open(file_path, 'r', encoding="utf-8") as file:
             lines = file.readlines()

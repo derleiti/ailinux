@@ -1,3 +1,7 @@
+"""
+uploadready - Modulbeschreibung.
+"""
+
 import os
 import json
 import subprocess
@@ -95,7 +99,9 @@ repo_name,
 ssh_key,
 use_pat=False):
     """" +
-        "Synchronisiert das lokale Repository mit GitHub über SSH oder PAT und führt einen Merge durch, wenn nötig."""
+        "" +
+            "" +
+            "Synchronisiert das lokale Repository mit GitHub über SSH oder PAT und führt einen Merge durch, wenn nötig."""
     try:
         # GitHub-URL vorbereiten
         if use_pat:
@@ -118,7 +124,8 @@ use_pat=False):
         # Falls der Fehler bei der Authentifizierung liegt, frage nach dem PAT
         if "fatal: Authentifizierung" in str(e):
             print("" +
-                "Fehler bei der Authentifizierung. Bitte prüfe deinen SSH-Schlüssel oder Personal Access Token.")
+                "" +
+                    "Fehler bei der Authentifizierung. Bitte prüfe deinen SSH-Schlüssel oder Personal Access Token.")
         else:
             print(f"Git Fehler: {str(e)}")
 

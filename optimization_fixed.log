@@ -1,0 +1,445 @@
+Nicht behoben: client/start.js:1 [E0001] Parsing failed: 'invalid syntax (client.start, line 1)'
+Nicht behoben: client/frontend/settings.html:8 [E0001] Parsing failed: 'invalid decimal literal (client.frontend.settings, line 8)'
+Nicht behoben: client/frontend/logmanager.js:1 [E0001] Parsing failed: 'invalid syntax (client.frontend.logmanager, line 1)'
+Nicht behoben: client/frontend/preload.js:19 [E0001] Parsing failed: 'unterminated string literal (detected at line 19) (client.frontend.preload, line 19)'
+Nicht behoben: client/frontend/importexport.js:4 [E0001] Parsing failed: 'unterminated string literal (detected at line 4) (client.frontend.importexport, line 4)'
+Nicht behoben: client/frontend/index.html:29 [E0001] Parsing failed: 'invalid decimal literal (client.frontend.index, line 29)'
+Nicht behoben: client/frontend/main.js:1 [E0001] Parsing failed: 'invalid syntax (client.frontend.main, line 1)'
+Nicht behoben: client/frontend/log.html:1 [E0001] Parsing failed: 'invalid syntax (client.frontend.log, line 1)'
+Nicht behoben: client/frontend/aiineraction.html:9 [E0001] Parsing failed: 'invalid decimal literal (client.frontend.aiineraction, line 9)'
+Nicht behoben: client/frontend/llama.html:9 [E0001] Parsing failed: 'invalid decimal literal (client.frontend.llama, line 9)'
+Nicht behoben: server/backend/data_server.py:254 [E0001] Parsing failed: 'expected 'except' or 'finally' block (server.backend.data_server, line 254)'
+Behoben: uploadready.py:98 [C0301] Line too long (118/100)
+Behoben: uploadready.py:98 [C0301] Line too long (118/100)
+Behoben: uploadready.py:121 [C0301] Line too long (113/100)
+Behoben: uploadready.py:1 [C0114] Missing module docstring
+Nicht behoben: uploadready.py:14 [W0612] Unused variable 'dirnames'
+Nicht behoben: uploadready.py:28 [W1514] Using open without explicitly specifying an encoding
+Nicht behoben: uploadready.py:56 [R1732] Consider using 'with' for resource-allocating operations
+Nicht behoben: uploadready.py:56 [W1514] Using open without explicitly specifying an encoding
+Nicht behoben: uploadready.py:37 [W0612] Unused variable 'file_info'
+Nicht behoben: uploadready.py:41 [W0612] Unused variable 'dirnames'
+Nicht behoben: uploadready.py:63 [W0612] Unused variable 'dirpath'
+Nicht behoben: uploadready.py:72 [W1514] Using open without explicitly specifying an encoding
+Nicht behoben: uploadready.py:88 [W1510] 'subprocess.run' used without explicitly defining the value for 'check'.
+Nicht behoben: uploadready.py:90 [W1514] Using open without explicitly specifying an encoding
+Nicht behoben: uploadready.py:127 [C0116] Missing function or method docstring
+Nicht behoben: uploadready.py:140 [W1514] Using open without explicitly specifying an encoding
+Nicht behoben: client/alphaos.py:55 [W0718] Catching too general exception Exception
+Nicht behoben: client/bigfiles.py:8 [E0602] Undefined variable 'directory'
+Nicht behoben: client/bigfiles.py:11 [E0602] Undefined variable 'directory'
+Nicht behoben: client/adjust_hierarchy_with_debugger.py:12 [W0621] Redefining name 'base_dir' from outer scope (line 68)
+Nicht behoben: client/adjust_hierarchy_with_debugger.py:68 [C0103] Constant name "base_dir" doesn't conform to UPPER_CASE naming style
+Nicht behoben: client/analyze.py:5 [C0103] Constant name "root_dir" doesn't conform to UPPER_CASE naming style
+Nicht behoben: client/analyze.py:14 [C0103] Constant name "log_file_path" doesn't conform to UPPER_CASE naming style
+Behoben: client/analyze.py:19 [W1514] Using open without explicitly specifying an encoding
+Behoben: client/analyze.py:34 [W1514] Using open without explicitly specifying an encoding
+Behoben: client/cleanup.py:8 [C0116] Missing function or method docstring
+Nicht behoben: client/cleanup.py:26 [C0116] Missing function or method docstring
+Nicht behoben: client/cleanup.py:28 [W0612] Unused variable 'dirnames'
+Nicht behoben: client/cleanup.py:38 [C0116] Missing function or method docstring
+Nicht behoben: client/cleanup.py:51 [C0116] Missing function or method docstring
+Nicht behoben: client/cleanup.py:62 [W0718] Catching too general exception Exception
+Nicht behoben: client/cleanup.py:54 [W1510] 'subprocess.run' used without explicitly defining the value for 'check'.
+Nicht behoben: client/cleanup.py:59 [W1514] Using open without explicitly specifying an encoding
+Nicht behoben: client/cleanup.py:66 [C0116] Missing function or method docstring
+Nicht behoben: client/backend/app.py:26 [W1508] os.getenv default type is builtins.int. Expected str or None.
+Nicht behoben: client/backend/app.py:92 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/app.py:75 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/app.py:76 [W1201] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/app.py:76 [W1309] Using an f-string that does not have any interpolated variables
+Nicht behoben: client/backend/app.py:84 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/app.py:96 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/app.py:116 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/app.py:117 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/app.py:131 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/app.py:132 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/app.py:153 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/app.py:154 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/app.py:181 [W0718] Catching too general exception Exception
+Behoben: client/backend/app.py:175 [C0415] Import outside toplevel (json)
+Nicht behoben: client/backend/app.py:176 [W1514] Using open without explicitly specifying an encoding
+Nicht behoben: client/backend/app.py:179 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/app.py:182 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/app.py:208 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/app.py:186 [C0415] Import outside toplevel (json)
+Nicht behoben: client/backend/app.py:187 [R1705] Unnecessary "else" after "return", remove the "else" and de-indent the code inside it
+Nicht behoben: client/backend/app.py:188 [W1514] Using open without explicitly specifying an encoding
+Nicht behoben: client/backend/app.py:209 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/app.py:259 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/app.py:260 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/app.py:273 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/app.py:274 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/app.py:11 [W0611] Unused send_from_directory imported from flask
+Behoben: client/backend/huggingface.py:56 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:60 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:79 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:92 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:97 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:102 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:107 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:112 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:117 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:159 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:163 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:173 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:186 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:195 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:203 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:204 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:221 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:226 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:232 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:243 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:266 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:270 [C0301] Line too long (114/100)
+Nicht behoben: client/backend/huggingface.py:277 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:282 [C0303] Trailing whitespace
+Behoben: client/backend/huggingface.py:283 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:298 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:303 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:307 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:312 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:316 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:331 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:349 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:356 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:367 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:396 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:396 [C0301] Line too long (104/100)
+Nicht behoben: client/backend/huggingface.py:406 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:411 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:415 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:431 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:441 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:447 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:453 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:457 [C0303] Trailing whitespace
+Nicht behoben: client/backend/huggingface.py:37 [C0103] Constant name "_model_info_cache" doesn't conform to UPPER_CASE naming style
+Nicht behoben: client/backend/huggingface.py:40 [C0103] Constant name "_cache_last_updated" doesn't conform to UPPER_CASE naming style
+Nicht behoben: client/backend/huggingface.py:55 [W0603] Using the global statement
+Nicht behoben: client/backend/huggingface.py:81 [W0718] Catching too general exception Exception
+Behoben: client/backend/huggingface.py:64 [W1514] Using open without explicitly specifying an encoding
+Nicht behoben: client/backend/huggingface.py:68 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:82 [W1203] Use lazy % formatting in logging functions
+Behoben: client/backend/huggingface.py:94 [C0415] Import outside toplevel (torch)
+Nicht behoben: client/backend/huggingface.py:99 [C0415] Import outside toplevel (transformers)
+Nicht behoben: client/backend/huggingface.py:104 [C0415] Import outside toplevel (huggingface_hub)
+Nicht behoben: client/backend/huggingface.py:109 [C0415] Import outside toplevel (accelerate)
+Nicht behoben: client/backend/huggingface.py:114 [C0415] Import outside toplevel (bitsandbytes)
+Nicht behoben: client/backend/huggingface.py:119 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:120 [W1201] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:130 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/huggingface.py:124 [C0415] Import outside toplevel (torch)
+Nicht behoben: client/backend/huggingface.py:127 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:131 [W1203] Use lazy % formatting in logging functions
+Behoben: client/backend/huggingface.py:99 [W0611] Unused import transformers
+Behoben: client/backend/huggingface.py:104 [W0611] Unused import huggingface_hub
+Behoben: client/backend/huggingface.py:109 [W0611] Unused import accelerate
+Behoben: client/backend/huggingface.py:114 [W0611] Unused import bitsandbytes
+Nicht behoben: client/backend/huggingface.py:141 [C0415] Import outside toplevel (torch)
+Behoben: client/backend/huggingface.py:142 [C0415] Import outside toplevel (transformers)
+Behoben: client/backend/huggingface.py:141 [W0611] Unused import torch
+Behoben: client/backend/huggingface.py:142 [W0611] Unused import transformers
+Nicht behoben: client/backend/huggingface.py:158 [W0603] Using the global statement
+Nicht behoben: client/backend/huggingface.py:197 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/huggingface.py:169 [C0415] Import outside toplevel (huggingface_hub.HfApi)
+Nicht behoben: client/backend/huggingface.py:198 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:245 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/huggingface.py:218 [C0415] Import outside toplevel (huggingface_hub.HfApi)
+Nicht behoben: client/backend/huggingface.py:246 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:275 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/huggingface.py:276 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:333 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/huggingface.py:305 [C0415] Import outside toplevel (torch)
+Nicht behoben: client/backend/huggingface.py:306 [C0415] Import outside toplevel (transformers.pipeline, transformers.AutoTokenizer, transformers.AutoModelForCausalLM)
+Nicht behoben: client/backend/huggingface.py:314 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:330 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:334 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:306 [W0611] Unused AutoTokenizer imported from transformers
+Nicht behoben: client/backend/huggingface.py:306 [W0611] Unused AutoModelForCausalLM imported from transformers
+Nicht behoben: client/backend/huggingface.py:369 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/huggingface.py:355 [C0415] Import outside toplevel (transformers.AutoTokenizer)
+Nicht behoben: client/backend/huggingface.py:358 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:370 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:433 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/huggingface.py:413 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:427 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:434 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:440 [W0602] Using global for '_model_info_cache' but no assignment is done
+Nicht behoben: client/backend/huggingface.py:460 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/huggingface.py:455 [W1514] Using open without explicitly specifying an encoding
+Nicht behoben: client/backend/huggingface.py:459 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:461 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/huggingface.py:10 [W0611] Unused Union imported from typing
+Nicht behoben: client/backend/huggingface.py:10 [W0611] Unused Tuple imported from typing
+Behoben: client/backend/ai_model.py:280 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:298 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:314 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:318 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:324 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:347 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:351 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:353 [C0301] Line too long (126/100)
+Behoben: client/backend/ai_model.py:359 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:380 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:385 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:409 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:425 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:440 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:457 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:465 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:473 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:490 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:498 [C0303] Trailing whitespace
+Behoben: client/backend/ai_model.py:507 [C0303] Trailing whitespace
+Nicht behoben: client/backend/ai_model.py:39 [C0103] Constant name "_gpt4all_model" doesn't conform to UPPER_CASE naming style
+Nicht behoben: client/backend/ai_model.py:40 [C0103] Constant name "_openai" doesn't conform to UPPER_CASE naming style
+Nicht behoben: client/backend/ai_model.py:41 [C0103] Constant name "_gemini" doesn't conform to UPPER_CASE naming style
+Nicht behoben: client/backend/ai_model.py:42 [C0103] Constant name "_huggingface_pipeline" doesn't conform to UPPER_CASE naming style
+Nicht behoben: client/backend/ai_model.py:43 [C0103] Constant name "_huggingface_tokenizer" doesn't conform to UPPER_CASE naming style
+Nicht behoben: client/backend/ai_model.py:44 [C0103] Constant name "_huggingface_model" doesn't conform to UPPER_CASE naming style
+Nicht behoben: client/backend/ai_model.py:49 [W0107] Unnecessary pass statement
+Nicht behoben: client/backend/ai_model.py:58 [W0603] Using the global statement
+Nicht behoben: client/backend/ai_model.py:95 [W0718] Catching too general exception Exception
+Behoben: client/backend/ai_model.py:63 [C0415] Import outside toplevel (gpt4all.GPT4All)
+Nicht behoben: client/backend/ai_model.py:70 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:71 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:76 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:85 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:91 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:96 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:69 [W0612] Unused variable 'filename'
+Nicht behoben: client/backend/ai_model.py:106 [W0603] Using the global statement
+Nicht behoben: client/backend/ai_model.py:120 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/ai_model.py:115 [C0415] Import outside toplevel (openai)
+Nicht behoben: client/backend/ai_model.py:121 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:131 [W0603] Using the global statement
+Nicht behoben: client/backend/ai_model.py:145 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/ai_model.py:140 [C0415] Import outside toplevel (google.generativeai)
+Nicht behoben: client/backend/ai_model.py:146 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:156 [W0603] Using the global statement
+Nicht behoben: client/backend/ai_model.py:203 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/ai_model.py:162 [C0415] Import outside toplevel (transformers.AutoModelForCausalLM, transformers.AutoTokenizer, transformers.pipeline)
+Behoben: client/backend/ai_model.py:163 [C0415] Import outside toplevel (torch)
+Nicht behoben: client/backend/ai_model.py:170 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:173 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:181 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:204 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:208 [W0621] Redefining name 'model_name' from outer scope (line 502)
+Nicht behoben: client/backend/ai_model.py:222 [R1705] Unnecessary "elif" after "return", remove the leading "el" from "elif"
+Nicht behoben: client/backend/ai_model.py:263 [W0621] Redefining name 'model_name' from outer scope (line 502)
+Nicht behoben: client/backend/ai_model.py:276 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:292 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/ai_model.py:293 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:297 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:316 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:325 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:328 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:346 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:349 [E1101] Module 'openai' has no 'ChatCompletion' member
+Nicht behoben: client/backend/ai_model.py:361 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:364 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:382 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:387 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:390 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:408 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:426 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:429 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: client/backend/ai_model.py:403 [W0612] Unused variable 'model'
+Nicht behoben: client/backend/ai_model.py:403 [W0612] Unused variable 'tokenizer'
+Nicht behoben: client/backend/ai_model.py:439 [W0621] Redefining name 'models' from outer scope (line 496)
+Nicht behoben: client/backend/ai_model.py:450 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/ai_model.py:483 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/ai_model.py:505 [C0103] Constant name "test_log" doesn't conform to UPPER_CASE naming style
+Nicht behoben: client/backend/ai_model.py:10 [W0611] Unused Union imported from typing
+Nicht behoben: client/backend/hugging.py:8 [E0611] No name 'AutoModelForTextGeneration' in module 'transformers'
+Nicht behoben: client/backend/hugging.py:16 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/hugging.py:26 [W0718] Catching too general exception Exception
+Nicht behoben: client/backend/hugging.py:36 [W0718] Catching too general exception Exception
+Behoben: client/backend/hugging.py:39 [C0116] Missing function or method docstring
+Nicht behoben: client/backend/hugging.py:8 [W0611] Unused AutoModelForTextGeneration imported from transformers
+Nicht behoben: client/backend/hugging.py:8 [W0611] Unused AutoTokenizer imported from transformers
+Nicht behoben: client/backend/gpt4all/app.py:6 [W0105] String statement has no effect
+Nicht behoben: client/backend/gpt4all/app.py:12 [C0413] Import "import importlib.metadata" should be placed at the top of the module
+Nicht behoben: client/backend/gpt4all/app.py:13 [C0413] Import "import io" should be placed at the top of the module
+Nicht behoben: client/backend/gpt4all/app.py:14 [C0413] Import "import sys" should be placed at the top of the module
+Nicht behoben: client/backend/gpt4all/app.py:15 [C0413] Import "from collections import namedtuple" should be placed at the top of the module
+Nicht behoben: client/backend/gpt4all/app.py:16 [C0413] Import "from typing_extensions import Annotated" should be placed at the top of the module
+Nicht behoben: client/backend/gpt4all/app.py:18 [C0413] Import "import typer" should be placed at the top of the module
+Nicht behoben: client/backend/gpt4all/app.py:19 [C0413] Import "from gpt4all import GPT4All" should be placed at the top of the module
+Nicht behoben: client/backend/gpt4all/app.py:94 [W0621] Redefining name 'version' from outer scope (line 185)
+Nicht behoben: client/backend/gpt4all/app.py:98 [W0702] No exception type(s) specified
+Behoben: client/frontend/twitchbot.py:8 [C0115] Missing class docstring
+Nicht behoben: client/frontend/twitchbot.py:27 [C0116] Missing function or method docstring
+Nicht behoben: client/frontend/twitchbot.py:6 [C0411] standard import "os" should be placed before third party import "twitchio.ext.commands"
+Behoben: client/frontend/config.py:15 [C0116] Missing function or method docstring
+Nicht behoben: client/frontend/config.py:18 [C0116] Missing function or method docstring
+Behoben: client/frontend/config.py:15 [C0116] Missing function or method docstring
+Nicht behoben: client/frontend/config.py:18 [C0116] Missing function or method docstring
+Behoben: server/backend/app.py:71 [C0301] Line too long (114/100)
+Behoben: server/backend/app.py:162 [C0303] Trailing whitespace
+Nicht behoben: server/backend/app.py:25 [W1508] os.getenv default type is builtins.int. Expected str or None.
+Nicht behoben: server/backend/app.py:90 [W0718] Catching too general exception Exception
+Nicht behoben: server/backend/app.py:69 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/app.py:70 [W1309] Using an f-string that does not have any interpolated variables
+Nicht behoben: server/backend/app.py:81 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/app.py:91 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/app.py:120 [W0718] Catching too general exception Exception
+Nicht behoben: server/backend/app.py:121 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/app.py:133 [W0621] Redefining name 'models' from outer scope (line 294)
+Nicht behoben: server/backend/app.py:135 [W0718] Catching too general exception Exception
+Nicht behoben: server/backend/app.py:136 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/app.py:167 [W0718] Catching too general exception Exception
+Nicht behoben: server/backend/app.py:152 [R1705] Unnecessary "else" after "return", remove the "else" and de-indent the code inside it
+Nicht behoben: server/backend/app.py:168 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/app.py:185 [W0718] Catching too general exception Exception
+Nicht behoben: server/backend/app.py:183 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/app.py:186 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/app.py:221 [W0718] Catching too general exception Exception
+Nicht behoben: server/backend/app.py:215 [R1705] Unnecessary "else" after "return", remove the "else" and de-indent the code inside it
+Nicht behoben: server/backend/app.py:222 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/app.py:264 [W0718] Catching too general exception Exception
+Nicht behoben: server/backend/app.py:265 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/app.py:290 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/app.py:291 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/app.py:296 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/app.py:11 [W0611] Unused send_from_directory imported from flask
+Behoben: server/backend/ai_model.py:283 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:301 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:317 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:321 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:327 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:350 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:354 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:356 [C0301] Line too long (126/100)
+Behoben: server/backend/ai_model.py:362 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:383 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:388 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:412 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:428 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:443 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:460 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:468 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:476 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:493 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:501 [C0303] Trailing whitespace
+Behoben: server/backend/ai_model.py:510 [C0303] Trailing whitespace
+Nicht behoben: server/backend/ai_model.py:1 [W0511] TODO: Dieses Modul enthält Code, der in anderen Dateien dupliziert ist.
+Nicht behoben: server/backend/ai_model.py:42 [C0103] Constant name "_gpt4all_model" doesn't conform to UPPER_CASE naming style
+Nicht behoben: server/backend/ai_model.py:43 [C0103] Constant name "_openai" doesn't conform to UPPER_CASE naming style
+Nicht behoben: server/backend/ai_model.py:44 [C0103] Constant name "_gemini" doesn't conform to UPPER_CASE naming style
+Nicht behoben: server/backend/ai_model.py:45 [C0103] Constant name "_huggingface_pipeline" doesn't conform to UPPER_CASE naming style
+Nicht behoben: server/backend/ai_model.py:46 [C0103] Constant name "_huggingface_tokenizer" doesn't conform to UPPER_CASE naming style
+Nicht behoben: server/backend/ai_model.py:47 [C0103] Constant name "_huggingface_model" doesn't conform to UPPER_CASE naming style
+Nicht behoben: server/backend/ai_model.py:52 [W0107] Unnecessary pass statement
+Nicht behoben: server/backend/ai_model.py:61 [W0603] Using the global statement
+Nicht behoben: server/backend/ai_model.py:98 [W0718] Catching too general exception Exception
+Behoben: server/backend/ai_model.py:66 [C0415] Import outside toplevel (gpt4all.GPT4All)
+Nicht behoben: server/backend/ai_model.py:73 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:74 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:79 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:88 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:94 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:99 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:72 [W0612] Unused variable 'filename'
+Nicht behoben: server/backend/ai_model.py:109 [W0603] Using the global statement
+Nicht behoben: server/backend/ai_model.py:123 [W0718] Catching too general exception Exception
+Nicht behoben: server/backend/ai_model.py:118 [C0415] Import outside toplevel (openai)
+Nicht behoben: server/backend/ai_model.py:124 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:134 [W0603] Using the global statement
+Nicht behoben: server/backend/ai_model.py:148 [W0718] Catching too general exception Exception
+Nicht behoben: server/backend/ai_model.py:143 [C0415] Import outside toplevel (google.generativeai)
+Nicht behoben: server/backend/ai_model.py:149 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:159 [W0603] Using the global statement
+Nicht behoben: server/backend/ai_model.py:206 [W0718] Catching too general exception Exception
+Nicht behoben: server/backend/ai_model.py:165 [C0415] Import outside toplevel (transformers.AutoModelForCausalLM, transformers.AutoTokenizer, transformers.pipeline)
+Behoben: server/backend/ai_model.py:166 [C0415] Import outside toplevel (torch)
+Nicht behoben: server/backend/ai_model.py:173 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:176 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:184 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:207 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:211 [W0621] Redefining name 'model_name' from outer scope (line 505)
+Nicht behoben: server/backend/ai_model.py:225 [R1705] Unnecessary "elif" after "return", remove the leading "el" from "elif"
+Nicht behoben: server/backend/ai_model.py:266 [W0621] Redefining name 'model_name' from outer scope (line 505)
+Nicht behoben: server/backend/ai_model.py:279 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:295 [W0718] Catching too general exception Exception
+Nicht behoben: server/backend/ai_model.py:296 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:300 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:319 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:328 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:331 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:349 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:352 [E1101] Module 'openai' has no 'ChatCompletion' member
+Nicht behoben: server/backend/ai_model.py:364 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:367 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:385 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:390 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:393 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:411 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:429 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:432 [W1203] Use lazy % formatting in logging functions
+Nicht behoben: server/backend/ai_model.py:406 [W0612] Unused variable 'model'
+Nicht behoben: server/backend/ai_model.py:406 [W0612] Unused variable 'tokenizer'
+Nicht behoben: server/backend/ai_model.py:442 [W0621] Redefining name 'models' from outer scope (line 499)
+Nicht behoben: server/backend/ai_model.py:453 [W0718] Catching too general exception Exception
+Nicht behoben: server/backend/ai_model.py:486 [W0718] Catching too general exception Exception
+Nicht behoben: server/backend/ai_model.py:508 [C0103] Constant name "test_log" doesn't conform to UPPER_CASE naming style
+Nicht behoben: server/backend/ai_model.py:13 [W0611] Unused Union imported from typing
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+Nicht behoben: server/backend/ai_model.py:1 [R0801] Similar lines in 2 files
+
+==================================================
+ZUSAMMENFASSUNG:
+Insgesamt verarbeitet: 407 Probleme
+Behoben: 90 Probleme
+Übersprungen: 317 Probleme
+
+Nicht behobene Probleme nach Typ:
+  W1203: 97 Probleme
+  W0718: 42 Probleme
+  C0303: 20 Probleme
+  C0103: 19 Probleme
+  R0801: 19 Probleme
+  C0415: 18 Probleme
+  E0001: 11 Probleme
+  W0612: 11 Probleme
+  W0611: 10 Probleme
+  W0603: 10 Probleme
+  W1514: 9 Probleme
+  W0621: 9 Probleme
+  C0116: 8 Probleme
+  C0413: 7 Probleme
+  R1705: 5 Probleme
+  W1510: 2 Probleme
+  E0602: 2 Probleme
+  W1508: 2 Probleme
+  W1201: 2 Probleme
+  W1309: 2 Probleme
+  W0107: 2 Probleme
+  E1101: 2 Probleme
+  R1732: 1 Probleme
+  C0301: 1 Probleme
+  W0602: 1 Probleme
+  E0611: 1 Probleme
+  W0105: 1 Probleme
+  W0702: 1 Probleme
+  C0411: 1 Probleme
+  W0511: 1 Probleme

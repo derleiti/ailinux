@@ -172,6 +172,7 @@ def handle_settings():
             if not isinstance(new_settings, dict):
                 return jsonify({"error": "Invalid settings format"}), 400
 
+            # pylint: disable=C0415  # Import außerhalb des Toplevel
             import json
             with open(settings_file, 'w') as f:
                 json.dump(new_settings, f, indent=2)

@@ -60,6 +60,7 @@ def initialize_gpt4all():
         return _gpt4all_model
 
     try:
+        # pylint: disable=C0415  # Import außerhalb des Toplevel
         from gpt4all import GPT4All
 
         # Check if model exists
@@ -159,6 +160,7 @@ def initialize_huggingface():
         return _huggingface_model, _huggingface_tokenizer, _huggingface_pipeline
 
     try:
+        # pylint: disable=C0415  # Import außerhalb des Toplevel
         from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
         import torch
 
@@ -277,7 +279,7 @@ instruction: Optional[str] = None) -> str:
 
     # Create the prompt
     prompt = create_prompt(log_text, instruction)
-    
+
     try:
         if model_name == "gpt4all":
             response = gpt4all_response(prompt)
@@ -295,7 +297,7 @@ instruction: Optional[str] = None) -> str:
 
     elapsed_time = time.time() - start_time
     logger.info(f"Log analysis completed in {elapsed_time:.2f} seconds")
-    
+
     return response
 
 
@@ -311,17 +313,17 @@ def gpt4all_response(prompt: str) -> str:
     model = initialize_gpt4all()
     if not model:
         raise ModelNotInitializedError("GPT4All model could not be initialized")
-    
+
     try:
         logger.debug(f"Sending prompt to GPT4All (length: {len(prompt)})")
         response = ""
-        
+
         # Use with context for proper resource handling
         with model.chat_session():
             # Stream response tokens for better performance monitoring
             for token in model.generate(prompt, max_tokens=2048, temp=0.7):
                 response += token
-                
+
         logger.debug(f"Received GPT4All response (length: {len(response)})")
         return response.strip()
     except Exception as e:
@@ -344,19 +346,20 @@ def openai_response(prompt: str) -> str:
 
     try:
         logger.debug(f"Sending prompt to OpenAI (length: {len(prompt)})")
-        
+
         # Use the ChatCompletion API
         response = openai.ChatCompletion.create(
             model="gpt-4",
-            
+
             messages=[
-                {"role": "system", "content": "You are a log analysis expert. Provide clear, concise analysis of log files."},
+                {"role": "system", "content": "" +
+                    "You are a log analysis expert. Provide clear, concise analysis of log files."},
                 {"role": "user", "content": prompt}
             ],
             max_tokens=1024,
             temperature=0.5
         )
-        
+
         response_text = response["choices"][0]["message"]["content"].strip()
         logger.debug(f"Received OpenAI response (length: {len(response_text)})")
         return response_text
@@ -377,12 +380,12 @@ def gemini_response(prompt: str) -> str:
     gemini = initialize_gemini()
     if not gemini:
         raise ModelNotInitializedError("Gemini API could not be initialized. Check your API key.")
-    
+
     try:
         logger.debug(f"Sending prompt to Gemini (length: {len(prompt)})")
         model = gemini.GenerativeModel('gemini-pro')
         response = model.generate_content(prompt)
-        
+
         response_text = response.text
         logger.debug(f"Received Gemini response (length: {len(response_text)})")
         return response_text.strip()
@@ -406,7 +409,7 @@ def huggingface_response(prompt: str) -> str:
 
     try:
         logger.debug(f"Sending prompt to Hugging Face (length: {len(prompt)})")
-        
+
         # Generate text with appropriate parameters
         outputs = pipe(
             prompt,
@@ -422,7 +425,7 @@ def huggingface_response(prompt: str) -> str:
 
         # Remove the prompt from the response
         response_text = generated_text[len(prompt):].strip()
-        
+
         logger.debug(f"Received Hugging Face response (length: {len(response_text)})")
         return response_text
     except Exception as e:
@@ -437,7 +440,7 @@ def get_available_models() -> List[Dict[str, Any]]:
         List of dictionaries with model information
     """
     models = []
-    
+
     # Check GPT4All
     try:
         gpt4all = initialize_gpt4all()
@@ -454,7 +457,7 @@ def get_available_models() -> List[Dict[str, Any]]:
             "type": "local",
             "error": "Failed to initialize"
         })
-    
+
     # Check OpenAI
     models.append({
         "name": "openai",
@@ -462,7 +465,7 @@ def get_available_models() -> List[Dict[str, Any]]:
         "type": "api",
         "model": "gpt-4"
     })
-    
+
     # Check Gemini
     models.append({
         "name": "gemini",
@@ -470,7 +473,7 @@ def get_available_models() -> List[Dict[str, Any]]:
         "type": "api",
         "model": "gemini-pro"
     })
-    
+
     # Check Hugging Face
     try:
         _, _, pipe = initialize_huggingface()
@@ -487,7 +490,7 @@ def get_available_models() -> List[Dict[str, Any]]:
             "type": "local",
             "error": "Failed to initialize"
         })
-    
+
     return models
 
 
@@ -495,7 +498,7 @@ if __name__ == "__main__":
     # Simple test for the module
     models = get_available_models()
     print(json.dumps(models, indent=2))
-    
+
     # Test a model if available
     for model_info in models:
         if model_info["available"]:
@@ -504,7 +507,7 @@ if __name__ == "__main__":
 
             test_log = "2023-05-01 12:34:56 ERROR Failed to connect to database: Connection refused"
             result = analyze_log(test_log, model_name)
-            
+
             print(f"\nAnalysis result from {model_name}:")
             print(result)
             break

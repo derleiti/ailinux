@@ -13,6 +13,12 @@ CONFIG = {
 }
 
 def get(key):
+"""
+Beschreibung für Funktion get.
+"""
+"""
+Beschreibung für Funktion get.
+"""
     return CONFIG.get(key)
 
 def set_config(key, value):

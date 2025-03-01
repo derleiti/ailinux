@@ -68,7 +68,8 @@ def debug():
 
         logger.info(f"Received log for analysis using model: {model_name}")
         logger.debug(f"" +
-            "Log content (truncated): {log_text[:100]}..." if len(log_text) > 100 else f"Log content: {log_text}")
+            "" +
+                "Log content (truncated): {log_text[:100]}..." if len(log_text) > 100 else f"Log content: {log_text}")
 
         # Process and analyze the log
         response = analyze_log(log_text, model_name, instruction)
@@ -159,7 +160,7 @@ def handle_settings():
                     "default_model": "gpt4all",
                     "max_log_size": 10000,
                     "theme": "light",
-                    
+
                     "huggingface_model_id": os.getenv("HUGGINGFACE_MODEL_ID", "" +
                         "mistralai/Mistral-7B-Instruct-v0.2")
                 }

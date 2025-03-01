@@ -6,6 +6,9 @@ from twitchio.ext import commands
 import os
 
 class Bot(commands.Bot):
+"""
+Beschreibung für Klasse Bot.
+"""
     def __init__(self):
         token = os.getenv("TWITCH_BOT_TOKEN")
         channels = os.getenv("derleiti.de", "#default_channel").split(",")

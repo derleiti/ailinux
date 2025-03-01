@@ -53,15 +53,15 @@ def initialize():
         bool: True if initialization is successful, False otherwise
     """
     global _model_info_cache, _cache_last_updated
-    
+
     try:
         # Create cache directory if it doesn't exist
         os.makedirs(MODELS_CACHE_DIR, exist_ok=True)
-        
+
         # Load cached model information if available
         if os.path.exists(HF_CACHE_FILE):
             try:
-                with open(HF_CACHE_FILE, 'r') as f:
+                with open(HF_CACHE_FILE, 'r', encoding='utf-8') as f:
                     cache_data = json.load(f)
                     _model_info_cache = cache_data.get('models', {})
                     _cache_last_updated = cache_data.get('timestamp', 0)
@@ -76,7 +76,7 @@ def initialize():
 
         # Check for required dependencies
         check_dependencies()
-        
+
         return True
     except Exception as e:
         logger.error(f"Error initializing Hugging Face module: {str(e)}")
@@ -89,32 +89,33 @@ def check_dependencies():
     Logs warnings for missing dependencies.
     """
     missing_deps = []
-    
+
     try:
+        # pylint: disable=C0415  # Import außerhalb des Toplevel
         import torch
     except ImportError:
         missing_deps.append("torch")
-    
+
     try:
         import transformers
     except ImportError:
         missing_deps.append("transformers")
-    
+
     try:
         import huggingface_hub
     except ImportError:
         missing_deps.append("huggingface_hub")
-    
+
     try:
         import accelerate
     except ImportError:
         missing_deps.append("accelerate")
-        
+
     try:
         import bitsandbytes
     except ImportError:
         missing_deps.append("bitsandbytes")
-    
+
     if missing_deps:
         logger.warning(f"Missing dependencies: {', '.join(missing_deps)}")
         logger.warning("Install them with: pip install " + " ".join(missing_deps))
@@ -138,6 +139,7 @@ def is_available() -> bool:
         bool: True if available, False otherwise
     """
     try:
+        # pylint: disable=C0415  # Import außerhalb des Toplevel
         import torch
         import transformers
         return True
@@ -156,11 +158,11 @@ def get_model_info(model_id: str, force_refresh: bool = False) -> Dict[str, Any]
         Dictionary with model information
     """
     global _model_info_cache
-    
+
     # Initialize if needed
     if _model_info_cache is None:
         initialize()
-    
+
     # Return cached info if available and not forcing refresh
     if not force_refresh and model_id in _model_info_cache:
         return _model_info_cache[model_id]
@@ -170,7 +172,7 @@ def get_model_info(model_id: str, force_refresh: bool = False) -> Dict[str, Any]
 
         api = HfApi(token=HF_API_KEY if HF_API_KEY else None)
         model_info = api.model_info(model_id)
-        
+
         # Format model info for easier consumption
         info = {
             "id": model_info.id,
@@ -183,7 +185,7 @@ def get_model_info(model_id: str, force_refresh: bool = False) -> Dict[str, Any]
             "library_name": getattr(model_info, "library_name", None),
             "size_in_bytes": getattr(model_info, "_siblings_size_in_bytes", 0)
         }
-        
+
         # Store in cache
         with _cache_lock:
             if _model_info_cache is None:
@@ -192,7 +194,7 @@ def get_model_info(model_id: str, force_refresh: bool = False) -> Dict[str, Any]
 
             # Save updated cache periodically
             _save_cache()
-        
+
         return info
     except Exception as e:
         logger.error(f"Error fetching model info for {model_id}: {str(e)}")
@@ -200,8 +202,8 @@ def get_model_info(model_id: str, force_refresh: bool = False) -> Dict[str, Any]
 
 
 def search_models(
-    category: Optional[str] = None, 
-    keyword: Optional[str] = None, 
+    category: Optional[str] = None,
+    keyword: Optional[str] = None,
     limit: int = 10
 ) -> List[Dict[str, Any]]:
     """Search for models on Hugging Face Hub.
@@ -218,18 +220,18 @@ def search_models(
         from huggingface_hub import HfApi
 
         api = HfApi(token=HF_API_KEY if HF_API_KEY else None)
-        
+
         # Prepare filter criteria
         filter_dict = {}
         if category:
             filter_dict["task"] = category
-        
+
         # Perform search based on parameters
         if keyword:
             models = api.list_models(search=keyword, filter=filter_dict or None, limit=limit)
         else:
             models = api.list_models(filter=filter_dict or None, limit=limit)
-        
+
         # Format results
         results = []
         for model in models:
@@ -240,7 +242,7 @@ def search_models(
                 "likes": getattr(model, "likes", None),
                 "tags": model.tags
             })
-        
+
         return results
     except Exception as e:
         logger.error(f"Error searching Hugging Face models: {str(e)}")
@@ -263,11 +265,12 @@ def get_recommended_models() -> List[Dict[str, Any]]:
     ]
 
     results = []
-    
+
     # Get detailed information for each recommended model
     with ThreadPoolExecutor(max_workers=5) as executor:
         # Use threading to fetch model info in parallel
-        future_to_model = {executor.submit(get_model_info, model_id): model_id for model_id in recommended_models}
+        future_to_model = {executor.submit(get_model_info,
+        model_id): model_id for model_id in recommended_models}
         for future in future_to_model:
             model_id = future_to_model[future]
             try:
@@ -279,7 +282,7 @@ def get_recommended_models() -> List[Dict[str, Any]]:
 
 
 def get_pipeline(
-    model_id: Optional[str] = None, 
+    model_id: Optional[str] = None,
     task: str = "text-generation", 
     use_gpu: bool = True
 ):

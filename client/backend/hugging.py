@@ -37,6 +37,9 @@ def download_and_use_model(model_name):
         print(f"Fehler beim Laden des Modells {model_name}: {e}")
 
 def main():
+"""
+Beschreibung für Funktion main.
+"""
     print("Willkommen bei der Hugging Face App!")
     print("1. Suche Modelle nach Kategorie")
     print("2. Suche Modelle nach Text")
