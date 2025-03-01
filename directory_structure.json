@@ -17,10 +17,6 @@
                 "size": 6228,
                 "path": "/home/zombie/ailinux/uploadready.py"
             },
-            "readme~HEAD": {
-                "size": 1226,
-                "path": "/home/zombie/ailinux/readme~HEAD"
-            },
             ".gitattributes": {
                 "size": 81,
                 "path": "/home/zombie/ailinux/.gitattributes"
@@ -33,14 +29,6 @@
                 "size": 4431,
                 "path": "/home/zombie/ailinux/structure.txt"
             },
-            "project-documentation.md": {
-                "size": 76840,
-                "path": "/home/zombie/ailinux/project-documentation.md"
-            },
-            "patch-v0.1.txt": {
-                "size": 30074,
-                "path": "/home/zombie/ailinux/patch-v0.1.txt"
-            },
             "SECURITY.md": {
                 "size": 619,
                 "path": "/home/zombie/ailinux/SECURITY.md"
@@ -50,11 +38,11 @@
                 "path": "/home/zombie/ailinux/filestructure.md"
             },
             ".gitignore": {
-                "size": 476,
+                "size": 536,
                 "path": "/home/zombie/ailinux/.gitignore"
             },
             "directory_structure.json": {
-                "size": 909907,
+                "size": 911673,
                 "path": "/home/zombie/ailinux/directory_structure.json"
             },
             "large_files.json": {
@@ -62,11 +50,11 @@
                 "path": "/home/zombie/ailinux/large_files.json"
             },
             "optimization.log": {
-                "size": 75486,
+                "size": 105554,
                 "path": "/home/zombie/ailinux/optimization.log"
             }
         },
-        "size": 1199663
+        "size": 1123417
     },
     "/home/zombie/ailinux/client": {
         "files": {
@@ -21510,6 +21498,10 @@
         "files": {},
         "size": 0
     },
+    "/home/zombie/ailinux/frontend": {
+        "files": {},
+        "size": 0
+    },
     "/home/zombie/ailinux/.github": {
         "files": {},
         "size": 0
@@ -21527,6 +21519,15 @@
         "files": {},
         "size": 0
     },
+    "/home/zombie/ailinux/server/__pycache__": {
+        "files": {
+            "ai_model.cpython-312.pyc": {
+                "size": 137,
+                "path": "/home/zombie/ailinux/server/__pycache__/ai_model.cpython-312.pyc"
+            }
+        },
+        "size": 137
+    },
     "/home/zombie/ailinux/server/backend": {
         "files": {
             "app.py": {
@@ -21541,10 +21542,6 @@
                 "size": 3776,
                 "path": "/home/zombie/ailinux/server/backend/requirements.txt"
             },
-            "req.txt": {
-                "size": 110,
-                "path": "/home/zombie/ailinux/server/backend/req.txt"
-            },
             "data_server.py": {
                 "size": 8385,
                 "path": "/home/zombie/ailinux/server/backend/data_server.py"
@@ -21558,16 +21555,7 @@
                 "path": "/home/zombie/ailinux/server/backend/websocketserv.py"
             }
         },
-        "size": 55374
-    },
-    "/home/zombie/ailinux/server/backend/__pycache__": {
-        "files": {
-            "ai_model.cpython-312.pyc": {
-                "size": 137,
-                "path": "/home/zombie/ailinux/server/backend/__pycache__/ai_model.cpython-312.pyc"
-            }
-        },
-        "size": 137
+        "size": 55264
     },
     "/home/zombie/ailinux/server/frontend": {
         "files": {},
@@ -21584,7 +21572,7 @@
                 "path": "/home/zombie/ailinux/.git/FETCH_HEAD"
             },
             "index": {
-                "size": 543670,
+                "size": 543326,
                 "path": "/home/zombie/ailinux/.git/index"
             },
             "ORIG_HEAD": {
@@ -21608,7 +21596,7 @@
                 "path": "/home/zombie/ailinux/.git/config"
             }
         },
-        "size": 545096
+        "size": 544752
     },
     "/home/zombie/ailinux/.git/branches": {
         "files": {},
@@ -21617,11 +21605,11 @@
     "/home/zombie/ailinux/.git/logs": {
         "files": {
             "HEAD": {
-                "size": 8226,
+                "size": 8550,
                 "path": "/home/zombie/ailinux/.git/logs/HEAD"
             }
         },
-        "size": 8226
+        "size": 8550
     },
     "/home/zombie/ailinux/.git/logs/refs": {
         "files": {},
@@ -21634,11 +21622,11 @@
                 "path": "/home/zombie/ailinux/.git/logs/refs/heads/master"
             },
             "main": {
-                "size": 3171,
+                "size": 3495,
                 "path": "/home/zombie/ailinux/.git/logs/refs/heads/main"
             }
         },
-        "size": 7494
+        "size": 7818
     },
     "/home/zombie/ailinux/.git/logs/refs/remotes": {
         "files": {},
@@ -21787,9 +21775,13 @@
             "1edf59e9eab25542c80e1fb1e63dbefe183b5d": {
                 "size": 17055,
                 "path": "/home/zombie/ailinux/.git/objects/9e/1edf59e9eab25542c80e1fb1e63dbefe183b5d"
+            },
+            "fde431f0f389edadf494a21db2a67585d62126": {
+                "size": 167,
+                "path": "/home/zombie/ailinux/.git/objects/9e/fde431f0f389edadf494a21db2a67585d62126"
             }
         },
-        "size": 99817
+        "size": 99984
     },
     "/home/zombie/ailinux/.git/objects/e4": {
         "files": {
@@ -21799,6 +21791,15 @@
             }
         },
         "size": 187
+    },
+    "/home/zombie/ailinux/.git/objects/ac": {
+        "files": {
+            "c2136263de30a5b167a50955e7ac06077da892": {
+                "size": 163,
+                "path": "/home/zombie/ailinux/.git/objects/ac/c2136263de30a5b167a50955e7ac06077da892"
+            }
+        },
+        "size": 163
     },
     "/home/zombie/ailinux/.git/objects/6c": {
         "files": {
@@ -21812,6 +21813,15 @@
             }
         },
         "size": 1268
+    },
+    "/home/zombie/ailinux/.git/objects/59": {
+        "files": {
+            "201adc2b5c02925aafd79c7da681f3a8265052": {
+                "size": 166,
+                "path": "/home/zombie/ailinux/.git/objects/59/201adc2b5c02925aafd79c7da681f3a8265052"
+            }
+        },
+        "size": 166
     },
     "/home/zombie/ailinux/.git/objects/51": {
         "files": {
@@ -21834,6 +21844,15 @@
             }
         },
         "size": 1343
+    },
+    "/home/zombie/ailinux/.git/objects/d6": {
+        "files": {
+            "2d279b9b7415f78eb4da51ab33c9abf37d4c46": {
+                "size": 532,
+                "path": "/home/zombie/ailinux/.git/objects/d6/2d279b9b7415f78eb4da51ab33c9abf37d4c46"
+            }
+        },
+        "size": 532
     },
     "/home/zombie/ailinux/.git/objects/f1": {
         "files": {
@@ -21901,6 +21920,19 @@
             }
         },
         "size": 82736
+    },
+    "/home/zombie/ailinux/.git/objects/b2": {
+        "files": {
+            "14b51933a5862ef126ed4bc63e9e18cd211c57": {
+                "size": 624,
+                "path": "/home/zombie/ailinux/.git/objects/b2/14b51933a5862ef126ed4bc63e9e18cd211c57"
+            },
+            "487765f121f214f942062f3617ad747d9f301d": {
+                "size": 3348,
+                "path": "/home/zombie/ailinux/.git/objects/b2/487765f121f214f942062f3617ad747d9f301d"
+            }
+        },
+        "size": 3972
     },
     "/home/zombie/ailinux/.git/objects/06": {
         "files": {
@@ -21997,6 +22029,15 @@
         },
         "size": 238020507
     },
+    "/home/zombie/ailinux/.git/objects/95": {
+        "files": {
+            "59a1623914ae8c6f8ee9685d02bf8ba629af2a": {
+                "size": 233,
+                "path": "/home/zombie/ailinux/.git/objects/95/59a1623914ae8c6f8ee9685d02bf8ba629af2a"
+            }
+        },
+        "size": 233
+    },
     "/home/zombie/ailinux/.git/objects/a6": {
         "files": {
             "4063637e2ce3ccf1c1837309dbf498437e201e": {
@@ -22055,6 +22096,15 @@
         },
         "size": 589
     },
+    "/home/zombie/ailinux/.git/objects/1f": {
+        "files": {
+            "7b88aaef6c7bace8c0e6a7178fd340c23a37fc": {
+                "size": 84,
+                "path": "/home/zombie/ailinux/.git/objects/1f/7b88aaef6c7bace8c0e6a7178fd340c23a37fc"
+            }
+        },
+        "size": 84
+    },
     "/home/zombie/ailinux/.git/objects/c0": {
         "files": {
             "b9948d2705dbe256c3112b7d7b7e171b8c51a8": {
@@ -22063,6 +22113,15 @@
             }
         },
         "size": 165
+    },
+    "/home/zombie/ailinux/.git/objects/0b": {
+        "files": {
+            "62282a029b5cfa0b746b2cd68a73eef55b60a5": {
+                "size": 90961,
+                "path": "/home/zombie/ailinux/.git/objects/0b/62282a029b5cfa0b746b2cd68a73eef55b60a5"
+            }
+        },
+        "size": 90961
     },
     "/home/zombie/ailinux/.git/objects/1a": {
         "files": {
@@ -22162,6 +22221,15 @@
             }
         },
         "size": 166
+    },
+    "/home/zombie/ailinux/.git/objects/32": {
+        "files": {
+            "6637bfda31b26e47df5d69d1758f7d21e87ab9": {
+                "size": 11062,
+                "path": "/home/zombie/ailinux/.git/objects/32/6637bfda31b26e47df5d69d1758f7d21e87ab9"
+            }
+        },
+        "size": 11062
     },
     "/home/zombie/ailinux/.git/objects/e3": {
         "files": {
