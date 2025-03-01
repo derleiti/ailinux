@@ -2,7 +2,8 @@
 
 This module provides functionality for the AILinux system.
 """
-import os
+# import os
+  # entfernt: W0611
 from huggingface_hub import HfApi
 from transformers import pipeline, AutoModelForTextGeneration, AutoTokenizer
 
@@ -51,7 +52,7 @@ def main():
                 print(model.modelId)
         else:
             print("Keine Modelle gefunden.")
-    
+
     elif choice == "2":
         query = input("Gib ein Schlüsselwort für die Modell-Suche ein: ")
         models = search_models_by_text(query)
@@ -61,7 +62,7 @@ def main():
                 print(model.modelId)
         else:
             print("Keine Modelle gefunden.")
-    
+
     elif choice == "3":
         model_name = input("Gib den Namen des Modells ein, das du installieren möchtest: ")
         download_and_use_model(model_name)

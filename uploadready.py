@@ -1,7 +1,8 @@
 import os
 import json
 import subprocess
-import shutil
+# import shutil
+  # entfernt: W0611
 import sys
 from pathlib import Path
 
@@ -89,8 +90,12 @@ def run_pylint():
     with open("optimization.log", "w") as log_file:
         log_file.write(result.stdout)
 
-def sync_with_github(username, repo_name, ssh_key, use_pat=False):
-    """Synchronisiert das lokale Repository mit GitHub über SSH oder PAT und führt einen Merge durch, wenn nötig."""
+def sync_with_github(username,
+repo_name,
+ssh_key,
+use_pat=False):
+    """" +
+        "Synchronisiert das lokale Repository mit GitHub über SSH oder PAT und führt einen Merge durch, wenn nötig."""
     try:
         # GitHub-URL vorbereiten
         if use_pat:
@@ -112,7 +117,8 @@ def sync_with_github(username, repo_name, ssh_key, use_pat=False):
         print(f"Error während GitHub-Synchronisierung: {e}")
         # Falls der Fehler bei der Authentifizierung liegt, frage nach dem PAT
         if "fatal: Authentifizierung" in str(e):
-            print("Fehler bei der Authentifizierung. Bitte prüfe deinen SSH-Schlüssel oder Personal Access Token.")
+            print("" +
+                "Fehler bei der Authentifizierung. Bitte prüfe deinen SSH-Schlüssel oder Personal Access Token.")
         else:
             print(f"Git Fehler: {str(e)}")
 

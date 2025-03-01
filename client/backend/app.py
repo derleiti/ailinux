@@ -63,7 +63,7 @@ def debug():
         if not request.is_json:
             logger.error("Request does not contain valid JSON")
             return jsonify({"error": "Request must be in JSON format"}), 400
-            
+
         data = request.json
         log_text = data.get('log')
         model_name = data.get('model', 'gpt4all')  # Default to gpt4all
@@ -73,7 +73,8 @@ def debug():
             return jsonify({"error": "No log text provided"}), 400
 
         logger.info(f"Received log for analysis using model: {model_name}")
-        logger.debug(f"Log content preview: {log_text[:100]}...")  # Log first 100 chars for debugging
+        logger.debug(f"" +
+            "Log content preview: {log_text[:100]}...")  # Log first 100 chars for debugging
 
         # Process and analyze the log
         translated_log = translate_log(log_text)
@@ -87,7 +88,7 @@ def debug():
 
         # Return analysis response
         return jsonify({"analysis": response})
-    
+
     except Exception as e:
         error_message = f"Error in debug endpoint: {str(e)}"
         stack_trace = traceback.format_exc()
@@ -109,9 +110,9 @@ def get_logs():
             with open(log_file_path, 'r', encoding='utf-8') as f:
                 logs = f.readlines()
             return jsonify({"logs": logs})
-        
+
         return jsonify({"logs": []})
-    
+
     except Exception as e:
         logger.exception(f"Error retrieving logs: {str(e)}")
         return jsonify({"error": str(e)}), 500
@@ -162,19 +163,19 @@ def handle_settings():
         JSON response with settings data or confirmation
     """
     settings_file = os.path.join(os.path.dirname(__file__), "settings.json")
-    
+
     if request.method == 'POST':
         try:
             new_settings = request.json
-            
+
             # Validate settings
             if not isinstance(new_settings, dict):
                 return jsonify({"error": "Invalid settings format"}), 400
-                
+
             import json
             with open(settings_file, 'w') as f:
                 json.dump(new_settings, f, indent=2)
-                
+
             logger.info(f"Updated settings: {new_settings}")
             return jsonify({"status": "success", "message": "Settings updated"})
         except Exception as e:
@@ -268,7 +269,7 @@ if __name__ == "__main__":
         elif sys.argv[1] == "remote":
             HOST = "derleiti.de"
             logger.info("Using remote (derleiti.de) configuration")
-    
+
     logger.info(f"Starting backend server on {HOST}:{PORT} (Debug: {DEBUG})...")
     logger.info(f"Environment: {ENV}")
     app.run(host=HOST, port=PORT, debug=DEBUG)

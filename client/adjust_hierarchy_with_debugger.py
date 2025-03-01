@@ -26,7 +26,7 @@ def restore_directory_structure(base_dir):
         'logs': ['backend.log', 'frontend.log'],
         'readme': ['README.md']
     }
-    
+
     # Helper function to create the directory structure
     def create_structure(target_path, structure):
         """Create directories and files based on expected structure."""
@@ -42,7 +42,7 @@ def restore_directory_structure(base_dir):
             elif isinstance(value, dict):
                 os.makedirs(target_dir, exist_ok=True)
                 create_structure(target_dir, value)
-    
+
     # Create the directory structure
     create_structure(base_dir, expected_structure)
     print(f"Directory structure verified and restored in {base_dir}")
@@ -53,7 +53,7 @@ def run_pylint():
     try:
         result = subprocess.run(
             ['pylint', '--disable=all', '--enable=error'],
-            capture_output=True, 
+            capture_output=True,
             text=True,
             check=True
         )

@@ -1,7 +1,8 @@
 """Module docstring missing."""
 import os
 import subprocess
-import sys
+# import sys
+  # entfernt: W0611
 
 # Funktion zum Hinzufügen von Docstrings zu Modulen und Funktionen
 def add_docstrings(file_path):

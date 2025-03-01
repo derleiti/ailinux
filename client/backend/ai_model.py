@@ -58,10 +58,10 @@ def initialize_gpt4all():
     global _gpt4all_model
     if _gpt4all_model is not None:
         return _gpt4all_model
-    
+
     try:
         from gpt4all import GPT4All
-        
+
         # Check if model exists
         model_path = os.path.expanduser(LLAMA_MODEL_PATH)
         if not os.path.exists(model_path):
@@ -69,12 +69,12 @@ def initialize_gpt4all():
             filename = os.path.basename(model_path)
             logger.warning(f"Model file not found at: {model_path}")
             logger.info(f"Checking if model exists in directory: {model_dir}")
-            
+
             # Check if the directory exists, create if not
             if not os.path.exists(model_dir):
                 os.makedirs(model_dir, exist_ok=True)
                 logger.info(f"Created model directory: {model_dir}")
-            
+
             # List available models if directory exists
             if os.path.exists(model_dir):
                 files = os.listdir(model_dir)
@@ -85,9 +85,9 @@ def initialize_gpt4all():
                     logger.info(f"Using available model: {model_path}")
                 else:
                     logger.warning("No .gguf models found. Will download the default model.")
-            
+
             # Model will be downloaded automatically by GPT4All if not found
-        
+
         logger.info(f"Loading GPT4All model from: {model_path}")
         _gpt4all_model = GPT4All(model_path)
         logger.info("GPT4All model loaded successfully")
@@ -106,11 +106,11 @@ def initialize_openai():
     global _openai
     if _openai is not None:
         return _openai
-    
+
     if not OPENAI_API_KEY:
         logger.warning("No OpenAI API key found in environment")
         return None
-    
+
     try:
         import openai
         openai.api_key = OPENAI_API_KEY
@@ -131,11 +131,11 @@ def initialize_gemini():
     global _gemini
     if _gemini is not None:
         return _gemini
-    
+
     if not GEMINI_API_KEY:
         logger.warning("No Gemini API key found in environment")
         return None
-    
+
     try:
         import google.generativeai as genai
         genai.configure(api_key=GEMINI_API_KEY)
@@ -154,21 +154,21 @@ def initialize_huggingface():
         A tuple of (model, tokenizer, pipeline) or None if initialization fails
     """
     global _huggingface_model, _huggingface_tokenizer, _huggingface_pipeline
-    
+
     if _huggingface_pipeline is not None:
         return _huggingface_model, _huggingface_tokenizer, _huggingface_pipeline
-    
+
     try:
         from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
         import torch
-        
+
         # Create cache directory if it doesn't exist
         os.makedirs(CACHE_DIR, exist_ok=True)
-        
+
         # Check for CUDA availability
         device = "cuda" if torch.cuda.is_available() else "cpu"
         logger.info(f"Using device: {device} for Hugging Face model")
-        
+
         # Load tokenizer first
         logger.info(f"Loading Hugging Face tokenizer: {HUGGINGFACE_MODEL_ID}")
         _huggingface_tokenizer = AutoTokenizer.from_pretrained(
@@ -176,18 +176,18 @@ def initialize_huggingface():
             cache_dir=CACHE_DIR,
             token=HUGGINGFACE_API_KEY if HUGGINGFACE_API_KEY else None
         )
-        
+
         # Load model with appropriate configuration
         logger.info(f"Loading Hugging Face model: {HUGGINGFACE_MODEL_ID}")
         _huggingface_model = AutoModelForCausalLM.from_pretrained(
-            HUGGINGFACE_MODEL_ID, 
+            HUGGINGFACE_MODEL_ID,
             cache_dir=CACHE_DIR,
             token=HUGGINGFACE_API_KEY if HUGGINGFACE_API_KEY else None,
             torch_dtype=torch.float16 if device == "cuda" else torch.float32,
             low_cpu_mem_usage=True,
             device_map="auto" if device == "cuda" else None
         )
-        
+
         # Create text generation pipeline
         logger.info("Creating Hugging Face pipeline")
         _huggingface_pipeline = pipeline(
@@ -196,10 +196,10 @@ def initialize_huggingface():
             tokenizer=_huggingface_tokenizer,
             device=0 if device == "cuda" else -1
         )
-        
+
         logger.info("Hugging Face model initialized successfully")
         return _huggingface_model, _huggingface_tokenizer, _huggingface_pipeline
-    
+
     except Exception as e:
         logger.error(f"Error initializing Hugging Face model: {str(e)}")
         return None, None, None
@@ -218,7 +218,7 @@ def get_model(model_name: str):
         ValueError: If an unknown model name is provided
     """
     model_name = model_name.lower()
-    
+
     if model_name == "gpt4all":
         return initialize_gpt4all()
     elif model_name == "openai":
@@ -246,9 +246,9 @@ def create_prompt(log_text: str, instruction: Optional[str] = None) -> str:
 2. Identify any errors or warnings
 3. Suggest potential solutions if problems are found
 """
-    
+
     instruction = instruction or default_instruction
-    
+
     return f"""{instruction}
 
 LOG:
@@ -258,7 +258,10 @@ ANALYSIS:
 """
 
 
-def analyze_log(log_text: str, model_name: str = DEFAULT_MODEL, instruction: Optional[str] = None) -> str:
+def analyze_log(log_text: str,
+
+model_name: str = DEFAULT_MODEL,
+instruction: Optional[str] = None) -> str:
     """Analyze log text using the specified AI model.
     
     Args:
@@ -271,7 +274,7 @@ def analyze_log(log_text: str, model_name: str = DEFAULT_MODEL, instruction: Opt
     """
     start_time = time.time()
     logger.info(f"Analyzing log with model: {model_name}")
-    
+
     # Create the prompt
     prompt = create_prompt(log_text, instruction)
     
@@ -289,7 +292,7 @@ def analyze_log(log_text: str, model_name: str = DEFAULT_MODEL, instruction: Opt
     except Exception as e:
         logger.exception(f"Error analyzing log with {model_name}: {str(e)}")
         return f"⚠ Error analyzing log: {str(e)}"
-    
+
     elapsed_time = time.time() - start_time
     logger.info(f"Log analysis completed in {elapsed_time:.2f} seconds")
     
@@ -338,13 +341,14 @@ def openai_response(prompt: str) -> str:
     openai = initialize_openai()
     if not openai:
         raise ModelNotInitializedError("OpenAI API could not be initialized. Check your API key.")
-    
+
     try:
         logger.debug(f"Sending prompt to OpenAI (length: {len(prompt)})")
         
         # Use the ChatCompletion API
         response = openai.ChatCompletion.create(
             model="gpt-4",
+            
             messages=[
                 {"role": "system", "content": "You are a log analysis expert. Provide clear, concise analysis of log files."},
                 {"role": "user", "content": prompt}
@@ -399,7 +403,7 @@ def huggingface_response(prompt: str) -> str:
     model, tokenizer, pipe = initialize_huggingface()
     if not pipe:
         raise ModelNotInitializedError("Hugging Face model could not be initialized.")
-    
+
     try:
         logger.debug(f"Sending prompt to Hugging Face (length: {len(prompt)})")
         
@@ -412,10 +416,10 @@ def huggingface_response(prompt: str) -> str:
             repetition_penalty=1.15,
             do_sample=True
         )
-        
+
         # Extract the generated text
         generated_text = outputs[0]['generated_text']
-        
+
         # Remove the prompt from the response
         response_text = generated_text[len(prompt):].strip()
         
@@ -497,7 +501,7 @@ if __name__ == "__main__":
         if model_info["available"]:
             model_name = model_info["name"]
             print(f"\nTesting {model_name} model...")
-            
+
             test_log = "2023-05-01 12:34:56 ERROR Failed to connect to database: Connection refused"
             result = analyze_log(test_log, model_name)
             

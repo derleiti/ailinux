@@ -65,7 +65,10 @@ def repl(
     ] = None,
     device: Annotated[
         str,
-        typer.Option("--device", "-d", help="Device to use for chatbot, e.g. gpu, amd, nvidia, intel. Defaults to CPU."),
+        typer.Option("--device",
+        "-d",
+        help="" +
+            "Device to use for chatbot, e.g. gpu, amd, nvidia, intel. Defaults to CPU."),
     ] = None,
 ):
     """The CLI read-eval-print loop."""
@@ -112,7 +115,7 @@ def _old_loop(gpt4all_instance):
         # if regular message, append to messages
         MESSAGES.append({"role": "user", "content": message})
 
-        # execute chat completion and ignore the full response since 
+        # execute chat completion and ignore the full response since
         # we are outputting it incrementally
         full_response = gpt4all_instance.chat_completion(
             MESSAGES,
@@ -149,7 +152,7 @@ def _new_loop(gpt4all_instance):
             # if regular message, append to messages
             MESSAGES.append({"role": "user", "content": message})
 
-            # execute chat completion and ignore the full response since 
+            # execute chat completion and ignore the full response since
             # we are outputting it incrementally
             response_generator = gpt4all_instance.generate(
                 message,

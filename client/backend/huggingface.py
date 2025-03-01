@@ -24,7 +24,10 @@ HF_API_KEY = os.getenv("HF_API_KEY", "")
 
 # Default settings
 DEFAULT_MODEL = os.getenv("DEFAULT_HF_MODEL", "mistralai/Mistral-7B-Instruct-v0.2")
-MODELS_CACHE_DIR = os.getenv("HF_MODELS_CACHE_DIR", os.path.join(os.path.dirname(__file__), "models"))
+MODELS_CACHE_DIR = os.getenv("HF_MODELS_CACHE_DIR",
+
+os.path.join(os.path.dirname(__file__),
+"models"))
 HF_CACHE_FILE = os.path.join(MODELS_CACHE_DIR, "huggingface_cache.json")
 
 # Model cache
@@ -70,7 +73,7 @@ def initialize():
         else:
             _model_info_cache = {}
             _cache_last_updated = 0
-        
+
         # Check for required dependencies
         check_dependencies()
         
@@ -161,10 +164,10 @@ def get_model_info(model_id: str, force_refresh: bool = False) -> Dict[str, Any]
     # Return cached info if available and not forcing refresh
     if not force_refresh and model_id in _model_info_cache:
         return _model_info_cache[model_id]
-    
+
     try:
         from huggingface_hub import HfApi
-        
+
         api = HfApi(token=HF_API_KEY if HF_API_KEY else None)
         model_info = api.model_info(model_id)
         
@@ -186,7 +189,7 @@ def get_model_info(model_id: str, force_refresh: bool = False) -> Dict[str, Any]
             if _model_info_cache is None:
                 _model_info_cache = {}
             _model_info_cache[model_id] = info
-            
+
             # Save updated cache periodically
             _save_cache()
         
@@ -213,7 +216,7 @@ def search_models(
     """
     try:
         from huggingface_hub import HfApi
-        
+
         api = HfApi(token=HF_API_KEY if HF_API_KEY else None)
         
         # Prepare filter criteria
@@ -258,7 +261,7 @@ def get_recommended_models() -> List[Dict[str, Any]]:
         "microsoft/phi-2",
         "google/gemma-2b-it"
     ]
-    
+
     results = []
     
     # Get detailed information for each recommended model
@@ -319,10 +322,10 @@ def get_pipeline(
             token=HF_API_KEY if HF_API_KEY else None,
             cache_dir=MODELS_CACHE_DIR
         )
-        
+
         # Add to cache
         _pipeline_cache[cache_key] = hf_pipeline
-        
+
         load_time = time.time() - start_time
         logger.info(f"Model loaded in {load_time:.2f}s")
         
@@ -347,7 +350,7 @@ def get_tokenizer(model_id: Optional[str] = None):
     # Check if tokenizer already exists in cache
     if model_id in _token_cache:
         return _token_cache[model_id]
-    
+
     try:
         from transformers import AutoTokenizer
         
@@ -358,7 +361,7 @@ def get_tokenizer(model_id: Optional[str] = None):
             token=HF_API_KEY if HF_API_KEY else None,
             cache_dir=MODELS_CACHE_DIR
         )
-        
+
         # Add to cache
         _token_cache[model_id] = tokenizer
         
@@ -387,7 +390,7 @@ def analyze_log(
     """
     # Use default model if not specified
     model_id = model_id or DEFAULT_MODEL
-    
+
     try:
         # Create analysis prompt
         system_prompt = """You are an AI assistant specialized in analyzing logs and providing insights. 
@@ -398,7 +401,7 @@ Given a log snippet, your task is to:
 4. Suggest troubleshooting steps or solutions
 
 Be concise and precise in your analysis."""
-        
+
         prompt = f"{system_prompt}\n\nLOG:\n{log_text}\n\nANALYSIS:"
         
         # Get pipeline for text generation
@@ -419,10 +422,10 @@ Be concise and precise in your analysis."""
             repetition_penalty=1.1,
             return_full_text=False
         )
-        
+
         processing_time = time.time() - start_time
         logger.info(f"Log analyzed in {processing_time:.2f}s with {model_id}")
-        
+
         # Extract and clean response
         response = result[0]['generated_text']
         
