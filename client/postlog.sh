@@ -1,5 +1,5 @@
-cd ~/ailinux/frontend/ && cat *.log
-cd ~/ailinux/backend/ && cat *.log
+cd /home/zombie/ailinux/frontend/ && cat *.log
+cd /home/zombie/ailinux/backend/ && cat *.log
 cd ~/ailinux/
 =======
 #!/bin/bash

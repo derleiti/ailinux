@@ -2,7 +2,7 @@
 import os
 
 # Define the correct directory for analysis
-directory = '/home/zombie/ailinux_backup'
+directory = '/home/zombie/ailinux'
 
 # Verify the directory exists
 if os.path.exists(directory):
