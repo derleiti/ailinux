@@ -10,13 +10,26 @@ import json
 import time
 import os
 import uuid
-from typing import Dict, Any, Optional, Callable
-from dotenv import load_dotenv
+import traceback
+from typing import Dict, Any, Optional, Callable, List, Union
+import ssl
 
 # Load environment variables
-load_dotenv()
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    logging.warning("dotenv package not installed, environment variables must be set manually")
 
 # Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
+    handlers=[
+        logging.FileHandler("websocket_client.log"),
+        logging.StreamHandler()
+    ]
+)
 logger = logging.getLogger("WebSocketClient")
 
 # Server configuration
@@ -25,6 +38,7 @@ WS_API_KEY = os.getenv("WS_API_KEY", "")
 WS_RECONNECT_DELAY = int(os.getenv("WS_RECONNECT_DELAY", "5"))
 WS_MAX_RECONNECT = int(os.getenv("WS_MAX_RECONNECT", "10"))
 WS_HEARTBEAT_INTERVAL = int(os.getenv("WS_HEARTBEAT_INTERVAL", "30"))
+WS_DEBUG = os.getenv("WS_DEBUG", "False").lower() == "true"
 
 class WebSocketClient:
     """WebSocket client for real-time communication."""
@@ -46,6 +60,7 @@ class WebSocketClient:
         self.message_handlers = {}
         self.last_activity = time.time()
         self.last_heartbeat = time.time()
+        self.connection_lock = threading.Lock()
 
         # Start connection if requested
         if auto_connect:
@@ -53,27 +68,35 @@ class WebSocketClient:
 
     def connect(self):
         """Connect to the WebSocket server."""
-        if self.connected or self.ws_thread and self.ws_thread.is_alive():
-            logger.info("WebSocket already connected or connecting")
-            return
+        with self.connection_lock:
+            if self.connected or (self.ws_thread and self.ws_thread.is_alive()):
+                logger.info("WebSocket already connected or connecting")
+                return
 
-        self.shutdown_requested = False
-        self.ws_thread = threading.Thread(target=self._connect_and_run, daemon=True)
-        self.ws_thread.start()
-        logger.info("\2")
+            self.shutdown_requested = False
+            self.ws_thread = threading.Thread(target=self._connect_and_run, daemon=True)
+            self.ws_thread.start()
+            logger.info(f"Connecting to WebSocket server at {self.url}")
 
     def disconnect(self):
         """Disconnect from the WebSocket server."""
-        self.shutdown_requested = True
-        if self.ws:
-            self.ws.close()
+        with self.connection_lock:
+            self.shutdown_requested = True
+            if self.ws:
+                try:
+                    self.ws.close()
+                except Exception as e:
+                    logger.error(f"Error closing WebSocket connection: {str(e)}")
 
-        # Wait for thread to terminate
-        if self.ws_thread and self.ws_thread.is_alive():
-            self.ws_thread.join(timeout=2.0)
+            # Wait for thread to terminate
+            if self.ws_thread and self.ws_thread.is_alive():
+                try:
+                    self.ws_thread.join(timeout=2.0)
+                except Exception as e:
+                    logger.error(f"Error joining WebSocket thread: {str(e)}")
 
-        self.connected = False
-        logger.info("WebSocket disconnected")
+            self.connected = False
+            logger.info("WebSocket disconnected")
 
     def is_connected(self) -> bool:
         """Check if the WebSocket is connected.
@@ -83,7 +106,7 @@ class WebSocketClient:
         """
         return self.connected
 
-    def send_message(self, message_type: str, data: Dict[str, Any]):
+    def send_message(self, message_type: str, data: Dict[str, Any]) -> bool:
         """Send a message to the WebSocket server.
 
         Args:
@@ -94,7 +117,7 @@ class WebSocketClient:
             bool: True if message was sent, False otherwise
         """
         if not self.connected or not self.ws:
-            logger.warning("\2")
+            logger.warning(f"Cannot send message of type '{message_type}': Not connected to server")
             return False
 
         try:
@@ -107,10 +130,12 @@ class WebSocketClient:
 
             self.ws.send(json.dumps(message))
             self.last_activity = time.time()
-            logger.debug("\2")
+            logger.debug(f"Sent message of type '{message_type}' to server")
             return True
         except Exception as e:
-            logger.error("\2")
+            logger.error(f"Error sending message of type '{message_type}': {str(e)}")
+            # Reconnect on send failure
+            self.reconnect()
             return False
 
     def register_handler(self, message_type: str, handler: Callable[[Dict[str, Any]], None]):
@@ -121,29 +146,58 @@ class WebSocketClient:
             handler: Callback function for the message type
         """
         self.message_handlers[message_type] = handler
-        logger.debug("\2")
+        logger.debug(f"Registered handler for message type '{message_type}'")
+
+    def reconnect(self):
+        """Force reconnection to the WebSocket server."""
+        with self.connection_lock:
+            if self.ws:
+                try:
+                    self.ws.close()
+                except Exception:
+                    pass
+            
+            self.connected = False
+            
+            # Only start a new thread if the old one is done
+            if not self.ws_thread or not self.ws_thread.is_alive():
+                self.reconnect_count = 0
+                self.shutdown_requested = False
+                self.ws_thread = threading.Thread(target=self._connect_and_run, daemon=True)
+                self.ws_thread.start()
+                logger.info(f"Reconnecting to WebSocket server at {self.url}")
 
     def _connect_and_run(self):
         """Connect to the WebSocket server and run the message loop."""
         while not self.shutdown_requested:
             try:
                 # Connect to the server
-                logger.info("\2")
+                logger.info(f"Attempting to connect to {self.url} (attempt {self.reconnect_count + 1}/{WS_MAX_RECONNECT})")
+
+                # Set up SSL context if using secure WebSocket
+                ssl_opt = None
+                if self.url.startswith("wss://"):
+                    ssl_opt = {"cert_reqs": ssl.CERT_REQUIRED}
+                    # Uncomment to disable certificate verification (not recommended for production)
+                    # ssl_opt = {"cert_reqs": ssl.CERT_NONE}
 
                 # Create WebSocket connection
-                websocket.enableTrace(os.getenv("WS_DEBUG", "False").lower() == "true")
+                websocket.enableTrace(WS_DEBUG)
                 self.ws = websocket.WebSocketApp(
                     self.url,
                     on_open=self._on_open,
                     on_message=self._on_message,
                     on_error=self._on_error,
-                    on_close=self._on_close
+                    on_close=self._on_close,
+                    on_ping=self._on_ping,
+                    on_pong=self._on_pong
                 )
 
-                # Start the WebSocket loop
+                # Start the WebSocket loop with appropriate settings
                 self.ws.run_forever(
                     ping_interval=WS_HEARTBEAT_INTERVAL,
-                    ping_timeout=5
+                    ping_timeout=10,
+                    sslopt=ssl_opt
                 )
 
                 # Check if shutdown was requested
@@ -154,16 +208,17 @@ class WebSocketClient:
                 # Reconnect after delay if not shutdown
                 self.reconnect_count += 1
                 if self.reconnect_count > WS_MAX_RECONNECT:
-                    logger.error("\2")
+                    logger.error(f"Maximum reconnection attempts ({WS_MAX_RECONNECT}) reached, giving up")
                     break
 
                 # Exponential backoff for reconnection
                 delay = min(WS_RECONNECT_DELAY * (2 ** (self.reconnect_count - 1)), 60)
-                logger.info("\2")
+                logger.info(f"Reconnecting in {delay} seconds...")
                 time.sleep(delay)
 
             except Exception as e:
-                logger.error("\2")
+                logger.error(f"Error in WebSocket connection: {str(e)}")
+                logger.debug(traceback.format_exc())
 
                 if self.shutdown_requested:
                     break
@@ -183,7 +238,7 @@ class WebSocketClient:
         self.connected = True
         self.reconnect_count = 0
         self.last_activity = time.time()
-        logger.info("\2")
+        logger.info("WebSocket connection opened successfully")
 
         # Send authentication message if API key is set
         if WS_API_KEY:
@@ -204,6 +259,7 @@ class WebSocketClient:
             "platform": "AILinux Backend"
         }
         ws.send(json.dumps(handshake))
+        logger.debug("Sent handshake message")
 
     def _on_message(self, ws, message):
         """Handle incoming WebSocket messages.
@@ -219,7 +275,7 @@ class WebSocketClient:
             data = json.loads(message)
             message_type = data.get("type", "unknown")
 
-            logger.debug("\2")
+            logger.debug(f"Received message of type '{message_type}' from server")
 
             # Handle heartbeat messages
             if message_type == "heartbeat":
@@ -229,7 +285,7 @@ class WebSocketClient:
             # Handle authentication response
             if message_type == "auth_response":
                 status = data.get("status", "unknown")
-                logger.info("\2")
+                logger.info(f"Authentication {status}")
                 return
 
             # Dispatch to registered handlers
@@ -237,14 +293,16 @@ class WebSocketClient:
                 try:
                     self.message_handlers[message_type](data)
                 except Exception as e:
-                    logger.error("\2")
+                    logger.error(f"Error in message handler for type '{message_type}': {str(e)}")
+                    logger.debug(traceback.format_exc())
             else:
-                logger.debug("\2")
+                logger.debug(f"No handler registered for message type '{message_type}'")
 
         except json.JSONDecodeError:
-            logger.warning("\2")
+            logger.warning(f"Received invalid JSON message: {message[:100]}...")
         except Exception as e:
-            logger.error("\2")
+            logger.error(f"Error processing message: {str(e)}")
+            logger.debug(traceback.format_exc())
 
     def _on_error(self, ws, error):
         """Handle WebSocket errors.
@@ -254,9 +312,10 @@ class WebSocketClient:
             error: Error that occurred
         """
         if isinstance(error, (ConnectionRefusedError, ConnectionResetError)):
-            logger.warning("\2")
+            logger.warning(f"Connection error: {str(error)}")
         else:
-            logger.error("\2")
+            logger.error(f"WebSocket error: {str(error)}")
+            logger.debug(traceback.format_exc())
 
         self.connected = False
 
@@ -271,9 +330,29 @@ class WebSocketClient:
         self.connected = False
 
         if close_status_code:
-            logger.info("\2")
+            logger.info(f"WebSocket closed with status code {close_status_code}: {close_msg or 'No message'}")
         else:
             logger.info("WebSocket closed")
+
+    def _on_ping(self, ws, message):
+        """Handle ping messages from the server.
+        
+        Args:
+            ws: WebSocket instance
+            message: Ping message
+        """
+        logger.debug("Received ping from server")
+        # WebSocketApp automatically sends pong response
+
+    def _on_pong(self, ws, message):
+        """Handle pong messages from the server.
+        
+        Args:
+            ws: WebSocket instance
+            message: Pong message
+        """
+        logger.debug("Received pong from server")
+        self.last_heartbeat = time.time()
 
     def _send_heartbeat_response(self):
         """Send heartbeat response to server."""
@@ -286,12 +365,13 @@ class WebSocketClient:
                 }
                 self.ws.send(json.dumps(heartbeat_response))
                 self.last_heartbeat = time.time()
+                logger.debug("Sent heartbeat response")
             except Exception as e:
-                logger.error("\2")
+                logger.error(f"Error sending heartbeat response: {str(e)}")
 
 
 # Singleton instance for global use
-INSTANCE = None
+_instance = None
 
 def get_client() -> WebSocketClient:
     """Get the global WebSocketClient instance.
@@ -299,9 +379,9 @@ def get_client() -> WebSocketClient:
     Returns:
         WebSocketClient: Global client instance
     """
-    global INSTANCE
-    if INSTANCE is None:
-        INSTANCE = WebSocketClient()
+    global _instance
+    if _instance is None:
+        _instance = WebSocketClient()
     return _instance
 
 
@@ -314,22 +394,7 @@ if __name__ == "__main__":
 
     # Test client with echo handler
     def echo_handler(data):
-        pass
-        pass
-        pass
-        pass
-        pass
-        pass
-        pass
-        pass
-        pass
-        pass
-        pass
-        pass
-        pass
-        pass
-        pass
-    """Handle echo responses from the server."""
+        """Handle echo responses from the server."""
         print(f"Echo: {data}")
 
     # Create client and register handler
@@ -340,12 +405,13 @@ if __name__ == "__main__":
     client.connect()
 
     try:
-        # Keep running until interrupted
-        while True:
+        # Simple test loop
+        for i in range(10):
             if client.is_connected():
-                client.send_message("echo", {"text": "Hello from AILinux!"})
+                client.send_message("echo", {"text": f"Hello from AILinux! Message {i+1}"})
             time.sleep(5)
     except KeyboardInterrupt:
         print("Interrupted by user")
     finally:
         client.disconnect()
+        print("Client disconnected")

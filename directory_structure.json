@@ -1,10 +1,10 @@
 {
   "stats": {
     "total_directories": 718,
-    "total_files": 4191,
-    "total_size_bytes": 674546945,
-    "total_size_human": "643.30 MB",
-    "scan_time": "2025-03-01 23:27:07"
+    "total_files": 4190,
+    "total_size_bytes": 674649557,
+    "total_size_human": "643.40 MB",
+    "scan_time": "2025-03-01 23:45:58"
   },
   "structure": {
     "LICENSE": {
@@ -42,13 +42,13 @@
         },
         "websocket-client.py": {
           "type": "file",
-          "size": 10448,
-          "size_human": "10.20 KB"
+          "size": 14399,
+          "size_human": "14.06 KB"
         },
         "alphaos.py": {
           "type": "file",
-          "size": 1977,
-          "size_human": "1.93 KB"
+          "size": 5238,
+          "size_human": "5.12 KB"
         },
         "backend": {
           "type": "directory",
@@ -60,8 +60,8 @@
             },
             "app.py": {
               "type": "file",
-              "size": 9216,
-              "size_human": "9.00 KB"
+              "size": 15635,
+              "size_human": "15.27 KB"
             },
             "__pycache__": {
               "type": "directory",
@@ -84,8 +84,8 @@
             },
             "ai_model.py": {
               "type": "file",
-              "size": 6855,
-              "size_human": "6.69 KB"
+              "size": 19380,
+              "size_human": "18.93 KB"
             },
             "package-lock.json": {
               "type": "file",
@@ -24324,11 +24324,6 @@
         }
       }
     },
-    "github_sync.log": {
-      "type": "file",
-      "size": 311,
-      "size_human": "311.00 B"
-    },
     "patch": {
       "type": "directory",
       "contents": {
@@ -24472,18 +24467,18 @@
           "contents": {
             "websocket-server.py": {
               "type": "file",
-              "size": 16024,
-              "size_human": "15.65 KB"
+              "size": 20175,
+              "size_human": "19.70 KB"
             },
             "app.py": {
               "type": "file",
-              "size": 10334,
-              "size_human": "10.09 KB"
+              "size": 8925,
+              "size_human": "8.72 KB"
             },
             "ai_model.py": {
               "type": "file",
-              "size": 6855,
-              "size_human": "6.69 KB"
+              "size": 19380,
+              "size_human": "18.93 KB"
             },
             "requirements.txt": {
               "type": "file",
@@ -24540,8 +24535,8 @@
     },
     "optimization.log": {
       "type": "file",
-      "size": 90763,
-      "size_human": "88.64 KB"
+      "size": 152263,
+      "size_human": "148.69 KB"
     }
   }
 }
