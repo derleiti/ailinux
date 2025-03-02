@@ -2,9 +2,9 @@
   "stats": {
     "total_directories": 456,
     "total_files": 2845,
-    "total_size_bytes": 289685714,
+    "total_size_bytes": 289689862,
     "total_size_human": "276.27 MB",
-    "scan_time": "2025-03-02 06:42:44"
+    "scan_time": "2025-03-02 06:56:06"
   },
   "structure": {
     "postcode.sh": {
@@ -16170,8 +16170,8 @@
         },
         "start.sh": {
           "type": "file",
-          "size": 2957,
-          "size_human": "2.89 KB"
+          "size": 5096,
+          "size_human": "4.98 KB"
         },
         "package.json": {
           "type": "file",
@@ -16204,8 +16204,8 @@
         },
         "requirements.txt": {
           "type": "file",
-          "size": 1379,
-          "size_human": "1.35 KB"
+          "size": 1409,
+          "size_human": "1.38 KB"
         },
         "file-sync-client.py": {
           "type": "file",
@@ -16216,8 +16216,8 @@
     },
     "github_sync.log": {
       "type": "file",
-      "size": 1244,
-      "size_human": "1.21 KB"
+      "size": 1555,
+      "size_human": "1.52 KB"
     },
     "ailinuxdocumentation_2.md": {
       "type": "file",
@@ -16470,8 +16470,8 @@
     },
     "directory_structure.json.bak": {
       "type": "file",
-      "size": 667870,
-      "size_human": "652.22 KB"
+      "size": 668724,
+      "size_human": "653.05 KB"
     },
     "bigfiles.sh": {
       "type": "file",
@@ -16490,8 +16490,8 @@
     },
     "directory_structure.json": {
       "type": "file",
-      "size": 668724,
-      "size_human": "653.05 KB"
+      "size": 668846,
+      "size_human": "653.17 KB"
     },
     "large_files.json": {
       "type": "file",
@@ -16500,8 +16500,8 @@
     },
     "optimization.log": {
       "type": "file",
-      "size": 184842,
-      "size_human": "180.51 KB"
+      "size": 185534,
+      "size_human": "181.19 KB"
     }
   }
 }

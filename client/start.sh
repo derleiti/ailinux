@@ -16,8 +16,6 @@ NC='\033[0m' # No Color
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$BASE_DIR"
 
-python python-fix.py
-
 echo -e "${BLUE}=== AILinux Startup Script ===${NC}"
 
 # Process arguments
@@ -32,8 +30,62 @@ fi
 
 echo -e "${GREEN}Running in $MODE mode${NC}"
 
+# Check Python compatibility
+echo -e "${BLUE}Checking Python compatibility...${NC}"
+# Modify python-fix.py execution to capture exit code properly
+python3 -c "
+import sys
+sys.path.append('$BASE_DIR')
+from python-fix import check_python_compatibility
+
+if not check_python_compatibility():
+    print('${YELLOW}WARNING: Python compatibility issues detected!${NC}')
+    print('${YELLOW}Flask may not work correctly with this Python version.${NC}')
+    sys.exit(1)
+sys.exit(0)
+"
+PY_COMPAT_STATUS=$?
+
+if [ $PY_COMPAT_STATUS -ne 0 ]; then
+    echo -e "${YELLOW}Python compatibility check failed!${NC}"
+    echo -e "${YELLOW}The system may experience issues with Flask due to Python version incompatibility.${NC}"
+    echo -e "${YELLOW}Recommended: Use Python 3.9-3.11 instead of Python 3.12+${NC}"
+    
+    # Ask user whether to continue or abort
+    read -p "Do you want to continue anyway? (y/n): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo -e "${RED}Aborting startup due to Python compatibility issues.${NC}"
+        exit 1
+    fi
+    
+    echo -e "${YELLOW}Continuing despite compatibility warnings...${NC}"
+fi
+
 # Set up environment
 echo -e "${BLUE}Setting up environment...${NC}"
+
+# Configure the Python path based on compatibility check
+# If compatibility failed, try looking for Python 3.11 or 3.10 first
+if [ $PY_COMPAT_STATUS -ne 0 ]; then
+    echo -e "${YELLOW}Attempting to find compatible Python version...${NC}"
+    if command -v python3.11 &> /dev/null; then
+        export PYTHON_PATH="$(command -v python3.11)"
+        echo -e "${GREEN}Found Python 3.11: $PYTHON_PATH${NC}"
+    elif command -v python3.10 &> /dev/null; then
+        export PYTHON_PATH="$(command -v python3.10)"
+        echo -e "${GREEN}Found Python 3.10: $PYTHON_PATH${NC}"
+    elif command -v python3.9 &> /dev/null; then
+        export PYTHON_PATH="$(command -v python3.9)"
+        echo -e "${GREEN}Found Python 3.9: $PYTHON_PATH${NC}"
+    else
+        echo -e "${YELLOW}No alternative Python version found. Using default path.${NC}"
+        export PYTHON_PATH="/home/zombie/client/bin/python3"
+    fi
+else
+    # Compatibility passed, use the standard path
+    export PYTHON_PATH="/home/zombie/client/bin/python3"
+fi
 
 # Configure the Python path to find Flask
 export PYTHONPATH="/home/zombie/client/lib/python3.12/site-packages:$PYTHONPATH"
@@ -65,7 +117,6 @@ fi
 # Check if we should verify Flask installation
 if [ "$2" == "--check-deps" ]; then
     echo -e "${BLUE}Checking dependencies...${NC}"
-    PYTHON_PATH="/home/zombie/client/bin/python3"
     
     # Check if the Python interpreter exists
     if [ ! -f "$PYTHON_PATH" ]; then
@@ -86,9 +137,9 @@ if [ "$2" == "--check-deps" ]; then
     fi
 fi
 
-# Start the optimized application
+# Modify node start.js to use our potentially updated PYTHON_PATH
 echo -e "${BLUE}Starting AILinux...${NC}"
-node start.js "$MODE"
+PYTHON_PATH="$PYTHON_PATH" node start.js "$MODE"
 
 # Exit status
 EXIT_CODE=$?

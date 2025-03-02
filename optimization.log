@@ -1950,16 +1950,16 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[55:112]
 ==server.backend.ai_model:[57:114]
         self._configs = self._load_model_configs()
-        # Ensure model cache directory exists
+        # Stelle sicher, dass das Modell-Cache-Verzeichnis existiert
         for config in self._configs.values():
             os.makedirs(os.path.expanduser(config.cache_dir), exist_ok=True)
 
     def _load_model_configs(self) -> Dict[str, ModelConfig]:
         """
-        Load model configurations from environment variables.
+        Lade Modellkonfigurationen aus Umgebungsvariablen.
 
         Returns:
-            Dictionary of model configurations
+            Dictionary mit Modellkonfigurationen
         """
         models_cache_dir = os.getenv("MODELS_CACHE_DIR", "./models")
 
@@ -1993,16 +1993,16 @@ analyze.py:1:0: R0801: Similar lines in 2 files
     @lru_cache(maxsize=4)
     def initialize_model(self, model_name: str) -> Any:
         """
-        Initialize a specific AI model with caching and robust error handling.
+        Initialisiere ein spezifisches AI-Modell mit Caching und robuster Fehlerbehandlung.
 
         Args:
-            model_name: Name of the model to initialize
+            model_name: Name des zu initialisierenden Modells
 
         Returns:
-            Initialized model instance
+            Initialisierte Modellinstanz
 
         Raises:
-            ModelInitializationError: If model cannot be initialized
+            ModelInitializationError: Wenn das Modell nicht initialisiert werden kann
         """
         config = self._configs.get(model_name.lower())
         if not config: (duplicate-code)
@@ -2116,7 +2116,9 @@ analyze.py:1:0: R0801: Similar lines in 2 files
     create_structure(base_dir, expected_structure)
     print(f"Directory structure verified and restored in {base_dir}")
 
- (duplicate-code)
+
+def run_pylint():
+    """Run pylint with specific options to check the code.""" (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==bigfiles:[4:24]
 ==devtools.bigfiles:[4:24]
@@ -2190,28 +2192,29 @@ analyze.py:1:0: R0801: Similar lines in 2 files
                 "local_files_only": False
             }
 
-            # Füge gerätespezifische Optimierungen hinzu
+            # Add device-specific optimizations
             if device == "cuda":
                 model_loading_args.update({
-                    "torch_dtype": torch.float16,  # Verwende halbe Präzision für GPU
+                    "torch_dtype": torch.float16,  # Use half precision for GPU
                     "low_cpu_mem_usage": True,
                     "device_map": "auto"
                 })
 
             model = AutoModelForCausalLM.from_pretrained(config.model_id, **model_loading_args)
 
-            # Erstelle Textgenerierungs-Pipeline (duplicate-code)
+            # Create text generation pipeline (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[189:210]
 ==server.backend.app:[143:163]
         return jsonify({"error": str(e)}), 500
 
+
 @app.route('/system', methods=['GET'])
 def system_status():
-    """
-    Endpunkt zum Abrufen des Systemstatus
+    """Get system status information.
 
-    Gibt Systemmetriken zurück
+    Returns:
+        JSON response with system metrics
     """
     try:
         system_info = {
@@ -2257,7 +2260,9 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         'readme': ['README.md']
     }
 
-    # Helper function to create the directory structure (duplicate-code)
+    # Helper function to create the directory structure
+    def create_structure(target_path, structure):
+        """Create directories and files based on expected structure.""" (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[114:124]
 ==server.backend.ai_model:[116:126]
@@ -2403,19 +2408,20 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 ==server.backend.ai_model:[219:236]
             raise
 
-    def _initialize_huggingface(self, config: ModelConfig) -> Tuple[Any, Any, Any]:
-        """Initialize Hugging Face model with comprehensive setup."""
+    def _initialize_huggingface(self, config: ModelConfig) -> Any:
+        """Initialisiere Hugging Face-Modell mit umfassendem Setup."""
         try:
+            # Lazy-Import, um Abhängigkeiten zu reduzieren, wenn das Modell nicht verwendet wird
             from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
             import torch
 
-            # Determine device
+            # Bestimme Gerät
             if config.device == "auto":
                 device = "cuda" if torch.cuda.is_available() else "cpu"
             else:
                 device = config.device
 
-            # Log device information
+            # Protokolliere Geräteinformationen
             if device == "cuda" and torch.cuda.is_available(): (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[361:371]
@@ -2435,13 +2441,12 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 ==server.backend.app:[221:250]
             return jsonify({"error": str(e)}), 500
 
-
 @app.route('/health', methods=['GET'])
 def health_check():
-    """Check the health of the backend server.
+    """
+    Endpunkt zum Überprüfen der Gesundheit des Backend-Servers
 
-    Returns:
-        JSON response with server status
+    Gibt Serverstatus zurück
     """
     return jsonify({
         "status": "online",
@@ -2450,33 +2455,22 @@ def health_check():
         "timestamp": datetime.now().isoformat()
     })
 
+def translate_log(log_text):
+    """Vorverarbeitung von Log-Text vor der KI-Analyse.
 
-@app.route('/analysis_history', methods=['GET'])
-def get_analysis_history():
-    """Get the history of log analyses.
+    Diese Funktion kann erweitert werden, um eine anspruchsvollere
+    Log-Übersetzung oder -Normalisierung zu implementieren.
+
+    Args:
+        log_text: Der ursprüngliche Log-Text
 
     Returns:
-        JSON response with analysis history
-    """ (duplicate-code)
+        Verarbeiteter Log-Text
+    """
+    # In Zukunft hier Log-Normalisierung oder -Vorverarbeitung hinzufügen (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.gpt4all.app:[143:156]
 ==server.backend.gpt4all.app:[106:119]
-    while True:
-        message = input(" ⇢  ")
-
-        # Check if special command and take action
-        if message in SPECIAL_COMMANDS:
-            SPECIAL_COMMANDS[message](MESSAGES)
-            continue
-
-        # if regular message, append to messages
-        MESSAGES.append({"role": "user", "content": message})
-
-        # execute chat completion and ignore the full response since
-        # we are outputting it incrementally (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.gpt4all.app:[106:119]
-==server.backend.gpt4all.app:[143:156]
         while True:
             message = input(" ⇢  ")
 
@@ -2490,6 +2484,22 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 
             # execute chat completion and ignore the full response since
             # we are outputting it incrementally (duplicate-code)
+analyze.py:1:0: R0801: Similar lines in 2 files
+==client.backend.gpt4all.app:[106:119]
+==server.backend.gpt4all.app:[143:156]
+    while True:
+        message = input(" ⇢  ")
+
+        # Check if special command and take action
+        if message in SPECIAL_COMMANDS:
+            SPECIAL_COMMANDS[message](MESSAGES)
+            continue
+
+        # if regular message, append to messages
+        MESSAGES.append({"role": "user", "content": message})
+
+        # execute chat completion and ignore the full response since
+        # we are outputting it incrementally (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[492:500]
 ==server.backend.ai_model:[508:516]
@@ -2534,20 +2544,19 @@ Given a log snippet, your task is to:
 4. Suggest troubleshooting steps or solutions
 
 Be concise and precise in your analysis."""
-
-        # Prepare the conversation (duplicate-code)
+ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[211:229]
 ==server.backend.app:[164:182]
         return jsonify({"error": str(e)}), 500
 
-
 @app.route('/settings', methods=['GET', 'POST'])
 def handle_settings():
-    """Update or retrieve application settings.
+    """
+    Endpunkt zum Aktualisieren oder Abrufen von Anwendungseinstellungen
 
-    Returns:
-        JSON response with settings data or confirmation
+    PUT: Aktualisiert Einstellungen basierend auf übergebenem JSON
+    GET: Gibt aktuelle Einstellungen zurück
     """
     settings_file = os.path.join(os.path.dirname(__file__), "settings.json")
 
@@ -2555,7 +2564,7 @@ def handle_settings():
         try:
             new_settings = request.json
 
-            # Validate settings
+            # Einstellungen validieren
             if not isinstance(new_settings, dict): (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[371:382]
@@ -2588,22 +2597,23 @@ analyze.py:1:0: R0801: Similar lines in 2 files
             if not os.path.isabs(model_path):
                 model_path = os.path.join(os.path.expanduser(config.cache_dir), model_path)
 
-            # Ensure model directory exists
+            # Stelle sicher, dass das Modellverzeichnis existiert
             os.makedirs(os.path.dirname(model_path), exist_ok=True)
 
-            # Check if model file exists, if not inform the user
+            # Prüfe, ob die Modelldatei existiert, falls nicht, informiere den Benutzer
             if not os.path.exists(model_path): (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[174:188]
 ==server.backend.app:[129:142]
         return jsonify({"error": str(e)}), 500
 
+
 @app.route('/models', methods=['GET'])
 def get_models():
-    """
-    Endpunkt zum Abrufen verfügbarer AI-Modelle
+    """Get list of available AI models.
 
-    Gibt eine Liste der verfügbaren Modelle zurück
+    Returns:
+        JSON response containing available models
     """
     try:
         models = get_available_models()
@@ -2626,11 +2636,12 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 DEBUG = os.getenv("FLASK_DEBUG", "False").lower() == "true"
 ENV = os.getenv("ENVIRONMENT", "development")
 
-# Konfiguriere Logging
+# Configure logging
 log_directory = os.path.join(os.path.dirname(__file__), "logs")
 os.makedirs(log_directory, exist_ok=True)
 log_file_path = os.path.join(log_directory, "backend.log")
- (duplicate-code)
+
+# Debug log file for storing AI model responses (duplicate-code)
 
 
 Report
@@ -2643,13 +2654,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |29     |28         |+1.00      |89.66       |27.59    |
+|module   |29     |29         |=          |89.66       |27.59    |
 +---------+-------+-----------+-----------+------------+---------+
 |class    |13     |13         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |method   |65     |65         |=          |100.00      |7.69     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |122    |121        |+1.00      |100.00      |0.00     |
+|function |122    |122        |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -2674,13 +2685,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |4641   |60.14 |4625     |+16.00     |
+|code      |4641   |60.14 |4641     |=          |
 +----------+-------+------+---------+-----------+
-|docstring |1321   |17.12 |1317     |+4.00      |
+|docstring |1321   |17.12 |1321     |=          |
 +----------+-------+------+---------+-----------+
-|comment   |664    |8.60  |662      |+2.00      |
+|comment   |664    |8.60  |664      |=          |
 +----------+-------+------+---------+-----------+
-|empty     |1091   |14.14 |1086     |+5.00      |
+|empty     |1091   |14.14 |1091     |=          |
 +----------+-------+------+---------+-----------+
 
 
@@ -2704,11 +2715,11 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |629    |622      |622        |
+|convention |629    |629      |629        |
 +-----------+-------+---------+-----------+
 |refactor   |85     |85       |85         |
 +-----------+-------+---------+-----------+
-|warning    |453    |451      |451        |
+|warning    |453    |453      |453        |
 +-----------+-------+---------+-----------+
 |error      |44     |44       |44         |
 +-----------+-------+---------+-----------+
@@ -2899,5 +2910,5 @@ Messages
 
 
 ------------------------------------------------------------------
-Your code has been rated at 6.05/10 (previous run: 6.05/10, -0.01)
+Your code has been rated at 6.05/10 (previous run: 6.05/10, +0.00)
 
