@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AILinux - Log Analysis</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2196f3;
+      --background-light: #f8f9fa;
+      --background-dark: #212529;
+      --card-bg-light: #ffffff;
+      --card-bg-dark: #2c3237;
+      --border-light: #dee2e6;
+      --border-dark: #495057;
+      --text-light: #212529;
+      --text-dark: #f8f9fa;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      background-color: var(--background-light);
+      color: var(--text-light);
+      transition: background-color 0.3s, color 0.3s;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    body.dark-mode {
+      background-color: var(--background-dark);
+      color: var(--text-dark);
+    }
+    
+    .navbar {
+      background-color: var(--card-bg-light);
+      border-bottom: 1px solid var(--border-light);
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    
+    body.dark-mode .navbar {
+      background-color: var(--card-bg-dark);
+      border-color: var(--border-dark);
+    }
+    
+    .main-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+      width: 100%;
+    }
+    
+    .card {
+      background-color: var(--card-bg-light);
+      border-color: var(--border-light);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: background-color 0.3s, border-color 0.3s;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    
+    body.dark-mode .card {
+      background-color: var(--card-bg-dark);
+      border-color: var(--border-dark);
+    }
+    
+    #chat-container {
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 180px);
+      min-height: 500px;
+    }
+    
+    #chat-log {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.02);
+      border-radius: 8px 8px 0 0;
+      margin-bottom: 0;
+      border: 1px solid var(--border-light);
+      border-bottom: none;
+    }
+    
+    body.dark-mode #chat-log {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-color: var(--border-dark);
+    }
+    
+    .message {
+      margin-bottom: 16px;
+      padding: 12px 15px;
+      border-radius: 8px;
+      max-width: 85%;
+      word-wrap: break-word;
+      position: relative;
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .user-message {
+      background-color: #e3f2fd;
+      border-left: 4px solid var(--primary-color);
+      margin-left: auto;
+      color: #103c5c;
+    }
+    
+    .ai-message {
+      background-color: #f5f5f5;
+      border-left: 4px solid #4caf50;
+      margin-right: auto;
+      color: #1e1e1e;
+    }
+    
+    body.dark-mode .user-message {
+      background-color: #1a3b5e;
+      color: #e3f2fd;
+    }
+    
+    body.dark-mode .ai-message {
+      background-color: #2e3a2e;
+      color: #e8f5e9;
+    }
+    
+    .system-message {
+      text-align: center;
+      font-style: italic;
+      color: #6c757d;
+      padding: 8px;
+      margin: 10px 0;
+    }
+    
+    .message-time {
+      font-size: 0.7rem;
+      color: #939393;
+      margin-top: 5px;
+      text-align: right;
+    }
+    
+    .model-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-right: 5px;
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .input-container {
+      background-color: var(--card-bg-light);
+      border: 1px solid var(--border-light);
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      padding: 15px;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    
+    body.dark-mode .input-container {
+      background-color: var(--card-bg-dark);
+      border-color: var(--border-dark);
+    }
+    
+    #user-input {
+      resize: none;
+      border-radius: 8px;
+      border: 1px solid var(--border-light);
+      padding: 12px;
+      transition: all 0.3s;
+      min-height: 100px;
+      background-color: white;
+      color: var(--text-light);
+    }
+    
+    body.dark-mode #user-input {
+      background-color: #3a3f46;
+      color: var(--text-dark);
+      border-color: var(--border-dark);
+    }
+    
+    #user-input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(33, 150, 243, 0.25);
+      outline: none;
+    }
+    
+    .file-upload-zone {
+      border: 2px dashed var(--border-light);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 15px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    body.dark-mode .file-upload-zone {
+      border-color: var(--border-dark);
+    }
+    
+    .file-upload-zone:hover, 
+    .file-upload-zone.dragover {
+      border-color: var(--primary-color);
+      background-color: rgba(33, 150, 243, 0.05);
+    }
+    
+    .model-selector {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      margin: 0.25rem;
+      border: 2px solid transparent;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+      background-color: #f1f3f5;
+    }
+    
+    body.dark-mode .model-selector {
+      background-color: #343a40;
+    }
+    
+    .model-selector:hover {
+      background-color: #e9ecef;
+    }
+    
+    body.dark-mode .model-selector:hover {
+      background-color: #2c3034;
+    }
+    
+    .model-selector.active {
+      border-color: var(--primary-color);
+      font-weight: 600;
+      background-color: rgba(33, 150, 243, 0.1);
+    }
+    
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 8px;
+    }
+    
+    .status-badge.online {
+      background-color: rgba(25, 135, 84, 0.1);
+      color: #198754;
+    }
+    
+    body.dark-mode .status-badge.online {
+      background-color: rgba(25, 135, 84, 0.2);
+    }
+    
+    .status-badge.offline {
+      background-color: rgba(220, 53, 69, 0.1);
+      color: #dc3545;
+    }
+    
+    body.dark-mode .status-badge.offline {
+      background-color: rgba(220, 53, 69, 0.2);
+    }
+    
+    .status-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    
+    .status-indicator.online {
+      background-color: #198754;
+    }
+    
+    .status-indicator.offline {
+      background-color: #dc3545;
+    }
+    
+    .loading-indicator {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid rgba(0, 0, 0, 0.2);
+      border-top-color: var(--primary-color);
+      border-radius: 50%;
+      animation: spinner 0.8s linear infinite;
+      margin-right: 6px;
+    }
+    
+    body.dark-mode .loading-indicator {
+      border-color: rgba(255, 255, 255, 0.2);
+      border-top-color: var(--primary-color);
+    }
+    
+    @keyframes spinner {
+      to { transform: rotate(360deg); }
+    }
+    
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+    
+    .typing-indicator span {
+      height: 8px;
+      width: 8px;
+      margin: 0 1px;
+      background-color: #bbb;
+      display: block;
+      border-radius: 50%;
+      opacity: 0.4;
+    }
+    
+    .typing-indicator span:nth-child(1) { animation: pulse 1s infinite; }
+    .typing-indicator span:nth-child(2) { animation: pulse 1s infinite .2s; }
+    .typing-indicator span:nth-child(3) { animation: pulse 1s infinite .4s; }
+    
+    @keyframes pulse {
+      0% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 0.4; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-cpu-fill me-2 text-primary"></i>
+        <span class="fw-bold">AILinux</span>
+      </a>
+      
+      <div class="d-flex align-items-center ms-auto">
+        <!-- System Status -->
+        <div class="me-3 d-none d-md-flex">
+          <div class="status-badge online">
+            <span class="status-indicator online"></span>
+            <span>GPT4All</span>
+          </div>
+          <div class="status-badge offline">
+            <span class="status-indicator offline"></span>
+            <span>HuggingFace</span>
+          </div>
+        </div>
+        
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-moon-fill"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Main Content -->
+  <div class="main-container">
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Select AI Model</h5>
+            <div class="d-flex flex-wrap">
+              <div class="model-selector active" data-model="gpt4all">
+                <i class="bi bi-cpu me-2"></i>GPT4All
+              </div>
+              <div class="model-selector" data-model="huggingface">
+                <i class="bi bi-hdd-network me-2"></i>HuggingFace
+              </div>
+              <div class="model-selector" data-model="openai">
+                <i class="bi bi-cloud me-2"></i>OpenAI
+              </div>
+              <div class="model-selector" data-model="gemini">
+                <i class="bi bi-google me-2"></i>Gemini
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row flex-grow-1">
+      <div class="col-md-12">
+        <div id="chat-container">
+          <!-- Chat Log -->
+          <div id="chat-log">
+            <div class="system-message">
+              <i class="bi bi-info-circle me-2"></i>
+              Welcome to AILinux Log Analysis! Use GPT4All to analyze system logs.
+            </div>
+            
+            <!-- Example Messages -->
+            <div class="message user-message">
+              <div class="mb-1">
+                <strong>System Log Analysis Request</strong>
+              </div>
+              I'm seeing some errors in my startup logs. Can you analyze them?
+            </div>
+            
+            <div class="message ai-message">
+              <div class="model-badge">GPT4All</div>
+              <div class="mb-1">
+                <strong>Analysis Results</strong>
+              </div>
+              <p>I'll need to see the actual logs to provide a proper analysis. Please upload your log file or paste the log content, and I'll help identify any issues.</p>
+            </div>
+            
+            <div class="typing-indicator" id="typing-indicator" style="display: none;">
+              <span></span>
+              <span></span>
+              <span></span>
+              <small class="ms-2 text-muted">GPT4All is analyzing...</small>
+            </div>
+          </div>
+          
+          <!-- Input Area -->
+          <div class="input-container">
+            <!-- File Upload Zone -->
+            <div id="file-upload-zone" class="file-upload-zone">
+              <i class="bi bi-file-earmark-text fs-3 mb-2"></i>
+              <p class="mb-1">Drop your log file here or click to browse</p>
+              <small class="text-muted">Supported formats: .log, .txt, .json</small>
+              <input type="file" id="file-input" style="display: none;">
+            </div>
+            
+            <!-- Text Input -->
+            <textarea 
+              id="user-input" 
+              class="form-control mb-3" 
+              placeholder="Paste log content here or describe your issue..."></textarea>
+            
+            <!-- Controls -->
+            <div class="d-flex justify-content-between">
+              <div>
+                <button id="clear-btn" class="btn btn-outline-secondary">
+                  <i class="bi bi-trash me-1"></i>Clear
+                </button>
+                <button id="example-btn" class="btn btn-outline-secondary ms-2">
+                  <i class="bi bi-lightning me-1"></i>Show Example
+                </button>
+              </div>
+              
+              <button id="analyze-btn" class="btn btn-primary">
+                <i class="bi bi-search me-1"></i>Analyze with GPT4All
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // DOM Elements
+      const themeToggle = document.getElementById('theme-toggle');
+      const fileUploadZone = document.getElementById('file-upload-zone');
+      const fileInput = document.getElementById('file-input');
+      const userInput = document.getElementById('user-input');
+      const analyzeBtn = document.getElementById('analyze-btn');
+      const clearBtn = document.getElementById('clear-btn');
+      const exampleBtn = document.getElementById('example-btn');
+      const chatLog = document.getElementById('chat-log');
+      const typingIndicator = document.getElementById('typing-indicator');
+      const modelSelectors = document.querySelectorAll('.model-selector');
+      
+      // Local state
+      let selectedModel = 'gpt4all';
+      let isAnalyzing = false;
+      
+      // Check for dark mode preference
+      if (localStorage.getItem('darkMode') === 'true' || 
+          (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && 
+           localStorage.getItem('darkMode') !== 'false')) {
+        document.body.classList.add('dark-mode');
+        themeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+      }
+      
+      // Set up event listeners
+      themeToggle.addEventListener('click', toggleDarkMode);
+      fileUploadZone.addEventListener('click', () => fileInput.click());
+      fileInput.addEventListener('change', handleFileUpload);
+      analyzeBtn.addEventListener('click', analyzeLog);
+      clearBtn.addEventListener('click', clearChat);
+      exampleBtn.addEventListener('click', showExample);
+      
+      // File upload drag and drop
+      fileUploadZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        fileUploadZone.classList.add('dragover');
+      });
+      
+      fileUploadZone.addEventListener('dragleave', () => {
+        fileUploadZone.classList.remove('dragover');
+      });
+      
+      fileUploadZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        fileUploadZone.classList.remove('dragover');
+        
+        if (e.dataTransfer.files.length > 0) {
+          handleFile(e.dataTransfer.files[0]);
+        }
+      });
+      
+      // Model selector
+      modelSelectors.forEach(selector => {
+        selector.addEventListener('click', () => {
+          modelSelectors.forEach(s => s.classList.remove('active'));
+          selector.classList.add('active');
+          selectedModel = selector.dataset.model;
+        });
+      });
+      
+      // Functions
+      function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode);
+        themeToggle.innerHTML = isDarkMode ? 
+          '<i class="bi bi-sun-fill"></i>' : 
+          '<i class="bi bi-moon-fill"></i>';
+      }
+      
+      function handleFileUpload(e) {
+        if (e.target.files.length > 0) {
+          handleFile(e.target.files[0]);
+        }
+      }
+      
+      function handleFile(file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          userInput.value = e.target.result;
+          addMessage('user', `Uploaded file: ${file.name}`);
+        };
+        reader.readAsText(file);
+      }
+      
+      function analyzeLog() {
+        if (isAnalyzing) return;
+        
+        const text = userInput.value.trim();
+        if (!text) {
+          alert('Please enter log text or upload a log file');
+          return;
+        }
+        
+        // Add user message
+        addMessage('user', text.length > 300 ? 
+          text.substring(0, 300) + '...' : text);
+        
+        // Start analysis
+        isAnalyzing = true;
+        analyzeBtn.disabled = true;
+        analyzeBtn.innerHTML = '<span class="loading-indicator"></span>Analyzing...';
+        typingIndicator.style.display = 'flex';
+        
+        // Simulate API call to backend
+        setTimeout(() => {
+          // Normally you would make a fetch request here
+          fetch('http://localhost:8081/debug', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              log: text,
+              model: selectedModel
+            })
+          })
+          .then(response => response.json())
+          .then(data => {
+            // Add AI message with results
+            addMessage('ai', data.analysis || 'Analysis completed. No issues found.');
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            // For demo purposes, add a mock response
+            if (selectedModel === 'gpt4all') {
+              const mockAnalysis = analyzeMockLog(text);
+              addMessage('ai', mockAnalysis);
+            } else {
+              addMessage('ai', 'Error connecting to backend. Please try again or check if the backend server is running.');
+            }
+          })
+          .finally(() => {
+            // Reset UI state
+            isAnalyzing = false;
+            analyzeBtn.disabled = false;
+            analyzeBtn.innerHTML = '<i class="bi bi-search me-1"></i>Analyze with GPT4All';
+            typingIndicator.style.display = 'none';
+          });
+        }, 1500);
+      }
+      
+      function addMessage(role, content) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${role}-message`;
+        
+        // Add model badge for AI messages
+        if (role === 'ai') {
+          const modelBadge = document.createElement('div');
+          modelBadge.className = 'model-badge';
+          modelBadge.textContent = selectedModel === 'gpt4all' ? 'GPT4All' :
+                                  selectedModel === 'huggingface' ? 'HuggingFace' :
+                                  selectedModel === 'openai' ? 'OpenAI' : 'Gemini';
+          messageDiv.appendChild(modelBadge);
+        }
+        
+        // Add content
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'mb-1';
+        contentDiv.innerHTML = `<strong>${role === 'user' ? 'You' : 'Analysis Results'}</strong>`;
+        messageDiv.appendChild(contentDiv);
+        
+        // Format content with paragraphs
+        const formattedContent = document.createElement('div');
+        formattedContent.innerHTML = content
+          .replace(/\n\n/g, '</p><p>')
+          .replace(/\n/g, '<br>')
+          .replace(/^(.+)$/, '<p>$1</p>');
+        messageDiv.appendChild(formattedContent);
+        
+        // Add timestamp
+        const timeDiv = document.createElement('div');
+        timeDiv.className = 'message-time';
+        timeDiv.textContent = new Date().toLocaleTimeString();
+        messageDiv.appendChild(timeDiv);
+        
+        // Add to chat log
+        chatLog.appendChild(messageDiv);
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }
+      
+      function clearChat() {
+        // Clear chat log except for welcome message
+        while (chatLog.childNodes.length > 1) {
+          chatLog.removeChild(chatLog.lastChild);
+        }
+        userInput.value = '';
+      }
+      
+      function showExample() {
+        // Add example log
+        userInput.value = `=== AILinux Startup Log - 2025-03-02T00:24:08.889Z ===
+2025-03-02T00:24:08.894Z - Logging system initialized
+2025-03-02T00:24:08.894Z - Running in LOCAL mode - connecting to localhost
+2025-03-02T00:24:08.894Z - Configuration: Flask=localhost:8081, WebSocket=ws://localhost:8082
+2025-03-02T00:24:08.894Z - API Keys: OpenAI=SET, Gemini=SET, HuggingFace=SET
+2025-03-02T00:24:08.894Z - Using Python interpreter: /home/zombie/client/bin/python3
+2025-03-02T00:24:08.895Z - Checking Python environment...
+2025-03-02T00:24:08.950Z - Flask check error: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/zombie/client/lib/python3.12/site-packages/flask/__init__.py", line 5, in <module>
+2025-03-02T00:24:08.951Z - Flask check error: from . import json as json
+  File "/home/zombie/client/lib/python3.12/site-packages/flask/json/__init__.py", line 7, in <module>
+    from .provider import _default
+  File "/home/zombie/client/lib/python3.12/site-packages/flask/json/provider.py", line 7, in <module>
+    import uuid
+  File "/home/zombie/client/lib/python3.12/site-packages/uuid.py", line 138
+    if not 0 <= time_low < 1<<32L:
+                               ^
+SyntaxError: invalid decimal literal
+2025-03-02T00:24:08.959Z - ERROR: Flask module not found. Please install the required dependencies.
+2025-03-02T00:24:08.959Z - Startup error: Flask module not found. Please install the required dependencies.`;
+        
+        // Notify user
+        addMessage('system', 'Example log loaded. Click "Analyze with GPT4All" to analyze it.');
+      }
+      
+      // Mock log analysis for demo purposes
+      function analyzeMockLog(logText) {
+        if (logText.includes('SyntaxError: invalid decimal literal')) {
+          return `# Log Analysis Summary
+
+## Key Issues Identified
+
+1. **Python Version Compatibility Error**: The application is attempting to use Flask with Python 3.12, but there's a syntax error in the UUID module.
+
+2. **SyntaxError in UUID Module**: The error occurs in the uuid.py file, line 138, with an invalid decimal literal: \`1<<32L\`. The 'L' suffix for long integers was removed in Python 3.
+
+3. **Flask Initialization Failure**: Due to the above error, Flask failed to initialize properly.
+
+## Root Cause
+
+The most likely cause is a version incompatibility between Python 3.12 and the installed version of Flask. The syntax error shows that some code is using legacy Python 2.x syntax (the 'L' suffix for long integers) which is not compatible with Python 3.12.
+
+## Recommended Solutions
+
+1. **Downgrade Python Version**: Use Python 3.9-3.11 instead of 3.12, as the Flask version installed may not be fully compatible with Python 3.12.
+
+2. **Update Flask**: Ensure you have the latest version of Flask installed that supports Python 3.12:
+   \`\`\`
+   pip install --upgrade flask
+   \`\`\`
+
+3. **Fix UUID Module**: If you're using a custom version of the uuid module, update the syntax by removing the 'L' suffix:
+   Change \`1<<32L\` to \`1<<32\`
+
+## Severity
+
+Critical - The application cannot start properly due to this error.
+
+## Additional Notes
+
+The log shows that the application is configured correctly with API keys for OpenAI, Gemini, and HuggingFace, but the core Flask framework is failing to initialize. Fixing the Python version compatibility issue should resolve this problem.`;
+        } else {
+          return "I've analyzed your log, but couldn't find any specific errors. The system appears to be functioning normally. If you're experiencing issues, please provide more detailed logs or specify what problems you're encountering.";
+        }
+      }
+    });
+  </script>
+</body>
+</html>

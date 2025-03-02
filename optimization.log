@@ -1,11 +1,5 @@
-************* Module client.backend.huggingface
-client/backend/huggingface.py:124:76: E0001: Parsing failed: 'unterminated string literal (detected at line 124) (client.backend.huggingface, line 124)' (syntax-error)
-************* Module client.frontend.twitchbot
-client/frontend/twitchbot.py:27:4: E0001: Parsing failed: 'unexpected indent (client.frontend.twitchbot, line 27)' (syntax-error)
 ************* Module client.frontend.log-analysis-integration
 client/frontend/log-analysis-integration.py:150:26: E0001: Parsing failed: 'unterminated f-string literal (detected at line 150) (client.frontend.log-analysis-integration, line 150)' (syntax-error)
-************* Module client.frontend.config
-client/frontend/config.py:37:4: E0001: Parsing failed: 'unexpected indent (client.frontend.config, line 37)' (syntax-error)
 ************* Module client.frontend.log-analysis
 client/frontend/log-analysis.py:50:16: E0001: Parsing failed: 'unterminated string literal (detected at line 50) (client.frontend.log-analysis, line 50)' (syntax-error)
 ************* Module client.file-sync-client
@@ -304,6 +298,73 @@ client/backend/app.py:13:0: W0611: Unused Optional imported from typing (unused-
 client/backend/app.py:13:0: W0611: Unused List imported from typing (unused-import)
 client/backend/app.py:13:0: W0611: Unused Union imported from typing (unused-import)
 client/backend/app.py:15:0: W0611: Unused send_from_directory imported from flask (unused-import)
+************* Module client.backend.huggingface
+client/backend/huggingface.py:27:0: C0301: Line too long (102/100) (line-too-long)
+client/backend/huggingface.py:267:0: C0301: Line too long (114/100) (line-too-long)
+client/backend/huggingface.py:393:0: C0301: Line too long (104/100) (line-too-long)
+client/backend/huggingface.py:14:0: E0401: Unable to import 'dotenv' (import-error)
+client/backend/huggingface.py:34:0: C0103: Constant name "_model_info_cache" doesn't conform to UPPER_CASE naming style (invalid-name)
+client/backend/huggingface.py:37:0: C0103: Constant name "_cache_last_updated" doesn't conform to UPPER_CASE naming style (invalid-name)
+client/backend/huggingface.py:52:4: W0603: Using the global statement (global-statement)
+client/backend/huggingface.py:78:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/huggingface.py:65:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:79:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:91:8: C0415: Import outside toplevel (torch) (import-outside-toplevel)
+client/backend/huggingface.py:96:8: C0415: Import outside toplevel (transformers) (import-outside-toplevel)
+client/backend/huggingface.py:101:8: C0415: Import outside toplevel (huggingface_hub) (import-outside-toplevel)
+client/backend/huggingface.py:106:8: C0415: Import outside toplevel (accelerate) (import-outside-toplevel)
+client/backend/huggingface.py:111:8: C0415: Import outside toplevel (bitsandbytes) (import-outside-toplevel)
+client/backend/huggingface.py:116:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:117:8: W1201: Use lazy % formatting in logging functions (logging-not-lazy)
+client/backend/huggingface.py:127:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/huggingface.py:121:12: C0415: Import outside toplevel (torch) (import-outside-toplevel)
+client/backend/huggingface.py:121:12: E0401: Unable to import 'torch' (import-error)
+client/backend/huggingface.py:124:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:128:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:96:8: W0611: Unused import transformers (unused-import)
+client/backend/huggingface.py:101:8: W0611: Unused import huggingface_hub (unused-import)
+client/backend/huggingface.py:106:8: W0611: Unused import accelerate (unused-import)
+client/backend/huggingface.py:111:8: W0611: Unused import bitsandbytes (unused-import)
+client/backend/huggingface.py:138:8: C0415: Import outside toplevel (torch) (import-outside-toplevel)
+client/backend/huggingface.py:139:8: C0415: Import outside toplevel (transformers) (import-outside-toplevel)
+client/backend/huggingface.py:138:8: W0611: Unused import torch (unused-import)
+client/backend/huggingface.py:139:8: W0611: Unused import transformers (unused-import)
+client/backend/huggingface.py:155:4: W0603: Using the global statement (global-statement)
+client/backend/huggingface.py:194:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/huggingface.py:166:8: E0401: Unable to import 'huggingface_hub' (import-error)
+client/backend/huggingface.py:166:8: C0415: Import outside toplevel (huggingface_hub.HfApi) (import-outside-toplevel)
+client/backend/huggingface.py:195:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:242:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/huggingface.py:215:8: E0401: Unable to import 'huggingface_hub' (import-error)
+client/backend/huggingface.py:215:8: C0415: Import outside toplevel (huggingface_hub.HfApi) (import-outside-toplevel)
+client/backend/huggingface.py:243:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:272:19: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/huggingface.py:273:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:330:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/huggingface.py:302:8: C0415: Import outside toplevel (torch) (import-outside-toplevel)
+client/backend/huggingface.py:302:8: E0401: Unable to import 'torch' (import-error)
+client/backend/huggingface.py:303:8: E0401: Unable to import 'transformers' (import-error)
+client/backend/huggingface.py:303:8: C0415: Import outside toplevel (transformers.pipeline, transformers.AutoTokenizer, transformers.AutoModelForCausalLM) (import-outside-toplevel)
+client/backend/huggingface.py:311:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:327:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:331:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:303:8: W0611: Unused AutoTokenizer imported from transformers (unused-import)
+client/backend/huggingface.py:303:8: W0611: Unused AutoModelForCausalLM imported from transformers (unused-import)
+client/backend/huggingface.py:366:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/huggingface.py:352:8: E0401: Unable to import 'transformers' (import-error)
+client/backend/huggingface.py:352:8: C0415: Import outside toplevel (transformers.AutoTokenizer) (import-outside-toplevel)
+client/backend/huggingface.py:355:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:367:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:430:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/huggingface.py:410:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:424:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:431:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:437:4: W0602: Using global for '_model_info_cache' but no assignment is done (global-variable-not-assigned)
+client/backend/huggingface.py:457:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/huggingface.py:456:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:458:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/huggingface.py:10:0: W0611: Unused Union imported from typing (unused-import)
+client/backend/huggingface.py:10:0: W0611: Unused Tuple imported from typing (unused-import)
 ************* Module client.backend.ai_model
 client/backend/ai_model.py:69:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/ai_model.py:138:0: C0303: Trailing whitespace (trailing-whitespace)
@@ -447,6 +508,146 @@ client/backend/hugging.py:45:11: W0718: Catching too general exception Exception
 client/backend/hugging.py:70:11: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/hugging.py:7:0: W0611: Unused AutoModelForCausalLM imported from transformers (unused-import)
 client/backend/hugging.py:7:0: W0611: Unused AutoTokenizer imported from transformers (unused-import)
+************* Module client.backend.gpt4all-log-analyzer
+client/backend/gpt4all-log-analyzer.py:59:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:73:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:77:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:80:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:84:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:104:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:114:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:118:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:121:0: C0301: Line too long (108/100) (line-too-long)
+client/backend/gpt4all-log-analyzer.py:124:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:132:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:143:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:164:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:168:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:182:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:187:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:190:0: C0301: Line too long (117/100) (line-too-long)
+client/backend/gpt4all-log-analyzer.py:193:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:197:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:217:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:220:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:223:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:227:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:232:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:236:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:239:0: C0301: Line too long (110/100) (line-too-long)
+client/backend/gpt4all-log-analyzer.py:257:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:261:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:272:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:276:74: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:278:56: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:280:53: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:282:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:284:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:287:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:293:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:296:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:304:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:309:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/gpt4all-log-analyzer.py:1:0: C0103: Module name "gpt4all-log-analyzer" doesn't conform to snake_case naming style (invalid-name)
+client/backend/gpt4all-log-analyzer.py:87:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/gpt4all-log-analyzer.py:75:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/gpt4all-log-analyzer.py:83:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/gpt4all-log-analyzer.py:88:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/gpt4all-log-analyzer.py:145:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/gpt4all-log-analyzer.py:122:31: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/gpt4all-log-analyzer.py:121:36: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/gpt4all-log-analyzer.py:123:28: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/gpt4all-log-analyzer.py:105:8: R1702: Too many nested blocks (6/5) (too-many-nested-blocks)
+client/backend/gpt4all-log-analyzer.py:141:31: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/gpt4all-log-analyzer.py:140:32: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/gpt4all-log-analyzer.py:142:28: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/gpt4all-log-analyzer.py:146:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/gpt4all-log-analyzer.py:201:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/gpt4all-log-analyzer.py:196:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/gpt4all-log-analyzer.py:202:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/gpt4all-log-analyzer.py:226:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/gpt4all-log-analyzer.py:264:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/gpt4all-log-analyzer.py:262:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/gpt4all-log-analyzer.py:265:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/gpt4all-log-analyzer.py:271:4: C0415: Import outside toplevel (argparse) (import-outside-toplevel)
+client/backend/gpt4all-log-analyzer.py:299:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/backend/gpt4all-log-analyzer.py:300:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/gpt4all-log-analyzer.py:307:26: C0201: Consider iterating the dictionary directly instead of calling .keys() (consider-iterating-dictionary)
+client/backend/gpt4all-log-analyzer.py:12:0: W0611: Unused Any imported from typing (unused-import)
+client/backend/gpt4all-log-analyzer.py:12:0: W0611: Unused List imported from typing (unused-import)
+client/backend/gpt4all-log-analyzer.py:12:0: W0611: Unused Union imported from typing (unused-import)
+client/backend/gpt4all-log-analyzer.py:13:0: W0611: Unused import re (unused-import)
+************* Module client.frontend.twitchbot
+client/frontend/twitchbot.py:5:0: E0401: Unable to import 'twitchio.ext' (import-error)
+client/frontend/twitchbot.py:6:0: C0411: standard import "os" should be placed before third party import "twitchio.ext.commands" (wrong-import-order)
+************* Module client.frontend.gpt4all-integration
+client/frontend/gpt4all-integration.py:47:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:51:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:60:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:62:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:82:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:95:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:101:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:105:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:109:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:112:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:115:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:119:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:122:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:124:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:126:0: C0301: Line too long (105/100) (line-too-long)
+client/frontend/gpt4all-integration.py:128:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:146:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:148:0: C0301: Line too long (105/100) (line-too-long)
+client/frontend/gpt4all-integration.py:162:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:166:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:168:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:171:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:173:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:177:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:181:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:195:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:201:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:203:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:207:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:222:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:226:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:231:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:235:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:240:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:243:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:246:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:249:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:251:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:254:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:266:0: C0303: Trailing whitespace (trailing-whitespace)
+client/frontend/gpt4all-integration.py:1:0: C0103: Module name "gpt4all-integration" doesn't conform to snake_case naming style (invalid-name)
+client/frontend/gpt4all-integration.py:38:4: W0107: Unnecessary pass statement (unnecessary-pass)
+client/frontend/gpt4all-integration.py:63:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/frontend/gpt4all-integration.py:64:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/frontend/gpt4all-integration.py:114:8: W0621: Redefining name 'model' from outer scope (line 264) (redefined-outer-name)
+client/frontend/gpt4all-integration.py:99:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/frontend/gpt4all-integration.py:108:8: C0415: Import outside toplevel (gpt4all.GPT4All) (import-outside-toplevel)
+client/frontend/gpt4all-integration.py:110:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/frontend/gpt4all-integration.py:121:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/frontend/gpt4all-integration.py:127:8: W0707: Consider explicitly re-raising using 'except ImportError as exc' and 'raise ImportError('GPT4All package not installed') from exc' (raise-missing-from)
+client/frontend/gpt4all-integration.py:130:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/frontend/gpt4all-integration.py:145:8: W0621: Redefining name 'model' from outer scope (line 264) (redefined-outer-name)
+client/frontend/gpt4all-integration.py:182:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/frontend/gpt4all-integration.py:164:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/frontend/gpt4all-integration.py:170:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/frontend/gpt4all-integration.py:175:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/frontend/gpt4all-integration.py:179:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/frontend/gpt4all-integration.py:183:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/frontend/gpt4all-integration.py:197:8: W0621: Redefining name 'models' from outer scope (line 262) (redefined-outer-name)
+client/frontend/gpt4all-integration.py:208:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/frontend/gpt4all-integration.py:194:8: C0415: Import outside toplevel (gpt4all.GPT4All) (import-outside-toplevel)
+client/frontend/gpt4all-integration.py:209:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/frontend/gpt4all-integration.py:194:8: W0611: Unused GPT4All imported from gpt4all (unused-import)
+client/frontend/gpt4all-integration.py:220:8: W0621: Redefining name 'model' from outer scope (line 264) (redefined-outer-name)
+client/frontend/gpt4all-integration.py:255:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/frontend/gpt4all-integration.py:9:0: W0611: Unused import json (unused-import)
+client/frontend/gpt4all-integration.py:10:0: W0611: Unused Union imported from typing (unused-import)
 ************* Module patch.ailinux-alpha-code-patcher-v0.3
 patch/ailinux-alpha-code-patcher-v0.3.py:1:0: C0103: Module name "3" doesn't conform to snake_case naming style (invalid-name)
 patch/ailinux-alpha-code-patcher-v0.3.py:59:11: W0718: Catching too general exception Exception (broad-exception-caught)
@@ -2416,9 +2617,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
     create_structure(base_dir, expected_structure)
     print(f"Directory structure verified and restored in {base_dir}")
 
-
-def run_pylint():
-    """Run pylint with specific options to check the code.""" (duplicate-code)
+ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==bigfiles:[4:24]
 ==devtools.bigfiles:[4:24]
@@ -2527,11 +2726,24 @@ try:
 except ImportError:
     logging.warning("dotenv package not installed, environment variables must be set manually")
 
-# Configure logging with more structured approach
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
     handlers=[ (duplicate-code)
+analyze.py:1:0: R0801: Similar lines in 2 files
+==client.backend.ai_model:[361:371]
+==client.backend.huggingface:[392:401]
+    system_prompt = """You are an AI assistant specialized in analyzing logs and providing insights.
+Given a log snippet, your task is to:
+1. Summarize the key information in the log
+2. Identify any errors, warnings, or issues
+3. Explain potential causes for the identified problems
+4. Suggest troubleshooting steps or solutions
+
+Be concise and precise in your analysis."""
+
+    # Use custom instruction if provided (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[95:104]
 ==server.backend.app:[57:67]
@@ -2577,6 +2789,17 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         # execute chat completion and ignore the full response since
         # we are outputting it incrementally (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
+==client.backend.huggingface:[393:401]
+==client.frontend.gpt4all-integration:[148:157]
+Given a log snippet, your task is to:
+1. Summarize the key information in the log
+2. Identify any errors, warnings, or issues
+3. Explain potential causes for the identified problems
+4. Suggest troubleshooting steps or solutions
+
+Be concise and precise in your analysis."""
+ (duplicate-code)
+analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[134:139]
 ==server.backend.app:[87:92]
     except Exception as e:
@@ -2588,7 +2811,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 
 Report
 ======
-2954 statements analysed.
+3447 statements analysed.
 
 Statistics by type
 ------------------
@@ -2596,13 +2819,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |23     |21         |+2.00      |91.30       |21.74    |
+|module   |28     |23         |+5.00      |92.86       |25.00    |
 +---------+-------+-----------+-----------+------------+---------+
-|class    |10     |10         |=          |100.00      |0.00     |
+|class    |13     |10         |+3.00      |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |55     |55         |=          |100.00      |9.09     |
+|method   |65     |55         |+10.00     |100.00      |7.69     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |99     |95         |+4.00      |98.99       |0.00     |
+|function |117    |99         |+18.00     |99.15       |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -2612,14 +2835,14 @@ External dependencies
 ::
 
     ai_model (client.backend.app,server.backend.app,server.backend.websocket-server)
-    gpt4all (client.backend.ai_model,client.backend.gpt4all.app,client.backend.gpt4allinit,server.backend.ai_model,server.backend.gpt4all.app,server.backend.gpt4allinit)
+    gpt4all (client.backend.ai_model,client.backend.gpt4all-log-analyzer,client.backend.gpt4all.app,client.backend.gpt4allinit,client.frontend.gpt4all-integration,server.backend.ai_model,server.backend.gpt4all.app,server.backend.gpt4allinit)
     psutil (client.backend.app,server.backend.app)
     typing_extensions (client.backend.gpt4all.app,server.backend.gpt4all.app)
     websockets (server.backend.websocket-server)
 
 
 
-6623 lines have been analyzed
+7765 lines have been analyzed
 
 Raw metrics
 -----------
@@ -2627,13 +2850,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |4001   |60.41 |3863     |+138.00    |
+|code      |4603   |59.28 |4001     |+602.00    |
 +----------+-------+------+---------+-----------+
-|docstring |1132   |17.09 |1111     |+21.00     |
+|docstring |1383   |17.81 |1132     |+251.00    |
 +----------+-------+------+---------+-----------+
-|comment   |572    |8.64  |551      |+21.00     |
+|comment   |671    |8.64  |572      |+99.00     |
 +----------+-------+------+---------+-----------+
-|empty     |918    |13.86 |887      |+31.00     |
+|empty     |1108   |14.27 |918      |+190.00    |
 +----------+-------+------+---------+-----------+
 
 
@@ -2657,13 +2880,13 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |517    |504      |504        |
+|convention |621    |517      |517        |
 +-----------+-------+---------+-----------+
-|refactor   |66     |64       |64         |
+|refactor   |69     |66       |66         |
 +-----------+-------+---------+-----------+
-|warning    |349    |344      |344        |
+|warning    |439    |349      |349        |
 +-----------+-------+---------+-----------+
-|error      |43     |28       |28         |
+|error      |48     |43       |43         |
 +-----------+-------+---------+-----------+
 
 
@@ -2674,85 +2897,87 @@ Messages by category
 +-----------------------------------------+------+--------+---------+-----------+
 |module                                   |error |warning |refactor |convention |
 +=========================================+======+========+=========+===========+
-|server.backend.app                       |6.98  |7.74    |1.52     |0.58       |
+|client.backend.huggingface               |14.58 |9.34    |0.00     |2.90       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.app                       |4.65  |10.60   |3.03     |4.26       |
+|server.backend.app                       |6.25  |6.15    |1.45     |0.48       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.hugging                   |4.65  |1.43    |0.00     |0.97       |
+|client.backend.app                       |4.17  |8.43    |2.90     |3.54       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.gpt4all.app               |4.65  |0.86    |0.00     |1.35       |
+|client.backend.hugging                   |4.17  |1.14    |0.00     |0.81       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.gpt4all.app               |4.65  |0.86    |0.00     |1.35       |
+|server.backend.gpt4all.app               |4.17  |0.68    |0.00     |1.13       |
 +-----------------------------------------+------+--------+---------+-----------+
-|analyze                                  |4.65  |0.00    |28.79    |0.00       |
+|client.backend.gpt4all.app               |4.17  |0.68    |0.00     |1.13       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.bigfiles                        |4.65  |0.00    |0.00     |0.00       |
+|analyze                                  |4.17  |0.00    |30.43    |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.analyze                         |4.65  |0.00    |0.00     |0.00       |
+|devtools.bigfiles                        |4.17  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|bigfiles                                 |4.65  |0.00    |0.00     |0.00       |
+|devtools.analyze                         |4.17  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.websocket-server          |2.33  |12.61   |6.06     |4.26       |
+|bigfiles                                 |4.17  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.websocket-client                  |2.33  |11.46   |1.52     |3.09       |
+|server.backend.websocket-server          |2.08  |10.02   |5.80     |3.54       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.alphaos                           |2.33  |6.30    |0.00     |3.29       |
+|client.websocket-client                  |2.08  |9.11    |1.45     |2.58       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.gpt4allinit               |2.33  |0.00    |0.00     |0.00       |
+|client.alphaos                           |2.08  |5.01    |0.00     |2.74       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.data_server               |2.33  |0.00    |0.00     |0.00       |
+|client.frontend.twitchbot                |2.08  |0.00    |0.00     |0.16       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.8    |2.33  |0.00    |0.00     |0.00       |
+|server.backend.gpt4allinit               |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.7    |2.33  |0.00    |0.00     |0.00       |
+|server.backend.data_server               |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.6    |2.33  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.8    |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.5    |2.33  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.7    |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.4    |2.33  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.6    |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.2    |2.33  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.5    |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.1    |2.33  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.4    |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.fix_duplicate_code              |2.33  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.2    |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.cleanup                         |2.33  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.1    |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.adjust_hierarchy_with_debugger  |2.33  |0.00    |0.00     |0.00       |
+|devtools.fix_duplicate_code              |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.twitchbot                |2.33  |0.00    |0.00     |0.00       |
+|devtools.cleanup                         |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.log-analysis-integration |2.33  |0.00    |0.00     |0.00       |
+|devtools.adjust_hierarchy_with_debugger  |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.log-analysis             |2.33  |0.00    |0.00     |0.00       |
+|client.frontend.log-analysis-integration |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.config                   |2.33  |0.00    |0.00     |0.00       |
+|client.frontend.log-analysis             |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.file-sync-client                  |2.33  |0.00    |0.00     |0.00       |
+|client.file-sync-client                  |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.huggingface               |2.33  |0.00    |0.00     |0.00       |
+|client.backend.gpt4allinit               |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.gpt4allinit               |2.33  |0.00    |0.00     |0.00       |
+|cleanup                                  |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|cleanup                                  |2.33  |0.00    |0.00     |0.00       |
+|adjust_hierarchy_with_debugger           |2.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|adjust_hierarchy_with_debugger           |2.33  |0.00    |0.00     |0.00       |
+|server.backend.ai_model                  |0.00  |10.25   |5.80     |10.47      |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.ai_model                  |0.00  |12.89   |6.06     |12.57      |
+|client.backend.ai_model                  |0.00  |10.25   |5.80     |10.47      |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.ai_model                  |0.00  |12.89   |6.06     |12.57      |
+|client.backend.gpt4all-log-analyzer      |0.00  |5.69    |1.45     |6.76       |
 +-----------------------------------------+------+--------+---------+-----------+
-|uploadready                              |0.00  |6.88    |9.09     |14.89      |
+|uploadready                              |0.00  |5.47    |8.70     |12.40      |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.uploadready                     |0.00  |6.88    |9.09     |14.89      |
+|devtools.uploadready                     |0.00  |5.47    |8.70     |12.40      |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.enhanced-pylint-fixer           |0.00  |5.44    |27.27    |18.18      |
+|client.frontend.gpt4all-integration      |0.00  |5.47    |0.00     |6.92       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.3    |0.00  |1.72    |1.52     |0.39       |
+|devtools.enhanced-pylint-fixer           |0.00  |4.33    |26.09    |15.14      |
 +-----------------------------------------+------+--------+---------+-----------+
-|python-optimizer                         |0.00  |1.43    |0.00     |7.35       |
+|patch.ailinux-alpha-code-patcher-v0.3    |0.00  |1.37    |1.45     |0.32       |
++-----------------------------------------+------+--------+---------+-----------+
+|python-optimizer                         |0.00  |1.14    |0.00     |6.12       |
 +-----------------------------------------+------+--------+---------+-----------+
 
 
@@ -2763,39 +2988,39 @@ Messages
 +-------------------------------+------------+
 |message id                     |occurrences |
 +===============================+============+
-|trailing-whitespace            |379         |
+|trailing-whitespace            |453         |
 +-------------------------------+------------+
-|logging-fstring-interpolation  |142         |
+|logging-fstring-interpolation  |185         |
 +-------------------------------+------------+
-|broad-exception-caught         |73          |
+|broad-exception-caught         |93          |
 +-------------------------------+------------+
-|line-too-long                  |57          |
+|line-too-long                  |65          |
 +-------------------------------+------------+
-|unused-import                  |45          |
+|unused-import                  |62          |
 +-------------------------------+------------+
-|import-outside-toplevel        |34          |
+|import-outside-toplevel        |50          |
 +-------------------------------+------------+
-|redefined-outer-name           |20          |
+|redefined-outer-name           |24          |
 +-------------------------------+------------+
-|invalid-name                   |20          |
+|invalid-name                   |24          |
 +-------------------------------+------------+
-|duplicate-code                 |19          |
+|duplicate-code                 |21          |
++-------------------------------+------------+
+|import-error                   |19          |
 +-------------------------------+------------+
 |unspecified-encoding           |18          |
 +-------------------------------+------------+
 |no-else-return                 |18          |
 +-------------------------------+------------+
-|syntax-error                   |17          |
-+-------------------------------+------------+
 |wrong-import-position          |14          |
++-------------------------------+------------+
+|syntax-error                   |14          |
++-------------------------------+------------+
+|wrong-import-order             |11          |
 +-------------------------------+------------+
 |unused-variable                |11          |
 +-------------------------------+------------+
 |unused-argument                |11          |
-+-------------------------------+------------+
-|import-error                   |11          |
-+-------------------------------+------------+
-|wrong-import-order             |10          |
 +-------------------------------+------------+
 |undefined-variable             |10          |
 +-------------------------------+------------+
@@ -2811,15 +3036,21 @@ Messages
 +-------------------------------+------------+
 |no-name-in-module              |4           |
 +-------------------------------+------------+
+|global-statement               |4           |
++-------------------------------+------------+
+|unnecessary-pass               |3           |
++-------------------------------+------------+
 |too-many-statements            |3           |
 +-------------------------------+------------+
 |too-many-locals                |3           |
 +-------------------------------+------------+
 |invalid-envvar-default         |3           |
 +-------------------------------+------------+
-|unnecessary-pass               |2           |
+|too-many-nested-blocks         |2           |
 +-------------------------------+------------+
 |reimported                     |2           |
++-------------------------------+------------+
+|raise-missing-from             |2           |
 +-------------------------------+------------+
 |pointless-string-statement     |2           |
 +-------------------------------+------------+
@@ -2827,26 +3058,26 @@ Messages
 +-------------------------------+------------+
 |inconsistent-return-statements |2           |
 +-------------------------------+------------+
-|global-statement               |2           |
-+-------------------------------+------------+
 |bare-except                    |2           |
-+-------------------------------+------------+
-|too-many-nested-blocks         |1           |
 +-------------------------------+------------+
 |too-many-arguments             |1           |
 +-------------------------------+------------+
 |too-few-public-methods         |1           |
 +-------------------------------+------------+
-|raise-missing-from             |1           |
-+-------------------------------+------------+
 |no-member                      |1           |
 +-------------------------------+------------+
 |missing-function-docstring     |1           |
++-------------------------------+------------+
+|logging-not-lazy               |1           |
++-------------------------------+------------+
+|global-variable-not-assigned   |1           |
++-------------------------------+------------+
+|consider-iterating-dictionary  |1           |
 +-------------------------------+------------+
 
 
 
 
 ------------------------------------------------------------------
-Your code has been rated at 6.12/10 (previous run: 6.35/10, -0.23)
+Your code has been rated at 6.03/10 (previous run: 6.12/10, -0.09)
 

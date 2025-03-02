@@ -1,5 +1,5 @@
 {
-  "count": 2,
+  "count": 1,
   "threshold": "99MB",
   "threshold_bytes": 103809024,
   "files": [
@@ -7,11 +7,6 @@
       "path": "client/frontend/node_modules/electron/dist/electron",
       "size": 184600280,
       "size_human": "176.05 MB"
-    },
-    {
-      "path": "client/node_modules/electron/dist/electron",
-      "size": 255294689,
-      "size_human": "243.47 MB"
     }
   ]
 }

@@ -2,7 +2,6 @@
 
 Provides settings management for the application.
 """
-# config.py
 import os
 
 CONFIG = {
@@ -13,28 +12,21 @@ CONFIG = {
 }
 
 def get(key):
-    pass
-    pass
-    pass
-    pass
-    pass
-    pass
-    pass
-    pass
-    pass
-    pass
-    pass
-    pass
-    pass
-    pass
-    pass
-"""
-Beschreibung für Funktion get.
-"""
-"""
-Beschreibung für Funktion get.
-"""
+    """Get a configuration value by key.
+    
+    Args:
+        key: Configuration key to retrieve
+        
+    Returns:
+        Value associated with the key or None if not found
+    """
     return CONFIG.get(key)
 
 def set_config(key, value):
+    """Set a configuration value.
+    
+    Args:
+        key: Configuration key to set
+        value: Value to associate with the key
+    """
     CONFIG[key] = value

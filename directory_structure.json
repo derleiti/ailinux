@@ -1,16 +1,21 @@
 {
   "stats": {
     "total_directories": 452,
-    "total_files": 2831,
-    "total_size_bytes": 289157354,
-    "total_size_human": "275.76 MB",
-    "scan_time": "2025-03-02 05:17:59"
+    "total_files": 2838,
+    "total_size_bytes": 289906900,
+    "total_size_human": "276.48 MB",
+    "scan_time": "2025-03-02 05:40:19"
   },
   "structure": {
     "postcode.sh": {
       "type": "file",
       "size": 9421,
       "size_human": "9.20 KB"
+    },
+    "large_files.json.bak": {
+      "type": "file",
+      "size": 357,
+      "size_human": "357.00 B"
     },
     "readme": {
       "type": "file",
@@ -50,8 +55,8 @@
             },
             "huggingface.py": {
               "type": "file",
-              "size": 14199,
-              "size_human": "13.87 KB"
+              "size": 13947,
+              "size_human": "13.62 KB"
             },
             "backend": {
               "type": "directory",
@@ -106,6 +111,11 @@
               "type": "file",
               "size": 3344,
               "size_human": "3.27 KB"
+            },
+            "gpt4all-log-analyzer.py": {
+              "type": "file",
+              "size": 11329,
+              "size_human": "11.06 KB"
             }
           }
         },
@@ -119,8 +129,8 @@
           "contents": {
             "twitchbot.py": {
               "type": "file",
-              "size": 1015,
-              "size_human": "1015.00 B"
+              "size": 1465,
+              "size_human": "1.43 KB"
             },
             "settings.html": {
               "type": "file",
@@ -131,6 +141,11 @@
               "type": "file",
               "size": 4978,
               "size_human": "4.86 KB"
+            },
+            "flask-compatibility-fix.js": {
+              "type": "file",
+              "size": 4107,
+              "size_human": "4.01 KB"
             },
             "logmanager.js": {
               "type": "file",
@@ -144,8 +159,8 @@
             },
             "config.py": {
               "type": "file",
-              "size": 591,
-              "size_human": "591.00 B"
+              "size": 694,
+              "size_human": "694.00 B"
             },
             "node_modules": {
               "type": "directory",
@@ -16052,6 +16067,11 @@
               "size": 2187,
               "size_human": "2.14 KB"
             },
+            "log-analysis.html": {
+              "type": "file",
+              "size": 23902,
+              "size_human": "23.34 KB"
+            },
             "index.html": {
               "type": "file",
               "size": 45390,
@@ -16096,6 +16116,16 @@
               "type": "file",
               "size": 2045,
               "size_human": "2.00 KB"
+            },
+            "gpt4all-interface.tsx": {
+              "type": "file",
+              "size": 11422,
+              "size_human": "11.15 KB"
+            },
+            "gpt4all-integration.py": {
+              "type": "file",
+              "size": 9090,
+              "size_human": "8.88 KB"
             },
             "log-analysis.py": {
               "type": "file",
@@ -16384,6 +16414,11 @@
       "size": 1000,
       "size_human": "1000.00 B"
     },
+    "directory_structure.json.bak": {
+      "type": "file",
+      "size": 921273,
+      "size_human": "899.68 KB"
+    },
     "bigfiles.sh": {
       "type": "file",
       "size": 1146,
@@ -16401,18 +16436,18 @@
     },
     "directory_structure.json": {
       "type": "file",
-      "size": 921273,
-      "size_human": "899.68 KB"
+      "size": 666345,
+      "size_human": "650.73 KB"
     },
     "large_files.json": {
       "type": "file",
-      "size": 357,
-      "size_human": "357.00 B"
+      "size": 227,
+      "size_human": "227.00 B"
     },
     "optimization.log": {
       "type": "file",
-      "size": 167927,
-      "size_human": "163.99 KB"
+      "size": 190750,
+      "size_human": "186.28 KB"
     }
   }
 }
