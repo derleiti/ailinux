@@ -147,6 +147,7 @@ client/websocket-client.py:175:0: C0301: Line too long (123/100) (line-too-long)
 client/websocket-client.py:211:0: C0301: Line too long (106/100) (line-too-long)
 client/websocket-client.py:333:0: C0301: Line too long (110/100) (line-too-long)
 client/websocket-client.py:1:0: C0103: Module name "websocket-client" doesn't conform to snake_case naming style (invalid-name)
+client/websocket-client.py:6:0: E0401: Unable to import 'websocket' (import-error)
 client/websocket-client.py:43:0: R0902: Too many instance attributes (11/7) (too-many-instance-attributes)
 client/websocket-client.py:79:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/websocket-client.py:88:23: W0718: Catching too general exception Exception (broad-exception-caught)
@@ -209,16 +210,25 @@ client/alphaos.py:100:0: C0303: Trailing whitespace (trailing-whitespace)
 client/alphaos.py:104:0: C0301: Line too long (131/100) (line-too-long)
 client/alphaos.py:122:0: C0303: Trailing whitespace (trailing-whitespace)
 client/alphaos.py:125:0: C0303: Trailing whitespace (trailing-whitespace)
+client/alphaos.py:12:0: E0401: Unable to import 'autobahn.asyncio.websocket' (import-error)
+client/alphaos.py:26:4: C0103: Method name "onConnect" doesn't conform to snake_case naming style (invalid-name)
 client/alphaos.py:28:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/alphaos.py:30:4: C0103: Method name "onOpen" doesn't conform to snake_case naming style (invalid-name)
 client/alphaos.py:36:15: W0718: Catching too general exception Exception (broad-exception-caught)
 client/alphaos.py:37:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/alphaos.py:39:4: C0103: Method name "onMessage" doesn't conform to snake_case naming style (invalid-name)
+client/alphaos.py:39:33: C0103: Argument name "isBinary" doesn't conform to snake_case naming style (invalid-name)
 client/alphaos.py:54:15: W0718: Catching too general exception Exception (broad-exception-caught)
 client/alphaos.py:44:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/alphaos.py:55:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/alphaos.py:57:4: C0103: Method name "handleTypedMessage" doesn't conform to snake_case naming style (invalid-name)
 client/alphaos.py:66:19: W0718: Catching too general exception Exception (broad-exception-caught)
 client/alphaos.py:67:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/alphaos.py:71:4: C0103: Method name "onClose" doesn't conform to snake_case naming style (invalid-name)
+client/alphaos.py:71:22: C0103: Argument name "wasClean" doesn't conform to snake_case naming style (invalid-name)
 client/alphaos.py:73:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/alphaos.py:71:22: W0613: Unused argument 'wasClean' (unused-argument)
+client/alphaos.py:71:32: W0613: Unused argument 'code' (unused-argument)
 client/alphaos.py:106:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/alphaos.py:109:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/alphaos.py:112:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -253,6 +263,8 @@ client/backend/app.py:375:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/app.py:378:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/app.py:381:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/app.py:385:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/app.py:15:0: E0401: Unable to import 'flask' (import-error)
+client/backend/app.py:16:0: E0401: Unable to import 'flask_cors' (import-error)
 client/backend/app.py:39:11: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
 client/backend/app.py:67:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/app.py:76:27: W0718: Catching too general exception Exception (broad-exception-caught)
@@ -407,6 +419,8 @@ client/backend/ai_model.py:8:0: W0611: Unused Union imported from typing (unused
 client/backend/ai_model.py:8:0: W0611: Unused Callable imported from typing (unused-import)
 client/backend/ai_model.py:10:0: W0611: Unused field imported from dataclasses (unused-import)
 client/backend/ai_model.py:12:0: W0611: Unused Path imported from pathlib (unused-import)
+************* Module client.backend.gpt4allinit
+client/backend/gpt4allinit.py:5:0: E0611: No name 'GPT4All' in module 'gpt4all' (no-name-in-module)
 ************* Module client.backend.gpt4all.app
 client/backend/gpt4all/app.py:6:0: W0105: String statement has no effect (pointless-string-statement)
 client/backend/gpt4all/app.py:12:0: C0413: Import "import importlib.metadata" should be placed at the top of the module (wrong-import-position)
@@ -414,8 +428,10 @@ client/backend/gpt4all/app.py:13:0: C0413: Import "import io" should be placed a
 client/backend/gpt4all/app.py:14:0: C0413: Import "import sys" should be placed at the top of the module (wrong-import-position)
 client/backend/gpt4all/app.py:15:0: C0413: Import "from collections import namedtuple" should be placed at the top of the module (wrong-import-position)
 client/backend/gpt4all/app.py:16:0: C0413: Import "from typing_extensions import Annotated" should be placed at the top of the module (wrong-import-position)
+client/backend/gpt4all/app.py:18:0: E0401: Unable to import 'typer' (import-error)
 client/backend/gpt4all/app.py:18:0: C0413: Import "import typer" should be placed at the top of the module (wrong-import-position)
 client/backend/gpt4all/app.py:19:0: C0413: Import "from gpt4all import GPT4All" should be placed at the top of the module (wrong-import-position)
+client/backend/gpt4all/app.py:19:0: E0611: No name 'GPT4All' in module 'gpt4all' (no-name-in-module)
 client/backend/gpt4all/app.py:94:8: W0621: Redefining name 'version' from outer scope (line 185) (redefined-outer-name)
 client/backend/gpt4all/app.py:98:4: W0702: No exception type(s) specified (bare-except)
 ************* Module client.backend.hugging
@@ -424,6 +440,8 @@ client/backend/hugging.py:58:41: C0303: Trailing whitespace (trailing-whitespace
 client/backend/hugging.py:60:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/hugging.py:63:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/hugging.py:69:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/hugging.py:6:0: E0401: Unable to import 'huggingface_hub' (import-error)
+client/backend/hugging.py:7:0: E0401: Unable to import 'transformers' (import-error)
 client/backend/hugging.py:28:11: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/hugging.py:45:11: W0718: Catching too general exception Exception (broad-exception-caught)
 client/backend/hugging.py:70:11: W0718: Catching too general exception Exception (broad-exception-caught)
@@ -763,7 +781,6 @@ server/backend/websocket-server.py:86:12: W1203: Use lazy % formatting in loggin
 server/backend/websocket-server.py:107:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/websocket-server.py:193:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/websocket-server.py:201:0: R0913: Too many arguments (6/5) (too-many-arguments)
-server/backend/websocket-server.py:201:0: R0917: Too many positional arguments (6/5) (too-many-positional-arguments)
 server/backend/websocket-server.py:256:15: W0718: Catching too general exception Exception (broad-exception-caught)
 server/backend/websocket-server.py:254:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 server/backend/websocket-server.py:257:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -811,6 +828,9 @@ server/backend/websocket-server.py:16:0: W0611: Unused datetime imported from da
 server/backend/websocket-server.py:16:0: W0611: Unused timedelta imported from datetime (unused-import)
 ************* Module server.backend.app
 server/backend/app.py:73:0: C0301: Line too long (102/100) (line-too-long)
+server/backend/app.py:13:0: E0401: Unable to import 'flask' (import-error)
+server/backend/app.py:14:0: E0401: Unable to import 'flask_cors' (import-error)
+server/backend/app.py:15:0: E0401: Unable to import 'dotenv' (import-error)
 server/backend/app.py:28:11: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
 server/backend/app.py:88:11: W0718: Catching too general exception Exception (broad-exception-caught)
 server/backend/app.py:72:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
@@ -956,6 +976,21 @@ server/backend/ai_model.py:8:0: W0611: Unused Union imported from typing (unused
 server/backend/ai_model.py:8:0: W0611: Unused Callable imported from typing (unused-import)
 server/backend/ai_model.py:10:0: W0611: Unused field imported from dataclasses (unused-import)
 server/backend/ai_model.py:12:0: W0611: Unused Path imported from pathlib (unused-import)
+************* Module server.backend.gpt4allinit
+server/backend/gpt4allinit.py:5:0: E0611: No name 'GPT4All' in module 'gpt4all' (no-name-in-module)
+************* Module server.backend.gpt4all.app
+server/backend/gpt4all/app.py:6:0: W0105: String statement has no effect (pointless-string-statement)
+server/backend/gpt4all/app.py:12:0: C0413: Import "import importlib.metadata" should be placed at the top of the module (wrong-import-position)
+server/backend/gpt4all/app.py:13:0: C0413: Import "import io" should be placed at the top of the module (wrong-import-position)
+server/backend/gpt4all/app.py:14:0: C0413: Import "import sys" should be placed at the top of the module (wrong-import-position)
+server/backend/gpt4all/app.py:15:0: C0413: Import "from collections import namedtuple" should be placed at the top of the module (wrong-import-position)
+server/backend/gpt4all/app.py:16:0: C0413: Import "from typing_extensions import Annotated" should be placed at the top of the module (wrong-import-position)
+server/backend/gpt4all/app.py:18:0: E0401: Unable to import 'typer' (import-error)
+server/backend/gpt4all/app.py:18:0: C0413: Import "import typer" should be placed at the top of the module (wrong-import-position)
+server/backend/gpt4all/app.py:19:0: C0413: Import "from gpt4all import GPT4All" should be placed at the top of the module (wrong-import-position)
+server/backend/gpt4all/app.py:19:0: E0611: No name 'GPT4All' in module 'gpt4all' (no-name-in-module)
+server/backend/gpt4all/app.py:94:8: W0621: Redefining name 'version' from outer scope (line 185) (redefined-outer-name)
+server/backend/gpt4all/app.py:98:4: W0702: No exception type(s) specified (bare-except)
 ************* Module analyze
 analyze.py:19:10: E0602: Undefined variable 'log_file_path' (undefined-variable)
 analyze.py:20:37: E0602: Undefined variable 'root_dir' (undefined-variable)
@@ -1964,6 +1999,179 @@ def main():
 if __name__ == "__main__":
     sys.exit(0 if main() is None else 1) (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
+==client.backend.gpt4all.app:[21:191]
+==server.backend.gpt4all.app:[21:191]
+MESSAGES = [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Hello there."},
+    {"role": "assistant", "content": "Hi, how can I help you?"},
+]
+
+SPECIAL_COMMANDS = {
+    "/reset": lambda messages: messages.clear(),
+    "/exit": lambda _: sys.exit(),
+    "/clear": lambda _: print("\n" * 100),
+    "/help": lambda _: print("Special commands: /reset, /exit, /help and /clear"),
+}
+
+VersionInfo = namedtuple('VersionInfo', ['major', 'minor', 'micro'])
+VERSION_INFO = VersionInfo(1, 0, 2)
+VERSION = '.'.join(map(str, VERSION_INFO))  # convert to string form, like: '1.2.3'
+
+CLI_START_MESSAGE = f"""
+
+ ██████  ██████  ████████ ██   ██  █████  ██      ██
+██       ██   ██    ██    ██   ██ ██   ██ ██      ██
+██   ███ ██████     ██    ███████ ███████ ██      ██
+██    ██ ██         ██         ██ ██   ██ ██      ██
+ ██████  ██         ██         ██ ██   ██ ███████ ███████
+
+
+Welcome to the GPT4All CLI! Version {VERSION}
+Type /help for special commands.
+
+"""
+
+# create typer app
+app = typer.Typer()
+
+@app.command()
+def repl(
+    model: Annotated[
+        str,
+        typer.Option("--model", "-m", help="Model to use for chatbot"),
+    ] = "mistral-7b-instruct-v0.1.Q4_0.gguf",
+    n_threads: Annotated[
+        int,
+        typer.Option("--n-threads", "-t", help="Number of threads to use for chatbot"),
+    ] = None,
+    device: Annotated[
+        str,
+        typer.Option("--device",
+        "-d",
+        help="" +
+            "Device to use for chatbot, e.g. gpu, amd, nvidia, intel. Defaults to CPU."),
+    ] = None,
+):
+    """The CLI read-eval-print loop."""
+    gpt4all_instance = GPT4All(model, device=device)
+
+    # if threads are passed, set them
+    if n_threads is not None:
+        num_threads = gpt4all_instance.model.thread_count()
+        print(f"\nAdjusted: {num_threads} →", end="")
+
+        # set number of threads
+        gpt4all_instance.model.set_thread_count(n_threads)
+
+        num_threads = gpt4all_instance.model.thread_count()
+        print(f" {num_threads} threads", end="", flush=True)
+    else:
+        print(f"\nUsing {gpt4all_instance.model.thread_count()} threads", end="")
+
+    print(CLI_START_MESSAGE)
+
+    use_new_loop = False
+    try:
+        version = importlib.metadata.version('gpt4all')
+        version_major = int(version.split('.')[0])
+        if version_major >= 1:
+            use_new_loop = True
+    except:
+        pass  # fall back to old loop
+    if use_new_loop:
+        _new_loop(gpt4all_instance)
+    else:
+        _old_loop(gpt4all_instance)
+
+
+def _old_loop(gpt4all_instance):
+    while True:
+        message = input(" ⇢  ")
+
+        # Check if special command and take action
+        if message in SPECIAL_COMMANDS:
+            SPECIAL_COMMANDS[message](MESSAGES)
+            continue
+
+        # if regular message, append to messages
+        MESSAGES.append({"role": "user", "content": message})
+
+        # execute chat completion and ignore the full response since
+        # we are outputting it incrementally
+        full_response = gpt4all_instance.chat_completion(
+            MESSAGES,
+            # preferential kwargs for chat ux
+            n_past=0,
+            n_predict=200,
+            top_k=40,
+            top_p=0.9,
+            min_p=0.0,
+            temp=0.9,
+            n_batch=9,
+            repeat_penalty=1.1,
+            repeat_last_n=64,
+            context_erase=0.0,
+            # required kwargs for cli ux (incremental response)
+            verbose=False,
+            streaming=True,
+        )
+        # record assistant's response to messages
+        MESSAGES.append(full_response.get("choices")[0].get("message"))
+        print() # newline before next prompt
+
+
+def _new_loop(gpt4all_instance):
+    with gpt4all_instance.chat_session():
+        while True:
+            message = input(" ⇢  ")
+
+            # Check if special command and take action
+            if message in SPECIAL_COMMANDS:
+                SPECIAL_COMMANDS[message](MESSAGES)
+                continue
+
+            # if regular message, append to messages
+            MESSAGES.append({"role": "user", "content": message})
+
+            # execute chat completion and ignore the full response since
+            # we are outputting it incrementally
+            response_generator = gpt4all_instance.generate(
+                message,
+                # preferential kwargs for chat ux
+                max_tokens=200,
+                temp=0.9,
+                top_k=40,
+                top_p=0.9,
+                min_p=0.0,
+                repeat_penalty=1.1,
+                repeat_last_n=64,
+                n_batch=9,
+                # required kwargs for cli ux (incremental response)
+                streaming=True,
+            )
+            response = io.StringIO()
+            for token in response_generator:
+                print(token, end='', flush=True)
+                response.write(token)
+
+            # record assistant's response to messages
+            response_message = {'role': 'assistant', 'content': response.getvalue()}
+            response.close()
+            gpt4all_instance.current_chat_session.append(response_message)
+            MESSAGES.append(response_message)
+            print() # newline before next prompt
+
+
+@app.command()
+def version():
+    """The CLI version command."""
+    print(f"gpt4all-cli v{VERSION}")
+
+
+if __name__ == "__main__":
+    app() (duplicate-code)
+analyze.py:1:0: R0801: Similar lines in 2 files
 ==adjust_hierarchy_with_debugger:[18:70]
 ==devtools.adjust_hierarchy_with_debugger:[18:70]
     expected_structure = {
@@ -2337,6 +2545,38 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         log_text = data.get('log')
         model_name = data.get('model', 'gpt4all')  # Default to gpt4all (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
+==client.backend.gpt4all.app:[143:156]
+==server.backend.gpt4all.app:[106:119]
+        while True:
+            message = input(" ⇢  ")
+
+            # Check if special command and take action
+            if message in SPECIAL_COMMANDS:
+                SPECIAL_COMMANDS[message](MESSAGES)
+                continue
+
+            # if regular message, append to messages
+            MESSAGES.append({"role": "user", "content": message})
+
+            # execute chat completion and ignore the full response since
+            # we are outputting it incrementally (duplicate-code)
+analyze.py:1:0: R0801: Similar lines in 2 files
+==client.backend.gpt4all.app:[106:119]
+==server.backend.gpt4all.app:[143:156]
+    while True:
+        message = input(" ⇢  ")
+
+        # Check if special command and take action
+        if message in SPECIAL_COMMANDS:
+            SPECIAL_COMMANDS[message](MESSAGES)
+            continue
+
+        # if regular message, append to messages
+        MESSAGES.append({"role": "user", "content": message})
+
+        # execute chat completion and ignore the full response since
+        # we are outputting it incrementally (duplicate-code)
+analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[134:139]
 ==server.backend.app:[87:92]
     except Exception as e:
@@ -2348,7 +2588,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 
 Report
 ======
-2881 statements analysed.
+2954 statements analysed.
 
 Statistics by type
 ------------------
@@ -2356,13 +2596,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |21     |21         |=          |90.48       |23.81    |
+|module   |23     |21         |+2.00      |91.30       |21.74    |
 +---------+-------+-----------+-----------+------------+---------+
 |class    |10     |10         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |55     |55         |=          |100.00      |1.82     |
+|method   |55     |55         |=          |100.00      |9.09     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |95     |95         |=          |98.95       |0.00     |
+|function |99     |95         |+4.00      |98.99       |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -2372,28 +2612,14 @@ External dependencies
 ::
 
     ai_model (client.backend.app,server.backend.app,server.backend.websocket-server)
-    autobahn 
-      \-asyncio 
-        \-websocket (client.alphaos)
-    dotenv (client.backend.ai_model,client.backend.app,client.websocket-client,server.backend.ai_model,server.backend.app,server.backend.websocket-server)
-    flask (client.backend.app,server.backend.app)
-    flask_cors (client.backend.app,server.backend.app)
-    google 
-      \-generativeai (client.backend.ai_model,server.backend.ai_model)
-    gpt4all (client.backend.ai_model,client.backend.gpt4all.app,client.backend.gpt4allinit,server.backend.ai_model)
-    huggingface_hub (client.backend.hugging)
-    openai (client.backend.ai_model,server.backend.ai_model)
+    gpt4all (client.backend.ai_model,client.backend.gpt4all.app,client.backend.gpt4allinit,server.backend.ai_model,server.backend.gpt4all.app,server.backend.gpt4allinit)
     psutil (client.backend.app,server.backend.app)
-    torch (client.backend.ai_model,server.backend.ai_model)
-    transformers (client.backend.ai_model,client.backend.hugging,server.backend.ai_model)
-    typer (client.backend.gpt4all.app)
-    typing_extensions (client.backend.gpt4all.app)
-    websocket (client.websocket-client)
+    typing_extensions (client.backend.gpt4all.app,server.backend.gpt4all.app)
     websockets (server.backend.websocket-server)
 
 
 
-6412 lines have been analyzed
+6623 lines have been analyzed
 
 Raw metrics
 -----------
@@ -2401,13 +2627,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |3863   |60.25 |3863     |=          |
+|code      |4001   |60.41 |3863     |+138.00    |
 +----------+-------+------+---------+-----------+
-|docstring |1111   |17.33 |1111     |=          |
+|docstring |1132   |17.09 |1111     |+21.00     |
 +----------+-------+------+---------+-----------+
-|comment   |551    |8.59  |551      |=          |
+|comment   |572    |8.64  |551      |+21.00     |
 +----------+-------+------+---------+-----------+
-|empty     |887    |13.83 |887      |=          |
+|empty     |918    |13.86 |887      |+31.00     |
 +----------+-------+------+---------+-----------+
 
 
@@ -2431,13 +2657,13 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |504    |504      |504        |
+|convention |517    |504      |504        |
 +-----------+-------+---------+-----------+
-|refactor   |64     |64       |64         |
+|refactor   |66     |64       |64         |
 +-----------+-------+---------+-----------+
-|warning    |344    |344      |344        |
+|warning    |349    |344      |344        |
 +-----------+-------+---------+-----------+
-|error      |28     |28       |28         |
+|error      |43     |28       |28         |
 +-----------+-------+---------+-----------+
 
 
@@ -2448,79 +2674,85 @@ Messages by category
 +-----------------------------------------+------+--------+---------+-----------+
 |module                                   |error |warning |refactor |convention |
 +=========================================+======+========+=========+===========+
-|analyze                                  |7.14  |0.00    |25.00    |0.00       |
+|server.backend.app                       |6.98  |7.74    |1.52     |0.58       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.bigfiles                        |7.14  |0.00    |0.00     |0.00       |
+|client.backend.app                       |4.65  |10.60   |3.03     |4.26       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.analyze                         |7.14  |0.00    |0.00     |0.00       |
+|client.backend.hugging                   |4.65  |1.43    |0.00     |0.97       |
 +-----------------------------------------+------+--------+---------+-----------+
-|bigfiles                                 |7.14  |0.00    |0.00     |0.00       |
+|server.backend.gpt4all.app               |4.65  |0.86    |0.00     |1.35       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.websocket-server          |3.57  |12.79   |7.81     |4.37       |
+|client.backend.gpt4all.app               |4.65  |0.86    |0.00     |1.35       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.data_server               |3.57  |0.00    |0.00     |0.00       |
+|analyze                                  |4.65  |0.00    |28.79    |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.8    |3.57  |0.00    |0.00     |0.00       |
+|devtools.bigfiles                        |4.65  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.7    |3.57  |0.00    |0.00     |0.00       |
+|devtools.analyze                         |4.65  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.6    |3.57  |0.00    |0.00     |0.00       |
+|bigfiles                                 |4.65  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.5    |3.57  |0.00    |0.00     |0.00       |
+|server.backend.websocket-server          |2.33  |12.61   |6.06     |4.26       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.4    |3.57  |0.00    |0.00     |0.00       |
+|client.websocket-client                  |2.33  |11.46   |1.52     |3.09       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.2    |3.57  |0.00    |0.00     |0.00       |
+|client.alphaos                           |2.33  |6.30    |0.00     |3.29       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.1    |3.57  |0.00    |0.00     |0.00       |
+|server.backend.gpt4allinit               |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.fix_duplicate_code              |3.57  |0.00    |0.00     |0.00       |
+|server.backend.data_server               |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.cleanup                         |3.57  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.8    |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.adjust_hierarchy_with_debugger  |3.57  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.7    |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.twitchbot                |3.57  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.6    |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.log-analysis-integration |3.57  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.5    |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.log-analysis             |3.57  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.4    |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.config                   |3.57  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.2    |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.file-sync-client                  |3.57  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.1    |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.huggingface               |3.57  |0.00    |0.00     |0.00       |
+|devtools.fix_duplicate_code              |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|cleanup                                  |3.57  |0.00    |0.00     |0.00       |
+|devtools.cleanup                         |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|adjust_hierarchy_with_debugger           |3.57  |0.00    |0.00     |0.00       |
+|devtools.adjust_hierarchy_with_debugger  |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.ai_model                  |0.00  |13.08   |6.25     |12.90      |
+|client.frontend.twitchbot                |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.ai_model                  |0.00  |13.08   |6.25     |12.90      |
+|client.frontend.log-analysis-integration |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.websocket-client                  |0.00  |11.63   |1.56     |3.17       |
+|client.frontend.log-analysis             |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.app                       |0.00  |10.76   |3.12     |4.37       |
+|client.frontend.config                   |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.app                       |0.00  |7.85    |1.56     |0.60       |
+|client.file-sync-client                  |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|uploadready                              |0.00  |6.98    |9.38     |15.28      |
+|client.backend.huggingface               |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.uploadready                     |0.00  |6.98    |9.38     |15.28      |
+|client.backend.gpt4allinit               |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.alphaos                           |0.00  |5.81    |0.00     |2.18       |
+|cleanup                                  |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.enhanced-pylint-fixer           |0.00  |5.52    |28.12    |18.65      |
+|adjust_hierarchy_with_debugger           |2.33  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.3    |0.00  |1.74    |1.56     |0.40       |
+|server.backend.ai_model                  |0.00  |12.89   |6.06     |12.57      |
 +-----------------------------------------+------+--------+---------+-----------+
-|python-optimizer                         |0.00  |1.45    |0.00     |7.54       |
+|client.backend.ai_model                  |0.00  |12.89   |6.06     |12.57      |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.hugging                   |0.00  |1.45    |0.00     |0.99       |
+|uploadready                              |0.00  |6.88    |9.09     |14.89      |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.gpt4all.app               |0.00  |0.87    |0.00     |1.39       |
+|devtools.uploadready                     |0.00  |6.88    |9.09     |14.89      |
++-----------------------------------------+------+--------+---------+-----------+
+|devtools.enhanced-pylint-fixer           |0.00  |5.44    |27.27    |18.18      |
++-----------------------------------------+------+--------+---------+-----------+
+|patch.ailinux-alpha-code-patcher-v0.3    |0.00  |1.72    |1.52     |0.39       |
++-----------------------------------------+------+--------+---------+-----------+
+|python-optimizer                         |0.00  |1.43    |0.00     |7.35       |
 +-----------------------------------------+------+--------+---------+-----------+
 
 
@@ -2543,7 +2775,11 @@ Messages
 +-------------------------------+------------+
 |import-outside-toplevel        |34          |
 +-------------------------------+------------+
-|redefined-outer-name           |19          |
+|redefined-outer-name           |20          |
++-------------------------------+------------+
+|invalid-name                   |20          |
++-------------------------------+------------+
+|duplicate-code                 |19          |
 +-------------------------------+------------+
 |unspecified-encoding           |18          |
 +-------------------------------+------------+
@@ -2551,11 +2787,13 @@ Messages
 +-------------------------------+------------+
 |syntax-error                   |17          |
 +-------------------------------+------------+
-|duplicate-code                 |16          |
-+-------------------------------+------------+
-|invalid-name                   |14          |
+|wrong-import-position          |14          |
 +-------------------------------+------------+
 |unused-variable                |11          |
++-------------------------------+------------+
+|unused-argument                |11          |
++-------------------------------+------------+
+|import-error                   |11          |
 +-------------------------------+------------+
 |wrong-import-order             |10          |
 +-------------------------------+------------+
@@ -2565,15 +2803,13 @@ Messages
 +-------------------------------+------------+
 |subprocess-run-check           |10          |
 +-------------------------------+------------+
-|unused-argument                |9           |
-+-------------------------------+------------+
-|wrong-import-position          |7           |
-+-------------------------------+------------+
 |f-string-without-interpolation |5           |
 +-------------------------------+------------+
 |too-many-instance-attributes   |4           |
 +-------------------------------+------------+
 |too-many-branches              |4           |
++-------------------------------+------------+
+|no-name-in-module              |4           |
 +-------------------------------+------------+
 |too-many-statements            |3           |
 +-------------------------------+------------+
@@ -2585,13 +2821,15 @@ Messages
 +-------------------------------+------------+
 |reimported                     |2           |
 +-------------------------------+------------+
+|pointless-string-statement     |2           |
++-------------------------------+------------+
 |missing-module-docstring       |2           |
 +-------------------------------+------------+
 |inconsistent-return-statements |2           |
 +-------------------------------+------------+
 |global-statement               |2           |
 +-------------------------------+------------+
-|too-many-positional-arguments  |1           |
+|bare-except                    |2           |
 +-------------------------------+------------+
 |too-many-nested-blocks         |1           |
 +-------------------------------+------------+
@@ -2601,18 +2839,14 @@ Messages
 +-------------------------------+------------+
 |raise-missing-from             |1           |
 +-------------------------------+------------+
-|pointless-string-statement     |1           |
-+-------------------------------+------------+
 |no-member                      |1           |
 +-------------------------------+------------+
 |missing-function-docstring     |1           |
-+-------------------------------+------------+
-|bare-except                    |1           |
 +-------------------------------+------------+
 
 
 
 
 ------------------------------------------------------------------
-Your code has been rated at 6.35/10 (previous run: 6.35/10, +0.00)
+Your code has been rated at 6.12/10 (previous run: 6.35/10, -0.23)
 
