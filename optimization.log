@@ -135,15 +135,49 @@ uploadready.py:536:11: W0718: Catching too general exception Exception (broad-ex
 uploadready.py:7:0: W0611: Unused Dict imported from typing (unused-import)
 uploadready.py:7:0: W0611: Unused Any imported from typing (unused-import)
 ************* Module client.python-fix
-client/python-fix.py:10:0: C0303: Trailing whitespace (trailing-whitespace)
-client/python-fix.py:13:0: C0303: Trailing whitespace (trailing-whitespace)
-client/python-fix.py:19:0: C0303: Trailing whitespace (trailing-whitespace)
-client/python-fix.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+client/python-fix.py:25:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:30:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:35:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:38:0: C0301: Line too long (116/100) (line-too-long)
+client/python-fix.py:40:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:57:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:59:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:70:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:78:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:83:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:87:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:118:70: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:132:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:135:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:138:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:142:0: C0303: Trailing whitespace (trailing-whitespace)
 client/python-fix.py:1:0: C0103: Module name "python-fix" doesn't conform to snake_case naming style (invalid-name)
-client/python-fix.py:6:4: C0415: Import outside toplevel (sys) (import-outside-toplevel)
-client/python-fix.py:7:4: C0415: Import outside toplevel (logging) (import-outside-toplevel)
-client/python-fix.py:12:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-client/python-fix.py:16:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:24:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:33:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:38:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:46:8: C0415: Import outside toplevel (uuid) (import-outside-toplevel)
+client/python-fix.py:58:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:67:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/python-fix.py:64:12: C0415: Import outside toplevel (shutil) (import-outside-toplevel)
+client/python-fix.py:66:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:68:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:75:11: W0718: Catching too general exception Exception (broad-exception-caught)
+client/python-fix.py:73:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+client/python-fix.py:76:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:93:15: W0718: Catching too general exception Exception (broad-exception-caught)
+client/python-fix.py:89:17: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+client/python-fix.py:91:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:91:24: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+client/python-fix.py:94:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:103:8: C0415: Import outside toplevel (flask) (import-outside-toplevel)
+client/python-fix.py:104:8: C0415: Import outside toplevel (werkzeug) (import-outside-toplevel)
+client/python-fix.py:105:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:106:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:109:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:112:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:126:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:144:12: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+client/python-fix.py:12:0: W0611: Unused import importlib (unused-import)
 ************* Module client.websocket-client
 client/websocket-client.py:159:0: C0303: Trailing whitespace (trailing-whitespace)
 client/websocket-client.py:161:0: C0303: Trailing whitespace (trailing-whitespace)
@@ -244,6 +278,21 @@ client/alphaos.py:136:19: W0718: Catching too general exception Exception (broad
 client/alphaos.py:137:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/alphaos.py:144:11: W0718: Catching too general exception Exception (broad-exception-caught)
 client/alphaos.py:145:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+************* Module client.backend.backend-imports-fix
+client/backend/backend-imports-fix.py:29:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/backend-imports-fix.py:35:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/backend-imports-fix.py:40:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/backend-imports-fix.py:46:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/backend-imports-fix.py:56:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/backend-imports-fix.py:64:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/backend-imports-fix.py:86:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/backend-imports-fix.py:93:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/backend-imports-fix.py:107:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/backend-imports-fix.py:1:0: C0103: Module name "backend-imports-fix" doesn't conform to snake_case naming style (invalid-name)
+client/backend/backend-imports-fix.py:55:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/backend-imports-fix.py:68:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/backend-imports-fix.py:99:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/backend-imports-fix.py:110:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
 ************* Module client.backend.app
 client/backend/app.py:23:0: C0301: Line too long (102/100) (line-too-long)
 client/backend/app.py:68:0: C0303: Trailing whitespace (trailing-whitespace)
@@ -375,6 +424,45 @@ client/backend/huggingface.py:456:8: W1203: Use lazy % formatting in logging fun
 client/backend/huggingface.py:458:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 client/backend/huggingface.py:10:0: W0611: Unused Union imported from typing (unused-import)
 client/backend/huggingface.py:10:0: W0611: Unused Tuple imported from typing (unused-import)
+************* Module client.backend.app.py-header-fix
+client/backend/app.py-header-fix.py:31:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/app.py-header-fix.py:40:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/app.py-header-fix.py:53:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/app.py-header-fix.py:78:0: C0301: Line too long (102/100) (line-too-long)
+client/backend/app.py-header-fix.py:79:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/app.py-header-fix.py:83:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/app.py-header-fix.py:1:0: C0103: Module name "py-header-fix" doesn't conform to snake_case naming style (invalid-name)
+client/backend/app.py-header-fix.py:58:0: C0413: Import "import logging" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py-header-fix.py:59:0: C0413: Import "import json" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py-header-fix.py:60:0: C0413: Import "import time" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py-header-fix.py:61:0: C0413: Import "import traceback" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py-header-fix.py:62:0: C0413: Import "from datetime import datetime" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py-header-fix.py:63:0: C0413: Import "from typing import Dict, Any, Optional, List, Union" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py-header-fix.py:65:0: E0401: Unable to import 'flask' (import-error)
+client/backend/app.py-header-fix.py:65:0: C0413: Import "from flask import Flask, jsonify, request, send_from_directory" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py-header-fix.py:66:0: E0401: Unable to import 'flask_cors' (import-error)
+client/backend/app.py-header-fix.py:66:0: C0413: Import "from flask_cors import CORS" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py-header-fix.py:67:0: C0413: Import "import psutil" should be placed at the top of the module (wrong-import-position)
+client/backend/app.py-header-fix.py:81:4: C0116: Missing function or method docstring (missing-function-docstring)
+client/backend/app.py-header-fix.py:81:20: W0613: Unused argument 'log_text' (unused-argument)
+client/backend/app.py-header-fix.py:81:30: W0613: Unused argument 'model_name' (unused-argument)
+client/backend/app.py-header-fix.py:81:53: W0613: Unused argument 'instruction' (unused-argument)
+client/backend/app.py-header-fix.py:84:4: C0116: Missing function or method docstring (missing-function-docstring)
+client/backend/app.py-header-fix.py:59:0: W0611: Unused import json (unused-import)
+client/backend/app.py-header-fix.py:60:0: W0611: Unused import time (unused-import)
+client/backend/app.py-header-fix.py:61:0: W0611: Unused import traceback (unused-import)
+client/backend/app.py-header-fix.py:62:0: W0611: Unused datetime imported from datetime (unused-import)
+client/backend/app.py-header-fix.py:63:0: W0611: Unused Dict imported from typing (unused-import)
+client/backend/app.py-header-fix.py:63:0: W0611: Unused Any imported from typing (unused-import)
+client/backend/app.py-header-fix.py:63:0: W0611: Unused Optional imported from typing (unused-import)
+client/backend/app.py-header-fix.py:63:0: W0611: Unused List imported from typing (unused-import)
+client/backend/app.py-header-fix.py:63:0: W0611: Unused Union imported from typing (unused-import)
+client/backend/app.py-header-fix.py:65:0: W0611: Unused Flask imported from flask (unused-import)
+client/backend/app.py-header-fix.py:65:0: W0611: Unused jsonify imported from flask (unused-import)
+client/backend/app.py-header-fix.py:65:0: W0611: Unused request imported from flask (unused-import)
+client/backend/app.py-header-fix.py:65:0: W0611: Unused send_from_directory imported from flask (unused-import)
+client/backend/app.py-header-fix.py:66:0: W0611: Unused CORS imported from flask_cors (unused-import)
+client/backend/app.py-header-fix.py:67:0: W0611: Unused import psutil (unused-import)
 ************* Module client.backend.ai_model
 client/backend/ai_model.py:69:0: C0303: Trailing whitespace (trailing-whitespace)
 client/backend/ai_model.py:138:0: C0303: Trailing whitespace (trailing-whitespace)
@@ -587,6 +675,29 @@ client/backend/gpt4all-log-analyzer.py:12:0: W0611: Unused Any imported from typ
 client/backend/gpt4all-log-analyzer.py:12:0: W0611: Unused List imported from typing (unused-import)
 client/backend/gpt4all-log-analyzer.py:12:0: W0611: Unused Union imported from typing (unused-import)
 client/backend/gpt4all-log-analyzer.py:13:0: W0611: Unused import re (unused-import)
+************* Module client.backend.path-fixer-module
+client/backend/path-fixer-module.py:29:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/path-fixer-module.py:35:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/path-fixer-module.py:40:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/path-fixer-module.py:46:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/path-fixer-module.py:56:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/path-fixer-module.py:64:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/path-fixer-module.py:86:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/path-fixer-module.py:93:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/path-fixer-module.py:118:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/path-fixer-module.py:125:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/path-fixer-module.py:142:0: C0303: Trailing whitespace (trailing-whitespace)
+client/backend/path-fixer-module.py:1:0: C0103: Module name "path-fixer-module" doesn't conform to snake_case naming style (invalid-name)
+client/backend/path-fixer-module.py:65:8: W0621: Redefining name 'path' from outer scope (line 140) (redefined-outer-name)
+client/backend/path-fixer-module.py:55:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/path-fixer-module.py:68:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/path-fixer-module.py:70:26: W0621: Redefining name 'module_name' from outer scope (line 145) (redefined-outer-name)
+client/backend/path-fixer-module.py:82:8: W0621: Redefining name 'module' from outer scope (line 146) (redefined-outer-name)
+client/backend/path-fixer-module.py:99:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/path-fixer-module.py:102:27: W0621: Redefining name 'module_name' from outer scope (line 145) (redefined-outer-name)
+client/backend/path-fixer-module.py:114:8: W0621: Redefining name 'module' from outer scope (line 146) (redefined-outer-name)
+client/backend/path-fixer-module.py:131:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/backend/path-fixer-module.py:147:8: C0103: Constant name "status" doesn't conform to UPPER_CASE naming style (invalid-name)
 ************* Module client.frontend.twitchbot
 client/frontend/twitchbot.py:5:0: E0401: Unable to import 'twitchio.ext' (import-error)
 client/frontend/twitchbot.py:6:0: C0411: standard import "os" should be placed before third party import "twitchio.ext.commands" (wrong-import-order)
@@ -2474,7 +2585,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
             return jsonify({"error": str(e)}), 500
     else:
         try:
-            # Load settings from file if it exists
+            import json
             if os.path.exists(settings_file):
                 with open(settings_file, 'r', encoding='utf-8') as f:
                     settings = json.load(f)
@@ -2516,13 +2627,19 @@ def health_check():
     })
 
 
-@app.route('/analysis_history', methods=['GET'])
-def get_analysis_history():
-    """Get the history of log analyses.
+def translate_log(log_text):
+    """Preprocess log text before AI analysis.
+
+    This function can be expanded to implement more sophisticated
+    log translation or normalization.
+
+    Args:
+        log_text: The original log text
 
     Returns:
-        JSON response with analysis history
-    """ (duplicate-code)
+        Processed log text
+    """
+    # In the future, add log normalization or preprocessing here (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[168:232]
 ==server.backend.app:[107:171]
@@ -2626,6 +2743,75 @@ with open(log_file_path, "w", encoding='utf-8') as log_file:
                     log_file.write(f"\n--- {file_path} ---\n")
                     log_file.write(f.read()) (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
+==client.backend.backend-imports-fix:[80:105]
+==client.backend.path-fixer-module:[80:112]
+    try:
+        module = importlib.import_module(module_name)
+        return module
+    except ImportError:
+        pass
+
+    # Try with backend prefix
+    try:
+        module = importlib.import_module(f"backend.{module_name}")
+        return module
+    except ImportError:
+        pass
+
+    # Try with client.backend prefix
+    try:
+        module = importlib.import_module(f"client.backend.{module_name}")
+        return module
+    except ImportError:
+        logger.error(f"Failed to import module: {module_name}")
+        return None
+
+def main():
+    """
+    Run the path fixer to ensure imports work correctly.
+    """ (duplicate-code)
+analyze.py:1:0: R0801: Similar lines in 2 files
+==client.backend.backend-imports-fix:[16:54]
+==client.backend.path-fixer-module:[16:54]
+)
+logger = logging.getLogger("PathFixer")
+
+def find_project_root():
+    """
+    Find the AILinux project root directory.
+
+    Returns:
+        str: Path to project root
+    """
+    # Start from current directory
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Try to find client directory
+    while True:
+        # Check if we're in the client directory
+        if os.path.basename(current_dir) == 'client':
+            return current_dir
+
+        # Check if backend, frontend directories exist
+        if os.path.isdir(os.path.join(current_dir, 'backend')) and \
+           os.path.isdir(os.path.join(current_dir, 'frontend')):
+            return current_dir
+
+        # Move up one level
+        parent_dir = os.path.dirname(current_dir)
+        if parent_dir == current_dir:  # We've reached the root directory
+            break
+        current_dir = parent_dir
+
+    # If we couldn't find the project root, return the directory of this script
+    return os.path.dirname(os.path.abspath(__file__))
+
+def fix_import_paths():
+    """
+    Add necessary paths to sys.path to ensure imports work correctly.
+    """
+    project_root = find_project_root() (duplicate-code)
+analyze.py:1:0: R0801: Similar lines in 2 files
 ==devtools.adjust_hierarchy_with_debugger:[32:52]
 ==patch.ailinux-alpha-code-patcher-v0.3:[152:170]
         for key, value in structure.items():
@@ -2701,7 +2887,9 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         'readme': ['README.md']
     }
 
-    # Helper function to create the directory structure (duplicate-code)
+    # Helper function to create the directory structure
+    def create_structure(target_path, structure):
+        """Create directories and files based on expected structure.""" (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==devtools.adjust_hierarchy_with_debugger:[52:61]
 ==patch.ailinux-alpha-code-patcher-v0.3:[33:42]
@@ -2732,6 +2920,19 @@ os.makedirs(log_directory, exist_ok=True)
 log_file_path = os.path.join(log_directory, "backend.log")
  (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
+==client.backend.backend-imports-fix:[57:67]
+==client.backend.path-fixer-module:[57:67]
+    paths_to_add = [
+        project_root,
+        os.path.join(project_root, 'backend'),
+        os.path.join(project_root, 'client'),
+        os.path.join(project_root, 'client', 'backend')
+    ]
+
+    for path in paths_to_add:
+        if path not in sys.path and os.path.exists(path):
+            sys.path.insert(0, path) (duplicate-code)
+analyze.py:1:0: R0801: Similar lines in 2 files
 ==server.backend.ai_model:[14:25]
 ==server.backend.websocket-server:[25:36]
 try:
@@ -2740,7 +2941,7 @@ try:
 except ImportError:
     logging.warning("dotenv package not installed, environment variables must be set manually")
 
-# Configure logging
+# Configure logging with more structured approach
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
@@ -2762,7 +2963,7 @@ logging.basicConfig(
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[361:371]
 ==client.backend.huggingface:[392:401]
-        system_prompt = """You are an AI assistant specialized in analyzing logs and providing insights.
+    system_prompt = """You are an AI assistant specialized in analyzing logs and providing insights.
 Given a log snippet, your task is to:
 1. Summarize the key information in the log
 2. Identify any errors, warnings, or issues
@@ -2770,7 +2971,8 @@ Given a log snippet, your task is to:
 4. Suggest troubleshooting steps or solutions
 
 Be concise and precise in your analysis."""
- (duplicate-code)
+
+    # Use custom instruction if provided (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[95:104]
 ==server.backend.app:[57:67]
@@ -2786,35 +2988,35 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.gpt4all.app:[143:156]
 ==server.backend.gpt4all.app:[106:119]
-    while True:
-        message = input(" ⇢  ")
+        while True:
+            message = input(" ⇢  ")
 
-        # Check if special command and take action
-        if message in SPECIAL_COMMANDS:
-            SPECIAL_COMMANDS[message](MESSAGES)
-            continue
+            # Check if special command and take action
+            if message in SPECIAL_COMMANDS:
+                SPECIAL_COMMANDS[message](MESSAGES)
+                continue
 
-        # if regular message, append to messages
-        MESSAGES.append({"role": "user", "content": message})
+            # if regular message, append to messages
+            MESSAGES.append({"role": "user", "content": message})
 
-        # execute chat completion and ignore the full response since
-        # we are outputting it incrementally (duplicate-code)
+            # execute chat completion and ignore the full response since
+            # we are outputting it incrementally (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.gpt4all.app:[106:119]
 ==server.backend.gpt4all.app:[143:156]
-    while True:
-        message = input(" ⇢  ")
+        while True:
+            message = input(" ⇢  ")
 
-        # Check if special command and take action
-        if message in SPECIAL_COMMANDS:
-            SPECIAL_COMMANDS[message](MESSAGES)
-            continue
+            # Check if special command and take action
+            if message in SPECIAL_COMMANDS:
+                SPECIAL_COMMANDS[message](MESSAGES)
+                continue
 
-        # if regular message, append to messages
-        MESSAGES.append({"role": "user", "content": message})
+            # if regular message, append to messages
+            MESSAGES.append({"role": "user", "content": message})
 
-        # execute chat completion and ignore the full response since
-        # we are outputting it incrementally (duplicate-code)
+            # execute chat completion and ignore the full response since
+            # we are outputting it incrementally (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.huggingface:[393:401]
 ==client.frontend.gpt4all-integration:[148:157]
@@ -2828,6 +3030,17 @@ Be concise and precise in your analysis."""
 
         # Prepare the conversation (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
+==client.backend.backend-imports-fix:[80:88]
+==client.backend.path-fixer-module:[112:120]
+    try:
+        module = importlib.import_module(module_name)
+        return module
+    except ImportError:
+        pass
+
+    # Try with backend prefix
+    try: (duplicate-code)
+analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[134:139]
 ==server.backend.app:[87:92]
     except Exception as e:
@@ -2835,11 +3048,22 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         stack_trace = traceback.format_exc()
         logger.exception(error_message)
         logger.debug(f"Stack trace: {stack_trace}") (duplicate-code)
+analyze.py:1:0: R0801: Similar lines in 2 files
+==client.backend.backend-imports-fix:[96:108]
+==client.backend.path-fixer-module:[128:136]
+        return module
+    except ImportError:
+        logger.error(f"Failed to import module: {module_name}")
+        return None
+
+# Run the fixer when the module is imported
+fix_import_paths()
+ (duplicate-code)
 
 
 Report
 ======
-3519 statements analysed.
+3792 statements analysed.
 
 Statistics by type
 ------------------
@@ -2847,13 +3071,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |29     |29         |=          |89.66       |27.59    |
+|module   |32     |29         |+3.00      |93.75       |34.38    |
 +---------+-------+-----------+-----------+------------+---------+
 |class    |13     |13         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |method   |65     |65         |=          |100.00      |7.69     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |120    |120        |=          |99.17       |0.00     |
+|function |137    |120        |+17.00     |97.81       |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -2864,13 +3088,13 @@ External dependencies
 
     ai_model (client.backend.app,server.backend.app,server.backend.websocket-server)
     gpt4all (client.backend.ai_model,client.backend.gpt4all-log-analyzer,client.backend.gpt4all.app,client.backend.gpt4allinit,client.frontend.gpt4all-integration,server.backend.ai_model,server.backend.gpt4all.app,server.backend.gpt4allinit)
-    psutil (client.backend.app,server.backend.app)
+    psutil (client.backend.app,client.backend.app.py-header-fix,server.backend.app)
     typing_extensions (client.backend.gpt4all.app,server.backend.gpt4all.app)
     websockets (server.backend.websocket-server)
 
 
 
-7905 lines have been analyzed
+8408 lines have been analyzed
 
 Raw metrics
 -----------
@@ -2878,13 +3102,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |4689   |59.32 |4689     |=          |
+|code      |5005   |59.53 |4689     |+316.00    |
 +----------+-------+------+---------+-----------+
-|docstring |1405   |17.77 |1405     |=          |
+|docstring |1482   |17.63 |1405     |+77.00     |
 +----------+-------+------+---------+-----------+
-|comment   |683    |8.64  |683      |=          |
+|comment   |733    |8.72  |683      |+50.00     |
 +----------+-------+------+---------+-----------+
-|empty     |1128   |14.27 |1128     |=          |
+|empty     |1188   |14.13 |1128     |+60.00     |
 +----------+-------+------+---------+-----------+
 
 
@@ -2908,13 +3132,13 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |642    |642      |642        |
+|convention |697    |642      |642        |
 +-----------+-------+---------+-----------+
-|refactor   |70     |70       |70         |
+|refactor   |77     |70       |70         |
 +-----------+-------+---------+-----------+
-|warning    |451    |451      |451        |
+|warning    |500    |451      |451        |
 +-----------+-------+---------+-----------+
-|error      |47     |47       |47         |
+|error      |49     |47       |47         |
 +-----------+-------+---------+-----------+
 
 
@@ -2925,89 +3149,95 @@ Messages by category
 +-----------------------------------------+------+--------+---------+-----------+
 |module                                   |error |warning |refactor |convention |
 +=========================================+======+========+=========+===========+
-|client.backend.huggingface               |14.89 |9.09    |0.00     |2.80       |
+|client.backend.huggingface               |14.29 |8.20    |0.00     |2.58       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.app                       |6.38  |5.99    |1.43     |0.47       |
+|server.backend.app                       |6.12  |5.40    |1.30     |0.43       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.app                       |4.26  |8.20    |2.86     |3.43       |
+|client.backend.app                       |4.08  |7.40    |2.60     |3.16       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.hugging                   |4.26  |1.11    |0.00     |0.78       |
+|client.backend.app.py-header-fix         |4.08  |3.60    |0.00     |2.58       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.gpt4all.app               |4.26  |0.67    |0.00     |1.09       |
+|client.backend.hugging                   |4.08  |1.00    |0.00     |0.72       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.gpt4all.app               |4.26  |0.67    |0.00     |1.09       |
+|server.backend.gpt4all.app               |4.08  |0.60    |0.00     |1.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|analyze                                  |4.26  |0.00    |30.00    |0.00       |
+|client.backend.gpt4all.app               |4.08  |0.60    |0.00     |1.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.bigfiles                        |4.26  |0.00    |0.00     |0.00       |
+|analyze                                  |4.08  |0.00    |33.77    |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.analyze                         |4.26  |0.00    |0.00     |0.00       |
+|devtools.bigfiles                        |4.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|bigfiles                                 |4.26  |0.00    |0.00     |0.00       |
+|devtools.analyze                         |4.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.websocket-server          |2.13  |9.76    |5.71     |3.43       |
+|bigfiles                                 |4.08  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.websocket-client                  |2.13  |8.87    |1.43     |2.49       |
+|server.backend.websocket-server          |2.04  |8.80    |5.19     |3.16       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.alphaos                           |2.13  |4.88    |0.00     |2.65       |
+|client.websocket-client                  |2.04  |8.00    |1.30     |2.30       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.twitchbot                |2.13  |0.00    |0.00     |0.16       |
+|client.alphaos                           |2.04  |4.40    |0.00     |2.44       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.data_server               |2.13  |0.00    |0.00     |0.00       |
+|client.frontend.twitchbot                |2.04  |0.00    |0.00     |0.14       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.8    |2.13  |0.00    |0.00     |0.00       |
+|server.backend.data_server               |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.7    |2.13  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.8    |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.6    |2.13  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.7    |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.5    |2.13  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.6    |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.4    |2.13  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.5    |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.2    |2.13  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.4    |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.1    |2.13  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.2    |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.fix_duplicate_code              |2.13  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.1    |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.cleanup                         |2.13  |0.00    |0.00     |0.00       |
+|devtools.fix_duplicate_code              |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.adjust_hierarchy_with_debugger  |2.13  |0.00    |0.00     |0.00       |
+|devtools.cleanup                         |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.log-analysis-integration |2.13  |0.00    |0.00     |0.00       |
+|devtools.adjust_hierarchy_with_debugger  |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.log-analysis             |2.13  |0.00    |0.00     |0.00       |
+|client.frontend.log-analysis-integration |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.file-sync-client                  |2.13  |0.00    |0.00     |0.00       |
+|client.frontend.log-analysis             |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.gpt4allinit               |2.13  |0.00    |0.00     |0.00       |
+|client.file-sync-client                  |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|cleanup                                  |2.13  |0.00    |0.00     |0.00       |
+|client.backend.gpt4allinit               |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|adjust_hierarchy_with_debugger           |2.13  |0.00    |0.00     |0.00       |
+|cleanup                                  |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.ai_model                  |0.00  |9.98    |5.71     |10.12      |
+|adjust_hierarchy_with_debugger           |2.04  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.ai_model                  |0.00  |9.98    |5.71     |10.12      |
+|server.backend.ai_model                  |0.00  |9.00    |5.19     |9.33       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.gpt4all-log-analyzer      |0.00  |5.54    |1.43     |6.54       |
+|client.backend.ai_model                  |0.00  |9.00    |5.19     |9.33       |
 +-----------------------------------------+------+--------+---------+-----------+
-|uploadready                              |0.00  |5.32    |8.57     |11.99      |
+|client.backend.gpt4all-log-analyzer      |0.00  |5.00    |1.30     |6.03       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.uploadready                     |0.00  |5.32    |8.57     |11.99      |
+|uploadready                              |0.00  |4.80    |7.79     |11.05      |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.gpt4all-integration      |0.00  |5.32    |0.00     |6.70       |
+|devtools.uploadready                     |0.00  |4.80    |7.79     |11.05      |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.enhanced-pylint-fixer           |0.00  |4.21    |25.71    |14.64      |
+|client.frontend.gpt4all-integration      |0.00  |4.80    |0.00     |6.17       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.gpt4allinit               |0.00  |2.22    |1.43     |2.18       |
+|client.python-fix                        |0.00  |4.20    |1.30     |3.01       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.3    |0.00  |1.33    |1.43     |0.31       |
+|devtools.enhanced-pylint-fixer           |0.00  |3.80    |23.38    |13.49      |
 +-----------------------------------------+------+--------+---------+-----------+
-|python-optimizer                         |0.00  |1.11    |0.00     |5.92       |
+|server.backend.gpt4allinit               |0.00  |2.00    |1.30     |2.01       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.python-fix                        |0.00  |0.44    |0.00     |1.09       |
+|client.backend.path-fixer-module         |0.00  |1.80    |0.00     |1.87       |
++-----------------------------------------+------+--------+---------+-----------+
+|patch.ailinux-alpha-code-patcher-v0.3    |0.00  |1.20    |1.30     |0.29       |
++-----------------------------------------+------+--------+---------+-----------+
+|python-optimizer                         |0.00  |1.00    |0.00     |5.45       |
++-----------------------------------------+------+--------+---------+-----------+
+|client.backend.backend-imports-fix       |0.00  |0.60    |1.30     |1.43       |
 +-----------------------------------------+------+--------+---------+-----------+
 
 
@@ -3018,31 +3248,33 @@ Messages
 +-------------------------------+------------+
 |message id                     |occurrences |
 +===============================+============+
-|trailing-whitespace            |468         |
+|trailing-whitespace            |505         |
 +-------------------------------+------------+
-|logging-fstring-interpolation  |192         |
+|logging-fstring-interpolation  |211         |
 +-------------------------------+------------+
-|broad-exception-caught         |96          |
+|broad-exception-caught         |99          |
 +-------------------------------+------------+
-|line-too-long                  |65          |
+|unused-import                  |78          |
 +-------------------------------+------------+
-|unused-import                  |62          |
+|line-too-long                  |67          |
 +-------------------------------+------------+
-|import-outside-toplevel        |52          |
+|import-outside-toplevel        |54          |
 +-------------------------------+------------+
-|invalid-name                   |27          |
+|redefined-outer-name           |31          |
 +-------------------------------+------------+
-|redefined-outer-name           |26          |
+|invalid-name                   |31          |
 +-------------------------------+------------+
-|duplicate-code                 |21          |
+|duplicate-code                 |26          |
 +-------------------------------+------------+
-|no-else-return                 |19          |
+|wrong-import-position          |23          |
 +-------------------------------+------------+
-|import-error                   |19          |
+|no-else-return                 |21          |
 +-------------------------------+------------+
-|unspecified-encoding           |18          |
+|import-error                   |21          |
 +-------------------------------+------------+
-|wrong-import-position          |14          |
+|unspecified-encoding           |20          |
++-------------------------------+------------+
+|unused-argument                |14          |
 +-------------------------------+------------+
 |syntax-error                   |14          |
 +-------------------------------+------------+
@@ -3050,15 +3282,13 @@ Messages
 +-------------------------------+------------+
 |unused-variable                |11          |
 +-------------------------------+------------+
-|unused-argument                |11          |
-+-------------------------------+------------+
 |undefined-variable             |10          |
 +-------------------------------+------------+
 |too-many-return-statements     |10          |
 +-------------------------------+------------+
 |subprocess-run-check           |10          |
 +-------------------------------+------------+
-|f-string-without-interpolation |5           |
+|f-string-without-interpolation |6           |
 +-------------------------------+------------+
 |too-many-instance-attributes   |4           |
 +-------------------------------+------------+
@@ -3074,7 +3304,7 @@ Messages
 +-------------------------------+------------+
 |no-name-in-module              |3           |
 +-------------------------------+------------+
-|missing-module-docstring       |3           |
+|missing-function-docstring     |3           |
 +-------------------------------+------------+
 |invalid-envvar-default         |3           |
 +-------------------------------+------------+
@@ -3086,6 +3316,8 @@ Messages
 +-------------------------------+------------+
 |pointless-string-statement     |2           |
 +-------------------------------+------------+
+|missing-module-docstring       |2           |
++-------------------------------+------------+
 |inconsistent-return-statements |2           |
 +-------------------------------+------------+
 |bare-except                    |2           |
@@ -3095,8 +3327,6 @@ Messages
 |too-few-public-methods         |1           |
 +-------------------------------+------------+
 |no-member                      |1           |
-+-------------------------------+------------+
-|missing-function-docstring     |1           |
 +-------------------------------+------------+
 |logging-not-lazy               |1           |
 +-------------------------------+------------+
@@ -3109,5 +3339,5 @@ Messages
 
 
 ------------------------------------------------------------------
-Your code has been rated at 6.03/10 (previous run: 6.03/10, +0.00)
+Your code has been rated at 5.99/10 (previous run: 6.03/10, -0.03)
 
