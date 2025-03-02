@@ -2440,7 +2440,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
             return jsonify({"error": str(e)}), 500
     else:
         try:
-            import json
+            # Load settings from file if it exists
             if os.path.exists(settings_file):
                 with open(settings_file, 'r', encoding='utf-8') as f:
                     settings = json.load(f)
@@ -2482,19 +2482,13 @@ def health_check():
     })
 
 
-def translate_log(log_text):
-    """Preprocess log text before AI analysis.
-
-    This function can be expanded to implement more sophisticated
-    log translation or normalization.
-
-    Args:
-        log_text: The original log text
+@app.route('/analysis_history', methods=['GET'])
+def get_analysis_history():
+    """Get the history of log analyses.
 
     Returns:
-        Processed log text
-    """
-    # In the future, add log normalization or preprocessing here (duplicate-code)
+        JSON response with analysis history
+    """ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[168:232]
 ==server.backend.app:[107:171]
@@ -2561,7 +2555,7 @@ def handle_settings():
             if not isinstance(new_settings, dict):
                 return jsonify({"error": "Invalid settings format"}), 400
 
-            # Ensure settings directory exists (duplicate-code)
+            import json (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==analyze:[4:36]
 ==devtools.analyze:[4:36]
@@ -2759,19 +2753,19 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.gpt4all.app:[143:156]
 ==server.backend.gpt4all.app:[106:119]
-        while True:
-            message = input(" ⇢  ")
+    while True:
+        message = input(" ⇢  ")
 
-            # Check if special command and take action
-            if message in SPECIAL_COMMANDS:
-                SPECIAL_COMMANDS[message](MESSAGES)
-                continue
+        # Check if special command and take action
+        if message in SPECIAL_COMMANDS:
+            SPECIAL_COMMANDS[message](MESSAGES)
+            continue
 
-            # if regular message, append to messages
-            MESSAGES.append({"role": "user", "content": message})
+        # if regular message, append to messages
+        MESSAGES.append({"role": "user", "content": message})
 
-            # execute chat completion and ignore the full response since
-            # we are outputting it incrementally (duplicate-code)
+        # execute chat completion and ignore the full response since
+        # we are outputting it incrementally (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.gpt4all.app:[106:119]
 ==server.backend.gpt4all.app:[143:156]
@@ -2798,7 +2792,8 @@ Given a log snippet, your task is to:
 4. Suggest troubleshooting steps or solutions
 
 Be concise and precise in your analysis."""
- (duplicate-code)
+
+        # Prepare the conversation (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[134:139]
 ==server.backend.app:[87:92]
@@ -2819,13 +2814,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |28     |23         |+5.00      |92.86       |25.00    |
+|module   |28     |28         |=          |92.86       |25.00    |
 +---------+-------+-----------+-----------+------------+---------+
-|class    |13     |10         |+3.00      |100.00      |0.00     |
+|class    |13     |13         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |65     |55         |+10.00     |100.00      |7.69     |
+|method   |65     |65         |=          |100.00      |7.69     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |117    |99         |+18.00     |99.15       |0.00     |
+|function |117    |117        |=          |99.15       |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -2850,13 +2845,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |4603   |59.28 |4001     |+602.00    |
+|code      |4603   |59.28 |4603     |=          |
 +----------+-------+------+---------+-----------+
-|docstring |1383   |17.81 |1132     |+251.00    |
+|docstring |1383   |17.81 |1383     |=          |
 +----------+-------+------+---------+-----------+
-|comment   |671    |8.64  |572      |+99.00     |
+|comment   |671    |8.64  |671      |=          |
 +----------+-------+------+---------+-----------+
-|empty     |1108   |14.27 |918      |+190.00    |
+|empty     |1108   |14.27 |1108     |=          |
 +----------+-------+------+---------+-----------+
 
 
@@ -2880,13 +2875,13 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |621    |517      |517        |
+|convention |621    |621      |621        |
 +-----------+-------+---------+-----------+
-|refactor   |69     |66       |66         |
+|refactor   |69     |69       |69         |
 +-----------+-------+---------+-----------+
-|warning    |439    |349      |349        |
+|warning    |439    |439      |439        |
 +-----------+-------+---------+-----------+
-|error      |48     |43       |43         |
+|error      |48     |48       |48         |
 +-----------+-------+---------+-----------+
 
 
@@ -3079,5 +3074,5 @@ Messages
 
 
 ------------------------------------------------------------------
-Your code has been rated at 6.03/10 (previous run: 6.12/10, -0.09)
+Your code has been rated at 6.03/10 (previous run: 6.03/10, +0.00)
 

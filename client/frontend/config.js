@@ -10,13 +10,18 @@ const electronLog = require('electron-log');
 // Load environment variables
 dotenv.config();
 
-// Configure logging
+// Configure logging with clear levels and formatting
 electronLog.transports.file.level = 'info';
 electronLog.transports.console.level = 'debug';
 
-// Create a persistent configuration store with enhanced defaults
+/**
+ * Create a secure configuration store with enhanced defaults
+ * @type {Store<object>}
+ */
 const store = new Store({
   name: 'ailinux-user-preferences',
+  encryptionKey: process.env.STORE_ENCRYPTION_KEY, // Optional encryption
+  clearInvalidConfig: true, // Clear any corrupted config
   defaults: {
     // AI Model Configuration
     ai: {
@@ -24,18 +29,18 @@ const store = new Store({
       models: {
         gpt4all: { 
           enabled: true, 
-          path: process.env.GPTALL_MODEL_PATH || 'default/model/path' 
+          path: process.env.GPTALL_MODEL_PATH || './models/default-model.gguf' 
         },
         openai: { 
-          enabled: !!process.env.OPENAI_API_KEY, 
+          enabled: Boolean(process.env.OPENAI_API_KEY), 
           apiKey: process.env.OPENAI_API_KEY || '' 
         },
         gemini: { 
-          enabled: !!process.env.GEMINI_API_KEY, 
+          enabled: Boolean(process.env.GEMINI_API_KEY), 
           apiKey: process.env.GEMINI_API_KEY || '' 
         },
         huggingface: { 
-          enabled: !!process.env.HUGGINGFACE_API_KEY, 
+          enabled: Boolean(process.env.HUGGINGFACE_API_KEY), 
           apiKey: process.env.HUGGINGFACE_API_KEY || '' 
         }
       }
@@ -44,7 +49,7 @@ const store = new Store({
     // Server Configuration
     server: {
       host: process.env.SERVER_HOST || 'localhost',
-      port: process.env.SERVER_PORT || 8081,
+      port: Number(process.env.SERVER_PORT) || 8081,
       wsUrl: process.env.WS_SERVER_URL || 'ws://localhost:8082'
     },
     
@@ -64,75 +69,121 @@ const store = new Store({
   }
 });
 
-// Expose a secure API to the renderer process
+/**
+ * Validates the URL is allowed for WebSocket connection
+ * @param {string} url - The URL to validate
+ * @returns {boolean} True if URL is allowed, false otherwise
+ */
+function isAllowedWebSocketUrl(url) {
+  try {
+    const allowedHosts = ['localhost', '127.0.0.1', 'derleiti.de'];
+    const parsedUrl = new URL(url);
+    return allowedHosts.includes(parsedUrl.hostname);
+  } catch (error) {
+    electronLog.error('URL validation error:', error);
+    return false;
+  }
+}
+
+// Expose a secure API to the renderer process with proper error handling
 contextBridge.exposeInMainWorld('electronAPI', {
   // Configuration methods
   getConfig: (key) => {
     try {
       return store.get(key);
     } catch (error) {
-      electronLog.error('Config retrieval error:', error);
+      electronLog.error(`Config retrieval error for key "${key}":`, error);
       return null;
     }
   },
   
   setConfig: (key, value) => {
     try {
+      // Validate input - prevent undefined or null keys
+      if (!key || typeof key !== 'string') {
+        throw new Error('Invalid configuration key');
+      }
+      
       store.set(key, value);
       return true;
     } catch (error) {
-      electronLog.error('Config update error:', error);
+      electronLog.error(`Config update error for key "${key}":`, error);
       return false;
     }
   },
   
-  // API Key Management
+  // API Key Management with improved security
   updateApiKey: (service, key) => {
     try {
+      // Validate service name
+      if (!['openai', 'gemini', 'huggingface'].includes(service)) {
+        throw new Error(`Invalid service: ${service}`);
+      }
+      
       const currentConfig = store.get('ai.models');
-      currentConfig[service].apiKey = key;
-      currentConfig[service].enabled = !!key;
+      if (!currentConfig) {
+        throw new Error('Configuration not properly initialized');
+      }
+      
+      // Update API key and enabled status
+      currentConfig[service] = {
+        ...(currentConfig[service] || {}),
+        apiKey: key,
+        enabled: Boolean(key)
+      };
+      
       store.set('ai.models', currentConfig);
       return true;
     } catch (error) {
-      electronLog.error('API key update error:', error);
+      electronLog.error(`API key update error for ${service}:`, error);
       return false;
     }
   },
   
-  // Logging methods
+  // Logging methods with validation
   log: (level, message) => {
-    const validLevels = ['info', 'warn', 'error'];
-    if (validLevels.includes(level)) {
-      switch(level) {
-        case 'info': electronLog.info(message); break;
-        case 'warn': electronLog.warn(message); break;
-        case 'error': electronLog.error(message); break;
-      }
+    const validLevels = ['info', 'warn', 'error', 'debug'];
+    if (!validLevels.includes(level)) {
+      electronLog.warn(`Invalid log level '${level}', defaulting to 'info'`);
+      level = 'info';
+    }
+    
+    if (typeof message !== 'string') {
+      message = String(message);
+    }
+    
+    switch(level) {
+      case 'info': electronLog.info(message); break;
+      case 'warn': electronLog.warn(message); break;
+      case 'error': electronLog.error(message); break;
+      case 'debug': electronLog.debug(message); break;
     }
   },
   
-  // System Information
+  // System Information (safe, read-only)
   getSystemInfo: () => ({
     platform: process.platform,
     arch: process.arch,
-    version: require('./package.json').version,
+    version: require('../package.json').version || '1.0.0',
+    nodeVersion: process.version,
+    electronVersion: process.versions.electron,
     env: {
-      NODE_ENV: process.env.NODE_ENV || 'production',
-      ELECTRON_ENV: 'development'
+      NODE_ENV: process.env.NODE_ENV || 'production'
     }
   }),
   
-  // Secure WebSocket Creator
+  // Secure WebSocket Creator with URL validation
   createWebSocket: (url) => {
-    const allowedHosts = ['localhost', 'derleiti.de'];
-    const parsedUrl = new URL(url);
-    
-    if (!allowedHosts.includes(parsedUrl.hostname)) {
+    if (!isAllowedWebSocketUrl(url)) {
       throw new Error('Unauthorized WebSocket connection');
     }
     
-    return new WebSocket(url);
+    try {
+      return new WebSocket(url);
+    } catch (error) {
+      electronLog.error('WebSocket creation error:', error);
+      throw new Error(`Failed to create WebSocket: ${error.message}`);
+    }
   }
 });
 
