@@ -2,33 +2,21 @@
  * AILinux Electron Main Process
  * Combines features from existing implementation with enhanced security
  */
-const { app, BrowserWindow, ipcMain, dialog, Menu, shell } = require('electron');
-const path = require('path');
-const fs = require('fs').promises;
-const axios = require('axios');
-const electronLog = require('electron-log');
-const dotenv = require('dotenv');
+import { app, BrowserWindow, ipcMain, dialog, Menu, shell } from 'electron';
+import path from 'path';
+import fs from 'fs/promises';
+import axios from 'axios';
+import electronLog from 'electron-log';
+import dotenv from 'dotenv';
 
-// Dynamically import electron-store with a wrapper
-const createStore = async () => {
-  try {
-    const Store = await import('electron-store');
-    return new Store.default({
-      name: 'ailinux-app-state',
-      defaults: {
-        windowBounds: { width: 1200, height: 900 },
-        theme: 'system',
-        serverUrl: process.env.SERVER_URL || 'http://localhost:8081',
-        wsServerUrl: process.env.WS_SERVER_URL || 'ws://localhost:8082',
-        recentLogs: [],
-        defaultModel: process.env.DEFAULT_MODEL || 'gpt4all'
-      }
-    });
-  } catch (error) {
-    electronLog.error('Failed to load electron-store:', error);
-    throw error;
-  }
-};
+// Dynamically import electron-store
+let Store;
+try {
+  Store = (await import('electron-store')).default;
+} catch (error) {
+  console.error('Failed to import electron-store:', error);
+  process.exit(1);
+}
 
 // Load environment variables
 dotenv.config();
@@ -38,20 +26,27 @@ electronLog.transports.file.level = 'info';
 electronLog.transports.console.level = 'debug';
 electronLog.initialize({ deep: true });
 
-// Global reference to main window and store
+// Configuration store
+const store = new Store({
+  name: 'ailinux-app-state',
+  defaults: {
+    windowBounds: { width: 1200, height: 900 },
+    theme: 'system',
+    serverUrl: process.env.SERVER_URL || 'http://localhost:8081',
+    wsServerUrl: process.env.WS_SERVER_URL || 'ws://localhost:8082',
+    recentLogs: [],
+    defaultModel: process.env.DEFAULT_MODEL || 'gpt4all'
+  }
+});
+
+// Global reference to main window
 let mainWindow = null;
 let settingsWindow = null;
-let store = null;
 
 /**
  * Create the main application window
  */
-async function createMainWindow() {
-  // Ensure store is initialized
-  if (!store) {
-    store = await createStore();
-  }
-
+function createMainWindow() {
   const { width, height } = store.get('windowBounds');
   
   mainWindow = new BrowserWindow({
@@ -63,7 +58,7 @@ async function createMainWindow() {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      preload: path.join(__dirname, 'preload.js'),
+      preload: path.join(process.cwd(), 'preload.js'),
       enableRemoteModule: false,
       worldSafeExecuteJavaScript: true,
       sandbox: true
@@ -110,7 +105,7 @@ function createSettingsWindow() {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(process.cwd(), 'preload.js')
     }
   });
 
@@ -251,19 +246,11 @@ function createApplicationMenu() {
 /**
  * Initialize application lifecycle
  */
-async function initializeApp() {
-  app.on('ready', async () => {
-    try {
-      // Initialize store before other operations
-      store = await createStore();
-      
-      createMainWindow();
-      setupIpcHandlers();
-      createApplicationMenu();
-    } catch (error) {
-      electronLog.error('Initialization error:', error);
-      app.quit();
-    }
+function initializeApp() {
+  app.on('ready', () => {
+    createMainWindow();
+    setupIpcHandlers();
+    createApplicationMenu();
   });
 
   app.on('window-all-closed', () => {
@@ -272,9 +259,9 @@ async function initializeApp() {
     }
   });
 
-  app.on('activate', async () => {
+  app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-      await createMainWindow();
+      createMainWindow();
     }
   });
 }
@@ -294,18 +281,15 @@ function setupErrorHandling() {
 }
 
 // Initialize the application
-async function main() {
+function main() {
+  initializeApp();
   setupErrorHandling();
-  await initializeApp();
 }
 
-main().catch(error => {
-  console.error('Failed to start application:', error);
-  process.exit(1);
-});
+main();
 
-module.exports = {
-  mainWindow,
-  store,
-  electronLog
+export { 
+  mainWindow, 
+  store, 
+  electronLog 
 };

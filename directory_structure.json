@@ -1,10 +1,10 @@
 {
   "stats": {
-    "total_directories": 456,
-    "total_files": 2850,
-    "total_size_bytes": 289756004,
-    "total_size_human": "276.33 MB",
-    "scan_time": "2025-03-02 08:58:15"
+    "total_directories": 454,
+    "total_files": 2696,
+    "total_size_bytes": 289427360,
+    "total_size_human": "276.02 MB",
+    "scan_time": "2025-03-02 09:12:44"
   },
   "structure": {
     "postcode.sh": {
@@ -176,6 +176,11 @@
         "frontend": {
           "type": "directory",
           "contents": {
+            "main.cjs": {
+              "type": "file",
+              "size": 7106,
+              "size_human": "6.94 KB"
+            },
             "twitchbot.py": {
               "type": "file",
               "size": 1465,
@@ -203,8 +208,8 @@
             },
             "package-lock.json": {
               "type": "file",
-              "size": 70491,
-              "size_human": "68.84 KB"
+              "size": 70469,
+              "size_human": "68.82 KB"
             },
             "config.py": {
               "type": "file",
@@ -461,6 +466,71 @@
                           "size_human": "5.90 KB"
                         }
                       }
+                    }
+                  }
+                },
+                "dotenv": {
+                  "type": "directory",
+                  "contents": {
+                    "LICENSE": {
+                      "type": "file",
+                      "size": 1294,
+                      "size_human": "1.26 KB"
+                    },
+                    "README-es.md": {
+                      "type": "file",
+                      "size": 17203,
+                      "size_human": "16.80 KB"
+                    },
+                    "config.d.ts": {
+                      "type": "file",
+                      "size": 11,
+                      "size_human": "11.00 B"
+                    },
+                    "package.json": {
+                      "type": "file",
+                      "size": 1606,
+                      "size_human": "1.57 KB"
+                    },
+                    "README.md": {
+                      "type": "file",
+                      "size": 23042,
+                      "size_human": "22.50 KB"
+                    },
+                    "lib": {
+                      "type": "directory",
+                      "contents": {
+                        "cli-options.js": {
+                          "type": "file",
+                          "size": 289,
+                          "size_human": "289.00 B"
+                        },
+                        "main.d.ts": {
+                          "type": "file",
+                          "size": 4903,
+                          "size_human": "4.79 KB"
+                        },
+                        "main.js": {
+                          "type": "file",
+                          "size": 9972,
+                          "size_human": "9.74 KB"
+                        },
+                        "env-options.js": {
+                          "type": "file",
+                          "size": 633,
+                          "size_human": "633.00 B"
+                        }
+                      }
+                    },
+                    "config.js": {
+                      "type": "file",
+                      "size": 176,
+                      "size_human": "176.00 B"
+                    },
+                    "CHANGELOG.md": {
+                      "type": "file",
+                      "size": 16644,
+                      "size_human": "16.25 KB"
                     }
                   }
                 },
@@ -1511,856 +1581,6 @@
                       "type": "file",
                       "size": 1846,
                       "size_human": "1.80 KB"
-                    },
-                    "node_modules": {
-                      "type": "directory",
-                      "contents": {
-                        "type-fest": {
-                          "type": "directory",
-                          "contents": {
-                            "readme.md": {
-                              "type": "file",
-                              "size": 58289,
-                              "size_human": "56.92 KB"
-                            },
-                            "index.d.ts": {
-                              "type": "file",
-                              "size": 9206,
-                              "size_human": "8.99 KB"
-                            },
-                            "license-mit": {
-                              "type": "file",
-                              "size": 1117,
-                              "size_human": "1.09 KB"
-                            },
-                            "package.json": {
-                              "type": "file",
-                              "size": 1859,
-                              "size_human": "1.82 KB"
-                            },
-                            "source": {
-                              "type": "directory",
-                              "contents": {
-                                "is-float.d.ts": {
-                                  "type": "file",
-                                  "size": 684,
-                                  "size_human": "684.00 B"
-                                },
-                                "is-integer.d.ts": {
-                                  "type": "file",
-                                  "size": 1080,
-                                  "size_human": "1.05 KB"
-                                },
-                                "writable-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 3281,
-                                  "size_human": "3.20 KB"
-                                },
-                                "distributed-pick.d.ts": {
-                                  "type": "file",
-                                  "size": 2081,
-                                  "size_human": "2.03 KB"
-                                },
-                                "less-than-or-equal.d.ts": {
-                                  "type": "file",
-                                  "size": 460,
-                                  "size_human": "460.00 B"
-                                },
-                                "delimiter-cased-properties.d.ts": {
-                                  "type": "file",
-                                  "size": 779,
-                                  "size_human": "779.00 B"
-                                },
-                                "tuple-to-object.d.ts": {
-                                  "type": "file",
-                                  "size": 1483,
-                                  "size_human": "1.45 KB"
-                                },
-                                "tuple-to-union.d.ts": {
-                                  "type": "file",
-                                  "size": 1691,
-                                  "size_human": "1.65 KB"
-                                },
-                                "is-any.d.ts": {
-                                  "type": "file",
-                                  "size": 880,
-                                  "size_human": "880.00 B"
-                                },
-                                "greater-than-or-equal.d.ts": {
-                                  "type": "file",
-                                  "size": 470,
-                                  "size_human": "470.00 B"
-                                },
-                                "delimiter-case.d.ts": {
-                                  "type": "file",
-                                  "size": 1714,
-                                  "size_human": "1.67 KB"
-                                },
-                                "is-tuple.d.ts": {
-                                  "type": "file",
-                                  "size": 2056,
-                                  "size_human": "2.01 KB"
-                                },
-                                "find-global-type.d.ts": {
-                                  "type": "file",
-                                  "size": 2050,
-                                  "size_human": "2.00 KB"
-                                },
-                                "string-slice.d.ts": {
-                                  "type": "file",
-                                  "size": 728,
-                                  "size_human": "728.00 B"
-                                },
-                                "pick-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 4143,
-                                  "size_human": "4.05 KB"
-                                },
-                                "opaque.d.ts": {
-                                  "type": "file",
-                                  "size": 26,
-                                  "size_human": "26.00 B"
-                                },
-                                "set-optional.d.ts": {
-                                  "type": "file",
-                                  "size": 1146,
-                                  "size_human": "1.12 KB"
-                                },
-                                "array-indices.d.ts": {
-                                  "type": "file",
-                                  "size": 725,
-                                  "size_human": "725.00 B"
-                                },
-                                "all-union-fields.d.ts": {
-                                  "type": "file",
-                                  "size": 2297,
-                                  "size_human": "2.24 KB"
-                                },
-                                "unknown-record.d.ts": {
-                                  "type": "file",
-                                  "size": 631,
-                                  "size_human": "631.00 B"
-                                },
-                                "literal-union.d.ts": {
-                                  "type": "file",
-                                  "size": 1236,
-                                  "size_human": "1.21 KB"
-                                },
-                                "except.d.ts": {
-                                  "type": "file",
-                                  "size": 3068,
-                                  "size_human": "3.00 KB"
-                                },
-                                "shared-union-fields.d.ts": {
-                                  "type": "file",
-                                  "size": 1895,
-                                  "size_human": "1.85 KB"
-                                },
-                                "camel-cased-properties-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2285,
-                                  "size_human": "2.23 KB"
-                                },
-                                "set-non-nullable.d.ts": {
-                                  "type": "file",
-                                  "size": 1098,
-                                  "size_human": "1.07 KB"
-                                },
-                                "conditional-except.d.ts": {
-                                  "type": "file",
-                                  "size": 1048,
-                                  "size_human": "1.02 KB"
-                                },
-                                "camel-cased-properties.d.ts": {
-                                  "type": "file",
-                                  "size": 798,
-                                  "size_human": "798.00 B"
-                                },
-                                "array-tail.d.ts": {
-                                  "type": "file",
-                                  "size": 673,
-                                  "size_human": "673.00 B"
-                                },
-                                "schema.d.ts": {
-                                  "type": "file",
-                                  "size": 3005,
-                                  "size_human": "2.93 KB"
-                                },
-                                "conditional-keys.d.ts": {
-                                  "type": "file",
-                                  "size": 1313,
-                                  "size_human": "1.28 KB"
-                                },
-                                "has-readonly-keys.d.ts": {
-                                  "type": "file",
-                                  "size": 667,
-                                  "size_human": "667.00 B"
-                                },
-                                "entry.d.ts": {
-                                  "type": "file",
-                                  "size": 2848,
-                                  "size_human": "2.78 KB"
-                                },
-                                "structured-cloneable.d.ts": {
-                                  "type": "file",
-                                  "size": 1956,
-                                  "size_human": "1.91 KB"
-                                },
-                                "non-empty-object.d.ts": {
-                                  "type": "file",
-                                  "size": 943,
-                                  "size_human": "943.00 B"
-                                },
-                                "entries.d.ts": {
-                                  "type": "file",
-                                  "size": 2576,
-                                  "size_human": "2.52 KB"
-                                },
-                                "set-field-type.d.ts": {
-                                  "type": "file",
-                                  "size": 1611,
-                                  "size_human": "1.57 KB"
-                                },
-                                "jsonifiable.d.ts": {
-                                  "type": "file",
-                                  "size": 1034,
-                                  "size_human": "1.01 KB"
-                                },
-                                "required-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2832,
-                                  "size_human": "2.77 KB"
-                                },
-                                "omit-index-signature.d.ts": {
-                                  "type": "file",
-                                  "size": 3448,
-                                  "size_human": "3.37 KB"
-                                },
-                                "is-null.d.ts": {
-                                  "type": "file",
-                                  "size": 419,
-                                  "size_human": "419.00 B"
-                                },
-                                "if-unknown.d.ts": {
-                                  "type": "file",
-                                  "size": 528,
-                                  "size_human": "528.00 B"
-                                },
-                                "enforce-optional.d.ts": {
-                                  "type": "file",
-                                  "size": 1102,
-                                  "size_human": "1.08 KB"
-                                },
-                                "asyncify.d.ts": {
-                                  "type": "file",
-                                  "size": 1217,
-                                  "size_human": "1.19 KB"
-                                },
-                                "exact.d.ts": {
-                                  "type": "file",
-                                  "size": 3320,
-                                  "size_human": "3.24 KB"
-                                },
-                                "writable.d.ts": {
-                                  "type": "file",
-                                  "size": 3039,
-                                  "size_human": "2.97 KB"
-                                },
-                                "multidimensional-array.d.ts": {
-                                  "type": "file",
-                                  "size": 1346,
-                                  "size_human": "1.31 KB"
-                                },
-                                "has-required-keys.d.ts": {
-                                  "type": "file",
-                                  "size": 1197,
-                                  "size_human": "1.17 KB"
-                                },
-                                "set-required-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2208,
-                                  "size_human": "2.16 KB"
-                                },
-                                "replace.d.ts": {
-                                  "type": "file",
-                                  "size": 1747,
-                                  "size_human": "1.71 KB"
-                                },
-                                "pascal-cased-properties.d.ts": {
-                                  "type": "file",
-                                  "size": 833,
-                                  "size_human": "833.00 B"
-                                },
-                                "async-return-type.d.ts": {
-                                  "type": "file",
-                                  "size": 691,
-                                  "size_human": "691.00 B"
-                                },
-                                "package-json.d.ts": {
-                                  "type": "file",
-                                  "size": 16551,
-                                  "size_human": "16.16 KB"
-                                },
-                                "union-to-intersection.d.ts": {
-                                  "type": "file",
-                                  "size": 2053,
-                                  "size_human": "2.00 KB"
-                                },
-                                "is-unknown.d.ts": {
-                                  "type": "file",
-                                  "size": 1397,
-                                  "size_human": "1.36 KB"
-                                },
-                                "primitive.d.ts": {
-                                  "type": "file",
-                                  "size": 212,
-                                  "size_human": "212.00 B"
-                                },
-                                "paths.d.ts": {
-                                  "type": "file",
-                                  "size": 8231,
-                                  "size_human": "8.04 KB"
-                                },
-                                "tagged-union.d.ts": {
-                                  "type": "file",
-                                  "size": 1291,
-                                  "size_human": "1.26 KB"
-                                },
-                                "spread.d.ts": {
-                                  "type": "file",
-                                  "size": 1776,
-                                  "size_human": "1.73 KB"
-                                },
-                                "includes.d.ts": {
-                                  "type": "file",
-                                  "size": 561,
-                                  "size_human": "561.00 B"
-                                },
-                                "literal-to-primitive.d.ts": {
-                                  "type": "file",
-                                  "size": 899,
-                                  "size_human": "899.00 B"
-                                },
-                                "arrayable.d.ts": {
-                                  "type": "file",
-                                  "size": 637,
-                                  "size_human": "637.00 B"
-                                },
-                                "partial-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 4884,
-                                  "size_human": "4.77 KB"
-                                },
-                                "pick-index-signature.d.ts": {
-                                  "type": "file",
-                                  "size": 1225,
-                                  "size_human": "1.20 KB"
-                                },
-                                "set-return-type.d.ts": {
-                                  "type": "file",
-                                  "size": 1532,
-                                  "size_human": "1.50 KB"
-                                },
-                                "join.d.ts": {
-                                  "type": "file",
-                                  "size": 2846,
-                                  "size_human": "2.78 KB"
-                                },
-                                "split.d.ts": {
-                                  "type": "file",
-                                  "size": 866,
-                                  "size_human": "866.00 B"
-                                },
-                                "keys-of-union.d.ts": {
-                                  "type": "file",
-                                  "size": 905,
-                                  "size_human": "905.00 B"
-                                },
-                                "if-never.d.ts": {
-                                  "type": "file",
-                                  "size": 498,
-                                  "size_human": "498.00 B"
-                                },
-                                "readonly-tuple.d.ts": {
-                                  "type": "file",
-                                  "size": 1577,
-                                  "size_human": "1.54 KB"
-                                },
-                                "string-key-of.d.ts": {
-                                  "type": "file",
-                                  "size": 506,
-                                  "size_human": "506.00 B"
-                                },
-                                "int-range.d.ts": {
-                                  "type": "file",
-                                  "size": 2361,
-                                  "size_human": "2.31 KB"
-                                },
-                                "snake-cased-properties.d.ts": {
-                                  "type": "file",
-                                  "size": 635,
-                                  "size_human": "635.00 B"
-                                },
-                                "array-slice.d.ts": {
-                                  "type": "file",
-                                  "size": 3432,
-                                  "size_human": "3.35 KB"
-                                },
-                                "if-null.d.ts": {
-                                  "type": "file",
-                                  "size": 483,
-                                  "size_human": "483.00 B"
-                                },
-                                "if-empty-object.d.ts": {
-                                  "type": "file",
-                                  "size": 562,
-                                  "size_human": "562.00 B"
-                                },
-                                "has-optional-keys.d.ts": {
-                                  "type": "file",
-                                  "size": 667,
-                                  "size_human": "667.00 B"
-                                },
-                                "snake-case.d.ts": {
-                                  "type": "file",
-                                  "size": 936,
-                                  "size_human": "936.00 B"
-                                },
-                                "require-all-or-none.d.ts": {
-                                  "type": "file",
-                                  "size": 1247,
-                                  "size_human": "1.22 KB"
-                                },
-                                "partial-on-undefined-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2750,
-                                  "size_human": "2.69 KB"
-                                },
-                                "is-never.d.ts": {
-                                  "type": "file",
-                                  "size": 1066,
-                                  "size_human": "1.04 KB"
-                                },
-                                "basic.d.ts": {
-                                  "type": "file",
-                                  "size": 2253,
-                                  "size_human": "2.20 KB"
-                                },
-                                "writable-keys-of.d.ts": {
-                                  "type": "file",
-                                  "size": 657,
-                                  "size_human": "657.00 B"
-                                },
-                                "typed-array.d.ts": {
-                                  "type": "file",
-                                  "size": 380,
-                                  "size_human": "380.00 B"
-                                },
-                                "snake-cased-properties-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 864,
-                                  "size_human": "864.00 B"
-                                },
-                                "optional-keys-of.d.ts": {
-                                  "type": "file",
-                                  "size": 893,
-                                  "size_human": "893.00 B"
-                                },
-                                "int-closed-range.d.ts": {
-                                  "type": "file",
-                                  "size": 1271,
-                                  "size_human": "1.24 KB"
-                                },
-                                "stringified.d.ts": {
-                                  "type": "file",
-                                  "size": 441,
-                                  "size_human": "441.00 B"
-                                },
-                                "sum.d.ts": {
-                                  "type": "file",
-                                  "size": 1951,
-                                  "size_human": "1.91 KB"
-                                },
-                                "numeric.d.ts": {
-                                  "type": "file",
-                                  "size": 5117,
-                                  "size_human": "5.00 KB"
-                                },
-                                "promisable.d.ts": {
-                                  "type": "file",
-                                  "size": 791,
-                                  "size_human": "791.00 B"
-                                },
-                                "distributed-omit.d.ts": {
-                                  "type": "file",
-                                  "size": 2256,
-                                  "size_human": "2.20 KB"
-                                },
-                                "if-any.d.ts": {
-                                  "type": "file",
-                                  "size": 468,
-                                  "size_human": "468.00 B"
-                                },
-                                "tsconfig-json.d.ts": {
-                                  "type": "file",
-                                  "size": 26708,
-                                  "size_human": "26.08 KB"
-                                },
-                                "kebab-cased-properties.d.ts": {
-                                  "type": "file",
-                                  "size": 639,
-                                  "size_human": "639.00 B"
-                                },
-                                "literal-to-primitive-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 1155,
-                                  "size_human": "1.13 KB"
-                                },
-                                "value-of.d.ts": {
-                                  "type": "file",
-                                  "size": 852,
-                                  "size_human": "852.00 B"
-                                },
-                                "camel-case.d.ts": {
-                                  "type": "file",
-                                  "size": 1927,
-                                  "size_human": "1.88 KB"
-                                },
-                                "observable-like.d.ts": {
-                                  "type": "file",
-                                  "size": 2186,
-                                  "size_human": "2.13 KB"
-                                },
-                                "require-at-least-one.d.ts": {
-                                  "type": "file",
-                                  "size": 872,
-                                  "size_human": "872.00 B"
-                                },
-                                "iterable-element.d.ts": {
-                                  "type": "file",
-                                  "size": 1619,
-                                  "size_human": "1.58 KB"
-                                },
-                                "array-values.d.ts": {
-                                  "type": "file",
-                                  "size": 648,
-                                  "size_human": "648.00 B"
-                                },
-                                "greater-than.d.ts": {
-                                  "type": "file",
-                                  "size": 1466,
-                                  "size_human": "1.43 KB"
-                                },
-                                "single-key-object.d.ts": {
-                                  "type": "file",
-                                  "size": 658,
-                                  "size_human": "658.00 B"
-                                },
-                                "kebab-case.d.ts": {
-                                  "type": "file",
-                                  "size": 949,
-                                  "size_human": "949.00 B"
-                                },
-                                "tagged.d.ts": {
-                                  "type": "file",
-                                  "size": 10490,
-                                  "size_human": "10.24 KB"
-                                },
-                                "set-parameter-type.d.ts": {
-                                  "type": "file",
-                                  "size": 4703,
-                                  "size_human": "4.59 KB"
-                                },
-                                "last-array-element.d.ts": {
-                                  "type": "file",
-                                  "size": 1366,
-                                  "size_human": "1.33 KB"
-                                },
-                                "empty-object.d.ts": {
-                                  "type": "file",
-                                  "size": 1507,
-                                  "size_human": "1.47 KB"
-                                },
-                                "set-readonly.d.ts": {
-                                  "type": "file",
-                                  "size": 1180,
-                                  "size_human": "1.15 KB"
-                                },
-                                "override-properties.d.ts": {
-                                  "type": "file",
-                                  "size": 1229,
-                                  "size_human": "1.20 KB"
-                                },
-                                "simplify.d.ts": {
-                                  "type": "file",
-                                  "size": 2343,
-                                  "size_human": "2.29 KB"
-                                },
-                                "omit-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 4313,
-                                  "size_human": "4.21 KB"
-                                },
-                                "non-empty-tuple.d.ts": {
-                                  "type": "file",
-                                  "size": 412,
-                                  "size_human": "412.00 B"
-                                },
-                                "string-repeat.d.ts": {
-                                  "type": "file",
-                                  "size": 1121,
-                                  "size_human": "1.09 KB"
-                                },
-                                "internal": {
-                                  "type": "directory",
-                                  "contents": {
-                                    "keys.d.ts": {
-                                      "type": "file",
-                                      "size": 2669,
-                                      "size_human": "2.61 KB"
-                                    },
-                                    "index.d.ts": {
-                                      "type": "file",
-                                      "size": 247,
-                                      "size_human": "247.00 B"
-                                    },
-                                    "string.d.ts": {
-                                      "type": "file",
-                                      "size": 4906,
-                                      "size_human": "4.79 KB"
-                                    },
-                                    "numeric.d.ts": {
-                                      "type": "file",
-                                      "size": 1963,
-                                      "size_human": "1.92 KB"
-                                    },
-                                    "array.d.ts": {
-                                      "type": "file",
-                                      "size": 3563,
-                                      "size_human": "3.48 KB"
-                                    },
-                                    "object.d.ts": {
-                                      "type": "file",
-                                      "size": 4626,
-                                      "size_human": "4.52 KB"
-                                    },
-                                    "type.d.ts": {
-                                      "type": "file",
-                                      "size": 2519,
-                                      "size_human": "2.46 KB"
-                                    },
-                                    "characters.d.ts": {
-                                      "type": "file",
-                                      "size": 746,
-                                      "size_human": "746.00 B"
-                                    },
-                                    "tuple.d.ts": {
-                                      "type": "file",
-                                      "size": 2424,
-                                      "size_human": "2.37 KB"
-                                    }
-                                  }
-                                },
-                                "union-to-tuple.d.ts": {
-                                  "type": "file",
-                                  "size": 1292,
-                                  "size_human": "1.26 KB"
-                                },
-                                "is-literal.d.ts": {
-                                  "type": "file",
-                                  "size": 8151,
-                                  "size_human": "7.96 KB"
-                                },
-                                "conditional-pick.d.ts": {
-                                  "type": "file",
-                                  "size": 964,
-                                  "size_human": "964.00 B"
-                                },
-                                "pascal-case.d.ts": {
-                                  "type": "file",
-                                  "size": 790,
-                                  "size_human": "790.00 B"
-                                },
-                                "simplify-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2352,
-                                  "size_human": "2.30 KB"
-                                },
-                                "global-this.d.ts": {
-                                  "type": "file",
-                                  "size": 688,
-                                  "size_human": "688.00 B"
-                                },
-                                "shared-union-fields-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 6107,
-                                  "size_human": "5.96 KB"
-                                },
-                                "multidimensional-readonly-array.d.ts": {
-                                  "type": "file",
-                                  "size": 1506,
-                                  "size_human": "1.47 KB"
-                                },
-                                "set-required.d.ts": {
-                                  "type": "file",
-                                  "size": 2790,
-                                  "size_human": "2.72 KB"
-                                },
-                                "screaming-snake-case.d.ts": {
-                                  "type": "file",
-                                  "size": 714,
-                                  "size_human": "714.00 B"
-                                },
-                                "invariant-of.d.ts": {
-                                  "type": "file",
-                                  "size": 2251,
-                                  "size_human": "2.20 KB"
-                                },
-                                "conditional-simplify.d.ts": {
-                                  "type": "file",
-                                  "size": 1276,
-                                  "size_human": "1.25 KB"
-                                },
-                                "get.d.ts": {
-                                  "type": "file",
-                                  "size": 7125,
-                                  "size_human": "6.96 KB"
-                                },
-                                "require-exactly-one.d.ts": {
-                                  "type": "file",
-                                  "size": 1155,
-                                  "size_human": "1.13 KB"
-                                },
-                                "subtract.d.ts": {
-                                  "type": "file",
-                                  "size": 1878,
-                                  "size_human": "1.83 KB"
-                                },
-                                "merge-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 16532,
-                                  "size_human": "16.14 KB"
-                                },
-                                "and.d.ts": {
-                                  "type": "file",
-                                  "size": 510,
-                                  "size_human": "510.00 B"
-                                },
-                                "delimiter-cased-properties-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2459,
-                                  "size_human": "2.40 KB"
-                                },
-                                "unknown-array.d.ts": {
-                                  "type": "file",
-                                  "size": 472,
-                                  "size_human": "472.00 B"
-                                },
-                                "merge.d.ts": {
-                                  "type": "file",
-                                  "size": 1113,
-                                  "size_human": "1.09 KB"
-                                },
-                                "conditional-pick-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2705,
-                                  "size_human": "2.64 KB"
-                                },
-                                "readonly-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 3005,
-                                  "size_human": "2.93 KB"
-                                },
-                                "trim.d.ts": {
-                                  "type": "file",
-                                  "size": 554,
-                                  "size_human": "554.00 B"
-                                },
-                                "has-writable-keys.d.ts": {
-                                  "type": "file",
-                                  "size": 667,
-                                  "size_human": "667.00 B"
-                                },
-                                "undefined-on-partial-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2675,
-                                  "size_human": "2.61 KB"
-                                },
-                                "fixed-length-array.d.ts": {
-                                  "type": "file",
-                                  "size": 1625,
-                                  "size_human": "1.59 KB"
-                                },
-                                "kebab-cased-properties-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 880,
-                                  "size_human": "880.00 B"
-                                },
-                                "or.d.ts": {
-                                  "type": "file",
-                                  "size": 513,
-                                  "size_human": "513.00 B"
-                                },
-                                "readonly-keys-of.d.ts": {
-                                  "type": "file",
-                                  "size": 637,
-                                  "size_human": "637.00 B"
-                                },
-                                "merge-exclusive.d.ts": {
-                                  "type": "file",
-                                  "size": 1363,
-                                  "size_human": "1.33 KB"
-                                },
-                                "pascal-cased-properties-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 1221,
-                                  "size_human": "1.19 KB"
-                                },
-                                "is-equal.d.ts": {
-                                  "type": "file",
-                                  "size": 996,
-                                  "size_human": "996.00 B"
-                                },
-                                "require-one-or-none.d.ts": {
-                                  "type": "file",
-                                  "size": 903,
-                                  "size_human": "903.00 B"
-                                },
-                                "less-than.d.ts": {
-                                  "type": "file",
-                                  "size": 436,
-                                  "size_human": "436.00 B"
-                                },
-                                "jsonify.d.ts": {
-                                  "type": "file",
-                                  "size": 4188,
-                                  "size_human": "4.09 KB"
-                                },
-                                "words.d.ts": {
-                                  "type": "file",
-                                  "size": 4191,
-                                  "size_human": "4.09 KB"
-                                },
-                                "required-keys-of.d.ts": {
-                                  "type": "file",
-                                  "size": 921,
-                                  "size_human": "921.00 B"
-                                },
-                                "array-splice.d.ts": {
-                                  "type": "file",
-                                  "size": 3045,
-                                  "size_human": "2.97 KB"
-                                }
-                              }
-                            },
-                            "license-cc0": {
-                              "type": "file",
-                              "size": 7048,
-                              "size_human": "6.88 KB"
-                            }
-                          }
-                        }
-                      }
                     },
                     "package.json": {
                       "type": "file",
@@ -3462,856 +2682,6 @@
                       "size": 4350,
                       "size_human": "4.25 KB"
                     },
-                    "node_modules": {
-                      "type": "directory",
-                      "contents": {
-                        "type-fest": {
-                          "type": "directory",
-                          "contents": {
-                            "readme.md": {
-                              "type": "file",
-                              "size": 58289,
-                              "size_human": "56.92 KB"
-                            },
-                            "index.d.ts": {
-                              "type": "file",
-                              "size": 9206,
-                              "size_human": "8.99 KB"
-                            },
-                            "license-mit": {
-                              "type": "file",
-                              "size": 1117,
-                              "size_human": "1.09 KB"
-                            },
-                            "package.json": {
-                              "type": "file",
-                              "size": 1859,
-                              "size_human": "1.82 KB"
-                            },
-                            "source": {
-                              "type": "directory",
-                              "contents": {
-                                "is-float.d.ts": {
-                                  "type": "file",
-                                  "size": 684,
-                                  "size_human": "684.00 B"
-                                },
-                                "is-integer.d.ts": {
-                                  "type": "file",
-                                  "size": 1080,
-                                  "size_human": "1.05 KB"
-                                },
-                                "writable-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 3281,
-                                  "size_human": "3.20 KB"
-                                },
-                                "distributed-pick.d.ts": {
-                                  "type": "file",
-                                  "size": 2081,
-                                  "size_human": "2.03 KB"
-                                },
-                                "less-than-or-equal.d.ts": {
-                                  "type": "file",
-                                  "size": 460,
-                                  "size_human": "460.00 B"
-                                },
-                                "delimiter-cased-properties.d.ts": {
-                                  "type": "file",
-                                  "size": 779,
-                                  "size_human": "779.00 B"
-                                },
-                                "tuple-to-object.d.ts": {
-                                  "type": "file",
-                                  "size": 1483,
-                                  "size_human": "1.45 KB"
-                                },
-                                "tuple-to-union.d.ts": {
-                                  "type": "file",
-                                  "size": 1691,
-                                  "size_human": "1.65 KB"
-                                },
-                                "is-any.d.ts": {
-                                  "type": "file",
-                                  "size": 880,
-                                  "size_human": "880.00 B"
-                                },
-                                "greater-than-or-equal.d.ts": {
-                                  "type": "file",
-                                  "size": 470,
-                                  "size_human": "470.00 B"
-                                },
-                                "delimiter-case.d.ts": {
-                                  "type": "file",
-                                  "size": 1714,
-                                  "size_human": "1.67 KB"
-                                },
-                                "is-tuple.d.ts": {
-                                  "type": "file",
-                                  "size": 2056,
-                                  "size_human": "2.01 KB"
-                                },
-                                "find-global-type.d.ts": {
-                                  "type": "file",
-                                  "size": 2050,
-                                  "size_human": "2.00 KB"
-                                },
-                                "string-slice.d.ts": {
-                                  "type": "file",
-                                  "size": 728,
-                                  "size_human": "728.00 B"
-                                },
-                                "pick-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 4143,
-                                  "size_human": "4.05 KB"
-                                },
-                                "opaque.d.ts": {
-                                  "type": "file",
-                                  "size": 26,
-                                  "size_human": "26.00 B"
-                                },
-                                "set-optional.d.ts": {
-                                  "type": "file",
-                                  "size": 1146,
-                                  "size_human": "1.12 KB"
-                                },
-                                "array-indices.d.ts": {
-                                  "type": "file",
-                                  "size": 725,
-                                  "size_human": "725.00 B"
-                                },
-                                "all-union-fields.d.ts": {
-                                  "type": "file",
-                                  "size": 2297,
-                                  "size_human": "2.24 KB"
-                                },
-                                "unknown-record.d.ts": {
-                                  "type": "file",
-                                  "size": 631,
-                                  "size_human": "631.00 B"
-                                },
-                                "literal-union.d.ts": {
-                                  "type": "file",
-                                  "size": 1236,
-                                  "size_human": "1.21 KB"
-                                },
-                                "except.d.ts": {
-                                  "type": "file",
-                                  "size": 3068,
-                                  "size_human": "3.00 KB"
-                                },
-                                "shared-union-fields.d.ts": {
-                                  "type": "file",
-                                  "size": 1895,
-                                  "size_human": "1.85 KB"
-                                },
-                                "camel-cased-properties-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2285,
-                                  "size_human": "2.23 KB"
-                                },
-                                "set-non-nullable.d.ts": {
-                                  "type": "file",
-                                  "size": 1098,
-                                  "size_human": "1.07 KB"
-                                },
-                                "conditional-except.d.ts": {
-                                  "type": "file",
-                                  "size": 1048,
-                                  "size_human": "1.02 KB"
-                                },
-                                "camel-cased-properties.d.ts": {
-                                  "type": "file",
-                                  "size": 798,
-                                  "size_human": "798.00 B"
-                                },
-                                "array-tail.d.ts": {
-                                  "type": "file",
-                                  "size": 673,
-                                  "size_human": "673.00 B"
-                                },
-                                "schema.d.ts": {
-                                  "type": "file",
-                                  "size": 3005,
-                                  "size_human": "2.93 KB"
-                                },
-                                "conditional-keys.d.ts": {
-                                  "type": "file",
-                                  "size": 1313,
-                                  "size_human": "1.28 KB"
-                                },
-                                "has-readonly-keys.d.ts": {
-                                  "type": "file",
-                                  "size": 667,
-                                  "size_human": "667.00 B"
-                                },
-                                "entry.d.ts": {
-                                  "type": "file",
-                                  "size": 2848,
-                                  "size_human": "2.78 KB"
-                                },
-                                "structured-cloneable.d.ts": {
-                                  "type": "file",
-                                  "size": 1956,
-                                  "size_human": "1.91 KB"
-                                },
-                                "non-empty-object.d.ts": {
-                                  "type": "file",
-                                  "size": 943,
-                                  "size_human": "943.00 B"
-                                },
-                                "entries.d.ts": {
-                                  "type": "file",
-                                  "size": 2576,
-                                  "size_human": "2.52 KB"
-                                },
-                                "set-field-type.d.ts": {
-                                  "type": "file",
-                                  "size": 1611,
-                                  "size_human": "1.57 KB"
-                                },
-                                "jsonifiable.d.ts": {
-                                  "type": "file",
-                                  "size": 1034,
-                                  "size_human": "1.01 KB"
-                                },
-                                "required-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2832,
-                                  "size_human": "2.77 KB"
-                                },
-                                "omit-index-signature.d.ts": {
-                                  "type": "file",
-                                  "size": 3448,
-                                  "size_human": "3.37 KB"
-                                },
-                                "is-null.d.ts": {
-                                  "type": "file",
-                                  "size": 419,
-                                  "size_human": "419.00 B"
-                                },
-                                "if-unknown.d.ts": {
-                                  "type": "file",
-                                  "size": 528,
-                                  "size_human": "528.00 B"
-                                },
-                                "enforce-optional.d.ts": {
-                                  "type": "file",
-                                  "size": 1102,
-                                  "size_human": "1.08 KB"
-                                },
-                                "asyncify.d.ts": {
-                                  "type": "file",
-                                  "size": 1217,
-                                  "size_human": "1.19 KB"
-                                },
-                                "exact.d.ts": {
-                                  "type": "file",
-                                  "size": 3320,
-                                  "size_human": "3.24 KB"
-                                },
-                                "writable.d.ts": {
-                                  "type": "file",
-                                  "size": 3039,
-                                  "size_human": "2.97 KB"
-                                },
-                                "multidimensional-array.d.ts": {
-                                  "type": "file",
-                                  "size": 1346,
-                                  "size_human": "1.31 KB"
-                                },
-                                "has-required-keys.d.ts": {
-                                  "type": "file",
-                                  "size": 1197,
-                                  "size_human": "1.17 KB"
-                                },
-                                "set-required-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2208,
-                                  "size_human": "2.16 KB"
-                                },
-                                "replace.d.ts": {
-                                  "type": "file",
-                                  "size": 1747,
-                                  "size_human": "1.71 KB"
-                                },
-                                "pascal-cased-properties.d.ts": {
-                                  "type": "file",
-                                  "size": 833,
-                                  "size_human": "833.00 B"
-                                },
-                                "async-return-type.d.ts": {
-                                  "type": "file",
-                                  "size": 691,
-                                  "size_human": "691.00 B"
-                                },
-                                "package-json.d.ts": {
-                                  "type": "file",
-                                  "size": 16551,
-                                  "size_human": "16.16 KB"
-                                },
-                                "union-to-intersection.d.ts": {
-                                  "type": "file",
-                                  "size": 2053,
-                                  "size_human": "2.00 KB"
-                                },
-                                "is-unknown.d.ts": {
-                                  "type": "file",
-                                  "size": 1397,
-                                  "size_human": "1.36 KB"
-                                },
-                                "primitive.d.ts": {
-                                  "type": "file",
-                                  "size": 212,
-                                  "size_human": "212.00 B"
-                                },
-                                "paths.d.ts": {
-                                  "type": "file",
-                                  "size": 8231,
-                                  "size_human": "8.04 KB"
-                                },
-                                "tagged-union.d.ts": {
-                                  "type": "file",
-                                  "size": 1291,
-                                  "size_human": "1.26 KB"
-                                },
-                                "spread.d.ts": {
-                                  "type": "file",
-                                  "size": 1776,
-                                  "size_human": "1.73 KB"
-                                },
-                                "includes.d.ts": {
-                                  "type": "file",
-                                  "size": 561,
-                                  "size_human": "561.00 B"
-                                },
-                                "literal-to-primitive.d.ts": {
-                                  "type": "file",
-                                  "size": 899,
-                                  "size_human": "899.00 B"
-                                },
-                                "arrayable.d.ts": {
-                                  "type": "file",
-                                  "size": 637,
-                                  "size_human": "637.00 B"
-                                },
-                                "partial-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 4884,
-                                  "size_human": "4.77 KB"
-                                },
-                                "pick-index-signature.d.ts": {
-                                  "type": "file",
-                                  "size": 1225,
-                                  "size_human": "1.20 KB"
-                                },
-                                "set-return-type.d.ts": {
-                                  "type": "file",
-                                  "size": 1532,
-                                  "size_human": "1.50 KB"
-                                },
-                                "join.d.ts": {
-                                  "type": "file",
-                                  "size": 2846,
-                                  "size_human": "2.78 KB"
-                                },
-                                "split.d.ts": {
-                                  "type": "file",
-                                  "size": 866,
-                                  "size_human": "866.00 B"
-                                },
-                                "keys-of-union.d.ts": {
-                                  "type": "file",
-                                  "size": 905,
-                                  "size_human": "905.00 B"
-                                },
-                                "if-never.d.ts": {
-                                  "type": "file",
-                                  "size": 498,
-                                  "size_human": "498.00 B"
-                                },
-                                "readonly-tuple.d.ts": {
-                                  "type": "file",
-                                  "size": 1577,
-                                  "size_human": "1.54 KB"
-                                },
-                                "string-key-of.d.ts": {
-                                  "type": "file",
-                                  "size": 506,
-                                  "size_human": "506.00 B"
-                                },
-                                "int-range.d.ts": {
-                                  "type": "file",
-                                  "size": 2361,
-                                  "size_human": "2.31 KB"
-                                },
-                                "snake-cased-properties.d.ts": {
-                                  "type": "file",
-                                  "size": 635,
-                                  "size_human": "635.00 B"
-                                },
-                                "array-slice.d.ts": {
-                                  "type": "file",
-                                  "size": 3432,
-                                  "size_human": "3.35 KB"
-                                },
-                                "if-null.d.ts": {
-                                  "type": "file",
-                                  "size": 483,
-                                  "size_human": "483.00 B"
-                                },
-                                "if-empty-object.d.ts": {
-                                  "type": "file",
-                                  "size": 562,
-                                  "size_human": "562.00 B"
-                                },
-                                "has-optional-keys.d.ts": {
-                                  "type": "file",
-                                  "size": 667,
-                                  "size_human": "667.00 B"
-                                },
-                                "snake-case.d.ts": {
-                                  "type": "file",
-                                  "size": 936,
-                                  "size_human": "936.00 B"
-                                },
-                                "require-all-or-none.d.ts": {
-                                  "type": "file",
-                                  "size": 1247,
-                                  "size_human": "1.22 KB"
-                                },
-                                "partial-on-undefined-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2750,
-                                  "size_human": "2.69 KB"
-                                },
-                                "is-never.d.ts": {
-                                  "type": "file",
-                                  "size": 1066,
-                                  "size_human": "1.04 KB"
-                                },
-                                "basic.d.ts": {
-                                  "type": "file",
-                                  "size": 2253,
-                                  "size_human": "2.20 KB"
-                                },
-                                "writable-keys-of.d.ts": {
-                                  "type": "file",
-                                  "size": 657,
-                                  "size_human": "657.00 B"
-                                },
-                                "typed-array.d.ts": {
-                                  "type": "file",
-                                  "size": 380,
-                                  "size_human": "380.00 B"
-                                },
-                                "snake-cased-properties-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 864,
-                                  "size_human": "864.00 B"
-                                },
-                                "optional-keys-of.d.ts": {
-                                  "type": "file",
-                                  "size": 893,
-                                  "size_human": "893.00 B"
-                                },
-                                "int-closed-range.d.ts": {
-                                  "type": "file",
-                                  "size": 1271,
-                                  "size_human": "1.24 KB"
-                                },
-                                "stringified.d.ts": {
-                                  "type": "file",
-                                  "size": 441,
-                                  "size_human": "441.00 B"
-                                },
-                                "sum.d.ts": {
-                                  "type": "file",
-                                  "size": 1951,
-                                  "size_human": "1.91 KB"
-                                },
-                                "numeric.d.ts": {
-                                  "type": "file",
-                                  "size": 5117,
-                                  "size_human": "5.00 KB"
-                                },
-                                "promisable.d.ts": {
-                                  "type": "file",
-                                  "size": 791,
-                                  "size_human": "791.00 B"
-                                },
-                                "distributed-omit.d.ts": {
-                                  "type": "file",
-                                  "size": 2256,
-                                  "size_human": "2.20 KB"
-                                },
-                                "if-any.d.ts": {
-                                  "type": "file",
-                                  "size": 468,
-                                  "size_human": "468.00 B"
-                                },
-                                "tsconfig-json.d.ts": {
-                                  "type": "file",
-                                  "size": 26708,
-                                  "size_human": "26.08 KB"
-                                },
-                                "kebab-cased-properties.d.ts": {
-                                  "type": "file",
-                                  "size": 639,
-                                  "size_human": "639.00 B"
-                                },
-                                "literal-to-primitive-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 1155,
-                                  "size_human": "1.13 KB"
-                                },
-                                "value-of.d.ts": {
-                                  "type": "file",
-                                  "size": 852,
-                                  "size_human": "852.00 B"
-                                },
-                                "camel-case.d.ts": {
-                                  "type": "file",
-                                  "size": 1927,
-                                  "size_human": "1.88 KB"
-                                },
-                                "observable-like.d.ts": {
-                                  "type": "file",
-                                  "size": 2186,
-                                  "size_human": "2.13 KB"
-                                },
-                                "require-at-least-one.d.ts": {
-                                  "type": "file",
-                                  "size": 872,
-                                  "size_human": "872.00 B"
-                                },
-                                "iterable-element.d.ts": {
-                                  "type": "file",
-                                  "size": 1619,
-                                  "size_human": "1.58 KB"
-                                },
-                                "array-values.d.ts": {
-                                  "type": "file",
-                                  "size": 648,
-                                  "size_human": "648.00 B"
-                                },
-                                "greater-than.d.ts": {
-                                  "type": "file",
-                                  "size": 1466,
-                                  "size_human": "1.43 KB"
-                                },
-                                "single-key-object.d.ts": {
-                                  "type": "file",
-                                  "size": 658,
-                                  "size_human": "658.00 B"
-                                },
-                                "kebab-case.d.ts": {
-                                  "type": "file",
-                                  "size": 949,
-                                  "size_human": "949.00 B"
-                                },
-                                "tagged.d.ts": {
-                                  "type": "file",
-                                  "size": 10490,
-                                  "size_human": "10.24 KB"
-                                },
-                                "set-parameter-type.d.ts": {
-                                  "type": "file",
-                                  "size": 4703,
-                                  "size_human": "4.59 KB"
-                                },
-                                "last-array-element.d.ts": {
-                                  "type": "file",
-                                  "size": 1366,
-                                  "size_human": "1.33 KB"
-                                },
-                                "empty-object.d.ts": {
-                                  "type": "file",
-                                  "size": 1507,
-                                  "size_human": "1.47 KB"
-                                },
-                                "set-readonly.d.ts": {
-                                  "type": "file",
-                                  "size": 1180,
-                                  "size_human": "1.15 KB"
-                                },
-                                "override-properties.d.ts": {
-                                  "type": "file",
-                                  "size": 1229,
-                                  "size_human": "1.20 KB"
-                                },
-                                "simplify.d.ts": {
-                                  "type": "file",
-                                  "size": 2343,
-                                  "size_human": "2.29 KB"
-                                },
-                                "omit-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 4313,
-                                  "size_human": "4.21 KB"
-                                },
-                                "non-empty-tuple.d.ts": {
-                                  "type": "file",
-                                  "size": 412,
-                                  "size_human": "412.00 B"
-                                },
-                                "string-repeat.d.ts": {
-                                  "type": "file",
-                                  "size": 1121,
-                                  "size_human": "1.09 KB"
-                                },
-                                "internal": {
-                                  "type": "directory",
-                                  "contents": {
-                                    "keys.d.ts": {
-                                      "type": "file",
-                                      "size": 2669,
-                                      "size_human": "2.61 KB"
-                                    },
-                                    "index.d.ts": {
-                                      "type": "file",
-                                      "size": 247,
-                                      "size_human": "247.00 B"
-                                    },
-                                    "string.d.ts": {
-                                      "type": "file",
-                                      "size": 4906,
-                                      "size_human": "4.79 KB"
-                                    },
-                                    "numeric.d.ts": {
-                                      "type": "file",
-                                      "size": 1963,
-                                      "size_human": "1.92 KB"
-                                    },
-                                    "array.d.ts": {
-                                      "type": "file",
-                                      "size": 3563,
-                                      "size_human": "3.48 KB"
-                                    },
-                                    "object.d.ts": {
-                                      "type": "file",
-                                      "size": 4626,
-                                      "size_human": "4.52 KB"
-                                    },
-                                    "type.d.ts": {
-                                      "type": "file",
-                                      "size": 2519,
-                                      "size_human": "2.46 KB"
-                                    },
-                                    "characters.d.ts": {
-                                      "type": "file",
-                                      "size": 746,
-                                      "size_human": "746.00 B"
-                                    },
-                                    "tuple.d.ts": {
-                                      "type": "file",
-                                      "size": 2424,
-                                      "size_human": "2.37 KB"
-                                    }
-                                  }
-                                },
-                                "union-to-tuple.d.ts": {
-                                  "type": "file",
-                                  "size": 1292,
-                                  "size_human": "1.26 KB"
-                                },
-                                "is-literal.d.ts": {
-                                  "type": "file",
-                                  "size": 8151,
-                                  "size_human": "7.96 KB"
-                                },
-                                "conditional-pick.d.ts": {
-                                  "type": "file",
-                                  "size": 964,
-                                  "size_human": "964.00 B"
-                                },
-                                "pascal-case.d.ts": {
-                                  "type": "file",
-                                  "size": 790,
-                                  "size_human": "790.00 B"
-                                },
-                                "simplify-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2352,
-                                  "size_human": "2.30 KB"
-                                },
-                                "global-this.d.ts": {
-                                  "type": "file",
-                                  "size": 688,
-                                  "size_human": "688.00 B"
-                                },
-                                "shared-union-fields-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 6107,
-                                  "size_human": "5.96 KB"
-                                },
-                                "multidimensional-readonly-array.d.ts": {
-                                  "type": "file",
-                                  "size": 1506,
-                                  "size_human": "1.47 KB"
-                                },
-                                "set-required.d.ts": {
-                                  "type": "file",
-                                  "size": 2790,
-                                  "size_human": "2.72 KB"
-                                },
-                                "screaming-snake-case.d.ts": {
-                                  "type": "file",
-                                  "size": 714,
-                                  "size_human": "714.00 B"
-                                },
-                                "invariant-of.d.ts": {
-                                  "type": "file",
-                                  "size": 2251,
-                                  "size_human": "2.20 KB"
-                                },
-                                "conditional-simplify.d.ts": {
-                                  "type": "file",
-                                  "size": 1276,
-                                  "size_human": "1.25 KB"
-                                },
-                                "get.d.ts": {
-                                  "type": "file",
-                                  "size": 7125,
-                                  "size_human": "6.96 KB"
-                                },
-                                "require-exactly-one.d.ts": {
-                                  "type": "file",
-                                  "size": 1155,
-                                  "size_human": "1.13 KB"
-                                },
-                                "subtract.d.ts": {
-                                  "type": "file",
-                                  "size": 1878,
-                                  "size_human": "1.83 KB"
-                                },
-                                "merge-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 16532,
-                                  "size_human": "16.14 KB"
-                                },
-                                "and.d.ts": {
-                                  "type": "file",
-                                  "size": 510,
-                                  "size_human": "510.00 B"
-                                },
-                                "delimiter-cased-properties-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2459,
-                                  "size_human": "2.40 KB"
-                                },
-                                "unknown-array.d.ts": {
-                                  "type": "file",
-                                  "size": 472,
-                                  "size_human": "472.00 B"
-                                },
-                                "merge.d.ts": {
-                                  "type": "file",
-                                  "size": 1113,
-                                  "size_human": "1.09 KB"
-                                },
-                                "conditional-pick-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2705,
-                                  "size_human": "2.64 KB"
-                                },
-                                "readonly-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 3005,
-                                  "size_human": "2.93 KB"
-                                },
-                                "trim.d.ts": {
-                                  "type": "file",
-                                  "size": 554,
-                                  "size_human": "554.00 B"
-                                },
-                                "has-writable-keys.d.ts": {
-                                  "type": "file",
-                                  "size": 667,
-                                  "size_human": "667.00 B"
-                                },
-                                "undefined-on-partial-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 2675,
-                                  "size_human": "2.61 KB"
-                                },
-                                "fixed-length-array.d.ts": {
-                                  "type": "file",
-                                  "size": 1625,
-                                  "size_human": "1.59 KB"
-                                },
-                                "kebab-cased-properties-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 880,
-                                  "size_human": "880.00 B"
-                                },
-                                "or.d.ts": {
-                                  "type": "file",
-                                  "size": 513,
-                                  "size_human": "513.00 B"
-                                },
-                                "readonly-keys-of.d.ts": {
-                                  "type": "file",
-                                  "size": 637,
-                                  "size_human": "637.00 B"
-                                },
-                                "merge-exclusive.d.ts": {
-                                  "type": "file",
-                                  "size": 1363,
-                                  "size_human": "1.33 KB"
-                                },
-                                "pascal-cased-properties-deep.d.ts": {
-                                  "type": "file",
-                                  "size": 1221,
-                                  "size_human": "1.19 KB"
-                                },
-                                "is-equal.d.ts": {
-                                  "type": "file",
-                                  "size": 996,
-                                  "size_human": "996.00 B"
-                                },
-                                "require-one-or-none.d.ts": {
-                                  "type": "file",
-                                  "size": 903,
-                                  "size_human": "903.00 B"
-                                },
-                                "less-than.d.ts": {
-                                  "type": "file",
-                                  "size": 436,
-                                  "size_human": "436.00 B"
-                                },
-                                "jsonify.d.ts": {
-                                  "type": "file",
-                                  "size": 4188,
-                                  "size_human": "4.09 KB"
-                                },
-                                "words.d.ts": {
-                                  "type": "file",
-                                  "size": 4191,
-                                  "size_human": "4.09 KB"
-                                },
-                                "required-keys-of.d.ts": {
-                                  "type": "file",
-                                  "size": 921,
-                                  "size_human": "921.00 B"
-                                },
-                                "array-splice.d.ts": {
-                                  "type": "file",
-                                  "size": 3045,
-                                  "size_human": "2.97 KB"
-                                }
-                              }
-                            },
-                            "license-cc0": {
-                              "type": "file",
-                              "size": 7048,
-                              "size_human": "6.88 KB"
-                            }
-                          }
-                        }
-                      }
-                    },
                     "package.json": {
                       "type": "file",
                       "size": 967,
@@ -5151,6 +3521,161 @@
                       "type": "file",
                       "size": 1390,
                       "size_human": "1.36 KB"
+                    },
+                    "node_modules": {
+                      "type": "directory",
+                      "contents": {
+                        "type-fest": {
+                          "type": "directory",
+                          "contents": {
+                            "readme.md": {
+                              "type": "file",
+                              "size": 29282,
+                              "size_human": "28.60 KB"
+                            },
+                            "license": {
+                              "type": "file",
+                              "size": 1116,
+                              "size_human": "1.09 KB"
+                            },
+                            "index.d.ts": {
+                              "type": "file",
+                              "size": 1285,
+                              "size_human": "1.25 KB"
+                            },
+                            "package.json": {
+                              "type": "file",
+                              "size": 782,
+                              "size_human": "782.00 B"
+                            },
+                            "source": {
+                              "type": "directory",
+                              "contents": {
+                                "opaque.d.ts": {
+                                  "type": "file",
+                                  "size": 2676,
+                                  "size_human": "2.61 KB"
+                                },
+                                "set-optional.d.ts": {
+                                  "type": "file",
+                                  "size": 1068,
+                                  "size_human": "1.04 KB"
+                                },
+                                "literal-union.d.ts": {
+                                  "type": "file",
+                                  "size": 1152,
+                                  "size_human": "1.12 KB"
+                                },
+                                "except.d.ts": {
+                                  "type": "file",
+                                  "size": 886,
+                                  "size_human": "886.00 B"
+                                },
+                                "conditional-except.d.ts": {
+                                  "type": "file",
+                                  "size": 1012,
+                                  "size_human": "1012.00 B"
+                                },
+                                "conditional-keys.d.ts": {
+                                  "type": "file",
+                                  "size": 1199,
+                                  "size_human": "1.17 KB"
+                                },
+                                "async-return-type.d.ts": {
+                                  "type": "file",
+                                  "size": 715,
+                                  "size_human": "715.00 B"
+                                },
+                                "package-json.d.ts": {
+                                  "type": "file",
+                                  "size": 13021,
+                                  "size_human": "12.72 KB"
+                                },
+                                "union-to-intersection.d.ts": {
+                                  "type": "file",
+                                  "size": 1957,
+                                  "size_human": "1.91 KB"
+                                },
+                                "mutable.d.ts": {
+                                  "type": "file",
+                                  "size": 860,
+                                  "size_human": "860.00 B"
+                                },
+                                "partial-deep.d.ts": {
+                                  "type": "file",
+                                  "size": 2312,
+                                  "size_human": "2.26 KB"
+                                },
+                                "promise-value.d.ts": {
+                                  "type": "file",
+                                  "size": 637,
+                                  "size_human": "637.00 B"
+                                },
+                                "basic.d.ts": {
+                                  "type": "file",
+                                  "size": 2020,
+                                  "size_human": "1.97 KB"
+                                },
+                                "stringified.d.ts": {
+                                  "type": "file",
+                                  "size": 416,
+                                  "size_human": "416.00 B"
+                                },
+                                "promisable.d.ts": {
+                                  "type": "file",
+                                  "size": 775,
+                                  "size_human": "775.00 B"
+                                },
+                                "tsconfig-json.d.ts": {
+                                  "type": "file",
+                                  "size": 16846,
+                                  "size_human": "16.45 KB"
+                                },
+                                "value-of.d.ts": {
+                                  "type": "file",
+                                  "size": 829,
+                                  "size_human": "829.00 B"
+                                },
+                                "require-at-least-one.d.ts": {
+                                  "type": "file",
+                                  "size": 809,
+                                  "size_human": "809.00 B"
+                                },
+                                "conditional-pick.d.ts": {
+                                  "type": "file",
+                                  "size": 933,
+                                  "size_human": "933.00 B"
+                                },
+                                "set-required.d.ts": {
+                                  "type": "file",
+                                  "size": 1069,
+                                  "size_human": "1.04 KB"
+                                },
+                                "require-exactly-one.d.ts": {
+                                  "type": "file",
+                                  "size": 1255,
+                                  "size_human": "1.23 KB"
+                                },
+                                "merge.d.ts": {
+                                  "type": "file",
+                                  "size": 415,
+                                  "size_human": "415.00 B"
+                                },
+                                "readonly-deep.d.ts": {
+                                  "type": "file",
+                                  "size": 1828,
+                                  "size_human": "1.79 KB"
+                                },
+                                "merge-exclusive.d.ts": {
+                                  "type": "file",
+                                  "size": 1340,
+                                  "size_human": "1.31 KB"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
                     },
                     "package.json": {
                       "type": "file",
@@ -7409,148 +5934,843 @@
                   "contents": {
                     "readme.md": {
                       "type": "file",
-                      "size": 29282,
-                      "size_human": "28.60 KB"
-                    },
-                    "license": {
-                      "type": "file",
-                      "size": 1116,
-                      "size_human": "1.09 KB"
+                      "size": 58289,
+                      "size_human": "56.92 KB"
                     },
                     "index.d.ts": {
                       "type": "file",
-                      "size": 1285,
-                      "size_human": "1.25 KB"
+                      "size": 9206,
+                      "size_human": "8.99 KB"
+                    },
+                    "license-mit": {
+                      "type": "file",
+                      "size": 1117,
+                      "size_human": "1.09 KB"
                     },
                     "package.json": {
                       "type": "file",
-                      "size": 782,
-                      "size_human": "782.00 B"
+                      "size": 1859,
+                      "size_human": "1.82 KB"
                     },
                     "source": {
                       "type": "directory",
                       "contents": {
+                        "is-float.d.ts": {
+                          "type": "file",
+                          "size": 684,
+                          "size_human": "684.00 B"
+                        },
+                        "is-integer.d.ts": {
+                          "type": "file",
+                          "size": 1080,
+                          "size_human": "1.05 KB"
+                        },
+                        "writable-deep.d.ts": {
+                          "type": "file",
+                          "size": 3281,
+                          "size_human": "3.20 KB"
+                        },
+                        "distributed-pick.d.ts": {
+                          "type": "file",
+                          "size": 2081,
+                          "size_human": "2.03 KB"
+                        },
+                        "less-than-or-equal.d.ts": {
+                          "type": "file",
+                          "size": 460,
+                          "size_human": "460.00 B"
+                        },
+                        "delimiter-cased-properties.d.ts": {
+                          "type": "file",
+                          "size": 779,
+                          "size_human": "779.00 B"
+                        },
+                        "tuple-to-object.d.ts": {
+                          "type": "file",
+                          "size": 1483,
+                          "size_human": "1.45 KB"
+                        },
+                        "tuple-to-union.d.ts": {
+                          "type": "file",
+                          "size": 1691,
+                          "size_human": "1.65 KB"
+                        },
+                        "is-any.d.ts": {
+                          "type": "file",
+                          "size": 880,
+                          "size_human": "880.00 B"
+                        },
+                        "greater-than-or-equal.d.ts": {
+                          "type": "file",
+                          "size": 470,
+                          "size_human": "470.00 B"
+                        },
+                        "delimiter-case.d.ts": {
+                          "type": "file",
+                          "size": 1714,
+                          "size_human": "1.67 KB"
+                        },
+                        "is-tuple.d.ts": {
+                          "type": "file",
+                          "size": 2056,
+                          "size_human": "2.01 KB"
+                        },
+                        "find-global-type.d.ts": {
+                          "type": "file",
+                          "size": 2050,
+                          "size_human": "2.00 KB"
+                        },
+                        "string-slice.d.ts": {
+                          "type": "file",
+                          "size": 728,
+                          "size_human": "728.00 B"
+                        },
+                        "pick-deep.d.ts": {
+                          "type": "file",
+                          "size": 4143,
+                          "size_human": "4.05 KB"
+                        },
                         "opaque.d.ts": {
                           "type": "file",
-                          "size": 2676,
-                          "size_human": "2.61 KB"
+                          "size": 26,
+                          "size_human": "26.00 B"
                         },
                         "set-optional.d.ts": {
                           "type": "file",
-                          "size": 1068,
-                          "size_human": "1.04 KB"
+                          "size": 1146,
+                          "size_human": "1.12 KB"
+                        },
+                        "array-indices.d.ts": {
+                          "type": "file",
+                          "size": 725,
+                          "size_human": "725.00 B"
+                        },
+                        "all-union-fields.d.ts": {
+                          "type": "file",
+                          "size": 2297,
+                          "size_human": "2.24 KB"
+                        },
+                        "unknown-record.d.ts": {
+                          "type": "file",
+                          "size": 631,
+                          "size_human": "631.00 B"
                         },
                         "literal-union.d.ts": {
                           "type": "file",
-                          "size": 1152,
-                          "size_human": "1.12 KB"
+                          "size": 1236,
+                          "size_human": "1.21 KB"
                         },
                         "except.d.ts": {
                           "type": "file",
-                          "size": 886,
-                          "size_human": "886.00 B"
+                          "size": 3068,
+                          "size_human": "3.00 KB"
+                        },
+                        "shared-union-fields.d.ts": {
+                          "type": "file",
+                          "size": 1895,
+                          "size_human": "1.85 KB"
+                        },
+                        "camel-cased-properties-deep.d.ts": {
+                          "type": "file",
+                          "size": 2285,
+                          "size_human": "2.23 KB"
+                        },
+                        "set-non-nullable.d.ts": {
+                          "type": "file",
+                          "size": 1098,
+                          "size_human": "1.07 KB"
                         },
                         "conditional-except.d.ts": {
                           "type": "file",
-                          "size": 1012,
-                          "size_human": "1012.00 B"
+                          "size": 1048,
+                          "size_human": "1.02 KB"
+                        },
+                        "camel-cased-properties.d.ts": {
+                          "type": "file",
+                          "size": 798,
+                          "size_human": "798.00 B"
+                        },
+                        "array-tail.d.ts": {
+                          "type": "file",
+                          "size": 673,
+                          "size_human": "673.00 B"
+                        },
+                        "schema.d.ts": {
+                          "type": "file",
+                          "size": 3005,
+                          "size_human": "2.93 KB"
                         },
                         "conditional-keys.d.ts": {
                           "type": "file",
-                          "size": 1199,
+                          "size": 1313,
+                          "size_human": "1.28 KB"
+                        },
+                        "has-readonly-keys.d.ts": {
+                          "type": "file",
+                          "size": 667,
+                          "size_human": "667.00 B"
+                        },
+                        "entry.d.ts": {
+                          "type": "file",
+                          "size": 2848,
+                          "size_human": "2.78 KB"
+                        },
+                        "structured-cloneable.d.ts": {
+                          "type": "file",
+                          "size": 1956,
+                          "size_human": "1.91 KB"
+                        },
+                        "non-empty-object.d.ts": {
+                          "type": "file",
+                          "size": 943,
+                          "size_human": "943.00 B"
+                        },
+                        "entries.d.ts": {
+                          "type": "file",
+                          "size": 2576,
+                          "size_human": "2.52 KB"
+                        },
+                        "set-field-type.d.ts": {
+                          "type": "file",
+                          "size": 1611,
+                          "size_human": "1.57 KB"
+                        },
+                        "jsonifiable.d.ts": {
+                          "type": "file",
+                          "size": 1034,
+                          "size_human": "1.01 KB"
+                        },
+                        "required-deep.d.ts": {
+                          "type": "file",
+                          "size": 2832,
+                          "size_human": "2.77 KB"
+                        },
+                        "omit-index-signature.d.ts": {
+                          "type": "file",
+                          "size": 3448,
+                          "size_human": "3.37 KB"
+                        },
+                        "is-null.d.ts": {
+                          "type": "file",
+                          "size": 419,
+                          "size_human": "419.00 B"
+                        },
+                        "if-unknown.d.ts": {
+                          "type": "file",
+                          "size": 528,
+                          "size_human": "528.00 B"
+                        },
+                        "enforce-optional.d.ts": {
+                          "type": "file",
+                          "size": 1102,
+                          "size_human": "1.08 KB"
+                        },
+                        "asyncify.d.ts": {
+                          "type": "file",
+                          "size": 1217,
+                          "size_human": "1.19 KB"
+                        },
+                        "exact.d.ts": {
+                          "type": "file",
+                          "size": 3320,
+                          "size_human": "3.24 KB"
+                        },
+                        "writable.d.ts": {
+                          "type": "file",
+                          "size": 3039,
+                          "size_human": "2.97 KB"
+                        },
+                        "multidimensional-array.d.ts": {
+                          "type": "file",
+                          "size": 1346,
+                          "size_human": "1.31 KB"
+                        },
+                        "has-required-keys.d.ts": {
+                          "type": "file",
+                          "size": 1197,
                           "size_human": "1.17 KB"
+                        },
+                        "set-required-deep.d.ts": {
+                          "type": "file",
+                          "size": 2208,
+                          "size_human": "2.16 KB"
+                        },
+                        "replace.d.ts": {
+                          "type": "file",
+                          "size": 1747,
+                          "size_human": "1.71 KB"
+                        },
+                        "pascal-cased-properties.d.ts": {
+                          "type": "file",
+                          "size": 833,
+                          "size_human": "833.00 B"
                         },
                         "async-return-type.d.ts": {
                           "type": "file",
-                          "size": 715,
-                          "size_human": "715.00 B"
+                          "size": 691,
+                          "size_human": "691.00 B"
                         },
                         "package-json.d.ts": {
                           "type": "file",
-                          "size": 13021,
-                          "size_human": "12.72 KB"
+                          "size": 16551,
+                          "size_human": "16.16 KB"
                         },
                         "union-to-intersection.d.ts": {
                           "type": "file",
-                          "size": 1957,
-                          "size_human": "1.91 KB"
+                          "size": 2053,
+                          "size_human": "2.00 KB"
                         },
-                        "mutable.d.ts": {
+                        "is-unknown.d.ts": {
                           "type": "file",
-                          "size": 860,
-                          "size_human": "860.00 B"
+                          "size": 1397,
+                          "size_human": "1.36 KB"
                         },
-                        "partial-deep.d.ts": {
+                        "primitive.d.ts": {
                           "type": "file",
-                          "size": 2312,
-                          "size_human": "2.26 KB"
+                          "size": 212,
+                          "size_human": "212.00 B"
                         },
-                        "promise-value.d.ts": {
+                        "paths.d.ts": {
+                          "type": "file",
+                          "size": 8231,
+                          "size_human": "8.04 KB"
+                        },
+                        "tagged-union.d.ts": {
+                          "type": "file",
+                          "size": 1291,
+                          "size_human": "1.26 KB"
+                        },
+                        "spread.d.ts": {
+                          "type": "file",
+                          "size": 1776,
+                          "size_human": "1.73 KB"
+                        },
+                        "includes.d.ts": {
+                          "type": "file",
+                          "size": 561,
+                          "size_human": "561.00 B"
+                        },
+                        "literal-to-primitive.d.ts": {
+                          "type": "file",
+                          "size": 899,
+                          "size_human": "899.00 B"
+                        },
+                        "arrayable.d.ts": {
                           "type": "file",
                           "size": 637,
                           "size_human": "637.00 B"
                         },
+                        "partial-deep.d.ts": {
+                          "type": "file",
+                          "size": 4884,
+                          "size_human": "4.77 KB"
+                        },
+                        "pick-index-signature.d.ts": {
+                          "type": "file",
+                          "size": 1225,
+                          "size_human": "1.20 KB"
+                        },
+                        "set-return-type.d.ts": {
+                          "type": "file",
+                          "size": 1532,
+                          "size_human": "1.50 KB"
+                        },
+                        "join.d.ts": {
+                          "type": "file",
+                          "size": 2846,
+                          "size_human": "2.78 KB"
+                        },
+                        "split.d.ts": {
+                          "type": "file",
+                          "size": 866,
+                          "size_human": "866.00 B"
+                        },
+                        "keys-of-union.d.ts": {
+                          "type": "file",
+                          "size": 905,
+                          "size_human": "905.00 B"
+                        },
+                        "if-never.d.ts": {
+                          "type": "file",
+                          "size": 498,
+                          "size_human": "498.00 B"
+                        },
+                        "readonly-tuple.d.ts": {
+                          "type": "file",
+                          "size": 1577,
+                          "size_human": "1.54 KB"
+                        },
+                        "string-key-of.d.ts": {
+                          "type": "file",
+                          "size": 506,
+                          "size_human": "506.00 B"
+                        },
+                        "int-range.d.ts": {
+                          "type": "file",
+                          "size": 2361,
+                          "size_human": "2.31 KB"
+                        },
+                        "snake-cased-properties.d.ts": {
+                          "type": "file",
+                          "size": 635,
+                          "size_human": "635.00 B"
+                        },
+                        "array-slice.d.ts": {
+                          "type": "file",
+                          "size": 3432,
+                          "size_human": "3.35 KB"
+                        },
+                        "if-null.d.ts": {
+                          "type": "file",
+                          "size": 483,
+                          "size_human": "483.00 B"
+                        },
+                        "if-empty-object.d.ts": {
+                          "type": "file",
+                          "size": 562,
+                          "size_human": "562.00 B"
+                        },
+                        "has-optional-keys.d.ts": {
+                          "type": "file",
+                          "size": 667,
+                          "size_human": "667.00 B"
+                        },
+                        "snake-case.d.ts": {
+                          "type": "file",
+                          "size": 936,
+                          "size_human": "936.00 B"
+                        },
+                        "require-all-or-none.d.ts": {
+                          "type": "file",
+                          "size": 1247,
+                          "size_human": "1.22 KB"
+                        },
+                        "partial-on-undefined-deep.d.ts": {
+                          "type": "file",
+                          "size": 2750,
+                          "size_human": "2.69 KB"
+                        },
+                        "is-never.d.ts": {
+                          "type": "file",
+                          "size": 1066,
+                          "size_human": "1.04 KB"
+                        },
                         "basic.d.ts": {
                           "type": "file",
-                          "size": 2020,
-                          "size_human": "1.97 KB"
+                          "size": 2253,
+                          "size_human": "2.20 KB"
+                        },
+                        "writable-keys-of.d.ts": {
+                          "type": "file",
+                          "size": 657,
+                          "size_human": "657.00 B"
+                        },
+                        "typed-array.d.ts": {
+                          "type": "file",
+                          "size": 380,
+                          "size_human": "380.00 B"
+                        },
+                        "snake-cased-properties-deep.d.ts": {
+                          "type": "file",
+                          "size": 864,
+                          "size_human": "864.00 B"
+                        },
+                        "optional-keys-of.d.ts": {
+                          "type": "file",
+                          "size": 893,
+                          "size_human": "893.00 B"
+                        },
+                        "int-closed-range.d.ts": {
+                          "type": "file",
+                          "size": 1271,
+                          "size_human": "1.24 KB"
                         },
                         "stringified.d.ts": {
                           "type": "file",
-                          "size": 416,
-                          "size_human": "416.00 B"
+                          "size": 441,
+                          "size_human": "441.00 B"
+                        },
+                        "sum.d.ts": {
+                          "type": "file",
+                          "size": 1951,
+                          "size_human": "1.91 KB"
+                        },
+                        "numeric.d.ts": {
+                          "type": "file",
+                          "size": 5117,
+                          "size_human": "5.00 KB"
                         },
                         "promisable.d.ts": {
                           "type": "file",
-                          "size": 775,
-                          "size_human": "775.00 B"
+                          "size": 791,
+                          "size_human": "791.00 B"
+                        },
+                        "distributed-omit.d.ts": {
+                          "type": "file",
+                          "size": 2256,
+                          "size_human": "2.20 KB"
+                        },
+                        "if-any.d.ts": {
+                          "type": "file",
+                          "size": 468,
+                          "size_human": "468.00 B"
                         },
                         "tsconfig-json.d.ts": {
                           "type": "file",
-                          "size": 16846,
-                          "size_human": "16.45 KB"
+                          "size": 26708,
+                          "size_human": "26.08 KB"
+                        },
+                        "kebab-cased-properties.d.ts": {
+                          "type": "file",
+                          "size": 639,
+                          "size_human": "639.00 B"
+                        },
+                        "literal-to-primitive-deep.d.ts": {
+                          "type": "file",
+                          "size": 1155,
+                          "size_human": "1.13 KB"
                         },
                         "value-of.d.ts": {
                           "type": "file",
-                          "size": 829,
-                          "size_human": "829.00 B"
+                          "size": 852,
+                          "size_human": "852.00 B"
+                        },
+                        "camel-case.d.ts": {
+                          "type": "file",
+                          "size": 1927,
+                          "size_human": "1.88 KB"
+                        },
+                        "observable-like.d.ts": {
+                          "type": "file",
+                          "size": 2186,
+                          "size_human": "2.13 KB"
                         },
                         "require-at-least-one.d.ts": {
                           "type": "file",
-                          "size": 809,
-                          "size_human": "809.00 B"
+                          "size": 872,
+                          "size_human": "872.00 B"
+                        },
+                        "iterable-element.d.ts": {
+                          "type": "file",
+                          "size": 1619,
+                          "size_human": "1.58 KB"
+                        },
+                        "array-values.d.ts": {
+                          "type": "file",
+                          "size": 648,
+                          "size_human": "648.00 B"
+                        },
+                        "greater-than.d.ts": {
+                          "type": "file",
+                          "size": 1466,
+                          "size_human": "1.43 KB"
+                        },
+                        "single-key-object.d.ts": {
+                          "type": "file",
+                          "size": 658,
+                          "size_human": "658.00 B"
+                        },
+                        "kebab-case.d.ts": {
+                          "type": "file",
+                          "size": 949,
+                          "size_human": "949.00 B"
+                        },
+                        "tagged.d.ts": {
+                          "type": "file",
+                          "size": 10490,
+                          "size_human": "10.24 KB"
+                        },
+                        "set-parameter-type.d.ts": {
+                          "type": "file",
+                          "size": 4703,
+                          "size_human": "4.59 KB"
+                        },
+                        "last-array-element.d.ts": {
+                          "type": "file",
+                          "size": 1366,
+                          "size_human": "1.33 KB"
+                        },
+                        "empty-object.d.ts": {
+                          "type": "file",
+                          "size": 1507,
+                          "size_human": "1.47 KB"
+                        },
+                        "set-readonly.d.ts": {
+                          "type": "file",
+                          "size": 1180,
+                          "size_human": "1.15 KB"
+                        },
+                        "override-properties.d.ts": {
+                          "type": "file",
+                          "size": 1229,
+                          "size_human": "1.20 KB"
+                        },
+                        "simplify.d.ts": {
+                          "type": "file",
+                          "size": 2343,
+                          "size_human": "2.29 KB"
+                        },
+                        "omit-deep.d.ts": {
+                          "type": "file",
+                          "size": 4313,
+                          "size_human": "4.21 KB"
+                        },
+                        "non-empty-tuple.d.ts": {
+                          "type": "file",
+                          "size": 412,
+                          "size_human": "412.00 B"
+                        },
+                        "string-repeat.d.ts": {
+                          "type": "file",
+                          "size": 1121,
+                          "size_human": "1.09 KB"
+                        },
+                        "internal": {
+                          "type": "directory",
+                          "contents": {
+                            "keys.d.ts": {
+                              "type": "file",
+                              "size": 2669,
+                              "size_human": "2.61 KB"
+                            },
+                            "index.d.ts": {
+                              "type": "file",
+                              "size": 247,
+                              "size_human": "247.00 B"
+                            },
+                            "string.d.ts": {
+                              "type": "file",
+                              "size": 4906,
+                              "size_human": "4.79 KB"
+                            },
+                            "numeric.d.ts": {
+                              "type": "file",
+                              "size": 1963,
+                              "size_human": "1.92 KB"
+                            },
+                            "array.d.ts": {
+                              "type": "file",
+                              "size": 3563,
+                              "size_human": "3.48 KB"
+                            },
+                            "object.d.ts": {
+                              "type": "file",
+                              "size": 4626,
+                              "size_human": "4.52 KB"
+                            },
+                            "type.d.ts": {
+                              "type": "file",
+                              "size": 2519,
+                              "size_human": "2.46 KB"
+                            },
+                            "characters.d.ts": {
+                              "type": "file",
+                              "size": 746,
+                              "size_human": "746.00 B"
+                            },
+                            "tuple.d.ts": {
+                              "type": "file",
+                              "size": 2424,
+                              "size_human": "2.37 KB"
+                            }
+                          }
+                        },
+                        "union-to-tuple.d.ts": {
+                          "type": "file",
+                          "size": 1292,
+                          "size_human": "1.26 KB"
+                        },
+                        "is-literal.d.ts": {
+                          "type": "file",
+                          "size": 8151,
+                          "size_human": "7.96 KB"
                         },
                         "conditional-pick.d.ts": {
                           "type": "file",
-                          "size": 933,
-                          "size_human": "933.00 B"
+                          "size": 964,
+                          "size_human": "964.00 B"
+                        },
+                        "pascal-case.d.ts": {
+                          "type": "file",
+                          "size": 790,
+                          "size_human": "790.00 B"
+                        },
+                        "simplify-deep.d.ts": {
+                          "type": "file",
+                          "size": 2352,
+                          "size_human": "2.30 KB"
+                        },
+                        "global-this.d.ts": {
+                          "type": "file",
+                          "size": 688,
+                          "size_human": "688.00 B"
+                        },
+                        "shared-union-fields-deep.d.ts": {
+                          "type": "file",
+                          "size": 6107,
+                          "size_human": "5.96 KB"
+                        },
+                        "multidimensional-readonly-array.d.ts": {
+                          "type": "file",
+                          "size": 1506,
+                          "size_human": "1.47 KB"
                         },
                         "set-required.d.ts": {
                           "type": "file",
-                          "size": 1069,
-                          "size_human": "1.04 KB"
+                          "size": 2790,
+                          "size_human": "2.72 KB"
+                        },
+                        "screaming-snake-case.d.ts": {
+                          "type": "file",
+                          "size": 714,
+                          "size_human": "714.00 B"
+                        },
+                        "invariant-of.d.ts": {
+                          "type": "file",
+                          "size": 2251,
+                          "size_human": "2.20 KB"
+                        },
+                        "conditional-simplify.d.ts": {
+                          "type": "file",
+                          "size": 1276,
+                          "size_human": "1.25 KB"
+                        },
+                        "get.d.ts": {
+                          "type": "file",
+                          "size": 7125,
+                          "size_human": "6.96 KB"
                         },
                         "require-exactly-one.d.ts": {
                           "type": "file",
-                          "size": 1255,
-                          "size_human": "1.23 KB"
+                          "size": 1155,
+                          "size_human": "1.13 KB"
+                        },
+                        "subtract.d.ts": {
+                          "type": "file",
+                          "size": 1878,
+                          "size_human": "1.83 KB"
+                        },
+                        "merge-deep.d.ts": {
+                          "type": "file",
+                          "size": 16532,
+                          "size_human": "16.14 KB"
+                        },
+                        "and.d.ts": {
+                          "type": "file",
+                          "size": 510,
+                          "size_human": "510.00 B"
+                        },
+                        "delimiter-cased-properties-deep.d.ts": {
+                          "type": "file",
+                          "size": 2459,
+                          "size_human": "2.40 KB"
+                        },
+                        "unknown-array.d.ts": {
+                          "type": "file",
+                          "size": 472,
+                          "size_human": "472.00 B"
                         },
                         "merge.d.ts": {
                           "type": "file",
-                          "size": 415,
-                          "size_human": "415.00 B"
+                          "size": 1113,
+                          "size_human": "1.09 KB"
+                        },
+                        "conditional-pick-deep.d.ts": {
+                          "type": "file",
+                          "size": 2705,
+                          "size_human": "2.64 KB"
                         },
                         "readonly-deep.d.ts": {
                           "type": "file",
-                          "size": 1828,
-                          "size_human": "1.79 KB"
+                          "size": 3005,
+                          "size_human": "2.93 KB"
+                        },
+                        "trim.d.ts": {
+                          "type": "file",
+                          "size": 554,
+                          "size_human": "554.00 B"
+                        },
+                        "has-writable-keys.d.ts": {
+                          "type": "file",
+                          "size": 667,
+                          "size_human": "667.00 B"
+                        },
+                        "undefined-on-partial-deep.d.ts": {
+                          "type": "file",
+                          "size": 2675,
+                          "size_human": "2.61 KB"
+                        },
+                        "fixed-length-array.d.ts": {
+                          "type": "file",
+                          "size": 1625,
+                          "size_human": "1.59 KB"
+                        },
+                        "kebab-cased-properties-deep.d.ts": {
+                          "type": "file",
+                          "size": 880,
+                          "size_human": "880.00 B"
+                        },
+                        "or.d.ts": {
+                          "type": "file",
+                          "size": 513,
+                          "size_human": "513.00 B"
+                        },
+                        "readonly-keys-of.d.ts": {
+                          "type": "file",
+                          "size": 637,
+                          "size_human": "637.00 B"
                         },
                         "merge-exclusive.d.ts": {
                           "type": "file",
-                          "size": 1340,
-                          "size_human": "1.31 KB"
+                          "size": 1363,
+                          "size_human": "1.33 KB"
+                        },
+                        "pascal-cased-properties-deep.d.ts": {
+                          "type": "file",
+                          "size": 1221,
+                          "size_human": "1.19 KB"
+                        },
+                        "is-equal.d.ts": {
+                          "type": "file",
+                          "size": 996,
+                          "size_human": "996.00 B"
+                        },
+                        "require-one-or-none.d.ts": {
+                          "type": "file",
+                          "size": 903,
+                          "size_human": "903.00 B"
+                        },
+                        "less-than.d.ts": {
+                          "type": "file",
+                          "size": 436,
+                          "size_human": "436.00 B"
+                        },
+                        "jsonify.d.ts": {
+                          "type": "file",
+                          "size": 4188,
+                          "size_human": "4.09 KB"
+                        },
+                        "words.d.ts": {
+                          "type": "file",
+                          "size": 4191,
+                          "size_human": "4.09 KB"
+                        },
+                        "required-keys-of.d.ts": {
+                          "type": "file",
+                          "size": 921,
+                          "size_human": "921.00 B"
+                        },
+                        "array-splice.d.ts": {
+                          "type": "file",
+                          "size": 3045,
+                          "size_human": "2.97 KB"
                         }
                       }
+                    },
+                    "license-cc0": {
+                      "type": "file",
+                      "size": 7048,
+                      "size_human": "6.88 KB"
                     }
                   }
                 },
@@ -12430,8 +11650,8 @@
                             },
                             "buffer.buffer.d.ts": {
                               "type": "file",
-                              "size": 18388,
-                              "size_human": "17.96 KB"
+                              "size": 21560,
+                              "size_human": "21.05 KB"
                             }
                           }
                         },
@@ -12655,15 +11875,15 @@
                             },
                             "web.d.ts": {
                               "type": "file",
-                              "size": 25132,
-                              "size_human": "24.54 KB"
+                              "size": 25224,
+                              "size_human": "24.63 KB"
                             }
                           }
                         },
                         "buffer.d.ts": {
                           "type": "file",
-                          "size": 87987,
-                          "size_human": "85.92 KB"
+                          "size": 87863,
+                          "size_human": "85.80 KB"
                         },
                         "http2.d.ts": {
                           "type": "file",
@@ -12677,8 +11897,8 @@
                         },
                         "stream.d.ts": {
                           "type": "file",
-                          "size": 84617,
-                          "size_human": "82.63 KB"
+                          "size": 84929,
+                          "size_human": "82.94 KB"
                         },
                         "http.d.ts": {
                           "type": "file",
@@ -12687,8 +11907,8 @@
                         },
                         "buffer.buffer.d.ts": {
                           "type": "file",
-                          "size": 18741,
-                          "size_human": "18.30 KB"
+                          "size": 22062,
+                          "size_human": "21.54 KB"
                         },
                         "assert.d.ts": {
                           "type": "file",
@@ -16098,8 +15318,8 @@
             },
             "package.json": {
               "type": "file",
-              "size": 424,
-              "size_human": "424.00 B"
+              "size": 449,
+              "size_human": "449.00 B"
             },
             "default.json": {
               "type": "file",
@@ -16138,8 +15358,8 @@
             },
             "main.js": {
               "type": "file",
-              "size": 6296,
-              "size_human": "6.15 KB"
+              "size": 7665,
+              "size_human": "7.49 KB"
             },
             "ailineraction.html": {
               "type": "file",
@@ -16241,8 +15461,8 @@
     },
     "github_sync.log": {
       "type": "file",
-      "size": 311,
-      "size_human": "311.00 B"
+      "size": 622,
+      "size_human": "622.00 B"
     },
     "ailinuxdocumentation_2.md": {
       "type": "file",
@@ -16495,8 +15715,8 @@
     },
     "directory_structure.json.bak": {
       "type": "file",
-      "size": 668846,
-      "size_human": "653.17 KB"
+      "size": 669072,
+      "size_human": "653.39 KB"
     },
     "bigfiles.sh": {
       "type": "file",
@@ -16515,8 +15735,8 @@
     },
     "directory_structure.json": {
       "type": "file",
-      "size": 669072,
-      "size_human": "653.39 KB"
+      "size": 669593,
+      "size_human": "653.90 KB"
     },
     "large_files.json": {
       "type": "file",
@@ -16525,8 +15745,8 @@
     },
     "optimization.log": {
       "type": "file",
-      "size": 223467,
-      "size_human": "218.23 KB"
+      "size": 223230,
+      "size_human": "218.00 KB"
     }
   }
 }

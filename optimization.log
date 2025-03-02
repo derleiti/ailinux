@@ -2691,7 +2691,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
             return jsonify({"error": str(e)}), 500
     else:
         try:
-            # Load settings from file if it exists
+            import json
             if os.path.exists(settings_file):
                 with open(settings_file, 'r', encoding='utf-8') as f:
                     settings = json.load(f)
@@ -2733,13 +2733,19 @@ def health_check():
     })
 
 
-@app.route('/analysis_history', methods=['GET'])
-def get_analysis_history():
-    """Get the history of log analyses.
+def translate_log(log_text):
+    """Preprocess log text before AI analysis.
+
+    This function can be expanded to implement more sophisticated
+    log translation or normalization.
+
+    Args:
+        log_text: The original log text
 
     Returns:
-        JSON response with analysis history
-    """ (duplicate-code)
+        Processed log text
+    """
+    # In the future, add log normalization or preprocessing here (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[168:232]
 ==server.backend.app:[107:171]
@@ -2905,17 +2911,10 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         logger.error(f"Failed to import module: {module_name}")
         return None
 
-def import_frontend_module(module_name):
+def main():
     """
-    Safely import a frontend module, trying different import paths if needed.
-
-    Args:
-        module_name: Name of the module to import
-
-    Returns:
-        module: Imported module or None if import failed
-    """
-    # Try direct import first (duplicate-code)
+    Run the path fixer to ensure imports work correctly.
+    """ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.backend-imports-fix:[16:54]
 ==client.backend.path-fixer-module:[16:54]
@@ -3088,7 +3087,7 @@ try:
 except ImportError:
     logging.warning("dotenv package not installed, environment variables must be set manually")
 
-# Configure logging with more structured approach
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
@@ -3102,7 +3101,7 @@ try:
 except ImportError:
     logging.warning("dotenv package not installed, environment variables must be set manually")
 
-# Configure logging with more structured approach
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
@@ -3130,24 +3129,23 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 
         data = request.json
         log_text = data.get('log')
-        model_name = data.get('model', 'gpt4all')  # Default to gpt4all
- (duplicate-code)
+        model_name = data.get('model', 'gpt4all')  # Default to gpt4all (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.gpt4all.app:[143:156]
 ==server.backend.gpt4all.app:[106:119]
-        while True:
-            message = input(" ⇢  ")
+    while True:
+        message = input(" ⇢  ")
 
-            # Check if special command and take action
-            if message in SPECIAL_COMMANDS:
-                SPECIAL_COMMANDS[message](MESSAGES)
-                continue
+        # Check if special command and take action
+        if message in SPECIAL_COMMANDS:
+            SPECIAL_COMMANDS[message](MESSAGES)
+            continue
 
-            # if regular message, append to messages
-            MESSAGES.append({"role": "user", "content": message})
+        # if regular message, append to messages
+        MESSAGES.append({"role": "user", "content": message})
 
-            # execute chat completion and ignore the full response since
-            # we are outputting it incrementally (duplicate-code)
+        # execute chat completion and ignore the full response since
+        # we are outputting it incrementally (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.gpt4all.app:[106:119]
 ==server.backend.gpt4all.app:[143:156]
@@ -3174,8 +3172,7 @@ Given a log snippet, your task is to:
 4. Suggest troubleshooting steps or solutions
 
 Be concise and precise in your analysis."""
-
-        # Prepare the conversation (duplicate-code)
+ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.backend-imports-fix:[80:88]
 ==client.backend.path-fixer-module:[112:120]
@@ -3185,18 +3182,18 @@ analyze.py:1:0: R0801: Similar lines in 2 files
     except ImportError:
         pass
 
-    # Try with frontend prefix
+    # Try with backend prefix
     try: (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.backend-import-fix:[111:118]
 ==client.backend.python-version-fix:[137:144]
-        try:
-            import site
-            site_packages = site.getsitepackages()[0]
-            pth_file = os.path.join(site_packages, "ailinux.pth")
+    try:
+        import site
+        site_packages = site.getsitepackages()[0]
+        pth_file = os.path.join(site_packages, "ailinux.pth")
 
-            with open(pth_file, "w") as f:
-                for path in paths_to_add: (duplicate-code)
+        with open(pth_file, "w") as f:
+            for path in paths_to_add: (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[134:139]
 ==server.backend.app:[87:92]
@@ -3228,13 +3225,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |34     |32         |+2.00      |94.12       |38.24    |
+|module   |34     |34         |=          |94.12       |38.24    |
 +---------+-------+-----------+-----------+------------+---------+
 |class    |13     |13         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |method   |65     |65         |=          |100.00      |7.69     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |150    |137        |+13.00     |98.00       |0.00     |
+|function |150    |150        |=          |98.00       |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -3259,13 +3256,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |5294   |59.73 |5005     |+289.00    |
+|code      |5294   |59.73 |5294     |=          |
 +----------+-------+------+---------+-----------+
-|docstring |1548   |17.47 |1482     |+66.00     |
+|docstring |1548   |17.47 |1548     |=          |
 +----------+-------+------+---------+-----------+
-|comment   |771    |8.70  |733      |+38.00     |
+|comment   |771    |8.70  |771      |=          |
 +----------+-------+------+---------+-----------+
-|empty     |1250   |14.10 |1188     |+62.00     |
+|empty     |1250   |14.10 |1250     |=          |
 +----------+-------+------+---------+-----------+
 
 
@@ -3289,11 +3286,11 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |752    |697      |697        |
+|convention |752    |752      |752        |
 +-----------+-------+---------+-----------+
-|refactor   |80     |77       |77         |
+|refactor   |80     |80       |80         |
 +-----------+-------+---------+-----------+
-|warning    |548    |500      |500        |
+|warning    |548    |548      |548        |
 +-----------+-------+---------+-----------+
 |error      |49     |49       |49         |
 +-----------+-------+---------+-----------+
@@ -3500,5 +3497,5 @@ Messages
 
 
 ------------------------------------------------------------------
-Your code has been rated at 5.98/10 (previous run: 5.99/10, -0.01)
+Your code has been rated at 5.98/10 (previous run: 5.98/10, +0.00)
 
