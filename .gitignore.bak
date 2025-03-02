@@ -1,6 +1,7 @@
 <<<<<< HEAD
-/client/frontend/node_modules/
-/client/node_modules/
+server/backend/.env
+client/frontend/node_modules/
+client/node_modules/
 electron
 client/.env
 electron

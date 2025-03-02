@@ -1,10 +1,10 @@
 {
   "stats": {
-    "total_directories": 452,
-    "total_files": 2838,
-    "total_size_bytes": 289906900,
-    "total_size_human": "276.48 MB",
-    "scan_time": "2025-03-02 05:40:19"
+    "total_directories": 454,
+    "total_files": 2840,
+    "total_size_bytes": 289662122,
+    "total_size_human": "276.24 MB",
+    "scan_time": "2025-03-02 06:01:27"
   },
   "structure": {
     "postcode.sh": {
@@ -14,8 +14,8 @@
     },
     "large_files.json.bak": {
       "type": "file",
-      "size": 357,
-      "size_human": "357.00 B"
+      "size": 227,
+      "size_human": "227.00 B"
     },
     "readme": {
       "type": "file",
@@ -48,10 +48,25 @@
         "backend": {
           "type": "directory",
           "contents": {
+            "ai_model.log": {
+              "type": "file",
+              "size": 0,
+              "size_human": "0.00 B"
+            },
             "app.py": {
               "type": "file",
               "size": 15635,
               "size_human": "15.27 KB"
+            },
+            "__pycache__": {
+              "type": "directory",
+              "contents": {
+                "ai_model.cpython-312.pyc": {
+                  "type": "file",
+                  "size": 23354,
+                  "size_human": "22.81 KB"
+                }
+              }
             },
             "huggingface.py": {
               "type": "file",
@@ -71,6 +86,10 @@
               "type": "file",
               "size": 0,
               "size_human": "0.00 B"
+            },
+            "models": {
+              "type": "directory",
+              "contents": {}
             },
             "gpt4allinit.py": {
               "type": "file",
@@ -16074,8 +16093,8 @@
             },
             "index.html": {
               "type": "file",
-              "size": 45390,
-              "size_human": "44.33 KB"
+              "size": 29409,
+              "size_human": "28.72 KB"
             },
             "requirements.txt": {
               "type": "file",
@@ -16099,8 +16118,8 @@
             },
             "config.js": {
               "type": "file",
-              "size": 3720,
-              "size_human": "3.63 KB"
+              "size": 5492,
+              "size_human": "5.36 KB"
             },
             "main-process.txt": {
               "type": "file",
@@ -16192,8 +16211,8 @@
     },
     "github_sync.log": {
       "type": "file",
-      "size": 311,
-      "size_human": "311.00 B"
+      "size": 622,
+      "size_human": "622.00 B"
     },
     "ailinuxdocumentation_2.md": {
       "type": "file",
@@ -16416,8 +16435,8 @@
     },
     "directory_structure.json.bak": {
       "type": "file",
-      "size": 921273,
-      "size_human": "899.68 KB"
+      "size": 666345,
+      "size_human": "650.73 KB"
     },
     "bigfiles.sh": {
       "type": "file",
@@ -16436,8 +16455,8 @@
     },
     "directory_structure.json": {
       "type": "file",
-      "size": 666345,
-      "size_human": "650.73 KB"
+      "size": 667333,
+      "size_human": "651.69 KB"
     },
     "large_files.json": {
       "type": "file",
@@ -16446,8 +16465,8 @@
     },
     "optimization.log": {
       "type": "file",
-      "size": 190750,
-      "size_human": "186.28 KB"
+      "size": 190586,
+      "size_human": "186.12 KB"
     }
   }
 }

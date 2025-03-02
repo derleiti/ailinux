@@ -1,24 +1,19 @@
-"""Optimized AI Model Integration for AILinux.
-
-Provides robust, type-hinted interfaces for various AI models with improved error handling.
+#!/usr/bin/env python3
+"""
+AI Model Manager für AILinux
+Zentrales Modul für die Verwaltung und Nutzung von KI-Modellen.
 """
 import os
+import sys
 import logging
-import tempfile
-from typing import Dict, Any, Optional, Union, List, Tuple, Callable
-from functools import lru_cache
-from dataclasses import dataclass, field
 import traceback
+import tempfile
+from functools import lru_cache
+from typing import Dict, Any, List, Union, Callable, Optional
+from dataclasses import dataclass, field
 from pathlib import Path
 
-# Load environment variables safely
-try:
-    from dotenv import load_dotenv
-    load_dotenv()
-except ImportError:
-    logging.warning("dotenv package not installed, environment variables must be set manually")
-
-# Configure logging with more structured approach
+# Konfiguriere Logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
@@ -29,9 +24,16 @@ logging.basicConfig(
 )
 logger = logging.getLogger("AIModel")
 
+# Lade Umgebungsvariablen
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    logger.warning("dotenv Paket nicht installiert, Umgebungsvariablen müssen manuell gesetzt werden")
+
 @dataclass
 class ModelConfig:
-    """Configuration for AI models with robust type handling."""
+    """Konfiguration für AI-Modelle mit robuster Typbehandlung."""
     name: str
     api_key: Optional[str] = None
     model_path: Optional[str] = None
@@ -40,33 +42,33 @@ class ModelConfig:
     device: str = "cpu"
     max_tokens: int = 2048
     temperature: float = 0.7
-    timeout: int = 120  # Timeout in seconds for API calls
-    retry_count: int = 2  # Number of retries for failed API calls
+    timeout: int = 120  # Timeout in Sekunden für API-Aufrufe
+    retry_count: int = 2  # Anzahl der Wiederholungsversuche bei fehlgeschlagenen API-Aufrufen
 
 class ModelInitializationError(Exception):
-    """Custom exception for model initialization failures."""
+    """Benutzerdefinierte Ausnahme für Fehler bei der Modellinitialisierung."""
     pass
 
 class AIModelManager:
-    """Centralized manager for AI model initialization and management."""
+    """Zentralisierter Manager für AI-Modellinitialisierung und -verwaltung."""
 
     def __init__(self):
-        """Initialize the AI Model Manager."""
-        self._models: Dict[str, Any] = {}
+        """Initialisiere den AI Model Manager."""
+        self._models = {}
         self._configs = self._load_model_configs()
-        # Ensure model cache directory exists
+        # Stelle sicher, dass das Modell-Cache-Verzeichnis existiert
         for config in self._configs.values():
             os.makedirs(os.path.expanduser(config.cache_dir), exist_ok=True)
 
     def _load_model_configs(self) -> Dict[str, ModelConfig]:
         """
-        Load model configurations from environment variables.
-        
+        Lade Modellkonfigurationen aus Umgebungsvariablen.
+
         Returns:
-            Dictionary of model configurations
+            Dictionary mit Modellkonfigurationen
         """
         models_cache_dir = os.getenv("MODELS_CACHE_DIR", "./models")
-        
+
         return {
             "gpt4all": ModelConfig(
                 name="gpt4all",
@@ -97,20 +99,20 @@ class AIModelManager:
     @lru_cache(maxsize=4)
     def initialize_model(self, model_name: str) -> Any:
         """
-        Initialize a specific AI model with caching and robust error handling.
-        
+        Initialisiere ein spezifisches AI-Modell mit Caching und robuster Fehlerbehandlung.
+
         Args:
-            model_name: Name of the model to initialize
-            
+            model_name: Name des zu initialisierenden Modells
+
         Returns:
-            Initialized model instance
-        
+            Initialisierte Modellinstanz
+
         Raises:
-            ModelInitializationError: If model cannot be initialized
+            ModelInitializationError: Wenn das Modell nicht initialisiert werden kann
         """
         config = self._configs.get(model_name.lower())
         if not config:
-            raise ModelInitializationError(f"Unknown model: {model_name}")
+            raise ModelInitializationError(f"Unbekanntes Modell: {model_name}")
 
         try:
             if model_name.lower() == "gpt4all":
@@ -122,143 +124,153 @@ class AIModelManager:
             elif model_name.lower() == "huggingface":
                 return self._initialize_huggingface(config)
             else:
-                raise ModelInitializationError(f"Unsupported model type: {model_name}")
+                raise ModelInitializationError(f"Nicht unterstützter Modelltyp: {model_name}")
         except ImportError as e:
-            logger.error(f"Required library not installed for {model_name}: {e}")
-            raise ModelInitializationError(f"Missing library for {model_name} model: {e}") from e
+            logger.error(f"Erforderliche Bibliothek nicht installiert für {model_name}: {e}")
+            raise ModelInitializationError(f"Fehlende Bibliothek für {model_name} Modell: {e}") from e
         except Exception as e:
-            logger.error(f"Model initialization failed for {model_name}: {e}")
+            logger.error(f"Modellinitialisierung fehlgeschlagen für {model_name}: {e}")
             logger.debug(traceback.format_exc())
-            raise ModelInitializationError(f"Failed to initialize {model_name} model: {e}") from e
+            raise ModelInitializationError(f"Konnte {model_name} Modell nicht initialisieren: {e}") from e
 
     def _initialize_gpt4all(self, config: ModelConfig) -> Any:
-        """Initialize GPT4All model with robust error handling."""
+        """Initialisiere GPT4All-Modell mit robuster Fehlerbehandlung."""
         try:
-            from gpt4all import GPT4All
-            
-            # Handle relative and user paths
+            # Korrigiere Import für GPT4All
+            try:
+                from gpt4all import GPT4All
+            except ImportError:
+                logger.warning("Standard gpt4all Modul nicht gefunden, versuche alternativen Import")
+                # Alternativ, falls die Struktur des gpt4all Pakets anders ist
+                try:
+                    from gpt4all.gpt4all import GPT4All
+                except ImportError:
+                    raise ImportError("GPT4All Bibliothek nicht installiert oder nicht korrekt konfiguriert. Installiere mit 'pip install gpt4all'")
+
+            # Behandle relative und Benutzerpfade
             model_path = os.path.expanduser(config.model_path)
             if not os.path.isabs(model_path):
                 model_path = os.path.join(os.path.expanduser(config.cache_dir), model_path)
-            
-            # Ensure model directory exists
+
+            # Stelle sicher, dass das Modellverzeichnis existiert
             os.makedirs(os.path.dirname(model_path), exist_ok=True)
-            
-            # Check if model file exists, if not inform the user
+
+            # Prüfe, ob die Modelldatei existiert, falls nicht, informiere den Benutzer
             if not os.path.exists(model_path):
-                logger.warning(f"Model file not found at {model_path}. GPT4All will attempt to download it.")
-            
-            # Initialize model with specified parameters
+                logger.warning(f"Modelldatei nicht gefunden unter {model_path}. GPT4All wird versuchen, sie herunterzuladen.")
+
+            # Initialisiere Modell mit angegebenen Parametern
             model = GPT4All(model_path)
-            logger.info(f"GPT4All model loaded successfully from {model_path}")
+            logger.info(f"GPT4All-Modell erfolgreich geladen von {model_path}")
             return model
         except ImportError:
-            logger.error("GPT4All library not installed. Install it with 'pip install gpt4all'.")
+            logger.error("GPT4All-Bibliothek nicht installiert. Installiere sie mit 'pip install gpt4all'.")
             raise
         except Exception as e:
-            logger.error(f"Error initializing GPT4All model: {e}")
+            logger.error(f"Fehler bei der Initialisierung des GPT4All-Modells: {e}")
             logger.debug(traceback.format_exc())
             raise
 
     def _initialize_openai(self, config: ModelConfig) -> Any:
-        """Initialize OpenAI model with API key validation."""
+        """Initialisiere OpenAI-Modell mit API-Schlüsselvalidierung."""
         if not config.api_key:
-            raise ModelInitializationError("OpenAI API key is required. Set OPENAI_API_KEY environment variable.")
-        
+            raise ModelInitializationError("OpenAI API-Schlüssel ist erforderlich. Setze die OPENAI_API_KEY Umgebungsvariable.")
+
         try:
             import openai
-            # Set API key
+            # Setze API-Schlüssel
             openai.api_key = config.api_key
-            
-            # Test connection by making a simple request
+
+            # Teste Verbindung mit einer einfachen Anfrage
             try:
-                # Use models.list as a simple API check
+                # Verwende models.list als einfachen API-Check
                 openai.models.list()
-                logger.info("OpenAI API connection verified successfully")
+                logger.info("OpenAI API-Verbindung erfolgreich verifiziert")
             except Exception as api_error:
-                logger.warning(f"OpenAI API connection test failed: {api_error}")
-                # Continue anyway as the key might still be valid for completions
-            
+                logger.warning(f"OpenAI API-Verbindungstest fehlgeschlagen: {api_error}")
+                # Trotzdem fortfahren, da der Schlüssel möglicherweise noch für Vervollständigungen gültig ist
+
             return openai
         except ImportError:
-            logger.error("OpenAI library not installed. Install it with 'pip install openai'.")
+            logger.error("OpenAI-Bibliothek nicht installiert. Installiere sie mit 'pip install openai'.")
             raise
 
     def _initialize_gemini(self, config: ModelConfig) -> Any:
-        """Initialize Google Gemini model with API key validation."""
+        """Initialisiere Google Gemini-Modell mit API-Schlüsselvalidierung."""
         if not config.api_key:
-            raise ModelInitializationError("Gemini API key is required. Set GEMINI_API_KEY environment variable.")
-        
+            raise ModelInitializationError("Gemini API-Schlüssel ist erforderlich. Setze die GEMINI_API_KEY Umgebungsvariable.")
+
         try:
             import google.generativeai as genai
-            
-            # Configure with API key
+
+            # Konfiguriere mit API-Schlüssel
             genai.configure(api_key=config.api_key)
-            
-            # Test connection by listing models
+
+            # Teste Verbindung durch Auflisten von Modellen
             try:
                 genai.list_models()
-                logger.info("Gemini API connection verified successfully")
+                logger.info("Gemini API-Verbindung erfolgreich verifiziert")
             except Exception as api_error:
-                logger.warning(f"Gemini API connection test failed: {api_error}")
-                # Continue anyway as the key might still be valid
-            
+                logger.warning(f"Gemini API-Verbindungstest fehlgeschlagen: {api_error}")
+                # Trotzdem fortfahren, da der Schlüssel möglicherweise noch gültig ist
+
             return genai
         except ImportError:
-            logger.error("Google GenerativeAI library not installed. Install it with 'pip install google-generativeai'.")
+            logger.error("Google GenerativeAI-Bibliothek nicht installiert. Installiere sie mit 'pip install google-generativeai'.")
             raise
 
-    def _initialize_huggingface(self, config: ModelConfig) -> Tuple[Any, Any, Any]:
-        """Initialize Hugging Face model with comprehensive setup."""
+    def _initialize_huggingface(self, config: ModelConfig) -> Any:
+        """Initialisiere Hugging Face-Modell mit umfassendem Setup."""
         try:
+            # Lazy-Import, um Abhängigkeiten zu reduzieren, wenn das Modell nicht verwendet wird
             from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
             import torch
-            
-            # Determine device
+
+            # Bestimme Gerät
             if config.device == "auto":
                 device = "cuda" if torch.cuda.is_available() else "cpu"
             else:
                 device = config.device
-            
-            # Log device information
+
+            # Protokolliere Geräteinformationen
             if device == "cuda" and torch.cuda.is_available():
-                logger.info(f"Using CUDA device: {torch.cuda.get_device_name(0)}")
+                logger.info(f"Verwende CUDA-Gerät: {torch.cuda.get_device_name(0)}")
             else:
-                logger.info("Using CPU for inference")
-            
-            # Ensure cache directory exists
+                logger.info("Verwende CPU für Inferenz")
+
+            # Stelle sicher, dass das Cache-Verzeichnis existiert
             cache_dir = os.path.expanduser(config.cache_dir)
             os.makedirs(cache_dir, exist_ok=True)
-            
-            # Load tokenizer
-            logger.info(f"Loading tokenizer for model: {config.model_id}")
+
+            # Lade Tokenizer
+            logger.info(f"Lade Tokenizer für Modell: {config.model_id}")
             tokenizer = AutoTokenizer.from_pretrained(
                 config.model_id,
                 cache_dir=cache_dir,
                 token=config.api_key if config.api_key else None,
                 local_files_only=False
             )
-            
-            # Load model with appropriate settings based on device
-            logger.info(f"Loading model: {config.model_id}")
+
+            # Lade Modell mit geeigneten Einstellungen basierend auf dem Gerät
+            logger.info(f"Lade Modell: {config.model_id}")
             model_loading_args = {
                 "cache_dir": cache_dir,
                 "token": config.api_key if config.api_key else None,
                 "local_files_only": False
             }
-            
-            # Add device-specific optimizations
+
+            # Füge gerätespezifische Optimierungen hinzu
             if device == "cuda":
                 model_loading_args.update({
-                    "torch_dtype": torch.float16,  # Use half precision for GPU
+                    "torch_dtype": torch.float16,  # Verwende halbe Präzision für GPU
                     "low_cpu_mem_usage": True,
                     "device_map": "auto"
                 })
-            
+
             model = AutoModelForCausalLM.from_pretrained(config.model_id, **model_loading_args)
-            
-            # Create text generation pipeline
-            logger.info("Creating text generation pipeline")
+
+            # Erstelle Textgenerierungs-Pipeline
+            logger.info("Erstelle Textgenerierungs-Pipeline")
             pipeline_model = pipeline(
                 "text-generation",
                 model=model,
@@ -267,36 +279,40 @@ class AIModelManager:
                 max_new_tokens=config.max_tokens,
                 temperature=config.temperature
             )
-            
-            logger.info(f"HuggingFace model {config.model_id} initialized successfully on {device}")
+
+            logger.info(f"HuggingFace-Modell {config.model_id} erfolgreich auf {device} initialisiert")
             return model, tokenizer, pipeline_model
         except ImportError:
-            logger.error("Transformers library not installed. Install it with 'pip install transformers'.")
+            logger.error("Transformers-Bibliothek nicht installiert. Installiere sie mit 'pip install transformers'.")
             raise
         except Exception as e:
-            logger.error(f"Error initializing HuggingFace model: {e}")
+            logger.error(f"Fehler bei der Initialisierung des HuggingFace-Modells: {e}")
             logger.debug(traceback.format_exc())
             raise
 
     def get_model_info(self, model_name: str) -> Dict[str, Any]:
         """
-        Retrieve information about a specific model.
-        
+        Rufe Informationen über ein bestimmtes Modell ab.
+
         Args:
-            model_name: Name of the model
-            
+            model_name: Name des Modells
+
         Returns:
-            Dictionary with model information
+            Dictionary mit Modellinformationen
         """
         config = self._configs.get(model_name.lower())
         if not config:
-            return {"error": f"Unknown model: {model_name}"}
-        
-        # Check if model is available (libraries installed)
+            return {"error": f"Unbekanntes Modell: {model_name}"}
+
+        # Prüfe, ob das Modell verfügbar ist (Bibliotheken installiert)
         available = True
         try:
             if model_name.lower() == "gpt4all":
-                import gpt4all
+                # Verwende eine einfachere Methode, um die gpt4all-Verfügbarkeit zu prüfen
+                # ohne sie vollständig zu importieren oder zu initialisieren
+                import importlib.util
+                spec = importlib.util.find_spec("gpt4all")
+                available = spec is not None
             elif model_name.lower() == "openai":
                 import openai
             elif model_name.lower() == "gemini":
@@ -306,83 +322,83 @@ class AIModelManager:
                 import torch
         except ImportError:
             available = False
-        
+
         return {
             "name": config.name,
             "model_id": config.model_id,
             "is_api_model": bool(config.api_key),
             "device": config.device,
             "available": available,
-            "has_api_key": bool(config.api_key) if config.api_key is required_for_model(model_name) else True,
+            "has_api_key": bool(config.api_key) if required_for_model(model_name) else True,
             "cache_dir": config.cache_dir
         }
 
 def required_for_model(model_name: str) -> bool:
-    """Check if an API key is required for a specific model."""
+    """Prüfe, ob ein API-Schlüssel für ein bestimmtes Modell erforderlich ist."""
     return model_name.lower() in ["openai", "gemini", "huggingface"]
 
 def get_available_models() -> List[Dict[str, Any]]:
     """
-    Get information about all available models.
-    
+    Hole Informationen über alle verfügbaren Modelle.
+
     Returns:
-        List of dictionaries with model information
+        Liste von Dictionaries mit Modellinformationen
     """
     manager = AIModelManager()
     models = []
-    
+
     for model_name in ["gpt4all", "openai", "gemini", "huggingface"]:
         models.append(manager.get_model_info(model_name))
-    
+
     return models
 
 def analyze_log(log_text: str, model_name: str = "gpt4all", instruction: Optional[str] = None) -> str:
     """
-    Analyze a log using the specified AI model.
-    
+    Analysiere ein Log mit dem angegebenen AI-Modell.
+
     Args:
-        log_text: The log text to analyze
-        model_name: Name of the model to use
-        instruction: Optional custom instruction for the analysis
-        
+        log_text: Der zu analysierende Log-Text
+        model_name: Name des zu verwendenden Modells
+        instruction: Optionale benutzerdefinierte Anweisung für die Analyse
+
     Returns:
-        Analysis result as string
+        Analyseergebnis als String
     """
     if not log_text:
-        return "Error: No log text provided for analysis."
-    
-    # Limit log text length if necessary to prevent excessive token usage
-    max_log_length = 8000  # Characters, adjust based on model capabilities
+        return "Fehler: Kein Log-Text für die Analyse bereitgestellt."
+
+    # Begrenze die Log-Textlänge, falls nötig, um übermäßigen Token-Verbrauch zu vermeiden
+    max_log_length = 8000  # Zeichen, anpassen basierend auf Modellkapazitäten
     truncated = False
     if len(log_text) > max_log_length:
         log_text = log_text[:max_log_length] + "..."
         truncated = True
-    
-    # Default system prompt for log analysis
-    system_prompt = """You are an AI assistant specialized in analyzing logs and providing insights.
-Given a log snippet, your task is to:
-1. Summarize the key information in the log
-2. Identify any errors, warnings, or issues
-3. Explain potential causes for the identified problems
-4. Suggest troubleshooting steps or solutions
 
-Be concise and precise in your analysis."""
+    # Standard-Systemprompt für Log-Analyse
+    system_prompt = """Du bist ein KI-Assistent, der sich auf die Analyse von Logs und die Bereitstellung von Erkenntnissen spezialisiert hat.
+Deine Aufgabe ist es, auf Basis eines Log-Ausschnitts:
+1. Die wichtigsten Informationen im Log zusammenzufassen
+2. Fehler, Warnungen oder Probleme zu identifizieren
+3. Mögliche Ursachen für die identifizierten Probleme zu erklären
+4. Schritte zur Fehlerbehebung oder Lösungen vorzuschlagen
 
-    # Use custom instruction if provided
+Sei präzise und knapp in deiner Analyse."""
+
+    # Verwende benutzerdefinierte Anweisung, falls vorhanden
     if instruction:
         system_prompt = instruction
-    
+
     try:
-        # Initialize the model manager
+        # Initialisiere den Modellmanager
         manager = AIModelManager()
-        
-        # Get the model based on name
+
+        # Hole das Modell basierend auf dem Namen
         model = manager.initialize_model(model_name)
-        
-        # Build full prompt
-        prompt = f"{system_prompt}\n\nLOG:\n{log_text}\n\nANALYSIS:"
-        
-        # Generate analysis based on model type
+
+        # Baue vollständigen Prompt
+        prompt = f"{system_prompt}\n\nLOG:\n{log_text}\n\nANALYSE:"
+
+        # Generiere Analyse basierend auf dem Modelltyp
         if model_name.lower() == "gpt4all":
             return _analyze_with_gpt4all(model, prompt)
         elif model_name.lower() == "openai":
@@ -392,69 +408,69 @@ Be concise and precise in your analysis."""
         elif model_name.lower() == "huggingface":
             return _analyze_with_huggingface(model, prompt)
         else:
-            return f"Error: Unsupported model type: {model_name}"
-    
+            return f"Fehler: Nicht unterstützter Modelltyp: {model_name}"
+
     except ModelInitializationError as e:
-        logger.error(f"Model initialization error: {e}")
-        return f"Error initializing model: {str(e)}"
+        logger.error(f"Modellinitialisierungsfehler: {e}")
+        return f"Fehler bei der Initialisierung des Modells: {str(e)}"
     except Exception as e:
-        logger.error(f"Error analyzing log with {model_name}: {e}")
+        logger.error(f"Fehler bei der Analyse des Logs mit {model_name}: {e}")
         logger.debug(traceback.format_exc())
-        return f"Error analyzing log: {str(e)}"
+        return f"Fehler bei der Analyse des Logs: {str(e)}"
 
 def _analyze_with_gpt4all(model, prompt: str) -> str:
-    """Generate analysis using GPT4All model."""
+    """Generiere Analyse mit GPT4All-Modell."""
     try:
-        # Use chat completion API
+        # Verwende die Chat-Completion-API
         response = model.chat_completion([
-            {"role": "system", "content": "You are a helpful AI assistant specializing in log analysis."},
+            {"role": "system", "content": "Du bist ein hilfreicher KI-Assistent, der sich auf Log-Analyse spezialisiert."},
             {"role": "user", "content": prompt}
         ])
-        
+
         return response['choices'][0]['message']['content']
     except Exception as e:
-        logger.error(f"Error in GPT4All analysis: {e}")
+        logger.error(f"Fehler bei der GPT4All-Analyse: {e}")
         logger.debug(traceback.format_exc())
         raise
 
 def _analyze_with_openai(openai_client, prompt: str) -> str:
-    """Generate analysis using OpenAI API."""
+    """Generiere Analyse mit OpenAI API."""
     try:
         response = openai_client.chat.completions.create(
             model=os.getenv("OPENAI_MODEL", "gpt-4"),
             messages=[
-                {"role": "system", "content": "You are a helpful AI assistant specializing in log analysis."},
+                {"role": "system", "content": "Du bist ein hilfreicher KI-Assistent, der sich auf Log-Analyse spezialisiert."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
             max_tokens=1500
         )
-        
+
         return response.choices[0].message.content
     except Exception as e:
-        logger.error(f"Error in OpenAI analysis: {e}")
+        logger.error(f"Fehler bei der OpenAI-Analyse: {e}")
         logger.debug(traceback.format_exc())
         raise
 
 def _analyze_with_gemini(genai, prompt: str) -> str:
-    """Generate analysis using Google Gemini API."""
+    """Generiere Analyse mit Google Gemini API."""
     try:
         model = genai.GenerativeModel(os.getenv("GEMINI_MODEL", "gemini-pro"))
         response = model.generate_content(prompt)
-        
+
         return response.text
     except Exception as e:
-        logger.error(f"Error in Gemini analysis: {e}")
+        logger.error(f"Fehler bei der Gemini-Analyse: {e}")
         logger.debug(traceback.format_exc())
         raise
 
 def _analyze_with_huggingface(model_tuple, prompt: str) -> str:
-    """Generate analysis using HuggingFace model."""
+    """Generiere Analyse mit HuggingFace-Modell."""
     try:
-        # Unpack the model tuple
+        # Entpacke das Modelltupel
         model, tokenizer, pipeline_model = model_tuple
-        
-        # Generate text
+
+        # Generiere Text
         response = pipeline_model(
             prompt,
             do_sample=True,
@@ -462,47 +478,47 @@ def _analyze_with_huggingface(model_tuple, prompt: str) -> str:
             temperature=0.7,
             return_full_text=False
         )
-        
+
         return response[0]['generated_text']
     except Exception as e:
-        logger.error(f"Error in HuggingFace analysis: {e}")
+        logger.error(f"Fehler bei der HuggingFace-Analyse: {e}")
         logger.debug(traceback.format_exc())
         raise
 
 if __name__ == "__main__":
-    # Simple CLI for testing the module
+    # Einfaches CLI zum Testen des Moduls
     import argparse
-    
-    parser = argparse.ArgumentParser(description="AILinux Model Manager CLI")
-    parser.add_argument("--list-models", action="store_true", help="List available models")
-    parser.add_argument("--analyze", type=str, help="Analyze log file")
-    parser.add_argument("--model", type=str, default="gpt4all", help="Model to use for analysis")
-    
+
+    parser = argparse.ArgumentParser(description="AILinux-Modellmanager-CLI")
+    parser.add_argument("--list-models", action="store_true", help="Verfügbare Modelle auflisten")
+    parser.add_argument("--analyze", type=str, help="Log-Datei analysieren")
+    parser.add_argument("--model", type=str, default="gpt4all", help="Zu verwendendes Modell für die Analyse")
+
     args = parser.parse_args()
-    
+
     if args.list_models:
         models = get_available_models()
-        print("\nAvailable AI Models:")
-        print("===================")
+        print("\nVerfügbare AI-Modelle:")
+        print("=====================")
         for model in models:
-            status = "✓ Available" if model["available"] else "✗ Not available"
+            status = "✓ Verfügbar" if model["available"] else "✗ Nicht verfügbar"
             api_status = ""
             if model["is_api_model"]:
-                api_status = "✓ API Key Set" if model["has_api_key"] else "✗ API Key Missing"
-            
+                api_status = "✓ API-Schlüssel gesetzt" if model["has_api_key"] else "✗ API-Schlüssel fehlt"
+
             print(f"{model['name']} ({model['model_id']}): {status} {api_status}")
         print()
-    
+
     if args.analyze:
         try:
             with open(args.analyze, 'r') as f:
                 log_text = f.read()
-            
-            print(f"\nAnalyzing log with {args.model}...\n")
+
+            print(f"\nAnalysiere Log mit {args.model}...\n")
             result = analyze_log(log_text, args.model)
             print(result)
             print()
         except FileNotFoundError:
-            print(f"Error: File not found: {args.analyze}")
+            print(f"Fehler: Datei nicht gefunden: {args.analyze}")
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"Fehler: {e}")

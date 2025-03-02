@@ -1,140 +1,154 @@
-"""AILinux Backend Server for log analysis using AI models.
-
-This module provides a Flask-based API that processes log files using 
-various AI models and returns analysis results.
+#!/usr/bin/env python3
 """
-import logging
+Backend Server Application
+Provides REST API endpoints for the AILinux system.
+"""
 import os
 import sys
-import traceback
+import logging
 import json
 import time
+import traceback
 from datetime import datetime
-from flask import Flask, jsonify, request, send_from_directory
-from flask_cors import CORS
-from dotenv import load_dotenv
-import psutil
-from ai_model import analyze_log, get_available_models
+from typing import Dict, Any, Optional, List, Union
 
-# Load environment variables
-load_dotenv()
+# Stelle sicher, dass die Abhängigkeiten verfügbar sind
+try:
+    from flask import Flask, request, jsonify, send_from_directory
+    from flask_cors import CORS
+except ImportError:
+    print("Flask oder Flask-CORS nicht installiert. Installiere mit: pip install flask flask-cors")
+    sys.exit(1)
 
-# Initialize Flask app
+# Import für Umgebungsvariablen
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    print("python-dotenv nicht installiert. Installiere mit: pip install python-dotenv")
+    # Keine System-Exit hier, da wir auch ohne dotenv fortfahren können
+
+# Eigene Module für AI-Modell-Integrationen
+try:
+    from ai_model import analyze_log, get_available_models
+    import psutil
+except ImportError as e:
+    print(f"Modul nicht gefunden: {e}")
+    print("Stelle sicher, dass die notwendigen Module installiert sind.")
+    sys.exit(1)
+
+# Initialisiere Flask-App
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-# Server configuration with fallback values
+# Server-Konfiguration mit korrekten Standard-Werten
 HOST = os.getenv("FLASK_HOST", "0.0.0.0")  # Default to all interfaces
-PORT = int(os.getenv("FLASK_PORT", 8081))   # Default to 8081
+PORT = int(os.getenv("FLASK_PORT", "8081"))  # Richtige Umwandlung als String
 DEBUG = os.getenv("FLASK_DEBUG", "False").lower() == "true"
 ENV = os.getenv("ENVIRONMENT", "development")
 
-# Configure logging
+# Konfiguriere Logging
 log_directory = os.path.join(os.path.dirname(__file__), "logs")
 os.makedirs(log_directory, exist_ok=True)
 log_file_path = os.path.join(log_directory, "backend.log")
 
 logging.basicConfig(
-    level=logging.DEBUG if DEBUG else logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
     handlers=[
         logging.FileHandler(log_file_path),
         logging.StreamHandler()
     ]
 )
-logger = logging.getLogger('Backend')
+logger = logging.getLogger("backend.app")
 
-# Debug log file for storing AI model responses
-DEBUG_LOG_FILE = os.path.join(log_directory, "debug_history.log")
-
-
-@app.route('/debug', methods=['POST'])
-def debug():
-    """Process and analyze log data with AI models.
+@app.route('/analyze', methods=['POST'])
+def analyze_logs_endpoint():
+    """
+    Endpoint für Log-Analyse
     
-    Returns:
-        JSON response containing AI analysis or error information
+    Erwartet JSON mit 'log'-Text und optionalem 'model'-Parameter.
     """
     try:
-        # Validate input data
+        # Validiere Eingabedaten
         if not request.is_json:
-            logger.error("Request does not contain valid JSON")
-            return jsonify({"error": "Request must be in JSON format"}), 400
+            logger.error("Anfrage enthält kein gültiges JSON")
+            return jsonify({"error": "Anfrage muss im JSON-Format sein"}), 400
 
         data = request.json
         log_text = data.get('log')
-        model_name = data.get('model', 'gpt4all')  # Default to gpt4all
+        model_name = data.get('model', 'gpt4all')  # Default zu gpt4all
+        
+        # Eigene Anweisung, falls vorhanden
+        instruction = data.get('instruction')
 
         if not log_text:
-            logger.error("No log text provided")
-            return jsonify({"error": "No log text provided"}), 400
+            logger.error("Keine Log-Daten in der Anfrage")
+            return jsonify({"error": "Keine Log-Daten bereitgestellt"}), 400
 
-        logger.info(f"Received log for analysis using model: {model_name}")
-        logger.debug(f"Log content preview: {log_text[:100]}...")  # Log first 100 chars for debugging
+        # Analysiere Log mit dem angegebenen Modell
+        logger.info(f"Analysiere Log mit Modell: {model_name}")
+        result = analyze_log(log_text, model_name, instruction)
+        
+        # Protokolliere Analyse-Anfrage
+        with open(os.path.join(log_directory, "analysis_requests.log"), "a") as log_file:
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            log_file.write(f"{timestamp} - Model: {model_name}\n")
 
-        # Process and analyze the log
-        translated_log = translate_log(log_text)
-        response = analyze_log(translated_log, model_name)
-
-        # Log the AI model response
-        logger.debug(f"AI model response preview: {response[:100]}...")  # Log first 100 chars
-
-        # Record the debug request and response to debug history
-        log_debug_history(log_text, response, model_name)
-
-        # Return analysis response
-        return jsonify({"analysis": response})
+        return jsonify({"analysis": result})
 
     except Exception as e:
-        error_message = f"Error in debug endpoint: {str(e)}"
+        error_message = f"Fehler in analyse-Endpunkt: {str(e)}"
         stack_trace = traceback.format_exc()
         logger.exception(error_message)
-        logger.debug(f"Stack trace: {stack_trace}")
+        logger.debug(f"Stack-Trace: {stack_trace}")
         return jsonify({"error": error_message}), 500
-
 
 @app.route('/logs', methods=['GET'])
 def get_logs():
-    """Retrieve log files.
+    """
+    Endpunkt zum Abrufen von Logs
     
-    Returns:
-        JSON response containing available logs
+    Optionale Parameter: count (Anzahl der Logs), type (Log-Typ)
     """
     try:
-        # Read the log file if it exists
-        if os.path.exists(log_file_path):
-            with open(log_file_path, 'r', encoding='utf-8') as f:
-                logs = f.readlines()
+        count = request.args.get('count', default=100, type=int)
+        log_type = request.args.get('type', default='backend')
+        
+        log_file = f"{log_type}.log"
+        logs_path = os.path.join(log_directory, log_file)
+        
+        if os.path.exists(logs_path):
+            with open(logs_path, 'r') as f:
+                logs = f.readlines()[-count:]  # Letzte 'count' Zeilen
             return jsonify({"logs": logs})
 
         return jsonify({"logs": []})
 
     except Exception as e:
-        logger.exception(f"Error retrieving logs: {str(e)}")
+        logger.exception(f"Fehler beim Abrufen von Logs: {str(e)}")
         return jsonify({"error": str(e)}), 500
-
 
 @app.route('/models', methods=['GET'])
 def get_models():
-    """Get list of available AI models.
+    """
+    Endpunkt zum Abrufen verfügbarer AI-Modelle
     
-    Returns:
-        JSON response containing available models
+    Gibt eine Liste der verfügbaren Modelle zurück
     """
     try:
         models = get_available_models()
         return jsonify({"models": models})
     except Exception as e:
-        logger.exception(f"Error retrieving models: {str(e)}")
+        logger.exception(f"Fehler beim Abrufen der Modelle: {str(e)}")
         return jsonify({"error": str(e)}), 500
-
 
 @app.route('/system', methods=['GET'])
 def system_status():
-    """Get system status information.
+    """
+    Endpunkt zum Abrufen des Systemstatus
     
-    Returns:
-        JSON response with system metrics
+    Gibt Systemmetriken zurück
     """
     try:
         system_info = {
@@ -147,16 +161,16 @@ def system_status():
         }
         return jsonify(system_info)
     except Exception as e:
-        logger.exception(f"Error retrieving system status: {str(e)}")
+        logger.exception(f"Fehler beim Abrufen des Systemstatus: {str(e)}")
         return jsonify({"error": str(e)}), 500
-
 
 @app.route('/settings', methods=['GET', 'POST'])
 def handle_settings():
-    """Update or retrieve application settings.
+    """
+    Endpunkt zum Aktualisieren oder Abrufen von Anwendungseinstellungen
     
-    Returns:
-        JSON response with settings data or confirmation
+    PUT: Aktualisiert Einstellungen basierend auf übergebenem JSON
+    GET: Gibt aktuelle Einstellungen zurück
     """
     settings_file = os.path.join(os.path.dirname(__file__), "settings.json")
 
@@ -164,28 +178,30 @@ def handle_settings():
         try:
             new_settings = request.json
 
-            # Validate settings
+            # Einstellungen validieren
             if not isinstance(new_settings, dict):
-                return jsonify({"error": "Invalid settings format"}), 400
+                return jsonify({"error": "Ungültiges Einstellungsformat"}), 400
 
-            import json
+            # Stelle sicher, dass das Einstellungsverzeichnis existiert
+            os.makedirs(os.path.dirname(settings_file), exist_ok=True)
+
+            # Schreibe die neuen Einstellungen
             with open(settings_file, 'w', encoding='utf-8') as f:
                 json.dump(new_settings, f, indent=2)
 
-            logger.info(f"Updated settings: {new_settings}")
-            return jsonify({"status": "success", "message": "Settings updated"})
+            logger.info(f"Einstellungen aktualisiert: {new_settings}")
+            return jsonify({"status": "success", "message": "Einstellungen aktualisiert"})
         except Exception as e:
-            logger.exception(f"Error updating settings: {str(e)}")
+            logger.exception(f"Fehler beim Aktualisieren der Einstellungen: {str(e)}")
             return jsonify({"error": str(e)}), 500
     else:
         try:
-            import json
             if os.path.exists(settings_file):
                 with open(settings_file, 'r', encoding='utf-8') as f:
                     settings = json.load(f)
                 return jsonify({"settings": settings})
             else:
-                # Return default settings if file doesn't exist
+                # Gib Standardeinstellungen zurück, wenn die Datei nicht existiert
                 default_settings = {
                     "ai": {
                         "defaultModel": "gpt4all",
@@ -202,16 +218,15 @@ def handle_settings():
                 }
                 return jsonify({"settings": default_settings})
         except Exception as e:
-            logger.exception(f"Error retrieving settings: {str(e)}")
+            logger.exception(f"Fehler beim Abrufen der Einstellungen: {str(e)}")
             return jsonify({"error": str(e)}), 500
-
 
 @app.route('/health', methods=['GET'])
 def health_check():
-    """Check the health of the backend server.
+    """
+    Endpunkt zum Überprüfen der Gesundheit des Backend-Servers
     
-    Returns:
-        JSON response with server status
+    Gibt Serverstatus zurück
     """
     return jsonify({
         "status": "online",
@@ -220,52 +235,28 @@ def health_check():
         "timestamp": datetime.now().isoformat()
     })
 
-
 def translate_log(log_text):
-    """Preprocess log text before AI analysis.
-    
-    This function can be expanded to implement more sophisticated 
-    log translation or normalization.
-    
+    """Vorverarbeitung von Log-Text vor der KI-Analyse.
+
+    Diese Funktion kann erweitert werden, um eine anspruchsvollere
+    Log-Übersetzung oder -Normalisierung zu implementieren.
+
     Args:
-        log_text: The original log text
-        
+        log_text: Der ursprüngliche Log-Text
+
     Returns:
-        Processed log text
+        Verarbeiteter Log-Text
     """
-    # In the future, add log normalization or preprocessing here
+    # In Zukunft hier Log-Normalisierung oder -Vorverarbeitung hinzufügen
     return log_text
 
-
-def log_debug_history(log_text, response, model_name):
-    """Record debug requests and responses to a history file.
-    
-    Args:
-        log_text: The original log text
-        response: The AI response
-        model_name: The AI model used
-    """
-    try:
-        timestamp = datetime.now().isoformat()
-        with open(DEBUG_LOG_FILE, "a", encoding="utf-8") as log_file:
-            log_file.write(f"--- {timestamp} ---\n")
-            log_file.write(f"Model: {model_name}\n")
-            log_file.write(f"Log: {log_text}\n")
-            log_file.write(f"Response: {response}\n\n")
-    except Exception as e:
-        logger.error(f"Error writing to debug history: {str(e)}")
-
-
 if __name__ == "__main__":
-    # Allow command line arguments to override environment variables
-    if len(sys.argv) > 1:
-        if sys.argv[1] == "local":
-            HOST = "localhost"
-            logger.info("Using localhost configuration")
-        elif sys.argv[1] == "remote":
-            HOST = "derleiti.de"
-            logger.info("Using remote (derleiti.de) configuration")
-
-    logger.info(f"Starting backend server on {HOST}:{PORT} (Debug: {DEBUG})")
-    logger.info(f"Environment: {ENV}")
-    app.run(host=HOST, port=PORT, debug=DEBUG)
+    logger.info(f"Starting backend server on {HOST}:{PORT}, debug={DEBUG}")
+    logger.info(f"Server environment: {ENV}")
+    
+    # Server starten
+    try:
+        app.run(host=HOST, port=PORT, debug=DEBUG)
+    except Exception as e:
+        logger.error(f"Error starting server: {e}")
+        sys.exit(1)

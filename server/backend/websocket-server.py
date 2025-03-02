@@ -1,537 +1,343 @@
-"""WebSocket server for AILinux.
-
-This module provides a WebSocket server for real-time communication between
-the frontend and backend components of AILinux.
+#!/usr/bin/env python3
 """
-import asyncio
-import json
-import logging
+WebSocket Server für AILinux
+Bietet Echtzeit-Kommunikation zwischen Client und Server.
+"""
 import os
+import sys
+import asyncio
+import logging
+import json
 import time
-import ssl
-import uuid
 import traceback
-from typing import Dict, Set, Any, Optional
-import websockets
+from typing import Dict, Any, List, Set, Optional, Union
 from datetime import datetime, timedelta
 
-# Initialize AI model
+# Importiere Websockets mit Fehlerbehandlung
 try:
-    from ai_model import analyze_log, get_available_models
+    import websockets
 except ImportError:
-    logging.error("Failed to import AI model module. Make sure ai_model.py is in the same directory.")
-    raise ImportError("ai_model module not found")
+    print("websockets nicht installiert. Installiere mit: pip install websockets")
+    sys.exit(1)
 
-# Load environment variables
+# Importiere AI-Modell mit Fehlerbehandlung
+try:
+    from ai_model import analyze_log
+except ImportError:
+    try:
+        # Versuche, den relativen Import für das Modul
+        from .ai_model import analyze_log
+    except ImportError:
+        print("ai_model Modul nicht gefunden. Stelle sicher, dass es im richtigen Pfad liegt.")
+        sys.exit(1)
+
+# Lade Umgebungsvariablen
 try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
-    logging.warning("dotenv package not installed, environment variables must be set manually")
+    print("python-dotenv nicht installiert. Standardeinstellungen werden verwendet.")
 
-# Configure logging
+# Konfiguration
+HOST = os.getenv("WS_HOST", "0.0.0.0")
+PORT = int(os.getenv("WS_PORT", "8082"))  # Richtige Umwandlung als String
+DEBUG = os.getenv("WS_DEBUG", "False").lower() == "true"
+ENV = os.getenv("ENVIRONMENT", "development")
+
+# Konfiguriere Logging
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.INFO if not DEBUG else logging.DEBUG,
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
     handlers=[
         logging.FileHandler("websocket_server.log"),
         logging.StreamHandler()
     ]
 )
-logger = logging.getLogger("WebSocketServer")
+logger = logging.getLogger("websocket_server")
 
-# Server configuration
-HOST = os.getenv("WS_HOST", "0.0.0.0")
-PORT = int(os.getenv("WS_PORT", 8082))
-USE_SSL = os.getenv("WS_USE_SSL", "False").lower() == "true"
-SSL_CERT = os.getenv("WS_SSL_CERT", "")
-SSL_KEY = os.getenv("WS_SSL_KEY", "")
+# Globale Websocket-Verbindungen und letzte Aktivitäten
+CONNECTIONS = set()
+LAST_ACTIVITY = {}
+analysis_semaphore = asyncio.Semaphore(5)  # Begrenze parallele Analysen
 
-# API key for authentication (optional)
-API_KEY = os.getenv("WEBSOCKET_API_KEY", "")
+async def register_connection(websocket):
+    """Registriere eine neue Websocket-Verbindung."""
+    CONNECTIONS.add(websocket)
+    LAST_ACTIVITY[websocket] = time.time()
+    logger.info(f"Neue Verbindung registriert. Aktive Verbindungen: {len(CONNECTIONS)}")
 
-# Rate limiting configuration
-RATE_LIMIT_INTERVAL = float(os.getenv("WS_RATE_LIMIT", "1.0"))  # Seconds between messages
-MAX_MESSAGE_SIZE = int(os.getenv("WS_MAX_MESSAGE_SIZE", "1048576"))  # 1MB default
-MAX_CONCURRENT_ANALYSES = int(os.getenv("WS_MAX_CONCURRENT_ANALYSES", "4"))  # Max concurrent analyses
+async def unregister_connection(websocket):
+    """Entferne eine Websocket-Verbindung."""
+    CONNECTIONS.remove(websocket)
+    LAST_ACTIVITY.pop(websocket, None)
+    logger.info(f"Verbindung geschlossen. Verbleibende Verbindungen: {len(CONNECTIONS)}")
 
-# Global state
-connected_clients: Dict[str, Any] = {}
-active_sessions: Dict[str, Dict[str, Any]] = {}
-client_rate_limits: Dict[str, float] = {}
-server_start_time: float = 0
-
-# Semaphore to limit concurrent analyses
-analysis_semaphore = None  # Will be initialized in main()
-
-
-async def authenticate_client(websocket, message_data):
-    """Authenticate a client connection.
+async def send_message(websocket, message_type, data=None):
+    """Sende eine Nachricht an einen Client."""
+    if data is None:
+        data = {}
     
-    Args:
-        websocket: The WebSocket connection
-        message_data: The message data containing authentication info
-        
-    Returns:
-        bool: True if authentication successful, False otherwise
-        str: Client ID if authenticated, None otherwise
-    """
-    client_id = str(uuid.uuid4())
-    remote_address = websocket.remote_address[0] if hasattr(websocket, 'remote_address') else 'unknown'
-
-    # If API key is set, require authentication
-    if API_KEY:
-        auth_key = message_data.get("auth_key", "")
-        if auth_key != API_KEY:
-            logger.warning(f"❌ Invalid API key from {remote_address} - Closing connection")
-            await websocket.send(json.dumps({
-                "type": "error",
-                "error": "Unauthorized",
-                "code": 401
-            }))
-            return False, None
-
-    # Extract client info
-    client_info = {
-        "id": client_id,
-        "remote_address": remote_address,
-        "connected_at": time.time(),
-        "last_activity": time.time(),
-        "user_agent": message_data.get("user_agent", "unknown"),
-        "client_type": message_data.get("client_type", "generic"),
-        "version": message_data.get("version", "unknown")
+    message = {
+        "type": message_type,
+        "data": data,
+        "timestamp": datetime.now().isoformat()
     }
-
-    # Store client info
-    connected_clients[client_id] = client_info
-    logger.info(f"✅ Client authenticated: {client_id} from {remote_address}")
-
-    # Send success response
-    await websocket.send(json.dumps({
-        "type": "authentication",
-        "status": "success",
-        "client_id": client_id,
-        "message": "Authentication successful"
-    }))
-
-    return True, client_id
-
-
-async def handle_message(websocket, client_id, message_data):
-    """Handle an incoming WebSocket message.
     
-    Args:
-        websocket: The WebSocket connection
-        client_id: The client identifier
-        message_data: The parsed message data
-    """
-    message_type = message_data.get("type", "unknown")
-
-    # Update last activity timestamp
-    if client_id in connected_clients:
-        connected_clients[client_id]["last_activity"] = time.time()
-
-    # Handle different message types
-    if message_type == "ping":
-        # Simple ping-pong for connection testing
-        await websocket.send(json.dumps({
-            "type": "pong",
-            "timestamp": time.time()
-        }))
-
-    elif message_type == "analyze_log":
-        # Process log analysis request
-        log_text = message_data.get("log", "")
-        model_name = message_data.get("model", "gpt4all")
-        instruction = message_data.get("instruction")
-
-        if not log_text:
-            await websocket.send(json.dumps({
-                "type": "error",
-                "message": "No log text provided",
-                "code": 400
-            }))
-            return
-
-        # Create a unique ID for this analysis request
-        request_id = str(uuid.uuid4())
-
-        # Send acknowledgment first
-        await websocket.send(json.dumps({
-            "type": "request_received",
-            "request_id": request_id,
-            "message": "Log analysis request received and being processed"
-        }))
-
-        # Process the log asynchronously with resource limiting
-        asyncio.create_task(
-            process_log_analysis(websocket, client_id, request_id, log_text, model_name, instruction)
-        )
-
-    elif message_type == "get_models":
-        # Return information about available models
-        models = get_available_models()
-        await websocket.send(json.dumps({
-            "type": "models_info",
-            "models": models
-        }))
-
-    elif message_type == "server_status":
-        # Return server status information
-        status_info = {
-            "uptime": time.time() - server_start_time,
-            "clients_connected": len(connected_clients),
-            "active_sessions": len(active_sessions),
-            "server_time": time.time()
-        }
-        await websocket.send(json.dumps({
-            "type": "server_status",
-            "status": status_info
-        }))
-
-    else:
-        logger.warning(f"Unknown message type: {message_type} from client {client_id}")
-        await websocket.send(json.dumps({
-            "type": "error",
-            "message": f"Unknown message type: {message_type}",
-            "code": 400
-        }))
-
-
-async def process_log_analysis(websocket, client_id, request_id, log_text, model_name, instruction):
-    """Process a log analysis request asynchronously.
-    
-    Args:
-        websocket: The WebSocket connection
-        client_id: The client identifier
-        request_id: The unique request identifier
-        log_text: The log text to analyze
-        model_name: The model to use for analysis
-        instruction: Optional instruction for the analysis
-    """
-    # Use semaphore to limit concurrent analyses
-    async with analysis_semaphore:
-        try:
-            # Track the session
-            active_sessions[request_id] = {
-                "client_id": client_id,
-                "start_time": time.time(),
-                "model": model_name,
-                "status": "processing"
-            }
-
-            # Send processing status update
-            await websocket.send(json.dumps({
-                "type": "analysis_status",
-                "request_id": request_id,
-                "status": "processing",
-                "message": f"Processing log with {model_name} model"
-            }))
-
-            # Analyze the log in a separate thread to avoid blocking
-            loop = asyncio.get_event_loop()
-            analysis_result = await loop.run_in_executor(
-                None, lambda: analyze_log(log_text, model_name, instruction)
-            )
-
-            # Calculate processing time
-            processing_time = time.time() - active_sessions[request_id]["start_time"]
-
-            # Update session info
-            active_sessions[request_id]["status"] = "completed"
-            active_sessions[request_id]["processing_time"] = processing_time
-            active_sessions[request_id]["completed_at"] = time.time()
-
-            # Send result back to client
-            await websocket.send(json.dumps({
-                "type": "analysis_result",
-                "request_id": request_id,
-                "analysis": analysis_result,
-                "processing_time": processing_time,
-                "model": model_name
-            }))
-
-            logger.info(f"Log analysis completed for request {request_id} in {processing_time:.2f} seconds")
-
-        except Exception as e:
-            logger.exception(f"Error processing log analysis request {request_id}: {str(e)}")
-            logger.debug(traceback.format_exc())
-
-            # Send error message to client
-            try:
-                await websocket.send(json.dumps({
-                    "type": "error",
-                    "request_id": request_id,
-                    "message": f"Error analyzing log: {str(e)}",
-                    "code": 500
-                }))
-            except Exception as send_error:
-                logger.error(f"Error sending error response to client: {str(send_error)}")
-
-            # Update session info
-            if request_id in active_sessions:
-                active_sessions[request_id]["status"] = "error"
-                active_sessions[request_id]["error"] = str(e)
-                active_sessions[request_id]["completed_at"] = time.time()
-
-        finally:
-            # Clean up the session after a delay (keep it for a while for reference)
-            await asyncio.sleep(300)  # 5 minutes
-            if request_id in active_sessions:
-                del active_sessions[request_id]
-
-
-async def connection_handler(websocket, path):
-    """Handle WebSocket connections.
-    
-    Args:
-        websocket: The WebSocket connection
-        path: The connection path
-    """
-    client_id = None
-    authenticated = False
-    remote_address = websocket.remote_address[0] if hasattr(websocket, 'remote_address') else 'unknown'
-
     try:
-        logger.info(f"New connection from {remote_address}")
-
-        # Wait for the authentication message
-        try:
-            message = await asyncio.wait_for(websocket.recv(), timeout=10.0)
-            message_data = json.loads(message)
-
-            # Authenticate the client
-            authenticated, client_id = await authenticate_client(websocket, message_data)
-            if not authenticated:
-                return
-
-        except asyncio.TimeoutError:
-            logger.warning(f"Authentication timeout for {remote_address}")
-            await websocket.send(json.dumps({
-                "type": "error",
-                "message": "Authentication timeout",
-                "code": 408
-            }))
-            return
-        except json.JSONDecodeError:
-            logger.warning(f"Invalid JSON in authentication message from {remote_address}")
-            await websocket.send(json.dumps({
-                "type": "error",
-                "message": "Invalid JSON",
-                "code": 400
-            }))
-            return
-
-        # Main message handling loop
-        async for message in websocket:
-            now = time.time()
-
-            # Check rate limit
-            if client_id in client_rate_limits:
-                last_message_time = client_rate_limits[client_id]
-                if now - last_message_time < RATE_LIMIT_INTERVAL:
-                    logger.warning(f"⏳ Rate limit reached for client {client_id}, message ignored")
-                    await websocket.send(json.dumps({
-                        "type": "error",
-                        "message": "Rate limit reached, please slow down",
-                        "code": 429
-                    }))
-                    continue
-
-            # Update rate limit timestamp
-            client_rate_limits[client_id] = now
-
-            try:
-                # Check message size
-                if len(message) > MAX_MESSAGE_SIZE:
-                    logger.warning(f"Message too large from client {client_id}: {len(message)} bytes")
-                    await websocket.send(json.dumps({
-                        "type": "error",
-                        "message": "Message too large",
-                        "code": 413
-                    }))
-                    continue
-
-                # Parse and handle the message
-                message_data = json.loads(message)
-                await handle_message(websocket, client_id, message_data)
-
-            except json.JSONDecodeError:
-                logger.warning(f"Invalid JSON from client {client_id}")
-                await websocket.send(json.dumps({
-                    "type": "error",
-                    "message": "Invalid JSON",
-                    "code": 400
-                }))
-            except Exception as e:
-                logger.exception(f"Error handling message from client {client_id}: {str(e)}")
-                await websocket.send(json.dumps({
-                    "type": "error",
-                    "message": "Server error processing message",
-                    "code": 500
-                }))
-
-    except websockets.exceptions.ConnectionClosed as e:
-        logger.info(f"Connection closed with client {client_id or remote_address}: {e.code} {e.reason}")
+        await websocket.send(json.dumps(message))
+        LAST_ACTIVITY[websocket] = time.time()
+    except websockets.exceptions.ConnectionClosed:
+        await unregister_connection(websocket)
     except Exception as e:
-        logger.exception(f"Error in connection handler for {client_id or remote_address}: {str(e)}")
-    finally:
-        # Clean up client data
-        if client_id:
-            if client_id in connected_clients:
-                del connected_clients[client_id]
-            if client_id in client_rate_limits:
-                del client_rate_limits[client_id]
-            logger.info(f"Client disconnected: {client_id}")
+        logger.error(f"Fehler beim Senden der Nachricht: {e}")
 
-
-async def heartbeat_sender():
-    """Send periodic heartbeat messages to clients."""
-    while True:
-        try:
-            # Send heartbeat to all connected clients
-            if connected_clients:
-                heartbeat_time = time.time()
-                count = 0
-                
-                # Create a copy to avoid modification during iteration
-                clients = list(connected_clients.items())
-                
-                for client_id, client_info in clients:
-                    # Only send heartbeat if client hasn't been active recently
-                    if heartbeat_time - client_info.get("last_activity", 0) > 30:
-                        try:
-                            # Get client's WebSocket connection
-                            if "websocket" in client_info and client_info["websocket"]:
-                                websocket = client_info["websocket"]
-                                
-                                # Send heartbeat
-                                await websocket.send(json.dumps({
-                                    "type": "heartbeat",
-                                    "timestamp": heartbeat_time,
-                                    "server_time": heartbeat_time
-                                }))
-                                count += 1
-                        except Exception as e:
-                            logger.debug(f"Error sending heartbeat to client {client_id}: {str(e)}")
-                
-                if count > 0:
-                    logger.debug(f"Sent heartbeat to {count} clients")
-        except Exception as e:
-            logger.error(f"Error in heartbeat sender: {str(e)}")
+async def broadcast_message(message_type, data=None, exclude=None):
+    """Sende eine Nachricht an alle verbundenen Clients."""
+    if exclude is None:
+        exclude = set()
+    
+    if data is None:
+        data = {}
+    
+    message = {
+        "type": message_type,
+        "data": data,
+        "timestamp": datetime.now().isoformat()
+    }
+    
+    json_message = json.dumps(message)
+    
+    # Speichere die zu entfernenden Verbindungen
+    to_remove = set()
+    
+    for conn in CONNECTIONS:
+        if conn in exclude:
+            continue
         
-        # Send heartbeat every 30 seconds
-        await asyncio.sleep(30)
+        try:
+            await conn.send(json_message)
+            LAST_ACTIVITY[conn] = time.time()
+        except websockets.exceptions.ConnectionClosed:
+            to_remove.add(conn)
+        except Exception as e:
+            logger.error(f"Fehler beim Broadcast: {e}")
+            to_remove.add(conn)
+    
+    # Entferne fehlerhafte Verbindungen
+    for conn in to_remove:
+        await unregister_connection(conn)
 
+async def analyze_log_task(websocket, log_text, model="gpt4all", instruction=None):
+    """Führe Log-Analyse durch und sende Ergebnisse an den Client."""
+    try:
+        logger.info(f"Starte Log-Analyse mit Modell {model}")
+        
+        # Sende Bestätigung, dass die Analyse gestartet wurde
+        await send_message(websocket, "analysis_started", {
+            "model": model,
+            "timestamp": datetime.now().isoformat()
+        })
+        
+        # Führe die Analyse mit einem Semaphor durch, um gleichzeitige Anfragen zu begrenzen
+        async with analysis_semaphore:
+            # Verwende asyncio.to_thread in neueren Python-Versionen oder das Executor-Pattern
+            # für ältere Versionen, um blockierende Aufrufe zu behandeln
+            try:
+                loop = asyncio.get_event_loop()
+                result = await loop.run_in_executor(
+                    None, lambda: analyze_log(log_text, model, instruction)
+                )
+                
+                # Sende Analyseergebnis zurück
+                await send_message(websocket, "analysis_result", {
+                    "result": result,
+                    "model": model
+                })
+                logger.info("Log-Analyse erfolgreich abgeschlossen")
+                
+            except Exception as e:
+                logger.error(f"Fehler während der Analyse: {e}")
+                await send_message(websocket, "analysis_error", {
+                    "error": str(e),
+                    "model": model
+                })
+                
+    except Exception as e:
+        logger.error(f"Fehler im Analyse-Task: {e}")
+        try:
+            await send_message(websocket, "analysis_error", {"error": str(e)})
+        except:
+            pass
 
-async def periodic_cleanup():
-    """Periodically clean up inactive sessions and clients."""
+async def handle_client_message(websocket, message, path):
+    """Verarbeite eine Nachricht von einem Client."""
+    try:
+        msg_type = message.get("type", "")
+        msg_data = message.get("data", {})
+        
+        # Aktualisiere die letzte Aktivitätszeit
+        LAST_ACTIVITY[websocket] = time.time()
+        
+        if msg_type == "ping":
+            # Einfache Ping-Pong für Verbindungstests
+            await send_message(websocket, "pong", {"received_at": datetime.now().isoformat()})
+            
+        elif msg_type == "analyze_log":
+            # Starte Log-Analyse
+            if "log" not in msg_data:
+                await send_message(websocket, "error", {"message": "Log-Text fehlt in der Anfrage"})
+                return
+                
+            log_text = msg_data.get("log", "")
+            model = msg_data.get("model", "gpt4all")  # Standardmäßig GPT4All verwenden
+            instruction = msg_data.get("instruction")
+            
+            # Starte die Analyse als separate Task
+            asyncio.create_task(analyze_log_task(websocket, log_text, model, instruction))
+            
+        elif msg_type == "get_models":
+            # Hole verfügbare Modelle (wird vom ai_model-Modul importiert)
+            try:
+                from ai_model import get_available_models
+                models = get_available_models()
+                await send_message(websocket, "available_models", {"models": models})
+            except ImportError:
+                logger.error("Konnte get_available_models nicht importieren")
+                await send_message(websocket, "error", {"message": "Modellinformationen nicht verfügbar"})
+            except Exception as e:
+                logger.error(f"Fehler beim Abrufen der Modelle: {e}")
+                await send_message(websocket, "error", {"message": f"Fehler: {str(e)}"})
+                
+        elif msg_type == "system_status":
+            # Systemstatusdaten senden (wenn psutil verfügbar ist)
+            try:
+                import psutil
+                system_info = {
+                    "cpu": psutil.cpu_percent(interval=0.5),
+                    "ram": psutil.virtual_memory().percent,
+                    "disk": psutil.disk_usage("/").percent,
+                }
+                await send_message(websocket, "system_status", system_info)
+            except ImportError:
+                await send_message(websocket, "error", {"message": "psutil nicht installiert"})
+                
+        else:
+            logger.warning(f"Unbekannter Nachrichtentyp erhalten: {msg_type}")
+            await send_message(websocket, "error", {"message": f"Unbekannter Nachrichtentyp: {msg_type}"})
+            
+    except Exception as e:
+        logger.error(f"Fehler bei der Nachrichtenverarbeitung: {e}")
+        try:
+            await send_message(websocket, "error", {"message": f"Interner Serverfehler: {str(e)}"})
+        except:
+            pass
+
+async def handle_connection(websocket, path):
+    """Haupthandler für WebSocket-Verbindungen."""
+    try:
+        # Registriere neue Verbindung
+        await register_connection(websocket)
+        
+        # Sende Begrüßungsnachricht
+        await send_message(websocket, "welcome", {
+            "message": "Willkommen beim AILinux WebSocket-Server",
+            "server_time": datetime.now().isoformat(),
+            "version": "1.0.0"
+        })
+        
+        # Verarbeite eingehende Nachrichten
+        async for message in websocket:
+            try:
+                data = json.loads(message)
+                await handle_client_message(websocket, data, path)
+            except json.JSONDecodeError:
+                logger.error("Ungültige JSON-Nachricht erhalten")
+                await send_message(websocket, "error", {"message": "Ungültiges JSON-Format"})
+            except Exception as e:
+                logger.error(f"Fehler bei der Verarbeitung der Nachricht: {e}")
+                await send_message(websocket, "error", {"message": f"Fehler: {str(e)}"})
+                
+    except websockets.exceptions.ConnectionClosed as e:
+        logger.info(f"Verbindung geschlossen: {e}")
+    except Exception as e:
+        logger.error(f"Unerwarteter Fehler: {e}")
+    finally:
+        await unregister_connection(websocket)
+
+async def cleanup_inactive_connections():
+    """Bereinige inaktive Verbindungen."""
     while True:
         try:
             now = time.time()
-
-            # Clean up inactive clients (no activity for 1 hour)
-            inactive_clients = []
-            for client_id, client_info in connected_clients.items():
-                if "last_activity" in client_info and now - client_info["last_activity"] > 3600:
-                    inactive_clients.append(client_id)
-
-            for client_id in inactive_clients:
-                logger.info(f"Removing inactive client: {client_id}")
-                if client_id in connected_clients:
-                    del connected_clients[client_id]
-                if client_id in client_rate_limits:
-                    del client_rate_limits[client_id]
-
-            # Clean up old sessions (completed or error for more than 1 hour)
-            old_sessions = []
-            for request_id, session_info in active_sessions.items():
-                if session_info["status"] in ["completed", "error"] and now - session_info["start_time"] > 3600:
-                    old_sessions.append(request_id)
-
-            for request_id in old_sessions:
-                if request_id in active_sessions:
-                    del active_sessions[request_id]
-
-            # Log server status periodically
-            if logger.isEnabledFor(logging.INFO):
-                logger.info(f"Server status: {len(connected_clients)} connected clients, {len(active_sessions)} active sessions")
-
+            inactive_time = 300  # 5 Minuten Inaktivität
+            
+            # Finde inaktive Verbindungen
+            to_close = set()
+            for ws, last_time in LAST_ACTIVITY.items():
+                if now - last_time > inactive_time:
+                    to_close.add(ws)
+            
+            # Schließe inaktive Verbindungen
+            for ws in to_close:
+                try:
+                    logger.info(f"Schließe inaktive Verbindung")
+                    await ws.close(1000, "Inaktive Verbindung")
+                    await unregister_connection(ws)
+                except Exception as e:
+                    logger.error(f"Fehler beim Schließen der inaktiven Verbindung: {e}")
+            
+            # Warte für die nächste Überprüfung
+            await asyncio.sleep(60)  # Überprüfe jede Minute
+            
         except Exception as e:
-            logger.exception(f"Error in periodic cleanup: {str(e)}")
+            logger.error(f"Fehler bei der Bereinigung inaktiver Verbindungen: {e}")
+            await asyncio.sleep(60)  # Auch bei Fehler warten wir
 
-        # Run every 15 minutes
-        await asyncio.sleep(900)
-
+async def heartbeat():
+    """Sende regelmäßig Heartbeat-Nachrichten an alle Clients."""
+    while True:
+        try:
+            if CONNECTIONS:  # Nur wenn Verbindungen vorhanden sind
+                await broadcast_message("heartbeat", {
+                    "server_time": datetime.now().isoformat(),
+                    "active_connections": len(CONNECTIONS)
+                })
+            await asyncio.sleep(30)  # Alle 30 Sekunden
+            
+        except Exception as e:
+            logger.error(f"Fehler beim Heartbeat: {e}")
+            await asyncio.sleep(30)  # Auch bei Fehler warten wir
 
 async def main():
-    """Main function to start the WebSocket server."""
-    global server_start_time, analysis_semaphore
+    """Hauptfunktion zum Starten des WebSocket-Servers."""
+    global PORT
     
-    # Record server start time
-    server_start_time = time.time()
+    # Starte Hintergrundtasks
+    cleanup_task = asyncio.create_task(cleanup_inactive_connections())
+    heartbeat_task = asyncio.create_task(heartbeat())
     
-    # Initialize semaphore to limit concurrent analyses
-    analysis_semaphore = asyncio.Semaphore(MAX_CONCURRENT_ANALYSES)
+    # Starte den WebSocket-Server
+    logger.info(f"Starte WebSocket-Server auf {HOST}:{PORT}")
+    async with websockets.serve(handle_connection, HOST, PORT):
+        logger.info(f"WebSocket-Server läuft auf {HOST}:{PORT}")
+        try:
+            # Server unbegrenzt laufen lassen
+            await asyncio.Future()
+        except asyncio.CancelledError:
+            # Server sauber beenden
+            logger.info("Server wird beendet...")
+            cleanup_task.cancel()
+            heartbeat_task.cancel()
 
-    # Set up SSL if enabled
-    ssl_context = None
-    if USE_SSL and SSL_CERT and SSL_KEY:
-        if os.path.exists(SSL_CERT) and os.path.exists(SSL_KEY):
-            ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-            ssl_context.load_cert_chain(SSL_CERT, SSL_KEY)
-            logger.info(f"SSL enabled with cert: {SSL_CERT}")
-        else:
-            logger.error(f"SSL certificate or key not found: {SSL_CERT}, {SSL_KEY}")
-            logger.info("Running without SSL")
-
-    # Start the server
-    async with websockets.serve(
-        connection_handler,
-        HOST,
-        PORT,
-        ssl=ssl_context,
-        max_size=MAX_MESSAGE_SIZE,
-        ping_interval=30,
-        ping_timeout=10,
-        close_timeout=10
-    ):
-        logger.info(f"🚀 WebSocket server running on {HOST}:{PORT} (SSL: {'enabled' if ssl_context else 'disabled'})")
-
-        # Start the periodic tasks
-        cleanup_task = asyncio.create_task(periodic_cleanup())
-        heartbeat_task = asyncio.create_task(heartbeat_sender())
-
-        # Keep the server running indefinitely
-        await asyncio.Future()
-
-
-if __name__ == "__main__":
+def run_server():
+    """Startet den WebSocket-Server."""
     try:
-        # Print banner
-        print("""
-        █████╗ ██╗██╗     ██╗███╗   ██╗██╗   ██╗██╗  ██╗
-       ██╔══██╗██║██║     ██║████╗  ██║██║   ██║╚██╗██╔╝
-       ███████║██║██║     ██║██╔██╗ ██║██║   ██║ ╚███╔╝
-       ██╔══██║██║██║     ██║██║╚██╗██║██║   ██║ ██╔██╗
-       ██║  ██║██║███████╗██║██║ ╚████║╚██████╔╝██╔╝ ██╗
-       ╚═╝  ╚═╝╚═╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝
-                                                         
-       WebSocket Server
-       """)
-
-        # Add graceful shutdown handler
-        def handle_shutdown():
-            logger.info("Server shutting down...")
-            # Add any cleanup tasks here
-
-        import atexit
-        atexit.register(handle_shutdown)
-
-        # Start the server
         asyncio.run(main())
     except KeyboardInterrupt:
-        logger.info("Server stopped by user")
+        logger.info("Server durch Benutzer gestoppt")
     except Exception as e:
-        logger.exception(f"Error starting server: {str(e)}")
-        logger.debug(traceback.format_exc())
+        logger.error(f"Fehler beim Starten des Servers: {e}")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    run_server()
