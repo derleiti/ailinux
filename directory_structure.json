@@ -1,21 +1,16 @@
 {
   "stats": {
     "total_directories": 718,
-    "total_files": 4199,
-    "total_size_bytes": 676520006,
-    "total_size_human": "645.18 MB",
-    "scan_time": "2025-03-02 01:19:34"
+    "total_files": 4197,
+    "total_size_bytes": 674677336,
+    "total_size_human": "643.42 MB",
+    "scan_time": "2025-03-02 01:27:22"
   },
   "structure": {
     "postcode.sh": {
       "type": "file",
       "size": 9421,
       "size_human": "9.20 KB"
-    },
-    "large_files.json.bak": {
-      "type": "file",
-      "size": 357,
-      "size_human": "357.00 B"
     },
     "readme": {
       "type": "file",
@@ -24330,7 +24325,23 @@
         },
         "logs": {
           "type": "directory",
-          "contents": {}
+          "contents": {
+            "backend.log": {
+              "type": "file",
+              "size": 55,
+              "size_human": "55.00 B"
+            },
+            "start.log": {
+              "type": "file",
+              "size": 1432,
+              "size_human": "1.40 KB"
+            },
+            "frontend.log": {
+              "type": "file",
+              "size": 55,
+              "size_human": "55.00 B"
+            }
+          }
         },
         "requirements.txt": {
           "type": "file",
@@ -24343,11 +24354,6 @@
           "size_human": "21.21 KB"
         }
       }
-    },
-    "github_sync.log": {
-      "type": "file",
-      "size": 1244,
-      "size_human": "1.21 KB"
     },
     "ailinuxdocumentation_2.md": {
       "type": "file",
@@ -24548,11 +24554,6 @@
       "size": 1000,
       "size_human": "1000.00 B"
     },
-    "directory_structure.json.bak": {
-      "type": "file",
-      "size": 920966,
-      "size_human": "899.38 KB"
-    },
     "bigfiles.sh": {
       "type": "file",
       "size": 1146,
@@ -24568,20 +24569,10 @@
       "size": 3284,
       "size_human": "3.21 KB"
     },
-    "directory_structure.json": {
-      "type": "file",
-      "size": 921257,
-      "size_human": "899.67 KB"
-    },
-    "large_files.json": {
-      "type": "file",
-      "size": 357,
-      "size_human": "357.00 B"
-    },
     "optimization.log": {
       "type": "file",
-      "size": 157592,
-      "size_human": "153.90 KB"
+      "size": 157561,
+      "size_human": "153.87 KB"
     }
   }
 }
