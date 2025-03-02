@@ -2,9 +2,9 @@
   "stats": {
     "total_directories": 456,
     "total_files": 2845,
-    "total_size_bytes": 289689862,
+    "total_size_bytes": 289689866,
     "total_size_human": "276.27 MB",
-    "scan_time": "2025-03-02 06:56:06"
+    "scan_time": "2025-03-02 07:30:28"
   },
   "structure": {
     "postcode.sh": {
@@ -16216,8 +16216,8 @@
     },
     "github_sync.log": {
       "type": "file",
-      "size": 1555,
-      "size_human": "1.52 KB"
+      "size": 1866,
+      "size_human": "1.82 KB"
     },
     "ailinuxdocumentation_2.md": {
       "type": "file",
@@ -16470,8 +16470,8 @@
     },
     "directory_structure.json.bak": {
       "type": "file",
-      "size": 668724,
-      "size_human": "653.05 KB"
+      "size": 668846,
+      "size_human": "653.17 KB"
     },
     "bigfiles.sh": {
       "type": "file",
@@ -16500,8 +16500,8 @@
     },
     "optimization.log": {
       "type": "file",
-      "size": 185534,
-      "size_human": "181.19 KB"
+      "size": 185105,
+      "size_human": "180.77 KB"
     }
   }
 }

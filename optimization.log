@@ -2012,13 +2012,12 @@ analyze.py:1:0: R0801: Similar lines in 2 files
             return jsonify({"error": str(e)}), 500
     else:
         try:
-            # Load settings from file if it exists
             if os.path.exists(settings_file):
                 with open(settings_file, 'r', encoding='utf-8') as f:
                     settings = json.load(f)
                 return jsonify({"settings": settings})
             else:
-                # Return default settings if file doesn't exist
+                # Gib Standardeinstellungen zurück, wenn die Datei nicht existiert
                 default_settings = {
                     "ai": {
                         "defaultModel": "gpt4all",
@@ -2350,8 +2349,7 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger("AIModel")
-
-# Lade Umgebungsvariablen (duplicate-code)
+ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[261:270]
 ==server.backend.ai_model:[273:282]
@@ -2408,20 +2406,19 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 ==server.backend.ai_model:[219:236]
             raise
 
-    def _initialize_huggingface(self, config: ModelConfig) -> Any:
-        """Initialisiere Hugging Face-Modell mit umfassendem Setup."""
+    def _initialize_huggingface(self, config: ModelConfig) -> Tuple[Any, Any, Any]:
+        """Initialize Hugging Face model with comprehensive setup."""
         try:
-            # Lazy-Import, um Abhängigkeiten zu reduzieren, wenn das Modell nicht verwendet wird
             from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
             import torch
 
-            # Bestimme Gerät
+            # Determine device
             if config.device == "auto":
                 device = "cuda" if torch.cuda.is_available() else "cpu"
             else:
                 device = config.device
 
-            # Protokolliere Geräteinformationen
+            # Log device information
             if device == "cuda" and torch.cuda.is_available(): (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[361:371]
@@ -2441,12 +2438,13 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 ==server.backend.app:[221:250]
             return jsonify({"error": str(e)}), 500
 
+
 @app.route('/health', methods=['GET'])
 def health_check():
-    """
-    Endpunkt zum Überprüfen der Gesundheit des Backend-Servers
+    """Check the health of the backend server.
 
-    Gibt Serverstatus zurück
+    Returns:
+        JSON response with server status
     """
     return jsonify({
         "status": "online",
@@ -2455,19 +2453,14 @@ def health_check():
         "timestamp": datetime.now().isoformat()
     })
 
-def translate_log(log_text):
-    """Vorverarbeitung von Log-Text vor der KI-Analyse.
 
-    Diese Funktion kann erweitert werden, um eine anspruchsvollere
-    Log-Übersetzung oder -Normalisierung zu implementieren.
-
-    Args:
-        log_text: Der ursprüngliche Log-Text
+@app.route('/analysis_history', methods=['GET'])
+def get_analysis_history():
+    """Get the history of log analyses.
 
     Returns:
-        Verarbeiteter Log-Text
-    """
-    # In Zukunft hier Log-Normalisierung oder -Vorverarbeitung hinzufügen (duplicate-code)
+        JSON response with analysis history
+    """ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.gpt4all.app:[143:156]
 ==server.backend.gpt4all.app:[106:119]
@@ -2487,19 +2480,19 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.gpt4all.app:[106:119]
 ==server.backend.gpt4all.app:[143:156]
-    while True:
-        message = input(" ⇢  ")
+        while True:
+            message = input(" ⇢  ")
 
-        # Check if special command and take action
-        if message in SPECIAL_COMMANDS:
-            SPECIAL_COMMANDS[message](MESSAGES)
-            continue
+            # Check if special command and take action
+            if message in SPECIAL_COMMANDS:
+                SPECIAL_COMMANDS[message](MESSAGES)
+                continue
 
-        # if regular message, append to messages
-        MESSAGES.append({"role": "user", "content": message})
+            # if regular message, append to messages
+            MESSAGES.append({"role": "user", "content": message})
 
-        # execute chat completion and ignore the full response since
-        # we are outputting it incrementally (duplicate-code)
+            # execute chat completion and ignore the full response since
+            # we are outputting it incrementally (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[492:500]
 ==server.backend.ai_model:[508:516]
@@ -2550,13 +2543,13 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 ==server.backend.app:[164:182]
         return jsonify({"error": str(e)}), 500
 
+
 @app.route('/settings', methods=['GET', 'POST'])
 def handle_settings():
-    """
-    Endpunkt zum Aktualisieren oder Abrufen von Anwendungseinstellungen
+    """Update or retrieve application settings.
 
-    PUT: Aktualisiert Einstellungen basierend auf übergebenem JSON
-    GET: Gibt aktuelle Einstellungen zurück
+    Returns:
+        JSON response with settings data or confirmation
     """
     settings_file = os.path.join(os.path.dirname(__file__), "settings.json")
 
@@ -2564,7 +2557,7 @@ def handle_settings():
         try:
             new_settings = request.json
 
-            # Einstellungen validieren
+            # Validate settings
             if not isinstance(new_settings, dict): (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[371:382]
@@ -2573,13 +2566,13 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         system_prompt = instruction
 
     try:
-        # Initialize the model manager
+        # Initialisiere den Modellmanager
         manager = AIModelManager()
 
-        # Get the model based on name
+        # Hole das Modell basierend auf dem Namen
         model = manager.initialize_model(model_name)
 
-        # Build full prompt (duplicate-code)
+        # Baue vollständigen Prompt (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[354:361]
 ==server.backend.ai_model:[370:377]
@@ -2597,10 +2590,10 @@ analyze.py:1:0: R0801: Similar lines in 2 files
             if not os.path.isabs(model_path):
                 model_path = os.path.join(os.path.expanduser(config.cache_dir), model_path)
 
-            # Stelle sicher, dass das Modellverzeichnis existiert
+            # Ensure model directory exists
             os.makedirs(os.path.dirname(model_path), exist_ok=True)
 
-            # Prüfe, ob die Modelldatei existiert, falls nicht, informiere den Benutzer
+            # Check if model file exists, if not inform the user
             if not os.path.exists(model_path): (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[174:188]
