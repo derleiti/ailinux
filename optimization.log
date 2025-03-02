@@ -2031,7 +2031,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
             return jsonify({"error": str(e)}), 500
     else:
         try:
-            # Load settings from file if it exists
+            import json
             if os.path.exists(settings_file):
                 with open(settings_file, 'r', encoding='utf-8') as f:
                     settings = json.load(f)
@@ -2073,13 +2073,19 @@ def health_check():
     })
 
 
-@app.route('/analysis_history', methods=['GET'])
-def get_analysis_history():
-    """Get the history of log analyses.
+def translate_log(log_text):
+    """Preprocess log text before AI analysis.
+
+    This function can be expanded to implement more sophisticated
+    log translation or normalization.
+
+    Args:
+        log_text: The original log text
 
     Returns:
-        JSON response with analysis history
-    """ (duplicate-code)
+        Processed log text
+    """
+    # In the future, add log normalization or preprocessing here (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[168:232]
 ==server.backend.app:[107:171]
@@ -2146,7 +2152,7 @@ def handle_settings():
             if not isinstance(new_settings, dict):
                 return jsonify({"error": "Invalid settings format"}), 400
 
-            import json (duplicate-code)
+            # Ensure settings directory exists (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==analyze:[4:36]
 ==devtools.analyze:[4:36]
@@ -2258,7 +2264,9 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         'readme': ['README.md']
     }
 
-    # Helper function to create the directory structure (duplicate-code)
+    # Helper function to create the directory structure
+    def create_structure(target_path, structure):
+        """Create directories and files based on expected structure.""" (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==devtools.adjust_hierarchy_with_debugger:[52:61]
 ==patch.ailinux-alpha-code-patcher-v0.3:[33:42]
@@ -2430,7 +2438,7 @@ Messages by category
 +-----------+-------+---------+-----------+
 |warning    |344    |344      |344        |
 +-----------+-------+---------+-----------+
-|error      |28     |26       |26         |
+|error      |28     |28       |28         |
 +-----------+-------+---------+-----------+
 
 
@@ -2607,5 +2615,5 @@ Messages
 
 
 ------------------------------------------------------------------
-Your code has been rated at 6.35/10 (previous run: 6.38/10, -0.03)
+Your code has been rated at 6.35/10 (previous run: 6.35/10, +0.00)
 

@@ -1,0 +1,101 @@
+/**
+ * Unified Configuration System for AILinux
+ * Enhanced for Electron Compatibility
+ */
+const { contextBridge, ipcRenderer } = require('electron');
+const Store = require('electron-store');
+const log = require('electron-log');
+
+// Configure logging
+log.transports.file.level = 'info';
+log.transports.console.level = 'debug';
+
+// Create a persistent configuration store
+const store = new Store({
+  name: 'ailinux-config',
+  defaults: {
+    // AI Model Configuration
+    ai: {
+      defaultModel: 'gpt4all',
+      models: {
+        gpt4all: { enabled: true, path: 'default/model/path' },
+        openai: { 
+          enabled: !!process.env.OPENAI_API_KEY, 
+          apiKey: process.env.OPENAI_API_KEY 
+        },
+        gemini: { 
+          enabled: !!process.env.GEMINI_API_KEY, 
+          apiKey: process.env.GEMINI_API_KEY 
+        },
+        huggingface: { 
+          enabled: !!process.env.HUGGINGFACE_API_KEY, 
+          apiKey: process.env.HUGGINGFACE_API_KEY 
+        }
+      }
+    },
+    
+    // Server Configuration
+    server: {
+      host: process.env.SERVER_HOST || 'localhost',
+      port: process.env.SERVER_PORT || 8081,
+      wsUrl: process.env.WS_SERVER_URL || 'ws://localhost:8082'
+    },
+    
+    // Logging Configuration
+    logging: {
+      level: process.env.LOG_LEVEL || 'info',
+      maxFiles: 5,
+      maxSize: 10 * 1024 * 1024 // 10 MB
+    },
+    
+    // UI Preferences
+    ui: {
+      theme: 'system', // system, light, dark
+      fontSize: 'medium',
+      compactMode: false
+    }
+  }
+});
+
+// Expose a secure API to the renderer process
+contextBridge.exposeInMainWorld('electronAPI', {
+  // Configuration methods
+  getConfig: (key) => store.get(key),
+  setConfig: (key, value) => store.set(key, value),
+  resetConfig: () => store.clear(),
+  
+  // Logging methods
+  logInfo: (message) => log.info(message),
+  logWarn: (message) => log.warn(message),
+  logError: (message) => log.error(message),
+  
+  // IPC Communication Methods
+  sendToMain: (channel, data) => ipcRenderer.send(channel, data),
+  invokeMain: (channel, data) => ipcRenderer.invoke(channel, data),
+  
+  // System Information
+  getPlatform: () => process.platform,
+  getAppVersion: () => require('./package.json').version,
+  
+  // API Key Management (secure handling)
+  setApiKey: (service, key) => {
+    const config = store.get('ai.models');
+    config[service].apiKey = key;
+    store.set('ai.models', config);
+  },
+  
+  // Secure API key retrieval (masked)
+  getApiKeyStatus: (service) => {
+    const config = store.get('ai.models');
+    return {
+      enabled: config[service].enabled,
+      keySet: !!config[service].apiKey
+    };
+  }
+});
+
+// Export for potential Node.js usage
+module.exports = {
+  store,
+  log
+};
