@@ -2474,7 +2474,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
             return jsonify({"error": str(e)}), 500
     else:
         try:
-            import json
+            # Load settings from file if it exists
             if os.path.exists(settings_file):
                 with open(settings_file, 'r', encoding='utf-8') as f:
                     settings = json.load(f)
@@ -2516,19 +2516,13 @@ def health_check():
     })
 
 
-def translate_log(log_text):
-    """Preprocess log text before AI analysis.
-
-    This function can be expanded to implement more sophisticated
-    log translation or normalization.
-
-    Args:
-        log_text: The original log text
+@app.route('/analysis_history', methods=['GET'])
+def get_analysis_history():
+    """Get the history of log analyses.
 
     Returns:
-        Processed log text
-    """
-    # In the future, add log normalization or preprocessing here (duplicate-code)
+        JSON response with analysis history
+    """ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[168:232]
 ==server.backend.app:[107:171]
@@ -2760,7 +2754,7 @@ try:
 except ImportError:
     logging.warning("dotenv package not installed, environment variables must be set manually")
 
-# Configure logging with more structured approach
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
@@ -2792,35 +2786,35 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.gpt4all.app:[143:156]
 ==server.backend.gpt4all.app:[106:119]
-        while True:
-            message = input(" ⇢  ")
+    while True:
+        message = input(" ⇢  ")
 
-            # Check if special command and take action
-            if message in SPECIAL_COMMANDS:
-                SPECIAL_COMMANDS[message](MESSAGES)
-                continue
+        # Check if special command and take action
+        if message in SPECIAL_COMMANDS:
+            SPECIAL_COMMANDS[message](MESSAGES)
+            continue
 
-            # if regular message, append to messages
-            MESSAGES.append({"role": "user", "content": message})
+        # if regular message, append to messages
+        MESSAGES.append({"role": "user", "content": message})
 
-            # execute chat completion and ignore the full response since
-            # we are outputting it incrementally (duplicate-code)
+        # execute chat completion and ignore the full response since
+        # we are outputting it incrementally (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.gpt4all.app:[106:119]
 ==server.backend.gpt4all.app:[143:156]
-        while True:
-            message = input(" ⇢  ")
+    while True:
+        message = input(" ⇢  ")
 
-            # Check if special command and take action
-            if message in SPECIAL_COMMANDS:
-                SPECIAL_COMMANDS[message](MESSAGES)
-                continue
+        # Check if special command and take action
+        if message in SPECIAL_COMMANDS:
+            SPECIAL_COMMANDS[message](MESSAGES)
+            continue
 
-            # if regular message, append to messages
-            MESSAGES.append({"role": "user", "content": message})
+        # if regular message, append to messages
+        MESSAGES.append({"role": "user", "content": message})
 
-            # execute chat completion and ignore the full response since
-            # we are outputting it incrementally (duplicate-code)
+        # execute chat completion and ignore the full response since
+        # we are outputting it incrementally (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.huggingface:[393:401]
 ==client.frontend.gpt4all-integration:[148:157]
@@ -2859,7 +2853,7 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |method   |65     |65         |=          |100.00      |7.69     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |120    |122        |-2.00      |99.17       |0.00     |
+|function |120    |120        |=          |99.17       |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -2884,13 +2878,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |4689   |59.32 |4641     |+48.00     |
+|code      |4689   |59.32 |4689     |=          |
 +----------+-------+------+---------+-----------+
-|docstring |1405   |17.77 |1321     |+84.00     |
+|docstring |1405   |17.77 |1405     |=          |
 +----------+-------+------+---------+-----------+
-|comment   |683    |8.64  |664      |+19.00     |
+|comment   |683    |8.64  |683      |=          |
 +----------+-------+------+---------+-----------+
-|empty     |1128   |14.27 |1091     |+37.00     |
+|empty     |1128   |14.27 |1128     |=          |
 +----------+-------+------+---------+-----------+
 
 
@@ -2914,13 +2908,13 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |642    |629      |629        |
+|convention |642    |642      |642        |
 +-----------+-------+---------+-----------+
-|refactor   |70     |85       |85         |
+|refactor   |70     |70       |70         |
 +-----------+-------+---------+-----------+
-|warning    |451    |453      |453        |
+|warning    |451    |451      |451        |
 +-----------+-------+---------+-----------+
-|error      |47     |44       |44         |
+|error      |47     |47       |47         |
 +-----------+-------+---------+-----------+
 
 
@@ -3115,5 +3109,5 @@ Messages
 
 
 ------------------------------------------------------------------
-Your code has been rated at 6.03/10 (previous run: 6.05/10, -0.02)
+Your code has been rated at 6.03/10 (previous run: 6.03/10, +0.00)
 

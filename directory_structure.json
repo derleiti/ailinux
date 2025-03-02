@@ -2,9 +2,9 @@
   "stats": {
     "total_directories": 456,
     "total_files": 2845,
-    "total_size_bytes": 289706905,
+    "total_size_bytes": 289711667,
     "total_size_human": "276.29 MB",
-    "scan_time": "2025-03-02 08:28:53"
+    "scan_time": "2025-03-02 08:38:28"
   },
   "structure": {
     "postcode.sh": {
@@ -32,8 +32,8 @@
       "contents": {
         "start.js": {
           "type": "file",
-          "size": 13757,
-          "size_human": "13.43 KB"
+          "size": 18211,
+          "size_human": "17.78 KB"
         },
         "python-fix.py": {
           "type": "file",
@@ -16170,8 +16170,8 @@
         },
         "start.sh": {
           "type": "file",
-          "size": 5096,
-          "size_human": "4.98 KB"
+          "size": 5339,
+          "size_human": "5.21 KB"
         },
         "package.json": {
           "type": "file",
@@ -16216,8 +16216,8 @@
     },
     "github_sync.log": {
       "type": "file",
-      "size": 2177,
-      "size_human": "2.13 KB"
+      "size": 2488,
+      "size_human": "2.43 KB"
     },
     "ailinuxdocumentation_2.md": {
       "type": "file",
@@ -16500,8 +16500,8 @@
     },
     "optimization.log": {
       "type": "file",
-      "size": 194342,
-      "size_human": "189.79 KB"
+      "size": 194096,
+      "size_human": "189.55 KB"
     }
   }
 }

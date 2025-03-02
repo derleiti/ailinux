@@ -16,23 +16,21 @@ const electronLog = require('electron-log');
 // Set up logging with explicit app name configuration
 electronLog.transports.file.level = 'info';
 electronLog.transports.console.level = 'info';
-electronLog.transports.file.setAppName('ailinux'); // Explicitly set app name to fix electron-log errors
+electronLog.transports.file.resolvePathFn = () => path.join(process.cwd(), 'logs', 'electron.log');
 
 // Process command line arguments
 const args = process.argv.slice(2);
 const mode = args[0] || 'local'; // Default to local mode if not specified
+const pythonPath = args[1] || process.env.PYTHON_PATH || 'python3'; // Use Python path from args or env
 
 // Define directories and paths
-const baseDir = __dirname;
+const baseDir = process.cwd();
 const logDir = path.join(baseDir, 'logs');
 const backendDir = path.join(baseDir, 'backend');
 const frontendDir = path.join(baseDir, 'frontend');
 const backendLogPath = path.join(logDir, 'backend.log');
 const frontendLogPath = path.join(logDir, 'frontend.log');
 const startLogPath = path.join(logDir, 'start.log');
-
-// Define python path - use custom environment where Flask is installed
-const pythonPath = '/home/zombie/client/bin/python3'; // Path to python with Flask installed
 
 // Store process handles for proper cleanup
 const processes = {
@@ -116,9 +114,6 @@ function configureEnvironment() {
   process.env.FLASK_PORT = flaskPort;
   process.env.WS_SERVER_URL = wsServerUrl;
   
-  // Add PYTHONPATH to environment to help find Flask and other modules
-  process.env.PYTHONPATH = `/home/zombie/client/lib/python3.12/site-packages:${process.env.PYTHONPATH || ''}`;
-  
   // Log configuration
   logMessage(`Configuration: Flask=${flaskHost}:${flaskPort}, WebSocket=${wsServerUrl}`, startLogPath);
   logMessage(`API Keys: OpenAI=${process.env.OPENAI_API_KEY ? 'SET' : 'NOT SET'}, Gemini=${process.env.GEMINI_API_KEY ? 'SET' : 'NOT SET'}, HuggingFace=${process.env.HUGGINGFACE_API_KEY ? 'SET' : 'NOT SET'}`, startLogPath);
@@ -137,46 +132,106 @@ async function checkPythonEnvironment() {
     logMessage('Checking Python environment...', startLogPath);
 
     // Check that python path exists and is executable
-    if (!fs.existsSync(pythonPath)) {
-      const errorMsg = `Python interpreter not found at: ${pythonPath}`;
-      electronLog.error(errorMsg);
-      logMessage(`ERROR: ${errorMsg}`, startLogPath);
-      return reject(new Error(errorMsg));
-    }
-
-    // Check for Flask module
-    const checkFlask = spawn(pythonPath, ['-c', 'import flask; print(f"Flask version: {flask.__version__}")']);
-    
-    checkFlask.stdout.on('data', (data) => {
-      const output = data.toString().trim();
-      electronLog.info(`Flask check: ${output}`);
-      logMessage(`Flask check: ${output}`, startLogPath);
-    });
-
-    checkFlask.stderr.on('data', (data) => {
-      const output = data.toString().trim();
-      electronLog.error(`Flask check error: ${output}`);
-      logMessage(`Flask check error: ${output}`, startLogPath);
-    });
-
-    checkFlask.on('close', (code) => {
-      if (code === 0) {
-        electronLog.info('Flask module is available');
-        logMessage('Flask module is available', startLogPath);
-        resolve(true);
-      } else {
-        const errorMsg = 'Flask module not found. Please install the required dependencies.';
+    try {
+      // Use spawn with a simple command to check if Python is executable
+      const pythonCheck = spawn(pythonPath, ['-c', 'print("Python check succeeded")']);
+      
+      pythonCheck.on('error', (error) => {
+        const errorMsg = `Python interpreter error: ${error.message}`;
         electronLog.error(errorMsg);
         logMessage(`ERROR: ${errorMsg}`, startLogPath);
         reject(new Error(errorMsg));
-      }
-    });
+      });
+      
+      pythonCheck.on('close', (code) => {
+        if (code !== 0) {
+          const errorMsg = `Python interpreter check failed with code ${code}`;
+          electronLog.error(errorMsg);
+          logMessage(`ERROR: ${errorMsg}`, startLogPath);
+          reject(new Error(errorMsg));
+        } else {
+          electronLog.info('Python interpreter is available');
+          
+          // Now check for Flask module
+          const checkFlask = spawn(pythonPath, [
+            '-c', 
+            `
+try:
+    import flask
+    print(f"Flask version: {flask.__version__}")
+    exit(0)
+except ImportError:
+    print("Flask not installed")
+    exit(1)
+except SyntaxError as e:
+    print(f"Flask syntax error: {e}")
+    exit(2)
+except Exception as e:
+    print(f"Flask import error: {e}")
+    exit(3)
+            `
+          ]);
+          
+          let flaskOutput = '';
+          let flaskErrorOutput = '';
+          
+          checkFlask.stdout.on('data', (data) => {
+            const output = data.toString().trim();
+            flaskOutput += output;
+            electronLog.info(`Flask check: ${output}`);
+            logMessage(`Flask check: ${output}`, startLogPath);
+          });
+
+          checkFlask.stderr.on('data', (data) => {
+            const output = data.toString().trim();
+            flaskErrorOutput += output;
+            electronLog.error(`Flask check error: ${output}`);
+            logMessage(`Flask check error: ${output}`, startLogPath);
+          });
+
+          checkFlask.on('error', (error) => {
+            const errorMsg = `Error running Flask check: ${error.message}`;
+            electronLog.error(errorMsg);
+            logMessage(`ERROR: ${errorMsg}`, startLogPath);
+            reject(new Error(errorMsg));
+          });
+
+          checkFlask.on('close', (flaskCode) => {
+            if (flaskCode === 0) {
+              electronLog.info('Flask module is available');
+              logMessage('Flask module is available', startLogPath);
+              resolve(true);
+            } else if (flaskCode === 1) {
+              const errorMsg = 'Flask module not found. Please install Flask: pip install flask flask-cors';
+              electronLog.error(errorMsg);
+              logMessage(`ERROR: ${errorMsg}`, startLogPath);
+              resolve(false); // We resolve with false to allow startup without Flask
+            } else if (flaskCode === 2) {
+              const errorMsg = `Flask module has syntax errors with this Python version. Try using Python 3.9-3.11.`;
+              electronLog.error(errorMsg);
+              logMessage(`ERROR: ${errorMsg}`, startLogPath);
+              resolve(false); // We resolve with false to allow startup without Flask
+            } else {
+              const errorMsg = `Flask check failed with code ${flaskCode}: ${flaskErrorOutput || flaskOutput || 'Unknown error'}`;
+              electronLog.error(errorMsg);
+              logMessage(`ERROR: ${errorMsg}`, startLogPath);
+              resolve(false); // We resolve with false to allow startup without Flask
+            }
+          });
+        }
+      });
+    } catch (error) {
+      const errorMsg = `Failed to run Python check: ${error.message}`;
+      electronLog.error(errorMsg);
+      logMessage(`ERROR: ${errorMsg}`, startLogPath);
+      reject(new Error(errorMsg));
+    }
   });
 }
 
 /**
  * Start the backend server
- * @returns {Promise} Resolves when backend is ready
+ * @returns {Promise} Resolves when backend is ready or after timeout
  */
 function startBackend() {
   return new Promise((resolve, reject) => {
@@ -198,16 +253,18 @@ function startBackend() {
     let backendStarted = false;
     let startTimeout = setTimeout(() => {
       if (!backendStarted) {
-        electronLog.error('Backend server failed to start within timeout period');
-        logMessage('ERROR: Backend server start timed out', startLogPath);
-        reject(new Error('Backend start timeout'));
+        const warningMsg = 'Backend server taking longer than expected, continuing startup...';
+        electronLog.warn(warningMsg);
+        logMessage(warningMsg, startLogPath);
+        // Resolve anyway to allow frontend to start
+        resolve(false);
       }
-    }, 30000); // 30 second timeout
+    }, 10000); // 10 second timeout - reduced to make startup faster
     
     // Handle stdout (normal output)
     backendProcess.stdout.on('data', (data) => {
       const output = data.toString().trim();
-      logMessage(`Backend output: ${output}`, backendLogPath);
+      logMessage(output, backendLogPath);
       electronLog.info(`[Backend] ${output}`);
       
       // Check for backend ready indicators
@@ -216,15 +273,15 @@ function startBackend() {
         clearTimeout(startTimeout);
         electronLog.info('Backend server is running');
         logMessage('Backend server started successfully', startLogPath);
-        resolve();
+        resolve(true);
       }
     });
 
     // Handle stderr (error output)
     backendProcess.stderr.on('data', (data) => {
       const output = data.toString().trim();
-      logMessage(`Backend error: ${output}`, backendLogPath);
-      electronLog.error(`[Backend ERROR] ${output}`);
+      logMessage(output, backendLogPath);
+      electronLog.error(`[Backend] ${output}`);
       
       // Don't treat all stderr as fatal - Flask outputs to stderr sometimes
       if (output.includes('Running on') || output.includes('Debugger PIN')) {
@@ -232,7 +289,7 @@ function startBackend() {
         clearTimeout(startTimeout);
         electronLog.info('Backend server is running (from stderr output)');
         logMessage('Backend server started successfully', startLogPath);
-        resolve();
+        resolve(true);
       }
     });
 
@@ -244,10 +301,10 @@ function startBackend() {
         
         if (!backendStarted) {
           clearTimeout(startTimeout);
-          reject(new Error(`Backend process exited prematurely with code ${code}`));
-        } else if (code !== 0) {
-          // If backend was running but exited with error
-          shutdownAll(`Backend process crashed with code ${code}`);
+          // Just warn, don't reject to allow frontend to start
+          electronLog.warn(`Backend failed to start properly. Will continue with frontend only.`);
+          logMessage('Backend failed to start properly. Will continue with frontend only.', startLogPath);
+          resolve(false);
         }
       }
     });
@@ -257,71 +314,110 @@ function startBackend() {
       logMessage(`Backend process error: ${error.message}`, startLogPath);
       electronLog.error('Backend process error:', error);
       clearTimeout(startTimeout);
-      reject(error);
+      // Just warn, don't reject to allow frontend to start
+      resolve(false);
     });
   });
 }
 
 /**
  * Start the frontend Electron app
+ * @returns {Promise} Resolves when frontend process is started
  */
 function startFrontend() {
-  electronLog.info('Starting frontend Electron app...');
-  logMessage('Starting frontend Electron app...', startLogPath);
+  return new Promise((resolve, reject) => {
+    electronLog.info('Starting frontend Electron app...');
+    logMessage('Starting frontend Electron app...', startLogPath);
 
-  // Create frontend environment with server variables
-  const frontendEnv = {
-    ...process.env,
-    FLASK_HOST: process.env.FLASK_HOST,
-    FLASK_PORT: process.env.FLASK_PORT,
-    WS_SERVER_URL: process.env.WS_SERVER_URL,
-    ELECTRON_APP_NAME: 'ailinux' // Explicitly set app name for Electron
-  };
+    // Create frontend environment with server variables
+    const frontendEnv = {
+      ...process.env,
+      FLASK_HOST: process.env.FLASK_HOST,
+      FLASK_PORT: process.env.FLASK_PORT,
+      WS_SERVER_URL: process.env.WS_SERVER_URL,
+      ELECTRON_APP_NAME: 'ailinux' // Explicitly set app name for Electron
+    };
 
-  // Start the frontend process with npm start (which should run electron)
-  const frontendProcess = spawn('npm', ['start'], {
-    cwd: frontendDir,
-    env: frontendEnv,
-    shell: true // Use shell for npm command
-  });
-
-  // Store process reference
-  processes.frontend = frontendProcess;
-
-  // Handle stdout
-  frontendProcess.stdout.on('data', (data) => {
-    const output = data.toString().trim();
-    logMessage(`Frontend output: ${output}`, frontendLogPath);
-    electronLog.info(`[Frontend] ${output}`);
-  });
-
-  // Handle stderr
-  frontendProcess.stderr.on('data', (data) => {
-    const output = data.toString().trim();
-    logMessage(`Frontend error: ${output}`, frontendLogPath);
-    electronLog.error(`[Frontend ERROR] ${output}`);
-  });
-
-  // Handle process exit
-  frontendProcess.on('close', (code) => {
-    if (!shuttingDown) {
-      logMessage(`Frontend process exited with code: ${code}`, startLogPath);
-      electronLog.info(`Frontend process exited with code: ${code}`);
+    // Check if we're running from within the frontend directory
+    const frontendPackageJsonPath = path.join(frontendDir, 'package.json');
+    if (!fs.existsSync(frontendPackageJsonPath)) {
+      electronLog.warn(`Frontend package.json not found at ${frontendPackageJsonPath}`);
       
-      // Frontend exit should trigger full app shutdown
-      shutdownAll('Frontend process exited');
+      // Try to find package.json in parent directory
+      const parentPackageJsonPath = path.join(baseDir, 'package.json');
+      if (fs.existsSync(parentPackageJsonPath)) {
+        electronLog.info(`Found package.json in parent directory, using direct Electron startup`);
+        
+        // Direct Electron startup
+        const electronPath = electron;
+        const mainFile = path.join(frontendDir, 'main.js');
+        
+        if (fs.existsSync(mainFile)) {
+          const frontendProcess = spawn(electronPath, [mainFile], {
+            env: frontendEnv
+          });
+
+          processes.frontend = frontendProcess;
+          setupFrontendListeners(frontendProcess);
+          resolve(true);
+        } else {
+          electronLog.error(`Main file not found at ${mainFile}`);
+          reject(new Error(`Main file not found at ${mainFile}`));
+        }
+      } else {
+        electronLog.error('Could not find package.json for frontend');
+        reject(new Error('Could not find package.json for frontend'));
+      }
+    } else {
+      // Use npm start in the frontend directory
+      const frontendProcess = spawn('npm', ['start'], {
+        cwd: frontendDir,
+        env: frontendEnv,
+        shell: true // Use shell for npm command
+      });
+
+      processes.frontend = frontendProcess;
+      setupFrontendListeners(frontendProcess);
+      resolve(true);
     }
   });
 
-  // Handle process errors
-  frontendProcess.on('error', (error) => {
-    logMessage(`Frontend process error: ${error.message}`, startLogPath);
-    electronLog.error('Frontend process error:', error);
-    shutdownAll(`Frontend error: ${error.message}`);
-  });
+  function setupFrontendListeners(frontendProcess) {
+    // Handle stdout
+    frontendProcess.stdout.on('data', (data) => {
+      const output = data.toString().trim();
+      logMessage(output, frontendLogPath);
+      electronLog.info(`[Frontend] ${output}`);
+    });
 
-  electronLog.info('Frontend process started');
-  logMessage('Frontend process started', startLogPath);
+    // Handle stderr
+    frontendProcess.stderr.on('data', (data) => {
+      const output = data.toString().trim();
+      logMessage(output, frontendLogPath);
+      electronLog.error(`[Frontend] ${output}`);
+    });
+
+    // Handle process exit
+    frontendProcess.on('close', (code) => {
+      if (!shuttingDown) {
+        logMessage(`Frontend process exited with code: ${code}`, startLogPath);
+        electronLog.info(`Frontend process exited with code: ${code}`);
+        
+        // Frontend exit should trigger full app shutdown
+        shutdownAll('Frontend process exited');
+      }
+    });
+
+    // Handle process errors
+    frontendProcess.on('error', (error) => {
+      logMessage(`Frontend process error: ${error.message}`, startLogPath);
+      electronLog.error('Frontend process error:', error);
+      shutdownAll(`Frontend error: ${error.message}`);
+    });
+
+    electronLog.info('Frontend process started');
+    logMessage('Frontend process started', startLogPath);
+  }
 }
 
 /**
@@ -378,13 +474,21 @@ async function main() {
     configureEnvironment();
     
     // Check Python environment and dependencies
-    await checkPythonEnvironment();
+    const pythonOk = await checkPythonEnvironment();
+    if (!pythonOk) {
+      logMessage('Warning: Python environment check failed, but will attempt to continue', startLogPath);
+      electronLog.warn('Python environment check failed, but will attempt to continue');
+    }
     
     // Start backend and wait for it to be ready
-    await startBackend();
+    const backendStarted = await startBackend();
+    if (!backendStarted) {
+      logMessage('Warning: Backend did not start properly, continuing with frontend only', startLogPath);
+      electronLog.warn('Backend did not start properly, continuing with frontend only');
+    }
     
     // Start frontend
-    startFrontend();
+    await startFrontend();
     
     electronLog.info(`AILinux started in ${mode.toUpperCase()} mode. Press Ctrl+C to stop.`);
     console.log(`AILinux started in ${mode.toUpperCase()} mode. Press Ctrl+C to stop.`);
