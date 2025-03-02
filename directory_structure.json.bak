@@ -1,10 +1,10 @@
 {
   "stats": {
     "total_directories": 456,
-    "total_files": 2845,
-    "total_size_bytes": 289706905,
-    "total_size_human": "276.29 MB",
-    "scan_time": "2025-03-02 08:28:53"
+    "total_files": 2846,
+    "total_size_bytes": 289057978,
+    "total_size_human": "275.67 MB",
+    "scan_time": "2025-03-02 08:51:03"
   },
   "structure": {
     "postcode.sh": {
@@ -32,13 +32,13 @@
       "contents": {
         "start.js": {
           "type": "file",
-          "size": 13757,
-          "size_human": "13.43 KB"
+          "size": 4348,
+          "size_human": "4.25 KB"
         },
         "python-fix.py": {
           "type": "file",
-          "size": 900,
-          "size_human": "900.00 B"
+          "size": 5706,
+          "size_human": "5.57 KB"
         },
         "websocket-client.py": {
           "type": "file",
@@ -57,6 +57,11 @@
               "type": "file",
               "size": 0,
               "size_human": "0.00 B"
+            },
+            "backend-imports-fix.py": {
+              "type": "file",
+              "size": 3549,
+              "size_human": "3.47 KB"
             },
             "app.py": {
               "type": "file",
@@ -81,6 +86,11 @@
             "backend": {
               "type": "directory",
               "contents": {}
+            },
+            "app.py-header-fix.py": {
+              "type": "file",
+              "size": 3135,
+              "size_human": "3.06 KB"
             },
             "ai_model.py": {
               "type": "file",
@@ -140,6 +150,11 @@
               "type": "file",
               "size": 11329,
               "size_human": "11.06 KB"
+            },
+            "path-fixer-module.py": {
+              "type": "file",
+              "size": 4276,
+              "size_human": "4.18 KB"
             }
           }
         },
@@ -16170,8 +16185,8 @@
         },
         "start.sh": {
           "type": "file",
-          "size": 5096,
-          "size_human": "4.98 KB"
+          "size": 5339,
+          "size_human": "5.21 KB"
         },
         "package.json": {
           "type": "file",
@@ -16213,11 +16228,6 @@
           "size_human": "21.21 KB"
         }
       }
-    },
-    "github_sync.log": {
-      "type": "file",
-      "size": 2177,
-      "size_human": "2.13 KB"
     },
     "ailinuxdocumentation_2.md": {
       "type": "file",
@@ -16488,11 +16498,6 @@
       "size": 3284,
       "size_human": "3.21 KB"
     },
-    "directory_structure.json": {
-      "type": "file",
-      "size": 668846,
-      "size_human": "653.17 KB"
-    },
     "large_files.json": {
       "type": "file",
       "size": 227,
@@ -16500,8 +16505,8 @@
     },
     "optimization.log": {
       "type": "file",
-      "size": 194342,
-      "size_human": "189.79 KB"
+      "size": 209838,
+      "size_human": "204.92 KB"
     }
   }
 }
