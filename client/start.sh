@@ -16,6 +16,8 @@ NC='\033[0m' # No Color
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$BASE_DIR"
 
+python python-fix.py
+
 echo -e "${BLUE}=== AILinux Startup Script ===${NC}"
 
 # Process arguments

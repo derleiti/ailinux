@@ -134,6 +134,16 @@ uploadready.py:434:44: W1514: Using open without explicitly specifying an encodi
 uploadready.py:536:11: W0718: Catching too general exception Exception (broad-exception-caught)
 uploadready.py:7:0: W0611: Unused Dict imported from typing (unused-import)
 uploadready.py:7:0: W0611: Unused Any imported from typing (unused-import)
+************* Module client.python-fix
+client/python-fix.py:10:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:13:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:19:0: C0303: Trailing whitespace (trailing-whitespace)
+client/python-fix.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+client/python-fix.py:1:0: C0103: Module name "python-fix" doesn't conform to snake_case naming style (invalid-name)
+client/python-fix.py:6:4: C0415: Import outside toplevel (sys) (import-outside-toplevel)
+client/python-fix.py:7:4: C0415: Import outside toplevel (logging) (import-outside-toplevel)
+client/python-fix.py:12:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+client/python-fix.py:16:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 ************* Module client.websocket-client
 client/websocket-client.py:159:0: C0303: Trailing whitespace (trailing-whitespace)
 client/websocket-client.py:161:0: C0303: Trailing whitespace (trailing-whitespace)
@@ -2002,12 +2012,13 @@ analyze.py:1:0: R0801: Similar lines in 2 files
             return jsonify({"error": str(e)}), 500
     else:
         try:
+            # Load settings from file if it exists
             if os.path.exists(settings_file):
                 with open(settings_file, 'r', encoding='utf-8') as f:
                     settings = json.load(f)
                 return jsonify({"settings": settings})
             else:
-                # Gib Standardeinstellungen zurück, wenn die Datei nicht existiert
+                # Return default settings if file doesn't exist
                 default_settings = {
                     "ai": {
                         "defaultModel": "gpt4all",
@@ -2064,7 +2075,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 ==server.backend.ai_model:[33:56]
 @dataclass
 class ModelConfig:
-    """Configuration for AI models with robust type handling."""
+    """Konfiguration für AI-Modelle mit robuster Typbehandlung."""
     name: str
     api_key: Optional[str] = None
     model_path: Optional[str] = None
@@ -2073,18 +2084,18 @@ class ModelConfig:
     device: str = "cpu"
     max_tokens: int = 2048
     temperature: float = 0.7
-    timeout: int = 120  # Timeout in seconds for API calls
-    retry_count: int = 2  # Number of retries for failed API calls
+    timeout: int = 120  # Timeout in Sekunden für API-Aufrufe
+    retry_count: int = 2  # Anzahl der Wiederholungsversuche bei fehlgeschlagenen API-Aufrufen
 
 class ModelInitializationError(Exception):
-    """Custom exception for model initialization failures."""
+    """Benutzerdefinierte Ausnahme für Fehler bei der Modellinitialisierung."""
     pass
 
 class AIModelManager:
-    """Centralized manager for AI model initialization and management."""
+    """Zentralisierter Manager für AI-Modellinitialisierung und -verwaltung."""
 
     def __init__(self):
-        """Initialize the AI Model Manager.""" (duplicate-code)
+        """Initialisiere den AI Model Manager.""" (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==devtools.adjust_hierarchy_with_debugger:[32:52]
 ==patch.ailinux-alpha-code-patcher-v0.3:[152:170]
@@ -2105,9 +2116,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
     create_structure(base_dir, expected_structure)
     print(f"Directory structure verified and restored in {base_dir}")
 
-
-def run_pylint():
-    """Run pylint with specific options to check the code.""" (duplicate-code)
+ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==bigfiles:[4:24]
 ==devtools.bigfiles:[4:24]
@@ -2156,12 +2165,12 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         raise
 
 def _analyze_with_huggingface(model_tuple, prompt: str) -> str:
-    """Generiere Analyse mit HuggingFace-Modell."""
+    """Generate analysis using HuggingFace model."""
     try:
-        # Entpacke das Modelltupel
+        # Unpack the model tuple
         model, tokenizer, pipeline_model = model_tuple
 
-        # Generiere Text
+        # Generate text
         response = pipeline_model(
             prompt,
             do_sample=True,
@@ -2248,9 +2257,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         'readme': ['README.md']
     }
 
-    # Helper function to create the directory structure
-    def create_structure(target_path, structure):
-        """Create directories and files based on expected structure.""" (duplicate-code)
+    # Helper function to create the directory structure (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[114:124]
 ==server.backend.ai_model:[116:126]
@@ -2295,15 +2302,15 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         }
 
 def required_for_model(model_name: str) -> bool:
-    """Prüfe, ob ein API-Schlüssel für ein bestimmtes Modell erforderlich ist."""
+    """Check if an API key is required for a specific model."""
     return model_name.lower() in ["openai", "gemini", "huggingface"]
 
 def get_available_models() -> List[Dict[str, Any]]:
     """
-    Hole Informationen über alle verfügbaren Modelle.
+    Get information about all available models.
 
     Returns:
-        Liste von Dictionaries mit Modellinformationen
+        List of dictionaries with model information
     """
     manager = AIModelManager()
     models = []
@@ -2315,15 +2322,15 @@ def get_available_models() -> List[Dict[str, Any]]:
 
 def analyze_log(log_text: str, model_name: str = "gpt4all", instruction: Optional[str] = None) -> str:
     """
-    Analysiere ein Log mit dem angegebenen AI-Modell.
+    Analyze a log using the specified AI model.
 
     Args:
-        log_text: Der zu analysierende Log-Text
-        model_name: Name des zu verwendenden Modells
-        instruction: Optionale benutzerdefinierte Anweisung für die Analyse
+        log_text: The log text to analyze
+        model_name: Name of the model to use
+        instruction: Optional custom instruction for the analysis
 
     Returns:
-        Analyseergebnis als String
+        Analysis result as string
     """
     if not log_text: (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
@@ -2361,7 +2368,7 @@ try:
 except ImportError:
     logging.warning("dotenv package not installed, environment variables must be set manually")
 
-# Configure logging
+# Configure logging with more structured approach
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
@@ -2373,7 +2380,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         raise
 
 def _analyze_with_gemini(genai, prompt: str) -> str:
-    """Generiere Analyse mit Google Gemini API."""
+    """Generate analysis using Google Gemini API."""
     try:
         model = genai.GenerativeModel(os.getenv("GEMINI_MODEL", "gemini-pro"))
         response = model.generate_content(prompt)
@@ -2413,7 +2420,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[361:371]
 ==client.backend.huggingface:[392:401]
-        system_prompt = """You are an AI assistant specialized in analyzing logs and providing insights.
+    system_prompt = """You are an AI assistant specialized in analyzing logs and providing insights.
 Given a log snippet, your task is to:
 1. Summarize the key information in the log
 2. Identify any errors, warnings, or issues
@@ -2421,18 +2428,20 @@ Given a log snippet, your task is to:
 4. Suggest troubleshooting steps or solutions
 
 Be concise and precise in your analysis."""
- (duplicate-code)
+
+    # Use custom instruction if provided (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[269:294]
 ==server.backend.app:[221:250]
             return jsonify({"error": str(e)}), 500
 
+
 @app.route('/health', methods=['GET'])
 def health_check():
-    """
-    Endpunkt zum Überprüfen der Gesundheit des Backend-Servers
+    """Check the health of the backend server.
 
-    Gibt Serverstatus zurück
+    Returns:
+        JSON response with server status
     """
     return jsonify({
         "status": "online",
@@ -2441,38 +2450,17 @@ def health_check():
         "timestamp": datetime.now().isoformat()
     })
 
-def translate_log(log_text):
-    """Vorverarbeitung von Log-Text vor der KI-Analyse.
 
-    Diese Funktion kann erweitert werden, um eine anspruchsvollere
-    Log-Übersetzung oder -Normalisierung zu implementieren.
-
-    Args:
-        log_text: Der ursprüngliche Log-Text
+@app.route('/analysis_history', methods=['GET'])
+def get_analysis_history():
+    """Get the history of log analyses.
 
     Returns:
-        Verarbeiteter Log-Text
-    """
-    # In Zukunft hier Log-Normalisierung oder -Vorverarbeitung hinzufügen (duplicate-code)
+        JSON response with analysis history
+    """ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.gpt4all.app:[143:156]
 ==server.backend.gpt4all.app:[106:119]
-        while True:
-            message = input(" ⇢  ")
-
-            # Check if special command and take action
-            if message in SPECIAL_COMMANDS:
-                SPECIAL_COMMANDS[message](MESSAGES)
-                continue
-
-            # if regular message, append to messages
-            MESSAGES.append({"role": "user", "content": message})
-
-            # execute chat completion and ignore the full response since
-            # we are outputting it incrementally (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.gpt4all.app:[106:119]
-==server.backend.gpt4all.app:[143:156]
     while True:
         message = input(" ⇢  ")
 
@@ -2486,6 +2474,22 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 
         # execute chat completion and ignore the full response since
         # we are outputting it incrementally (duplicate-code)
+analyze.py:1:0: R0801: Similar lines in 2 files
+==client.backend.gpt4all.app:[106:119]
+==server.backend.gpt4all.app:[143:156]
+        while True:
+            message = input(" ⇢  ")
+
+            # Check if special command and take action
+            if message in SPECIAL_COMMANDS:
+                SPECIAL_COMMANDS[message](MESSAGES)
+                continue
+
+            # if regular message, append to messages
+            MESSAGES.append({"role": "user", "content": message})
+
+            # execute chat completion and ignore the full response since
+            # we are outputting it incrementally (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[492:500]
 ==server.backend.ai_model:[508:516]
@@ -2504,7 +2508,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         raise
 
 def _analyze_with_openai(openai_client, prompt: str) -> str:
-    """Generiere Analyse mit OpenAI API."""
+    """Generate analysis using OpenAI API."""
     try:
         response = openai_client.chat.completions.create(
             model=os.getenv("OPENAI_MODEL", "gpt-4"),
@@ -2519,7 +2523,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
                 local_files_only=False
             )
 
-            # Load model with appropriate settings based on device (duplicate-code)
+            # Lade Modell mit geeigneten Einstellungen basierend auf dem Gerät (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.huggingface:[393:401]
 ==client.frontend.gpt4all-integration:[148:157]
@@ -2537,13 +2541,13 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 ==server.backend.app:[164:182]
         return jsonify({"error": str(e)}), 500
 
+
 @app.route('/settings', methods=['GET', 'POST'])
 def handle_settings():
-    """
-    Endpunkt zum Aktualisieren oder Abrufen von Anwendungseinstellungen
+    """Update or retrieve application settings.
 
-    PUT: Aktualisiert Einstellungen basierend auf übergebenem JSON
-    GET: Gibt aktuelle Einstellungen zurück
+    Returns:
+        JSON response with settings data or confirmation
     """
     settings_file = os.path.join(os.path.dirname(__file__), "settings.json")
 
@@ -2551,7 +2555,7 @@ def handle_settings():
         try:
             new_settings = request.json
 
-            # Einstellungen validieren
+            # Validate settings
             if not isinstance(new_settings, dict): (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[371:382]
@@ -2560,23 +2564,23 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         system_prompt = instruction
 
     try:
-        # Initialisiere den Modellmanager
+        # Initialize the model manager
         manager = AIModelManager()
 
-        # Hole das Modell basierend auf dem Namen
+        # Get the model based on name
         model = manager.initialize_model(model_name)
 
-        # Baue vollständigen Prompt (duplicate-code)
+        # Build full prompt (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[354:361]
 ==server.backend.ai_model:[370:377]
-    max_log_length = 8000  # Zeichen, anpassen basierend auf Modellkapazitäten
+    max_log_length = 8000  # Characters, adjust based on model capabilities
     truncated = False
     if len(log_text) > max_log_length:
         log_text = log_text[:max_log_length] + "..."
         truncated = True
 
-    # Standard-Systemprompt für Log-Analyse (duplicate-code)
+    # Default system prompt for log analysis (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[139:148]
 ==server.backend.ai_model:[150:159]
@@ -2584,10 +2588,10 @@ analyze.py:1:0: R0801: Similar lines in 2 files
             if not os.path.isabs(model_path):
                 model_path = os.path.join(os.path.expanduser(config.cache_dir), model_path)
 
-            # Stelle sicher, dass das Modellverzeichnis existiert
+            # Ensure model directory exists
             os.makedirs(os.path.dirname(model_path), exist_ok=True)
 
-            # Prüfe, ob die Modelldatei existiert, falls nicht, informiere den Benutzer
+            # Check if model file exists, if not inform the user
             if not os.path.exists(model_path): (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[174:188]
@@ -2622,17 +2626,16 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 DEBUG = os.getenv("FLASK_DEBUG", "False").lower() == "true"
 ENV = os.getenv("ENVIRONMENT", "development")
 
-# Configure logging
+# Konfiguriere Logging
 log_directory = os.path.join(os.path.dirname(__file__), "logs")
 os.makedirs(log_directory, exist_ok=True)
 log_file_path = os.path.join(log_directory, "backend.log")
-
-# Debug log file for storing AI model responses (duplicate-code)
+ (duplicate-code)
 
 
 Report
 ======
-3493 statements analysed.
+3507 statements analysed.
 
 Statistics by type
 ------------------
@@ -2640,13 +2643,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |28     |28         |=          |92.86       |25.00    |
+|module   |29     |28         |+1.00      |89.66       |27.59    |
 +---------+-------+-----------+-----------+------------+---------+
 |class    |13     |13         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |method   |65     |65         |=          |100.00      |7.69     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |121    |117        |+4.00      |100.00      |0.00     |
+|function |122    |121        |+1.00      |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -2663,7 +2666,7 @@ External dependencies
 
 
 
-7690 lines have been analyzed
+7717 lines have been analyzed
 
 Raw metrics
 -----------
@@ -2671,13 +2674,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |4625   |60.14 |4603     |+22.00     |
+|code      |4641   |60.14 |4625     |+16.00     |
 +----------+-------+------+---------+-----------+
-|docstring |1317   |17.13 |1383     |-66.00     |
+|docstring |1321   |17.12 |1317     |+4.00      |
 +----------+-------+------+---------+-----------+
-|comment   |662    |8.61  |671      |-9.00      |
+|comment   |664    |8.60  |662      |+2.00      |
 +----------+-------+------+---------+-----------+
-|empty     |1086   |14.12 |1108     |-22.00     |
+|empty     |1091   |14.14 |1086     |+5.00      |
 +----------+-------+------+---------+-----------+
 
 
@@ -2701,13 +2704,13 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |622    |621      |621        |
+|convention |629    |622      |622        |
 +-----------+-------+---------+-----------+
-|refactor   |85     |69       |69         |
+|refactor   |85     |85       |85         |
 +-----------+-------+---------+-----------+
-|warning    |451    |439      |439        |
+|warning    |453    |451      |451        |
 +-----------+-------+---------+-----------+
-|error      |44     |48       |48         |
+|error      |44     |44       |44         |
 +-----------+-------+---------+-----------+
 
 
@@ -2718,15 +2721,15 @@ Messages by category
 +-----------------------------------------+------+--------+---------+-----------+
 |module                                   |error |warning |refactor |convention |
 +=========================================+======+========+=========+===========+
-|client.backend.huggingface               |15.91 |9.09    |0.00     |2.89       |
+|client.backend.huggingface               |15.91 |9.05    |0.00     |2.86       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.app                       |4.55  |8.20    |2.35     |3.54       |
+|client.backend.app                       |4.55  |8.17    |2.35     |3.50       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.hugging                   |4.55  |1.11    |0.00     |0.80       |
+|client.backend.hugging                   |4.55  |1.10    |0.00     |0.79       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.gpt4all.app               |4.55  |0.67    |0.00     |1.13       |
+|server.backend.gpt4all.app               |4.55  |0.66    |0.00     |1.11       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.gpt4all.app               |4.55  |0.67    |0.00     |1.13       |
+|client.backend.gpt4all.app               |4.55  |0.66    |0.00     |1.11       |
 +-----------------------------------------+------+--------+---------+-----------+
 |analyze                                  |4.55  |0.00    |47.06    |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
@@ -2736,11 +2739,11 @@ Messages by category
 +-----------------------------------------+------+--------+---------+-----------+
 |bigfiles                                 |4.55  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.websocket-server          |2.27  |9.98    |0.00     |6.11       |
+|server.backend.websocket-server          |2.27  |9.93    |0.00     |6.04       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.websocket-client                  |2.27  |8.87    |1.18     |2.57       |
+|client.websocket-client                  |2.27  |8.83    |1.18     |2.54       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.alphaos                           |2.27  |4.88    |0.00     |2.73       |
+|client.alphaos                           |2.27  |4.86    |0.00     |2.70       |
 +-----------------------------------------+------+--------+---------+-----------+
 |client.frontend.twitchbot                |2.27  |0.00    |0.00     |0.16       |
 +-----------------------------------------+------+--------+---------+-----------+
@@ -2778,27 +2781,29 @@ Messages by category
 +-----------------------------------------+------+--------+---------+-----------+
 |adjust_hierarchy_with_debugger           |2.27  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.ai_model                  |0.00  |10.20   |4.71     |5.47       |
+|server.backend.ai_model                  |0.00  |10.15   |4.71     |5.41       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.ai_model                  |0.00  |9.98    |4.71     |10.45      |
+|client.backend.ai_model                  |0.00  |9.93    |4.71     |10.33      |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.app                       |0.00  |5.99    |1.18     |0.80       |
+|server.backend.app                       |0.00  |5.96    |1.18     |0.79       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.gpt4all-log-analyzer      |0.00  |5.54    |1.18     |6.75       |
+|client.backend.gpt4all-log-analyzer      |0.00  |5.52    |1.18     |6.68       |
 +-----------------------------------------+------+--------+---------+-----------+
-|uploadready                              |0.00  |5.32    |7.06     |12.38      |
+|uploadready                              |0.00  |5.30    |7.06     |12.24      |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.uploadready                     |0.00  |5.32    |7.06     |12.38      |
+|devtools.uploadready                     |0.00  |5.30    |7.06     |12.24      |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.gpt4all-integration      |0.00  |5.32    |0.00     |6.91       |
+|client.frontend.gpt4all-integration      |0.00  |5.30    |0.00     |6.84       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.enhanced-pylint-fixer           |0.00  |4.21    |21.18    |15.11      |
+|devtools.enhanced-pylint-fixer           |0.00  |4.19    |21.18    |14.94      |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.gpt4allinit               |0.00  |2.22    |1.18     |2.25       |
+|server.backend.gpt4allinit               |0.00  |2.21    |1.18     |2.23       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.3    |0.00  |1.33    |1.18     |0.32       |
+|patch.ailinux-alpha-code-patcher-v0.3    |0.00  |1.32    |1.18     |0.32       |
 +-----------------------------------------+------+--------+---------+-----------+
-|python-optimizer                         |0.00  |1.11    |0.00     |6.11       |
+|python-optimizer                         |0.00  |1.10    |0.00     |6.04       |
++-----------------------------------------+------+--------+---------+-----------+
+|client.python-fix                        |0.00  |0.44    |0.00     |1.11       |
 +-----------------------------------------+------+--------+---------+-----------+
 
 
@@ -2809,9 +2814,9 @@ Messages
 +-------------------------------+------------+
 |message id                     |occurrences |
 +===============================+============+
-|trailing-whitespace            |453         |
+|trailing-whitespace            |456         |
 +-------------------------------+------------+
-|logging-fstring-interpolation  |182         |
+|logging-fstring-interpolation  |184         |
 +-------------------------------+------------+
 |broad-exception-caught         |100         |
 +-------------------------------+------------+
@@ -2819,13 +2824,13 @@ Messages
 +-------------------------------+------------+
 |line-too-long                  |66          |
 +-------------------------------+------------+
-|import-outside-toplevel        |51          |
+|import-outside-toplevel        |53          |
 +-------------------------------+------------+
 |duplicate-code                 |40          |
 +-------------------------------+------------+
-|redefined-outer-name           |25          |
+|invalid-name                   |26          |
 +-------------------------------+------------+
-|invalid-name                   |25          |
+|redefined-outer-name           |25          |
 +-------------------------------+------------+
 |unspecified-encoding           |20          |
 +-------------------------------+------------+
@@ -2863,6 +2868,8 @@ Messages
 +-------------------------------+------------+
 |no-name-in-module              |3           |
 +-------------------------------+------------+
+|missing-module-docstring       |3           |
++-------------------------------+------------+
 |global-statement               |3           |
 +-------------------------------+------------+
 |too-many-statements            |2           |
@@ -2870,8 +2877,6 @@ Messages
 |raise-missing-from             |2           |
 +-------------------------------+------------+
 |pointless-string-statement     |2           |
-+-------------------------------+------------+
-|missing-module-docstring       |2           |
 +-------------------------------+------------+
 |inconsistent-return-statements |2           |
 +-------------------------------+------------+
@@ -2894,5 +2899,5 @@ Messages
 
 
 ------------------------------------------------------------------
-Your code has been rated at 6.05/10 (previous run: 6.03/10, +0.03)
+Your code has been rated at 6.05/10 (previous run: 6.05/10, -0.01)
 
