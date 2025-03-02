@@ -1,21 +1,16 @@
 {
   "stats": {
     "total_directories": 454,
-    "total_files": 2696,
-    "total_size_bytes": 289427360,
-    "total_size_human": "276.02 MB",
-    "scan_time": "2025-03-02 09:12:44"
+    "total_files": 2677,
+    "total_size_bytes": 288050333,
+    "total_size_human": "274.71 MB",
+    "scan_time": "2025-03-02 10:35:24"
   },
   "structure": {
     "postcode.sh": {
       "type": "file",
       "size": 9421,
       "size_human": "9.20 KB"
-    },
-    "large_files.json.bak": {
-      "type": "file",
-      "size": 227,
-      "size_human": "227.00 B"
     },
     "readme": {
       "type": "file",
@@ -53,16 +48,6 @@
         "backend": {
           "type": "directory",
           "contents": {
-            "ai_model.log": {
-              "type": "file",
-              "size": 0,
-              "size_human": "0.00 B"
-            },
-            "backend-imports-fix.py": {
-              "type": "file",
-              "size": 3549,
-              "size_human": "3.47 KB"
-            },
             "app.py": {
               "type": "file",
               "size": 15635,
@@ -75,6 +60,11 @@
                   "type": "file",
                   "size": 23354,
                   "size_human": "22.81 KB"
+                },
+                "app.cpython-312.pyc": {
+                  "type": "file",
+                  "size": 21270,
+                  "size_human": "20.77 KB"
                 }
               }
             },
@@ -87,11 +77,6 @@
               "type": "directory",
               "contents": {}
             },
-            "app.py-header-fix.py": {
-              "type": "file",
-              "size": 3135,
-              "size_human": "3.06 KB"
-            },
             "ai_model.py": {
               "type": "file",
               "size": 19380,
@@ -102,34 +87,13 @@
               "size": 0,
               "size_human": "0.00 B"
             },
-            "python-version-fix.py": {
-              "type": "file",
-              "size": 7497,
-              "size_human": "7.32 KB"
-            },
-            "backend-import-fix.py": {
-              "type": "file",
-              "size": 7517,
-              "size_human": "7.34 KB"
-            },
             "models": {
               "type": "directory",
               "contents": {}
             },
-            "gpt4allinit.py": {
-              "type": "file",
-              "size": 463,
-              "size_human": "463.00 B"
-            },
             "logs": {
               "type": "directory",
-              "contents": {
-                "backend.log": {
-                  "type": "file",
-                  "size": 0,
-                  "size_human": "0.00 B"
-                }
-              }
+              "contents": {}
             },
             "gpt4all": {
               "type": "directory",
@@ -143,8 +107,8 @@
             },
             "requirements.txt": {
               "type": "file",
-              "size": 980,
-              "size_human": "980.00 B"
+              "size": 2856,
+              "size_human": "2.79 KB"
             },
             "backend.js": {
               "type": "file",
@@ -160,11 +124,6 @@
               "type": "file",
               "size": 11329,
               "size_human": "11.06 KB"
-            },
-            "path-fixer-module.py": {
-              "type": "file",
-              "size": 4276,
-              "size_human": "4.18 KB"
             }
           }
         },
@@ -15429,23 +15388,7 @@
         },
         "logs": {
           "type": "directory",
-          "contents": {
-            "backend.log": {
-              "type": "file",
-              "size": 55,
-              "size_human": "55.00 B"
-            },
-            "start.log": {
-              "type": "file",
-              "size": 1432,
-              "size_human": "1.40 KB"
-            },
-            "frontend.log": {
-              "type": "file",
-              "size": 55,
-              "size_human": "55.00 B"
-            }
-          }
+          "contents": {}
         },
         "requirements.txt": {
           "type": "file",
@@ -15458,11 +15401,6 @@
           "size_human": "21.21 KB"
         }
       }
-    },
-    "github_sync.log": {
-      "type": "file",
-      "size": 622,
-      "size_human": "622.00 B"
     },
     "ailinuxdocumentation_2.md": {
       "type": "file",
@@ -15604,22 +15542,12 @@
         }
       }
     },
-    "adjust_hierarchy_with_debugger.py": {
-      "type": "file",
-      "size": 2376,
-      "size_human": "2.32 KB"
-    },
     "server": {
       "type": "directory",
       "contents": {
         "backend": {
           "type": "directory",
           "contents": {
-            "ai_model.log": {
-              "type": "file",
-              "size": 1668,
-              "size_human": "1.63 KB"
-            },
             "websocket-server.py": {
               "type": "file",
               "size": 20175,
@@ -15652,18 +15580,7 @@
             },
             "logs": {
               "type": "directory",
-              "contents": {
-                "backend.log": {
-                  "type": "file",
-                  "size": 0,
-                  "size_human": "0.00 B"
-                }
-              }
-            },
-            "websocket_server.log": {
-              "type": "file",
-              "size": 0,
-              "size_human": "0.00 B"
+              "contents": {}
             },
             "gpt4all": {
               "type": "directory",
@@ -15713,11 +15630,6 @@
       "size": 1000,
       "size_human": "1000.00 B"
     },
-    "directory_structure.json.bak": {
-      "type": "file",
-      "size": 669072,
-      "size_human": "653.39 KB"
-    },
     "bigfiles.sh": {
       "type": "file",
       "size": 1146,
@@ -15733,20 +15645,10 @@
       "size": 3284,
       "size_human": "3.21 KB"
     },
-    "directory_structure.json": {
-      "type": "file",
-      "size": 669593,
-      "size_human": "653.90 KB"
-    },
-    "large_files.json": {
-      "type": "file",
-      "size": 227,
-      "size_human": "227.00 B"
-    },
     "optimization.log": {
       "type": "file",
-      "size": 223230,
-      "size_human": "218.00 KB"
+      "size": 194821,
+      "size_human": "190.25 KB"
     }
   }
 }

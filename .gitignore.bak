@@ -3,6 +3,7 @@ server/backend/.env
 client/frontend/node_modules/
 client/node_modules/
 electron
+client/backend/.env
 client/.env
 electron
 electron
