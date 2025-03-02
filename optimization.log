@@ -2208,7 +2208,9 @@ analyze.py:1:0: R0801: Similar lines in 2 files
     create_structure(base_dir, expected_structure)
     print(f"Directory structure verified and restored in {base_dir}")
 
- (duplicate-code)
+
+def run_pylint():
+    """Run pylint with specific options to check the code.""" (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==bigfiles:[4:24]
 ==devtools.bigfiles:[4:24]
@@ -2264,9 +2266,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         'readme': ['README.md']
     }
 
-    # Helper function to create the directory structure
-    def create_structure(target_path, structure):
-        """Create directories and files based on expected structure.""" (duplicate-code)
+    # Helper function to create the directory structure (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==devtools.adjust_hierarchy_with_debugger:[52:61]
 ==patch.ailinux-alpha-code-patcher-v0.3:[33:42]
@@ -2295,8 +2295,7 @@ ENV = os.getenv("ENVIRONMENT", "development")
 log_directory = os.path.join(os.path.dirname(__file__), "logs")
 os.makedirs(log_directory, exist_ok=True)
 log_file_path = os.path.join(log_directory, "backend.log")
-
-# Debug log file for storing AI model responses (duplicate-code)
+ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==server.backend.ai_model:[14:25]
 ==server.backend.websocket-server:[25:36]
@@ -2320,7 +2319,7 @@ try:
 except ImportError:
     logging.warning("dotenv package not installed, environment variables must be set manually")
 
-# Configure logging
+# Configure logging with more structured approach
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
@@ -2336,7 +2335,8 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 
         data = request.json
         log_text = data.get('log')
-        model_name = data.get('model', 'gpt4all')  # Default to gpt4all (duplicate-code)
+        model_name = data.get('model', 'gpt4all')  # Default to gpt4all
+ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.app:[134:139]
 ==server.backend.app:[87:92]

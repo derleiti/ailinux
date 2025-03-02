@@ -1,10 +1,10 @@
 {
   "stats": {
     "total_directories": 718,
-    "total_files": 4198,
-    "total_size_bytes": 676511072,
-    "total_size_human": "645.17 MB",
-    "scan_time": "2025-03-02 01:14:21"
+    "total_files": 4199,
+    "total_size_bytes": 676520006,
+    "total_size_human": "645.18 MB",
+    "scan_time": "2025-03-02 01:19:34"
   },
   "structure": {
     "postcode.sh": {
@@ -149,8 +149,8 @@
             },
             "logmanager.js": {
               "type": "file",
-              "size": 470,
-              "size_human": "470.00 B"
+              "size": 2558,
+              "size_human": "2.50 KB"
             },
             "package-lock.json": {
               "type": "file",
@@ -9756,6 +9756,11 @@
               "type": "file",
               "size": 6296,
               "size_human": "6.15 KB"
+            },
+            "ailineraction.html": {
+              "type": "file",
+              "size": 5775,
+              "size_human": "5.64 KB"
             },
             "config.js": {
               "type": "file",
@@ -24341,8 +24346,8 @@
     },
     "github_sync.log": {
       "type": "file",
-      "size": 933,
-      "size_human": "933.00 B"
+      "size": 1244,
+      "size_human": "1.21 KB"
     },
     "ailinuxdocumentation_2.md": {
       "type": "file",
@@ -24545,8 +24550,8 @@
     },
     "directory_structure.json.bak": {
       "type": "file",
-      "size": 920438,
-      "size_human": "898.87 KB"
+      "size": 920966,
+      "size_human": "899.38 KB"
     },
     "bigfiles.sh": {
       "type": "file",
@@ -24565,8 +24570,8 @@
     },
     "directory_structure.json": {
       "type": "file",
-      "size": 920966,
-      "size_human": "899.38 KB"
+      "size": 921257,
+      "size_human": "899.67 KB"
     },
     "large_files.json": {
       "type": "file",
@@ -24575,8 +24580,8 @@
     },
     "optimization.log": {
       "type": "file",
-      "size": 157651,
-      "size_human": "153.96 KB"
+      "size": 157592,
+      "size_human": "153.90 KB"
     }
   }
 }
