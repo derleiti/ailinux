@@ -2,9 +2,9 @@
   "stats": {
     "total_directories": 456,
     "total_files": 2845,
-    "total_size_bytes": 289689866,
-    "total_size_human": "276.27 MB",
-    "scan_time": "2025-03-02 07:30:28"
+    "total_size_bytes": 289706905,
+    "total_size_human": "276.29 MB",
+    "scan_time": "2025-03-02 08:28:53"
   },
   "structure": {
     "postcode.sh": {
@@ -16216,8 +16216,8 @@
     },
     "github_sync.log": {
       "type": "file",
-      "size": 1866,
-      "size_human": "1.82 KB"
+      "size": 2177,
+      "size_human": "2.13 KB"
     },
     "ailinuxdocumentation_2.md": {
       "type": "file",
@@ -16372,33 +16372,33 @@
           "contents": {
             "ai_model.log": {
               "type": "file",
-              "size": 1026,
-              "size_human": "1.00 KB"
+              "size": 1668,
+              "size_human": "1.63 KB"
             },
             "websocket-server.py": {
               "type": "file",
-              "size": 12786,
-              "size_human": "12.49 KB"
+              "size": 20175,
+              "size_human": "19.70 KB"
             },
             "app.py": {
               "type": "file",
-              "size": 9062,
-              "size_human": "8.85 KB"
+              "size": 8925,
+              "size_human": "8.72 KB"
             },
             "__pycache__": {
               "type": "directory",
               "contents": {
                 "ai_model.cpython-312.pyc": {
                   "type": "file",
-                  "size": 24563,
-                  "size_human": "23.99 KB"
+                  "size": 23380,
+                  "size_human": "22.83 KB"
                 }
               }
             },
             "ai_model.py": {
               "type": "file",
-              "size": 20790,
-              "size_human": "20.30 KB"
+              "size": 19380,
+              "size_human": "18.93 KB"
             },
             "gpt4allinit.py": {
               "type": "file",
@@ -16432,8 +16432,8 @@
             },
             "requirements.txt": {
               "type": "file",
-              "size": 1586,
-              "size_human": "1.55 KB"
+              "size": 3776,
+              "size_human": "3.69 KB"
             },
             "data_server.py": {
               "type": "file",
@@ -16500,8 +16500,8 @@
     },
     "optimization.log": {
       "type": "file",
-      "size": 185105,
-      "size_human": "180.77 KB"
+      "size": 194342,
+      "size_human": "189.79 KB"
     }
   }
 }

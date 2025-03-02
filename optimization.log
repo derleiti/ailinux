@@ -966,209 +966,227 @@ devtools/analyze.py:20:37: E0602: Undefined variable 'root_dir' (undefined-varia
 ************* Module adjust_hierarchy_with_debugger
 adjust_hierarchy_with_debugger.py:69:32: E0602: Undefined variable 'base_dir' (undefined-variable)
 ************* Module server.backend.websocket-server
-server/backend/websocket-server.py:79:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:85:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:98:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:101:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:107:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:109:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:112:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:116:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:125:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:134:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:140:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:150:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:157:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:164:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:177:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:180:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:184:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:190:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:194:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:197:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:206:0: C0301: Line too long (106/100) (line-too-long)
-server/backend/websocket-server.py:210:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:223:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:226:0: C0301: Line too long (106/100) (line-too-long)
-server/backend/websocket-server.py:227:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:240:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:247:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:259:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:273:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:279:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:288:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:291:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:306:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:314:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/websocket-server.py:318:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:22:0: C0301: Line too long (102/100) (line-too-long)
+server/backend/websocket-server.py:56:0: C0301: Line too long (102/100) (line-too-long)
+server/backend/websocket-server.py:80:0: C0301: Line too long (103/100) (line-too-long)
+server/backend/websocket-server.py:168:0: C0301: Line too long (101/100) (line-too-long)
+server/backend/websocket-server.py:254:0: C0301: Line too long (108/100) (line-too-long)
+server/backend/websocket-server.py:293:0: C0301: Line too long (103/100) (line-too-long)
+server/backend/websocket-server.py:347:0: C0301: Line too long (102/100) (line-too-long)
+server/backend/websocket-server.py:375:0: C0301: Line too long (104/100) (line-too-long)
+server/backend/websocket-server.py:396:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:399:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:407:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:417:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:422:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:449:0: C0301: Line too long (112/100) (line-too-long)
+server/backend/websocket-server.py:458:0: C0301: Line too long (129/100) (line-too-long)
+server/backend/websocket-server.py:470:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:473:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/websocket-server.py:499:0: C0301: Line too long (117/100) (line-too-long)
 server/backend/websocket-server.py:1:0: C0103: Module name "websocket-server" doesn't conform to snake_case naming style (invalid-name)
-server/backend/websocket-server.py:67:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:73:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:91:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:92:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:122:15: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:123:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:165:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:133:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:158:19: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:159:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:166:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:169:8: W0702: No exception type(s) specified (bare-except)
-server/backend/websocket-server.py:228:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:207:19: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:201:16: C0415: Import outside toplevel (ai_model.get_available_models) (import-outside-toplevel)
-server/backend/websocket-server.py:208:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:214:16: C0415: Import outside toplevel (psutil) (import-outside-toplevel)
-server/backend/websocket-server.py:225:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:229:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:232:8: W0702: No exception type(s) specified (bare-except)
-server/backend/websocket-server.py:172:52: W0613: Unused argument 'path' (unused-argument)
-server/backend/websocket-server.py:262:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:256:19: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:257:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:261:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:263:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:292:15: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:286:23: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:283:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:283:32: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-server/backend/websocket-server.py:287:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:293:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:307:15: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:308:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:313:4: W0602: Using global for 'PORT' but no assignment is done (global-variable-not-assigned)
-server/backend/websocket-server.py:320:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:321:15: E1101: Module 'websockets' has no 'serve' member (no-member)
-server/backend/websocket-server.py:322:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:338:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/websocket-server.py:339:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/websocket-server.py:12:0: W0611: Unused import traceback (unused-import)
-server/backend/websocket-server.py:13:0: W0611: Unused Dict imported from typing (unused-import)
-server/backend/websocket-server.py:13:0: W0611: Unused Any imported from typing (unused-import)
-server/backend/websocket-server.py:13:0: W0611: Unused List imported from typing (unused-import)
-server/backend/websocket-server.py:13:0: W0611: Unused Set imported from typing (unused-import)
-server/backend/websocket-server.py:13:0: W0611: Unused Optional imported from typing (unused-import)
-server/backend/websocket-server.py:13:0: W0611: Unused Union imported from typing (unused-import)
-server/backend/websocket-server.py:14:0: W0611: Unused timedelta imported from datetime (unused-import)
+server/backend/websocket-server.py:23:4: W0707: Consider explicitly re-raising using 'except ImportError as exc' and 'raise ImportError('ai_model module not found') from exc' (raise-missing-from)
+server/backend/websocket-server.py:45:11: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
+server/backend/websocket-server.py:65:0: C0103: Constant name "analysis_semaphore" doesn't conform to UPPER_CASE naming style (invalid-name)
+server/backend/websocket-server.py:86:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:107:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:193:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:201:0: R0913: Too many arguments (6/5) (too-many-arguments)
+server/backend/websocket-server.py:256:15: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:254:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:257:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:268:19: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:269:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:376:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:296:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:309:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:317:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:333:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:366:19: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:347:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:360:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:367:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:375:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:377:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:385:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:284:0: R0912: Too many branches (14/12) (too-many-branches)
+server/backend/websocket-server.py:284:0: R0915: Too many statements (53/50) (too-many-statements)
+server/backend/websocket-server.py:284:40: W0613: Unused argument 'path' (unused-argument)
+server/backend/websocket-server.py:420:15: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:415:31: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:416:28: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:390:4: R1702: Too many nested blocks (7/5) (too-many-nested-blocks)
+server/backend/websocket-server.py:419:20: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:421:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:460:15: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:440:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:458:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:461:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:469:4: W0603: Using the global statement (global-statement)
+server/backend/websocket-server.py:483:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:485:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:489:15: E1101: Module 'websockets' has no 'serve' member (no-member)
+server/backend/websocket-server.py:499:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:502:8: W0612: Unused variable 'cleanup_task' (unused-variable)
+server/backend/websocket-server.py:503:8: W0612: Unused variable 'heartbeat_task' (unused-variable)
+server/backend/websocket-server.py:535:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/websocket-server.py:524:8: C0116: Missing function or method docstring (missing-function-docstring)
+server/backend/websocket-server.py:536:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/websocket-server.py:16:0: C0411: standard import "datetime.datetime" should be placed before third party import "websockets" (wrong-import-order)
+server/backend/websocket-server.py:14:0: W0611: Unused Set imported from typing (unused-import)
+server/backend/websocket-server.py:14:0: W0611: Unused Optional imported from typing (unused-import)
+server/backend/websocket-server.py:16:0: W0611: Unused datetime imported from datetime (unused-import)
+server/backend/websocket-server.py:16:0: W0611: Unused timedelta imported from datetime (unused-import)
 ************* Module server.backend.app
-server/backend/app.py:81:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/app.py:92:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/app.py:117:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/app.py:120:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/app.py:256:0: C0303: Trailing whitespace (trailing-whitespace)
-server/backend/app.py:100:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/app.py:90:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:94:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-server/backend/app.py:104:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:128:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/app.py:122:17: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-server/backend/app.py:129:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:142:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/app.py:143:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:163:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/app.py:164:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:194:15: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/app.py:192:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:195:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:220:15: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/app.py:199:12: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
-server/backend/app.py:221:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:254:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:255:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:260:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/app.py:261:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/app.py:10:0: W0611: Unused import time (unused-import)
-server/backend/app.py:13:0: W0611: Unused Dict imported from typing (unused-import)
-server/backend/app.py:13:0: W0611: Unused Any imported from typing (unused-import)
-server/backend/app.py:13:0: W0611: Unused Optional imported from typing (unused-import)
-server/backend/app.py:13:0: W0611: Unused List imported from typing (unused-import)
-server/backend/app.py:13:0: W0611: Unused Union imported from typing (unused-import)
-server/backend/app.py:17:4: W0611: Unused send_from_directory imported from flask (unused-import)
+server/backend/app.py:73:0: C0301: Line too long (102/100) (line-too-long)
+server/backend/app.py:13:0: E0401: Unable to import 'flask' (import-error)
+server/backend/app.py:14:0: E0401: Unable to import 'flask_cors' (import-error)
+server/backend/app.py:15:0: E0401: Unable to import 'dotenv' (import-error)
+server/backend/app.py:28:11: W1508: os.getenv default type is builtins.int. Expected str or None. (invalid-envvar-default)
+server/backend/app.py:88:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/app.py:72:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/app.py:73:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/app.py:80:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/app.py:92:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/app.py:112:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/app.py:113:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/app.py:127:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/app.py:128:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/app.py:149:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/app.py:150:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/app.py:171:12: W0621: Redefining name 'json' from outer scope (line 10) (redefined-outer-name)
+server/backend/app.py:177:15: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/app.py:171:12: W0404: Reimport 'json' (imported line 10) (reimported)
+server/backend/app.py:171:12: C0415: Import outside toplevel (json) (import-outside-toplevel)
+server/backend/app.py:175:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/app.py:178:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/app.py:204:15: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/app.py:182:12: W0404: Reimport 'json' (imported line 10) (reimported)
+server/backend/app.py:182:12: C0415: Import outside toplevel (json) (import-outside-toplevel)
+server/backend/app.py:183:12: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+server/backend/app.py:205:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/app.py:255:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/app.py:256:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/app.py:269:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/app.py:270:4: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/app.py:10:0: W0611: Unused import json (unused-import)
+server/backend/app.py:11:0: W0611: Unused import time (unused-import)
+server/backend/app.py:13:0: W0611: Unused send_from_directory imported from flask (unused-import)
 ************* Module server.backend.ai_model
-server/backend/ai_model.py:32:0: C0301: Line too long (102/100) (line-too-long)
-server/backend/ai_model.py:130:0: C0301: Line too long (102/100) (line-too-long)
-server/backend/ai_model.py:134:0: C0301: Line too long (106/100) (line-too-long)
-server/backend/ai_model.py:143:0: C0301: Line too long (101/100) (line-too-long)
-server/backend/ai_model.py:148:0: C0301: Line too long (148/100) (line-too-long)
-server/backend/ai_model.py:160:0: C0301: Line too long (126/100) (line-too-long)
-server/backend/ai_model.py:167:0: C0301: Line too long (108/100) (line-too-long)
-server/backend/ai_model.py:177:0: C0301: Line too long (128/100) (line-too-long)
-server/backend/ai_model.py:191:0: C0301: Line too long (110/100) (line-too-long)
-server/backend/ai_model.py:195:0: C0301: Line too long (106/100) (line-too-long)
-server/backend/ai_model.py:201:0: C0301: Line too long (128/100) (line-too-long)
-server/backend/ai_model.py:219:0: C0301: Line too long (132/100) (line-too-long)
-server/backend/ai_model.py:283:0: C0301: Line too long (103/100) (line-too-long)
-server/backend/ai_model.py:286:0: C0301: Line too long (118/100) (line-too-long)
-server/backend/ai_model.py:355:0: C0301: Line too long (102/100) (line-too-long)
-server/backend/ai_model.py:378:0: C0301: Line too long (142/100) (line-too-long)
-server/backend/ai_model.py:426:0: C0301: Line too long (123/100) (line-too-long)
-server/backend/ai_model.py:442:0: C0301: Line too long (127/100) (line-too-long)
-server/backend/ai_model.py:495:0: C0301: Line too long (110/100) (line-too-long)
-server/backend/ai_model.py:507:0: C0301: Line too long (107/100) (line-too-long)
-server/backend/ai_model.py:35:0: R0902: Too many instance attributes (10/7) (too-many-instance-attributes)
-server/backend/ai_model.py:50:4: W0107: Unnecessary pass statement (unnecessary-pass)
-server/backend/ai_model.py:118:12: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
-server/backend/ai_model.py:129:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:132:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:163:12: W0621: Redefining name 'model' from outer scope (line 503) (redefined-outer-name)
-server/backend/ai_model.py:141:16: C0415: Import outside toplevel (gpt4all.GPT4All) (import-outside-toplevel)
-server/backend/ai_model.py:146:20: C0415: Import outside toplevel (gpt4all.gpt4all.GPT4All) (import-outside-toplevel)
-server/backend/ai_model.py:148:20: W0707: Consider explicitly re-raising using 'except ImportError as exc' and 'raise ImportError("GPT4All Bibliothek nicht installiert oder nicht korrekt konfiguriert. Installiere mit 'pip install gpt4all'") from exc' (raise-missing-from)
-server/backend/ai_model.py:160:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:164:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:170:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:180:12: C0415: Import outside toplevel (openai) (import-outside-toplevel)
-server/backend/ai_model.py:189:19: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/ai_model.py:190:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:204:12: C0415: Import outside toplevel (google.generativeai) (import-outside-toplevel)
-server/backend/ai_model.py:213:19: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/ai_model.py:214:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:270:12: W0621: Redefining name 'model' from outer scope (line 503) (redefined-outer-name)
-server/backend/ai_model.py:226:12: C0415: Import outside toplevel (transformers.AutoModelForCausalLM, transformers.AutoTokenizer, transformers.pipeline) (import-outside-toplevel)
-server/backend/ai_model.py:227:12: C0415: Import outside toplevel (torch) (import-outside-toplevel)
-server/backend/ai_model.py:237:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:246:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:255:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:283:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:289:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:313:16: C0415: Import outside toplevel (importlib.util) (import-outside-toplevel)
-server/backend/ai_model.py:317:16: C0415: Import outside toplevel (openai) (import-outside-toplevel)
-server/backend/ai_model.py:319:16: C0415: Import outside toplevel (google.generativeai) (import-outside-toplevel)
-server/backend/ai_model.py:321:16: C0415: Import outside toplevel (transformers) (import-outside-toplevel)
-server/backend/ai_model.py:322:16: C0415: Import outside toplevel (torch) (import-outside-toplevel)
-server/backend/ai_model.py:317:16: W0611: Unused import openai (unused-import)
-server/backend/ai_model.py:319:16: W0611: Unused import google.generativeai (unused-import)
-server/backend/ai_model.py:321:16: W0611: Unused import transformers (unused-import)
-server/backend/ai_model.py:322:16: W0611: Unused import torch (unused-import)
-server/backend/ai_model.py:348:4: W0621: Redefining name 'models' from outer scope (line 500) (redefined-outer-name)
-server/backend/ai_model.py:355:16: W0621: Redefining name 'log_text' from outer scope (line 515) (redefined-outer-name)
-server/backend/ai_model.py:396:8: W0621: Redefining name 'model' from outer scope (line 503) (redefined-outer-name)
-server/backend/ai_model.py:416:11: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/ai_model.py:402:8: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
-server/backend/ai_model.py:414:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:417:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:355:0: R0911: Too many return statements (8/6) (too-many-return-statements)
-server/backend/ai_model.py:372:4: W0612: Unused variable 'truncated' (unused-variable)
-server/backend/ai_model.py:421:26: W0621: Redefining name 'model' from outer scope (line 503) (redefined-outer-name)
-server/backend/ai_model.py:432:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:451:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:458:8: W0621: Redefining name 'model' from outer scope (line 503) (redefined-outer-name)
-server/backend/ai_model.py:463:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:471:8: W0621: Redefining name 'model' from outer scope (line 503) (redefined-outer-name)
-server/backend/ai_model.py:484:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
-server/backend/ai_model.py:471:8: W0612: Unused variable 'model' (unused-variable)
-server/backend/ai_model.py:471:15: W0612: Unused variable 'tokenizer' (unused-variable)
-server/backend/ai_model.py:504:12: C0103: Constant name "status" doesn't conform to UPPER_CASE naming style (invalid-name)
-server/backend/ai_model.py:505:12: C0103: Constant name "api_status" doesn't conform to UPPER_CASE naming style (invalid-name)
-server/backend/ai_model.py:507:16: C0103: Constant name "api_status" doesn't conform to UPPER_CASE naming style (invalid-name)
-server/backend/ai_model.py:523:15: W0718: Catching too general exception Exception (broad-exception-caught)
-server/backend/ai_model.py:514:17: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
-server/backend/ai_model.py:7:0: W0611: Unused import sys (unused-import)
-server/backend/ai_model.py:10:0: W0611: Unused import tempfile (unused-import)
-server/backend/ai_model.py:12:0: W0611: Unused Union imported from typing (unused-import)
-server/backend/ai_model.py:12:0: W0611: Unused Callable imported from typing (unused-import)
-server/backend/ai_model.py:13:0: W0611: Unused field imported from dataclasses (unused-import)
-server/backend/ai_model.py:14:0: W0611: Unused Path imported from pathlib (unused-import)
+server/backend/ai_model.py:69:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:138:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:143:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:146:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:149:0: C0301: Line too long (109/100) (line-too-long)
+server/backend/ai_model.py:150:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:166:0: C0301: Line too long (114/100) (line-too-long)
+server/backend/ai_model.py:167:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:172:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:181:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:190:0: C0301: Line too long (114/100) (line-too-long)
+server/backend/ai_model.py:191:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:194:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:197:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:205:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:208:0: C0301: Line too long (121/100) (line-too-long)
+server/backend/ai_model.py:216:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:222:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:228:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:232:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:241:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:249:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:257:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:259:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:270:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:274:0: C0301: Line too long (107/100) (line-too-long)
+server/backend/ai_model.py:294:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:309:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:316:0: C0301: Line too long (110/100) (line-too-long)
+server/backend/ai_model.py:333:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:336:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:339:0: C0301: Line too long (102/100) (line-too-long)
+server/backend/ai_model.py:353:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:360:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:374:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:378:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:381:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:384:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:396:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:410:0: C0301: Line too long (106/100) (line-too-long)
+server/backend/ai_model.py:413:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:426:0: C0301: Line too long (110/100) (line-too-long)
+server/backend/ai_model.py:432:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:444:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:456:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:465:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:475:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:480:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:482:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:492:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:495:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:500:0: C0303: Trailing whitespace (trailing-whitespace)
+server/backend/ai_model.py:33:0: R0902: Too many instance attributes (10/7) (too-many-instance-attributes)
+server/backend/ai_model.py:48:4: W0107: Unnecessary pass statement (unnecessary-pass)
+server/backend/ai_model.py:116:12: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+server/backend/ai_model.py:127:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:130:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:152:12: W0621: Redefining name 'model' from outer scope (line 487) (redefined-outer-name)
+server/backend/ai_model.py:137:12: C0415: Import outside toplevel (gpt4all.GPT4All) (import-outside-toplevel)
+server/backend/ai_model.py:149:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:153:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:159:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:169:12: C0415: Import outside toplevel (openai) (import-outside-toplevel)
+server/backend/ai_model.py:178:19: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/ai_model.py:179:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:193:12: C0415: Import outside toplevel (google.generativeai) (import-outside-toplevel)
+server/backend/ai_model.py:202:19: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/ai_model.py:203:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:258:12: W0621: Redefining name 'model' from outer scope (line 487) (redefined-outer-name)
+server/backend/ai_model.py:214:12: C0415: Import outside toplevel (transformers.AutoModelForCausalLM, transformers.AutoTokenizer, transformers.pipeline) (import-outside-toplevel)
+server/backend/ai_model.py:215:12: C0415: Import outside toplevel (torch) (import-outside-toplevel)
+server/backend/ai_model.py:225:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:234:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:243:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:271:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:277:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:299:16: C0415: Import outside toplevel (gpt4all) (import-outside-toplevel)
+server/backend/ai_model.py:301:16: C0415: Import outside toplevel (openai) (import-outside-toplevel)
+server/backend/ai_model.py:303:16: C0415: Import outside toplevel (google.generativeai) (import-outside-toplevel)
+server/backend/ai_model.py:305:16: C0415: Import outside toplevel (transformers) (import-outside-toplevel)
+server/backend/ai_model.py:306:16: C0415: Import outside toplevel (torch) (import-outside-toplevel)
+server/backend/ai_model.py:299:16: W0611: Unused import gpt4all (unused-import)
+server/backend/ai_model.py:301:16: W0611: Unused import openai (unused-import)
+server/backend/ai_model.py:303:16: W0611: Unused import google.generativeai (unused-import)
+server/backend/ai_model.py:305:16: W0611: Unused import transformers (unused-import)
+server/backend/ai_model.py:306:16: W0611: Unused import torch (unused-import)
+server/backend/ai_model.py:332:4: W0621: Redefining name 'models' from outer scope (line 484) (redefined-outer-name)
+server/backend/ai_model.py:339:16: W0621: Redefining name 'log_text' from outer scope (line 499) (redefined-outer-name)
+server/backend/ai_model.py:380:8: W0621: Redefining name 'model' from outer scope (line 487) (redefined-outer-name)
+server/backend/ai_model.py:400:11: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/ai_model.py:386:8: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+server/backend/ai_model.py:398:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:401:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:339:0: R0911: Too many return statements (8/6) (too-many-return-statements)
+server/backend/ai_model.py:356:4: W0612: Unused variable 'truncated' (unused-variable)
+server/backend/ai_model.py:405:26: W0621: Redefining name 'model' from outer scope (line 487) (redefined-outer-name)
+server/backend/ai_model.py:416:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:435:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:442:8: W0621: Redefining name 'model' from outer scope (line 487) (redefined-outer-name)
+server/backend/ai_model.py:447:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:455:8: W0621: Redefining name 'model' from outer scope (line 487) (redefined-outer-name)
+server/backend/ai_model.py:468:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+server/backend/ai_model.py:455:8: W0612: Unused variable 'model' (unused-variable)
+server/backend/ai_model.py:455:15: W0612: Unused variable 'tokenizer' (unused-variable)
+server/backend/ai_model.py:488:12: C0103: Constant name "status" doesn't conform to UPPER_CASE naming style (invalid-name)
+server/backend/ai_model.py:489:12: C0103: Constant name "api_status" doesn't conform to UPPER_CASE naming style (invalid-name)
+server/backend/ai_model.py:491:16: C0103: Constant name "api_status" doesn't conform to UPPER_CASE naming style (invalid-name)
+server/backend/ai_model.py:507:15: W0718: Catching too general exception Exception (broad-exception-caught)
+server/backend/ai_model.py:498:17: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+server/backend/ai_model.py:7:0: W0611: Unused import tempfile (unused-import)
+server/backend/ai_model.py:8:0: W0611: Unused Union imported from typing (unused-import)
+server/backend/ai_model.py:8:0: W0611: Unused Callable imported from typing (unused-import)
+server/backend/ai_model.py:10:0: W0611: Unused field imported from dataclasses (unused-import)
+server/backend/ai_model.py:12:0: W0611: Unused Path imported from pathlib (unused-import)
 ************* Module server.backend.gpt4allinit
 server/backend/gpt4allinit.py:56:0: C0303: Trailing whitespace (trailing-whitespace)
 server/backend/gpt4allinit.py:61:0: C0303: Trailing whitespace (trailing-whitespace)
@@ -1211,6 +1229,503 @@ server/backend/gpt4all/app.py:98:4: W0702: No exception type(s) specified (bare-
 ************* Module analyze
 analyze.py:19:10: E0602: Undefined variable 'log_file_path' (undefined-variable)
 analyze.py:20:37: E0602: Undefined variable 'root_dir' (undefined-variable)
+analyze.py:1:0: R0801: Similar lines in 2 files
+==client.backend.ai_model:[14:508]
+==server.backend.ai_model:[14:508]
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    logging.warning("dotenv package not installed, environment variables must be set manually")
+
+# Configure logging with more structured approach
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
+    handlers=[
+        logging.FileHandler("ai_model.log"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger("AIModel")
+
+@dataclass
+class ModelConfig:
+    """Configuration for AI models with robust type handling."""
+    name: str
+    api_key: Optional[str] = None
+    model_path: Optional[str] = None
+    model_id: Optional[str] = None
+    cache_dir: str = "./models"
+    device: str = "cpu"
+    max_tokens: int = 2048
+    temperature: float = 0.7
+    timeout: int = 120  # Timeout in seconds for API calls
+    retry_count: int = 2  # Number of retries for failed API calls
+
+class ModelInitializationError(Exception):
+    """Custom exception for model initialization failures."""
+    pass
+
+class AIModelManager:
+    """Centralized manager for AI model initialization and management."""
+
+    def __init__(self):
+        """Initialize the AI Model Manager."""
+        self._models: Dict[str, Any] = {}
+        self._configs = self._load_model_configs()
+        # Ensure model cache directory exists
+        for config in self._configs.values():
+            os.makedirs(os.path.expanduser(config.cache_dir), exist_ok=True)
+
+    def _load_model_configs(self) -> Dict[str, ModelConfig]:
+        """
+        Load model configurations from environment variables.
+
+        Returns:
+            Dictionary of model configurations
+        """
+        models_cache_dir = os.getenv("MODELS_CACHE_DIR", "./models")
+
+        return {
+            "gpt4all": ModelConfig(
+                name="gpt4all",
+                model_path=os.getenv("LLAMA_MODEL_PATH", "Meta-Llama-3-8B-Instruct.Q4_0.gguf"),
+                model_id="local/gpt4all",
+                cache_dir=models_cache_dir
+            ),
+            "openai": ModelConfig(
+                name="openai",
+                api_key=os.getenv("OPENAI_API_KEY"),
+                model_id=os.getenv("OPENAI_MODEL", "gpt-4"),
+                cache_dir=models_cache_dir
+            ),
+            "gemini": ModelConfig(
+                name="gemini",
+                api_key=os.getenv("GEMINI_API_KEY"),
+                model_id=os.getenv("GEMINI_MODEL", "gemini-pro"),
+                cache_dir=models_cache_dir
+            ),
+            "huggingface": ModelConfig(
+                name="huggingface",
+                api_key=os.getenv("HUGGINGFACE_API_KEY"),
+                model_id=os.getenv("HUGGINGFACE_MODEL_ID", "mistralai/Mistral-7B-Instruct-v0.2"),
+                cache_dir=models_cache_dir
+            )
+        }
+
+    @lru_cache(maxsize=4)
+    def initialize_model(self, model_name: str) -> Any:
+        """
+        Initialize a specific AI model with caching and robust error handling.
+
+        Args:
+            model_name: Name of the model to initialize
+
+        Returns:
+            Initialized model instance
+
+        Raises:
+            ModelInitializationError: If model cannot be initialized
+        """
+        config = self._configs.get(model_name.lower())
+        if not config:
+            raise ModelInitializationError(f"Unknown model: {model_name}")
+
+        try:
+            if model_name.lower() == "gpt4all":
+                return self._initialize_gpt4all(config)
+            elif model_name.lower() == "openai":
+                return self._initialize_openai(config)
+            elif model_name.lower() == "gemini":
+                return self._initialize_gemini(config)
+            elif model_name.lower() == "huggingface":
+                return self._initialize_huggingface(config)
+            else:
+                raise ModelInitializationError(f"Unsupported model type: {model_name}")
+        except ImportError as e:
+            logger.error(f"Required library not installed for {model_name}: {e}")
+            raise ModelInitializationError(f"Missing library for {model_name} model: {e}") from e
+        except Exception as e:
+            logger.error(f"Model initialization failed for {model_name}: {e}")
+            logger.debug(traceback.format_exc())
+            raise ModelInitializationError(f"Failed to initialize {model_name} model: {e}") from e
+
+    def _initialize_gpt4all(self, config: ModelConfig) -> Any:
+        """Initialize GPT4All model with robust error handling."""
+        try:
+            from gpt4all import GPT4All
+
+            # Handle relative and user paths
+            model_path = os.path.expanduser(config.model_path)
+            if not os.path.isabs(model_path):
+                model_path = os.path.join(os.path.expanduser(config.cache_dir), model_path)
+
+            # Ensure model directory exists
+            os.makedirs(os.path.dirname(model_path), exist_ok=True)
+
+            # Check if model file exists, if not inform the user
+            if not os.path.exists(model_path):
+                logger.warning(f"Model file not found at {model_path}. GPT4All will attempt to download it.")
+
+            # Initialize model with specified parameters
+            model = GPT4All(model_path)
+            logger.info(f"GPT4All model loaded successfully from {model_path}")
+            return model
+        except ImportError:
+            logger.error("GPT4All library not installed. Install it with 'pip install gpt4all'.")
+            raise
+        except Exception as e:
+            logger.error(f"Error initializing GPT4All model: {e}")
+            logger.debug(traceback.format_exc())
+            raise
+
+    def _initialize_openai(self, config: ModelConfig) -> Any:
+        """Initialize OpenAI model with API key validation."""
+        if not config.api_key:
+            raise ModelInitializationError("OpenAI API key is required. Set OPENAI_API_KEY environment variable.")
+
+        try:
+            import openai
+            # Set API key
+            openai.api_key = config.api_key
+
+            # Test connection by making a simple request
+            try:
+                # Use models.list as a simple API check
+                openai.models.list()
+                logger.info("OpenAI API connection verified successfully")
+            except Exception as api_error:
+                logger.warning(f"OpenAI API connection test failed: {api_error}")
+                # Continue anyway as the key might still be valid for completions
+
+            return openai
+        except ImportError:
+            logger.error("OpenAI library not installed. Install it with 'pip install openai'.")
+            raise
+
+    def _initialize_gemini(self, config: ModelConfig) -> Any:
+        """Initialize Google Gemini model with API key validation."""
+        if not config.api_key:
+            raise ModelInitializationError("Gemini API key is required. Set GEMINI_API_KEY environment variable.")
+
+        try:
+            import google.generativeai as genai
+
+            # Configure with API key
+            genai.configure(api_key=config.api_key)
+
+            # Test connection by listing models
+            try:
+                genai.list_models()
+                logger.info("Gemini API connection verified successfully")
+            except Exception as api_error:
+                logger.warning(f"Gemini API connection test failed: {api_error}")
+                # Continue anyway as the key might still be valid
+
+            return genai
+        except ImportError:
+            logger.error("Google GenerativeAI library not installed. Install it with 'pip install google-generativeai'.")
+            raise
+
+    def _initialize_huggingface(self, config: ModelConfig) -> Tuple[Any, Any, Any]:
+        """Initialize Hugging Face model with comprehensive setup."""
+        try:
+            from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+            import torch
+
+            # Determine device
+            if config.device == "auto":
+                device = "cuda" if torch.cuda.is_available() else "cpu"
+            else:
+                device = config.device
+
+            # Log device information
+            if device == "cuda" and torch.cuda.is_available():
+                logger.info(f"Using CUDA device: {torch.cuda.get_device_name(0)}")
+            else:
+                logger.info("Using CPU for inference")
+
+            # Ensure cache directory exists
+            cache_dir = os.path.expanduser(config.cache_dir)
+            os.makedirs(cache_dir, exist_ok=True)
+
+            # Load tokenizer
+            logger.info(f"Loading tokenizer for model: {config.model_id}")
+            tokenizer = AutoTokenizer.from_pretrained(
+                config.model_id,
+                cache_dir=cache_dir,
+                token=config.api_key if config.api_key else None,
+                local_files_only=False
+            )
+
+            # Load model with appropriate settings based on device
+            logger.info(f"Loading model: {config.model_id}")
+            model_loading_args = {
+                "cache_dir": cache_dir,
+                "token": config.api_key if config.api_key else None,
+                "local_files_only": False
+            }
+
+            # Add device-specific optimizations
+            if device == "cuda":
+                model_loading_args.update({
+                    "torch_dtype": torch.float16,  # Use half precision for GPU
+                    "low_cpu_mem_usage": True,
+                    "device_map": "auto"
+                })
+
+            model = AutoModelForCausalLM.from_pretrained(config.model_id, **model_loading_args)
+
+            # Create text generation pipeline
+            logger.info("Creating text generation pipeline")
+            pipeline_model = pipeline(
+                "text-generation",
+                model=model,
+                tokenizer=tokenizer,
+                device=0 if device == "cuda" else -1,
+                max_new_tokens=config.max_tokens,
+                temperature=config.temperature
+            )
+
+            logger.info(f"HuggingFace model {config.model_id} initialized successfully on {device}")
+            return model, tokenizer, pipeline_model
+        except ImportError:
+            logger.error("Transformers library not installed. Install it with 'pip install transformers'.")
+            raise
+        except Exception as e:
+            logger.error(f"Error initializing HuggingFace model: {e}")
+            logger.debug(traceback.format_exc())
+            raise
+
+    def get_model_info(self, model_name: str) -> Dict[str, Any]:
+        """
+        Retrieve information about a specific model.
+
+        Args:
+            model_name: Name of the model
+
+        Returns:
+            Dictionary with model information
+        """
+        config = self._configs.get(model_name.lower())
+        if not config:
+            return {"error": f"Unknown model: {model_name}"}
+
+        # Check if model is available (libraries installed)
+        available = True
+        try:
+            if model_name.lower() == "gpt4all":
+                import gpt4all
+            elif model_name.lower() == "openai":
+                import openai
+            elif model_name.lower() == "gemini":
+                import google.generativeai
+            elif model_name.lower() == "huggingface":
+                import transformers
+                import torch
+        except ImportError:
+            available = False
+
+        return {
+            "name": config.name,
+            "model_id": config.model_id,
+            "is_api_model": bool(config.api_key),
+            "device": config.device,
+            "available": available,
+            "has_api_key": bool(config.api_key) if config.api_key is required_for_model(model_name) else True,
+            "cache_dir": config.cache_dir
+        }
+
+def required_for_model(model_name: str) -> bool:
+    """Check if an API key is required for a specific model."""
+    return model_name.lower() in ["openai", "gemini", "huggingface"]
+
+def get_available_models() -> List[Dict[str, Any]]:
+    """
+    Get information about all available models.
+
+    Returns:
+        List of dictionaries with model information
+    """
+    manager = AIModelManager()
+    models = []
+
+    for model_name in ["gpt4all", "openai", "gemini", "huggingface"]:
+        models.append(manager.get_model_info(model_name))
+
+    return models
+
+def analyze_log(log_text: str, model_name: str = "gpt4all", instruction: Optional[str] = None) -> str:
+    """
+    Analyze a log using the specified AI model.
+
+    Args:
+        log_text: The log text to analyze
+        model_name: Name of the model to use
+        instruction: Optional custom instruction for the analysis
+
+    Returns:
+        Analysis result as string
+    """
+    if not log_text:
+        return "Error: No log text provided for analysis."
+
+    # Limit log text length if necessary to prevent excessive token usage
+    max_log_length = 8000  # Characters, adjust based on model capabilities
+    truncated = False
+    if len(log_text) > max_log_length:
+        log_text = log_text[:max_log_length] + "..."
+        truncated = True
+
+    # Default system prompt for log analysis
+    system_prompt = """You are an AI assistant specialized in analyzing logs and providing insights.
+Given a log snippet, your task is to:
+1. Summarize the key information in the log
+2. Identify any errors, warnings, or issues
+3. Explain potential causes for the identified problems
+4. Suggest troubleshooting steps or solutions
+
+Be concise and precise in your analysis."""
+
+    # Use custom instruction if provided
+    if instruction:
+        system_prompt = instruction
+
+    try:
+        # Initialize the model manager
+        manager = AIModelManager()
+
+        # Get the model based on name
+        model = manager.initialize_model(model_name)
+
+        # Build full prompt
+        prompt = f"{system_prompt}\n\nLOG:\n{log_text}\n\nANALYSIS:"
+
+        # Generate analysis based on model type
+        if model_name.lower() == "gpt4all":
+            return _analyze_with_gpt4all(model, prompt)
+        elif model_name.lower() == "openai":
+            return _analyze_with_openai(model, prompt)
+        elif model_name.lower() == "gemini":
+            return _analyze_with_gemini(model, prompt)
+        elif model_name.lower() == "huggingface":
+            return _analyze_with_huggingface(model, prompt)
+        else:
+            return f"Error: Unsupported model type: {model_name}"
+
+    except ModelInitializationError as e:
+        logger.error(f"Model initialization error: {e}")
+        return f"Error initializing model: {str(e)}"
+    except Exception as e:
+        logger.error(f"Error analyzing log with {model_name}: {e}")
+        logger.debug(traceback.format_exc())
+        return f"Error analyzing log: {str(e)}"
+
+def _analyze_with_gpt4all(model, prompt: str) -> str:
+    """Generate analysis using GPT4All model."""
+    try:
+        # Use chat completion API
+        response = model.chat_completion([
+            {"role": "system", "content": "You are a helpful AI assistant specializing in log analysis."},
+            {"role": "user", "content": prompt}
+        ])
+
+        return response['choices'][0]['message']['content']
+    except Exception as e:
+        logger.error(f"Error in GPT4All analysis: {e}")
+        logger.debug(traceback.format_exc())
+        raise
+
+def _analyze_with_openai(openai_client, prompt: str) -> str:
+    """Generate analysis using OpenAI API."""
+    try:
+        response = openai_client.chat.completions.create(
+            model=os.getenv("OPENAI_MODEL", "gpt-4"),
+            messages=[
+                {"role": "system", "content": "You are a helpful AI assistant specializing in log analysis."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.7,
+            max_tokens=1500
+        )
+
+        return response.choices[0].message.content
+    except Exception as e:
+        logger.error(f"Error in OpenAI analysis: {e}")
+        logger.debug(traceback.format_exc())
+        raise
+
+def _analyze_with_gemini(genai, prompt: str) -> str:
+    """Generate analysis using Google Gemini API."""
+    try:
+        model = genai.GenerativeModel(os.getenv("GEMINI_MODEL", "gemini-pro"))
+        response = model.generate_content(prompt)
+
+        return response.text
+    except Exception as e:
+        logger.error(f"Error in Gemini analysis: {e}")
+        logger.debug(traceback.format_exc())
+        raise
+
+def _analyze_with_huggingface(model_tuple, prompt: str) -> str:
+    """Generate analysis using HuggingFace model."""
+    try:
+        # Unpack the model tuple
+        model, tokenizer, pipeline_model = model_tuple
+
+        # Generate text
+        response = pipeline_model(
+            prompt,
+            do_sample=True,
+            top_p=0.95,
+            temperature=0.7,
+            return_full_text=False
+        )
+
+        return response[0]['generated_text']
+    except Exception as e:
+        logger.error(f"Error in HuggingFace analysis: {e}")
+        logger.debug(traceback.format_exc())
+        raise
+
+if __name__ == "__main__":
+    # Simple CLI for testing the module
+    import argparse
+
+    parser = argparse.ArgumentParser(description="AILinux Model Manager CLI")
+    parser.add_argument("--list-models", action="store_true", help="List available models")
+    parser.add_argument("--analyze", type=str, help="Analyze log file")
+    parser.add_argument("--model", type=str, default="gpt4all", help="Model to use for analysis")
+
+    args = parser.parse_args()
+
+    if args.list_models:
+        models = get_available_models()
+        print("\nAvailable AI Models:")
+        print("===================")
+        for model in models:
+            status = "✓ Available" if model["available"] else "✗ Not available"
+            api_status = ""
+            if model["is_api_model"]:
+                api_status = "✓ API Key Set" if model["has_api_key"] else "✗ API Key Missing"
+
+            print(f"{model['name']} ({model['model_id']}): {status} {api_status}")
+        print()
+
+    if args.analyze:
+        try:
+            with open(args.analyze, 'r') as f:
+                log_text = f.read()
+
+            print(f"\nAnalyzing log with {args.model}...\n")
+            result = analyze_log(log_text, args.model)
+            print(result)
+            print()
+        except FileNotFoundError:
+            print(f"Error: File not found: {args.analyze}")
+        except Exception as e:
+            print(f"Error: {e}") (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==devtools.uploadready:[37:541]
 ==uploadready:[37:541]
@@ -1947,77 +2462,25 @@ if __name__ == "__main__":
     restore_directory_structure(base_dir)
     run_pylint() (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[55:112]
-==server.backend.ai_model:[57:114]
-        self._configs = self._load_model_configs()
-        # Stelle sicher, dass das Modell-Cache-Verzeichnis existiert
-        for config in self._configs.values():
-            os.makedirs(os.path.expanduser(config.cache_dir), exist_ok=True)
+==client.backend.app:[235:294]
+==server.backend.app:[171:236]
+            with open(settings_file, 'w', encoding='utf-8') as f:
+                json.dump(new_settings, f, indent=2)
 
-    def _load_model_configs(self) -> Dict[str, ModelConfig]:
-        """
-        Lade Modellkonfigurationen aus Umgebungsvariablen.
-
-        Returns:
-            Dictionary mit Modellkonfigurationen
-        """
-        models_cache_dir = os.getenv("MODELS_CACHE_DIR", "./models")
-
-        return {
-            "gpt4all": ModelConfig(
-                name="gpt4all",
-                model_path=os.getenv("LLAMA_MODEL_PATH", "Meta-Llama-3-8B-Instruct.Q4_0.gguf"),
-                model_id="local/gpt4all",
-                cache_dir=models_cache_dir
-            ),
-            "openai": ModelConfig(
-                name="openai",
-                api_key=os.getenv("OPENAI_API_KEY"),
-                model_id=os.getenv("OPENAI_MODEL", "gpt-4"),
-                cache_dir=models_cache_dir
-            ),
-            "gemini": ModelConfig(
-                name="gemini",
-                api_key=os.getenv("GEMINI_API_KEY"),
-                model_id=os.getenv("GEMINI_MODEL", "gemini-pro"),
-                cache_dir=models_cache_dir
-            ),
-            "huggingface": ModelConfig(
-                name="huggingface",
-                api_key=os.getenv("HUGGINGFACE_API_KEY"),
-                model_id=os.getenv("HUGGINGFACE_MODEL_ID", "mistralai/Mistral-7B-Instruct-v0.2"),
-                cache_dir=models_cache_dir
-            )
-        }
-
-    @lru_cache(maxsize=4)
-    def initialize_model(self, model_name: str) -> Any:
-        """
-        Initialisiere ein spezifisches AI-Modell mit Caching und robuster Fehlerbehandlung.
-
-        Args:
-            model_name: Name des zu initialisierenden Modells
-
-        Returns:
-            Initialisierte Modellinstanz
-
-        Raises:
-            ModelInitializationError: Wenn das Modell nicht initialisiert werden kann
-        """
-        config = self._configs.get(model_name.lower())
-        if not config: (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.app:[242:268]
-==server.backend.app:[195:220]
+            logger.info(f"Updated settings: {new_settings}")
+            return jsonify({"status": "success", "message": "Settings updated"})
+        except Exception as e:
+            logger.exception(f"Error updating settings: {str(e)}")
             return jsonify({"error": str(e)}), 500
     else:
         try:
+            import json
             if os.path.exists(settings_file):
                 with open(settings_file, 'r', encoding='utf-8') as f:
                     settings = json.load(f)
                 return jsonify({"settings": settings})
             else:
-                # Gib Standardeinstellungen zurück, wenn die Datei nicht existiert
+                # Return default settings if file doesn't exist
                 default_settings = {
                     "ai": {
                         "defaultModel": "gpt4all",
@@ -2033,7 +2496,106 @@ analyze.py:1:0: R0801: Similar lines in 2 files
                     }
                 }
                 return jsonify({"settings": default_settings})
-        except Exception as e: (duplicate-code)
+        except Exception as e:
+            logger.exception(f"Error retrieving settings: {str(e)}")
+            return jsonify({"error": str(e)}), 500
+
+
+@app.route('/health', methods=['GET'])
+def health_check():
+    """Check the health of the backend server.
+
+    Returns:
+        JSON response with server status
+    """
+    return jsonify({
+        "status": "online",
+        "environment": ENV,
+        "version": "1.0.0",
+        "timestamp": datetime.now().isoformat()
+    })
+
+
+def translate_log(log_text):
+    """Preprocess log text before AI analysis.
+
+    This function can be expanded to implement more sophisticated
+    log translation or normalization.
+
+    Args:
+        log_text: The original log text
+
+    Returns:
+        Processed log text
+    """
+    # In the future, add log normalization or preprocessing here (duplicate-code)
+analyze.py:1:0: R0801: Similar lines in 2 files
+==client.backend.app:[168:232]
+==server.backend.app:[107:171]
+            return jsonify({"logs": logs})
+
+        return jsonify({"logs": []})
+
+    except Exception as e:
+        logger.exception(f"Error retrieving logs: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/models', methods=['GET'])
+def get_models():
+    """Get list of available AI models.
+
+    Returns:
+        JSON response containing available models
+    """
+    try:
+        models = get_available_models()
+        return jsonify({"models": models})
+    except Exception as e:
+        logger.exception(f"Error retrieving models: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/system', methods=['GET'])
+def system_status():
+    """Get system status information.
+
+    Returns:
+        JSON response with system metrics
+    """
+    try:
+        system_info = {
+            "cpu": psutil.cpu_percent(interval=1),
+            "ram": psutil.virtual_memory().percent,
+            "disk": psutil.disk_usage("/").percent,
+            "network": psutil.net_io_counters().bytes_sent + psutil.net_io_counters().bytes_recv,
+            "running_processes": len(psutil.pids()),
+            "timestamp": datetime.now().isoformat()
+        }
+        return jsonify(system_info)
+    except Exception as e:
+        logger.exception(f"Error retrieving system status: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/settings', methods=['GET', 'POST'])
+def handle_settings():
+    """Update or retrieve application settings.
+
+    Returns:
+        JSON response with settings data or confirmation
+    """
+    settings_file = os.path.join(os.path.dirname(__file__), "settings.json")
+
+    if request.method == 'POST':
+        try:
+            new_settings = request.json
+
+            # Validate settings
+            if not isinstance(new_settings, dict):
+                return jsonify({"error": "Invalid settings format"}), 400
+
+            # Ensure settings directory exists (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==analyze:[4:36]
 ==devtools.analyze:[4:36]
@@ -2070,32 +2632,6 @@ with open(log_file_path, "w", encoding='utf-8') as log_file:
                     log_file.write(f"\n--- {file_path} ---\n")
                     log_file.write(f.read()) (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[31:54]
-==server.backend.ai_model:[33:56]
-@dataclass
-class ModelConfig:
-    """Konfiguration für AI-Modelle mit robuster Typbehandlung."""
-    name: str
-    api_key: Optional[str] = None
-    model_path: Optional[str] = None
-    model_id: Optional[str] = None
-    cache_dir: str = "./models"
-    device: str = "cpu"
-    max_tokens: int = 2048
-    temperature: float = 0.7
-    timeout: int = 120  # Timeout in Sekunden für API-Aufrufe
-    retry_count: int = 2  # Anzahl der Wiederholungsversuche bei fehlgeschlagenen API-Aufrufen
-
-class ModelInitializationError(Exception):
-    """Benutzerdefinierte Ausnahme für Fehler bei der Modellinitialisierung."""
-    pass
-
-class AIModelManager:
-    """Zentralisierter Manager für AI-Modellinitialisierung und -verwaltung."""
-
-    def __init__(self):
-        """Initialisiere den AI Model Manager.""" (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
 ==devtools.adjust_hierarchy_with_debugger:[32:52]
 ==patch.ailinux-alpha-code-patcher-v0.3:[152:170]
         for key, value in structure.items():
@@ -2115,9 +2651,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
     create_structure(base_dir, expected_structure)
     print(f"Directory structure verified and restored in {base_dir}")
 
-
-def run_pylint():
-    """Run pylint with specific options to check the code.""" (duplicate-code)
+ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==bigfiles:[4:24]
 ==devtools.bigfiles:[4:24]
@@ -2160,92 +2694,6 @@ analyze.py:1:0: R0801: Similar lines in 2 files
 
 if __name__ == "__main__": (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[447:467]
-==server.backend.ai_model:[463:483]
-        logger.debug(traceback.format_exc())
-        raise
-
-def _analyze_with_huggingface(model_tuple, prompt: str) -> str:
-    """Generate analysis using HuggingFace model."""
-    try:
-        # Unpack the model tuple
-        model, tokenizer, pipeline_model = model_tuple
-
-        # Generate text
-        response = pipeline_model(
-            prompt,
-            do_sample=True,
-            top_p=0.95,
-            temperature=0.7,
-            return_full_text=False
-        )
-
-        return response[0]['generated_text']
-    except Exception as e: (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[243:260]
-==server.backend.ai_model:[255:272]
-            model_loading_args = {
-                "cache_dir": cache_dir,
-                "token": config.api_key if config.api_key else None,
-                "local_files_only": False
-            }
-
-            # Add device-specific optimizations
-            if device == "cuda":
-                model_loading_args.update({
-                    "torch_dtype": torch.float16,  # Use half precision for GPU
-                    "low_cpu_mem_usage": True,
-                    "device_map": "auto"
-                })
-
-            model = AutoModelForCausalLM.from_pretrained(config.model_id, **model_loading_args)
-
-            # Create text generation pipeline (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.app:[189:210]
-==server.backend.app:[143:163]
-        return jsonify({"error": str(e)}), 500
-
-
-@app.route('/system', methods=['GET'])
-def system_status():
-    """Get system status information.
-
-    Returns:
-        JSON response with system metrics
-    """
-    try:
-        system_info = {
-            "cpu": psutil.cpu_percent(interval=1),
-            "ram": psutil.virtual_memory().percent,
-            "disk": psutil.disk_usage("/").percent,
-            "network": psutil.net_io_counters().bytes_sent + psutil.net_io_counters().bytes_recv,
-            "running_processes": len(psutil.pids()),
-            "timestamp": datetime.now().isoformat()
-        }
-        return jsonify(system_info)
-    except Exception as e: (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[299:315]
-==server.backend.ai_model:[315:331]
-            elif model_name.lower() == "openai":
-                import openai
-            elif model_name.lower() == "gemini":
-                import google.generativeai
-            elif model_name.lower() == "huggingface":
-                import transformers
-                import torch
-        except ImportError:
-            available = False
-
-        return {
-            "name": config.name,
-            "model_id": config.model_id,
-            "is_api_model": bool(config.api_key),
-            "device": config.device,
-            "available": available, (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
 ==devtools.adjust_hierarchy_with_debugger:[18:32]
 ==patch.ailinux-alpha-code-patcher-v0.3:[138:150]
     expected_structure = {
@@ -2259,22 +2707,7 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         'readme': ['README.md']
     }
 
-    # Helper function to create the directory structure
-    def create_structure(target_path, structure):
-        """Create directories and files based on expected structure.""" (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[114:124]
-==server.backend.ai_model:[116:126]
-        try:
-            if model_name.lower() == "gpt4all":
-                return self._initialize_gpt4all(config)
-            elif model_name.lower() == "openai":
-                return self._initialize_openai(config)
-            elif model_name.lower() == "gemini":
-                return self._initialize_gemini(config)
-            elif model_name.lower() == "huggingface":
-                return self._initialize_huggingface(config)
-            else: (duplicate-code)
+    # Helper function to create the directory structure (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==devtools.adjust_hierarchy_with_debugger:[52:61]
 ==patch.ailinux-alpha-code-patcher-v0.3:[33:42]
@@ -2288,80 +2721,36 @@ analyze.py:1:0: R0801: Similar lines in 2 files
         print(result.stdout)
         if result.stderr: (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[385:394]
-==server.backend.ai_model:[401:410]
-        if model_name.lower() == "gpt4all":
-            return _analyze_with_gpt4all(model, prompt)
-        elif model_name.lower() == "openai":
-            return _analyze_with_openai(model, prompt)
-        elif model_name.lower() == "gemini":
-            return _analyze_with_gemini(model, prompt)
-        elif model_name.lower() == "huggingface":
-            return _analyze_with_huggingface(model, prompt)
-        else: (duplicate-code)
+==client.backend.app:[33:48]
+==server.backend.app:[22:36]
+app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
+
+# Server configuration with fallback values
+HOST = os.getenv("FLASK_HOST", "0.0.0.0")  # Default to all interfaces
+PORT = int(os.getenv("FLASK_PORT", 8081))   # Default to 8081
+DEBUG = os.getenv("FLASK_DEBUG", "False").lower() == "true"
+ENV = os.getenv("ENVIRONMENT", "development")
+
+# Configure logging
+log_directory = os.path.join(os.path.dirname(__file__), "logs")
+os.makedirs(log_directory, exist_ok=True)
+log_file_path = os.path.join(log_directory, "backend.log")
+ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[316:351]
-==server.backend.ai_model:[332:367]
-            "cache_dir": config.cache_dir
-        }
+==server.backend.ai_model:[14:25]
+==server.backend.websocket-server:[25:36]
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    logging.warning("dotenv package not installed, environment variables must be set manually")
 
-def required_for_model(model_name: str) -> bool:
-    """Check if an API key is required for a specific model."""
-    return model_name.lower() in ["openai", "gemini", "huggingface"]
-
-def get_available_models() -> List[Dict[str, Any]]:
-    """
-    Get information about all available models.
-
-    Returns:
-        List of dictionaries with model information
-    """
-    manager = AIModelManager()
-    models = []
-
-    for model_name in ["gpt4all", "openai", "gemini", "huggingface"]:
-        models.append(manager.get_model_info(model_name))
-
-    return models
-
-def analyze_log(log_text: str, model_name: str = "gpt4all", instruction: Optional[str] = None) -> str:
-    """
-    Analyze a log using the specified AI model.
-
-    Args:
-        log_text: The log text to analyze
-        model_name: Name of the model to use
-        instruction: Optional custom instruction for the analysis
-
-    Returns:
-        Analysis result as string
-    """
-    if not log_text: (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[21:31]
-==server.backend.ai_model:[16:27]
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
-    handlers=[
-        logging.FileHandler("ai_model.log"),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger("AIModel")
- (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[261:270]
-==server.backend.ai_model:[273:282]
-            pipeline_model = pipeline(
-                "text-generation",
-                model=model,
-                tokenizer=tokenizer,
-                device=0 if device == "cuda" else -1,
-                max_new_tokens=config.max_tokens,
-                temperature=config.temperature
-            )
- (duplicate-code)
+    handlers=[ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[14:25]
 ==client.websocket-client:[17:28]
@@ -2377,53 +2766,9 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
     handlers=[ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[435:446]
-==server.backend.ai_model:[451:462]
-        logger.debug(traceback.format_exc())
-        raise
-
-def _analyze_with_gemini(genai, prompt: str) -> str:
-    """Generate analysis using Google Gemini API."""
-    try:
-        model = genai.GenerativeModel(os.getenv("GEMINI_MODEL", "gemini-pro"))
-        response = model.generate_content(prompt)
-
-        return response.text
-    except Exception as e: (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[426:434]
-==server.backend.ai_model:[442:450]
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.7,
-            max_tokens=1500
-        )
-
-        return response.choices[0].message.content
-    except Exception as e: (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[208:224]
-==server.backend.ai_model:[219:236]
-            raise
-
-    def _initialize_huggingface(self, config: ModelConfig) -> Tuple[Any, Any, Any]:
-        """Initialize Hugging Face model with comprehensive setup."""
-        try:
-            from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
-            import torch
-
-            # Determine device
-            if config.device == "auto":
-                device = "cuda" if torch.cuda.is_available() else "cpu"
-            else:
-                device = config.device
-
-            # Log device information
-            if device == "cuda" and torch.cuda.is_available(): (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.ai_model:[361:371]
 ==client.backend.huggingface:[392:401]
-    system_prompt = """You are an AI assistant specialized in analyzing logs and providing insights.
+        system_prompt = """You are an AI assistant specialized in analyzing logs and providing insights.
 Given a log snippet, your task is to:
 1. Summarize the key information in the log
 2. Identify any errors, warnings, or issues
@@ -2431,36 +2776,19 @@ Given a log snippet, your task is to:
 4. Suggest troubleshooting steps or solutions
 
 Be concise and precise in your analysis."""
-
-    # Use custom instruction if provided (duplicate-code)
+ (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.app:[269:294]
-==server.backend.app:[221:250]
-            return jsonify({"error": str(e)}), 500
+==client.backend.app:[95:104]
+==server.backend.app:[57:67]
+    try:
+        # Validate input data
+        if not request.is_json:
+            logger.error("Request does not contain valid JSON")
+            return jsonify({"error": "Request must be in JSON format"}), 400
 
-
-@app.route('/health', methods=['GET'])
-def health_check():
-    """Check the health of the backend server.
-
-    Returns:
-        JSON response with server status
-    """
-    return jsonify({
-        "status": "online",
-        "environment": ENV,
-        "version": "1.0.0",
-        "timestamp": datetime.now().isoformat()
-    })
-
-
-@app.route('/analysis_history', methods=['GET'])
-def get_analysis_history():
-    """Get the history of log analyses.
-
-    Returns:
-        JSON response with analysis history
-    """ (duplicate-code)
+        data = request.json
+        log_text = data.get('log')
+        model_name = data.get('model', 'gpt4all')  # Default to gpt4all (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.gpt4all.app:[143:156]
 ==server.backend.gpt4all.app:[106:119]
@@ -2494,40 +2822,6 @@ analyze.py:1:0: R0801: Similar lines in 2 files
             # execute chat completion and ignore the full response since
             # we are outputting it incrementally (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[492:500]
-==server.backend.ai_model:[508:516]
-            print(f"{model['name']} ({model['model_id']}): {status} {api_status}")
-        print()
-
-    if args.analyze:
-        try:
-            with open(args.analyze, 'r') as f:
-                log_text = f.read()
- (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[416:425]
-==server.backend.ai_model:[432:441]
-        logger.debug(traceback.format_exc())
-        raise
-
-def _analyze_with_openai(openai_client, prompt: str) -> str:
-    """Generate analysis using OpenAI API."""
-    try:
-        response = openai_client.chat.completions.create(
-            model=os.getenv("OPENAI_MODEL", "gpt-4"),
-            messages=[ (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[234:242]
-==server.backend.ai_model:[246:254]
-            tokenizer = AutoTokenizer.from_pretrained(
-                config.model_id,
-                cache_dir=cache_dir,
-                token=config.api_key if config.api_key else None,
-                local_files_only=False
-            )
-
-            # Lade Modell mit geeigneten Einstellungen basierend auf dem Gerät (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
 ==client.backend.huggingface:[393:401]
 ==client.frontend.gpt4all-integration:[148:157]
 Given a log snippet, your task is to:
@@ -2537,109 +2831,21 @@ Given a log snippet, your task is to:
 4. Suggest troubleshooting steps or solutions
 
 Be concise and precise in your analysis."""
- (duplicate-code)
+
+        # Prepare the conversation (duplicate-code)
 analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.app:[211:229]
-==server.backend.app:[164:182]
-        return jsonify({"error": str(e)}), 500
-
-
-@app.route('/settings', methods=['GET', 'POST'])
-def handle_settings():
-    """Update or retrieve application settings.
-
-    Returns:
-        JSON response with settings data or confirmation
-    """
-    settings_file = os.path.join(os.path.dirname(__file__), "settings.json")
-
-    if request.method == 'POST':
-        try:
-            new_settings = request.json
-
-            # Validate settings
-            if not isinstance(new_settings, dict): (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[371:382]
-==server.backend.ai_model:[387:398]
-    if instruction:
-        system_prompt = instruction
-
-    try:
-        # Initialisiere den Modellmanager
-        manager = AIModelManager()
-
-        # Hole das Modell basierend auf dem Namen
-        model = manager.initialize_model(model_name)
-
-        # Baue vollständigen Prompt (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[354:361]
-==server.backend.ai_model:[370:377]
-    max_log_length = 8000  # Characters, adjust based on model capabilities
-    truncated = False
-    if len(log_text) > max_log_length:
-        log_text = log_text[:max_log_length] + "..."
-        truncated = True
-
-    # Default system prompt for log analysis (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.ai_model:[139:148]
-==server.backend.ai_model:[150:159]
-            model_path = os.path.expanduser(config.model_path)
-            if not os.path.isabs(model_path):
-                model_path = os.path.join(os.path.expanduser(config.cache_dir), model_path)
-
-            # Ensure model directory exists
-            os.makedirs(os.path.dirname(model_path), exist_ok=True)
-
-            # Check if model file exists, if not inform the user
-            if not os.path.exists(model_path): (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.app:[174:188]
-==server.backend.app:[129:142]
-        return jsonify({"error": str(e)}), 500
-
-
-@app.route('/models', methods=['GET'])
-def get_models():
-    """Get list of available AI models.
-
-    Returns:
-        JSON response containing available models
-    """
-    try:
-        models = get_available_models()
-        return jsonify({"models": models})
-    except Exception as e: (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.app:[101:107]
-==server.backend.app:[77:85]
-        data = request.json
-        log_text = data.get('log')
-        model_name = data.get('model', 'gpt4all')  # Default zu gpt4all
-
-        # Eigene Anweisung, falls vorhanden
-        instruction = data.get('instruction')
-
-        if not log_text: (duplicate-code)
-analyze.py:1:0: R0801: Similar lines in 2 files
-==client.backend.app:[39:48]
-==server.backend.app:[46:54]
-DEBUG = os.getenv("FLASK_DEBUG", "False").lower() == "true"
-ENV = os.getenv("ENVIRONMENT", "development")
-
-# Configure logging
-log_directory = os.path.join(os.path.dirname(__file__), "logs")
-os.makedirs(log_directory, exist_ok=True)
-log_file_path = os.path.join(log_directory, "backend.log")
-
-# Debug log file for storing AI model responses (duplicate-code)
+==client.backend.app:[134:139]
+==server.backend.app:[87:92]
+    except Exception as e:
+        error_message = f"Error in debug endpoint: {str(e)}"
+        stack_trace = traceback.format_exc()
+        logger.exception(error_message)
+        logger.debug(f"Stack trace: {stack_trace}") (duplicate-code)
 
 
 Report
 ======
-3507 statements analysed.
+3519 statements analysed.
 
 Statistics by type
 ------------------
@@ -2653,7 +2859,7 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |method   |65     |65         |=          |100.00      |7.69     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |122    |122        |=          |100.00      |0.00     |
+|function |120    |122        |-2.00      |99.17       |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -2664,13 +2870,13 @@ External dependencies
 
     ai_model (client.backend.app,server.backend.app,server.backend.websocket-server)
     gpt4all (client.backend.ai_model,client.backend.gpt4all-log-analyzer,client.backend.gpt4all.app,client.backend.gpt4allinit,client.frontend.gpt4all-integration,server.backend.ai_model,server.backend.gpt4all.app,server.backend.gpt4allinit)
-    psutil (client.backend.app,server.backend.app,server.backend.websocket-server)
+    psutil (client.backend.app,server.backend.app)
     typing_extensions (client.backend.gpt4all.app,server.backend.gpt4all.app)
     websockets (server.backend.websocket-server)
 
 
 
-7717 lines have been analyzed
+7905 lines have been analyzed
 
 Raw metrics
 -----------
@@ -2678,13 +2884,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |4641   |60.14 |4641     |=          |
+|code      |4689   |59.32 |4641     |+48.00     |
 +----------+-------+------+---------+-----------+
-|docstring |1321   |17.12 |1321     |=          |
+|docstring |1405   |17.77 |1321     |+84.00     |
 +----------+-------+------+---------+-----------+
-|comment   |664    |8.60  |664      |=          |
+|comment   |683    |8.64  |664      |+19.00     |
 +----------+-------+------+---------+-----------+
-|empty     |1091   |14.14 |1091     |=          |
+|empty     |1128   |14.27 |1091     |+37.00     |
 +----------+-------+------+---------+-----------+
 
 
@@ -2708,13 +2914,13 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |629    |629      |629        |
+|convention |642    |629      |629        |
 +-----------+-------+---------+-----------+
-|refactor   |85     |85       |85         |
+|refactor   |70     |85       |85         |
 +-----------+-------+---------+-----------+
-|warning    |453    |453      |453        |
+|warning    |451    |453      |453        |
 +-----------+-------+---------+-----------+
-|error      |44     |44       |44         |
+|error      |47     |44       |44         |
 +-----------+-------+---------+-----------+
 
 
@@ -2725,89 +2931,89 @@ Messages by category
 +-----------------------------------------+------+--------+---------+-----------+
 |module                                   |error |warning |refactor |convention |
 +=========================================+======+========+=========+===========+
-|client.backend.huggingface               |15.91 |9.05    |0.00     |2.86       |
+|client.backend.huggingface               |14.89 |9.09    |0.00     |2.80       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.app                       |4.55  |8.17    |2.35     |3.50       |
+|server.backend.app                       |6.38  |5.99    |1.43     |0.47       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.hugging                   |4.55  |1.10    |0.00     |0.79       |
+|client.backend.app                       |4.26  |8.20    |2.86     |3.43       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.gpt4all.app               |4.55  |0.66    |0.00     |1.11       |
+|client.backend.hugging                   |4.26  |1.11    |0.00     |0.78       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.gpt4all.app               |4.55  |0.66    |0.00     |1.11       |
+|server.backend.gpt4all.app               |4.26  |0.67    |0.00     |1.09       |
 +-----------------------------------------+------+--------+---------+-----------+
-|analyze                                  |4.55  |0.00    |47.06    |0.00       |
+|client.backend.gpt4all.app               |4.26  |0.67    |0.00     |1.09       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.bigfiles                        |4.55  |0.00    |0.00     |0.00       |
+|analyze                                  |4.26  |0.00    |30.00    |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.analyze                         |4.55  |0.00    |0.00     |0.00       |
+|devtools.bigfiles                        |4.26  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|bigfiles                                 |4.55  |0.00    |0.00     |0.00       |
+|devtools.analyze                         |4.26  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.websocket-server          |2.27  |9.93    |0.00     |6.04       |
+|bigfiles                                 |4.26  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.websocket-client                  |2.27  |8.83    |1.18     |2.54       |
+|server.backend.websocket-server          |2.13  |9.76    |5.71     |3.43       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.alphaos                           |2.27  |4.86    |0.00     |2.70       |
+|client.websocket-client                  |2.13  |8.87    |1.43     |2.49       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.twitchbot                |2.27  |0.00    |0.00     |0.16       |
+|client.alphaos                           |2.13  |4.88    |0.00     |2.65       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.data_server               |2.27  |0.00    |0.00     |0.00       |
+|client.frontend.twitchbot                |2.13  |0.00    |0.00     |0.16       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.8    |2.27  |0.00    |0.00     |0.00       |
+|server.backend.data_server               |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.7    |2.27  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.8    |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.6    |2.27  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.7    |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.5    |2.27  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.6    |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.4    |2.27  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.5    |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.2    |2.27  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.4    |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.1    |2.27  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.2    |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.fix_duplicate_code              |2.27  |0.00    |0.00     |0.00       |
+|patch.ailinux-alpha-code-patcher-v0.1    |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.cleanup                         |2.27  |0.00    |0.00     |0.00       |
+|devtools.fix_duplicate_code              |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.adjust_hierarchy_with_debugger  |2.27  |0.00    |0.00     |0.00       |
+|devtools.cleanup                         |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.log-analysis-integration |2.27  |0.00    |0.00     |0.00       |
+|devtools.adjust_hierarchy_with_debugger  |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.log-analysis             |2.27  |0.00    |0.00     |0.00       |
+|client.frontend.log-analysis-integration |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.file-sync-client                  |2.27  |0.00    |0.00     |0.00       |
+|client.frontend.log-analysis             |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.gpt4allinit               |2.27  |0.00    |0.00     |0.00       |
+|client.file-sync-client                  |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|cleanup                                  |2.27  |0.00    |0.00     |0.00       |
+|client.backend.gpt4allinit               |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|adjust_hierarchy_with_debugger           |2.27  |0.00    |0.00     |0.00       |
+|cleanup                                  |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.ai_model                  |0.00  |10.15   |4.71     |5.41       |
+|adjust_hierarchy_with_debugger           |2.13  |0.00    |0.00     |0.00       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.ai_model                  |0.00  |9.93    |4.71     |10.33      |
+|server.backend.ai_model                  |0.00  |9.98    |5.71     |10.12      |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.app                       |0.00  |5.96    |1.18     |0.79       |
+|client.backend.ai_model                  |0.00  |9.98    |5.71     |10.12      |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.backend.gpt4all-log-analyzer      |0.00  |5.52    |1.18     |6.68       |
+|client.backend.gpt4all-log-analyzer      |0.00  |5.54    |1.43     |6.54       |
 +-----------------------------------------+------+--------+---------+-----------+
-|uploadready                              |0.00  |5.30    |7.06     |12.24      |
+|uploadready                              |0.00  |5.32    |8.57     |11.99      |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.uploadready                     |0.00  |5.30    |7.06     |12.24      |
+|devtools.uploadready                     |0.00  |5.32    |8.57     |11.99      |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.frontend.gpt4all-integration      |0.00  |5.30    |0.00     |6.84       |
+|client.frontend.gpt4all-integration      |0.00  |5.32    |0.00     |6.70       |
 +-----------------------------------------+------+--------+---------+-----------+
-|devtools.enhanced-pylint-fixer           |0.00  |4.19    |21.18    |14.94      |
+|devtools.enhanced-pylint-fixer           |0.00  |4.21    |25.71    |14.64      |
 +-----------------------------------------+------+--------+---------+-----------+
-|server.backend.gpt4allinit               |0.00  |2.21    |1.18     |2.23       |
+|server.backend.gpt4allinit               |0.00  |2.22    |1.43     |2.18       |
 +-----------------------------------------+------+--------+---------+-----------+
-|patch.ailinux-alpha-code-patcher-v0.3    |0.00  |1.32    |1.18     |0.32       |
+|patch.ailinux-alpha-code-patcher-v0.3    |0.00  |1.33    |1.43     |0.31       |
 +-----------------------------------------+------+--------+---------+-----------+
-|python-optimizer                         |0.00  |1.10    |0.00     |6.04       |
+|python-optimizer                         |0.00  |1.11    |0.00     |5.92       |
 +-----------------------------------------+------+--------+---------+-----------+
-|client.python-fix                        |0.00  |0.44    |0.00     |1.11       |
+|client.python-fix                        |0.00  |0.44    |0.00     |1.09       |
 +-----------------------------------------+------+--------+---------+-----------+
 
 
@@ -2818,37 +3024,39 @@ Messages
 +-------------------------------+------------+
 |message id                     |occurrences |
 +===============================+============+
-|trailing-whitespace            |456         |
+|trailing-whitespace            |468         |
 +-------------------------------+------------+
-|logging-fstring-interpolation  |184         |
+|logging-fstring-interpolation  |192         |
 +-------------------------------+------------+
-|broad-exception-caught         |100         |
+|broad-exception-caught         |96          |
 +-------------------------------+------------+
-|unused-import                  |70          |
+|line-too-long                  |65          |
 +-------------------------------+------------+
-|line-too-long                  |66          |
+|unused-import                  |62          |
 +-------------------------------+------------+
-|import-outside-toplevel        |53          |
+|import-outside-toplevel        |52          |
 +-------------------------------+------------+
-|duplicate-code                 |40          |
+|invalid-name                   |27          |
 +-------------------------------+------------+
-|invalid-name                   |26          |
+|redefined-outer-name           |26          |
 +-------------------------------+------------+
-|redefined-outer-name           |25          |
-+-------------------------------+------------+
-|unspecified-encoding           |20          |
+|duplicate-code                 |21          |
 +-------------------------------+------------+
 |no-else-return                 |19          |
 +-------------------------------+------------+
-|import-error                   |16          |
+|import-error                   |19          |
++-------------------------------+------------+
+|unspecified-encoding           |18          |
 +-------------------------------+------------+
 |wrong-import-position          |14          |
 +-------------------------------+------------+
 |syntax-error                   |14          |
 +-------------------------------+------------+
-|unused-argument                |11          |
+|wrong-import-order             |11          |
 +-------------------------------+------------+
-|wrong-import-order             |10          |
+|unused-variable                |11          |
++-------------------------------+------------+
+|unused-argument                |11          |
 +-------------------------------+------------+
 |undefined-variable             |10          |
 +-------------------------------+------------+
@@ -2856,27 +3064,29 @@ Messages
 +-------------------------------+------------+
 |subprocess-run-check           |10          |
 +-------------------------------+------------+
-|unused-variable                |9           |
-+-------------------------------+------------+
-|f-string-without-interpolation |6           |
+|f-string-without-interpolation |5           |
 +-------------------------------+------------+
 |too-many-instance-attributes   |4           |
 +-------------------------------+------------+
-|bare-except                    |4           |
+|too-many-branches              |4           |
++-------------------------------+------------+
+|global-statement               |4           |
 +-------------------------------+------------+
 |unnecessary-pass               |3           |
 +-------------------------------+------------+
-|too-many-locals                |3           |
+|too-many-statements            |3           |
 +-------------------------------+------------+
-|too-many-branches              |3           |
+|too-many-locals                |3           |
 +-------------------------------+------------+
 |no-name-in-module              |3           |
 +-------------------------------+------------+
 |missing-module-docstring       |3           |
 +-------------------------------+------------+
-|global-statement               |3           |
+|invalid-envvar-default         |3           |
 +-------------------------------+------------+
-|too-many-statements            |2           |
+|too-many-nested-blocks         |2           |
++-------------------------------+------------+
+|reimported                     |2           |
 +-------------------------------+------------+
 |raise-missing-from             |2           |
 +-------------------------------+------------+
@@ -2884,17 +3094,19 @@ Messages
 +-------------------------------+------------+
 |inconsistent-return-statements |2           |
 +-------------------------------+------------+
-|global-variable-not-assigned   |2           |
+|bare-except                    |2           |
 +-------------------------------+------------+
-|too-many-nested-blocks         |1           |
+|too-many-arguments             |1           |
 +-------------------------------+------------+
 |too-few-public-methods         |1           |
 +-------------------------------+------------+
 |no-member                      |1           |
 +-------------------------------+------------+
+|missing-function-docstring     |1           |
++-------------------------------+------------+
 |logging-not-lazy               |1           |
 +-------------------------------+------------+
-|invalid-envvar-default         |1           |
+|global-variable-not-assigned   |1           |
 +-------------------------------+------------+
 |consider-iterating-dictionary  |1           |
 +-------------------------------+------------+
@@ -2903,5 +3115,5 @@ Messages
 
 
 ------------------------------------------------------------------
-Your code has been rated at 6.05/10 (previous run: 6.05/10, +0.00)
+Your code has been rated at 6.03/10 (previous run: 6.05/10, -0.02)
 
