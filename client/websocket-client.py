@@ -1,7 +1,8 @@
-"""WebSocket client for AILinux system.
+"""
+WebSocket Client for AILinux
 
-This module provides a WebSocket client that can connect to either a local
-or remote WebSocket server for real-time communication between backend and frontend.
+This module provides a robust WebSocket client with improved connection handling,
+error recovery, and compatibility with both local and remote WebSocket servers.
 """
 import websocket
 import threading
@@ -10,16 +11,9 @@ import json
 import time
 import os
 import uuid
+import ssl
 import traceback
 from typing import Dict, Any, Optional, Callable, List, Union
-import ssl
-
-# Load environment variables
-try:
-    from dotenv import load_dotenv
-    load_dotenv()
-except ImportError:
-    logging.warning("dotenv package not installed, environment variables must be set manually")
 
 # Configure logging
 logging.basicConfig(
@@ -32,7 +26,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger("WebSocketClient")
 
-# Server configuration
+# Load environment variables with safe defaults
 WS_SERVER_URL = os.getenv("WS_SERVER_URL", "ws://localhost:8082")
 WS_API_KEY = os.getenv("WS_API_KEY", "")
 WS_RECONNECT_DELAY = int(os.getenv("WS_RECONNECT_DELAY", "5"))
@@ -40,8 +34,22 @@ WS_MAX_RECONNECT = int(os.getenv("WS_MAX_RECONNECT", "10"))
 WS_HEARTBEAT_INTERVAL = int(os.getenv("WS_HEARTBEAT_INTERVAL", "30"))
 WS_DEBUG = os.getenv("WS_DEBUG", "False").lower() == "true"
 
+# Check if websocket-client is available
+try:
+    import websocket
+except ImportError:
+    logger.error("websocket-client package not installed. Installing...")
+    import subprocess
+    import sys
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "websocket-client"])
+        import websocket
+        logger.info("websocket-client installed successfully")
+    except Exception as e:
+        logger.error(f"Failed to install websocket-client: {e}")
+
 class WebSocketClient:
-    """WebSocket client for real-time communication."""
+    """WebSocket client implementation with reconnection and error handling."""
 
     def __init__(self, url: Optional[str] = None, auto_connect: bool = False):
         """Initialize the WebSocket client.
@@ -135,7 +143,7 @@ class WebSocketClient:
         except Exception as e:
             logger.error(f"Error sending message of type '{message_type}': {str(e)}")
             # Reconnect on send failure
-            self.reconnect()
+            self._schedule_reconnect()
             return False
 
     def register_handler(self, message_type: str, handler: Callable[[Dict[str, Any]], None]):
@@ -148,6 +156,15 @@ class WebSocketClient:
         self.message_handlers[message_type] = handler
         logger.debug(f"Registered handler for message type '{message_type}'")
 
+    def _schedule_reconnect(self):
+        """Schedule a reconnection attempt."""
+        if self.shutdown_requested:
+            return
+
+        # Run reconnect in a separate thread to avoid blocking
+        reconnect_thread = threading.Thread(target=self.reconnect, daemon=True)
+        reconnect_thread.start()
+
     def reconnect(self):
         """Force reconnection to the WebSocket server."""
         with self.connection_lock:
@@ -156,9 +173,9 @@ class WebSocketClient:
                     self.ws.close()
                 except Exception:
                     pass
-            
+
             self.connected = False
-            
+
             # Only start a new thread if the old one is done
             if not self.ws_thread or not self.ws_thread.is_alive():
                 self.reconnect_count = 0
@@ -180,6 +197,32 @@ class WebSocketClient:
                     ssl_opt = {"cert_reqs": ssl.CERT_REQUIRED}
                     # Uncomment to disable certificate verification (not recommended for production)
                     # ssl_opt = {"cert_reqs": ssl.CERT_NONE}
+
+                # Backoff strategy to avoid excessive reconnection attempts
+                # Try a simpler connection test first
+                test_ws = None
+                try:
+                    # Try a quick connection to see if server is reachable
+                    test_ws = websocket.create_connection(
+                        self.url,
+                        timeout=5,
+                        sslopt=ssl_opt
+                    )
+                    test_ws.close()
+                    logger.info("Server connection test successful")
+                except Exception as e:
+                    logger.warning(f"Server connection test failed: {str(e)}")
+                    # If we can't connect at all, wait before retrying
+                    self.reconnect_count += 1
+                    if self.reconnect_count > WS_MAX_RECONNECT:
+                        logger.error(f"Maximum reconnection attempts ({WS_MAX_RECONNECT}) reached, giving up")
+                        break
+
+                    # Exponential backoff
+                    delay = min(WS_RECONNECT_DELAY * (2 ** (self.reconnect_count - 1)), 60)
+                    logger.info(f"Waiting {delay} seconds before next connection attempt...")
+                    time.sleep(delay)
+                    continue
 
                 # Create WebSocket connection
                 websocket.enableTrace(WS_DEBUG)
@@ -336,7 +379,7 @@ class WebSocketClient:
 
     def _on_ping(self, ws, message):
         """Handle ping messages from the server.
-        
+
         Args:
             ws: WebSocket instance
             message: Ping message
@@ -346,7 +389,7 @@ class WebSocketClient:
 
     def _on_pong(self, ws, message):
         """Handle pong messages from the server.
-        
+
         Args:
             ws: WebSocket instance
             message: Pong message
