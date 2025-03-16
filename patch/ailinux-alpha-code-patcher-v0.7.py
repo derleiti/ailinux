@@ -145,30 +145,30 @@ class CodeFixer:
 
         line = lines[issue.line_num - 1]
 
-        # Extract the unused import name from the message
+        # Extract the unused # Potential unused import: import name from the message
         match = re.search(r"Unused import (\w+)", issue.message)
         if not match:
             return False
 
         unused_import = match.group(1)
 
-        # Handle different import styles
+        # Handle different # Potential unused import: import styles
         if re.match(rf"^\s*import\s+{unused_import}\s*$", line):
-            # Direct import (import unused)
+            # Direct # Potential unused import: import (import unused)
             lines[issue.line_num - 1] = f"# {line.rstrip()}  # removed: {issue.code}\n"
             return True
         elif re.match(rf"^\s*from\s+[\w.]+\s+import\s+{unused_import}\s*$", line):
-            # Single import from module (from module import unused)
+            # Single # Potential unused import: import from module (from module import unused)
             lines[issue.line_num - 1] = f"# {line.rstrip()}  # removed: {issue.code}\n"
             return True
         elif re.search(rf"from\s+[\w.]+\s+import\s+[^,]+,\s*{unused_import}(\s*,|$)", line):
             # Part of a multi-import (from module import used, unused, other)
             if re.search(rf"{unused_import},", line):
-                # Unused import followed by comma
+                # Unused # Potential unused import: import followed by comma
                 lines[issue.line_num - 1] = line.replace(f"{unused_import}, ", "")
                 return True
             elif re.search(rf",\s*{unused_import}", line):
-                # Unused import preceded by comma
+                # Unused # Potential unused import: import preceded by comma
                 lines[issue.line_num - 1] = line.replace(f", {unused_import}", "")
                 return True
 
@@ -507,7 +507,7 @@ class CodeFixer:
     def print_summary(self):
         """Print a summary of the fixes applied."""
         print("\n" + "="*50)
-        print(f"SUMMARY:")
+        print("SUMMARY:")
         print(f"Total issues processed: {len(self.issues)}")
         print(f"Fixed: {self.fixes_applied} issues")
         print(f"Skipped: {self.skipped_issues} issues")

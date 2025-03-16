@@ -76,27 +76,27 @@ class CodeFixer:
         lines = self.load_file(issue.file_path)
         line = lines[issue.line_num - 1]
 
-        # Extract the unused import name from the message
+        # Extract the unused # Potential unused import: import name from the message
         match = re.search(r"Unused import (\w+)", issue.message)
         if not match:
             return False
 
         unused_import = match.group(1)
 
-        # Handle different import styles
+        # Handle different # Potential unused import: import styles
         if re.match(rf"^\s*import\s+{unused_import}\s*$", line):
-            # Direct import (import unused)
+            # Direct # Potential unused import: import (import unused)
             lines[issue.line_num - 1] = f"# {line}  # entfernt: {issue.code}\n"
         elif re.match(rf"^\s*from\s+[\w.]+\s+import\s+{unused_import}\s*$", line):
-            # Single import from module (from module import unused)
+            # Single # Potential unused import: import from module (from module import unused)
             lines[issue.line_num - 1] = f"# {line}  # entfernt: {issue.code}\n"
         elif re.search(rf"from\s+[\w.]+\s+import\s+[^,]+,\s*{unused_import}(\s*,|$)", line):
             # Part of a multi-import (from module import used, unused, other)
             if re.search(rf"{unused_import},", line):
-                # Unused import followed by comma
+                # Unused # Potential unused import: import followed by comma
                 lines[issue.line_num - 1] = line.replace(f"{unused_import}, ", "")
             elif re.search(rf",\s*{unused_import}", line):
-                # Unused import preceded by comma
+                # Unused # Potential unused import: import preceded by comma
                 lines[issue.line_num - 1] = line.replace(f", {unused_import}", "")
 
         return True
@@ -381,7 +381,7 @@ def main():
     # Erstelle eine Patch-Datei, wenn gewünscht
     if args.create_patch and not args.dry_run and fixes > 0:
         create_patch_file(fixer.file_cache, "patch")
-        print(f"Patch-Datei erstellt: patch")
+        print("Patch-Datei erstellt: patch")
     
     mode = "Testmodus" if args.dry_run else "Angewendet"
     print(f"\n{mode}: {fixes} von {len(issues)} Problemen behoben.")

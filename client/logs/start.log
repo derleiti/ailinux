@@ -1,0 +1,21 @@
+2025-03-16T11:38:54.223Z: Starting AILinux in local mode
+2025-03-16T11:38:54.224Z: Checking Python environment...
+2025-03-16T11:38:54.224Z: ERROR: Python interpreter not found at: python3
+2025-03-16T11:38:54.225Z: Warning: Python environment check failed: Python interpreter not found at: python3
+2025-03-16T11:38:54.225Z: Creating virtual environment at /home/zombie/Downloads/ailinux/client/venv
+2025-03-16T11:38:56.021Z: Installing Flask and required dependencies...
+2025-03-16T11:40:45.249Z: Using Python from virtual environment: /home/zombie/Downloads/ailinux/client/venv/bin/python
+2025-03-16T11:40:45.249Z: Starting backend server at /home/zombie/Downloads/ailinux/client/backend/app.py
+2025-03-16T11:40:47.253Z: Backend server running on port 8081
+2025-03-16T11:40:48.255Z: Backend server is ready
+2025-03-16T11:40:48.255Z: To use the application, navigate to: http://localhost:8081
+2025-03-16T11:41:11.869Z: Starting AILinux in local mode
+2025-03-16T11:41:11.870Z: Checking Python environment...
+2025-03-16T11:41:11.870Z: ERROR: Python interpreter not found at: python3
+2025-03-16T11:41:11.871Z: Warning: Python environment check failed: Python interpreter not found at: python3
+2025-03-16T11:41:11.872Z: Installing Flask and required dependencies...
+2025-03-16T11:41:13.295Z: Using Python from virtual environment: /home/zombie/Downloads/ailinux/client/venv/bin/python
+2025-03-16T11:41:13.296Z: Starting backend server at /home/zombie/Downloads/ailinux/client/backend/app.py
+2025-03-16T11:41:15.299Z: Backend server running on port 8081
+2025-03-16T11:41:16.301Z: Backend server is ready
+2025-03-16T11:41:16.301Z: To use the application, navigate to: http://localhost:8081

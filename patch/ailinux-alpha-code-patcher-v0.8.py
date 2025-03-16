@@ -159,7 +159,7 @@ class CodeFixer:
 
         line = lines[issue.line_num - 1]
 
-        # Check if it's a simple 'except:' or 'except Exception:'
+        # Check if it's a simple 'except Exception:' or 'except Exception:'
         if re.search(r'except\s+Exception\s*:', line):
             # Replace with except (Exception, RuntimeError):
             replaced_line = line.replace('except Exception:', 'except (Exception, RuntimeError):')
@@ -347,7 +347,7 @@ class CodeFixer:
     def print_summary(self):
         """Print a summary of the fixes applied."""
         print("\n" + "="*50)
-        print(f"SUMMARY:")
+        print("SUMMARY:")
         print(f"Total issues processed: {len(self.issues)}")
         print(f"Fixed: {self.fixes_applied} issues")
         print(f"Skipped: {self.skipped_issues} issues")

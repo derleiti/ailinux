@@ -253,7 +253,7 @@ def get_recommended_models() -> List[Dict[str, Any]]:
     # Curated list of models well-suited for log analysis
     recommended_models = [
         "mistralai/Mistral-7B-Instruct-v0.2",
-        "meta-llama/Llama-2-7b-chat-hf",
+        "meta-llama/Llama-2-7b-chat-h",
         "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
         "microsoft/phi-2",
         "google/gemma-2b-it"

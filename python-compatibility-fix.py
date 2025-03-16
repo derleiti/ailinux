@@ -8,7 +8,7 @@ import os
 import sys
 import re
 import logging
-import importlib
+# Potential unused import: import importlib
 import subprocess
 from pathlib import Path
 
@@ -88,9 +88,9 @@ def patch_uuid_module():
         return False
 
 def fix_flask_import_issues():
-    """Fix import issues with Flask and its dependencies."""
+    """Fix # Potential unused import: import issues with Flask and its dependencies."""
     try:
-        # First, try to import flask to check if it works
+        # First, try to # Potential unused import: import flask to check if it works
         try:
             import flask
             logger.info(f"Flask version {flask.__version__} is working correctly")

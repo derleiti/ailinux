@@ -36,7 +36,7 @@ VersionInfo = namedtuple('VersionInfo', ['major', 'minor', 'micro'])
 VERSION_INFO = VersionInfo(1, 0, 2)
 VERSION = '.'.join(map(str, VERSION_INFO))  # convert to string form, like: '1.2.3'
 
-CLI_START_MESSAGE = f"""
+CLI_START_MESSAGE = """
     
  ██████  ██████  ████████ ██   ██  █████  ██      ██      
 ██       ██   ██    ██    ██   ██ ██   ██ ██      ██      
@@ -58,7 +58,7 @@ def repl(
     model: Annotated[
         str,
         typer.Option("--model", "-m", help="Model to use for chatbot"),
-    ] = "mistral-7b-instruct-v0.1.Q4_0.gguf",
+    ] = "mistral-7b-instruct-v0.1.Q4_0.ggu",
     n_threads: Annotated[
         int,
         typer.Option("--n-threads", "-t", help="Number of threads to use for chatbot"),
@@ -95,7 +95,7 @@ def repl(
         version_major = int(version.split('.')[0])
         if version_major >= 1:
             use_new_loop = True
-    except:
+    except Exception:
         pass  # fall back to old loop
     if use_new_loop:
         _new_loop(gpt4all_instance)

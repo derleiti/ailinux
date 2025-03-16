@@ -11,11 +11,11 @@ Usage:
 """
 import os
 import re
-# import sys  # removed: W0611
-# import argparse  # removed: W0611
+# # Potential unused import: import sys  # removed: W0611
+# # Potential unused import: import argparse  # removed: W0611
 from typing import List, Dict, Set, Tuple, Optional
 import logging
-# import difflib  # removed: W0611
+# # Potential unused import: import difflib  # removed: W0611
 
 
 class DuplicateCodeSection:
@@ -170,14 +170,14 @@ class DuplicateCodeFinder:
                 for line in section.lines:
                     self.logger.info("  %sline")
 
-            # Suggest import statements
+            # Suggest # Potential unused import: import statements
             self.logger.info("\n  3. Replace the duplicate code with imports:")
             for file in files:
                 rel_path = os.path.relpath(module_path, os.path.dirname(file))
                 rel_path = rel_path.replace(".py", "").replace("\\", "/")
                 if not rel_path.startswith("."):
                     rel_path = f".{rel_path}"
-                self.logger.info("  In %sfile: from %srel_path import *")
+                self.logger.info("  In %sfile: from %srel_path # Potential unused import: import *")
 
     def generate_refactoring_code(self) -> Optional[str]:
         """Generate refactoring code for the most significant duplicate section."""
@@ -209,8 +209,8 @@ class DuplicateCodeFinder:
         module_content += '"""\n\n'
 
         # Add imports that may be needed
-        module_content += "import os\n"
-        module_content += "import logging\n"
+        module_content += "# Potential unused import: import os\n"
+        module_content += "# Potential unused import: import logging\n"
         module_content += "from typing import Dict, List, Optional, Any\n\n\n"
 
         # Add the duplicate code

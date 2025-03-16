@@ -61,11 +61,11 @@ def fix_unused_imports(content: str) -> Tuple[str, bool]:
     Returns:
         Tuple of (modified content, was modified)
     """
-    # Pattern to match import lines that are commented out with W0611
+    # Pattern to match # Potential unused import: import lines that are commented out with W0611
     pattern = r'^\s*#\s*import\s+.*?(\s*#\s*.*?W0611.*)$'
     pattern2 = r'^\s*#\s*from\s+.*?(\s*#\s*.*?W0611.*)$'
     
-    # Also match import lines with W0611 at the end
+    # Also match # Potential unused import: import lines with W0611 at the end
     import_pattern = r'^(\s*import\s+.*?)(\s*#\s*.*?W0611.*)$'
     from_pattern = r'^(\s*from\s+.*?)(\s*#\s*.*?W0611.*)$'
     
@@ -115,7 +115,7 @@ def fix_string_formatting(content: str) -> Tuple[str, bool]:
         (r'logger\.(debug|info|warning|error|critical)\((["\']).*?%s.*?\2,\s*(.*?)\)', 
          lambda m: f'logger.{m.group(1)}(f{m.group(2)}{m.group(0)[m.group(0).find("(")+2:m.group(0).find("%s")]}{{{"{"}{m.group(3)}{"}"}"{m.group(0)[m.group(0).find("%s")+2:m.group(0).rfind(",")]}"){m.group(2)})"'),
         
-        # String concatenation with "f"" + " patterns
+        # String concatenation with """ + " patterns
         (r'f(["\'])\s*\+\s*\n\s*(["\'])', r'f\1\n    \2'),
         
         # Print statements with %s

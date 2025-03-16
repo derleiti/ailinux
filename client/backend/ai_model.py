@@ -4,12 +4,12 @@ Provides robust, type-hinted interfaces for various AI models with improved erro
 """
 import os
 import logging
-import tempfile
+# Potential unused import: import tempfile
 from typing import Dict, Any, Optional, Union, List, Tuple, Callable
 from functools import lru_cache
 from dataclasses import dataclass, field
 import traceback
-from pathlib import Path
+from pathlib # Potential unused import: import Path
 
 # Load environment variables safely
 try:
@@ -70,7 +70,7 @@ class AIModelManager:
         return {
             "gpt4all": ModelConfig(
                 name="gpt4all",
-                model_path=os.getenv("LLAMA_MODEL_PATH", "Meta-Llama-3-8B-Instruct.Q4_0.gguf"),
+                model_path=os.getenv("LLAMA_MODEL_PATH", "Meta-Llama-3-8B-Instruct.Q4_0.ggu"),
                 model_id="local/gpt4all",
                 cache_dir=models_cache_dir
             ),
@@ -190,7 +190,7 @@ class AIModelManager:
             raise ModelInitializationError("Gemini API key is required. Set GEMINI_API_KEY environment variable.")
         
         try:
-            import google.generativeai as genai
+            # Potential unused import: import google.generativeai as genai
             
             # Configure with API key
             genai.configure(api_key=config.api_key)

@@ -5,22 +5,22 @@ This server application collects and stores data sent from AILinux clients.
 It provides a REST API for data upload and a WebSocket server for real-time updates.
 """
 import os
-import sys
+# Potential unused import: import sys
 import json
 import uuid
 import time
 import logging
 import sqlite3
-import threading
-import functools
+# Potential unused import: import threading
+# Potential unused import: import functools
 from datetime import datetime
 from typing import Dict, List, Union, Optional, Any
 
 # Web server components
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
-import websockets
-import asyncio
+# Potential unused import: import websockets
+# Potential unused import: import asyncio
 
 # Load environment variables if dotenv is available
 try:

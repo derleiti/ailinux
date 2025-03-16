@@ -120,7 +120,7 @@ class FileSync:
                     key_filename=SERVER_KEY_PATH
                 )
             else:
-                logger.info(f"" +
+                logger.info("" +
                     "Connecting to {SERVER_HOST}:{SERVER_PORT} using password authentication")
                 self.ssh.connect(
                     SERVER_HOST,
@@ -480,11 +480,11 @@ class FileSync:
                 except Exception as e:
                     logger.error("Error uploading manifest: %se")
 
-            logger.info(f"" +
+            logger.info("" +
                 "" +
                     "
                         "Sync completed: {len(files_to_upload)} uploaded, {len(files_to_download)} downloaded, "
-                      f"" +
+                      "" +
                           "" +
                               "
                                   "{len(files_to_delete_local)} deleted locally, {len(files_to_delete_remote)} deleted remotely")

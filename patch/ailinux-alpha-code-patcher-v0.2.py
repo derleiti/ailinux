@@ -9,9 +9,9 @@ import os
 import re
 # import sys
   # removed: W0611
-# import shutil
+# # Potential unused import: import shutil
   # removed: W0611
-from pathlib import Path
+from pathlib # Potential unused import: import Path
 
 
 def fix_adjust_hierarchy_with_debugger():
@@ -87,7 +87,7 @@ def fix_websocket_client_module():
             # 2. Remove trailing whitespace from all lines
             content = '\n'.join(line.rstrip() for line in content.split('\n'))
 
-            # 3. Fix import ordering - move standard library imports before third-party imports
+            # 3. Fix # Potential unused import: import ordering - move standard library imports before third-party imports
             # Extract the import section
             import_lines = []
             other_lines = []
@@ -132,12 +132,12 @@ def fix_websocket_client_module():
                     else:
                         std_lib_imports.append(line)
 
-            # Recombine the import sections in the correct order
+            # Recombine the # Potential unused import: import sections in the correct order
             new_content = '\n'.join(std_lib_imports + third_party_imports + other_lines)
 
             # 4. Fix string formatting in logging calls
             # Replace f-strings with % formatting in logging calls
-            pattern = r'logger\.(debug|info|warning|error|critical)\(f"([^"]*)"'
+            pattern = r'logger\.(debug|info|warning|error|critical)\("([^"]*)"'
             replacement = r'logger.\1("\\2"'
             new_content = re.sub(pattern, replacement, new_content)
 
@@ -169,7 +169,7 @@ def fix_websocket_client_module():
 
 def fix_alphaos_py():
     """
-    Fix issues in alphaos.py, including class docstring and import ordering.
+    Fix issues in alphaos.py, including class docstring and # Potential unused import: import ordering.
     """
     filepath = 'client/alphaos.py'
     if not os.path.exists(filepath):
@@ -213,7 +213,7 @@ def fix_alphaos_py():
 
             for line in imports.split('\n'):
                 if line.strip():
-                    if line.startswith('import asyncio') or line.startswith('import json') or line.startswith('import ssl') or line.startswith('import logging') or 'urllib.parse' in line:
+                    if line.startswith('# Potential unused import: import asyncio') or line.startswith('import json') or line.startswith('import ssl') or line.startswith('import logging') or 'urllib.parse' in line:
                         std_imports.append(line)
                     else:
                         third_party_imports.append(line)
@@ -223,7 +223,7 @@ def fix_alphaos_py():
             content = content.replace(imports, new_imports)
 
         # 5. Replace f-string with % formatting in logging
-        pattern = r'logging\.error\(f"([^"]*)"'
+        pattern = r'logging\.error\("([^"]*)"'
         replacement = r'logging.error("\1"'
         content = re.sub(pattern, replacement, content)
 
@@ -716,7 +716,7 @@ def main():
     print("\n📝 Summary of Fixes:")
     print("1. Fixed syntax error in adjust_hierarchy_with_debugger.py")
     print("2. Created a clean, compliant websocket_client.py")
-    print("3. Fixed class docstrings and import ordering in alphaos.py")
+    print("3. Fixed class docstrings and # Potential unused import: import ordering in alphaos.py")
     print("4. Fixed constant naming and pointless statements in bigfiles.py")
     print("5. Addressed various style issues like trailing whitespace and f-string in logging")
     print("\nThe code should now pass pylint checks and have fewer errors.")

@@ -28,7 +28,7 @@ def fix_adjust_hierarchy_with_debugger():
         print(f"File not found: {filepath}")
         return False
     
-    print(f"Fixing adjust_hierarchy_with_debugger.py...")
+    print("Fixing adjust_hierarchy_with_debugger.py...")
 
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
@@ -55,7 +55,7 @@ def fix_adjust_hierarchy_with_debugger():
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write('\n'.join(lines))
 
-        print(f"✅ Fixed adjust_hierarchy_with_debugger.py")
+        print("✅ Fixed adjust_hierarchy_with_debugger.py")
         return True
     
     except Exception as e:
@@ -113,15 +113,15 @@ def fix_file_sync_client():
         print(f"File not found: {filepath}")
         return False
     
-    print(f"Fixing file-sync-client.py...")
+    print("Fixing file-sync-client.py...")
 
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # Fix the missing import for 'stat' module
-        if "import stat" not in content:
-            # Add the stat import at the top with other imports
+        # Fix the missing # Potential unused import: import for 'stat' module
+        if "# Potential unused import: import stat" not in content:
+            # Add the stat # Potential unused import: import at the top with other imports
             modified_content = re.sub(
                 r'import (.*?)from dotenv import load_dotenv',
                 r'import \1import stat\nfrom dotenv import load_dotenv',
@@ -139,7 +139,7 @@ def fix_file_sync_client():
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(modified_content)
 
-            print(f"✅ Fixed file-sync-client.py")
+            print("✅ Fixed file-sync-client.py")
             return True
     
     except Exception as e:
@@ -155,7 +155,7 @@ def fix_alphaos_py():
         print(f"File not found: {filepath}")
         return False
     
-    print(f"Fixing alphaos.py...")
+    print("Fixing alphaos.py...")
 
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
@@ -185,7 +185,7 @@ def fix_alphaos_py():
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(modified_content)
 
-        print(f"✅ Fixed alphaos.py")
+        print("✅ Fixed alphaos.py")
         return True
     
     except Exception as e:
@@ -201,7 +201,7 @@ def fix_start_js():
         print(f"File not found: {filepath}")
         return False
     
-    print(f"Fixing start.js...")
+    print("Fixing start.js...")
 
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
@@ -221,7 +221,7 @@ def fix_start_js():
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(modified_content)
 
-            print(f"✅ Fixed start.js")
+            print("✅ Fixed start.js")
             return True
     
     except Exception as e:
@@ -237,7 +237,7 @@ def fix_websocket_client_py():
         print(f"File not found: {filepath}")
         return False
     
-    print(f"Fixing websocket_client.py...")
+    print("Fixing websocket_client.py...")
     
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
@@ -254,7 +254,7 @@ def fix_websocket_client_py():
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(modified_content)
 
-        print(f"✅ Fixed websocket_client.py")
+        print("✅ Fixed websocket_client.py")
         return True
     
     except Exception as e:
@@ -271,7 +271,7 @@ def fix_websocket_client_with_dash():
         print(f"File not found: {old_filepath}")
         return False
     
-    print(f"Fixing websocket-client.py naming issue...")
+    print("Fixing websocket-client.py naming issue...")
     
     try:
         with open(old_filepath, 'r', encoding='utf-8') as f:
@@ -291,7 +291,7 @@ def fix_websocket_client_with_dash():
         # Optionally, remove the old file
         # os.remove(old_filepath)
 
-        print(f"✅ Fixed websocket-client.py naming issue by creating websocket_client_module.py")
+        print("✅ Fixed websocket-client.py naming issue by creating websocket_client_module.py")
         return True
     
     except Exception as e:
@@ -307,7 +307,7 @@ def fix_config_py():
         print(f"File not found: {filepath}")
         return False
     
-    print(f"Fixing config.py...")
+    print("Fixing config.py...")
     
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
@@ -324,7 +324,7 @@ def fix_config_py():
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(modified_content)
 
-        print(f"✅ Fixed config.py")
+        print("✅ Fixed config.py")
         return True
     
     except Exception as e:

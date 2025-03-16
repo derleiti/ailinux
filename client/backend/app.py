@@ -20,7 +20,7 @@ import psutil
 try:
     from ai_model import analyze_log, get_available_models
 except ImportError:
-    logging.error("Failed to import AI model module. Make sure ai_model.py is in the same directory.")
+    logging.error("Failed to # Potential unused import: import AI model module. Make sure ai_model.py is in the same directory.")
     sys.exit(1)
 
 # Load environment variables

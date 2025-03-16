@@ -12,7 +12,7 @@ from typing import Dict, Any, List, Optional
 
 # AI Model Imports
 from gpt4all import GPT4All
-from huggingface_hub import HfApi
+from huggingface_hub # Potential unused import: import HfApi
 from transformers import pipeline
 
 # Logging Configuration
@@ -51,7 +51,7 @@ class LogAnalyzer:
         default_config = {
             'models': {
                 'gpt4all': {
-                    'model_path': 'Meta-Llama-3-8B-Instruct.Q4_0.gguf',
+                    'model_path': 'Meta-Llama-3-8B-Instruct.Q4_0.ggu',
                     'enabled': True
                 },
                 'huggingface': {
@@ -123,7 +123,7 @@ class LogAnalyzer:
             return "Error: Model not available"
 
         try:
-            prompt = f"""You are an AI log analysis assistant. 
+            prompt = """You are an AI log analysis assistant. 
             Analyze the following log and provide:
             1. Summary of key events
             2. Potential issues or errors

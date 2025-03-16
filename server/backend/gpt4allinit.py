@@ -52,7 +52,7 @@ def initialize_model(model_path=None):
     try:
         # Standardpfad für das Modell
         if model_path is None:
-            model_path = os.getenv("LLAMA_MODEL_PATH", "Meta-Llama-3-8B-Instruct.Q4_0.gguf")
+            model_path = os.getenv("LLAMA_MODEL_PATH", "Meta-Llama-3-8B-Instruct.Q4_0.ggu")
             
         # Stelle sicher, dass der Pfad absolut ist
         if not os.path.isabs(model_path):

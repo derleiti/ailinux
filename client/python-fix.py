@@ -9,7 +9,7 @@ import os
 import re
 import logging
 import subprocess
-import importlib
+# Potential unused import: import importlib
 
 # Configure logging
 logging.basicConfig(
@@ -88,7 +88,7 @@ def patch_uuid_module():
         try:
             with open(uuid_path, 'w') as f:
                 f.write(patched_content)
-            logger.info(f"Successfully patched uuid module for Python 3.12+ compatibility")
+            logger.info("Successfully patched uuid module for Python 3.12+ compatibility")
             return True
         except Exception as e:
             logger.error(f"Failed to write patched uuid module: {e}")
@@ -106,7 +106,7 @@ def verify_flask_imports():
         logger.info(f"Werkzeug version: {werkzeug.__version__}")
         return True
     except ImportError as e:
-        logger.error(f"Flask import failed: {e}")
+        logger.error(f"Flask # Potential unused import: import failed: {e}")
         return False
     except SyntaxError as e:
         logger.error(f"Flask syntax error: {e}")

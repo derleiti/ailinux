@@ -8,7 +8,7 @@ using different AI models.
 
 import argparse
 import sys
-import json
+# Potential unused import: import json
 import logging
 
 # Add project root to Python path
@@ -17,7 +17,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import AI models
-from backend.ai_model import analyze_log
+from backend.ai_model # Potential unused import: import analyze_log
 
 def main():
     """

@@ -1,0 +1,115 @@
+/**
+ * AILinux Startup Script
+ * Enhanced with Python compatibility checks and error handling
+ */
+
+const { spawn, exec } = require('child_process');
+const { promisify } = require('util');
+const fs = require('fs');
+const path = require('path');
+const os = require('os');
+const execAsync = promisify(exec);
+
+// Configure logging
+let electronLog;
+try {
+  electronLog = require('electron-log');
+  electronLog.transports.file.level = 'info';
+  electronLog.transports.console.level = 'debug';
+} catch (error) {
+  console.warn('electron-log not available, using console', error);
+  // Create a minimal replacement
+  electronLog = {
+    info: console.log,
+    warn: console.warn,
+    error: console.error,
+    debug: console.debug
+  };
+}
+
+// Global configuration
+const startLogPath = path.join(__dirname, 'logs', 'start.log');
+let pythonPath = process.env.PYTHON_PATH || 'python3'; // Use environment variable or default
+const configPath = path.join(__dirname, 'config.json');
+
+// Ensure log directory exists
+try {
+  fs.mkdirSync(path.dirname(startLogPath), { recursive: true });
+} catch (err) {
+  // Directory already exists or cannot be created
+  console.warn(`Could not create log directory: ${err.message}`);
+}
+
+/**
+ * Log a message to both the console and log file
+ * @param {string} message - Message to log
+ * @param {string} logPath - Path to log file
+ */
+function logMessage(message, logPath) {
+  const timestamp = new Date().toISOString();
+  const logEntry = `${timestamp}: ${message}\n`;
+  
+  console.log(message);
+  
+  try {
+    fs.appendFileSync(logPath, logEntry);
+  } catch (err) {
+    console.warn(`Could not write to log file: ${err.message}`);
+  }
+}
+
+/**
+ * Create a virtual environment for Python
+ * @param {string} baseDir - Base directory for the virtual environment
+ * @returns {Promise<string>} Path to the Python executable in the virtual environment
+ */
+async function createVirtualEnvironment(baseDir) {
+  const venvDir = path.join(baseDir, 'venv');
+  
+  try {
+    // Check if venv already exists
+    if (fs.existsSync(path.join(venvDir, 'bin', 'python'))) {
+      electronLog.info(`Using existing virtual environment at ${venvDir}`);
+      return path.join(venvDir, 'bin', 'python');
+    }
+    
+    // Create virtual environment
+    electronLog.info(`Creating virtual environment at ${venvDir}`);
+    logMessage(`Creating virtual environment at ${venvDir}`, startLogPath);
+    
+    const result = await execAsync(`${pythonPath} -m venv ${venvDir}`);
+    electronLog.info(`Virtual environment created at ${venvDir}`);
+    
+    return path.join(venvDir, 'bin', 'python');
+  } catch (err) {
+    electronLog.error(`Failed to create virtual environment: ${err.message}`);
+    logMessage(`ERROR: Failed to create virtual environment: ${err.message}`, startLogPath);
+    throw err;
+  }
+}
+
+/**
+ * Install required Python packages in the virtual environment
+ * @param {string} pythonExe - Path to the Python executable
+ * @returns {Promise<boolean>} Whether installation was successful
+ */
+async function installRequirements(pythonExe) {
+  try {
+    electronLog.info('Installing Flask and required dependencies...');
+    logMessage('Installing Flask and required dependencies...', startLogPath);
+    
+    // Install basic requirements
+    await execAsync(`${pythonExe} -m pip install flask flask-cors werkzeug requests`);
+    
+    // Check if requirements.txt exists and install from it
+    const reqPath = path.join(__dirname, 'requirements.txt');
+    if (fs.existsSync(reqPath)) {
+      electronLog.info(`Installing dependencies from requirements.txt`);
+      await execAsync(`${pythonExe} -m pip install -r ${reqPath}`);
+      electronLog.info('Successfully installed dependencies from requirements.txt');
+    }
+    
+    return true;
+  } catch (err) {
+    electronLog.error(`Failed to install requirements: ${err.message}`);
+    logMessage(`ERROR: Faile

@@ -34,7 +34,7 @@ except ImportError:
     HAS_GPT4ALL = False
 
 # Constants
-DEFAULT_MODEL_PATH = "Meta-Llama-3-8B-Instruct.Q4_0.gguf"  # Default model
+DEFAULT_MODEL_PATH = "Meta-Llama-3-8B-Instruct.Q4_0.ggu"  # Default model
 LOG_DIRECTORIES = [
     "./logs",
     "./client/logs",

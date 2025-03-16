@@ -6,7 +6,7 @@ enabling local inference without API dependencies.
 import os
 import logging
 import time
-import json
+# Potential unused import: import json
 from typing import Dict, Any, Optional, List, Union
 from pathlib import Path
 import threading
@@ -23,7 +23,7 @@ logging.basicConfig(
 logger = logging.getLogger("GPT4All")
 
 # Model settings
-DEFAULT_MODEL_PATH = os.getenv("GPT4ALL_MODEL_PATH", "Meta-Llama-3-8B-Instruct.Q4_0.gguf")
+DEFAULT_MODEL_PATH = os.getenv("GPT4ALL_MODEL_PATH", "Meta-Llama-3-8B-Instruct.Q4_0.ggu")
 MODELS_DIR = os.getenv("GPT4ALL_MODELS_DIR", os.path.join(os.path.dirname(__file__), "models"))
 
 # Ensure models directory exists
@@ -47,7 +47,7 @@ def list_available_models() -> List[Dict[str, Any]]:
     
     try:
         # List .gguf and .bin files in the models directory
-        model_files = list(Path(MODELS_DIR).glob("*.gguf")) + list(Path(MODELS_DIR).glob("*.bin"))
+        model_files = list(Path(MODELS_DIR).glob("*.ggu")) + list(Path(MODELS_DIR).glob("*.bin"))
         
         for model_path in model_files:
             model_info = {
@@ -88,8 +88,8 @@ def get_model(model_name_or_path: Optional[str] = None) -> Any:
             model_path = full_path
         else:
             # Try adding .gguf extension if it doesn't have one
-            if not model_path.endswith(('.gguf', '.bin')):
-                test_path = os.path.join(MODELS_DIR, f"{model_path}.gguf")
+            if not model_path.endswith(('.ggu', '.bin')):
+                test_path = os.path.join(MODELS_DIR, f"{model_path}.ggu")
                 if os.path.exists(test_path):
                     model_path = test_path
     

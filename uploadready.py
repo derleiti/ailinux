@@ -194,7 +194,7 @@ def run_pylint(files: Optional[List[str]] = None) -> bool:
             print("✓ No pylint issues found.")
             return True
         else:
-            print(f"✗ Pylint found issues. Check optimization.log for details.")
+            print("✗ Pylint found issues. Check optimization.log for details.")
             # Print a summary of the issues
             with open("optimization.log", "r") as log_file:
                 summary = log_file.readlines()[-10:]  # Last 10 lines typically contain the summary
@@ -309,7 +309,7 @@ def file_update(start_dir: str = ".", backup: bool = True) -> bool:
         scan_directory(start_dir, dir_structure)
         
         # Print statistics
-        print(f"\nScan complete!")
+        print("\nScan complete!")
         print(f"Found {stats['total_dirs']} directories and {stats['total_files']} files")
         print(f"Total data size: {format_size(stats['total_size'])}")
         print(f"Found {len(large_files)} files larger than 99MB")
