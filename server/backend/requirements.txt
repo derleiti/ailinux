@@ -66,7 +66,7 @@ jaraco.collections==5.1.0
 jaraco.context==6.0.0
 jaraco.functools==4.0.2
 jaraco.text==3.12.1
-Jinja2==3.1.5
+Jinja2==3.1.6
 jiter==0.8.2
 jsonschema==4.23.0
 jsonschema-specifications==2024.10.1
